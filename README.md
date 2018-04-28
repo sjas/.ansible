@@ -15,6 +15,7 @@ workstation bootstrapping. to be rebased onto a blank kde neon install.
     [defaults]
     inventory      = $ANSIBLETEMPROOT/.ansible/hosts
     EOF
+    cd .ansible
     
 ## run ansible to get the workstation up and running
 
