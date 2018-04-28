@@ -7,18 +7,14 @@ workstation bootstrapping. to be rebased onto a blank kde neon install.
     ssh-copy-id localhost  ## enter password here when promted
     
 ## bootstrap ansible itself
-    ANSIBLEROOT=~/etc/.ansible
-    mkdir -p $ANSIBLEROOT
+    ANSIBLETEMPROOT=~/etc/
+    mkdir -p $ANSIBLETEMPROOT
+    cd $ANSIBLETEMPROOT
+    git clone https://github.com/sjas/.ansible
     cat << EOF > ~/.ansible.cfg
     [defaults]
-    inventory      = $ANSIBLEROOT/hosts
+    inventory      = $ANSIBLETEMPROOT/.ansible/hosts
     EOF
-    cat << EOF > $ANSIBLEROOT/hosts
-    localhost
-    EOF
-    sudo apt install ansible -y
-    cd $ANSIBLEROOT
-    git clone https://github.com/sjas/.ansible
     
 ## run ansible to get the workstation up and running
 
