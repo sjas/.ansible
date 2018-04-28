@@ -7,7 +7,7 @@ workstation bootstrapping. to be rebased onto a blank kde neon install.
     ssh-copy-id localhost  ## enter password here when promted
     
 ## bootstrap ansible itself
-    ANSIBLEROOT=~/etc/ansible
+    ANSIBLEROOT=~/etc/.ansible
     mkdir -p $ANSIBLEROOT
     cat << EOF > ~/.ansible.cfg
     [defaults]
