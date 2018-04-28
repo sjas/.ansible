@@ -1,0 +1,506 @@
+## touchpad
+
+
+
+diff --git a/touchpadrc b/touchpadrc
+index a159cdb..dc1e333 100644
+--- a/touchpadrc
++++ b/touchpadrc
+@@ -1,6 +1,25 @@
++[autodisable]
++KeyboardActivityTimeoutMs=300
++
+ [parameters]
++AccelFactor=0.11219643908901684
+ CircScrollDelta=5.73
+-HorizScrollDelta=2.4
+-MaxTapMove=3.7
++CoastingSpeed=5
++FingerHigh=7
++FingerLow=7
++HorizHysteresis=16
++HorizScrollDelta=6.3
++HorizTwoFingerScroll=true
++MaxDoubleTapTime=150
++MaxSpeed=7.204635919773425
++MaxTapMove=2.0999999999999988
++MaxTapTime=250
++MinSpeed=4.013546653690207
++PressureMotionMaxZ=52
++PressureMotionMinZ=7
++SingleTapTimeout=100
+ Tapping=false
+-VertScrollDelta=2.3
++ThreeFingerTapButton=MiddleButton
++VertEdgeScroll=false
++VertHysteresis=16
++VertScrollDelta=2.1
+
+
+
+
+## mouse 
+
+
+
+diff --git a/kdeglobals b/kdeglobals
+index 81c47c9..3b6b728 100644
+--- a/kdeglobals
++++ b/kdeglobals
+@@ -120,11 +120,11 @@ Theme=breeze
+ 
+ [KDE]
+ ColorScheme=Breeze
+-DoubleClickInterval=400
+-SingleClick=true
+-StartDragDist=4
+-StartDragTime=500
+-WheelScrollLines=3
++DoubleClickInterval=200
++SingleClick=false
++StartDragDist=16
++StartDragTime=2000
++WheelScrollLines=12
+ contrast=4
+ widgetStyle=Breeze
+
+
+
+
+diff --git a/kcminputrc b/kcminputrc
+new file mode 100644
+index 0000000..7d7a823
+--- /dev/null
++++ b/kcminputrc
+@@ -0,0 +1,12 @@
++[Keyboard]
++KeyboardRepeating=0
++NumLock=2
++RepeatDelay=1312
++RepeatRate=25
++
++[Mouse]
++Acceleration=1
++AccelerationProfile=
++MouseButtonMapping=RightHanded
++ReverseScrollPolarity=false
++Threshold=1
+
+
+
+
+
+## shortcuts
+
+
+
+diff --git a/kglobalshortcutsrc b/kglobalshortcutsrc
+index 4276e6f..981a4ad 100644
+--- a/kglobalshortcutsrc
++++ b/kglobalshortcutsrc
+@@ -1,6 +1,8 @@
+ [KDE Keyboard Layout Switcher]
++Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
++Switch keyboard layout to German (eliminate dead keys)=none,none,Switch keyboard layout to German (eliminate dead keys)
+ Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
+-_k_friendly_name=KDE Daemon
++_k_friendly_name=System Settings
+ 
+ [kaccess]
+ Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
+@@ -19,10 +21,19 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
+ 
+ [khotkeys]
+ _k_friendly_name=KDE Daemon
++{36c9903f-0548-473f-bfce-f97acc71d22e}=Meta+B,none,chrome
++{38356836-594d-447b-94db-999f2928bdc5}=Meta+N,none,chromium
+ {408ddfd8-a7f7-453f-960a-0230dca149cf}=Meta+Print,none,Take Active Window Screenshot
++{4a4fd96d-e064-4f9c-b432-67c8bfb14e2f}=Meta+E,none,dolphin
+ {5bb7f1c1-585a-42c9-b4c4-c39dd37d6bc0}=Meta+Shift+Print,none,Take Rectangular Region Screenshot
++{7580fe28-58b9-42b9-a1d2-556e28a64427}=Meta+I,none,systemsettings5
++{797cba5d-c6fa-46a9-8746-933cb3495217}=Meta+T,none,uxterm
++{85602d86-336f-4bbe-9380-a491ebb8369a}=Meta+C,none,vscode
+ {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
++{e645391d-c278-4144-937d-471cb3e0c68f}=Meta+R,none,terminator
+ {e9d55bf8-e7f0-44f5-b933-8ccb688c84dd}=Shift+Print,none,Take Full Screen Screenshot
++{f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,filezilla
++{f235bee5-a498-41ed-be54-42e0709200d7}=Meta+V,none,firefox
+ {f2ee8bf0-e736-4a48-b754-e8bf350c4488}=Print,none,Start Screenshot Tool
+ 
+ [kmix]
+@@ -58,13 +69,13 @@ Invert Screen Colors=none,none,Invert Screen Colors
+ Kill Window=Ctrl+Alt+Esc,Ctrl+Alt+Esc,Kill Window
+ MoveMouseToCenter=Meta+F6,Meta+F6,Move Mouse to Center
+ MoveMouseToFocus=Meta+F5,Meta+F5,Move Mouse to Focus
+-MoveZoomDown=Meta+Down,Meta+Down,Move Zoomed Area Downwards
+-MoveZoomLeft=Meta+Left,Meta+Left,Move Zoomed Area to Left
+-MoveZoomRight=Meta+Right,Meta+Right,Move Zoomed Area to Right
+-MoveZoomUp=Meta+Up,Meta+Up,Move Zoomed Area Upwards
++MoveZoomDown=,Meta+Down,Move Zoomed Area Downwards
++MoveZoomLeft=,Meta+Left,Move Zoomed Area to Left
++MoveZoomRight=,Meta+Right,Move Zoomed Area to Right
++MoveZoomUp=,Meta+Up,Move Zoomed Area Upwards
+ Remove Window From Group=none,none,Remove Window From Group
+ Setup Window Shortcut=none,none,Setup Window Shortcut
+-Show Desktop=none,none,Show Desktop
++Show Desktop=Meta+D,none,Show Desktop
+ ShowDesktopGrid=Ctrl+F8,Ctrl+F8,Show Desktop Grid
+ Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Suspend Compositing
+ Switch One Desktop Down=none,none,Switch One Desktop Down
+@@ -125,14 +136,14 @@ Walk Through Windows of Current Application Alternative (Reverse)=none,none,Walk
+ Window Above Other Windows=none,none,Keep Window Above Others
+ Window Below Other Windows=none,none,Keep Window Below Others
+ Window Close=Alt+F4,Alt+F4,Close Window
+-Window Fullscreen=none,none,Make Window Fullscreen
++Window Fullscreen=Meta+Up,none,Make Window Fullscreen
+ Window Grow Horizontal=none,none,Pack Grow Window Horizontally
+ Window Grow Vertical=none,none,Pack Grow Window Vertically
+ Window Lower=none,none,Lower Window
+ Window Maximize=none,none,Maximize Window
+ Window Maximize Horizontal=none,none,Maximize Window Horizontally
+ Window Maximize Vertical=none,none,Maximize Window Vertically
+-Window Minimize=none,none,Minimize Window
++Window Minimize=Meta+Down,none,Minimize Window
+ Window Move=none,none,Move Window
+ Window No Border=none,none,Hide Window Border
+ Window On All Desktops=none,none,Keep Window on All Desktops
+@@ -148,8 +159,8 @@ Window Pack Up=none,none,Pack Window Up
+ Window Quick Tile Bottom=none,none,Quick Tile Window to the Bottom
+ Window Quick Tile Bottom Left=none,none,Quick Tile Window to the Bottom Left
+ Window Quick Tile Bottom Right=none,none,Quick Tile Window to the Bottom Right
+-Window Quick Tile Left=none,none,Quick Tile Window to the Left
+-Window Quick Tile Right=none,none,Quick Tile Window to the Right
++Window Quick Tile Left=Meta+Left,none,Quick Tile Window to the Left
++Window Quick Tile Right=Meta+Right,none,Quick Tile Window to the Right
+ Window Quick Tile Top=none,none,Quick Tile Window to the Top
+ Window Quick Tile Top Left=none,none,Quick Tile Window to the Top Left
+ Window Quick Tile Top Right=none,none,Quick Tile Window to the Top Right
+diff --git a/khotkeysrc b/khotkeysrc
+index 85448c7..9c0490f 100644
+--- a/khotkeysrc
++++ b/khotkeysrc
+@@ -1,5 +1,5 @@
+ [Data]
+-DataCount=4
++DataCount=13
+ 
+ [Data_1]
+ Comment=KMenuEdit Global Shortcuts
+@@ -9,6 +9,110 @@ Name=KMenuEdit
+ SystemGroup=1
+ Type=ACTION_DATA_GROUP
+ 
++[Data_10]
++Comment=open chromium browser
++Enabled=true
++Name=chromium
++Type=SIMPLE_ACTION_DATA
++
++[Data_10Actions]
++ActionsCount=1
++
++[Data_10Actions0]
++CommandURL=chromium-browser %U
++Type=COMMAND_URL
++
++[Data_10Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_10Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_10Triggers0]
++Key=Meta+N
++Type=SHORTCUT
++Uuid={38356836-594d-447b-94db-999f2928bdc5}
++
++[Data_11]
++Comment=open dolphin
++Enabled=true
++Name=dolphin
++Type=SIMPLE_ACTION_DATA
++
++[Data_11Actions]
++ActionsCount=1
++
++[Data_11Actions0]
++CommandURL=dolphin ~/dl
++Type=COMMAND_URL
++
++[Data_11Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_11Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_11Triggers0]
++Key=Meta+E
++Type=SHORTCUT
++Uuid={4a4fd96d-e064-4f9c-b432-67c8bfb14e2f}
++
++[Data_12]
++Comment=open filezilla ftp client
++Enabled=true
++Name=filezilla
++Type=SIMPLE_ACTION_DATA
++
++[Data_12Actions]
++ActionsCount=1
++
++[Data_12Actions0]
++CommandURL=filezilla
++Type=COMMAND_URL
++
++[Data_12Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_12Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_12Triggers0]
++Key=Meta+F
++Type=SHORTCUT
++Uuid={f017a37e-f01a-4901-888e-9a4574d78bfa}
++
++[Data_13]
++Comment=open visual studio code
++Enabled=true
++Name=vscode
++Type=SIMPLE_ACTION_DATA
++
++[Data_13Actions]
++ActionsCount=1
++
++[Data_13Actions0]
++CommandURL=code
++Type=COMMAND_URL
++
++[Data_13Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_13Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_13Triggers0]
++Key=Meta+C
++Type=SHORTCUT
++Uuid={85602d86-336f-4bbe-9380-a491ebb8369a}
++
+ [Data_1Conditions]
+ Comment=
+ ConditionsCount=0
+@@ -585,7 +689,7 @@ Uuid={5bb7f1c1-585a-42c9-b4c4-c39dd37d6bc0}
+ [Data_4]
+ Comment=Basic Konqueror gestures.
+ DataCount=14
+-Enabled=true
++Enabled=false
+ ImportId=konqueror_gestures_kde321
+ Name=Konqueror Gestures
+ SystemGroup=0
+@@ -985,6 +1089,136 @@ TriggersCount=1
+ GesturePointData=0,0.0625,-0.5,0.5,1,0.0625,0.0625,-0.5,0.5,0.875,0.125,0.0625,-0.5,0.5,0.75,0.1875,0.0625,-0.5,0.5,0.625,0.25,0.0625,-0.5,0.5,0.5,0.3125,0.0625,-0.5,0.5,0.375,0.375,0.0625,-0.5,0.5,0.25,0.4375,0.0625,-0.5,0.5,0.125,0.5,0.0625,0.5,0.5,0,0.5625,0.0625,0.5,0.5,0.125,0.625,0.0625,0.5,0.5,0.25,0.6875,0.0625,0.5,0.5,0.375,0.75,0.0625,0.5,0.5,0.5,0.8125,0.0625,0.5,0.5,0.625,0.875,0.0625,0.5,0.5,0.75,0.9375,0.0625,0.5,0.5,0.875,1,0,0,0.5,1
+ Type=GESTURE
+ 
++[Data_5]
++Comment=start terminator fullscreen
++Enabled=true
++Name=terminator
++Type=SIMPLE_ACTION_DATA
++
++[Data_5Actions]
++ActionsCount=1
++
++[Data_5Actions0]
++CommandURL=terminator -m
++Type=COMMAND_URL
++
++[Data_5Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_5Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_5Triggers0]
++Key=Meta+R
++Type=SHORTCUT
++Uuid={e645391d-c278-4144-937d-471cb3e0c68f}
++
++[Data_6]
++Comment=start a faster terminal with a specified size
++Enabled=true
++Name=uxterm
++Type=SIMPLE_ACTION_DATA
++
++[Data_6Actions]
++ActionsCount=1
++
++[Data_6Actions0]
++CommandURL=uxterm -sl 100000 +cm -cn -j -rw -s +samename -u8 -geometry 100x42
++Type=COMMAND_URL
++
++[Data_6Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_6Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_6Triggers0]
++Key=Meta+T
++Type=SHORTCUT
++Uuid={797cba5d-c6fa-46a9-8746-933cb3495217}
++
++[Data_7]
++Comment=open control panel
++Enabled=true
++Name=systemsettings5
++Type=SIMPLE_ACTION_DATA
++
++[Data_7Actions]
++ActionsCount=1
++
++[Data_7Actions0]
++CommandURL=systemsettings5
++Type=COMMAND_URL
++
++[Data_7Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_7Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_7Triggers0]
++Key=Meta+I
++Type=SHORTCUT
++Uuid={7580fe28-58b9-42b9-a1d2-556e28a64427}
++
++[Data_8]
++Comment=open firefox browser
++Enabled=true
++Name=firefox
++Type=SIMPLE_ACTION_DATA
++
++[Data_8Actions]
++ActionsCount=1
++
++[Data_8Actions0]
++CommandURL=firefox
++Type=COMMAND_URL
++
++[Data_8Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_8Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_8Triggers0]
++Key=Meta+V
++Type=SHORTCUT
++Uuid={f235bee5-a498-41ed-be54-42e0709200d7}
++
++[Data_9]
++Comment=open google chrome browser
++Enabled=true
++Name=chrome
++Type=SIMPLE_ACTION_DATA
++
++[Data_9Actions]
++ActionsCount=1
++
++[Data_9Actions0]
++CommandURL=google-chrome-stable %U
++Type=COMMAND_URL
++
++[Data_9Conditions]
++Comment=
++ConditionsCount=0
++
++[Data_9Triggers]
++Comment=Simple_action
++TriggersCount=1
++
++[Data_9Triggers0]
++Key=Meta+B
++Type=SHORTCUT
++Uuid={36c9903f-0548-473f-bfce-f97acc71d22e}
++
+ [Gestures]
+ Disabled=true
+ MouseButton=2
+
+
+
+
+
+## keyboard
+
+
+
+diff --git a/kcminputrc b/kcminputrc
+new file mode 100644
+index 0000000..bfb1707
+--- /dev/null
++++ b/kcminputrc
+@@ -0,0 +1,12 @@
++[Keyboard]
++KeyboardRepeating=0
++NumLock=2
++RepeatDelay=192
++RepeatRate=50
++
++[Mouse]
++Acceleration=1
++AccelerationProfile=
++MouseButtonMapping=RightHanded
++ReverseScrollPolarity=false
++Threshold=1
+
+
+
+diff --git a/kglobalshortcutsrc b/kglobalshortcutsrc
+index 4276e6f..5e60e12 100644
+--- a/kglobalshortcutsrc
++++ b/kglobalshortcutsrc
+@@ -1,4 +1,6 @@
+ [KDE Keyboard Layout Switcher]
++Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
++Switch keyboard layout to German (eliminate dead keys)=none,none,Switch keyboard layout to German (eliminate dead keys)
+ Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
+ _k_friendly_name=KDE Daemon
+
+
+
+sjas@zen:~/.config$ cat kxkbrc 
+[Layout]
+DisplayNames=,
+LayoutList=us,de(nodeadkeys)
+LayoutLoopCount=-1
+Model=pc104
+Options=caps:ctrl_modifier
+ResetOldOptions=true
+ShowFlag=false
+ShowLabel=true
+ShowLayoutIndicator=true
+ShowSingle=false
+SwitchMode=Global
+Use=true
+
+
+
+

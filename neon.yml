@@ -1,0 +1,9 @@
+---
+
+- name: kde neon bootstrapping
+  become: true  
+  gather_facts: false
+  remote_user: sjas
+  hosts: all
+  roles: 
+    - common
