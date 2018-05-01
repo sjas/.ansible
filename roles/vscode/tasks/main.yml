@@ -57,4 +57,4 @@
   become_user: sjas
   copy:
     src: settings.json
-    dest: ~/.config/Code/User/settings.json
+    dest: /home/sjas/.config/Code/User/settings.json

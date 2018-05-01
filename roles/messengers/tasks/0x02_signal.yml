@@ -7,7 +7,7 @@
     repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
     filename: signal
 
-- name: signal package
+- name: ssignal package
   apt:
     name: signal-desktop
     update_cache: yes

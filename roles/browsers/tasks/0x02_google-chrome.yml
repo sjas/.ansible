@@ -8,12 +8,13 @@
     filename: google-chrome
 
 - name: chrome dependencies
-  apt:
+  apt: >  
     name: {{ item }}
-    with_items:
-      - fonts-liberation
-      - libappindicator3-1
-      - libindicator3-7
+    update_cache: yes
+  with_items:
+    - fonts-liberation
+    - libappindicator3-1
+    - libindicator3-7
 
 - name: google-chrome package
   apt:

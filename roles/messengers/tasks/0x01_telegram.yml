@@ -1,0 +1,27 @@
+- name: telegram install check
+  shell: find /opt/Telegram -type f | grep Telegram
+  register: exitcode_telegram_install
+  ignore_errors: true
+  changed_when: exitcode_telegram_install != 0
+  
+- name: download telegram
+  shell: wget https://tdesktop.com/linux -O /tmp/telegram.tar.xz
+  when: exitcode_telegram_install.rc != 0
+
+- name: unarchive telegram
+  unarchive: 
+    src: /tmp/telegram.tar.xz
+    dest: /opt
+  when: exitcode_telegram_install.rc != 0
+
+- name: cleanup telegram install files
+  file:
+    path: /tmp/telegram.tar.xz
+    state: absent
+  when: exitcode_telegram_install.rc != 0
+  
+- name: link telegram to $PATH
+  file:
+    src: /opt/Telegram/Telegram
+    dest: /home/sjas/.local/bin/telegram
+    state: link

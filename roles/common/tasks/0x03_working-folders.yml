@@ -1,0 +1,21 @@
+- name: directories
+  become: yes
+  become_user: sjas
+  file:
+    dest: /home/sjas/{{ item }}
+    state: directory
+  with_items:
+    - wrk
+    - prv 
+    - txt 
+    - etc
+    - .local
+    - .local/bin
+
+- name: symlinks
+  become: yes
+  become_user: sjas
+  file:
+    src: /home/sjas/Downloads
+    dest: /home/sjas/dl
+    state: link
