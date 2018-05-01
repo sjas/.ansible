@@ -38,3 +38,10 @@
     - vscoss.vscode-ansible
     - yhirose.FilterText
   when: exitcode.rc != 0
+
+- name: set vscode configuration
+  become: yes
+  become_user: sjas
+  copy:
+    src: settings.json
+    dest: ~/.config/Code/User/settings.json
