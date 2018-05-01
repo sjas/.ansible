@@ -1,0 +1,20 @@
+{
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",<>/?",
+    "window.zoomLevel": 0,
+    "editor.autoIndent": false,
+    "editor.emptySelectionClipboard": false,
+    "editor.cursorStyle": "line",
+    "editor.cursorBlinking": "phase",
+    "editor.multiCursorModifier": "alt",
+    "editor.wordWrap": "on",
+    "editor.cursorWidth": 1,
+    "editor.fontSize": 14,
+    "editor.insertSpaces": true, 
+    "editor.lineNumbers": "interval",
+    "editor.rulers": [
+        100
+    ],
+    "terminal.integrated.env.linux": {},
+    "editor.acceptSuggestionOnEnter": "smart",
+    "workbench.colorTheme": "Zenburn",
+}
