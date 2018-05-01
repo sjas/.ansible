@@ -1,0 +1,40 @@
+- name: microsoft apt-key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: add vscode repo 
+  apt_repository:
+    repo: deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
+    state: present 
+    filename: vscode
+
+- name: install vscode package
+  apt:
+    name: code
+    state: present
+    update_cache: yes
+
+- name: vscode extension install check
+  become: yes
+  become_user: sjas
+  ignore_errors: true
+  shell: code --list-extensions > vsc_tempfile && grep -q jamiewoodio.junos vsc_tempfile && grep -q jpogran.puppet-vscode vsc_tempfile && grep -q lfs.vscode-emacs-friendly vsc_tempfile && grep -q lukehoban.Go vsc_tempfile && grep -q ms-python.python vsc_tempfile && grep -q redhat.vscode-yaml vsc_tempfile && grep -q ryanolsonx.zenburn vsc_tempfile && grep -q vscoss.vscode-ansible vsc_tempfile && grep -q yhirose.FilterText vsc_tempfile && rm vsc_tempfile && exit 0 || exit 1
+  register: exitcode
+
+- name: install vscode extensions if not present
+  become: yes
+  become_user: sjas
+  shell: code --install-extension {{ item }} 
+  with_items:
+    - DavidAnson.vscode-markdownlint
+    - jamiewoodio.junos
+    - jpogran.puppet-vscode
+    - lfs.vscode-emacs-friendly
+    - lukehoban.Go
+    - ms-python.python
+    - redhat.vscode-yaml
+    - ryanolsonx.zenburn
+    - vscoss.vscode-ansible
+    - yhirose.FilterText
+  when: exitcode.rc != 0

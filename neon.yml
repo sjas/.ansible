@@ -7,6 +7,6 @@
   gather_facts: false
  
   roles: 
-    - common
-    - browsers
-    #- vscode
+#    - common
+#    - browsers
+    - vscode

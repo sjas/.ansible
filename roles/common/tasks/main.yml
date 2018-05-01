@@ -1,2 +1,5 @@
-- name: "upstream packages"
-  include: 0x01_upstream.yml
+- name: dist upgrade
+  include: 0x01_dist-upgrade.yml
+
+- name: basic packages
+  include: 0x02_basic-packages.yml

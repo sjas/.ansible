@@ -1,14 +1,9 @@
-- name: "apt dist-upgrade"
-  apt: 
-    upgrade=dist 
-    update_cache=yes
-
-- name: "basic packages from upstream"
-  apt: > 
+- apt: > 
     name: {{ item }}
     state: present
     autoclean: yes 
     autoremove: yes
+    update_cache: yes
   with_items:
     - apt-file
     - bash-completion
@@ -45,5 +40,4 @@
     - whois
     - xterm
     - xtermcontrol
-    - xtermset
-
+    - xtermsets
