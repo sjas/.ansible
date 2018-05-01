@@ -1,3 +1,4 @@
-- apt: 
+- name: dist-upgrade
+  apt: 
     upgrade: dist 
     update_cache: yes

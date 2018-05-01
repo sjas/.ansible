@@ -1,13 +1,13 @@
-- name: google-chrome apt-key
+- name: google apt-key
   apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
     
-- name: add google repo 
+- name: google-chrome repo 
   apt_repository:
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
 
-- name: install chrome dependencies
+- name: chrome dependencies
   apt:
     name: {{ item }}
     with_items:
@@ -15,7 +15,7 @@
       - libappindicator3-1
       - libindicator3-7
 
-- name: install google-chrome package
+- name: google-chrome package
   apt:
     name: google-chrome-stable
     update_cache: yes

@@ -1,4 +1,4 @@
-- name: install chromium
+- name: chromium package
   apt:
     name: chromium-browser
     state: present

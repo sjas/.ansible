@@ -1,5 +1,4 @@
-- name: make sure the default settings file exists
+- name: firefox faster scrolling
   copy:
-    content: 'user_pref("mousewheel.default.delta_multiplier_y", 300);
-'
+    content: 'user_pref("mousewheel.default.delta_multiplier_y", 300);'
     dest: /usr/lib/firefox/browser/defaults/preferences/all-sjas.prefs

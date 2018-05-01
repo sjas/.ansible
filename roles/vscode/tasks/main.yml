@@ -19,8 +19,21 @@
   become: yes
   become_user: sjas
   ignore_errors: true
-  shell: code --list-extensions > vsc_tempfile && grep -q jamiewoodio.junos vsc_tempfile && grep -q jpogran.puppet-vscode vsc_tempfile && grep -q lfs.vscode-emacs-friendly vsc_tempfile && grep -q lukehoban.Go vsc_tempfile && grep -q ms-python.python vsc_tempfile && grep -q redhat.vscode-yaml vsc_tempfile && grep -q ryanolsonx.zenburn vsc_tempfile && grep -q vscoss.vscode-ansible vsc_tempfile && grep -q yhirose.FilterText vsc_tempfile && rm vsc_tempfile && exit 0 || exit 1
-  register: exitcode
+  shell: |
+    code --list-extensions > vsc_tempfile && 
+    grep -q jamiewoodio.junos vsc_tempfile && 
+    grep -q jpogran.puppet-vscode vsc_tempfile && 
+    grep -q lfs.vscode-emacs-friendly vsc_tempfile && 
+    grep -q lukehoban.Go vsc_tempfile && 
+    grep -q ms-python.python vsc_tempfile && 
+    grep -q redhat.vscode-yaml vsc_tempfile && 
+    grep -q ryanolsonx.zenburn vsc_tempfile && 
+    grep -q vscoss.vscode-ansible vsc_tempfile && 
+    grep -q yhirose.FilterText vsc_tempfile && 
+    rm vsc_tempfile && 
+    exit 0 || 
+    exit 1
+  register: exitcode_vsc_plugins
 
 - name: install vscode extensions if not present
   become: yes
@@ -37,7 +50,7 @@
     - ryanolsonx.zenburn
     - vscoss.vscode-ansible
     - yhirose.FilterText
-  when: exitcode.rc != 0
+  when: exitcode_vsc_plugins.rc != 0
 
 - name: set vscode configuration
   become: yes

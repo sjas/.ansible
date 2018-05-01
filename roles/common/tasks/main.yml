@@ -1,5 +1,5 @@
-- name: dist upgrade
+- name: system upgrade
   include: 0x01_dist-upgrade.yml
 
-- name: basic packages
+- name: base software
   include: 0x02_basic-packages.yml

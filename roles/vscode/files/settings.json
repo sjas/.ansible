@@ -17,4 +17,6 @@
     "terminal.integrated.env.linux": {},
     "editor.acceptSuggestionOnEnter": "smart",
     "workbench.colorTheme": "Zenburn",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
 }
