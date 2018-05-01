@@ -1,0 +1,8 @@
+- name: chromium
+  include: 0x01_chromium.yml
+
+- name: google-chrome
+  include: 0x02_google-chrome.yml
+
+- name: firefox
+  include: 0x03_firefox.yml

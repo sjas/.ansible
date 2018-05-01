@@ -1,9 +1,12 @@
 ---
 
 - name: kde neon bootstrapping
+  hosts: all
+  remote_user: sjas 
   become: true  
   gather_facts: false
-  remote_user: sjas
-  hosts: all
+ 
   roles: 
     - common
+    - browsers
+    #- vscode

@@ -2,7 +2,8 @@
 
 workstation bootstrapping. to be rebased onto a blank kde neon install.
 
-tested with neon 5.12.x, uses ansible 2.5.x via PPA so human-readable output via callbacks works.
+tested with neon 5.12.x, uses ansible 2.5.x via PPA so human-readable output via callback works.
+default verbosity changed to '-vv' so the files:line of the currently run task is shown.
 
 ## make ssh work, so ansible behaves
     sudo bash -c "echo 'sjas ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/sjas
@@ -23,6 +24,7 @@ tested with neon 5.12.x, uses ansible 2.5.x via PPA so human-readable output via
     [defaults]
     inventory = $ANSIBLETEMPROOT/.ansible/hosts
     stdout_callback = debug
+    verbosity = 2
     EOF
     cd .ansible
     

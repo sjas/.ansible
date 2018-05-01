@@ -1,2 +1,2 @@
-- name: "basic package management"
-  include: 0x1_basic_apt.yml
+- name: "upstream packages"
+  include: 0x01_upstream.yml

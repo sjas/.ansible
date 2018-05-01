@@ -1,0 +1,49 @@
+- name: "apt dist-upgrade"
+  apt: 
+    upgrade=dist 
+    update_cache=yes
+
+- name: "basic packages from upstream"
+  apt: > 
+    name: {{ item }}
+    state: present
+    autoclean: yes 
+    autoremove: yes
+  with_items:
+    - apt-file
+    - bash-completion
+    - curl 
+    - ethstatus
+    - exfat-fuse
+    - exfat-utils
+    - filezilla
+    - git-all
+    - hdparm
+    - htop 
+    - iftop 
+    - iotop
+    - mc 
+    - mlocate
+    - multitail
+    - nmap
+    - ntfs-3g 
+    - p7zip
+    - parallel
+    - parted
+    - python-optcomplete
+    - pwgen
+    - rsync
+    - screen
+    - sysstat
+    - tcpdump
+    - terminator
+    - tmux
+    - traceroute
+    - tree
+    - vim 
+    - wget 
+    - whois
+    - xterm
+    - xtermcontrol
+    - xtermset
+
