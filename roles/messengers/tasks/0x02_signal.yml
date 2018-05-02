@@ -10,4 +10,4 @@
 - name: signal package
   apt:
     name: signal-desktop
-    update_cache: yes
+    cache_valid_time: 1800

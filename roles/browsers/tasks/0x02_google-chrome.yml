@@ -19,4 +19,4 @@
 - name: google-chrome package
   apt:
     name: google-chrome-stable
-    update_cache: yes
+    cache_valid_time: 1800

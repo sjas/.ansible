@@ -2,8 +2,8 @@
   apt: > 
     name: {{ item }}
     autoclean: yes 
-    autoremove: yes
-    update_cache: yes
+    autoremove: yes 
+    cache_valid_time: 1800
   with_items:
     - apt-file
     - bash-completion
