@@ -9,6 +9,7 @@
     - prv 
     - txt 
     - etc
+    - .config
     - .local
     - .local/bin
 

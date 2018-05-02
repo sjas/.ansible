@@ -16,6 +16,7 @@
     ],
     "terminal.integrated.env.linux": {},
     "editor.acceptSuggestionOnEnter": "smart",
+    "editor.mouseWheelScrollSensitivity": 2,
     "git.enableSmartCommit": true,
     "workbench.colorTheme": "Zenburn",
     "telemetry.enableTelemetry": false,
