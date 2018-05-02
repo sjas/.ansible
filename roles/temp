@@ -1,9 +1,54 @@
+echo 'Install KDE Plasmoids'
+for i in 174323-Simple_Date_and_Time.plasmoid netspeed-widget-1.4.plasmoid plasma-applet-thermal-monitor.plasmoid
+do
+plasmapkg2 -i $i &> /dev/null
+done
+
+echo 'Installing steam dependencies.'
+sudo apt install xterm libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 -y &> /dev/null
+https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+
+find . -type f -ls | grep .git -v > asdf1; read; find . -type f -ls | grep .git -v > asdf2; diff asdf{1,2} | awk 'NF>1 {print $NF}' | sort -u | awk 'NF>0'| grep -ve 'asdf[12]' | sed -e 's/^\.\///' ; rm asdf{1,2}
+
+
+terminator config komplett
+
+
+# systemsettings5 hacking
+touchpadrc  ## komplett
+
+# mouse
+kcminputrc  ## komplett
+kdeglobals  ## sed
+
+# keyboard
+kcminputrc ## ~~~
+kglobalshortcutsrc  ## sed
+khotkeysrc  ## miese scheisse
+kxkbrc  ##  evtl einfach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## touchpad
 
 
 
 diff --git a/touchpadrc b/touchpadrc
-index a159cdb..dc1e333 100644
+index a159cdb..dc1e333 100644/
 --- a/touchpadrc
 +++ b/touchpadrc
 @@ -1,6 +1,25 @@

@@ -3,7 +3,7 @@
 - name: kde neon bootstrapping
   hosts: all
   remote_user: sjas 
-  become: true  
+  become: yes  
   gather_facts: false
  
   roles: 
@@ -11,3 +11,4 @@
     - browsers
     - vscode
     - messengers
+    - terminator

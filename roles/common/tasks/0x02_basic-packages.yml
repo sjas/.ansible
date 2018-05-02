@@ -1,7 +1,6 @@
 - name: basic packages
   apt: > 
     name: {{ item }}
-    state: present
     autoclean: yes 
     autoremove: yes
     update_cache: yes
@@ -32,7 +31,6 @@
     - screen
     - sysstat
     - tcpdump
-    - terminator
     - tmux
     - traceroute
     - tree
