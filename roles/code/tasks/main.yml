@@ -1,1 +1,5 @@
-x
+- name: vim
+  include: 0x01_vim.yml
+
+- name: vscode 
+  include: 0x02_vscode.yml

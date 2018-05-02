@@ -34,6 +34,7 @@
     exit 0 || 
     exit 1
   register: exitcode_vsc_plugins
+  changed_when: false
 
 - name: install vscode extensions if not present
   become: yes

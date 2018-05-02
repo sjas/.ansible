@@ -9,6 +9,6 @@
   roles: 
     - common
     - browsers
-    - vscode
+    - code
     - messengers
     - terminator
