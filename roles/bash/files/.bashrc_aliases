@@ -1,18 +1,12 @@
-alias   cdd="cd $DOTFILES"
-alias   ebd="vim $DOTFILES/main.sh"
-alias   ebp="vim $DOTFILES/.bashrc_packages"
-alias    eb="vim $DOTFILES/.bashrc;					. ~/.bashrc; echo [+] .bashrc reloaded"
-alias   eba="vim $DOTFILES/.bashrc_aliases;				. ~/.bashrc; echo [+] .bashrc reloaded"
+alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias  ebah="grep ^alias $DOTFILES/.bashrc_aliases | sed 's/alias //'"
-alias   ebe="vim $DOTFILES/.bashrc_env; 	  			. ~/.bashrc; echo [+] .bashrc reloaded"
-alias   ebg="vim $DOTFILES/.bashrc_git; 	  			. ~/.bashrc; echo [+] .bashrc reloaded"
 alias  ebgh="grep ^alias $DOTFILES/.bashrc_git | sed 's/alias //'"
-alias   ebm="vim $DOTFILES/.bashrc_main;	  			. ~/.bashrc; echo [+] .bashrc reloaded"
 
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias  rebd="(cd $DOTFILES; ./main.sh)"
-alias rebdu="(cd $DOTFILES; sudo apt update; ./main.sh)"
 
+## FIXME with 'n' autocompletion
 #NOTES
 alias    et="vim $DOTFILES/../.todo2"
 alias   ett="vim $DOTFILES/../.todo"
@@ -21,33 +15,30 @@ alias   etp="vim $DOTFILES/../.todo_prv"
 alias  etpi="vim $DOTFILES/../.todo_install"
 alias   ets="vim $DOTFILES/../.todo_srv"
 
-alias    vi="vim"
-alias    ev="vim $DOTFILES/.vimrc"
-vimscr() {
-	touch $1; chmod +x $1; vim $1
-}
+alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 
-
-#STUFF
-LS_OPT='-lh --color --time-style=long-iso'
+#LS
+LS_OPT='-lish --color --time-style=long-iso'
 alias     l="ls $LS_OPT -A"
 alias    ll="ls $LS_OPT"
 alias    la="ls $LS_OPT -Atr"
 alias     d="ls $LS_OPT -AF | grep ^d"
 alias    dl="ls $LS_OPT -F  | grep ^d"
+
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 
+#VI
+alias vihosts="sudo vim /etc/hosts"
+alias vissh="vim /home/sjas/.ssh/config"
+alias vitmux="vim /home/sjas/.tmux.conf"
 
 #CAT
-#alias catpk="cat /home/sjas/.ssh/id_rsa.pub"
+alias cathosts="cat /etc/hosts"
 alias catpk="cat /home/sjas/.ssh/id_rsa.pub"
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
-cateh() {
-	tail -n +1 $(find $DOTFILES -iname '.bashrc_*') | grep --color -e\$ -e '^==.*'
-}
 
 
 #SHOW
@@ -72,10 +63,6 @@ tmwh() {
 
 
 #ALIASES
-alias vihosts="sudo vim /etc/hosts"
-alias cathosts="cat /etc/hosts"
-alias vissh="vim /home/sjas/.ssh/config"
-alias vitmux="vim /home/sjas/.tmux.conf"
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias ee="sudo dolphin ."
 alias ..="cd .."
@@ -102,7 +89,6 @@ sshdiff() {
 	CMD=$3
 	sdiff -ds <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
 }
-
 
 #NETWORK
 getip() {
