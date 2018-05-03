@@ -3,7 +3,7 @@
 workstation bootstrapping. to be rebased onto a blank kde neon install.
 
 tested with neon 5.12.x, uses ansible 2.5.x via PPA so human-readable output via callback works.
-default verbosity changed to '-vv' so the files:line of the currently run task is shown.
+default verbosity changed to '-vv' so the FILE:LINE position of the currently run task is shown.
 
 ## bootstrapping
 
