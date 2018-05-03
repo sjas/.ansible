@@ -1,7 +1,9 @@
 - name: etckeeper first
   apt: > 
-    name: etckeeper
+    name: {{ item }}
     cache_valid_time: 1800
+  with_items:
+    - etckeeper
 
 - name: basic packages
   apt: > 
@@ -17,6 +19,7 @@
     - conntrack
     - curl 
     - dhcping
+    - direnv
     - elinks
     - ethstatus
     - exfat-fuse
@@ -25,6 +28,8 @@
     - filezilla
     - freerdp-x11
     - git-all
+    - global
+    - golang-1.10
     - hdparm
     - hping3
     - htop 
@@ -67,7 +72,7 @@
     - xtermsets
 
 - name: language packages
-  apt: > 
+  apt: >
     name: {{ item }}
     autoclean: yes 
     autoremove: yes 
