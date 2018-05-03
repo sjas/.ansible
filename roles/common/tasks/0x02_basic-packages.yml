@@ -9,15 +9,22 @@
     - apt-file
     - bash-completion
     - curl 
+    - dhcping
+    - elinks
     - ethstatus
     - exfat-fuse
     - exfat-utils
     - filezilla
     - git-all
     - hdparm
+    - hping3
     - htop 
+    - httping
     - iftop 
+    - ioping
     - iotop
+    - iputils-arping
+    - lynx
     - mc 
     - mlocate
     - multitail
