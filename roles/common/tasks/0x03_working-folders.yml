@@ -9,9 +9,11 @@
     - prv 
     - txt 
     - etc
+    - etc/.dotfiles
     - .config
     - .local
     - .local/bin
+    - .dotfiles
 
 - name: symlinks
   become: yes

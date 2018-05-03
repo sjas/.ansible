@@ -1,0 +1,135 @@
+alias   cdd="cd $DOTFILES"
+alias   ebd="vim $DOTFILES/main.sh"
+alias   ebp="vim $DOTFILES/.bashrc_packages"
+alias    eb="vim $DOTFILES/.bashrc;					. ~/.bashrc; echo [+] .bashrc reloaded"
+alias   eba="vim $DOTFILES/.bashrc_aliases;				. ~/.bashrc; echo [+] .bashrc reloaded"
+alias  ebah="grep ^alias $DOTFILES/.bashrc_aliases | sed 's/alias //'"
+alias   ebe="vim $DOTFILES/.bashrc_env; 	  			. ~/.bashrc; echo [+] .bashrc reloaded"
+alias   ebg="vim $DOTFILES/.bashrc_git; 	  			. ~/.bashrc; echo [+] .bashrc reloaded"
+alias  ebgh="grep ^alias $DOTFILES/.bashrc_git | sed 's/alias //'"
+alias   ebm="vim $DOTFILES/.bashrc_main;	  			. ~/.bashrc; echo [+] .bashrc reloaded"
+
+alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias  rebd="(cd $DOTFILES; ./main.sh)"
+alias rebdu="(cd $DOTFILES; sudo apt update; ./main.sh)"
+
+#NOTES
+alias    et="vim $DOTFILES/../.todo2"
+alias   ett="vim $DOTFILES/../.todo"
+alias   eta="vim $DOTFILES/../.todo_agenda"
+alias   etp="vim $DOTFILES/../.todo_prv"
+alias  etpi="vim $DOTFILES/../.todo_install"
+alias   ets="vim $DOTFILES/../.todo_srv"
+
+alias    vi="vim"
+alias    ev="vim $DOTFILES/.vimrc"
+vimscr() {
+	touch $1; chmod +x $1; vim $1
+}
+
+
+#STUFF
+LS_OPT='-lh --color --time-style=long-iso'
+alias     l="ls $LS_OPT -A"
+alias    ll="ls $LS_OPT"
+alias    la="ls $LS_OPT -Atr"
+alias     d="ls $LS_OPT -AF | grep ^d"
+alias    dl="ls $LS_OPT -F  | grep ^d"
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+#alias logoff="loginctl terminate-user sjas"  ## deprecated
+alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+
+
+#CAT
+#alias catpk="cat /home/sjas/.ssh/id_rsa.pub"
+alias catpk="cat /home/sjas/.ssh/id_rsa.pub"
+alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
+cateh() {
+	tail -n +1 $(find $DOTFILES -iname '.bashrc_*') | grep --color -e\$ -e '^==.*'
+}
+
+
+#SHOW
+shownet() {
+	watch -n 1 -d 'ip r; echo; cat /etc/resolv.conf; echo; ip -4 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+}
+showdu() {
+	du -sh * | sort -hk1
+}
+showdf(){
+	watch -n 1 -d 'df -h'
+}
+
+
+#TMUX
+tmw() {
+	tmux split-window -dh "$*"
+}
+tmwh() {
+	tmux split-window -dv "$*"
+}
+
+
+#ALIASES
+alias vihosts="sudo vim /etc/hosts"
+alias cathosts="cat /etc/hosts"
+alias vissh="vim /home/sjas/.ssh/config"
+alias vitmux="vim /home/sjas/.tmux.conf"
+alias ssha='eval $(ssh-agent) && ssh-add'
+alias ee="sudo dolphin ."
+alias ..="cd .."
+alias mkcd="pushd $(mktemp -d)"
+alias o="popd"
+alias p="pushd"
+#tw () { 
+#    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
+#}
+getdiff() {
+	sdiff -ds <(sudo cat $1) <(sudo cat $2) | colordiff
+}
+cmddiff() {
+	[ ! $# -gt 1 ] && echo USAGE: cmddiff CMD PARAM \[ALT_PARAM\] && return
+	CMD=$1
+	PARAM=$2
+	ALT_PARAM=${3:- }
+	sdiff <(sudo $CMD $PARAM) <(sudo $CMD $ALT_PARAM) | colordiff
+}
+sshdiff() {
+	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
+	HOST1=$1
+	HOST2=$2
+	CMD=$3
+	sdiff -ds <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
+}
+
+
+#NETWORK
+getip() {
+	dig $1 +short | xclip && echo $(xclip -o)
+}
+rdns() {
+	dig -x $(dig $1 +short) +short
+}
+utrace() {
+	# since bash4 associative arrays exist!
+	if [ $SHELL = '/bin/bash' ]
+	then
+		typeset -A temparray
+        	typeset -A countrycodes=( ["AD"]="Andorra" ["AE"]="United Arab Emirates" ["AF"]="Afghanistan" ["AG"]="Antigua and Barbuda" ["AI"]="Anguilla" ["AL"]="Albania" ["AM"]="Armenia" ["AN"]="Netherlands Antilles" ["AO"]="Angola" ["AQ"]="Antarctica" ["AR"]="Argentina" ["AS"]="American Samoa" ["AT"]="Austria" ["AU"]="Australia" ["AW"]="Aruba" ["AZ"]="Azerbaijan" ["BA"]="Bosnia and Herzegovina" ["BB"]="Barbados" ["BD"]="Bangladesh" ["BE"]="Belgium" ["BF"]="Burkina Faso" ["BG"]="Bulgaria" ["BH"]="Bahrain" ["BI"]="Burundi" ["BJ"]="Benin" ["BM"]="Bermuda" ["BN"]="Brunei Darussalam" ["BO"]="Bolivia" ["BR"]="Brazil" ["BS"]="Bahamas" ["BT"]="Bhutan" ["BV"]="Bouvet Island" ["BW"]="Botswana" ["BY"]="Belarus" ["BZ"]="Belize" ["CA"]="Canada" ["CC"]="Cocos (Keeling) Islands" ["CF"]="Central African Republic" ["CG"]="Congo" ["CH"]="Switzerland" ["CI"]="Cote D'Ivoire (Ivory Coast)" ["CK"]="Cook Islands" ["CL"]="Chile" ["CM"]="Cameroon" ["CN"]="China" ["CO"]="Colombia" ["CR"]="Costa Rica" ["CS"]="Czechoslovakia (former)" ["CU"]="Cuba" ["CV"]="Cape Verde" ["CX"]="Christmas Island" ["CY"]="Cyprus" ["CZ"]="Czech Republic" ["DE"]="Germany" ["DJ"]="Djibouti" ["DK"]="Denmark" ["DM"]="Dominica" ["DO"]="Dominican Republic" ["DZ"]="Algeria" ["EC"]="Ecuador" ["EE"]="Estonia" ["EG"]="Egypt" ["EH"]="Western Sahara" ["ER"]="Eritrea" ["ES"]="Spain" ["ET"]="Ethiopia" ["FI"]="Finland" ["FJ"]="Fiji" ["FK"]="Falkland Islands (Malvinas)" ["FM"]="Micronesia" ["FO"]="Faroe Islands" ["FR"]="France" ["FX"]="France, Metropolitan" ["GA"]="Gabon" ["GB"]="Great Britain (UK)" ["GD"]="Grenada" ["GE"]="Georgia" ["GF"]="French Guiana" ["GH"]="Ghana" ["GI"]="Gibraltar" ["GL"]="Greenland" ["GM"]="Gambia" ["GN"]="Guinea" ["GP"]="Guadeloupe" ["GQ"]="Equatorial Guinea" ["GR"]="Greece" ["GS"]="S. Georgia and S. Sandwich Isls." ["GT"]="Guatemala" ["GU"]="Guam" ["GW"]="Guinea-Bissau" ["GY"]="Guyana" ["HK"]="Hong Kong" ["HM"]="Heard and McDonald Islands" ["HN"]="Honduras" ["HR"]="Croatia (Hrvatska)" ["HT"]="Haiti" ["HU"]="Hungary" ["ID"]="Indonesia" ["IE"]="Ireland" ["IL"]="Israel" ["IN"]="India" ["IO"]="British Indian Ocean Territory" ["IQ"]="Iraq" ["IR"]="Iran" ["IS"]="Iceland" ["IT"]="Italy" ["JM"]="Jamaica" ["JO"]="Jordan" ["JP"]="Japan" ["KE"]="Kenya" ["KG"]="Kyrgyzstan" ["KH"]="Cambodia" ["KI"]="Kiribati" ["KM"]="Comoros" ["KN"]="Saint Kitts and Nevis" ["KP"]="Korea (North)" ["KR"]="Korea (South)" ["KW"]="Kuwait" ["KY"]="Cayman Islands" ["KZ"]="Kazakhstan" ["LA"]="Laos" ["LB"]="Lebanon" ["LC"]="Saint Lucia" ["LI"]="Liechtenstein" ["LK"]="Sri Lanka" ["LR"]="Liberia" ["LS"]="Lesotho" ["LT"]="Lithuania" ["LU"]="Luxembourg" ["LV"]="Latvia" ["LY"]="Libya" ["MA"]="Morocco" ["MC"]="Monaco" ["MD"]="Moldova" ["MG"]="Madagascar" ["MH"]="Marshall Islands" ["MK"]="Macedonia" ["ML"]="Mali" ["MM"]="Myanmar" ["MN"]="Mongolia" ["MO"]="Macau" ["MP"]="Northern Mariana Islands" ["MQ"]="Martinique" ["MR"]="Mauritania" ["MS"]="Montserrat" ["MT"]="Malta" ["MU"]="Mauritius" ["MV"]="Maldives" ["MW"]="Malawi" ["MX"]="Mexico" ["MY"]="Malaysia" ["MZ"]="Mozambique" ["NA"]="Namibia" ["NC"]="New Caledonia" ["NE"]="Niger" ["NF"]="Norfolk Island" ["NG"]="Nigeria" ["NI"]="Nicaragua" ["NL"]="Netherlands" ["NO"]="Norway" ["NP"]="Nepal" ["NR"]="Nauru" ["NT"]="Neutral Zone" ["NU"]="Niue" ["NZ"]="New Zealand (Aotearoa)" ["OM"]="Oman" ["PA"]="Panama" ["PE"]="Peru" ["PF"]="French Polynesia" ["PG"]="Papua New Guinea" ["PH"]="Philippines" ["PK"]="Pakistan" ["PL"]="Poland" ["PM"]="St. Pierre and Miquelon" ["PN"]="Pitcairn" ["PR"]="Puerto Rico" ["PT"]="Portugal" ["PW"]="Palau" ["PY"]="Paraguay" ["QA"]="Qatar" ["RE"]="Reunion" ["RO"]="Romania" ["RU"]="Russia" ["RW"]="Rwanda" ["SA"]="Saudi Arabia" ["Sb"]="Solomon Islands" ["SC"]="Seychelles" ["SD"]="Sudan" ["SE"]="Sweden" ["SG"]="Singapore" ["SH"]="St. Helena" ["SI"]="Slovenia" ["SJ"]="Svalbard and Jan Mayen Islands" ["SK"]="Slovak Republic" ["SL"]="Sierra Leone" ["SM"]="San Marino" ["SN"]="Senegal" ["SO"]="Somalia" ["SR"]="Suriname" ["ST"]="Sao Tome and Principe" ["SU"]="USSR (former)" ["SV"]="El Salvador" ["SY"]="Syria" ["SZ"]="Swaziland" ["TC"]="Turks and Caicos Islands" ["TD"]="Chad" ["TF"]="French Southern Territories" ["TG"]="Togo" ["TH"]="Thailand" ["TJ"]="Tajikistan" ["TK"]="Tokelau" ["TM"]="Turkmenistan" ["TN"]="Tunisia" ["TO"]="Tonga" ["TP"]="East Timor" ["TR"]="Turkey" ["TT"]="Trinidad and Tobago" ["TV"]="Tuvalu" ["TW"]="Taiwan" ["TZ"]="Tanzania" ["UA"]="Ukraine" ["UG"]="Uganda" ["UK"]="United Kingdom" ["UM"]="US Minor Outlying Islands" ["US"]="United States" ["UY"]="Uruguay" ["UZ"]="Uzbekistan" ["VA"]="Vatican City State (Holy See)" ["VC"]="Saint Vincent and the Grenadines" ["VE"]="Venezuela" ["VG"]="Virgin Islands (British)" ["VI"]="Virgin Islands (U.S.)" ["VN"]="Viet Nam" ["VU"]="Vanuatu" ["WF"]="Wallis and Futuna Islands" ["WS"]="Samoa" ["YE"]="Yemen" ["YT"]="Mayotte" ["YU"]="Yugoslavia" ["ZA"]="South Africa" ["ZM"]="Zambia" ["ZR"]="Zaire" ["ZW"]="Zimbabwe" ["COM"]="US Commercial" ["EDU"]="US Educational" ["GOV"]="US Government" ["INT"]="International" ["MIL"]="US Military" ["NET"]="Network" ["ORG"]="Non-Profit Organization" ["ARPA"]="Arpanet" ["NATO"]="Nato field")
+	else
+		echo '[-] need a bash v4 shell to run'
+	fi
+
+	echo -en "\e[31m> \e[34m"
+
+	while read i
+	do
+		temparray=$( whois $i | \grep -i country | cut -d':' -f2 | sed -e 's/ //g')
+		for j in $temparray
+		do
+			echo -e "\e[33;1m$j \e[0m${countrycodes[$j]}"
+		done
+		echo -en "\e[31m> \e[34m"
+	done
+}

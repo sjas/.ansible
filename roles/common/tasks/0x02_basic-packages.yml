@@ -1,3 +1,8 @@
+- name: etckeeper first
+  apt: > 
+    name: etckeeper
+    cache_valid_time: 1800
+
 - name: basic packages
   apt: > 
     name: {{ item }}
@@ -7,36 +12,69 @@
   with_items:
     - apt-file
     - bash-completion
+    - bashdb
+    - colordiff
+    - conntrack
     - curl 
     - ethstatus
     - exfat-fuse
     - exfat-utils
+    - fail2ban
     - filezilla
+    - freerdp-x11
     - git-all
     - hdparm
     - htop 
     - iftop 
     - iotop
+    - libreoffice
+    - lnav
     - mc 
     - mlocate
     - multitail
+    - nicstat
+    - nload
     - nmap
+    - openvpn
     - ntfs-3g 
     - p7zip
     - parallel
     - parted
-    - python-optcomplete
+    - pv
     - pwgen
+    - python-optcomplete
     - rsync
     - screen
     - sysstat
     - tcpdump
+    - thunderbird
     - tmux
     - traceroute
     - tree
     - vim 
     - wget 
     - whois
+    - x2x
     - xterm
     - xtermcontrol
     - xtermsets
+
+- name: language packages
+  apt: > 
+    name: {{ item }}
+    autoclean: yes 
+    autoremove: yes 
+    cache_valid_time: 1800
+  with_items:
+    - aspell-de
+    - hunspell-de-de
+    - hyphen-de
+    - ingerman
+    - language-pack-de
+    - language-pack-de-base
+    - language-pack-gnome-de
+    - language-pack-gnome-de-base
+    - language-pack-kde-de
+    - libreoffice-help-de
+    - libreoffice-l10n-de
+    - mythes-de
