@@ -57,6 +57,7 @@
     - python-optcomplete
     - rsync
     - screen
+    - sdiff
     - sysstat
     - tcpdump
     - thunderbird
@@ -64,6 +65,7 @@
     - traceroute
     - tree
     - vim 
+    - wdiff
     - wget 
     - whois
     - x2x
