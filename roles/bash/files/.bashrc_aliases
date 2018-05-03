@@ -1,8 +1,8 @@
 alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias  ebah="grep ^alias $DOTFILES/.bashrc_aliases | sed 's/alias //'"
-alias  ebgh="grep ^alias $DOTFILES/.bashrc_git | sed 's/alias //'"
+alias  ebah="grep ^alias $DOTFILES/roles/bash/files/.bashrc_aliases | sed 's/alias //'"
+alias  ebgh="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //'"
 
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 

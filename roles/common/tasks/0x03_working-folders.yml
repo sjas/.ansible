@@ -13,6 +13,7 @@
     - .config
     - .local
     - .local/bin
+    - go
 
 - name: symlinks
   become: yes
