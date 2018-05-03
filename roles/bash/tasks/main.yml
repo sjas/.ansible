@@ -1,0 +1,17 @@
+- name: config rollout
+  copy:
+    src: {{ item }}
+    dest: /home/sjas/etc/.dotfiles/{{ item }}
+  with_items:
+    - .bashrc_env
+    - .bashrc_aliases
+    - .bashrc_git
+
+- name: reference configs from .bashrc
+  lineinfile:
+    path: /home/sjas/.bashrc
+    line: ". /home/sjas/etc/.dotfiles/{{ item }}"
+  with_items: 
+    - .bashrc_env
+    - .bashrc_aliases
+    - .bashrc_git
