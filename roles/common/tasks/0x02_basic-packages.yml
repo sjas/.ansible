@@ -16,6 +16,8 @@
     - colordiff
     - conntrack
     - curl 
+    - dhcping
+    - elinks
     - ethstatus
     - exfat-fuse
     - exfat-utils
@@ -24,11 +26,16 @@
     - freerdp-x11
     - git-all
     - hdparm
+    - hping3
     - htop 
+    - httping
     - iftop 
+    - ioping
     - iotop
     - libreoffice
     - lnav
+    - iputils-arping
+    - lynx
     - mc 
     - mlocate
     - multitail
