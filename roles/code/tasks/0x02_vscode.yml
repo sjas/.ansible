@@ -30,6 +30,7 @@
     grep -q ryanolsonx.zenburn vsc_tempfile && 
     grep -q vscoss.vscode-ansible vsc_tempfile && 
     grep -q yhirose.FilterText vsc_tempfile && 
+    grep -q Rubymaniac.vscode-direnv vsc_tempfile &&
     rm vsc_tempfile && 
     exit 0 || 
     exit 1
@@ -51,6 +52,7 @@
     - ryanolsonx.zenburn
     - vscoss.vscode-ansible
     - yhirose.FilterText
+    - Rubymaniac.vscode-direnv
   when: exitcode_vsc_plugins.rc != 0
 
 - name: set vscode configuration
