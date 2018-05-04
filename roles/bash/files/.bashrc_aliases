@@ -69,7 +69,7 @@ alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
-alias cds="cd /home/sjas/.ssh/controlmasters"
+alias cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
 #tw () { 
 #    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
 #}
