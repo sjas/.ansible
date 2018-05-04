@@ -17,6 +17,7 @@
     - bashdb
     - colordiff
     - conntrack
+    - csync2
     - curl 
     - dhcping
     - direnv
@@ -61,6 +62,7 @@
     - sysstat
     - tcpdump
     - thunderbird
+    - thunderbird-locale-de
     - tmux
     - traceroute
     - tree
