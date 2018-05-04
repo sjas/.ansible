@@ -1,4 +1,3 @@
-
 syn on
 se hls
 se is
@@ -33,15 +32,7 @@ nnoremap <leader>sh :sh<cr>
 "vnoremap > <gv
 
 
-nnoremap  <leader>ev  :vs $DOTFILES/.vimrc<cr>
-nnoremap  <leader>ebd :vs $DOTFILES/main.sh<cr>
-nnoremap  <leader>ebp :vs $DOTFILES/.bashrc_packages<cr>
-nnoremap   <leader>eb :vs $DOTFILES/.bashrc<cr>
-nnoremap  <leader>eba :vs $DOTFILES/.bashrc_aliases<cr>
-nnoremap  <leader>ebe :vs $DOTFILES/.bashrc_env<cr>
-nnoremap  <leader>ebg :vs $DOTFILES/.bashrc_git<cr>
-nnoremap  <leader>ebm :vs $DOTFILES/.bashrc_main<cr>
-
-
-"alias  rebd="(cd $DOTFILES; ./main.sh)"
-"alias    et="vim $DOTFILES/../.todo"
+nnoremap  <leader>ev  :vs $DOTFILES/roles/code/files/.vimrc<cr>
+nnoremap  <leader>eba :vs $DOTFILES/roles/bash/files/.bashrc_aliases<cr>
+nnoremap  <leader>ebe :vs $DOTFILES/roles/bash/files/.bashrc_env<cr>
+nnoremap  <leader>ebg :vs $DOTFILES/roles/bash/files/.bashrc_git<cr>
