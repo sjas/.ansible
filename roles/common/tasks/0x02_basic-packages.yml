@@ -15,6 +15,7 @@
     - conntrack
     - csync2
     - curl 
+    - dhcpdump
     - dhcping
     - diffutils
     - direnv
