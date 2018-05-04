@@ -1,4 +1,13 @@
-- name: firefox faster scrolling
+- name: get firefox profile folder path
+  shell: ls /home/sjas/.mozilla/firefox/*default -d
+  register: ff_path
+  changed_when: false
+  tags: asdf
+
+- name: deploy firefox settings
+  become: yes
+  become_user: sjas
   copy:
-    content: 'user_pref("mousewheel.default.delta_multiplier_y", 300);'
-    dest: /usr/lib/firefox/browser/defaults/preferences/all-sjas.prefs
+    src: user.js
+    dest: "{{ ff_path.stdout }}"
+  tags: asdf
