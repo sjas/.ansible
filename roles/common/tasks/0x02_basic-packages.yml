@@ -46,6 +46,7 @@
     - nicstat
     - nload
     - nmap
+    - openntpd
     - openvpn
     - ntfs-3g 
     - p7zip
