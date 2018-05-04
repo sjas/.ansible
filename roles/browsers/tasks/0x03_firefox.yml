@@ -2,7 +2,6 @@
   shell: ls /home/sjas/.mozilla/firefox/*default -d
   register: ff_path
   changed_when: false
-  tags: asdf
 
 - name: deploy firefox settings
   become: yes
@@ -10,4 +9,3 @@
   copy:
     src: user.js
     dest: "{{ ff_path.stdout }}"
-  tags: asdf
