@@ -37,13 +37,34 @@ alias vitmux="vim /home/sjas/.tmux.conf"
 
 #CAT
 alias cathosts="cat /etc/hosts"
+alias catssh="cat /home/sjas/.ssh/config"
 alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 
+x2d() {
+        printf "%d\n" $1
+}
+
+#org
+alias    k="kanban"
+n() {
+        [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+        vim /home/sjas/txt/$@
+}
+cn() {
+        [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+        cat /home/sjas/txt/$@
+}
 
 #SHOW
 shownet() {
 	watch -n 1 -d 'ip r; echo; cat /etc/resolv.conf; echo; ip -4 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+}
+showru() {
+        echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | column -t | sort -k1; done
+}
+showr() {
+        ( echo DST GW DEV PROTO SCOPE SRC METRIC; while read j; do if ! echo $j | grep -q src; then echo $j | sed 's/metric/ . . &/'; else echo $j; fi; done < <(while read i; do if ! echo $i | grep -q via ; then echo $i | sed 's/dev/ . . dev/'; else echo $i; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
 showdu() {
 	du -sh * | sort -hk1
