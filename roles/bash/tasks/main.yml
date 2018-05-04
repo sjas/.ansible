@@ -4,6 +4,7 @@
     - .bashrc_env
     - .bashrc_aliases
     - .bashrc_git
+    - .bashrc_completion
 
 - name: reference configs from .bashrc
   lineinfile: path=/home/sjas/.bashrc line=". /home/sjas/etc/.dotfiles/{{ item }}"
@@ -11,3 +12,11 @@
     - .bashrc_env
     - .bashrc_aliases
     - .bashrc_git
+    - .bashrc_completion
+
+- name: direnv hook
+  lineinfile: path=/home/sjas/.bashrc line='direnv "$(direnv hook bash)"'
+  
+- name: reference .bashrc_includes if present 
+  lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes"
+  tags: asdf

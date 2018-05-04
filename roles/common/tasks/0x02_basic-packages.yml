@@ -6,11 +6,7 @@
     - etckeeper
 
 - name: basic packages
-  apt: > 
-    name: {{ item }}
-    autoclean: yes 
-    autoremove: yes 
-    cache_valid_time: 1800
+  apt: name={{ item }} autoclean=yes autoremove=yes update_cache=yes
   with_items:
     - apt-file
     - bash-completion
@@ -20,6 +16,7 @@
     - csync2
     - curl 
     - dhcping
+    - diffutils
     - direnv
     - elinks
     - ethstatus
@@ -58,7 +55,6 @@
     - python-optcomplete
     - rsync
     - screen
-    - sdiff
     - sysstat
     - tcpdump
     - thunderbird
@@ -66,6 +62,7 @@
     - tmux
     - traceroute
     - tree
+    - util-linux
     - vim 
     - wdiff
     - wget 
@@ -78,8 +75,6 @@
 - name: language packages
   apt: >
     name: {{ item }}
-    autoclean: yes 
-    autoremove: yes 
     cache_valid_time: 1800
   with_items:
     - aspell-de
