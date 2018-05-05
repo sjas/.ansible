@@ -1,0 +1,5 @@
+- name: terminator
+  include: 0x01_terminator.yml
+
+#- name: xterm
+#  include: 0x02_xterm.yml

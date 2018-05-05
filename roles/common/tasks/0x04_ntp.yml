@@ -1,0 +1,11 @@
+- name: undo systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd
+    state: stopped
+    enabled: no
+
+- name: make chrony great again 
+  systemd:
+    name: chronyd
+    state: started
+    enabled: yes
