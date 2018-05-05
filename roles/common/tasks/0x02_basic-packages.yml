@@ -9,6 +9,7 @@
   apt: name={{ item }} autoclean=yes autoremove=yes update_cache=yes
   with_items:
     - apt-file
+    - atop
     - bash-completion
     - bashdb
     - chrony
@@ -30,6 +31,7 @@
     - git-all
     - global
     - golang-1.10
+    - haveged
     - hdparm
     - hping3
     - htop 
@@ -44,10 +46,15 @@
     - mc 
     - mlocate
     - multitail
+    - mysql-client
+    - mytop
     - nicstat
     - nload
     - nmap
+    - nmon
+    - openntpd
     - openvpn
+    - percona-toolkit
     - ntfs-3g 
     - p7zip
     - parallel
