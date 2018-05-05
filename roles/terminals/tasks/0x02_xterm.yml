@@ -5,9 +5,12 @@
     - xtermcontrol
     - xtermsets
 
-- name: make xterm shortcuts behave
+- name: make sure .Xdefaults is present
   become: yes 
   become_user: sjas
-  copy:
-    - src: .Xresources
-    - dest: /home/sjas
+  file:
+    dest: /home/sjas/.Xdefaults
+    state: touch
+
+- name: make xterm shortcuts behave
+  lineinfile: path=/home/sjas/.Xdefaults line="xterm*metaSendsEscape:true"

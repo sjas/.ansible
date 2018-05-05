@@ -6,6 +6,6 @@
 
 - name: make chrony great again 
   systemd:
-    name: chronyd
+    name: chrony
     state: started
     enabled: yes
