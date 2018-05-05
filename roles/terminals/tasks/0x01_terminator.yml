@@ -7,7 +7,7 @@
   become: yes 
   become_user: sjas
   file:
-    dest: /home/sjas/.config/terminator
+    dest: /home/sjas/.config/terminator/
     state: directory
 
 - name: terminator config 

@@ -11,10 +11,11 @@
     - apt-file
     - bash-completion
     - bashdb
+    - chrony
     - colordiff
     - conntrack
     - csync2
-    - curl 
+    - curl
     - dhcpdump
     - dhcping
     - diffutils
@@ -46,7 +47,6 @@
     - nicstat
     - nload
     - nmap
-    - openntpd
     - openvpn
     - ntfs-3g 
     - p7zip
@@ -71,9 +71,6 @@
     - whois
     - whowatch
     - x2x
-    - xterm
-    - xtermcontrol
-    - xtermsets
 
 - name: language packages
   apt: >
