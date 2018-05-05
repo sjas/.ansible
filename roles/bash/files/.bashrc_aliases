@@ -17,13 +17,14 @@ alias   ets="vim $DOTFILES/../.todo_srv"
 
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 
-#LS
+#SHELL
 LS_OPT='-lish --color --time-style=long-iso'
 alias     l="ls $LS_OPT -A"
 alias    ll="ls $LS_OPT"
 alias    la="ls $LS_OPT -Atr"
 alias     d="ls $LS_OPT -AF | grep ^d"
 alias    dl="ls $LS_OPT -F  | grep ^d"
+alias  grep="grep --color -Hrin"
 
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"

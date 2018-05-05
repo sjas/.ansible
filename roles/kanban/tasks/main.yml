@@ -1,0 +1,4 @@
+- name: deploy kanban script
+  copy:
+    src: kanban
+    dest: /home/sjas/.local/bin/

@@ -20,21 +20,20 @@
   become_user: sjas
   ignore_errors: true
   shell: |
-    code --list-extensions > vsc_tempfile && 
-    grep -q DavidAnson.vscode-markdownlint vsc_tempfile && 
-    grep -q jamiewoodio.junos vsc_tempfile && 
-    grep -q jpogran.puppet-vscode vsc_tempfile && 
-    grep -q ms-python.python vsc_tempfile && 
-    grep -q ms-vscode.go vsc_tempfile &&
-    grep -q redhat.vscode-yaml vsc_tempfile && 
-    grep -q ryanolsonx.zenburn vsc_tempfile && 
-    grep -q vscoss.vscode-ansible vsc_tempfile && 
-    grep -q yhirose.FilterText vsc_tempfile && 
-    grep -q Rubymaniac.vscode-direnv vsc_tempfile &&
-    rm vsc_tempfile && 
-    exit 0 || 
-    exit 1
-  register: exitcode_vsc_plugins
+    code --list-extensions | 
+    grep \
+    -e DavidAnson.vscode-markdownlint \
+    -e Rubymaniac.vscode-direnv \
+    -e jamiewoodio.junos \
+    -e jpogran.puppet-vscode \
+    -e ms-python.python \
+    -e ms-vscode.Go \
+    -e redhat.vscode-yaml \
+    -e ryanolsonx.zenburn \
+    -e vscoss.vscode-ansible \
+    -e yhirose.FilterText \ 
+    | wc -l
+  register: vsc_plugin_count
   changed_when: false
 
 - name: install vscode extensions if not present
@@ -52,7 +51,7 @@
     - vscoss.vscode-ansible
     - yhirose.FilterText
     - Rubymaniac.vscode-direnv
-  when: exitcode_vsc_plugins.rc != 0
+  when: not vsc_plugin_count.stdout is search("10")
 
 - name: set vscode configuration
   become: yes
