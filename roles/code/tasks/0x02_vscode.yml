@@ -21,9 +21,9 @@
   ignore_errors: true
   shell: |
     code --list-extensions > vsc_tempfile && 
+    grep -q DavidAnson.vscode-markdownlint vsc_tempfile && 
     grep -q jamiewoodio.junos vsc_tempfile && 
     grep -q jpogran.puppet-vscode vsc_tempfile && 
-    grep -q lfs.vscode-emacs-friendly vsc_tempfile && 
     grep -q ms-python.python vsc_tempfile && 
     grep -q ms-vscode.go vsc_tempfile &&
     grep -q redhat.vscode-yaml vsc_tempfile && 
@@ -45,7 +45,6 @@
     - DavidAnson.vscode-markdownlint
     - jamiewoodio.junos
     - jpogran.puppet-vscode
-    - lfs.vscode-emacs-friendly
     - ms-python.python
     - ms-vscode.go
     - redhat.vscode-yaml

@@ -52,7 +52,6 @@
     - nload
     - nmap
     - nmon
-    - openntpd
     - openvpn
     - percona-toolkit
     - ntfs-3g 
