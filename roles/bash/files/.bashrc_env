@@ -1,9 +1,9 @@
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 export EDITOR="vim"
@@ -12,9 +12,9 @@ export PAGER="less"
 
 export LANGUAGE="en_US:en"
 
-export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[33;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo \\\[\e[32m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo \\\[\e[31m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo \\\[\e[36m\\\]; else echo \\\[\e[35\;1m\\\]; fi; fi; fi;)$(if git status 2>/dev/null; then $(__git_ps1); fi)\[\e[0m\] \[\e[37;1m\]\$\n\[\e[m\]'
+export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[33;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo \\\[\e[32m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo \\\[\e[31m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo \\\[\e[36m\\\]; else echo \\\[\e[35\;1m\\\]; fi; fi; fi)$(__git_ps1)\[\e[0m\] \[\e[37;1m\]\$\n\[\e[m\]'
 
-HISTSIZE="10000"
+HISTSIZE="30000"
 
 # $SHELLOPTS / $BASHOPTS
 #set -x
