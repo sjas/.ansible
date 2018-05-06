@@ -1,7 +1,5 @@
 - name: etckeeper first
-  apt: > 
-    name: {{ item }}
-    cache_valid_time: 1800
+  apt: name={{ item }} cache_valid_time=1800
   with_items:
     - etckeeper
 
@@ -15,7 +13,6 @@
     - chrony
     - colordiff
     - conntrack
-    - csync2
     - curl
     - dhcpdump
     - dhcping
@@ -79,9 +76,7 @@
     - x2x
 
 - name: language packages
-  apt: >
-    name: {{ item }}
-    cache_valid_time: 1800
+  apt: name={{ item }} cache_valid_time=1800
   with_items:
     - aspell-de
     - hunspell-de-de
