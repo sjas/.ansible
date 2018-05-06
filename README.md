@@ -30,6 +30,7 @@ default verbosity changed to '-vv' so the FILE:LINE position of the currently ru
     verbosity = 2
     [ssh_connection]
     ssh_args = -o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
+    pipelining = yes
     [diff]
     always = yes
     context = 4
