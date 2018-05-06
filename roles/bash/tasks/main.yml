@@ -7,7 +7,7 @@
     - .bashrc_completion
 
 - name: reference configs from .bashrc
-  lineinfile: path=/home/sjas/.bashrc line=". /home/sjas/etc/.dotfiles/{{ item }}"
+  lineinfile: path=/home/sjas/.bashrc line=". /home/sjas/etc/.ansible/roles/bash/files/{{ item }}"
   with_items: 
     - .bashrc_env
     - .bashrc_aliases

@@ -1,3 +1,4 @@
+alias    eb="vim /home/sjas/.bashrc; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
