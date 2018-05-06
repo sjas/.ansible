@@ -3,10 +3,10 @@ _notes(){
 	local cur=${COMP_WORDS[COMP_CWORD]}
 	case $word in
 
-		n) local files=$(ls -1 $DOTFILES/../txt/ )
+		n) local files=$(ls -1 /home/sjas/txt/ )
 		   COMPREPLY=( $(compgen -W "${files}" -- $cur ) )
 		;;
-		cn) local files=$(ls -1 $DOTFILES/../txt/ )
+		cn) local files=$(ls -1 /home/sjas/txt/ )
 		   COMPREPLY=( $(compgen -W "${files}" -- $cur ) )
 		;;
 	esac
