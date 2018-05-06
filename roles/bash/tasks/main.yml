@@ -15,7 +15,7 @@
     - .bashrc_completion
 
 - name: direnv hook
-  lineinfile: path=/home/sjas/.bashrc line='direnv "$(direnv hook bash)"'
+  lineinfile: path=/home/sjas/.bashrc line='eval "$(direnv hook bash)"'
   
 - name: reference .bashrc_includes if present 
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes"
