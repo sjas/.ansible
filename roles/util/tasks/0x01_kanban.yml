@@ -1,4 +1,7 @@
 - name: deploy kanban script
+  become: yes
+  become_user: sjas
   copy:
     src: kanban
     dest: /home/sjas/.local/bin/
+    mode: 0774

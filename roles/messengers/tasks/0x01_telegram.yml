@@ -21,6 +21,8 @@
   when: exitcode_telegram_install.rc != 0
   
 - name: link telegram to $PATH
+  become: yes
+  become_user: sjas
   file:
     src: /opt/Telegram/Telegram
     dest: /home/sjas/.local/bin/telegram
