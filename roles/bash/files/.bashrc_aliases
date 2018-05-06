@@ -5,6 +5,9 @@ alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; 
 alias  ebah="grep ^alias $DOTFILES/roles/bash/files/.bashrc_aliases | sed 's/alias //'"
 alias  ebgh="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //'"
 
+alias   cdd="cd $DOTFILES"
+alias	cdt="cd /home/sjas/txt"
+
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 
 ## FIXME with 'n' autocompletion
@@ -50,7 +53,9 @@ x2d() {
 alias    k="kanban"
 n() {
         [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq prv:/home/sjas/txt/ /home/sjas/txt; fi
         vim /home/sjas/txt/$@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
 cn() {
         [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
