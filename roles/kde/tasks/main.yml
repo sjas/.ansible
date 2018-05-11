@@ -1,0 +1,11 @@
+- name: mouse / keyboard
+  include: 0x01_mouse-keyboard.yml
+
+- name: touchpad
+  include: 0x02_touchpad.yml
+
+- name: powersettings
+  include: 0x03_powersettings.yml
+
+- name: virtual desktops
+  include: 0x04_virtualdesktops.yml

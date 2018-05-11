@@ -1,0 +1,6 @@
+- name: touchpad config
+  become: yes
+  become_user: sjas
+  copy:
+    src: touchpadrc
+    dest: /home/sjas/.config

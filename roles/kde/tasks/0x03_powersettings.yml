@@ -1,0 +1,13 @@
+- name: powersettings config
+  become: yes
+  become_user: sjas
+  copy:
+    src: powermanagementprofilesrc
+    dest: /home/sjas/.config
+
+- name: crit action config
+  become: yes
+  become_user: yes
+  copy:
+    src: powerdevilrc
+    dest: /home/sjas/.config

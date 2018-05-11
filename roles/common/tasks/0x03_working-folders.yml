@@ -6,8 +6,15 @@
     state: directory
   with_items:
     - wrk
-    - prv 
-    - txt 
+    - dl
+    - prv
+    - tmpl
+    - pub
+    - doc
+    - mp3
+    - img
+    - vid
+    - txt
     - etc
     - etc/.dotfiles
     - .config
@@ -15,10 +22,29 @@
     - .local/bin
     - go
 
-- name: symlinks
+- name: remove obsolete directories
+  file:
+    dest: /home/sjas/{{ item }}
+    state: absent
+  with_items:
+    - Downloads
+    - Templates
+    - Public
+    - Documents
+    - Music
+    - Pictures
+    - Videos
+
+- name: fix up folders with kde
   become: yes
   become_user: sjas
-  file:
-    src: /home/sjas/Downloads
-    dest: /home/sjas/dl
-    state: link
+  copy:
+    src: user-dirs.dirs
+    dest: /home/sjas/.config
+
+- name: fix up folder encoding
+  become: yes
+  become_user: sjas
+  copy:
+    src: user-dirs.locale
+    dest: /home/sjas/.config

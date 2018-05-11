@@ -27,11 +27,13 @@ kglobalshortcutsrc  ## sed
 khotkeysrc  ## miese scheisse
 kxkbrc  ##  evtl einfach
 
+# startmenu
+cat kactivitymanagerd-statsrc 
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-fe71fd7d-d47c-48e9-9a81-47e7e7d2ac03]
+ordering=preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop
 
-
-
-
-
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
+ordering=preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop
 
 
 
@@ -84,7 +86,7 @@ index a159cdb..dc1e333 100644/
 
 
 
-## mouse 
+## mouse
 
 
 
@@ -93,7 +95,7 @@ index 81c47c9..3b6b728 100644
 --- a/kdeglobals
 +++ b/kdeglobals
 @@ -120,11 +120,11 @@ Theme=breeze
- 
+
  [KDE]
  ColorScheme=Breeze
 -DoubleClickInterval=400
@@ -150,11 +152,11 @@ index 4276e6f..981a4ad 100644
  Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
 -_k_friendly_name=KDE Daemon
 +_k_friendly_name=System Settings
- 
+
  [kaccess]
  Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
 @@ -19,10 +21,19 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
- 
+
  [khotkeys]
  _k_friendly_name=KDE Daemon
 +{36c9903f-0548-473f-bfce-f97acc71d22e}=Meta+B,none,chrome
@@ -171,7 +173,7 @@ index 4276e6f..981a4ad 100644
 +{f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,filezilla
 +{f235bee5-a498-41ed-be54-42e0709200d7}=Meta+V,none,firefox
  {f2ee8bf0-e736-4a48-b754-e8bf350c4488}=Print,none,Start Screenshot Tool
- 
+
  [kmix]
 @@ -58,13 +69,13 @@ Invert Screen Colors=none,none,Invert Screen Colors
  Kill Window=Ctrl+Alt+Esc,Ctrl+Alt+Esc,Kill Window
@@ -228,13 +230,13 @@ index 85448c7..9c0490f 100644
  [Data]
 -DataCount=4
 +DataCount=13
- 
+
  [Data_1]
  Comment=KMenuEdit Global Shortcuts
 @@ -9,6 +9,110 @@ Name=KMenuEdit
  SystemGroup=1
  Type=ACTION_DATA_GROUP
- 
+
 +[Data_10]
 +Comment=open chromium browser
 +Enabled=true
@@ -354,7 +356,7 @@ index 85448c7..9c0490f 100644
 @@ -985,6 +1089,136 @@ TriggersCount=1
  GesturePointData=0,0.0625,-0.5,0.5,1,0.0625,0.0625,-0.5,0.5,0.875,0.125,0.0625,-0.5,0.5,0.75,0.1875,0.0625,-0.5,0.5,0.625,0.25,0.0625,-0.5,0.5,0.5,0.3125,0.0625,-0.5,0.5,0.375,0.375,0.0625,-0.5,0.5,0.25,0.4375,0.0625,-0.5,0.5,0.125,0.5,0.0625,0.5,0.5,0,0.5625,0.0625,0.5,0.5,0.125,0.625,0.0625,0.5,0.5,0.25,0.6875,0.0625,0.5,0.5,0.375,0.75,0.0625,0.5,0.5,0.5,0.8125,0.0625,0.5,0.5,0.625,0.875,0.0625,0.5,0.5,0.75,0.9375,0.0625,0.5,0.5,0.875,1,0,0,0.5,1
  Type=GESTURE
- 
+
 +[Data_5]
 +Comment=start terminator fullscreen
 +Enabled=true
@@ -531,7 +533,7 @@ index 4276e6f..5e60e12 100644
 
 
 
-sjas@zen:~/.config$ cat kxkbrc 
+sjas@zen:~/.config$ cat kxkbrc
 [Layout]
 DisplayNames=,
 LayoutList=us,de(nodeadkeys)

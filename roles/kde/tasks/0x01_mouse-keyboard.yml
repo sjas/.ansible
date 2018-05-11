@@ -1,0 +1,13 @@
+- name: mouse / keyboard config
+  become: yes
+  become_user: sjas
+  copy:
+    src: kcminputrc
+    dest: /home/sjas/.config
+
+- name: en / de keyboard layouts
+  become: yes
+  become_user: sjas
+  copy:
+    src: kxkbrc
+    dest: /home/sjas/.config
