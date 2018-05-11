@@ -8,7 +8,7 @@
 
 - name: reference configs from .bashrc
   lineinfile: path=/home/sjas/.bashrc line=". /home/sjas/etc/.ansible/roles/bash/files/{{ item }}"
-  with_items: 
+  with_items:
     - .bashrc_env
     - .bashrc_aliases
     - .bashrc_git
@@ -16,6 +16,6 @@
 
 - name: direnv hook
   lineinfile: path=/home/sjas/.bashrc line='eval "$(direnv hook bash)"'
-  
-- name: reference .bashrc_includes if present 
+
+- name: reference .bashrc_includes if present
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes"

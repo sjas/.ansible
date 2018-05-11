@@ -2,11 +2,11 @@
 
 - name: kde neon bootstrapping
   hosts: all
-  remote_user: sjas 
-  become: yes  
+  remote_user: sjas
+  become: yes
   gather_facts: false
- 
-  roles: 
+
+  roles:
     - common
     - browsers
     - code

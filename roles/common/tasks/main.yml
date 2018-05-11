@@ -4,7 +4,7 @@
 - name: base software
   include: 0x02_basic-packages.yml
 
-- name: working folders 
+- name: working folders
   include: 0x03_working-folders.yml
 
 - name: ntp

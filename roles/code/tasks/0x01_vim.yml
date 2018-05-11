@@ -1,6 +1,6 @@
 - name: vim config
-  become: yes 
+  become: yes
   become_user: sjas
-  copy: 
+  copy:
     src: .vimrc
     dest: /home/sjas/.vimrc

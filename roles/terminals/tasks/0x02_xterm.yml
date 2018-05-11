@@ -6,7 +6,7 @@
     - xtermsets
 
 - name: make sure .Xdefaults is present
-  become: yes 
+  become: yes
   become_user: sjas
   file:
     dest: /home/sjas/.Xdefaults

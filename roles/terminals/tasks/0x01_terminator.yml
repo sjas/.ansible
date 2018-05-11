@@ -3,15 +3,15 @@
     name: terminator
     cache_valid_time: 1800
 
-- name: terminator config folder 
-  become: yes 
+- name: terminator config folder
+  become: yes
   become_user: sjas
   file:
     dest: /home/sjas/.config/terminator/
     state: directory
 
-- name: terminator config 
-  become: yes 
+- name: terminator config
+  become: yes
   become_user: sjas
   copy:
     src: config

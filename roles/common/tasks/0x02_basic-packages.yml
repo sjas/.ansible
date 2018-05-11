@@ -31,16 +31,16 @@
     - haveged
     - hdparm
     - hping3
-    - htop 
+    - htop
     - httping
-    - iftop 
+    - iftop
     - ioping
     - iotop
     - libreoffice
     - lnav
     - iputils-arping
     - lynx
-    - mc 
+    - mc
     - mlocate
     - multitail
     - mysql-client
@@ -51,7 +51,7 @@
     - nmon
     - openvpn
     - percona-toolkit
-    - ntfs-3g 
+    - ntfs-3g
     - p7zip
     - parallel
     - parted
@@ -68,9 +68,9 @@
     - traceroute
     - tree
     - util-linux
-    - vim 
+    - vim
     - wdiff
-    - wget 
+    - wget
     - whois
     - whowatch
     - x2x

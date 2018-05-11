@@ -3,10 +3,10 @@
     url: https://packages.microsoft.com/keys/microsoft.asc
     state: present
 
-- name: add vscode repo 
+- name: add vscode repo
   apt_repository:
     repo: deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
-    state: present 
+    state: present
     filename: vscode
 
 - name: install vscode package
@@ -20,7 +20,7 @@
   become_user: sjas
   ignore_errors: true
   shell: |
-    code --list-extensions | 
+    code --list-extensions |
     grep \
     -e DavidAnson.vscode-markdownlint \
     -e Rubymaniac.vscode-direnv \
@@ -31,7 +31,7 @@
     -e redhat.vscode-yaml \
     -e ryanolsonx.zenburn \
     -e vscoss.vscode-ansible \
-    -e yhirose.FilterText \ 
+    -e yhirose.FilterText \
     | wc -l
   register: vsc_plugin_count
   changed_when: false
@@ -39,7 +39,7 @@
 - name: install vscode extensions if not present
   become: yes
   become_user: sjas
-  shell: code --install-extension {{ item }} 
+  shell: code --install-extension {{ item }}
   with_items:
     - DavidAnson.vscode-markdownlint
     - jamiewoodio.junos

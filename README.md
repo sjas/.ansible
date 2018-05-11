@@ -13,7 +13,7 @@ default verbosity changed to '-vv' so the FILE:LINE position of the currently ru
     ssh-keygen -trsa -b4096 -N '' -f ~/.ssh/id_rsa
     ssh-copy-id localhost  ## enter password here when promted
     mkdir -p ~/.ssh/controlmasters
-    
+
 ### setup ansible itself
     sudo apt install software-properties-common -y
     sudo apt-add-repository ppa:ansible/ansible -y
@@ -36,7 +36,7 @@ default verbosity changed to '-vv' so the FILE:LINE position of the currently ru
     context = 4
     EOF
     cd .ansible
-    
+
 ## run ansible to get the workstation up and running
     cd ~/etc/.ansible
     ansible-playbook neon.yml

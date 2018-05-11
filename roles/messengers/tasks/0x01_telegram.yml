@@ -3,13 +3,13 @@
   register: exitcode_telegram_install
   ignore_errors: true
   changed_when: false
-  
+
 - name: download telegram
   shell: wget https://tdesktop.com/linux -O /tmp/telegram.tar.xz
   when: exitcode_telegram_install.rc != 0
 
 - name: unarchive telegram
-  unarchive: 
+  unarchive:
     src: /tmp/telegram.tar.xz
     dest: /opt
   when: exitcode_telegram_install.rc != 0
@@ -19,7 +19,7 @@
     path: /tmp/telegram.tar.xz
     state: absent
   when: exitcode_telegram_install.rc != 0
-  
+
 - name: link telegram to $PATH
   become: yes
   become_user: sjas

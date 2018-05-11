@@ -9,7 +9,7 @@
     "editor.wordWrap": "on",
     "editor.cursorWidth": 1,
     "editor.fontSize": 14,
-    "editor.insertSpaces": true, 
+    "editor.insertSpaces": true,
     "editor.lineNumbers": "interval",
     "editor.rulers": [
         100

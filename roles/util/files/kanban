@@ -3,50 +3,50 @@
 # commandline asciii kanban board for minimalist productivity bash hackers (csv-based)
 #
 # Usage:
-# 
-#   kanban add                              # add item interactive (adviced) 
+#
+#   kanban add                              # add item interactive (adviced)
 #   kanban show [status] ....               # show ascii kanban board [with status]
-#   kanban <id>                             # edit or update item 
+#   kanban <id>                             # edit or update item
 #   kanban <id> <status>                    # update status of todo id (uses $EDITOR as preferred editor)
 #   kanban <status> .....                   # list only todo items with this status(es)
 #   kanban list                             # list all todos (heavy)
 #   kanban tags                             # list all submitted tags
-#   kanban add <status> <tag> <description> # add item (use quoted strings for args)  
-#   kanban stats <status|tag> [<str>]       # generates stats 
-# 
+#   kanban add <status> <tag> <description> # add item (use quoted strings for args)
+#   kanban stats <status|tag> [<str>]       # generates stats
+#
 #   NOTE #1: statuses can be managed in ~/.kanban/config
 #   NOTE #2: the database csv can be found in ~/.kanban/db.csv
-# 
+#
 # Examples:
-# 
+#
 #   kanban add TODO projectX "do foo"
-#   kanban TODO DOING HOLD                 
+#   kanban TODO DOING HOLD
 #   kanban stats status projectX
-#   kanban stats tag projectX 
-# 
+#   kanban stats tag projectX
+#
 # Environment:
-# 
+#
 #   You can switch context (e.g. work vs home vs project x ) like so:
-# 
+#
 #   KANBANFILE=~/.kanban.foo.csv kanban show
 #   KANBANFILE=~/.kanban.foo.csv KANBANCONF=~/.kanban.foo.conf kanban show
-# 
+#
 #   KANBANFILE env-var is not needed when a .kanban.csv file is present in the current working dir
 #   KANBANCONF is created automatically if not found
-# 
-# Copyright (C) 2015, Leon van Kammen / Coder of Salvation 
-# Shortcuts 2017, sjas 
+#
+# Copyright (C) 2015, Leon van Kammen / Coder of Salvation
+# Shortcuts 2017, sjas
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License as
 #  published by the Free Software Foundation, either version 3 of the
 #  License, or (at your option) any later version.
-#  
+#
 #  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU Affero General Public License for more details.
-#  
+#
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 BOX=(┌ ─ ┐ └ ┘ │ ┤ ┴ ┬ ├ ┼)
@@ -54,20 +54,20 @@ BAR=(▁ ▂ ▃ ▄ ▅ ▆ ▆ ▇ ▇ '█' '█')
 TMP=~/.kanban.tmp
 locale | grep -q "UTF-8" && UTF8=1
 X=$(tput cols)    # get size of terminal window
-Y=$(tput lines)   # 
+Y=$(tput lines)   #
 #SMALLSCREEN=('HOLD' 'DOING' 'CODE')  # uncomment to get simplified kanban board
 [[ ! -n $KANBANCONF ]] && KANBANCONF=~/.kanban/config
-if [[ ! -n $KANBANFILE ]]; then 
+if [[ ! -n $KANBANFILE ]]; then
   [[ -f ".kanban.csv" ]] && KANBANFILE="$(pwd)/.kanban/db.csv"
   [[ ! -n $KANBANFILE ]] && KANBANFILE=~/".kanban/db.csv";
 fi
 [[ ! -f $KANBANFILE ]] && echo "status,tag,description,history,date" > $KANBANFILE
 
 ## config_example="# kanban config file
-## 
+##
 ## # kanban config file
-## statuses=('BACKLOG' 'HOLD' 'DOING' 'CODE' 'DONE') 
-## 
+## statuses=('BACKLOG' 'HOLD' 'DOING' 'CODE' 'DONE')
+##
 ## # maximum amount of todos within status (triggers warning when exceeds)
 ## declare -A maximum_todo
 ## maximum_todo['HOLD']=5
@@ -98,13 +98,13 @@ draw_line(){
 
 # usage: fb box <x> <y> <width> <height>
 draw_topline(){
-  w=$((X-2)); 
+  w=$((X-2));
   printf ${BOX[0]}; draw_line $w; printf "${BOX[2]}\n"
 }
 
 createconfig(){
-  [[ -f $KANBANCONF ]] && { 
-    read -p "overwrite current config? (y/n)" overwrite; 
+  [[ -f $KANBANCONF ]] && {
+    read -p "overwrite current config? (y/n)" overwrite;
     [[ ! "$overwrite" == "y" ]] && echo "aborted" && exit 1;
   }
   echo "$config_example" > $KANBANCONF
@@ -124,7 +124,7 @@ get_statuses(){
 
 add_interactive(){
   echo "enter description:"
-  read -p "> " description 
+  read -p "> " description
   echo "enter one of statuses: ${statuses[@]}"
   read -p "> " status
   echo "enter one of tags: $(tags)"
@@ -138,9 +138,9 @@ a(){
 }
 add(){
   [[ ! -n $1 ]] && { add_interactive "$@"; return 0; }
-  [[ ! "${statuses[*]}" =~ "$1" ]] && echo "invalid status $1 (possible: ${statuses[*]})" && exit 1 
+  [[ ! "${statuses[*]}" =~ "$1" ]] && echo "invalid status $1 (possible: ${statuses[*]})" && exit 1
   csvline="$( for col in "$@"; do printf "%s" "\"$col\","; done )\"${1:0:1}\",\"$(get_current_date)\"\""
-  echo "${csvline:0:$((${#csvline}-1))}" >> $KANBANFILE 
+  echo "${csvline:0:$((${#csvline}-1))}" >> $KANBANFILE
 }
 
 st(){
@@ -155,18 +155,18 @@ stats(){
   [[ "$field" == "status" ]]  && field=2 || [[ "$field" == "s" ]] && field=2
   [[ "$field" == "tag" ]]     && field=3 || [[ "$field" == "t" ]]  && field=3
   [[ "$field" == "history" ]] && field=5 || [[ "$field" == "h" ]]  && field=5
-  [[ -n $2 ]] && WIDTH=$2   || WIDTH=20; 
+  [[ -n $2 ]] && WIDTH=$2   || WIDTH=20;
   [[ -n $3 ]] && PADDING=$3 || PADDING=20;
   {
-    if [[ -n $PADDING ]]; then 
+    if [[ -n $PADDING ]]; then
       cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='$WIDTH'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%'$PADDING's %5d %s %s",$2,$1,r,"\n";}'
-    else                                                                                                                                                   
-      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='$WIDTH'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%s %s: %5d\n",r,$2,$1;}' | tr -s " " 
-    fi 
+    else
+      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='$WIDTH'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%s %s: %5d\n",r,$2,$1;}' | tr -s " "
+    fi
   } | grep -v 'tag\|status\|history\|-[ ]\+1' | grep -v '^[ ]\+1' # remove header rows
 }
 
-init(){                          
+init(){
   trap "tput cnorm -- normal" 0 1 5    # reset terminal colors to normal
 }
 
@@ -182,8 +182,8 @@ list(){
 }
 
 do_alert(){
-  nlines=$(echo "$1" | wc -l ) ; maximum=$2 
-  if [[ ${#maximum} > 0 ]] && [[ $nlines > $maximum ]]; then 
+  nlines=$(echo "$1" | wc -l ) ; maximum=$2
+  if [[ ${#maximum} > 0 ]] && [[ $nlines > $maximum ]]; then
     echo -e "\n\n!!! alert: number of '$3' items (max $maximum) slows down average productionrate !!!" >> "$4"
   fi
 }
@@ -197,14 +197,14 @@ columnize(){
   i=1; lines="$(cat -)"; header="$( echo "$lines" | head -n0 )"; output="";
   rm $TMP.col.* &>/dev/null
   echo -e "$header";
-  for status in "${statuses[@]}"; do 
+  for status in "${statuses[@]}"; do
     [[ -n $SMALLSCREEN ]] && ! [[ "${SMALLSCREEN[@]}" =~ $status ]] && continue
     echo -e "|_$status\n|+$(strtoline "$status" "~")~\n" > $TMP.col.$i
     cat $TMP.index | grep "$status" | sed 's/["]\?'$status'["]\?//g' | printcsv 5 | sed 's/^/| /g'  | unexpand >> $TMP.col.$i
     #echo "$( cat $TMP.col.$i )" > $TMP.col.$i
     i=$((i+1))
-  done 
-  pr -m -t -w$X -S"      "  $TMP.col.* | lines 
+  done
+  pr -m -t -w$X -S"      "  $TMP.col.* | lines
   rm $TMP.col.* # print and cleanup
 }
 
@@ -222,14 +222,14 @@ sh(){
 	show "$@"
 }
 show(){
-  [[ ! -f "$KANBANFILE" ]] && touch "$KANBANFILE" 
+  [[ ! -f "$KANBANFILE" ]] && touch "$KANBANFILE"
   create_index
-  if [[ -n $1 ]]; then 
-    statuses=(); for status in $*; do statuses+=($status); done 
+  if [[ -n $1 ]]; then
+    statuses=(); for status in $*; do statuses+=($status); done
   fi
-  clear;  { 
+  clear;  {
     echo "$1"
-    if [[ -n $1 ]]; then cat $TMP.index | grep "$1"; else cat $TMP.index; fi 
+    if [[ -n $1 ]]; then cat $TMP.index | grep "$1"; else cat $TMP.index; fi
   } | columnize | more
   echo ""
 }
@@ -238,8 +238,8 @@ get_current_date(){ date "+%Y-%m-%d@%H:%M"; }
 
 update_item_status(){
   item="$( cat $KANBANFILE | awk "{ if (NR==$1) print \$0 }" )"
-  [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1 
-  if [[ -n "$2" ]]; then  # status change 
+  [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1
+  if [[ -n "$2" ]]; then  # status change
     status="$(echo "$item" | awk -F',' '{ print $1 }' | sed 's/"//g' )"
     flags="$(echo "$item"  | awk -F',' '{ print $4 }' | sed 's/"//g' )"
     dates="$(echo "$item"  | awk -F',' '{ print $5 }' | sed 's/"//g' )"
@@ -250,21 +250,21 @@ update_item_status(){
     newitem="${newitem/$status/$2}"
     newitem="${newitem/$flags/$newflags}"
     newitem="${newitem/$dates/$newdates}"
-    sed -i "s|$item|$newitem|g" $KANBANFILE 
+    sed -i "s|$item|$newitem|g" $KANBANFILE
     echo "$status -> $2"
   fi
 }
 
 update_item(){
   item="$( cat $KANBANFILE | awk "{ if (NR==$1) print \$0 }" )"
-  [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1 
+  [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1
   status="$(echo "$item" | awk -F',' '{ print $1 }')"
   echo '#
-# STATUSES ARE: '${statuses[*]}' 
+# STATUSES ARE: '${statuses[*]}'
 #
 '"$item" > $TMP.update
   ${EDITOR} $TMP.update
-  sed -i "s|$item|$(cat $TMP.update | tail -n1)|g" $KANBANFILE 
+  sed -i "s|$item|$(cat $TMP.update | tail -n1)|g" $KANBANFILE
   echo "updated item $1"
 }
 
@@ -274,7 +274,7 @@ printcsv(){
   [[ ! -n $2 ]] && min=1 || min=$1
   echo -e "$csv" | sed 's/,"",/," ",/g' | gawk -vFS='^"|","|"$|",|,"|,'            \
     '{out=""; for(i='$min';i<NF+1&&i<max;i++) out=out"\t"$i; print out }'      \
-    max=$max | sed 's/""/"/g' | column -t -s $'\t'                   
+    max=$max | sed 's/""/"/g' | column -t -s $'\t'
 }
 
 # source config
@@ -284,10 +284,10 @@ source $KANBANCONF
 # execute main
 init
 
-if [[ -n "$1" ]]; then 
+if [[ -n "$1" ]]; then
 
   [[ "${statuses[*]}" =~ "$1" ]] && { list "$@" ; exit 0; }
-  case "$1" in 
+  case "$1" in
 
     [0-9]*)  [[ -n $2 ]] && [[ "${statuses[*]}" =~ "$2" ]] && update_item_status "$@" && exit 0
              update_item "$@"
