@@ -20,6 +20,7 @@ touchpadrc  ## komplett
 # mouse
 kcminputrc  ## komplett
 kdeglobals  ## sed
+/home/sjas/.config/kdeglobals  ## tmpl w/ ff folder changing
 
 # keyboard
 kcminputrc ## ~~~
