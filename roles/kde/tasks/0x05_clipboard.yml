@@ -1,0 +1,10 @@
+- name: get plasma version for template
+  shell: plasmashell --version 2>/dev/null | awk '{print $2}'
+  register: plasma_version
+
+- name: klipper config
+  become: yes
+  become_user: sjas
+  template:
+    src: klipperrc
+    dest: /home/sjas/.config

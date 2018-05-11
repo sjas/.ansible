@@ -1,0 +1,4 @@
+[General]
+MaxClipItems=2000
+SyncClipboards=true
+Version={{ plasma_version }}

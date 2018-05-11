@@ -9,3 +9,6 @@
 
 - name: virtual desktops
   include: 0x04_virtualdesktops.yml
+
+- name: clipboard
+  include: 0x05_klipper.yml
