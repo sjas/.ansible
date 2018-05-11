@@ -17,6 +17,7 @@
   go_right = <Primary><Shift>l
   go_up = <Primary><Shift>k
   group_all = <Primary><Shift>F8
+  layout_launcher = None
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
 [layouts]
