@@ -11,4 +11,4 @@
   include: 0x04_virtualdesktops.yml
 
 - name: clipboard
-  include: 0x05_klipper.yml
+  include: 0x05_clipboard.yml

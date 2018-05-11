@@ -10,6 +10,7 @@ https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 
 find . -type f -ls | grep .git -v > asdf1; read; find . -type f -ls | grep .git -v > asdf2; diff asdf{1,2} | awk 'NF>1 {print $NF}' | sort -u | awk 'NF>0'| grep -ve 'asdf[12]' | sed -e 's/^\.\///' ; rm asdf{1,2}
 
+plasmashell --version 2>/dev/null | awk '{print $2}'
 
 terminator config komplett
 
