@@ -36,11 +36,13 @@
     - iftop
     - ioping
     - iotop
+    - kdiff3
     - libreoffice
     - lnav
     - iputils-arping
     - lynx
     - mc
+    - meld
     - mlocate
     - multitail
     - mysql-client

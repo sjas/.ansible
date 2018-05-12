@@ -1,0 +1,7 @@
+- name: deploy diff-so-fancy script
+  become: yes
+  become_user: sjas
+  copy:
+    src: diff-so-fancy
+    dest: /home/sjas/.local/bin/
+    mode: 0774
