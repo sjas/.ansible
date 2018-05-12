@@ -1,0 +1,6 @@
+- name: fix lockscreen color and timeouts
+  become: yes
+  become_user: sjas
+  copy:
+    src: kscreenlockerrc
+    dest: /home/sjas/.config
