@@ -5,9 +5,12 @@
     src: kcminputrc
     dest: /home/sjas/.config
 
-- name: en / de keyboard layouts
+- name: en / de keyboard layouts + en_US
   become: yes
   become_user: sjas
   copy:
-    src: kxkbrc
+    src: {{ item }}
     dest: /home/sjas/.config
+  with_items:
+    - kxkbrc
+    - plasma-localerc

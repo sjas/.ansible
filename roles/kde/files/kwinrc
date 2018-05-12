@@ -5,6 +5,29 @@ OpenGLIsUnsafe=false
 Number=4
 Rows=4
 
+[Effect-Cube]
+BorderActivate=9
+BorderActivateCylinder=9
+BorderActivateSphere=9
+
+[Effect-DesktopGrid]
+BorderActivate=7
+
+[Effect-PresentWindows]
+BorderActivate=9
+BorderActivateAll=3
+BorderActivateClass=9
+
+[ElectricBorders]
+Bottom=None
+BottomLeft=None
+BottomRight=None
+Left=None
+Right=None
+Top=None
+TopLeft=None
+TopRight=None
+
 [Plugins]
 cubeslideEnabled=false
 desktopchangeosdEnabled=false
@@ -15,5 +38,15 @@ slideEnabled=false
 PopupHideDelay=1000
 TextOnly=false
 
+[TabBox]
+BorderActivate=9
+BorderAlternativeActivate=9
+
 [Windows]
+ElectricBorderCooldown=350
+ElectricBorderCornerRatio=0.25
+ElectricBorderDelay=150
+ElectricBorderMaximize=true
+ElectricBorderTiling=true
+ElectricBorders=0
 RollOverDesktops=false
