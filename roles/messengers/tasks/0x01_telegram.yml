@@ -5,7 +5,9 @@
   changed_when: false
 
 - name: download telegram
-  shell: wget https://tdesktop.com/linux -O /tmp/telegram.tar.xz
+  get_url:
+    url: https://tdesktop.com/linux
+    dest: /tmp/telegram.tar.xz
   when: exitcode_telegram_install.rc != 0
 
 - name: unarchive telegram
