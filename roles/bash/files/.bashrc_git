@@ -28,7 +28,7 @@ alias gdf=gitdiffsofancy                                ## diff-so-fancy
 gitdifftool(){
         git difftool -t "$*"
 }
-alias gdt=gitdifftool                                   ## difftools: meld, kdiff3 
+alias gdt=gitdifftool                                   ## gdt <difftool>, difftools: meld, kdiff3 
 alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2~/blob/ { print \$4 }'"  ## ls-tree, show versioned files
 alias gsc="git diff --diff-filter=U --name-only"        ## show conflicts
 giteditconflicts(){

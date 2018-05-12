@@ -18,3 +18,6 @@
 
 - name: taskbar
   include: 0x07_taskbar.yml
+
+- name: kdeglobals / other input settings
+  include: 0x08_kdeglobals.yml
