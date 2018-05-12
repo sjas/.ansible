@@ -32,6 +32,7 @@
     -e ryanolsonx.zenburn \
     -e vscoss.vscode-ansible \
     -e yhirose.FilterText \
+    -e samuelcolvin.jinjahtml \
     | wc -l
   register: vsc_plugin_count
   changed_when: false
@@ -51,7 +52,8 @@
     - vscoss.vscode-ansible
     - yhirose.FilterText
     - Rubymaniac.vscode-direnv
-  when: not vsc_plugin_count.stdout is search("10")
+    - samuelcolvin.jinjahtml
+  when: not vsc_plugin_count.stdout is search("11")
   tags:
     - dont_lint_this
 
