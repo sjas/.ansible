@@ -4,6 +4,10 @@
   register: ff_path
   changed_when: false
 
+- name: setfact ff_path_fact
+  set_fact:
+    ff_path_fact: "{{ ff_path.stdout }}"
+
 - name: deploy kdeglobals template
   become: yes
   become_user: sjas
