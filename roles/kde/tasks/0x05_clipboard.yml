@@ -7,5 +7,5 @@
   become: yes
   become_user: sjas
   template:
-    src: klipperrc
-    dest: /home/sjas/.config
+    src: klipperrc.j2
+    dest: /home/sjas/.config/klipperrc
