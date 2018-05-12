@@ -1,5 +1,5 @@
 - name: fix taskbar size
-  lineinfile: 
+  lineinfile:
     path: /home/sjas/.config/plasmashellrc
     regexp: "^thickness"
     line: "thickness=82"

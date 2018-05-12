@@ -21,19 +21,21 @@
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes"
 
 - name: fix git default settings
-  command:
-    git config --global {{ item }}
+  git_config:
+    name: "{{ item.key }}"
+    scope: global
+    value: "{{ item.value }}"
   with_items:
-    - color.ui                            "true"
-    - color.diff-highlight.oldNormal      "red bold"
-    - color.diff-highlight.oldHighlight   "red bold 52"
-    - color.diff-highlight.newNormal      "green bold"
-    - color.diff-highlight.newHighlight   "green bold 22"
-    - color.diff.meta                     "yellow"
-    - color.diff.frag                     "magenta bold"
-    - color.diff.commit                   "yellow bold"
-    - color.diff.old                      "red bold"
-    - color.diff.new                      "green bold"
-    - color.diff.whitespace               "red reverse"
-    - push.default                        "matching"
-    - user.name                           "sjas"
+    - { key: 'color.ui',                            value: 'true' }
+    - { key: 'color.diff-highlight.oldNormal',      value: 'red bold' }
+    - { key: 'color.diff-highlight.oldHighlight',   value: 'red bold 52' }
+    - { key: 'color.diff-highlight.newNormal',      value: 'green bold' }
+    - { key: 'color.diff-highlight.newHighlight',   value: 'green bold 22' }
+    - { key: 'color.diff.meta',                     value: 'yellow' }
+    - { key: 'color.diff.frag',                     value: 'magenta bold' }
+    - { key: 'color.diff.commit',                   value: 'yellow bold' }
+    - { key: 'color.diff.old',                      value: 'red bold' }
+    - { key: 'color.diff.new',                      value: 'green bold' }
+    - { key: 'color.diff.whitespace',               value: 'red reverse' }
+    - { key: 'push.default',                        value: 'matching' }
+    - { key: 'user.name',                           value: 'sjas' }

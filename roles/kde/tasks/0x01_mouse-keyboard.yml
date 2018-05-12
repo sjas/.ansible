@@ -9,7 +9,7 @@
   become: yes
   become_user: sjas
   copy:
-    src: {{ item }}
+    src: "{{ item }}"
     dest: /home/sjas/.config
   with_items:
     - kxkbrc
