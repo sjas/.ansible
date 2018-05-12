@@ -40,6 +40,7 @@
     - libreoffice
     - lnav
     - iputils-arping
+    - ltrace
     - lynx
     - mc
     - meld
@@ -63,6 +64,7 @@
     - python-optcomplete
     - rsync
     - screen
+    - strace
     - sysstat
     - tcpdump
     - thunderbird
