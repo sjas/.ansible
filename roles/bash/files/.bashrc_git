@@ -24,7 +24,12 @@ alias gd="git diff"                                     ## diff
 gitdiffsofancy(){
         git diff --color "$*" | diff-so-fancy
 }
-alias gdf=gitdiffsofancy                                ## diff-so-fancy
+alias gdff=gitdiffsofancy                                ## diff-so-fancy FILE
+gitdfiffsofancyall(){
+	for i in $(git status -s | awk '{print $2}'); do gitdiffsofancy $i ;done
+}
+alias gdf=gitdfiffsofancyall				## diff-so-fancy on all of `git status -s` files
+
 gitdifftool(){
         git difftool -t "$*"
 }

@@ -41,3 +41,18 @@ workstation bootstrapping, to be rebased onto a blank kde neon install
 ## run ansible to get the workstation up and running
     cd ~/etc/.ansible
     ansible-playbook neon.yml
+
+## post tasks
+
+    # make your new settings known to your current shell
+    . ~/.bashrc
+    # logout/login to KDE
+    # otherwise your GUI changes will not be applied
+
+## some useful oneliners for discerning settings' locations
+
+    find . -type f -ls | grep .git -v > asdf1; read; find . -type f -ls | grep .git -v > asdf2; diff asdf{1,2} | awk 'NF>1 {print $NF}' | sort -u | awk 'NF>0'| grep -ve 'asdf[12]' | sed -e 's/^\.\///' ; rm asdf{1,2}
+
+    strace systemsettings5 |& grep ^stat | grep -v -e ENOENT -e /etc/localtime -e st_mode=S_IFDIR -e /run/user/1000 -e /usr/lib/x86_64- | cut -c7- | sed -e 's/"/ /' | awk '{print $1}'
+
+    watch -n1 -d 'git diff HEAD | grep -e diff -e \+\+\+ -e^\+ | grep --color -e$ -ediff\ \-\-.\* | wc -l; echo; git status'
