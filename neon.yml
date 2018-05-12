@@ -8,9 +8,10 @@
 
   roles:
     - common
+    - bash
+    - terminals
     - browsers
     - code
     - messengers
-    - terminals
-    - bash
     - util
+    - kde
