@@ -52,6 +52,7 @@
     - yhirose.FilterText
     - Rubymaniac.vscode-direnv
   when: not vsc_plugin_count.stdout is search("10")
+  tags: dont_lint_this
 
 - name: set vscode configuration
   become: yes

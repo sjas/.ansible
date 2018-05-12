@@ -1,0 +1,6 @@
+parseable: true
+quiet: false
+skip_list:
+  - dont_lint_this
+use_default_rules: true
+verbosity: 0

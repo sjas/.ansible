@@ -1,6 +1,7 @@
 - name: get plasma version for template
   shell: plasmashell --version 2>/dev/null | awk '{print $2}'
   register: plasma_version
+  changed_when: false
 
 - name: klipper config
   become: yes

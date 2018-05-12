@@ -15,4 +15,3 @@
 
 - name: lockscreen
   include: 0x06_lockscreen.yml
-  

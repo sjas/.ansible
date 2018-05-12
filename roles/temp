@@ -12,14 +12,11 @@ find . -type f -ls | grep .git -v > asdf1; read; find . -type f -ls | grep .git 
 
 plasmashell --version 2>/dev/null | awk '{print $2}'
 
-terminator config komplett
 
 
-# systemsettings5 hacking
-touchpadrc  ## komplett
 
 # mouse
-kcminputrc  ## komplett
+
 kdeglobals  ## sed
 /home/sjas/.config/kdeglobals  ## tmpl w/ ff folder changing
 
@@ -27,7 +24,6 @@ kdeglobals  ## sed
 kcminputrc ## ~~~
 kglobalshortcutsrc  ## sed
 khotkeysrc  ## miese scheisse
-kxkbrc  ##  evtl einfach
 
 # startmenu
 cat kactivitymanagerd-statsrc 
@@ -43,97 +39,6 @@ ordering=preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolp
 
 
 
-
-
-
-
-## touchpad
-
-
-
-diff --git a/touchpadrc b/touchpadrc
-index a159cdb..dc1e333 100644/
---- a/touchpadrc
-+++ b/touchpadrc
-@@ -1,6 +1,25 @@
-+[autodisable]
-+KeyboardActivityTimeoutMs=300
-+
- [parameters]
-+AccelFactor=0.11219643908901684
- CircScrollDelta=5.73
--HorizScrollDelta=2.4
--MaxTapMove=3.7
-+CoastingSpeed=5
-+FingerHigh=7
-+FingerLow=7
-+HorizHysteresis=16
-+HorizScrollDelta=6.3
-+HorizTwoFingerScroll=true
-+MaxDoubleTapTime=150
-+MaxSpeed=7.204635919773425
-+MaxTapMove=2.0999999999999988
-+MaxTapTime=250
-+MinSpeed=4.013546653690207
-+PressureMotionMaxZ=52
-+PressureMotionMinZ=7
-+SingleTapTimeout=100
- Tapping=false
--VertScrollDelta=2.3
-+ThreeFingerTapButton=MiddleButton
-+VertEdgeScroll=false
-+VertHysteresis=16
-+VertScrollDelta=2.1
-
-
-
-
-## mouse
-
-
-
-diff --git a/kdeglobals b/kdeglobals
-index 81c47c9..3b6b728 100644
---- a/kdeglobals
-+++ b/kdeglobals
-@@ -120,11 +120,11 @@ Theme=breeze
-
- [KDE]
- ColorScheme=Breeze
--DoubleClickInterval=400
--SingleClick=true
--StartDragDist=4
--StartDragTime=500
--WheelScrollLines=3
-+DoubleClickInterval=200
-+SingleClick=false
-+StartDragDist=16
-+StartDragTime=2000
-+WheelScrollLines=12
- contrast=4
- widgetStyle=Breeze
-
-
-
-
-diff --git a/kcminputrc b/kcminputrc
-new file mode 100644
-index 0000000..7d7a823
---- /dev/null
-+++ b/kcminputrc
-@@ -0,0 +1,12 @@
-+[Keyboard]
-+KeyboardRepeating=0
-+NumLock=2
-+RepeatDelay=1312
-+RepeatRate=25
-+
-+[Mouse]
-+Acceleration=1
-+AccelerationProfile=
-+MouseButtonMapping=RightHanded
-+ReverseScrollPolarity=false
-+Threshold=1
 
 
 
@@ -532,23 +437,6 @@ index 4276e6f..5e60e12 100644
 +Switch keyboard layout to German (eliminate dead keys)=none,none,Switch keyboard layout to German (eliminate dead keys)
  Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
  _k_friendly_name=KDE Daemon
-
-
-
-sjas@zen:~/.config$ cat kxkbrc
-[Layout]
-DisplayNames=,
-LayoutList=us,de(nodeadkeys)
-LayoutLoopCount=-1
-Model=pc104
-Options=caps:ctrl_modifier
-ResetOldOptions=true
-ShowFlag=false
-ShowLabel=true
-ShowLayoutIndicator=true
-ShowSingle=false
-SwitchMode=Global
-Use=true
 
 
 
