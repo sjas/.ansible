@@ -1,0 +1,12 @@
+
+- name: get firefox profile folder path
+  shell: ls /home/sjas/.mozilla/firefox/*default -d
+  register: ff_path
+  changed_when: false
+
+- name: deploy kdeglobals template
+  become: yes
+  become_user: sjas
+  template:
+    src: kdeglobals.j2
+    dest: /home/sjas/.config/kdeglobals
