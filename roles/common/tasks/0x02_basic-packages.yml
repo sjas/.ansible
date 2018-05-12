@@ -53,6 +53,7 @@
     - nmon
     - openvpn
     - percona-toolkit
+    - net-tools
     - ntfs-3g
     - p7zip
     - parallel

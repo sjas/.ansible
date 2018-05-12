@@ -7,7 +7,7 @@
 
 - name: crit action config
   become: yes
-  become_user: yes
+  become_user: sjas
   copy:
     src: powerdevilrc
     dest: /home/sjas/.config
