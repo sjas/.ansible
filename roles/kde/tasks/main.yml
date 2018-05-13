@@ -21,3 +21,6 @@
 
 - name: kdeglobals / other input settings
   include: 0x08_kdeglobals.yml
+
+- name: widgets + settings
+  include: 0x09_widgets.yml

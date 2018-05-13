@@ -8,23 +8,7 @@ echo 'Installing steam dependencies.'
 sudo apt install xterm libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 -y &> /dev/null
 https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 
-find . -type f -ls | grep .git -v > asdf1; read; find . -type f -ls | grep .git -v > asdf2; diff asdf{1,2} | awk 'NF>1 {print $NF}' | sort -u | awk 'NF>0'| grep -ve 'asdf[12]' | sed -e 's/^\.\///' ; rm asdf{1,2}
 
-strace systemsettings5 |& grep ^stat | grep -v -e ENOENT -e /etc/localtime -e st_mode=S_IFDIR -e /run/user/1000 -e /usr/lib/x86_64- | cut -c7- | sed -e 's/"/ /' | awk '{print $1}'
-
-watch -n1 -d 'git diff HEAD | grep -e diff -e \+\+\+ -e^\+ | grep --color -e$ -ediff\ \-\-.\* | wc -l; echo; git status'
-
-
-
-
-# mouse
-
-kdeglobals  ## sed
-/home/sjas/.config/kdeglobals  ## tmpl w/ ff folder changing
-
-# keyboard
-kcminputrc ## ~~~
-kglobalshortcutsrc  ## sed
 khotkeysrc  ## miese scheisse
 
 # startmenu
