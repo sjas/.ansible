@@ -9,6 +9,7 @@ alias   cdd="cd $DOTFILES"
 alias	cdt="cd /home/sjas/txt"
 
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   rea="( cd $DOTFILES; ansible-playbook neon.yml )"
 
 ## FIXME with 'n' autocompletion
 #NOTES

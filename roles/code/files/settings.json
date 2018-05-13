@@ -17,6 +17,7 @@
     "terminal.integrated.env.linux": {},
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.mouseWheelScrollSensitivity": 2,
+    "files.autoSave": "onWindowChange",
     "files.trimTrailingWhitespace": false,
     "git.enableSmartCommit": true,
     "workbench.colorTheme": "Zenburn",
