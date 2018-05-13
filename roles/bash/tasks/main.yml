@@ -1,11 +1,3 @@
-- name: config rollout
-  copy: src={{ item }} dest=/home/sjas/etc/.dotfiles/
-  with_items:
-    - .bashrc_env
-    - .bashrc_aliases
-    - .bashrc_git
-    - .bashrc_completion
-
 - name: reference configs from .bashrc
   lineinfile: path=/home/sjas/.bashrc line=". /home/sjas/etc/.ansible/roles/bash/files/{{ item }}"
   with_items:
@@ -21,6 +13,8 @@
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes"
 
 - name: fix git default settings
+  become: yes
+  become_user: sjas
   git_config:
     name: "{{ item.key }}"
     scope: global
