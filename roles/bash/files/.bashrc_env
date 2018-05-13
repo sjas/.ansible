@@ -1,9 +1,9 @@
 if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		. /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		. /etc/bash_completion
-	fi
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+. /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+. /etc/bash_completion
+fi
 fi
 
 export EDITOR="vim"
@@ -26,7 +26,21 @@ export LESSGLOBALTAGS=global
 export GOROOT=/usr/lib/go-1.10
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:$GOROOT/bin:$GOPATH/bin
+pathadd() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="$1${PATH:+"$PATH:"}"; fi
+	#PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
+}
+
+for i in \
+/usr/local/bin \
+/usr/local/sbin \
+$GOROOT/bin \
+$GOPATH/bin 
+do
+	pathadd $i
+done
+
+export PATH
 
 # COLORED MANPAGES
 export LESS_TERMCAP_mb=$'\E[1;31m'	# begin blinking
