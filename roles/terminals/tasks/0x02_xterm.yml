@@ -8,9 +8,8 @@
 - name: make sure .Xdefaults is present
   become: yes
   become_user: sjas
-  file:
-    dest: /home/sjas/.Xdefaults
-    state: touch
-
+  command: touch /home/sjas/.Xdefaults
+  changed_when: false
+  
 - name: make xterm shortcuts behave
   lineinfile: path=/home/sjas/.Xdefaults line="xterm*metaSendsEscape:true"
