@@ -1,0 +1,13 @@
+- name: deploy shortcut actions
+  become: yes
+  become_user: sjas
+  copy:
+    src: khotkeysrc
+    dest: /home/sjas/.config
+
+- name: deploy shortcuts
+  become: yes
+  become_user: sjas
+  copy:
+    src: kglobalshortcutsrc
+    dest: /home/sjas/.config
