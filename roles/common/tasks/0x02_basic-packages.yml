@@ -17,7 +17,6 @@
     - dhcpdump
     - dhcping
     - diffutils
-    - direnv
     - elinks
     - ethstatus
     - exfat-fuse

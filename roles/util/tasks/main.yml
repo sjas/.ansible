@@ -6,3 +6,6 @@
 
 - name: tweep
   include: 0x03_tweep.yml
+
+- name: direnv
+  include: 0x04_direnv.yml
