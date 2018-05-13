@@ -24,3 +24,6 @@
 
 - name: widgets + settings
   include: 0x09_widgets.yml
+
+- name: shortcuts
+  include: 0x0a_shortcuts.yml
