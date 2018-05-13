@@ -3,13 +3,17 @@
   with_items:
     - xterm
     - xtermcontrol
-    - xtermsets
+    - xtermset
 
 - name: make sure .Xdefaults is present
   become: yes
   become_user: sjas
-  command: touch /home/sjas/.Xdefaults
+  file:
+    dest: /home/sjas/.Xdefaults
+    state: touch
   changed_when: false
   
 - name: make xterm shortcuts behave
-  lineinfile: path=/home/sjas/.Xdefaults line="xterm*metaSendsEscape:true"
+  become: yes
+  become_user: sjas
+  lineinfile: dest=/home/sjas/.Xdefaults line="xterm*metaSendsEscape:true"
