@@ -43,12 +43,11 @@
   changed_when: false
 
 - name: stop vscode because microsoft cant build software properly
-  command: pkill -9 code
+  shell: pkill -9 code && echo 0 || echo 1
+  register: vscode_stopped
+  ignore_errors: true
   when: not vsc_plugin_count.stdout is search("{{ vsc_plugin_count_desired.stdout }}")
   changed_when: false
-  args:
-    warn: false
-  register: vscode_stopped
 
 - name: install vscode extensions if not present
   become: yes
@@ -69,8 +68,6 @@
   when: not vsc_plugin_count.stdout is search("{{ vsc_plugin_count_desired.stdout }}")
   tags:
     - dont_lint_this
-  args:
-    warn: false
 
 - name: set vscode configuration
   become: yes
@@ -82,6 +79,7 @@
 - name: start vscode if it was stopped
   become: yes
   become_user: sjas
-  commmand: code
-  when: vscode_stopped.rc == 0
-
+  command: code
+  delegate_to: localhost
+  when: not vsc_plugin_count.stdout is search("{{ vsc_plugin_count_desired.stdout }}") and vscode_stopped.stdout == "0"
+  changed_when: false
