@@ -12,7 +12,7 @@
     dest: /home/sjas/.Xdefaults
     state: touch
   changed_when: false
-  
+
 - name: make xterm shortcuts behave
   become: yes
   become_user: sjas
