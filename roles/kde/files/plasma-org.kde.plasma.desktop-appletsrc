@@ -237,6 +237,9 @@ PreloadWeight=34
 extraItems=org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.discovernotifier,org.kde.plasma.bluetooth,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.plasma.devicenotifier
 knownItems=org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.discovernotifier,org.kde.plasma.bluetooth,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.plasma.devicenotifier
 
+[General]
+immutability=2
+
 [ScreenMapping]
 itemsOnDisabledScreens=
 screenMapping=desktop:/trash.desktop,0,desktop:/Home.desktop,0
