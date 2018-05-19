@@ -9,7 +9,7 @@ workstation bootstrapping, to be rebased onto a blank kde neon install
 ## bootstrapping
 
 ### make ssh work, so ansible behaves
-    sudo bash -c "echo 'sjas ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/sjas
+    sudo bash -c "echo 'sjas ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/sjas"
     sudo apt install openssh-server -y
     ssh-keygen -trsa -b4096 -N '' -f ~/.ssh/id_rsa
     ssh-copy-id localhost  ## enter password here when promted
