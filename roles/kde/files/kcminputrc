@@ -5,8 +5,8 @@ RepeatDelay=300
 RepeatRate=50
 
 [Mouse]
-Acceleration=1
+Acceleration=2
 AccelerationProfile=
 MouseButtonMapping=RightHanded
 ReverseScrollPolarity=false
-Threshold=1
+Threshold=250

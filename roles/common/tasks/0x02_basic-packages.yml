@@ -62,6 +62,7 @@
     - pv
     - pwgen
     - python-optcomplete
+    - qmmp
     - rsync
     - screen
     - strace
