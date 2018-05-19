@@ -10,7 +10,7 @@
   lineinfile: path=/home/sjas/.bashrc line='eval "$(direnv hook bash)"'
 
 - name: reference .bashrc_includes if present
-  lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes || exit 0"
+  lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
 
 - name: fix git default settings
   become: yes
