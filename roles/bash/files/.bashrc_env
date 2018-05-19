@@ -27,8 +27,11 @@ export GOROOT=/usr/lib/go-1.10
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 
 pathadd() {
-	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="$1${PATH:+"$PATH:"}"; fi
-	#PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]
+	then
+		PATH="$1${PATH:+":$PATH:"}"
+	fi
+	PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
 }
 
 for i in \
