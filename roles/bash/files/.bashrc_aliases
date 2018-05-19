@@ -47,7 +47,7 @@ alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 
 x2d() {
-        printf "%d\n" $1
+	printf "%d\n" $1
 }
 
 #org
@@ -57,14 +57,14 @@ k() {
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
 }
 n() {
-        [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
 	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
-        vim /home/sjas/txt/$@
+	vim /home/sjas/txt/$@
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
 cn() {
-        [[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
-        cat /home/sjas/txt/$@
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+	cat /home/sjas/txt/$@
 }
 
 #SHOW
@@ -72,10 +72,10 @@ shownet() {
 	watch -n 1 -d 'ip r; echo; cat /etc/resolv.conf; echo; ip -4 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 showru() {
-        echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | column -t | sort -k1; done
+	echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | column -t | sort -k1; done
 }
 showr() {
-        ( echo DST GW DEV PROTO SCOPE SRC METRIC; while read j; do if ! echo $j | grep -q src; then echo $j | sed 's/metric/ . . &/'; else echo $j; fi; done < <(while read i; do if ! echo $i | grep -q via ; then echo $i | sed 's/dev/ . . dev/'; else echo $i; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
+	( echo DST GW DEV PROTO SCOPE SRC METRIC; while read j; do if ! echo $j | grep -q src; then echo $j | sed 's/metric/ . . &/'; else echo $j; fi; done < <(while read i; do if ! echo $i | grep -q via ; then echo $i | sed 's/dev/ . . dev/'; else echo $i; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
 showdu() {
 	du -sh * | sort -hk1
@@ -130,12 +130,26 @@ getip() {
 rdns() {
 	dig -x $(dig $1 +short) +short
 }
+lip() {
+	# needs package 'geoip-bin'
+	echo Enter ip to locate country!
+	echo Press ^C to exit.
+	echo
+	echo -n 'ip> '
+
+	while read i
+	do
+		geoiplookup $i | sed -e 's/GeoIP Country Edition: //'
+		echo
+		echo -n 'ip> '
+	done
+}
 utrace() {
-	# since bash4 associative arrays exist!
+# since bash4 associative arrays exist!
 	if [ $SHELL = '/bin/bash' ]
 	then
 		typeset -A temparray
-        	typeset -A countrycodes=( ["AD"]="Andorra" ["AE"]="United Arab Emirates" ["AF"]="Afghanistan" ["AG"]="Antigua and Barbuda" ["AI"]="Anguilla" ["AL"]="Albania" ["AM"]="Armenia" ["AN"]="Netherlands Antilles" ["AO"]="Angola" ["AQ"]="Antarctica" ["AR"]="Argentina" ["AS"]="American Samoa" ["AT"]="Austria" ["AU"]="Australia" ["AW"]="Aruba" ["AZ"]="Azerbaijan" ["BA"]="Bosnia and Herzegovina" ["BB"]="Barbados" ["BD"]="Bangladesh" ["BE"]="Belgium" ["BF"]="Burkina Faso" ["BG"]="Bulgaria" ["BH"]="Bahrain" ["BI"]="Burundi" ["BJ"]="Benin" ["BM"]="Bermuda" ["BN"]="Brunei Darussalam" ["BO"]="Bolivia" ["BR"]="Brazil" ["BS"]="Bahamas" ["BT"]="Bhutan" ["BV"]="Bouvet Island" ["BW"]="Botswana" ["BY"]="Belarus" ["BZ"]="Belize" ["CA"]="Canada" ["CC"]="Cocos (Keeling) Islands" ["CF"]="Central African Republic" ["CG"]="Congo" ["CH"]="Switzerland" ["CI"]="Cote D'Ivoire (Ivory Coast)" ["CK"]="Cook Islands" ["CL"]="Chile" ["CM"]="Cameroon" ["CN"]="China" ["CO"]="Colombia" ["CR"]="Costa Rica" ["CS"]="Czechoslovakia (former)" ["CU"]="Cuba" ["CV"]="Cape Verde" ["CX"]="Christmas Island" ["CY"]="Cyprus" ["CZ"]="Czech Republic" ["DE"]="Germany" ["DJ"]="Djibouti" ["DK"]="Denmark" ["DM"]="Dominica" ["DO"]="Dominican Republic" ["DZ"]="Algeria" ["EC"]="Ecuador" ["EE"]="Estonia" ["EG"]="Egypt" ["EH"]="Western Sahara" ["ER"]="Eritrea" ["ES"]="Spain" ["ET"]="Ethiopia" ["FI"]="Finland" ["FJ"]="Fiji" ["FK"]="Falkland Islands (Malvinas)" ["FM"]="Micronesia" ["FO"]="Faroe Islands" ["FR"]="France" ["FX"]="France, Metropolitan" ["GA"]="Gabon" ["GB"]="Great Britain (UK)" ["GD"]="Grenada" ["GE"]="Georgia" ["GF"]="French Guiana" ["GH"]="Ghana" ["GI"]="Gibraltar" ["GL"]="Greenland" ["GM"]="Gambia" ["GN"]="Guinea" ["GP"]="Guadeloupe" ["GQ"]="Equatorial Guinea" ["GR"]="Greece" ["GS"]="S. Georgia and S. Sandwich Isls." ["GT"]="Guatemala" ["GU"]="Guam" ["GW"]="Guinea-Bissau" ["GY"]="Guyana" ["HK"]="Hong Kong" ["HM"]="Heard and McDonald Islands" ["HN"]="Honduras" ["HR"]="Croatia (Hrvatska)" ["HT"]="Haiti" ["HU"]="Hungary" ["ID"]="Indonesia" ["IE"]="Ireland" ["IL"]="Israel" ["IN"]="India" ["IO"]="British Indian Ocean Territory" ["IQ"]="Iraq" ["IR"]="Iran" ["IS"]="Iceland" ["IT"]="Italy" ["JM"]="Jamaica" ["JO"]="Jordan" ["JP"]="Japan" ["KE"]="Kenya" ["KG"]="Kyrgyzstan" ["KH"]="Cambodia" ["KI"]="Kiribati" ["KM"]="Comoros" ["KN"]="Saint Kitts and Nevis" ["KP"]="Korea (North)" ["KR"]="Korea (South)" ["KW"]="Kuwait" ["KY"]="Cayman Islands" ["KZ"]="Kazakhstan" ["LA"]="Laos" ["LB"]="Lebanon" ["LC"]="Saint Lucia" ["LI"]="Liechtenstein" ["LK"]="Sri Lanka" ["LR"]="Liberia" ["LS"]="Lesotho" ["LT"]="Lithuania" ["LU"]="Luxembourg" ["LV"]="Latvia" ["LY"]="Libya" ["MA"]="Morocco" ["MC"]="Monaco" ["MD"]="Moldova" ["MG"]="Madagascar" ["MH"]="Marshall Islands" ["MK"]="Macedonia" ["ML"]="Mali" ["MM"]="Myanmar" ["MN"]="Mongolia" ["MO"]="Macau" ["MP"]="Northern Mariana Islands" ["MQ"]="Martinique" ["MR"]="Mauritania" ["MS"]="Montserrat" ["MT"]="Malta" ["MU"]="Mauritius" ["MV"]="Maldives" ["MW"]="Malawi" ["MX"]="Mexico" ["MY"]="Malaysia" ["MZ"]="Mozambique" ["NA"]="Namibia" ["NC"]="New Caledonia" ["NE"]="Niger" ["NF"]="Norfolk Island" ["NG"]="Nigeria" ["NI"]="Nicaragua" ["NL"]="Netherlands" ["NO"]="Norway" ["NP"]="Nepal" ["NR"]="Nauru" ["NT"]="Neutral Zone" ["NU"]="Niue" ["NZ"]="New Zealand (Aotearoa)" ["OM"]="Oman" ["PA"]="Panama" ["PE"]="Peru" ["PF"]="French Polynesia" ["PG"]="Papua New Guinea" ["PH"]="Philippines" ["PK"]="Pakistan" ["PL"]="Poland" ["PM"]="St. Pierre and Miquelon" ["PN"]="Pitcairn" ["PR"]="Puerto Rico" ["PT"]="Portugal" ["PW"]="Palau" ["PY"]="Paraguay" ["QA"]="Qatar" ["RE"]="Reunion" ["RO"]="Romania" ["RU"]="Russia" ["RW"]="Rwanda" ["SA"]="Saudi Arabia" ["Sb"]="Solomon Islands" ["SC"]="Seychelles" ["SD"]="Sudan" ["SE"]="Sweden" ["SG"]="Singapore" ["SH"]="St. Helena" ["SI"]="Slovenia" ["SJ"]="Svalbard and Jan Mayen Islands" ["SK"]="Slovak Republic" ["SL"]="Sierra Leone" ["SM"]="San Marino" ["SN"]="Senegal" ["SO"]="Somalia" ["SR"]="Suriname" ["ST"]="Sao Tome and Principe" ["SU"]="USSR (former)" ["SV"]="El Salvador" ["SY"]="Syria" ["SZ"]="Swaziland" ["TC"]="Turks and Caicos Islands" ["TD"]="Chad" ["TF"]="French Southern Territories" ["TG"]="Togo" ["TH"]="Thailand" ["TJ"]="Tajikistan" ["TK"]="Tokelau" ["TM"]="Turkmenistan" ["TN"]="Tunisia" ["TO"]="Tonga" ["TP"]="East Timor" ["TR"]="Turkey" ["TT"]="Trinidad and Tobago" ["TV"]="Tuvalu" ["TW"]="Taiwan" ["TZ"]="Tanzania" ["UA"]="Ukraine" ["UG"]="Uganda" ["UK"]="United Kingdom" ["UM"]="US Minor Outlying Islands" ["US"]="United States" ["UY"]="Uruguay" ["UZ"]="Uzbekistan" ["VA"]="Vatican City State (Holy See)" ["VC"]="Saint Vincent and the Grenadines" ["VE"]="Venezuela" ["VG"]="Virgin Islands (British)" ["VI"]="Virgin Islands (U.S.)" ["VN"]="Viet Nam" ["VU"]="Vanuatu" ["WF"]="Wallis and Futuna Islands" ["WS"]="Samoa" ["YE"]="Yemen" ["YT"]="Mayotte" ["YU"]="Yugoslavia" ["ZA"]="South Africa" ["ZM"]="Zambia" ["ZR"]="Zaire" ["ZW"]="Zimbabwe" ["COM"]="US Commercial" ["EDU"]="US Educational" ["GOV"]="US Government" ["INT"]="International" ["MIL"]="US Military" ["NET"]="Network" ["ORG"]="Non-Profit Organization" ["ARPA"]="Arpanet" ["NATO"]="Nato field")
+		typeset -A countrycodes=( ["AD"]="Andorra" ["AE"]="United Arab Emirates" ["AF"]="Afghanistan" ["AG"]="Antigua and Barbuda" ["AI"]="Anguilla" ["AL"]="Albania" ["AM"]="Armenia" ["AN"]="Netherlands Antilles" ["AO"]="Angola" ["AQ"]="Antarctica" ["AR"]="Argentina" ["AS"]="American Samoa" ["AT"]="Austria" ["AU"]="Australia" ["AW"]="Aruba" ["AZ"]="Azerbaijan" ["BA"]="Bosnia and Herzegovina" ["BB"]="Barbados" ["BD"]="Bangladesh" ["BE"]="Belgium" ["BF"]="Burkina Faso" ["BG"]="Bulgaria" ["BH"]="Bahrain" ["BI"]="Burundi" ["BJ"]="Benin" ["BM"]="Bermuda" ["BN"]="Brunei Darussalam" ["BO"]="Bolivia" ["BR"]="Brazil" ["BS"]="Bahamas" ["BT"]="Bhutan" ["BV"]="Bouvet Island" ["BW"]="Botswana" ["BY"]="Belarus" ["BZ"]="Belize" ["CA"]="Canada" ["CC"]="Cocos (Keeling) Islands" ["CF"]="Central African Republic" ["CG"]="Congo" ["CH"]="Switzerland" ["CI"]="Cote D'Ivoire (Ivory Coast)" ["CK"]="Cook Islands" ["CL"]="Chile" ["CM"]="Cameroon" ["CN"]="China" ["CO"]="Colombia" ["CR"]="Costa Rica" ["CS"]="Czechoslovakia (former)" ["CU"]="Cuba" ["CV"]="Cape Verde" ["CX"]="Christmas Island" ["CY"]="Cyprus" ["CZ"]="Czech Republic" ["DE"]="Germany" ["DJ"]="Djibouti" ["DK"]="Denmark" ["DM"]="Dominica" ["DO"]="Dominican Republic" ["DZ"]="Algeria" ["EC"]="Ecuador" ["EE"]="Estonia" ["EG"]="Egypt" ["EH"]="Western Sahara" ["ER"]="Eritrea" ["ES"]="Spain" ["ET"]="Ethiopia" ["FI"]="Finland" ["FJ"]="Fiji" ["FK"]="Falkland Islands (Malvinas)" ["FM"]="Micronesia" ["FO"]="Faroe Islands" ["FR"]="France" ["FX"]="France, Metropolitan" ["GA"]="Gabon" ["GB"]="Great Britain (UK)" ["GD"]="Grenada" ["GE"]="Georgia" ["GF"]="French Guiana" ["GH"]="Ghana" ["GI"]="Gibraltar" ["GL"]="Greenland" ["GM"]="Gambia" ["GN"]="Guinea" ["GP"]="Guadeloupe" ["GQ"]="Equatorial Guinea" ["GR"]="Greece" ["GS"]="S. Georgia and S. Sandwich Isls." ["GT"]="Guatemala" ["GU"]="Guam" ["GW"]="Guinea-Bissau" ["GY"]="Guyana" ["HK"]="Hong Kong" ["HM"]="Heard and McDonald Islands" ["HN"]="Honduras" ["HR"]="Croatia (Hrvatska)" ["HT"]="Haiti" ["HU"]="Hungary" ["ID"]="Indonesia" ["IE"]="Ireland" ["IL"]="Israel" ["IN"]="India" ["IO"]="British Indian Ocean Territory" ["IQ"]="Iraq" ["IR"]="Iran" ["IS"]="Iceland" ["IT"]="Italy" ["JM"]="Jamaica" ["JO"]="Jordan" ["JP"]="Japan" ["KE"]="Kenya" ["KG"]="Kyrgyzstan" ["KH"]="Cambodia" ["KI"]="Kiribati" ["KM"]="Comoros" ["KN"]="Saint Kitts and Nevis" ["KP"]="Korea (North)" ["KR"]="Korea (South)" ["KW"]="Kuwait" ["KY"]="Cayman Islands" ["KZ"]="Kazakhstan" ["LA"]="Laos" ["LB"]="Lebanon" ["LC"]="Saint Lucia" ["LI"]="Liechtenstein" ["LK"]="Sri Lanka" ["LR"]="Liberia" ["LS"]="Lesotho" ["LT"]="Lithuania" ["LU"]="Luxembourg" ["LV"]="Latvia" ["LY"]="Libya" ["MA"]="Morocco" ["MC"]="Monaco" ["MD"]="Moldova" ["MG"]="Madagascar" ["MH"]="Marshall Islands" ["MK"]="Macedonia" ["ML"]="Mali" ["MM"]="Myanmar" ["MN"]="Mongolia" ["MO"]="Macau" ["MP"]="Northern Mariana Islands" ["MQ"]="Martinique" ["MR"]="Mauritania" ["MS"]="Montserrat" ["MT"]="Malta" ["MU"]="Mauritius" ["MV"]="Maldives" ["MW"]="Malawi" ["MX"]="Mexico" ["MY"]="Malaysia" ["MZ"]="Mozambique" ["NA"]="Namibia" ["NC"]="New Caledonia" ["NE"]="Niger" ["NF"]="Norfolk Island" ["NG"]="Nigeria" ["NI"]="Nicaragua" ["NL"]="Netherlands" ["NO"]="Norway" ["NP"]="Nepal" ["NR"]="Nauru" ["NT"]="Neutral Zone" ["NU"]="Niue" ["NZ"]="New Zealand (Aotearoa)" ["OM"]="Oman" ["PA"]="Panama" ["PE"]="Peru" ["PF"]="French Polynesia" ["PG"]="Papua New Guinea" ["PH"]="Philippines" ["PK"]="Pakistan" ["PL"]="Poland" ["PM"]="St. Pierre and Miquelon" ["PN"]="Pitcairn" ["PR"]="Puerto Rico" ["PT"]="Portugal" ["PW"]="Palau" ["PY"]="Paraguay" ["QA"]="Qatar" ["RE"]="Reunion" ["RO"]="Romania" ["RU"]="Russia" ["RW"]="Rwanda" ["SA"]="Saudi Arabia" ["Sb"]="Solomon Islands" ["SC"]="Seychelles" ["SD"]="Sudan" ["SE"]="Sweden" ["SG"]="Singapore" ["SH"]="St. Helena" ["SI"]="Slovenia" ["SJ"]="Svalbard and Jan Mayen Islands" ["SK"]="Slovak Republic" ["SL"]="Sierra Leone" ["SM"]="San Marino" ["SN"]="Senegal" ["SO"]="Somalia" ["SR"]="Suriname" ["ST"]="Sao Tome and Principe" ["SU"]="USSR (former)" ["SV"]="El Salvador" ["SY"]="Syria" ["SZ"]="Swaziland" ["TC"]="Turks and Caicos Islands" ["TD"]="Chad" ["TF"]="French Southern Territories" ["TG"]="Togo" ["TH"]="Thailand" ["TJ"]="Tajikistan" ["TK"]="Tokelau" ["TM"]="Turkmenistan" ["TN"]="Tunisia" ["TO"]="Tonga" ["TP"]="East Timor" ["TR"]="Turkey" ["TT"]="Trinidad and Tobago" ["TV"]="Tuvalu" ["TW"]="Taiwan" ["TZ"]="Tanzania" ["UA"]="Ukraine" ["UG"]="Uganda" ["UK"]="United Kingdom" ["UM"]="US Minor Outlying Islands" ["US"]="United States" ["UY"]="Uruguay" ["UZ"]="Uzbekistan" ["VA"]="Vatican City State (Holy See)" ["VC"]="Saint Vincent and the Grenadines" ["VE"]="Venezuela" ["VG"]="Virgin Islands (British)" ["VI"]="Virgin Islands (U.S.)" ["VN"]="Viet Nam" ["VU"]="Vanuatu" ["WF"]="Wallis and Futuna Islands" ["WS"]="Samoa" ["YE"]="Yemen" ["YT"]="Mayotte" ["YU"]="Yugoslavia" ["ZA"]="South Africa" ["ZM"]="Zambia" ["ZR"]="Zaire" ["ZW"]="Zimbabwe" ["COM"]="US Commercial" ["EDU"]="US Educational" ["GOV"]="US Government" ["INT"]="International" ["MIL"]="US Military" ["NET"]="Network" ["ORG"]="Non-Profit Organization" ["ARPA"]="Arpanet" ["NATO"]="Nato field")
 	else
 		echo '[-] need a bash v4 shell to run'
 	fi
@@ -145,10 +159,12 @@ utrace() {
 	while read i
 	do
 		temparray=$( whois $i | \grep -i country | cut -d':' -f2 | sed -e 's/ //g')
+
 		for j in $temparray
 		do
 			echo -e "\e[33;1m$j \e[0m${countrycodes[$j]}"
 		done
+
 		echo -en "\e[31m> \e[34m"
 	done
 }

@@ -24,6 +24,7 @@
     - fail2ban
     - filezilla
     - freerdp-x11
+    - geoip-bin
     - git-all
     - global
     - golang-1.10
