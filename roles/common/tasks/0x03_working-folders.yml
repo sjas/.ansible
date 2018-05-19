@@ -5,17 +5,18 @@
     dest: /home/sjas/{{ item }}
     state: directory
   with_items:
-    - wrk
     - dl
-    - prv
-    - tmpl
-    - pub
     - doc
-    - mp3
-    - img
-    - vid
-    - txt
     - etc
+    - img
+    - mp3
+    - pdf
+    - prv
+    - pub
+    - tmpl
+    - txt
+    - vid
+    - wrk
     - etc/.dotfiles
     - .config
     - .local
