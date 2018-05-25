@@ -13,12 +13,12 @@ alias   rea="( cd $DOTFILES; ansible-playbook neon.yml )"
 
 ## FIXME with 'n' autocompletion
 #NOTES
-alias    et="vim $DOTFILES/../.todo2"
-alias   ett="vim $DOTFILES/../.todo"
-alias   eta="vim $DOTFILES/../.todo_agenda"
-alias   etp="vim $DOTFILES/../.todo_prv"
-alias  etpi="vim $DOTFILES/../.todo_install"
-alias   ets="vim $DOTFILES/../.todo_srv"
+alias    et="vim ~/.todo2"
+alias   ett="vim ~/.todo"
+alias   eta="vim ~/.todo_agenda"
+alias   etp="vim ~/.todo_prv"
+alias  etpi="vim ~/.todo_install"
+alias   ets="vim ~/.todo_srv"
 
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 
