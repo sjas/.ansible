@@ -80,6 +80,9 @@
     - whois
     - whowatch
     - x2x
+    - xautomation
+    - xbindkeys
+    - xbindkeys-config
 
 - name: language packages
   apt: name={{ item }} cache_valid_time=1800
