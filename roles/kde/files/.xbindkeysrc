@@ -4,7 +4,7 @@
 ###########################
 #
 # Version: 1.8.6
-#
+
 # If you edit this file, do not forget to uncomment any lines
 # that you change.
 # The pound(#) symbol may be used anywhere for comments.
@@ -65,9 +65,13 @@
 #"rxvt"
 #  Control + b:2 + Release
 
-# c-m-b = clipboard, b:9 = mouse-forward
+# c-m-b = clipboard, caps-b:9 = mouse-forward
 "xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
-  b:9 + Release
+  Control + Caps_Lock + b:9 + Release
+
+## paste + enter upon paste via caps-b:8 = mouse-backward
+"xte 'mouseclick 2' 'key Return'"
+  Control + Caps_Lock + b:8 + Release
 
 ##################################
 # End of xbindkeys configuration #
