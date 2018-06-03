@@ -93,6 +93,14 @@ tmwh() {
 	tmux split-window -dv "$*"
 }
 
+#OPENSSL
+alias oxp='openssl rsa -noout -text -in'
+alias oxr='openssl req -noout -text -in'
+alias oxc='openssl x509 -noout -text -in'
+
+#XCLIP like pb{copy,paste} on osx
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 #ALIASES
 alias ssha='eval $(ssh-agent) && ssh-add'
