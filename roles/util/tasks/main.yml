@@ -9,3 +9,6 @@
 
 - name: direnv
   include: 0x04_direnv.yml
+
+- name: gosca, go scaffolding
+  include: 0x05_gosca.yml
