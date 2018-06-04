@@ -70,7 +70,8 @@
   Control + Caps_Lock + b:9 + Release
 
 ## paste + enter upon paste via caps-b:8 = mouse-backward
-"xte 'mouseclick 2' 'key Return'"
+#"xte 'mouseclick 2' 'key Return'"
+"xte 'key Return'"
   Control + Caps_Lock + b:8 + Release
 
 ##################################
