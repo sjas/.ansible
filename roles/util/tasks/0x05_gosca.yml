@@ -4,3 +4,4 @@
   copy:
     src: gosca
     dest: /home/sjas/.local/bin
+    mode: 744
