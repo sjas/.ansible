@@ -5,6 +5,7 @@
     dest: /home/sjas/{{ item }}
     state: directory
   with_items:
+    - bin
     - dl
     - doc
     - etc

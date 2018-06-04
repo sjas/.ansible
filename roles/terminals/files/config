@@ -46,3 +46,4 @@
     scrollback_infinite = True
     urgent_bell = True
     use_system_font = False
+    word_chars = "-A-Za-z0-9,./?%&#_~"
