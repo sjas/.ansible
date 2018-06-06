@@ -10,6 +10,7 @@
     - atop
     - bash-completion
     - bashdb
+    - checkinstall
     - chrony
     - colordiff
     - conntrack
