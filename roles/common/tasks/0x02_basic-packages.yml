@@ -66,6 +66,7 @@
     - qmmp
     - rsync
     - screen
+    - shellcheck
     - strace
     - sysstat
     - tcpdump
