@@ -3,3 +3,6 @@
 
 - name: vscode
   include: 0x02_vscode.yml
+
+- name: make golang scriptable
+  include: 0x03_golang.yml

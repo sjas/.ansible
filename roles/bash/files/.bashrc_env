@@ -25,6 +25,7 @@ export LESSGLOBALTAGS=global
 
 export GOROOT=/usr/lib/go-1.10
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
+export GOPATH=$HOME/go 
 
 pathadd() {
 	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]

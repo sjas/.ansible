@@ -1,0 +1,17 @@
+- name: check if gorun is installed
+  stat: 
+    path: /home/sjas/go/bin/gorun
+  register: gorun_installed
+
+- name: install gorun if needed
+  become: yes
+  become_user: sjas
+  command: "/usr/lib/go-1.10/bin/go get github.com/erning/gorun"
+  when: not gorun_installed.stat.exists
+  changed_when: false
+
+- name: copy gorun binary if not alreaydy in in /usr/local/bin
+  copy:
+    src: /home/sjas/go/bin/gorun
+    dest: /usr/local/bin
+    force: no
