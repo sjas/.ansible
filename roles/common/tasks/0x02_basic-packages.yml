@@ -53,6 +53,7 @@
     - nload
     - nmap
     - nmon
+    - nomacs
     - openvpn
     - percona-toolkit
     - net-tools
@@ -67,6 +68,7 @@
     - rsync
     - screen
     - shellcheck
+    - shutter
     - strace
     - sysstat
     - tcpdump
