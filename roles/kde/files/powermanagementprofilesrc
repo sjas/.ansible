@@ -2,37 +2,44 @@
 icon=battery-charging
 
 [AC][DPMSControl]
-idleTime=600
+idleTime=1800
 
 [AC][DimDisplay]
-idleTime=300000
+idleTime=600000
 
 [AC][HandleButtonEvents]
 lidAction=1
 powerButtonAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [Battery]
 icon=battery-060
 
 [Battery][DPMSControl]
-idleTime=300
+idleTime=900
 
 [Battery][DimDisplay]
-idleTime=120000
+idleTime=300000
 
 [Battery][HandleButtonEvents]
 lidAction=1
 powerButtonAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [Battery][SuspendSession]
-idleTime=600000
+idleTime=3600000
 suspendType=1
+
+[Battery][WirelessPowerSaving]
+btOption=1
+wifiOption=0
+wwanOption=0
 
 [LowBattery]
 icon=battery-low
 
 [LowBattery][BrightnessControl]
-value=30
+value=20
 
 [LowBattery][DPMSControl]
 idleTime=120
@@ -43,10 +50,16 @@ idleTime=60000
 [LowBattery][HandleButtonEvents]
 lidAction=1
 powerButtonAction=16
+triggerLidActionWhenExternalMonitorPresent=false
 
 [LowBattery][SuspendSession]
 idleTime=300000
 suspendType=1
+
+[LowBattery][WirelessPowerSaving]
+btOption=1
+wifiOption=0
+wwanOption=0
 
 [migration]
 kdedShortcutMigration=true
