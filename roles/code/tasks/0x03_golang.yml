@@ -8,10 +8,18 @@
   become_user: sjas
   command: "/usr/lib/go-1.10/bin/go get github.com/erning/gorun"
   when: not gorun_installed.stat.exists
-  changed_when: false
 
 - name: copy gorun binary if not alreaydy in in /usr/local/bin
   copy:
     src: /home/sjas/go/bin/gorun
     dest: /usr/local/bin
+    mode: 0755
     force: no
+
+- name: make sure rc.local deploys binfmt string upon boot
+  lineinfile:
+    path: /etc/rc.local
+    line: "echo ':golang:E::go::/usr/local/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
+    insertbefore: "exit 0"
+    state: present
+  tags: asdf
