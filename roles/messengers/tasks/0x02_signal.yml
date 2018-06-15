@@ -1,3 +1,5 @@
+---
+
 - name: whisper systems apt-key
   apt_key:
     url: https://updates.signal.org/desktop/apt/keys.asc

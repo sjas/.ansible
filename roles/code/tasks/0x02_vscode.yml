@@ -1,3 +1,5 @@
+---
+
 - name: microsoft apt-key
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc

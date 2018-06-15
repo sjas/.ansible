@@ -1,3 +1,5 @@
+---
+
 - name: deploy shortcut actions
   become: yes
   become_user: sjas

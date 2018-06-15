@@ -1,3 +1,5 @@
+---
+
 - name: etckeeper first
   apt: name={{ item }} cache_valid_time=1800
   with_items:
@@ -88,6 +90,7 @@
     - xautomation
     - xbindkeys
     - xbindkeys-config
+    - yamllint
 
 - name: language packages
   apt: name={{ item }} cache_valid_time=1800

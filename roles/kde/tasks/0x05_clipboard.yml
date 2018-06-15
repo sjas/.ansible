@@ -1,3 +1,5 @@
+---
+
 - name: get plasma version for template
   shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
   register: plasma_version

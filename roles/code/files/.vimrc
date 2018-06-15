@@ -18,6 +18,8 @@ let maplocalleader = ','
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
 nnoremap <leader>bd :q<cr>
+nnoremap <leader>bp :N<cr>
+nnoremap <leader>bn :n<cr>
 nnoremap <leader>bN :vnew<cr>
 nnoremap <leader>fqq :wq!<cr>
 nnoremap <leader>qq :qall!<cr>

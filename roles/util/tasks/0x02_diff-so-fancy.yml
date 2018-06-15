@@ -1,3 +1,5 @@
+---
+
 - name: deploy diff-so-fancy script
   become: yes
   become_user: sjas

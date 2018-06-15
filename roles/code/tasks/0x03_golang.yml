@@ -1,5 +1,7 @@
+---
+
 - name: check if gorun is installed
-  stat: 
+  stat:
     path: /home/sjas/go/bin/gorun
   register: gorun_installed
 
@@ -22,4 +24,3 @@
     line: "echo ':golang:E::go::/usr/local/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
     insertbefore: "exit 0"
     state: present
-  tags: asdf

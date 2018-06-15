@@ -1,3 +1,5 @@
+---
+
 - name: undo systemd-timesyncd
   systemd:
     name: systemd-timesyncd

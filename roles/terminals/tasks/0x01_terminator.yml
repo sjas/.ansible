@@ -1,3 +1,5 @@
+---
+
 - name: terminator package
   apt:
     name: terminator

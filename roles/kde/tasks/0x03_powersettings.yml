@@ -1,3 +1,5 @@
+---
+
 - name: powersettings config
   become: yes
   become_user: sjas

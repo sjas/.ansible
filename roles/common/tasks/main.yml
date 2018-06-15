@@ -1,3 +1,5 @@
+---
+
 - name: system upgrade
   include: 0x01_dist-upgrade.yml
 

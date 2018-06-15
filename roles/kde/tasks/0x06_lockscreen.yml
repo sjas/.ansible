@@ -1,3 +1,5 @@
+---
+
 - name: fix lockscreen color and timeouts
   become: yes
   become_user: sjas

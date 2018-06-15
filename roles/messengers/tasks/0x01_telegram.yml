@@ -1,3 +1,5 @@
+---
+
 - name: telegram install check
   shell: find /opt/Telegram -type f | grep Telegram
   register: exitcode_telegram_install

@@ -1,3 +1,5 @@
+---
+
 - name: fix taskbar size
   replace:
     path: /home/sjas/.config/plasmashellrc

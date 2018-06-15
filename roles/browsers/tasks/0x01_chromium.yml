@@ -1,3 +1,5 @@
+---
+
 - name: chromium package
   apt:
     name: chromium-browser

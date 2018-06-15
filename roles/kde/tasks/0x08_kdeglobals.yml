@@ -1,3 +1,4 @@
+---
 
 - name: get firefox profile folder path
   shell: ls /home/sjas/.mozilla/firefox/*default -d
