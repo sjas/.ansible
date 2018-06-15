@@ -9,7 +9,6 @@ se clipboard=unnamedplus
 "se backupdir=$TEMP
 "se directory=$TEMP
 
-
 " LEADER bindings
 " spacebar, entered via ctrl_v,<space>
 let mapleader = ' '
@@ -31,8 +30,8 @@ nnoremap <leader>sh :sh<cr>
 "vnoremap < <gv
 "vnoremap > <gv
 
-
 nnoremap  <leader>ev  :vs $DOTFILES/roles/code/files/.vimrc<cr>
 nnoremap  <leader>eba :vs $DOTFILES/roles/bash/files/.bashrc_aliases<cr>
 nnoremap  <leader>ebe :vs $DOTFILES/roles/bash/files/.bashrc_env<cr>
 nnoremap  <leader>ebg :vs $DOTFILES/roles/bash/files/.bashrc_git<cr>
+
