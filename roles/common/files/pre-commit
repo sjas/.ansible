@@ -1,0 +1,6 @@
+echo
+echo running yamllint...
+yamllint /home/sjas/etc/.ansible/
+echo running ansible-lint...
+ansible-lint /home/sjas/etc/.ansible/neon.yml
+echo
