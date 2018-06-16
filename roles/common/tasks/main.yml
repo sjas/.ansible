@@ -11,3 +11,6 @@
 
 - name: ntp
   include: 0x04_ntp.yml
+
+- name: ansible-lint
+  include: 0x05_ansible-lint.yml
