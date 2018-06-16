@@ -1,5 +1,5 @@
 {
-    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",<>/?",
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
     "window.zoomLevel": 0,
     "editor.autoIndent": false,
     "editor.emptySelectionClipboard": false,
