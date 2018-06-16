@@ -1,6 +1,6 @@
 # .ansible
 
-workstation bootstrapping, to be rebased onto a blank kde neon install
+workstation bootstrapping, rebase this onto a blank kde neon install
 
 - tested with neon 5.13.x
 - uses ansible 2.5.x via PPA so human-readable output via callback works
