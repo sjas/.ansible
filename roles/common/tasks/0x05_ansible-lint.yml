@@ -1,0 +1,30 @@
+---
+
+- name: ansible-lint wrapper install check
+  shell: find /home/sjas/.local/bin -type f | grep ansible-lint
+  register: exitcode_ansiblelint_install
+  ignore_errors: true
+  changed_when: false
+
+- name: get ansible-lint from github
+  git:
+    repo: https://github.com/willthames/ansible-lint
+    dest: /opt/ansible-lint
+    version: 23bba0c525ee7349a81a2480bc12c2533af979fa
+
+- name: deploy ansible-lint wrapper
+  become: yes
+  become_user: sjas
+  copy:
+    src: ansible-lint
+    dest: /home/sjas/.local/bin/
+    mode: 0744
+  when: exitcode_ansiblelint_install.rc != 0
+
+- name: deploy yamllint/ansible-lint hook
+  become: yes
+  become_user: sjas
+  copy:
+    src: pre-commit
+    dest: /home/sjas/etc/.ansible/.git/hooks
+    mode: 0744

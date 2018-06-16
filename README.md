@@ -1,10 +1,11 @@
 # .ansible
 
-workstation bootstrapping, to be rebased onto a blank kde neon install
+workstation bootstrapping, rebase this onto a blank kde neon install
 
 - tested with neon 5.13.x
 - uses ansible 2.5.x via PPA so human-readable output via callback works
 - default verbosity changed to '-vv' so the FILE:LINE position of the currently run task is shown
+- ansible-lint and yamllint are run on every commit, use `gc asdf` after deploy to see wether they find something
 
 ## bootstrapping
 
@@ -59,3 +60,7 @@ workstation bootstrapping, to be rebased onto a blank kde neon install
 
     ## first: cd ~/.config; git init; git add .; git commit -m init
     watch -n1 -d 'git diff HEAD | grep -e diff -e \+\+\+ -e^\+ | grep --color -e$ -ediff\ \-\-.\* | wc -l; echo; git status'
+
+## todo
+
+currently a lot of hardcoded path's are used, most revolves around `/home/sjas`. possibly this will not get cleaned up in the foreseeable future, use `sed`/`grep` to fix this for yourself.
