@@ -9,8 +9,6 @@ sudo apt install xterm libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 -y &> /dev/null
 https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 
 
-khotkeysrc  ## miese scheisse
-
 # startmenu
 cat kactivitymanagerd-statsrc 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-3-fe71fd7d-d47c-48e9-9a81-47e7e7d2ac03]
@@ -18,9 +16,6 @@ ordering=preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolp
 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
 ordering=preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop
-
-
-
 
 
 

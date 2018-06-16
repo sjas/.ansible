@@ -24,7 +24,7 @@ gitshowauthor() {
 alias gsha=gitshowauthor                                ## show all commit diffs for author
 alias gd="git diff"                                     ## diff
 alias gdc="git diff --cached"                    	## diff staged files on index
-alias gdc="git diff HEAD"                    		## diff everything against last commit
+alias gdh="git diff HEAD"                    		## diff everything against last commit
 gitdiffsofancy(){
         git diff "$*" | diff-so-fancy
 }
