@@ -1,0 +1,22 @@
+---
+
+- name: install libvirt and virt-manager packages
+  apt: name={{ item }} cache_valid_time=1800
+  with_items:
+    - qemu
+    - qemu-utils
+    - libvirt-bin
+    - virtinst
+    - unrar-free
+    - libguestfs-tools
+    - libosinfo-bin
+
+- name: ensure libvirtd group exists
+  group:
+    name: libvirtd
+
+- name: make user part of libvirtd group
+  user:
+    name: sjas
+    append: yes
+    groups: libvirtd
