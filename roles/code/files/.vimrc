@@ -29,7 +29,9 @@ nnoremap <leader>feR :!cp $DOTFILES/roles/code/files/.vimrc /home/sjas/.vimrc<cr
 nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
+
 nnoremap <leader>l :!go fmt %<cr>:<backspace>
+nnoremap <leader>fr :!./%<cr>
 
 "vnoremap < <gv
 "vnoremap > <gv
