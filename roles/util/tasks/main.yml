@@ -14,3 +14,6 @@
 
 - name: gosca, go scaffolding
   include: 0x05_gosca.yml
+
+- name: scc code counter
+  include: 0x06_scc.yml
