@@ -1,0 +1,8 @@
+---
+
+- name: tmux config
+  become: yes
+  become_user: sjas
+  copy:
+    src: .tmux.conf
+    dest: /home/sjas/

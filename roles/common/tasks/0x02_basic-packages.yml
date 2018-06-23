@@ -63,6 +63,8 @@
     - p7zip
     - parallel
     - parted
+    - puppet
+    - puppet-lint
     - pv
     - pwgen
     - python-optcomplete
