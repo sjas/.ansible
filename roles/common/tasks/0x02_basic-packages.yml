@@ -37,6 +37,7 @@
     - htop
     - httping
     - iftop
+    - inxi
     - ioping
     - iotop
     - kdiff3
