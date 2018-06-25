@@ -37,6 +37,7 @@
     - htop
     - httping
     - iftop
+    - inxi
     - ioping
     - iotop
     - kdiff3
@@ -96,10 +97,11 @@
     - yamllint
 
 - name: basic packages from single .deb files
-  apt: deb="{{ item }}"
+  apt: deb={{ item }}
   with_items:
     - /home/sjas/etc/.ansible/roles/common/files/fd_7.0.0_amd64.deb
     - /home/sjas/etc/.ansible/roles/common/files/ripgrep_0.8.1_amd64.deb
+
 - name: language packages
   apt: name={{ item }} cache_valid_time=1800
   with_items:
