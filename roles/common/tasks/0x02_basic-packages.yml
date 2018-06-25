@@ -71,6 +71,7 @@
     - qmmp
     - rsync
     - screen
+    - scite
     - shellcheck
     - shutter
     - strace
