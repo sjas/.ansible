@@ -9,6 +9,7 @@
   apt: name={{ item }} autoclean=yes autoremove=yes update_cache=yes
   with_items:
     - apt-file
+    - at
     - atop
     - bash-completion
     - bashdb
