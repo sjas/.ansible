@@ -2,7 +2,7 @@
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch keyboard layout to German (eliminate dead keys)=none,none,Switch keyboard layout to German (eliminate dead keys)
 Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
-_k_friendly_name=System Settings
+_k_friendly_name=KDE Daemon
 
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
@@ -12,7 +12,7 @@ _k_friendly_name=Accessibility
 Disable Touchpad=Touchpad Off,Touchpad Off,Disable Touchpad
 Enable Touchpad=Touchpad On,Touchpad On,Enable Touchpad
 Toggle Touchpad=Touchpad Toggle,Touchpad Toggle,Toggle Touchpad
-_k_friendly_name=System Settings
+_k_friendly_name=KDE Daemon
 
 [kded5]
 Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
@@ -20,7 +20,7 @@ _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
-_k_friendly_name=System Settings
+_k_friendly_name=KDE Daemon
 {36c9903f-0548-473f-bfce-f97acc71d22e}=Meta+B,none,chrome
 {38356836-594d-447b-94db-999f2928bdc5}=Meta+N,none,chromium
 {408ddfd8-a7f7-453f-960a-0230dca149cf}=Meta+Print,none,Take Active Window Screenshot
@@ -39,11 +39,11 @@ _k_friendly_name=System Settings
 [kmix]
 _k_friendly_name=Audio Volume
 decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Decrease Microphone Volume
-decrease_volume=Volume Down,Volume Down,Decrease Volume
+decrease_volume=Volume Down\tCtrl+Alt+Shift+Down,Volume Down,Decrease Volume
 increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Increase Microphone Volume
-increase_volume=Volume Up,Volume Up,Increase Volume
-mic_mute=Microphone Mute,Microphone Mute,Mute Microphone
-mute=Volume Mute,Volume Mute,Mute
+increase_volume=Volume Up\tCtrl+Alt+Shift+Up,Volume Up,Increase Volume
+mic_mute=Microphone Mute\tCtrl+Alt+Shift+Right,Microphone Mute,Mute Microphone
+mute=Volume Mute\tCtrl+Alt+Shift+Left,Volume Mute,Mute
 
 [krunner]
 _k_friendly_name=Run Command
@@ -69,10 +69,10 @@ Invert Screen Colors=none,none,Invert Screen Colors
 Kill Window=Ctrl+Alt+Esc,Ctrl+Alt+Esc,Kill Window
 MoveMouseToCenter=Meta+F6,Meta+F6,Move Mouse to Center
 MoveMouseToFocus=Meta+F5,Meta+F5,Move Mouse to Focus
-MoveZoomDown=,Meta+Down,Move Zoomed Area Downwards
-MoveZoomLeft=,Meta+Left,Move Zoomed Area to Left
-MoveZoomRight=,Meta+Right,Move Zoomed Area to Right
-MoveZoomUp=,Meta+Up,Move Zoomed Area Upwards
+MoveZoomDown=,none,Move Zoomed Area Downwards
+MoveZoomLeft=,none,Move Zoomed Area to Left
+MoveZoomRight=,none,Move Zoomed Area to Right
+MoveZoomUp=,none,Move Zoomed Area Upwards
 Remove Window From Group=none,none,Remove Window From Group
 Setup Window Shortcut=none,none,Setup Window Shortcut
 Show Desktop=Meta+D,none,Show Desktop
@@ -140,10 +140,10 @@ Window Fullscreen=none,none,Make Window Fullscreen
 Window Grow Horizontal=none,none,Pack Grow Window Horizontally
 Window Grow Vertical=none,none,Pack Grow Window Vertically
 Window Lower=none,none,Lower Window
-Window Maximize=Meta+Up,none,Maximize Window
+Window Maximize=Meta+Up,Meta+PgUp,Maximize Window
 Window Maximize Horizontal=none,none,Maximize Window Horizontally
 Window Maximize Vertical=none,none,Maximize Window Vertically
-Window Minimize=Meta+Down,none,Minimize Window
+Window Minimize=Meta+Down,Meta+PgDown,Minimize Window
 Window Move=none,none,Move Window
 Window No Border=none,none,Hide Window Border
 Window On All Desktops=none,none,Keep Window on All Desktops
@@ -156,12 +156,12 @@ Window Pack Down=none,none,Pack Window Down
 Window Pack Left=none,none,Pack Window to the Left
 Window Pack Right=none,none,Pack Window to the Right
 Window Pack Up=none,none,Pack Window Up
-Window Quick Tile Bottom=none,none,Quick Tile Window to the Bottom
+Window Quick Tile Bottom=none,Meta+Down,Quick Tile Window to the Bottom
 Window Quick Tile Bottom Left=none,none,Quick Tile Window to the Bottom Left
 Window Quick Tile Bottom Right=none,none,Quick Tile Window to the Bottom Right
-Window Quick Tile Left=Meta+Left,none,Quick Tile Window to the Left
-Window Quick Tile Right=Meta+Right,none,Quick Tile Window to the Right
-Window Quick Tile Top=none,none,Quick Tile Window to the Top
+Window Quick Tile Left=Meta+Left,Meta+Left,Quick Tile Window to the Left
+Window Quick Tile Right=Meta+Right,Meta+Right,Quick Tile Window to the Right
+Window Quick Tile Top=none,Meta+Up,Quick Tile Window to the Top
 Window Quick Tile Top Left=none,none,Quick Tile Window to the Top Left
 Window Quick Tile Top Right=none,none,Quick Tile Window to the Top Right
 Window Raise=none,none,Raise Window
@@ -169,7 +169,7 @@ Window Resize=none,none,Resize Window
 Window Shade=none,none,Shade Window
 Window Shrink Horizontal=none,none,Pack Shrink Window Horizontally
 Window Shrink Vertical=none,none,Pack Shrink Window Vertically
-Window to Desktop 1=none,none,Window to Desktop 1
+Window to Desktop 1=Ctrl+Alt+Shift+F1,none,Window to Desktop 1
 Window to Desktop 10=none,none,Window to Desktop 10
 Window to Desktop 11=none,none,Window to Desktop 11
 Window to Desktop 12=none,none,Window to Desktop 12
@@ -180,10 +180,10 @@ Window to Desktop 16=none,none,Window to Desktop 16
 Window to Desktop 17=none,none,Window to Desktop 17
 Window to Desktop 18=none,none,Window to Desktop 18
 Window to Desktop 19=none,none,Window to Desktop 19
-Window to Desktop 2=none,none,Window to Desktop 2
+Window to Desktop 2=Ctrl+Alt+Shift+F2,none,Window to Desktop 2
 Window to Desktop 20=none,none,Window to Desktop 20
-Window to Desktop 3=none,none,Window to Desktop 3
-Window to Desktop 4=none,none,Window to Desktop 4
+Window to Desktop 3=Ctrl+Alt+Shift+F3,none,Window to Desktop 3
+Window to Desktop 4=Ctrl+Alt+Shift+F4,none,Window to Desktop 4
 Window to Desktop 5=none,none,Window to Desktop 5
 Window to Desktop 6=none,none,Window to Desktop 6
 Window to Desktop 7=none,none,Window to Desktop 7
@@ -209,6 +209,8 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
+mediavolumedown=none,none,Media volume down
+mediavolumeup=none,none,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous

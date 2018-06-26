@@ -17,6 +17,7 @@ let maplocalleader = ','
 
 " SPACEMACS bindings
 nnoremap <leader>fs :w<cr>
+nnoremap <leader>fe :e!<cr>
 nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
 nnoremap <leader>bd :q<cr>
 nnoremap <leader>bp :N<cr>
