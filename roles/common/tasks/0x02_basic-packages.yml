@@ -71,6 +71,7 @@
     - pwgen
     - python-optcomplete
     - qmmp
+    - rpm2cpio
     - rsync
     - screen
     - scite

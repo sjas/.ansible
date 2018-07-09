@@ -183,3 +183,7 @@ god() {
 	firefox --new-tab https://golang.org/pkg/$1
 
 }
+
+rpmextract() {
+	rpm2cpio $1 | cpio -idmv
+}
