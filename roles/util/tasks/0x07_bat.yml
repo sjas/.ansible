@@ -1,0 +1,9 @@
+---
+
+- name: deploy bat
+  become: yes
+  become_user: sjas
+  copy:
+    src: bat
+    dest: /home/sjas/.local/bin
+    mode: 0744

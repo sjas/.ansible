@@ -17,3 +17,6 @@
 
 - name: scc code counter
   include: 0x06_scc.yml
+
+- name: bat
+  include: 0x07_bat.yml
