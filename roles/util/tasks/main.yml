@@ -20,3 +20,6 @@
 
 - name: bat
   include: 0x07_bat.yml
+
+- name: CF mm tools
+  include: 0x08_mm.yml

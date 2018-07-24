@@ -1,0 +1,10 @@
+---
+
+- name: deploy CF mm tools
+  become: yes
+  become_user: sjas
+  copy: src={{ item }} dest=/home/sjas/.local/bin mode=0744
+  with_items:
+    - mmhistogram
+    - mmsum
+    - mmwatch
