@@ -89,6 +89,7 @@
     - tmux
     - traceroute
     - tree
+    - tshark
     - uptimed
     - util-linux
     - vim
