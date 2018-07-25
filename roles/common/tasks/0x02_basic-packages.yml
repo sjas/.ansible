@@ -39,6 +39,7 @@
     - httping
     - iftop
     - inxi
+    - iperf3
     - ioping
     - iotop
     - kdiff3
@@ -58,6 +59,8 @@
     - nmap
     - nmon
     - nomacs
+    - nttcp
+    - nuttcp
     - openvpn
     - percona-toolkit
     - pcmanfm
