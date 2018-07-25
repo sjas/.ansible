@@ -69,7 +69,7 @@ cn() {
 
 #SHOW
 shownet() {
-	watch -n 1 -d 'ip r; echo; cat /etc/resolv.conf; echo; ip -4 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+	watch -n 1 -d 'ip -d r; echo; cat /etc/resolv.conf; echo; ip -d l; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 showru() {
 	echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | column -t | sort -k1; done
