@@ -21,6 +21,7 @@
     - dhcpdump
     - dhcping
     - diffutils
+    - edac-utils
     - elinks
     - ethstatus
     - exfat-fuse
