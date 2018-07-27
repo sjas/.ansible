@@ -83,6 +83,7 @@
     - shellcheck
     - shutter
     - strace
+    - subversion
     - sysstat
     - tcpdump
     - thunderbird
