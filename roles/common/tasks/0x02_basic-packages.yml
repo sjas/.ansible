@@ -26,6 +26,7 @@
     - ethstatus
     - exfat-fuse
     - exfat-utils
+    - expect
     - fail2ban
     - filezilla
     - freerdp-x11
