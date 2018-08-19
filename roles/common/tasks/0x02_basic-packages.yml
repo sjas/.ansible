@@ -47,6 +47,7 @@
     - kdiff3
     - leafpad
     - libreoffice
+    - libxml2-utils
     - lnav
     - iputils-arping
     - ltrace
@@ -105,6 +106,7 @@
     - xautomation
     - xbindkeys
     - xbindkeys-config
+    - xmlstarlet
     - yamllint
 
 - name: basic packages from single .deb files
