@@ -23,3 +23,6 @@
 
 - name: CF mm tools
   include: 0x08_mm.yml
+
+- name: xidel
+  include: 0x09_xidel.yml

@@ -1,0 +1,9 @@
+---
+
+- name: deploy xidel
+  become: yes
+  become_user: sjas
+  copy:
+    src: xidel
+    dest: /home/sjas/.local/bin
+    mode: 0744
