@@ -13,6 +13,7 @@
     - atop
     - bash-completion
     - bashdb
+    - ccze
     - checkinstall
     - chrony
     - colordiff
