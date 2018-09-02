@@ -12,6 +12,7 @@
   broadcast_group = <Primary><Shift>F10
   broadcast_off = <Primary><Shift>F9
   edit_window_title = <Primary><Shift>F11
+  full_screen = <Primary>F11
   go_down = <Primary><Shift>j
   go_left = <Primary><Shift>h
   go_right = <Primary><Shift>l
@@ -47,3 +48,4 @@
     urgent_bell = True
     use_system_font = False
     word_chars = "-A-Za-z0-9,./?%&#_~"
+
