@@ -9,13 +9,6 @@
     repo: deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging xenial main
     filename: brave
 
-#- name: brave dependencies
-#  apt: >
-#    name: {{ item }}
-#    update_cache: yes
-#  with_items:
-#    - apt-transport-https
-
 - name: brave package
   apt:
     name: brave-beta
