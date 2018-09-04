@@ -8,3 +8,6 @@
 
 - name: firefox
   include: 0x03_firefox.yml
+
+- name: brave
+  include: 0x04_brave.yml

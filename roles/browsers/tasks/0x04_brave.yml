@@ -1,0 +1,22 @@
+---
+
+- name: brave apt-key
+  apt_key:
+    url: https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc
+
+- name: brave repo
+  apt_repository:
+    repo: deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging xenial main
+    filename: brave
+
+#- name: brave dependencies
+#  apt: >
+#    name: {{ item }}
+#    update_cache: yes
+#  with_items:
+#    - apt-transport-https
+
+- name: brave package
+  apt:
+    name: brave-beta
+    cache_valid_time: 1800
