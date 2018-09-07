@@ -74,6 +74,7 @@
     - p7zip
     - parallel
     - parted
+    - pbzip2
     - puppet
     - puppet-lint
     - pv
