@@ -76,7 +76,6 @@
     - parallel
     - parted
     - pbzip2
-    - puppet
     - puppet-lint
     - pv
     - pwgen
