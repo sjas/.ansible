@@ -82,6 +82,7 @@
     - pwgen
     - python-optcomplete
     - qmmp
+    - rlwrap
     - rpm2cpio
     - rsync
     - screen
