@@ -56,6 +56,7 @@
     - mc
     - meld
     - mlocate
+    - moreutils
     - multitail
     - mysql-client
     - mytop
