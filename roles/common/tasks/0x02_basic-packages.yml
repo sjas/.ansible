@@ -45,6 +45,7 @@
     - iperf3
     - ioping
     - iotop
+    - jq
     - kdiff3
     - leafpad
     - libreoffice
