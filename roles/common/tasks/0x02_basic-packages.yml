@@ -94,6 +94,7 @@
     - strace
     - subversion
     - sysstat
+    - tack
     - tcpdump
     - thunderbird
     - thunderbird-locale-de
