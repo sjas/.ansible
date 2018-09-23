@@ -6,7 +6,9 @@ alias  ebah="grep ^alias $DOTFILES/roles/bash/files/.bashrc_aliases | sed 's/ali
 alias  ebgh="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //'"
 
 alias   cdd="cd $DOTFILES"
+alias  cddi="cd $DOTFILES/../.dotfiles"
 alias	cdt="cd /home/sjas/txt"
+alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
 
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
@@ -36,10 +38,14 @@ alias poweroff="sudo poweroff"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 
+#util
+alias rg="rg --hidden -i"
+
 #VI
 alias vihosts="sudo vim /etc/hosts"
 alias vissh="vim /home/sjas/.ssh/config"
 alias vitmux="vim /home/sjas/.tmux.conf"
+alias viinterfaces="vim /etc/network/interfaces"
 
 #CAT
 alias cathosts="cat /etc/hosts"
@@ -47,31 +53,8 @@ alias catssh="cat /home/sjas/.ssh/config"
 alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 alias catip="curl -s telnetmyip.com| jq -r '.ip'"
-alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p'"
-
-#other
-alias rg="rg --hidden -i"
-
-x2d() {
-	printf "%d\n" $1
-}
-
-#org
-k() {
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
-	kanban $@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
-}
-n() {
-	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
-	vim /home/sjas/txt/$@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
-}
-cn() {
-	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
-	cat /home/sjas/txt/$@
-}
+alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep SEE\ ALSO"
+alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key'"
 
 #SHOW
 shownet() {
@@ -96,6 +79,26 @@ showdf(){
 	watch -n 1 -d 'df -h'
 }
 
+x2d() {
+	printf "%d\n" $1
+}
+
+#ORG
+k() {
+	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
+	kanban $@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
+}
+n() {
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
+	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
+	vim /home/sjas/txt/$@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
+}
+cn() {
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+	cat /home/sjas/txt/$@
+}
 
 #TMUX
 tmw() {
@@ -121,7 +124,7 @@ alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
-alias cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
+
 #tw () {
 #    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
 #}
