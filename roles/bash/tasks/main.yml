@@ -35,3 +35,10 @@
     - { key: 'color.diff.whitespace',               value: 'red reverse' }
     - { key: 'push.default',                        value: 'matching' }
     - { key: 'user.name',                           value: 'sjas' }
+
+- name: mc def config
+  become: yes
+  become_user: sjas
+  copy:
+    src: mc_ini
+    dest: /home/sjas/.config/mc/ini
