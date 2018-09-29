@@ -6,7 +6,7 @@
 
 - name: brave repo
   apt_repository:
-    repo: deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging xenial main
+    repo: deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging bionic main
     filename: brave
 
 - name: brave package
