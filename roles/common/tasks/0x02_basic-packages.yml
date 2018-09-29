@@ -28,6 +28,7 @@
     - exfat-fuse
     - exfat-utils
     - expect
+    - ext4magic
     - fail2ban
     - filezilla
     - freerdp-x11
