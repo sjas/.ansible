@@ -13,16 +13,9 @@ alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/control
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
 
-## FIXME with 'n' autocompletion
-#NOTES
-alias    et="vim ~/.todo2"
-alias   ett="vim ~/.todo"
-alias   eta="vim ~/.todo_agenda"
-alias   etp="vim ~/.todo_prv"
-alias  etpi="vim ~/.todo_install"
-alias   ets="vim ~/.todo_srv"
-
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
+
+
 
 #SHELL
 LS_OPT='-lish --color --time-style=long-iso'
@@ -38,14 +31,40 @@ alias poweroff="sudo poweroff"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 
+
+
 #util
 alias rg="rg --hidden -i"
+k() {
+	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
+	kanban $@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
+}
+
+
 
 #VI
 alias vihosts="sudo vim /etc/hosts"
 alias vissh="vim /home/sjas/.ssh/config"
 alias vitmux="vim /home/sjas/.tmux.conf"
 alias viinterfaces="vim /etc/network/interfaces"
+
+#NOTES
+alias    et="vim ~/.todo2"
+alias   ett="vim ~/.todo"
+alias   eta="vim ~/.todo_agenda"
+alias   etp="vim ~/.todo_prv"
+alias  etpi="vim ~/.todo_install"
+alias   ets="vim ~/.todo_srv"
+
+n() {
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
+	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
+	vim /home/sjas/txt/$@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
+}
+
+
 
 #CAT
 alias cathosts="cat /etc/hosts"
@@ -55,6 +74,12 @@ alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 alias catip="curl -s telnetmyip.com| jq -r '.ip'"
 alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep SEE\ ALSO"
 alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
+cn() {
+	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
+	cat /home/sjas/txt/$@
+}
+
+
 
 #SHOW
 shownet() {
@@ -83,22 +108,7 @@ x2d() {
 	printf "%d\n" $1
 }
 
-#ORG
-k() {
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
-	kanban $@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
-}
-n() {
-	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
-	vim /home/sjas/txt/$@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
-}
-cn() {
-	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
-	cat /home/sjas/txt/$@
-}
+
 
 #TMUX
 tmw() {
@@ -108,14 +118,20 @@ tmwh() {
 	tmux split-window -dv "$*"
 }
 
+
+
 #OPENSSL
-alias oxp='openssl rsa -noout -text -in'
+alias oxk='openssl rsa -noout -text -in'
 alias oxr='openssl req -noout -text -in'
 alias oxc='openssl x509 -noout -text -in'
+
+
 
 #XCLIP like pb{copy,paste} on osx
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+
 
 #ALIASES
 alias ssha='eval $(ssh-agent) && ssh-add'

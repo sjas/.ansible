@@ -35,10 +35,16 @@
     - { key: 'color.diff.whitespace',               value: 'red reverse' }
     - { key: 'push.default',                        value: 'matching' }
     - { key: 'user.name',                           value: 'sjas' }
+    - { key: 'core.pager',                          value: 'bat --style=grid,header,numbers' }
 
-- name: mc def config
+- name: mc def config def user
   become: yes
   become_user: sjas
   copy:
     src: mc_ini
     dest: /home/sjas/.config/mc/ini
+
+- name: mc def config root user
+  copy:
+    src: mc_ini
+    dest: /root/.config/mc/ini
