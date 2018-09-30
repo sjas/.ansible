@@ -1,3 +1,4 @@
+# SHELL EDIT ALIASES
 alias    eb="vim /home/sjas/.bashrc; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
@@ -14,10 +15,14 @@ alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
 
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
+alias	ebt="vim $DOTFILES/roles/terminals/files/config; cp -va $DOTFILES/roles/terminals/files/config /home/sjas/.config/terminator/config"
+
+# SHELL DIFF ALIASES
+alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
 
 
 
-#SHELL
+# file / dir listing
 LS_OPT='-lish --color --time-style=long-iso'
 alias    ls="ls --color --time-style=long-iso"
 alias     l="ls $LS_OPT -A"
@@ -26,14 +31,14 @@ alias    la="ls $LS_OPT -Atr"
 alias     d="ls $LS_OPT -AF | grep ^d"
 alias    dl="ls $LS_OPT -F  | grep ^d"
 
+
+
+#util
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 
-
-
-#util
 alias rg="rg --hidden -i"
 k() {
 	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
