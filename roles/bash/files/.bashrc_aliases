@@ -16,9 +16,11 @@ alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
 
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 alias	ebt="vim $DOTFILES/roles/terminals/files/config; cp -va $DOTFILES/roles/terminals/files/config /home/sjas/.config/terminator/config"
+alias   ebm="vim $DOTFILES/roles/bash/files/mc_ini; cp -va $DOTFILES/roles/bash/files/mc_ini /home/sjas/.config/mc/ini"
 
 # SHELL DIFF ALIASES
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
+alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
 
 
 
