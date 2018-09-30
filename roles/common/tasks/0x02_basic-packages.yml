@@ -12,7 +12,7 @@
     - at
     - atop
     - bash-completion
-    # - bashdb
+    # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
     - ccze
     - checkinstall
     - chrony
