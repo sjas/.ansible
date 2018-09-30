@@ -41,6 +41,9 @@ k() {
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
 }
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
+fdiff() {
+	wdiff -n $1 $2 | colordiff
+}
 
 
 
