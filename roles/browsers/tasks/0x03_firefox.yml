@@ -5,9 +5,28 @@
   register: ff_path
   changed_when: false
 
-- name: deploy firefox settings
+- name: deploy firefox base settings
   become: yes
   become_user: sjas
   copy:
     src: user.js
     dest: "{{ ff_path.stdout }}"
+
+- name: ensure firefox 'chrome' folder exists
+  file:
+    path: "{{ ff_path.stdout }}/chrome"
+    state: directory
+
+- name: deploy bindings.xml
+  become: yes
+  become_user: sjas
+  copy:
+    src: bindings.xml
+    dest: "{{ ff_path.stdout }}/chrome"
+
+- name: deploy userChrome.css
+  become: yes
+  become_user: sjas
+  copy:
+    src: userChrome.css
+    dest: "{{ ff_path.stdout }}/chrome"
