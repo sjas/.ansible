@@ -1,6 +1,8 @@
 [global_config]
   enabled_plugins = InactivityWatch, ActivityWatch, TerminalShot, Logger
   focus = mouse
+  geometry_hinting = True
+  scroll_tabbar = True
   suppress_multiple_term_dialog = True
   tab_position = bottom
   title_inactive_bg_color = "#444444"
@@ -43,6 +45,7 @@
     font = Noto Mono 11
     foreground_color = "#bcbcbc"
     palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#5f87af:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
+    scroll_on_keystroke = False
     scrollback_infinite = True
     urgent_bell = True
     use_system_font = False
