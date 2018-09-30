@@ -12,7 +12,7 @@
     - at
     - atop
     - bash-completion
-    #- bashdb
+    # - bashdb
     - ccze
     - checkinstall
     - chrony
