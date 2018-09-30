@@ -84,16 +84,16 @@ editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 
 [Layout]
-message_visible=1
-keybar_visible=1
+message_visible=0
+keybar_visible=0
 xterm_title=1
 output_lines=0
 command_prompt=1
-menubar_visible=1
+menubar_visible=0
 free_space=1
 horizontal_split=0
 vertical_equal=1
-left_panel_size=58
+left_panel_size=105
 horizontal_equal=1
 top_panel_size=1
 
