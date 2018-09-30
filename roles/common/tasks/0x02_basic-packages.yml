@@ -35,7 +35,7 @@
     - geoip-bin
     - git-all
     - global
-    - golang-1.10
+    - golang
     - haveged
     - hdparm
     - hping3
