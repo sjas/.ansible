@@ -5,10 +5,12 @@
   scroll_tabbar = True
   suppress_multiple_term_dialog = True
   tab_position = bottom
+  title_font = Noto Mono 13
   title_inactive_bg_color = "#444444"
   title_inactive_fg_color = "#bcbcbc"
   title_transmit_bg_color = "#953030"
   title_transmit_fg_color = "#bcbcbc"
+  title_use_system_font = False
 [keybindings]
   broadcast_all = <Primary><Shift>F8
   broadcast_group = <Primary><Shift>F10
