@@ -181,11 +181,12 @@ rdns() {
 	dig -x $(dig $1 +short) +short
 }
 cymru() {
-	echo enter ip for whois.cymru.com query
+	echo enter ip/ASN for whois.cymru.com query
 	echo
 	echo -n 'cymru> '
 
-	while read i
+	while
+	read i
 	do
 		whois -h whois.cymru.com $i | tail -1 | awk '{$2=$3=$4=""; print $0}'
 		echo
@@ -193,11 +194,12 @@ cymru() {
 	done
 }
 radb() {
-	echo enter ip for whois.radb.net query
+	echo enter ip/ASN for whois.radb.net query
 	echo
 	echo -n 'radb> '
 
-	while read i
+	while
+	read i
 	do
 		whois -h whois.radb.net $i | head -4
 		echo
@@ -205,18 +207,18 @@ radb() {
 
 	done
 }
-lip() {
+geoip() {
 	# needs package 'geoip-bin'
-	echo Enter ip to locate country!
-	echo Press ^C to exit.
+	echo enter ip to geoiplookup query
 	echo
-	echo -n 'ip> '
+	echo -n 'geoip> '
 
-	while read i
+	while 
+	read i
 	do
 		geoiplookup $i | sed -e 's/GeoIP Country Edition: //'
 		echo
-		echo -n 'ip> '
+		echo -n 'geoip> '
 	done
 }
 utrace() {
@@ -229,18 +231,22 @@ utrace() {
 		echo '[-] need a bash v4 shell to run'
 	fi
 
-	echo -en "\e[31m> \e[34m"
+	echo "enter ip for whois country lookup"
+	echo
+	echo -en "utrace> "
 
-	while read i
+	while 
+	read i
 	do
 		temparray=$( whois $i | \grep -i country | cut -d':' -f2 | sed -e 's/ //g')
 
-		for j in $temparray
+		for j 
+		in $temparray
 		do
 			echo -e "\e[33;1m$j \e[0m${countrycodes[$j]}"
 		done
-
-		echo -en "\e[31m> \e[34m"
+		echo
+		echo -en "utrace> "
 	done
 }
 
