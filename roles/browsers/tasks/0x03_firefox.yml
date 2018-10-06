@@ -23,7 +23,7 @@
     - lightweighttheme-footer-1920x1080
     - lightweighttheme-header-1280x1024
     - lightweighttheme-header-1920x1080
- 
+
 - name: deploy firefox base settings
   become: yes
   become_user: sjas
