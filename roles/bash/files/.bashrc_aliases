@@ -146,7 +146,7 @@ alias pbpaste='xclip -selection clipboard -o'
 
 #ALIASES
 alias ssha='eval $(ssh-agent) && ssh-add'
-alias ee="sudo dolphin ."
+alias ee="sudo pcmanfm ."
 alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
