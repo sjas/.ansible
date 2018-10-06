@@ -62,16 +62,16 @@ Type=SHORTCUT
 Uuid={4a4fd96d-e064-4f9c-b432-67c8bfb14e2f}
 
 [Data_12]
-Comment=open filezilla ftp client
+Comment=open thunderbird client
 Enabled=true
-Name=filezilla
+Name=thunderbird
 Type=SIMPLE_ACTION_DATA
 
 [Data_12Actions]
 ActionsCount=1
 
 [Data_12Actions0]
-CommandURL=filezilla
+CommandURL=thunderbird
 Type=COMMAND_URL
 
 [Data_12Conditions]

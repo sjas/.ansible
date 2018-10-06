@@ -33,7 +33,7 @@ _k_friendly_name=KDE Daemon
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
 {e645391d-c278-4144-937d-471cb3e0c68f}=Meta+R,none,terminator
 {e9d55bf8-e7f0-44f5-b933-8ccb688c84dd}=Shift+Print,none,Take Full Screen Screenshot
-{f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,filezilla
+{f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,thunderbird
 {f235bee5-a498-41ed-be54-42e0709200d7}=Meta+V,none,firefox
 {f2ee8bf0-e736-4a48-b754-e8bf350c4488}=Print,none,Start Screenshot Tool
 
