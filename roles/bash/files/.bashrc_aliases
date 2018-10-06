@@ -22,7 +22,7 @@ alias   ebm="vim $DOTFILES/roles/bash/files/mc_ini; cp -va $DOTFILES/roles/bash/
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
 alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
 
-
+alias   ebs="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/=.*//g; s/ {//g; s/alias\s\+//g' | sort"
 
 # file / dir listing
 LS_OPT='-lish --color --time-style=long-iso'
