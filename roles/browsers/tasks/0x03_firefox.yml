@@ -5,6 +5,25 @@
   register: ff_path
   changed_when: false
 
+- name: ensure firefox 'lwtheme' folder exists for theme
+  become: yes
+  become_user: sjas
+  file:
+    path: "{{ ff_path.stdout }}/lwtheme"
+    state: directory
+
+- name: deploy tron theme files
+  become: yes
+  become_user: sjas
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ff_path.stdout }}/lwtheme"
+  with_items:
+    - lightweighttheme-footer-1280x1024
+    - lightweighttheme-footer-1920x1080
+    - lightweighttheme-header-1280x1024
+    - lightweighttheme-header-1920x1080
+ 
 - name: deploy firefox base settings
   become: yes
   become_user: sjas
