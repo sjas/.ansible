@@ -1,0 +1,9 @@
+---
+
+- name: deploy golang 'dep' binary
+  become: yes
+  become_user: sjas
+  copy:
+    src: dep
+    dest: /home/sjas/.local/bin/
+    mode: 0744

@@ -26,3 +26,6 @@
 
 - name: xidel
   include: 0x09_xidel.yml
+
+- name: golang dep
+  include: 0x0a_go-dep.yml
