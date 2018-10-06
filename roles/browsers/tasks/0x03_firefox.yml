@@ -13,6 +13,8 @@
     dest: "{{ ff_path.stdout }}"
 
 - name: ensure firefox 'chrome' folder exists
+  become: yes
+  become_user: sjas
   file:
     path: "{{ ff_path.stdout }}/chrome"
     state: directory
