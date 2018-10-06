@@ -252,9 +252,12 @@ utrace() {
 
 god() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
-	## open golang module documentation in new ff window
 	firefox --new-tab https://golang.org/pkg/$1
 
+}
+godc() {
+	[[ $# != 1 ]] && echo 'can only take a single argument'
+	firefox --new-tab https://godoc.org/?q=$1
 }
 
 rpmextract() {
