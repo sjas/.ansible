@@ -44,6 +44,11 @@
     src: mc_ini
     dest: /home/sjas/.config/mc/ini
 
+- name: ensure .config/mc folder exists for root user
+  file:
+    dest: /root/.config/mc
+    state: directory
+
 - name: mc def config root user
   copy:
     src: mc_ini
