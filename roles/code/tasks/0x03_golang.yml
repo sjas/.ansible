@@ -29,7 +29,7 @@
   when: not golang_installed.stat.exists
 
 - name: download official golang 1.11
-  get_url: 
+  get_url:
     url: "https://dl.google.com/go/{{ current_golang_release_tarball.stdout }}"
     dest: "/tmp"
     checksum: "sha256:2871270d8ff0c8c69f161aaae42f9f28739855ff5c5204752a8d92a1c9f63993"
