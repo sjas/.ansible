@@ -20,7 +20,7 @@ shopt -s dotglob
 
 export LESSGLOBALTAGS=global
 
-export GOROOT=/usr/lib/go-1.10
+export GOROOT=/usr/local/go
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 export GOPATH=$HOME/go 
 
