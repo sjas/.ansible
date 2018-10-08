@@ -1,11 +1,12 @@
 ---
 
 - name: xterm packages
-  apt: name={{ item }} cache_valid_time=1800
-  with_items:
-    - xterm
-    - xtermcontrol
-    - xtermset
+  apt:
+    cache_valid_time: 1800
+    name:
+      - xterm
+      - xtermcontrol
+      - xtermset
 
 - name: make sure .Xdefaults is present
   become: yes

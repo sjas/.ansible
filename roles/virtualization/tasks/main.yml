@@ -1,15 +1,16 @@
 ---
 
 - name: install libvirt and virt-manager packages
-  apt: name={{ item }} cache_valid_time=1800
-  with_items:
-    - qemu
-    - qemu-utils
-    - libvirt-bin
-    - virtinst
-    - unrar-free
-    - libguestfs-tools
-    - libosinfo-bin
+  apt:
+    cache_valid_time: 1800
+    name:
+      - qemu
+      - qemu-utils
+      - libvirt-bin
+      - virtinst
+      - unrar-free
+      - libguestfs-tools
+      - libosinfo-bin
 
 - name: ensure libvirtd group exists
   group:

@@ -1,121 +1,125 @@
 ---
 
 - name: etckeeper first
-  apt: name={{ item }} cache_valid_time=1800
-  with_items:
-    - etckeeper
+  apt:
+    cache_valid_time: 1800
+    name:
+      - etckeeper
 
 - name: basic packages from upstream
-  apt: name={{ item }} autoclean=yes autoremove=yes update_cache=yes
-  with_items:
-    - apt-file
-    - at
-    - atop
-    - bash-completion
-    # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
-    - ccze
-    - checkinstall
-    - chrony
-    - colordiff
-    - conntrack
-    - curl
-    - dhcpdump
-    - dhcping
-    - diffutils
-    - edac-utils
-    - elinks
-    - ethstatus
-    - exfat-fuse
-    - exfat-utils
-    - expect
-    - ext4magic
-    - fail2ban
-    - filezilla
-    - freerdp-x11
-    - geoip-bin
-    - git-all
-    - global
-    - haveged
-    - hdparm
-    - hping3
-    - htop
-    - httping
-    - iftop
-    - inxi
-    - iperf3
-    - ioping
-    - iotop
-    - jq
-    - kdiff3
-    - leafpad
-    - libreoffice
-    - libxml2-utils
-    - lnav
-    - iputils-arping
-    - ltrace
-    - lynx
-    - mc
-    - meld
-    - mlocate
-    - moreutils
-    - multitail
-    - mysql-client
-    - mytop
-    - ncdt
-    - ncdu
-    - nicstat
-    - nload
-    - nmap
-    - nmon
-    - nomacs
-    - nttcp
-    - nuttcp
-    - openvpn
-    - percona-toolkit
-    - pcmanfm
-    - powertop
-    - net-tools
-    - ntfs-3g
-    - p7zip
-    - parallel
-    - parted
-    - pbzip2
-    - puppet-lint
-    - pv
-    - pwgen
-    - python-optcomplete
-    - qmmp
-    - rlwrap
-    - rpm2cpio
-    - rsync
-    - screen
-    - scite
-    - shellcheck
-    - shutter
-    - strace
-    - subversion
-    - sysstat
-    - tack
-    - tcpdump
-    - thunderbird
-    - thunderbird-locale-de
-    - tmux
-    - traceroute
-    - tree
-    - tshark
-    - uptimed
-    - util-linux
-    - vim
-    - wdiff
-    - wget
-    - whois
-    - whowatch
-    - x2x
-    - xautomation
-    - xbindkeys
-    - xbindkeys-config
-    - xmlstarlet
-    - yamllint
+  apt:
+    autoclean: yes
+    autoremove: yes
+    update_cache: yes
+    name:
+      - apt-file
+      - at
+      - atop
+      - bash-completion
+      # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
+      - ccze
+      - checkinstall
+      - chrony
+      - colordiff
+      - conntrack
+      - curl
+      - dhcpdump
+      - dhcping
+      - diffutils
+      - edac-utils
+      - elinks
+      - ethstatus
+      - exfat-fuse
+      - exfat-utils
+      - expect
+      - ext4magic
+      - fail2ban
+      - filezilla
+      - freerdp-x11
+      - geoip-bin
+      - git-all
+      - global
+      - haveged
+      - hdparm
+      - hping3
+      - htop
+      - httping
+      - iftop
+      - inxi
+      - iperf3
+      - ioping
+      - iotop
+      - jq
+      - kdiff3
+      - leafpad
+      - libreoffice
+      - libxml2-utils
+      - lnav
+      - iputils-arping
+      - ltrace
+      - lynx
+      - mc
+      - meld
+      - mlocate
+      - moreutils
+      - multitail
+      - mysql-client
+      - mytop
+      - ncdt
+      - ncdu
+      - nicstat
+      - nload
+      - nmap
+      - nmon
+      - nomacs
+      - nttcp
+      - nuttcp
+      - openvpn
+      - percona-toolkit
+      - pcmanfm
+      - powertop
+      - net-tools
+      - ntfs-3g
+      - p7zip
+      - parallel
+      - parted
+      - pbzip2
+      - puppet-lint
+      - pv
+      - pwgen
+      - python-optcomplete
+      - qmmp
+      - rlwrap
+      - rpm2cpio
+      - rsync
+      - screen
+      - scite
+      - shellcheck
+      - shutter
+      - strace
+      - subversion
+      - sysstat
+      - tack
+      - tcpdump
+      - thunderbird
+      - thunderbird-locale-de
+      - tmux
+      - traceroute
+      - tree
+      - tshark
+      - uptimed
+      - util-linux
+      - vim
+      - wdiff
+      - wget
+      - whois
+      - whowatch
+      - x2x
+      - xautomation
+      - xbindkeys
+      - xbindkeys-config
+      - xmlstarlet
+      - yamllint
 
 - name: basic packages from single .deb files
   apt: deb={{ item }}
@@ -132,17 +136,18 @@
     - /home/sjas/etc/.ansible/roles/common/files/libgoocanvas-common_1.0.0-1_all.deb
 
 - name: language packages
-  apt: name={{ item }} cache_valid_time=1800
-  with_items:
-    - aspell-de
-    - hunspell-de-de
-    - hyphen-de
-    - ingerman
-    - language-pack-de
-    - language-pack-de-base
-    - language-pack-gnome-de
-    - language-pack-gnome-de-base
-    - language-pack-kde-de
-    - libreoffice-help-de
-    - libreoffice-l10n-de
-    - mythes-de
+  apt:
+    cache_valid_time: 1800
+    name:
+      - aspell-de
+      - hunspell-de-de
+      - hyphen-de
+      - ingerman
+      - language-pack-de
+      - language-pack-de-base
+      - language-pack-gnome-de
+      - language-pack-gnome-de-base
+      - language-pack-kde-de
+      - libreoffice-help-de
+      - libreoffice-l10n-de
+      - mythes-de
