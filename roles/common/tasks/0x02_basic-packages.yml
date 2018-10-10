@@ -59,6 +59,7 @@
       - leafpad
       - libreoffice
       - libxml2-utils
+      - linux-tools-generic
       - lnav
       - iputils-arping
       - ltrace
@@ -84,6 +85,7 @@
       - pcmanfm
       - powertop
       - net-tools
+      - netperf
       - ntfs-3g
       - p7zip
       - parallel
@@ -97,6 +99,7 @@
       - rlwrap
       - rpm2cpio
       - rsync
+      - ruby-ronn
       - screen
       - scite
       - shellcheck
@@ -108,6 +111,7 @@
       - tcpdump
       - thunderbird
       - thunderbird-locale-de
+      - tldr
       - tmux
       - traceroute
       - tree
