@@ -17,7 +17,9 @@
       - atop
       - bash-completion
       # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
+      - bison
       - ccze
+      - cmake
       - checkinstall
       - chrony
       - colordiff
@@ -35,6 +37,9 @@
       - ext4magic
       - fail2ban
       - filezilla
+      - fio
+      - flex
+      - flex-doc
       - freerdp-x11
       - geoip-bin
       - git-all
