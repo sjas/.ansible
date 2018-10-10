@@ -1,6 +1,6 @@
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
-Switch keyboard layout to German (eliminate dead keys)=none,none,Switch keyboard layout to German (eliminate dead keys)
+Switch keyboard layout to German (no dead keys)=none,none,Switch keyboard layout to German (no dead keys)
 Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
 _k_friendly_name=KDE Daemon
 
@@ -30,7 +30,7 @@ _k_friendly_name=KDE Daemon
 {797cba5d-c6fa-46a9-8746-933cb3495217}=Meta+T,none,uxterm
 {85602d86-336f-4bbe-9380-a491ebb8369a}=Meta+X,none,vscode
 {a8910670-e00e-4234-8806-35792abc33cf}=Meta+B,none,brave-beta
-{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
+{b470b237-b351-4fb5-ac94-8854f6c3a16f}=none,none,New Action
 {e645391d-c278-4144-937d-471cb3e0c68f}=Meta+R,none,terminator
 {e9d55bf8-e7f0-44f5-b933-8ccb688c84dd}=Shift+Print,none,Take Full Screen Screenshot
 {f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,thunderbird
