@@ -1,0 +1,10 @@
+---
+
+- name: reload input
+  shell: systemd-hwdb update && udevadm trigger /dev/input/event*
+  listen: scroll_udev_deploy
+
+- name: REPLUG MOUSE
+  debug:
+    msg='replug usb mouse so settings are applied fully.'
+  listen: scroll_udev_deploy

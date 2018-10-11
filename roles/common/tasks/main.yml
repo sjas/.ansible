@@ -14,3 +14,6 @@
 
 - name: ansible-lint
   include: 0x05_ansible-lint.yml
+
+- name: mouse scrolling speedup
+  include: 0x06_mouse-scolling-speedup.yml

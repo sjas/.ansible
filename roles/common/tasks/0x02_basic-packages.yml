@@ -57,6 +57,7 @@
       - jq
       - kdiff3
       - leafpad
+      - libinput-tools
       - libreoffice
       - libxml2-utils
       - linux-tools-generic
@@ -68,6 +69,7 @@
       - meld
       - mlocate
       - moreutils
+      - most
       - multitail
       - mysql-client
       - mytop
@@ -128,6 +130,7 @@
       - xbindkeys
       - xbindkeys-config
       - xmlstarlet
+      - xserver-xorg-input-libinput
       - yamllint
 
 - name: basic packages from single .deb files
