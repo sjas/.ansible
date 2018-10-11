@@ -35,12 +35,15 @@
     -e vscoss.vscode-ansible \
     -e yhirose.FilterText \
     -e samuelcolvin.jinjahtml \
+    -e austin.code-gnu-global \
+    -e mitaki28.vscode-clang \
+    -e ms-vscode.cpptools \
     | wc -l
   register: vsc_plugin_count
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 11
+  command: echo 14
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -67,6 +70,9 @@
     - yhirose.FilterText
     - Rubymaniac.vscode-direnv
     - samuelcolvin.jinjahtml
+    - austin.code-gnu-global
+    - mitaki28.vscode-clang
+    - ms-vscode.cpptools
   when: not vsc_plugin_count.stdout is search("{{ vsc_plugin_count_desired.stdout }}")
   tags:
     - dont_lint_this
