@@ -17,7 +17,9 @@
       - atop
       - bash-completion
       # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
+      - bison
       - ccze
+      - cmake
       - checkinstall
       - chrony
       - colordiff
@@ -35,6 +37,9 @@
       - ext4magic
       - fail2ban
       - filezilla
+      - fio
+      - flex
+      - flex-doc
       - freerdp-x11
       - geoip-bin
       - git-all
@@ -54,6 +59,7 @@
       - leafpad
       - libreoffice
       - libxml2-utils
+      - linux-tools-generic
       - lnav
       - iputils-arping
       - ltrace
@@ -79,6 +85,7 @@
       - pcmanfm
       - powertop
       - net-tools
+      - netperf
       - ntfs-3g
       - p7zip
       - parallel
@@ -92,6 +99,7 @@
       - rlwrap
       - rpm2cpio
       - rsync
+      - ruby-ronn
       - screen
       - scite
       - shellcheck
@@ -103,6 +111,7 @@
       - tcpdump
       - thunderbird
       - thunderbird-locale-de
+      - tldr
       - tmux
       - traceroute
       - tree
