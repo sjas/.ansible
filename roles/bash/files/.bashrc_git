@@ -84,6 +84,7 @@ alias gb="git branch"
 alias gco="git checkout"                                ## checkout
 alias gsb="git show-branch -a --list --more=10 --no-name"  ## show-branch, show where commits are present
 alias gsbf="git show-branch -a --list --no-name"        ## show-branch, show where commits are present
+alias gsba="git show-branch -a --topics --current"	## show all dangling branches? FIXME
 
 # STASH
 alias gst="git stash"                                   ## stash
