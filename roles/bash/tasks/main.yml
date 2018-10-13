@@ -41,8 +41,11 @@
   become: yes
   become_user: sjas
   copy:
-    src: mc_ini
+    src: "{{ item }}"
     dest: /home/sjas/.config/mc/ini
+  with_items:
+    - ini
+    - panel.ini
 
 - name: ensure .config/mc folder exists for root user
   file:
@@ -51,5 +54,8 @@
 
 - name: mc def config root user
   copy:
-    src: mc_ini
-    dest: /root/.config/mc/ini
+    src: "{{ item }}"
+    dest: /root/.config/mc/
+  with_items:
+    - ini
+    - panel.ini
