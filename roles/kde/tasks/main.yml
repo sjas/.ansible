@@ -29,3 +29,6 @@
 
 - name: shortcuts
   include: 0x0a_shortcuts.yml
+
+- name: email defaults
+  include: 0x0b_emaildefaults.yml

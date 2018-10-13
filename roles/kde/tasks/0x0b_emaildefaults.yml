@@ -1,0 +1,8 @@
+---
+
+- name: deploy email default configuration
+  become: yes
+  become_user: sjas
+  copy:
+    src: emaildefaults
+    dest: /home/sjas/.config
