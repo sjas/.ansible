@@ -35,3 +35,6 @@
 
 - name: some image handling settings
   include: 0x0c_image-handling.yml
+
+- name: gtk settings
+  include: 0x0d_gtk-settings.yml
