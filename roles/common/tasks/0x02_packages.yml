@@ -87,6 +87,8 @@
       - percona-toolkit
       - pcmanfm
       - powertop
+      - pylint
+      - pylint3
       - net-tools
       - netperf
       - ntfs-3g
@@ -130,6 +132,7 @@
       - xautomation
       - xbindkeys
       - xbindkeys-config
+      - xdotool
       - xmlstarlet
       - xserver-xorg-input-libinput
       - yamllint

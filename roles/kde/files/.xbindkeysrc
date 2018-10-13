@@ -69,10 +69,17 @@
 "xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
   Control + Caps_Lock + b:9 + Release
 
-## paste + enter upon paste via caps-b:8 = mouse-backward
-#"xte 'mouseclick 2' 'key Return'"
+# additional enter key on, caps-b:8 = mouse-backward
 "xte 'key Return'"
   Control + Caps_Lock + b:8 + Release
+
+# mouse forward/backward == alt+left/right
+# so vscode with additional keybinds can do proper code navigation w/ mouse
+"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
+  b:8 + Release
+"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+  b:9 + Release
+
 
 ##################################
 # End of xbindkeys configuration #

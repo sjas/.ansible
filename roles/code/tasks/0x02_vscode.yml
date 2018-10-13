@@ -92,6 +92,13 @@
     src: settings.json
     dest: /home/sjas/.config/Code/User/settings.json
 
+- name: set vscode keybindings for code navigation
+  become: yes
+  become_user: sjas
+  copy:
+    src: keybindings.json
+    dest: /home/sjas/.config/Code/User/
+
 - name: start vscode if it was stopped
   become: yes
   become_user: sjas
