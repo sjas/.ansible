@@ -5,6 +5,7 @@ alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; 
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias  ebah="grep ^alias $DOTFILES/roles/bash/files/.bashrc_aliases | sed 's/alias //'"
 alias  ebgh="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //'"
+alias   ebp="vim $DOTFILES/roles/common/tasks/0x02_basic-packages.yml"
 
 alias   cdd="cd $DOTFILES"
 alias  cddi="cd $DOTFILES/../.dotfiles"
@@ -75,7 +76,15 @@ n() {
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
 
-
+#bc() {
+#	while :
+#	do
+#		while IFS='$\n' read i
+#		do
+#			/usr/bin/bc <<< "scale=2; $i" | sed 's/^\./0&/'
+#		done
+#	done
+#}
 
 #CAT
 alias cathosts="cat /etc/hosts"
