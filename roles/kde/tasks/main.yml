@@ -32,3 +32,6 @@
 
 - name: email defaults
   include: 0x0b_emaildefaults.yml
+
+- name: some image handling settings
+  include: 0x0c_image-handling.yml

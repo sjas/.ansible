@@ -1,0 +1,8 @@
+---
+
+- name: deploy filetypesrc
+  become: yes
+  become_user: sjas
+  copy:
+    src: filetypesrc
+    dest: /home/sjas/.config
