@@ -1,39 +1,42 @@
 # SHELL EDIT ALIASES
+#edit
 alias    eb="vim /home/sjas/.bashrc; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias  ebah="grep ^alias $DOTFILES/roles/bash/files/.bashrc_aliases | sed 's/alias //'"
-alias  ebgh="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //'"
-alias   ebp="vim $DOTFILES/roles/common/tasks/0x02_basic-packages.yml"
-
+#show
+alias    sba="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
+alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //' | grep -e ^.\*= --color"
+#cd
 alias   cdd="cd $DOTFILES"
 alias  cddi="cd $DOTFILES/../.dotfiles"
 alias	cdt="cd /home/sjas/txt"
 alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
-
+#. "reload"
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
-
+#etc
 alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 alias	ebt="vim $DOTFILES/roles/terminals/files/config; cp -va $DOTFILES/roles/terminals/files/config /home/sjas/.config/terminator/config"
 alias   ebm="vim $DOTFILES/roles/bash/files/mc_ini; cp -va $DOTFILES/roles/bash/files/mc_ini /home/sjas/.config/mc/ini"
-
-# SHELL DIFF ALIASES
+#diff
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
 alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
 
-alias   ebs="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/=.*//g; s/ {//g; s/alias\s\+//g' | sort"
-
-# file / dir listing
-LS_OPT='-lish --color --time-style=long-iso'
-alias    ls="ls --color --time-style=long-iso"
-alias     l="ls $LS_OPT -A"
-alias    ll="ls $LS_OPT"
-alias    la="ls $LS_OPT -Atr"
-alias     d="ls $LS_OPT -AF | grep ^d"
-alias    dl="ls $LS_OPT -F  | grep ^d"
-
+#ls
+LS_OPT1='-h --color --time-style=long-iso'
+#LS_OPT2=''
+LS_OPT2='-is'
+#files
+alias    ls="ls $LS_OPT1"
+alias     l="ls $LS_OPT1 -l $LS_OPT2"
+alias    ll="ls $LS_OPT1 -l $LS_OPT2 -A"
+alias    lt="ls $LS_OPT1 -l $LS_OPT2 -Atr"
+alias    lS="ls $LS_OPT1 -l $LS_OPT2 -ASr"
+alias    lr="find | sort | cut -c 3-"  ## so no additional package is needed
+#directories
+alias     d="ls $LS_OPT1 -l          -F  | grep ^d"
+alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
 
 
 #util
@@ -121,7 +124,7 @@ showr() {
 showdu() {
 	du -sh * | sort -hk1
 }
-showdf(){
+showdf() {
 	watch -n 1 -d 'df -h'
 }
 
@@ -216,6 +219,9 @@ radb() {
 		echo -n 'radb> '
 
 	done
+}
+radb-routes() {
+	whois -h whois.radb.net -- "-i origin $(whois -h whois.cymru.com $(host $1 | grep address | awk '{print $NF}' | head -1) | tail -1 | awk '{$2=$3=$4=""; print $0}' | cut -d' ' -f1)" | grep ^route
 }
 geoip() {
 	# needs package 'geoip-bin'

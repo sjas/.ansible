@@ -29,3 +29,12 @@
 
 - name: shortcuts
   include: 0x0a_shortcuts.yml
+
+- name: email defaults
+  include: 0x0b_emaildefaults.yml
+
+- name: some image handling settings
+  include: 0x0c_image-handling.yml
+
+- name: gtk settings
+  include: 0x0d_gtk-settings.yml

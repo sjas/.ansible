@@ -94,3 +94,10 @@ ShadeHoverInterval=250
 SnapOnlyWhenOverlapping=false
 TitlebarDoubleClickCommand=Maximize
 WindowSnapZone=10
+
+[org.kde.kdecoration2]
+BorderSize=Normal
+ButtonsOnLeft=MS
+ButtonsOnRight=HIAX
+CloseOnDoubleClickOnMenu=true
+library=org.kde.breeze

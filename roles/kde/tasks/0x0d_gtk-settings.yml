@@ -1,0 +1,8 @@
+---
+
+- name: deploy gtk color scheme and icons
+  become: yes
+  become_user: sjas
+  copy:
+    src: settings.ini
+    dest: /home/sjas/.config/gtk-3.0
