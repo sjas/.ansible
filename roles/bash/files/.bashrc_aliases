@@ -79,7 +79,15 @@ n() {
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
 
-
+#bc() {
+#	while :
+#	do
+#		while IFS='$\n' read i
+#		do
+#			/usr/bin/bc <<< "scale=2; $i" | sed 's/^\./0&/'
+#		done
+#	done
+#}
 
 #CAT
 alias cathosts="cat /etc/hosts"
