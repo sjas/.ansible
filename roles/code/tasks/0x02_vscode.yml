@@ -41,12 +41,13 @@
     -e wwm.better-align \
     -e ryu1kn.partial-diff \
     -e Yummygum.city-lights-icon-vsc \
+    -e korekontrol.saltstack \
     | wc -l
   register: vsc_plugin_count
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 17
+  command: echo 18
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -79,6 +80,7 @@
     - wwm.better-align
     - ryu1kn.partial-diff
     - Yummygum.city-lights-icon-vsc
+    - korekontrol.saltstack
   when: not vsc_plugin_count.stdout is search( "{{ vsc_plugin_count_desired.stdout }}" )
   tags:
     - dont_lint_this
