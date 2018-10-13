@@ -16,8 +16,7 @@ alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commi
 gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
 alias gll=gitlog                                        ## parameter: n, log of last n commits; wo/ parameters full log
 alias gsh="git show"                                    ## param: commit-id, show changes
-gitshowfiles() { if [ $# -eq 1 ]; then git show --pretty='' --name-status "$1"; else git show --pretty='' --name-status; fi }
-alias gshf=gitshowfiles                                 ## param: commit id, show changed files of commit; wo/ param changes of last commit
+alias gshf="git show --stat --oneline"
 alias gsl="git shortlog -nse"                           ## shortlog
 gitshowauthor() {
         git log --author=$1 --oneline | awk {'print $1'} | xargs git show

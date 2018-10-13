@@ -94,6 +94,7 @@ alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 alias catip="curl -s telnetmyip.com| jq -r '.ip'"
 alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep SEE\ ALSO"
 alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
+alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
 cn() {
 	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
 	cat /home/sjas/txt/$@
