@@ -65,6 +65,10 @@
 #"rxvt"
 #  Control + b:2 + Release
 
+
+
+# to test changes to this file, run `sudo killall -s1 xbindkeys`
+
 # c-m-b = clipboard, caps-b:9 = mouse-forward
 "xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
   Control + Caps_Lock + b:9 + Release
