@@ -11,7 +11,7 @@ alias grs="git reset"					## unstage everything
 alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes made on HEAD
 
 # LOG,STATUS,DIFF
-alias glog="git log --format='%Cgreen%h%Creset %s %Cblue%d %Cred%an %Creset%ar%Creset'"
+alias glog="git log --format='%Cgreen%h%Creset %s %Cblue%d %Cred%ar %Cgreen%an%Creset'"
 alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commits, should fit in VT
 gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
 alias gll=gitlog                                        ## parameter: n, log of last n commits; wo/ parameters full log
