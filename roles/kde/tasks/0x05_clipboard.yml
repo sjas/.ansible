@@ -16,9 +16,10 @@
     src: klipperrc.j2
     dest: /home/sjas/.config/klipperrc
 
-- name: mouse forward button opens klipper config
+- name: fix mouse side buttons
   become: yes
   become_user: sjas
   copy:
     src: .xbindkeysrc
     dest: /home/sjas/.xbindkeysrc
+  notify: xbindkeys_reload

@@ -1,0 +1,5 @@
+---
+
+- name: reload xbindkeys after deployment
+  shell: killall -s1 xbindkeys
+  listen: xbindkeys_reload

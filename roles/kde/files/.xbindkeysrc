@@ -67,18 +67,24 @@
 
 
 
+#############################################################################################################
+# c-m-b = clipboard, caps-b:8 = mouse-backward
+#############################################################################################################
 # to test changes to this file, run `sudo killall -s1 xbindkeys`
 
-# c-m-b = clipboard, caps-b:8 = mouse-backward
 "xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
   Control + Caps_Lock + b:8 + Release
 
+#############################################################################################################
 # additional enter key on, caps-b:9 = mouse-forward
+#############################################################################################################
 "xte 'key Return'"
   Control + Caps_Lock + b:9 + Release
 
+#############################################################################################################
 # mouse forward/backward == alt+left/right
 # so vscode with additional keybinds can do proper code navigation w/ mouse
+#############################################################################################################
 "xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
   b:8 + Release
 "xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"

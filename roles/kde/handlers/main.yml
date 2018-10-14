@@ -1,0 +1,4 @@
+---
+
+- name: reload .xbindkeysrc handler
+  include: 0x01_xbindkeysrc.yml
