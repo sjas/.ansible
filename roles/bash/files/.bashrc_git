@@ -1,8 +1,29 @@
-## GIT
-# BASICS
+###############################
+# git is absolutely elemental #
+###############################
+
+
+
+# 0x01 - BASICS
+# 0x02 - LOG,SHOW,DIFF
+# 0x03 - COMMIT
+# 0x04 - UPSTREAM(ING)
+# 0x05 - BRANCHING
+# 0x06 - STASHING
+# 0x07 - TAGGING AND NOTES
+# 0x08 - ANALYSIS
+
+
+
+
+#############################################################################################################
+# 0x01 - BASICS
+#############################################################################################################
 alias gh="git help"                                     ## gh git_command = open manpage for it
+
 alias gi="git init"                                     ## initialize local git repo
 alias gcl="git clone --progress --recursive"            ## clone
+
 alias ga="git add"                                      ## regular add
 alias gaa="git add ."                                   ## regular add
 alias gat="git add -u"                                  ## add all changes in files already being tracked
@@ -10,7 +31,13 @@ alias gs="git status -s"                                ## status
 alias grs="git reset"					## unstage everything
 alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes made on HEAD
 
-# LOG,STATUS,DIFF
+
+
+
+
+#############################################################################################################
+# 0x02 - LOG,SHOW,DIFF
+#############################################################################################################
 alias glog="git log --format='%Cgreen%h%Creset %s %Cblue%d %Cred%ar %Cgreen%an%Creset'"
 alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commits, should fit in VT
 gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
@@ -47,7 +74,13 @@ giteditconflicts(){
 }
 alias gec=giteditconflicts                              ## edit all conflicted files
 
-# COMMIT
+
+
+
+
+#############################################################################################################
+# 0x03 - COMMIT
+#############################################################################################################
 gitcommit(){
         git commit -m "$*"
 }
@@ -63,7 +96,17 @@ gitrm(){
 }
 alias grm=gitrm                                         ## param: filename, delete file and remove from versioning
 
-# REPO STUFF
+
+
+
+
+#############################################################################################################
+# 0x04 - UPSTREAM(ING)
+#############################################################################################################
+alias grem="git remote -v"                              ## show remotes
+alias grema="git remote add"                            ## add remote
+alias gremr="git remote remove"                         ## remove remote
+
 alias gf="git fetch origin master"                      ## fetch
 alias gp="git pull origin master"                       ## pull
 alias gpp="git push origin master"                      ## push
@@ -73,19 +116,26 @@ gitfastpush(){
 }
 alias gfp=gitfastpush                                   ## commit all present changes with message 'fastcommit', pull and push
 
-# REMOTE URL SETTING
-alias grem="git remote -v"                              ## show remotes
-alias grema="git remote add"                            ## add remote
-alias gremr="git remote remove"                         ## remove remote
 
-# BRANCHES
+
+
+
+#############################################################################################################
+# 0x05 - BRANCHING
+#############################################################################################################
 alias gb="git branch"
 alias gco="git checkout"                                ## checkout
 alias gsb="git show-branch -a --list --more=10 --no-name"  ## show-branch, show where commits are present
 alias gsbf="git show-branch -a --list --no-name"        ## show-branch, show where commits are present
 alias gsba="git show-branch -a --topics --current"	## show all dangling branches? FIXME
 
-# STASH
+
+
+
+
+#############################################################################################################
+# 0x06 - STASHING
+#############################################################################################################
 alias gst="git stash"                                   ## stash
 alias gstl="git stash list"                             ## show stash
 alias gsta="git stash apply"                            ## apply, leave in stash
@@ -94,13 +144,18 @@ alias gstd="git stash drop"                             ## drop last stash (or a
 alias gstb="git stash branch"                           ## param: branchname, create+checkout new branch, apply changes
 alias gstc="git stash clear"                            ## delete all stashes
 
-# TAGS
+
+
+
+
+#############################################################################################################
+# 0x07 - TAGGING AND NOTES
+#############################################################################################################
 alias gt="git tag"                                      ## tagging
 alias gtl="git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' | grep --color -e 'HEAD -> [_.0-9A-Za-z-]\+' -e 'tag: [_.0-9A-Za-z-]\+'"  ## show HEAD and all tags plus count (1 = first commit, n = HEAD)
 alias gtlw="watch -n1 -d \"git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' \""  ## list tags in watch, helps when changing them
 alias gtd="git tag -d"                                  ## param: tagname, delete tag
 
-# NOTES
 gitnoteslist() {
         for i in $(git notes list | cut -d' ' -f2); do git log --pretty=oneline --decorate=short | tac | nl | tac | grep \$i; git notes show \$i; done
 }
@@ -108,7 +163,13 @@ alias gnl=gitnoteslist                                  ## list all notes
 alias gna="git notes append"                            ## add notes (defaults to HEAD)
 alias gnd="git notes remove"                            ## delete notes (defaults to HEAD)
 
-## ANALYSIS
+
+
+
+
+#############################################################################################################
+# 0x08 - ANALYSIS
+#############################################################################################################
 githistorygrep() {
         git rev-list --all | xargs git grep "$*"
 }

@@ -1,35 +1,85 @@
-# SHELL EDIT ALIASES
-#edit
-alias    eb="vim /home/sjas/.bashrc; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+###############################################
+# unix is your IDE so you better make it work #
+###############################################
+
+# 0x01 - `EB` CONFIG MANAGMENT
+# 0x02 - ADDITIONAL CONFIG MANAGMENT HELPERS
+# 0x03 - `LS`
+# 0x04 - 'UTIL'
+# 0x05 - 'CAT' AND 'VI'
+# 0x06 - NOTES AND KANBAN
+# 0x07 - 'SHOW'
+# 0x08 - NETWORK
+# 0x09 - CODE
+
+# 0xFA - SCRAPYARD
+
+
+
+#############################################################################################################
+# 0x01 - `EB` CONFIG MANAGMENT
+#############################################################################################################
+# 'edit bash'
+# "" = regular .bashrc, just needed for fixing includes and shit. all magic happens in the included files
+# a  = aliases
+# e  = environment
+# g  = git
+alias    eb="vim /home/sjas/.bashrc; 				. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   eba="vim $DOTFILES/roles/bash/files/.bashrc_aliases; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-#show
-alias    sba="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
-alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //' | grep -e ^.\*= --color"
-#cd
-alias   cdd="cd $DOTFILES"
-alias  cddi="cd $DOTFILES/../.dotfiles"
-alias	cdt="cd /home/sjas/txt"
-alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
-#. "reload"
-alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
-#etc
-alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
+# v  = vim
+# t  = terminator
+# tm = tmux
+# m  = mc
+# p  = apt packages
+# c  = vscode
+# ce = vscode extensions
+alias   ebv="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc /home/sjas/.vimrc"
 alias	ebt="vim $DOTFILES/roles/terminals/files/config; cp -va $DOTFILES/roles/terminals/files/config /home/sjas/.config/terminator/config"
+alias  ebtm="vim /home/sjas/.tmux.conf; cp -va /home/sjas/.tmux.conf $DOTFILES/roles/terminals/files/.tmux.conf"
 alias   ebm="vim $DOTFILES/roles/bash/files/mc_ini; cp -va $DOTFILES/roles/bash/files/mc_ini /home/sjas/.config/mc/ini"
 alias   ebp="vim $DOTFILES/roles/common/tasks/0x02_packages.yml"
 alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.config/Code/User/settings.json $DOTFILES/roles/code/files/settings.json"
 alias  ebce="vim $DOTFILES/roles/code/tasks/0x02_vscode.yml"
-#diff
+
+
+
+
+
+#############################################################################################################
+# 0x02 - ADDITIONAL CONFIG MANAGMENT HELPERS
+#############################################################################################################
+# 'reload'
+alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
+
+#'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
 alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
 
-#ls
+# 'change directory'
+alias   cdd="cd $DOTFILES"			## dotfiles
+alias  cddi="cd $DOTFILES/../.dotfiles"  	## dotfiles' includes
+alias	cdt="cd /home/sjas/txt"
+alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
+
+# 'show aliases' (shows currently defined aliases)
+# ba  = bash aliases
+# ga  = git aliases
+alias    sba="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
+alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //' | grep -e ^.\*= --color"
+
+
+
+
+
+#############################################################################################################
+# 0x03 - `LS`
+#############################################################################################################
 LS_OPT1='-h --color --time-style=long-iso'
-#LS_OPT2=''
 LS_OPT2='-is'
+#LS_OPT2=''
 #files
 alias    ls="ls $LS_OPT1"
 alias     l="ls $LS_OPT1 -l $LS_OPT2"
@@ -42,32 +92,85 @@ alias     d="ls $LS_OPT1 -l          -F  | grep ^d"
 alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
 
 
-#util
+
+
+
+#############################################################################################################
+# 0x04 - 'UTIL'
+#############################################################################################################
+alias ..="cd .."
+alias mkcd="pushd $(mktemp -d)"
+alias o="popd"
+alias p="pushd"
+
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
-#alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+#alias logoff="loginctl terminate-user sjas"  ## deprecated
 
 alias rg="rg --hidden -i"
-k() {
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
-	kanban $@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
-}
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
+
+alias ee="pcmanfm ."
+alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
+alias ssha='eval $(ssh-agent) && ssh-add'
+
 fdiff() {
 	wdiff -n $1 $2 | colordiff
 }
+x2d() {
+	printf "%d\n" $1
+}
+
+#OPENSSL
+alias oxk='openssl rsa -noout -text -in'
+alias oxr='openssl req -noout -text -in'
+alias oxc='openssl x509 -noout -text -in'
+
+#XCLIP like pb{copy,paste} on osx
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 
+
+
+#############################################################################################################
+# 0x05 - 'CAT' AND 'VI'
+#############################################################################################################
 
 #VI
+# hosts		= /etc/hosts
+# ssh		= ~/.ssh/config
+# if		= /etc/network/interfaces
 alias vihosts="sudo vim /etc/hosts"
 alias vissh="vim /home/sjas/.ssh/config"
-alias vitmux="vim /home/sjas/.tmux.conf"
-alias viinterfaces="vim /etc/network/interfaces"
+alias viif="sudo vim /etc/network/interfaces"
+#CAT
+# hosts		= /etc/hosts
+# ssh		= ~/.ssh/config
+# pub		= id_rsa.pub
+# sh		= current shell type
+# ip		= get upstream ip
+# attr		= list ext4 extended attributes and supported kernel versions
+# keys		= list bash shortcuts
+# fonts		= list system font names
+alias cathosts="cat /etc/hosts"
+alias catssh="cat /home/sjas/.ssh/config"
+alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
+alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
+alias catip="curl -s telnetmyip.com| jq -r '.ip'"
+alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep -v SEE\ ALSO | awk 'NF>0"
+alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
+alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
 
-#NOTES
+
+
+
+
+#############################################################################################################
+# 0x06 - NOTES AND KANBAN
+#############################################################################################################
+# FIXME: most of these need to be thrown out
 alias    et="vim ~/.todo2"
 alias   ett="vim ~/.todo"
 alias   eta="vim ~/.todo_agenda"
@@ -75,32 +178,17 @@ alias   etp="vim ~/.todo_prv"
 alias  etpi="vim ~/.todo_install"
 alias   ets="vim ~/.todo_srv"
 
+k() {
+	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
+	kanban $@
+	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
+}
 n() {
 	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
 	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
 	vim /home/sjas/txt/$@
 	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
-
-#bc() {
-#	while :
-#	do
-#		while IFS='$\n' read i
-#		do
-#			/usr/bin/bc <<< "scale=2; $i" | sed 's/^\./0&/'
-#		done
-#	done
-#}
-
-#CAT
-alias cathosts="cat /etc/hosts"
-alias catssh="cat /home/sjas/.ssh/config"
-alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
-alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
-alias catip="curl -s telnetmyip.com| jq -r '.ip'"
-alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep SEE\ ALSO"
-alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
-alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
 cn() {
 	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
 	cat /home/sjas/txt/$@
@@ -108,7 +196,18 @@ cn() {
 
 
 
-#SHOW
+
+
+#############################################################################################################
+# 0x07 - 'SHOW'
+#############################################################################################################
+# net
+# net4
+# net6
+# ru
+# r
+# du
+# df
 shownet() {
 	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; cat /etc/resolv.conf; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
@@ -131,65 +230,17 @@ showdf() {
 	watch -n 1 -d 'df -h'
 }
 
-x2d() {
-	printf "%d\n" $1
-}
 
 
 
-#TMUX
-tmw() {
-	tmux split-window -dh "$*"
-}
-tmwh() {
-	tmux split-window -dv "$*"
-}
 
-
-
-#OPENSSL
-alias oxk='openssl rsa -noout -text -in'
-alias oxr='openssl req -noout -text -in'
-alias oxc='openssl x509 -noout -text -in'
-
-
-
-#XCLIP like pb{copy,paste} on osx
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-
-
-
-#ALIASES
-alias ssha='eval $(ssh-agent) && ssh-add'
-alias ee="sudo pcmanfm ."
-alias ..="cd .."
-alias mkcd="pushd $(mktemp -d)"
-alias o="popd"
-alias p="pushd"
-
-#tw () {
-#    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
-#}
-getdiff() {
-	sdiff -ds <(sudo cat $1) <(sudo cat $2) | colordiff
-}
-cmddiff() {
-	[ ! $# -gt 1 ] && echo USAGE: cmddiff CMD PARAM \[ALT_PARAM\] && return
-	CMD=$1
-	PARAM=$2
-	ALT_PARAM=${3:- }
-	sdiff <(sudo $CMD $PARAM) <(sudo $CMD $ALT_PARAM) | colordiff
-}
-sshdiff() {
-	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
-	HOST1=$1
-	HOST2=$2
-	CMD=$3
-	sdiff -ds <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
-}
-
-#NETWORK
+#############################################################################################################
+# 0x08 - NETWORK
+#############################################################################################################
+# FIXME: here is quite some shit to finish
+# fix up missing radb / cymru functions
+# make the existing ones take parameters
+# build in a security prompt for the route aliases asking wether the queried ASN is the right one
 getip() {
 	dig $1 +short | xclip && echo $(xclip -o)
 }
@@ -269,6 +320,13 @@ utrace() {
 	done
 }
 
+
+
+
+
+#############################################################################################################
+# 0x09 - CODE
+#############################################################################################################
 god() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
 	firefox --new-tab https://golang.org/pkg/$1
@@ -279,6 +337,54 @@ godc() {
 	firefox --new-tab https://godoc.org/?q=$1
 }
 
+
+
+
+
+#############################################################################################################
+# 0xFA - SCRAPYARD
+#############################################################################################################
+#bc() {
+#	while :
+#	do
+#		while IFS='$\n' read i
+#		do
+#			/usr/bin/bc <<< "scale=2; $i" | sed 's/^\./0&/'
+#		done
+#	done
+#}
+
+#TMUX
+tmw() {
+	tmux split-window -dh "$*"
+}
+tmwh() {
+	tmux split-window -dv "$*"
+}
+
+#tw () {
+#    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
+#}
+
+getdiff() {
+	sdiff -ds <(sudo cat $1) <(sudo cat $2) | colordiff
+}
+cmddiff() {
+	[ ! $# -gt 1 ] && echo USAGE: cmddiff CMD PARAM \[ALT_PARAM\] && return
+	CMD=$1
+	PARAM=$2
+	ALT_PARAM=${3:- }
+	sdiff <(sudo $CMD $PARAM) <(sudo $CMD $ALT_PARAM) | colordiff
+}
+sshdiff() {
+	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
+	HOST1=$1
+	HOST2=$2
+	CMD=$3
+	sdiff -ds <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
+}
+
 rpmextract() {
 	rpm2cpio $1 | cpio -idmv
 }
+
