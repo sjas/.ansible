@@ -68,7 +68,8 @@ alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/control
 # ba  = bash aliases
 # ga  = git aliases
 alias    sba="grep -e alias -e'()' $DOTFILES/roles/bash/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
-alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //' | grep -e ^.\*= --color"
+alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias //' | sort | grep -e ^.\*= --color"
+ 
 
 
 

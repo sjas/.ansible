@@ -10,6 +10,7 @@
 # 0x06 - STASHING
 # 0x07 - TAGGING AND NOTES
 # 0x08 - ANALYSIS
+# 0x09 - CONFLICTS
 
 
 
@@ -36,15 +37,17 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 #############################################################################################################
 # 0x02 - LOG,SHOW,DIFF
 #############################################################################################################
-# FIXME define and parameterize log master race alias
-alias glog="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"
-alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commits, should fit in VT
-gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
-alias gll=gitlog                                        ## parameter: n, log of last n commits; wo/ parameters full log
+#log
+alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
+alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
+alias glog="git log --oneline --graph --decorate=short -n 22"
+alias glogf="git log --oneline --graph --decorate=short"
 
+#show
 alias gsh="git show"                                    ## param: commit-id, show changes
-alias gshf="git show --stat --oneline"
+alias gshf="git show --stat --oneline"			## param: commit-id, show changes
 
+#diff
 gitshowauthor() {
         git log --author=$1 --oneline | awk {'print $1'} | xargs git show
 }
@@ -67,12 +70,8 @@ gitdifftool(){
         git difftool -t "$*"
 }
 alias gdt=gitdifftool                                   ## gdt <difftool>, difftools: meld, kdiff3 
+
 alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2~/blob/ { print \$4 }'"  ## ls-tree, show versioned files
-alias gsc="git diff --diff-filter=U --name-only"        ## show conflicts
-giteditconflicts(){
-        ( cd `git rev-parse --show-toplevel`; vim `git diff --diff-filter=U --name-only` )
-}
-alias gec=giteditconflicts                              ## edit all conflicted files
 
 
 
@@ -125,6 +124,7 @@ alias gfp=gitfastpush                                   ## commit all present ch
 #############################################################################################################
 alias gb="git branch"
 alias gco="git checkout"                                ## checkout
+alias gcob="git checkout -b"                            ## checkout directly into new branch
 alias gsb="git show-branch -a --list --more=10 --no-name"  ## show-branch, show where commits are present
 alias gsbf="git show-branch -a --list --no-name"        ## show-branch, show where commits are present
 alias gsba="git show-branch -a --topics --current"	## show all dangling branches? FIXME
@@ -179,3 +179,16 @@ githistoryfile() {
 }
 alias ghf=githistoryfile ## param: file, shows complete commit history for given file
 alias gsl="git shortlog -nse"                           ## shortlog
+
+
+
+
+
+#############################################################################################################
+# 0x09 - CONFLICTS
+#############################################################################################################
+alias gsc="git diff --diff-filter=U --name-only"        ## show conflicts
+giteditconflicts(){
+        ( cd `git rev-parse --show-toplevel`; vim `git diff --diff-filter=U --name-only` )
+}
+alias gec=giteditconflicts                              ## edit all conflicted files
