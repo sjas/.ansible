@@ -36,6 +36,7 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 #############################################################################################################
 # 0x02 - LOG,SHOW,DIFF
 #############################################################################################################
+# FIXME define and parameterize log master race alias
 alias glog="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"
 alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commits, should fit in VT
 gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
