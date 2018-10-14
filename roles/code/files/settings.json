@@ -1,6 +1,6 @@
 {
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
-    "editor.mouseWheelScrollSensitivity": 3,
+    "editor.mouseWheelScrollSensitivity": 5,
     "window.zoomLevel": 0,
     "editor.autoIndent": true,
     "editor.emptySelectionClipboard": false,

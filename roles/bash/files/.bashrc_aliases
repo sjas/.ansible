@@ -20,7 +20,7 @@ alias    ev="vim $DOTFILES/roles/code/.vimrc; cp -va $DOTFILES/roles/code/.vimrc
 alias	ebt="vim $DOTFILES/roles/terminals/files/config; cp -va $DOTFILES/roles/terminals/files/config /home/sjas/.config/terminator/config"
 alias   ebm="vim $DOTFILES/roles/bash/files/mc_ini; cp -va $DOTFILES/roles/bash/files/mc_ini /home/sjas/.config/mc/ini"
 alias   ebp="vim $DOTFILES/roles/common/tasks/0x02_packages.yml"
-alias   ebc="vim $DOTFILES/roles/code/files/settings.json; cp -va $DOTFILES/roles/code/files/settings.json /home/sjas/.config/Code/User/settings.json"
+alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.config/Code/User/settings.json $DOTFILES/roles/code/files/settings.json"
 alias  ebce="vim $DOTFILES/roles/code/tasks/0x02_vscode.yml"
 #diff
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
