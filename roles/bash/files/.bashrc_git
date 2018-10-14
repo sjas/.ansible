@@ -2,8 +2,6 @@
 # git is absolutely elemental #
 ###############################
 
-
-
 # 0x01 - BASICS
 # 0x02 - LOG,SHOW,DIFF
 # 0x03 - COMMIT
@@ -38,13 +36,14 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 #############################################################################################################
 # 0x02 - LOG,SHOW,DIFF
 #############################################################################################################
-alias glog="git log --format='%Cgreen%h%Creset %s %Cblue%d %Cred%ar %Cgreen%an%Creset'"
+alias glog="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"
 alias gl="git log --oneline --graph --decorate=short -n24"  ## log last 24 commits, should fit in VT
 gitlog() { if [ $# -eq 1 ]; then git log --oneline --graph --decorate=short -n"$1"; else git log --oneline --graph --decorate=short; fi }
 alias gll=gitlog                                        ## parameter: n, log of last n commits; wo/ parameters full log
+
 alias gsh="git show"                                    ## param: commit-id, show changes
 alias gshf="git show --stat --oneline"
-alias gsl="git shortlog -nse"                           ## shortlog
+
 gitshowauthor() {
         git log --author=$1 --oneline | awk {'print $1'} | xargs git show
 }
@@ -178,3 +177,4 @@ githistoryfile() {
         git log --follow  -p -- "$*"
 }
 alias ghf=githistoryfile ## param: file, shows complete commit history for given file
+alias gsl="git shortlog -nse"                           ## shortlog
