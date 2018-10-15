@@ -30,4 +30,5 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "city-lights-icons-vsc.hidesExplorerArrows": true,
+    "workbench.startupEditor": "newUntitledFile",
 }
