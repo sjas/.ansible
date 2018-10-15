@@ -20,7 +20,7 @@ _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
-_k_friendly_name=KDE Daemon
+_k_friendly_name=System Settings
 {36c9903f-0548-473f-bfce-f97acc71d22e}=Meta+C,none,chrome
 {38356836-594d-447b-94db-999f2928bdc5}=Meta+N,none,chromium
 {408ddfd8-a7f7-453f-960a-0230dca149cf}=Meta+Print,none,Take Active Window Screenshot
@@ -31,8 +31,10 @@ _k_friendly_name=KDE Daemon
 {85602d86-336f-4bbe-9380-a491ebb8369a}=Meta+X,none,vscode
 {a8910670-e00e-4234-8806-35792abc33cf}=Meta+B,none,brave-beta
 {b470b237-b351-4fb5-ac94-8854f6c3a16f}=none,none,New Action
+{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {e645391d-c278-4144-937d-471cb3e0c68f}=Meta+R,none,terminator
 {e9d55bf8-e7f0-44f5-b933-8ccb688c84dd}=Shift+Print,none,Take Full Screen Screenshot
+{ea20b772-99ff-4c91-9f95-6257b81094db}=none,none,Launch Konsole
 {f017a37e-f01a-4901-888e-9a4574d78bfa}=Meta+F,none,thunderbird
 {f235bee5-a498-41ed-be54-42e0709200d7}=Meta+V,none,firefox
 {f2ee8bf0-e736-4a48-b754-e8bf350c4488}=Print,none,Start Screenshot Tool
@@ -40,11 +42,12 @@ _k_friendly_name=KDE Daemon
 [kmix]
 _k_friendly_name=Audio Volume
 decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Decrease Microphone Volume
-decrease_volume=Volume Down\tCtrl+Alt+Shift+Down,Volume Down,Decrease Volume
+decrease_volume=Volume Down\tCtrl+Alt+Down,Volume Down,Decrease Volume
 increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Increase Microphone Volume
-increase_volume=Volume Up\tCtrl+Alt+Shift+Up,Volume Up,Increase Volume
-mic_mute=Microphone Mute\tCtrl+Alt+Shift+Right,Microphone Mute,Mute Microphone
-mute=Volume Mute\tCtrl+Alt+Shift+Left,Volume Mute,Mute
+increase_volume=Volume Up\tCtrl+Alt+Up,Volume Up,Increase Volume
+mic_mute=Microphone Mute,Microphone Mute,Mute Microphone
+mute=Volume Mute,Volume Mute,Mute
+
 
 [krunner]
 _k_friendly_name=Run Command
