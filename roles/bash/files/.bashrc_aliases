@@ -116,6 +116,7 @@ alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 alias ee="pcmanfm ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
 alias ssha='eval $(ssh-agent) && ssh-add'
+alias pipestatus='echo ${PIPESTATUS[@]}'
 
 fdiff() {
 	wdiff -n $1 $2 | colordiff
