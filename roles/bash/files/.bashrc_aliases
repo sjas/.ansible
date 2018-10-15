@@ -2,9 +2,9 @@
 # unix is your IDE so you better make it work #
 ###############################################
 
-# 0x01 - `EB` CONFIG MANAGMENT
-# 0x02 - ADDITIONAL CONFIG MANAGMENT HELPERS
-# 0x03 - `LS`
+# 0x01 - 'EDIT BASH' CONFIG MANAGMENT
+# 0x02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
+# 0x03 - 'LS'
 # 0x04 - 'UTIL'
 # 0x05 - 'CAT' AND 'VI'
 # 0x06 - NOTES AND KANBAN
@@ -17,7 +17,7 @@
 
 
 #############################################################################################################
-# 0x01 - `EB` CONFIG MANAGMENT
+# 0x01 - 'EDIT BASH' CONFIG MANAGMENT
 #############################################################################################################
 # 'edit bash'
 # "" = regular .bashrc, just needed for fixing includes and shit. all magic happens in the included files
@@ -48,7 +48,7 @@ alias  ebce="vim $DOTFILES/roles/code/tasks/0x02_vscode.yml"
 
 
 #############################################################################################################
-# 0x02 - ADDITIONAL CONFIG MANAGMENT HELPERS
+# 0x02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 #############################################################################################################
 # 'reload'
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
@@ -57,6 +57,7 @@ alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
 alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
+alias	dbc="wdiff -n  /home/sjas/etc/.ansible/roles/code/files/settings.json /home/sjas/.config/Code/User/settings.json | colordiff"
 
 # 'change directory'
 alias   cdd="cd $DOTFILES"			## dotfiles
@@ -76,7 +77,7 @@ alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias /
 
 
 #############################################################################################################
-# 0x03 - `LS`
+# 0x03 - 'LS'
 #############################################################################################################
 LS_OPT1='-h --color --time-style=long-iso'
 LS_OPT2='-is'
