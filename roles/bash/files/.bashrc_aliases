@@ -112,6 +112,7 @@ alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
+tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 
 alias ee="pcmanfm ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
@@ -364,10 +365,6 @@ tmw() {
 tmwh() {
 	tmux split-window -dv "$*"
 }
-
-#tw () {
-#    $DOTFILES/bin/tweep.py -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"
-#}
 
 getdiff() {
 	sdiff -ds <(sudo cat $1) <(sudo cat $2) | colordiff
