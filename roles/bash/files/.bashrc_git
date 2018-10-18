@@ -55,18 +55,18 @@ alias gsha=gitshowauthor                                ## show all commit diffs
 alias gd="git diff"                                     ## diff
 alias gdc="git diff --cached"                    	## diff staged files on index
 alias gdh="git diff HEAD"                    		## diff everything against last commit
-gitdiffsofancy(){
+gitdiffsofancy() {
         git diff "$*" | diff-so-fancy
 }
 alias gdff=gitdiffsofancy                                ## diff-so-fancy FILE
-gitdfiffsofancyall(){
+gitdfiffsofancyall() {
 	for i in $(git status -s | awk '{print $2}'); do gitdiffsofancy $i ;done
 }
 alias gdf=gitdfiffsofancyall				## diff-so-fancy on all of `git status -s` files
-gitdiffsofancy(){
+gitdiffsofancy() {
         git diff --cached "$*" | diff-so-fancy
 }
-gitdifftool(){
+gitdifftool() {
         git difftool -t "$*"
 }
 alias gdt=gitdifftool                                   ## gdt <difftool>, difftools: meld, kdiff3 
@@ -80,20 +80,24 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 #############################################################################################################
 # 0x03 - COMMIT
 #############################################################################################################
-gitcommit(){
+gitcommit() {
         git commit -m "$*"
 }
 alias gc=gitcommit                                      ## commit
-gitfastcommit(){
+gitfastcommit() {
         (cd `git rev-parse --show-toplevel`; git add .; git commit -m fastcommit )
 }
 alias gfc=gitfastcommit                                 ## commit all present changes with message 'fastcommit'
 alias gca="git commit --amend"                          ## amend last commit
 alias gr="git revert HEAD"                              ## revert, undo last commit
-gitrm(){
+gitrm() {
         git rm "$*"
 }
 alias grm=gitrm                                         ## param: filename, delete file and remove from versioning
+gitrmcached() {
+	git rm --cached "$*"
+}
+alias grmc=gitrmcached
 
 
 
@@ -110,7 +114,7 @@ alias gf="git fetch origin master"                      ## fetch
 alias gp="git pull origin master"                       ## pull
 alias gpp="git push origin master"                      ## push
 alias gpup="git pull origin master; git push origin master"  ## for repositories where only I work on
-gitfastpush(){
+gitfastpush() {
         ( cd `git rev-parse --show-toplevel`; git add -A .; git commit -m fastcommit; git pull origin master; git push origin master )
 }
 alias gfp=gitfastpush                                   ## commit all present changes with message 'fastcommit', pull and push
@@ -188,7 +192,7 @@ alias gsl="git shortlog -nse"                           ## shortlog
 # 0x09 - CONFLICTS
 #############################################################################################################
 alias gsc="git diff --diff-filter=U --name-only"        ## show conflicts
-giteditconflicts(){
+giteditconflicts() {
         ( cd `git rev-parse --show-toplevel`; vim `git diff --diff-filter=U --name-only` )
 }
 alias gec=giteditconflicts                              ## edit all conflicted files
