@@ -101,6 +101,7 @@
       - pwgen
       - python-optcomplete
       - qmmp
+      - rename
       - rlwrap
       - rpm2cpio
       - rsync
