@@ -62,7 +62,7 @@
 - name: install vscode extensions if not present
   become: yes
   become_user: sjas
-  command: code --install-extension {{ item }}
+  command: code --force --install-extension {{ item }}
   with_items:
     - DavidAnson.vscode-markdownlint
     - jamiewoodio.junos
