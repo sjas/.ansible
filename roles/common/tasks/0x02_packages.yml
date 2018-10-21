@@ -146,7 +146,7 @@
 
 # https://itsfoss.com/shutter-edit-button-disabled/
 - name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
-  apt: 
+  apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas-common_1.0.0-1_all.deb
 
 - name: additionally needed shutter package for 18.04 - libgoocanvas3_1.0.0-1_amd64.deb
