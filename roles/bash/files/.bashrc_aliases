@@ -205,6 +205,7 @@ cn() {
 #############################################################################################################
 # 0x07 - 'SHOW'
 #############################################################################################################
+# apt
 # net
 # net4
 # net6
@@ -212,6 +213,9 @@ cn() {
 # r
 # du
 # df
+showapt() {
+	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v grep | cut -c 66-' 
+}
 shownet() {
 	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; cat /etc/resolv.conf; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
