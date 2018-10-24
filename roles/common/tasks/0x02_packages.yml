@@ -125,6 +125,7 @@
       - uptimed
       - util-linux
       - vim
+      - w3m
       - wdiff
       - wget
       - whois
