@@ -26,7 +26,7 @@
   layout_launcher = None
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
-  search = <Primary>f
+  search = <Primary><Shift>f
 [layouts]
   [[default]]
     [[[child1]]]
