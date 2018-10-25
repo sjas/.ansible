@@ -137,6 +137,7 @@
       - xmlstarlet
       - xserver-xorg-input-libinput
       - yamllint
+      - zmap
 
 - name: basic packages from single .deb files
   apt: deb={{ item }}
