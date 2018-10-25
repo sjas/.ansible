@@ -1,0 +1,28 @@
+---
+
+- name: install precompiled wireshark
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/common/files/wireshark_2.9.0rc0-HEAD-b6598d5ec3-1_amd64.deb
+
+- name: create wireshark group
+  group:
+    name: wireshark
+
+- name: dumpcap owner and DAC
+  file:
+    path: /usr/local/bin/dumpcap
+    group: wireshark
+    mode: 750
+
+- name: setpcap dumpcap
+  command: setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/local/bin/dumpcap
+
+- name: sjas into wireshark group
+  user:
+    append: yes
+    groups: wireshark
+  register: user_group_wireshark_added
+
+- name: LOGOUT / LOGIN else the changed user groups will not become active
+  debug: msg='LOGOUT / LOGIN else the changed user groups will not become active.'
+  when: user_group_wireshark_added.changed
