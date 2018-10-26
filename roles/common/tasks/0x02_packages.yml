@@ -29,6 +29,7 @@
       - dhcpdump
       - dhcping
       - diffutils
+      - docutils-common
       - edac-utils
       - elinks
       - ethstatus
