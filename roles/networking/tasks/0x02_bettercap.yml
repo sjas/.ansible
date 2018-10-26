@@ -7,3 +7,7 @@
     src: bettercap
     dest: /home/sjas/.local/bin
     mode: 0744
+
+- name: install bettercap dependency
+  apt:
+    name: libnetfilter-queue1
