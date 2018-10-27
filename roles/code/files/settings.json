@@ -29,6 +29,7 @@
     "workbench.colorTheme": "Zenburn",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "city-lights-icons-vsc.hidesExplorerArrows": true,
     "workbench.startupEditor": "newUntitledFile",
+    "city-lights-icons-vsc.hidesExplorerArrows": true,
+    "open-in-vim.openMethod": "integrated-terminal",
 }
