@@ -109,6 +109,7 @@ alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
+alias aptc='sudo apt clean; sudo apt autoremove'
 
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
@@ -118,6 +119,9 @@ alias ee="pcmanfm ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias pipestatus='echo ${PIPESTATUS[@]}'
+
+alias bettercap='sudo bettercap'
+
 
 fdiff() {
 	wdiff -n $1 $2 | colordiff
