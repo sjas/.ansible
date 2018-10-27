@@ -24,27 +24,27 @@
   shell: |
     code --list-extensions |
     grep \
+    -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
-    -e Rubymaniac.vscode-direnv \
+    -e gizak.shortcuts \
     -e jamiewoodio.junos \
+    -e jonsmithers.open-in-vim \
     -e jpogran.puppet-vscode \
+    -e korekontrol.saltstack \
+    -e Luxhackers.can-openr \
+    -e mitaki28.vscode-clang \
     -e ms-python.python \
+    -e ms-vscode.cpptools \
     -e ms-vscode.Go \
     -e redhat.vscode-yaml \
+    -e Rubymaniac.vscode-direnv \
     -e ryanolsonx.zenburn \
-    -e vscoss.vscode-ansible \
-    -e yhirose.FilterText \
-    -e samuelcolvin.jinjahtml \
-    -e austin.code-gnu-global \
-    -e mitaki28.vscode-clang \
-    -e ms-vscode.cpptools \
-    -e wwm.better-align \
     -e ryu1kn.partial-diff \
+    -e samuelcolvin.jinjahtml \
+    -e vscoss.vscode-ansible \
+    -e wwm.better-align \
+    -e yhirose.FilterText \
     -e Yummygum.city-lights-icon-vsc \
-    -e korekontrol.saltstack \
-    -e gizak.shortcuts \
-    -e luxhackers.can-openr \
-    -e jonsmithers.open-in-vim \
     | wc -l
   register: vsc_plugin_count
   changed_when: false
@@ -66,27 +66,27 @@
   become_user: sjas
   command: code --force --install-extension {{ item }}
   with_items:
+    - austin.code-gnu-global
     - DavidAnson.vscode-markdownlint
+    - gizak.shortcuts
     - jamiewoodio.junos
+    - jonsmithers.open-in-vim
     - jpogran.puppet-vscode
+    - korekontrol.saltstack
+    - Luxhackers.can-openr
+    - mitaki28.vscode-clang
     - ms-python.python
+    - ms-vscode.cpptools
     - ms-vscode.go
     - redhat.vscode-yaml
-    - ryanolsonx.zenburn
-    - vscoss.vscode-ansible
-    - yhirose.FilterText
     - Rubymaniac.vscode-direnv
-    - samuelcolvin.jinjahtml
-    - austin.code-gnu-global
-    - mitaki28.vscode-clang
-    - ms-vscode.cpptools
-    - wwm.better-align
+    - ryanolsonx.zenburn
     - ryu1kn.partial-diff
+    - samuelcolvin.jinjahtml
+    - vscoss.vscode-ansible
+    - wwm.better-align
+    - yhirose.FilterText
     - Yummygum.city-lights-icon-vsc
-    - korekontrol.saltstack
-    - gizak.shortcuts
-    - luxhackers.can-openr
-    - jonsmithers.open-in-vim
 
   when: not vsc_plugin_count.stdout is search( "{{ vsc_plugin_count_desired.stdout }}" )
   tags:
