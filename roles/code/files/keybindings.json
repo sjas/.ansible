@@ -15,5 +15,9 @@
     {
         "key": "ctrl+alt+-",
         "command": "-workbench.action.navigateBack"
+    },
+    {
+        "key": "shift+alt+v",
+        "command": "open-in-vim.open",
     }
 ]

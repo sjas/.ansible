@@ -41,6 +41,7 @@ alias  ebtm="vim /home/sjas/.tmux.conf; cp -va /home/sjas/.tmux.conf $DOTFILES/r
 alias   ebm="vim $DOTFILES/roles/bash/files/ini; cp -va $DOTFILES/roles/bash/files/ini /home/sjas/.config/mc/ini"
 alias   ebp="vim $DOTFILES/roles/common/tasks/0x02_packages.yml"
 alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.config/Code/User/settings.json $DOTFILES/roles/code/files/settings.json"
+alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sjas/.config/Code/User/keybindings.json $DOTFILES/roles/code/files/keybindings.json"
 alias  ebce="vim $DOTFILES/roles/code/tasks/0x02_vscode.yml"
 
 
