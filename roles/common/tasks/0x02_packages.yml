@@ -13,6 +13,7 @@
     update_cache: yes
     name:
       - apt-file
+      - aptsh
       - at
       - atop
       - bash-completion
