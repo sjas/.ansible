@@ -31,7 +31,7 @@
     -e jonsmithers.open-in-vim \
     -e jpogran.puppet-vscode \
     -e korekontrol.saltstack \
-    -e Luxhackers.can-openr \
+    -e LuxHackers.can-openr \
     -e mitaki28.vscode-clang \
     -e ms-python.python \
     -e ms-vscode.cpptools \
@@ -73,7 +73,7 @@
     - jonsmithers.open-in-vim
     - jpogran.puppet-vscode
     - korekontrol.saltstack
-    - Luxhackers.can-openr
+    - LuxHackers.can-openr
     - mitaki28.vscode-clang
     - ms-python.python
     - ms-vscode.cpptools
