@@ -5,7 +5,7 @@
   become_user: sjas
   copy:
     src: bettercap
-    dest: /home/sjas/.local/bin
+    dest: /usr/local/bin
     mode: 0744
 
 - name: install bettercap dependency
