@@ -1,8 +1,6 @@
 ---
 
 - name: deploy bettercap
-  become: yes
-  become_user: sjas
   copy:
     src: bettercap
     dest: /usr/local/bin
