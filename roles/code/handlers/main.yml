@@ -1,0 +1,5 @@
+---
+
+- name: message to relogin into shell after nvm was deployed
+  debug: msg="LOGOUT / LOGIN from shell else nvm will not work"
+  listen: nvm_shell_relogin

@@ -1,0 +1,58 @@
+---
+
+- name: check if nvm is already installed
+  shell: . /home/sjas/.nvm/nvm.sh && nvm --version
+  register: exitcode_nvm_install
+  ignore_errors: true
+  changed_when: false
+
+- name: copy nvm install script
+  copy:
+    src: nvm_v0.33.11-install.sh
+    dest: /tmp
+  when: exitcode_nvm_install.rc != 0
+
+
+- name: install nvm
+  become: yes
+  become_user: sjas
+  command: bash /tmp/nvm_v0.33.11-install.sh
+  when: exitcode_nvm_install.rc != 0
+  notify: nvm_shell_relogin
+
+- name: clean NVM_DIR var from .bashrc
+  lineinfile:
+    path: /home/sjas/.bashrc
+    regex: "export NVM_DIR.*"
+    state: absent
+  when: exitcode_nvm_install.rc != 0
+
+- name: cleanup nvm install script
+  file:
+    name: /tmp/nvm_v0.33.11-install.sh
+    state: absent
+  when: exitcode_nvm_install.rc != 0
+
+- name: check if any node.js is already installed
+  shell: . /home/sjas/.nvm/nvm.sh && node --version
+  register: exitcode_nodejs_install
+  ignore_errors: true
+  changed_when: false
+  when: exitcode_nvm_install.rc == 0
+
+- name: install node.js
+  shell: . /home/sjas/.nvm/nvm.sh &&  nvm install node
+  when: exitcode_nodejs_install.rc != 0
+
+- name: get path of newest nodejs for setcap'ing
+  shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | sort | tail -1
+  register: nodejs_path
+  ignore_errors: true
+  changed_when: false
+
+- name: setcap on current nodejs so it can open ports 1024
+  capabilities:
+    path: "{{ nodejs_path.stdout }}"
+    cap: "CAP_NET_BIND_SERVICE=+ep"
+  when: nodejs_path.rc == 0
+  changed_when: false
