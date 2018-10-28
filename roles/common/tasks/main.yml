@@ -23,3 +23,7 @@
 - name: mouse scrolling speedup
   include: 0x06_mouse-scolling-speedup.yml
   tags: mouse
+
+- name: sysctls
+  include: 0x07_sysctls.yml
+  tags: sysctls
