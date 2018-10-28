@@ -2,30 +2,40 @@
 
 - name: kanban
   include: 0x01_kanban.yml
+  tags: util
 
 - name: diff-so-fancy
   include: 0x02_diff-so-fancy.yml
+  tags: util
 
 - name: tweep
   include: 0x03_tweep.yml
+  tags: util
 
 - name: direnv
   include: 0x04_direnv.yml
+  tags: util
 
 - name: gosca, go scaffolding
   include: 0x05_gosca.yml
+  tags: golang
 
 - name: scc code counter
   include: 0x06_scc.yml
+  tags: util
 
 - name: bat
   include: 0x07_bat.yml
+  tags: util
 
 - name: CF mm tools
   include: 0x08_mm.yml
+  tags: util
 
 - name: xidel
   include: 0x09_xidel.yml
+  tags: util
 
 - name: golang dep
   include: 0x0a_go-dep.yml
+  tags: golang

@@ -11,13 +11,16 @@
       - unrar-free
       - libguestfs-tools
       - libosinfo-bin
+  tags: virt
 
 - name: ensure libvirtd group exists
   group:
     name: libvirtd
+  tags: virt
 
 - name: make user part of libvirtd group
   user:
     name: sjas
     append: yes
     groups: libvirtd
+  tags: virt

@@ -2,6 +2,8 @@
 
 - name: install compiled wireshark
   include: 0x01_wireshark.yml
+  tags: wireshark
 
 - name: install bettercap
   include: 0x02_bettercap.yml
+  tags: bettercap

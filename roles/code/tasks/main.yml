@@ -2,9 +2,16 @@
 
 - name: vim
   include: 0x01_vim.yml
+  tags: vim
 
 - name: vscode
   include: 0x02_vscode.yml
+  tags: vscode
 
-- name: make golang scriptable
+- name: golang
   include: 0x03_golang.yml
+  tags: golang
+
+- name: node.js
+  include: 0x04_node.yml
+  tags: node

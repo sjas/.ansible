@@ -2,18 +2,24 @@
 
 - name: system upgrade
   include: 0x01_dist-upgrade.yml
+  tags: distupgrade
 
 - name: base software
   include: 0x02_packages.yml
+  tags: packages
 
 - name: working folders
   include: 0x03_working-folders.yml
+  tags: workingfolders
 
 - name: ntp
   include: 0x04_ntp.yml
+  tags: ntp
 
 - name: ansible-lint
   include: 0x05_ansible-lint.yml
+  tags: lint
 
 - name: mouse scrolling speedup
   include: 0x06_mouse-scolling-speedup.yml
+  tags: mouse
