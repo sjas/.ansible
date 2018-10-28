@@ -111,6 +111,7 @@ alias poweroff="sudo poweroff"
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias aptc='sudo apt clean; sudo apt autoremove'
+alias apts='sudo dpkg -l | grep'
 
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
