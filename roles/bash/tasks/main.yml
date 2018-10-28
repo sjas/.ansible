@@ -7,12 +7,15 @@
     - .bashrc_aliases
     - .bashrc_git
     - .bashrc_completion
+  tags: bash
 
 - name: direnv hook
   lineinfile: path=/home/sjas/.bashrc line='eval "$(direnv hook bash)"'
+  tags: bash
 
 - name: reference .bashrc_includes if present
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
+  tags: bash
 
 - name: fix git default settings
   become: yes
@@ -36,6 +39,7 @@
     - { key: 'push.default',                        value: 'matching' }
     - { key: 'user.name',                           value: 'sjas' }
     - { key: 'core.pager',                          value: 'bat --style=grid,header,numbers' }
+  tags: bash
 
 - name: mc def config def user
   become: yes
@@ -46,11 +50,13 @@
   with_items:
     - ini
     - panels.ini
+  tags: bash
 
 - name: ensure .config/mc folder exists for root user
   file:
     dest: /root/.config/mc
     state: directory
+  tags: bash
 
 - name: mc def config root user
   copy:
@@ -59,3 +65,4 @@
   with_items:
     - ini
     - panels.ini
+  tags: bash
