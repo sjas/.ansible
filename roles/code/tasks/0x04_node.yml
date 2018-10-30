@@ -1,7 +1,7 @@
 ---
 
 - name: check if nvm is already installed
-  shell: . /home/sjas/.nvm/nvm.sh && nvm --version
+  shell: . /home/sjas/.nvm/nvm.sh && nvm --version || exit 1
   register: exitcode_nvm_install
   ignore_errors: true
   changed_when: false
@@ -12,6 +12,12 @@
     dest: /tmp
   when: exitcode_nvm_install.rc != 0
 
+- name: make sure destination folder exists
+  become: yes
+  become_user: sjas
+  file:
+    path: "/home/sjas/.nvm"
+    state: directory
 
 - name: install nvm
   become: yes
@@ -33,21 +39,38 @@
     state: absent
   when: exitcode_nvm_install.rc != 0
 
+- name: always purge OS nodejs if exists
+  apt:
+    purge: yes
+    state: absent
+    name:
+      - nodejs
+      - nodejs-doc
+
 - name: check if any node.js is already installed
-  shell: . /home/sjas/.nvm/nvm.sh && node --version
+  become: yes
+  become_user: sjas
+  shell: . /home/sjas/.nvm/nvm.sh && node --version || exit 1
   register: exitcode_nodejs_install
   ignore_errors: true
   changed_when: false
-  when: exitcode_nvm_install.rc == 0
 
-- name: install node.js
-  shell: . /home/sjas/.nvm/nvm.sh &&  nvm install node
+- name: register current node version to be used
+  become: yes
+  become_user: sjas
+  shell: echo v11.0.0
+  register: nodejs_version
+  changed_when: false
+
+- name: install node.js {{ nodejs_version.stdout }}
+  become: yes
+  become_user: sjas
+  shell: . /home/sjas/.nvm/nvm.sh && nvm install {{ nodejs_version.stdout }}
   when: exitcode_nodejs_install.rc != 0
 
-- name: get path of newest nodejs for setcap'ing
-  shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | sort | tail -1
+- name: get path current nodejs for setcap'ing
+  shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
   register: nodejs_path
-  ignore_errors: true
   changed_when: false
 
 - name: setcap on current nodejs so it can open ports 1024
