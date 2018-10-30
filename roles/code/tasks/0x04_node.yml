@@ -58,7 +58,7 @@
 - name: register current node version to be used
   become: yes
   become_user: sjas
-  shell: echo v11.0.0
+  command: echo v11.0.0
   register: nodejs_version
   changed_when: false
 
