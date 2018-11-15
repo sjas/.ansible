@@ -11,6 +11,8 @@
       - unrar-free
       - libguestfs-tools
       - libosinfo-bin
+      - virt-what
+      - virt-manager
   tags: virt
 
 - name: ensure libvirtd group exists
