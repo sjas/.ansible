@@ -78,6 +78,7 @@
       - mytop
       - ncdt
       - ncdu
+      - network-manager-openvpn
       - nicstat
       - nload
       - nmap
