@@ -24,6 +24,7 @@
     "files.eol": "\n",
     "terminal.integrated.env.linux": {},
     "terminal.integrated.splitCwd": "inherited",
+    "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "editor.acceptSuggestionOnEnter": "smart",
     "files.autoSave": "onWindowChange",
     "files.trimTrailingWhitespace": false,
