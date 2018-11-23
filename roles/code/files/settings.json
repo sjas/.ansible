@@ -31,6 +31,7 @@
     "telemetry.enableCrashReporter": false,
     "workbench.startupEditor": "newUntitledFile",
     "search.usePCRE2": true,
+    "search.showLineNumbers": true,
     "city-lights-icons-vsc.hidesExplorerArrows": true,
-    "open-in-vim.openMethod": "integrated-terminal",
+    "open-in-vim.openMethod": "integrated-terminal"
 }
