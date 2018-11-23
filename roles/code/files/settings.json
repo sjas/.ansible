@@ -23,6 +23,7 @@
     "breadcrumbs.symbolSortOrder": "name",
     "files.eol": "\n",
     "terminal.integrated.env.linux": {},
+    "terminal.integrated.splitCwd": "inherited",
     "editor.acceptSuggestionOnEnter": "smart",
     "files.autoSave": "onWindowChange",
     "files.trimTrailingWhitespace": false,
