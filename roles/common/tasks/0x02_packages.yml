@@ -30,6 +30,8 @@
       - dhcpdump
       - dhcping
       - diffutils
+      - dnsmasq
+      - dnsmasq-utils
       - docutils-common
       - edac-utils
       - elinks

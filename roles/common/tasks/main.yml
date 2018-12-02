@@ -27,3 +27,7 @@
 - name: sysctls
   include: 0x07_sysctls.yml
   tags: sysctls
+
+- name: dnsmasq
+  include: 0x08_dnsmasq.yml
+  tags: dnsmasq

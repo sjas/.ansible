@@ -1,0 +1,11 @@
+---
+
+- name: ensure dnsmasq systemd drop-in folder exists
+  file:
+    path: /etc/systemd/system/dnsmasq.service.d/
+    state: directory
+
+- name: fix systemd-resolved not blocking dnsmasq
+  copy:
+    src: dnsmasq-resolved-FIX.conf
+    dest: /etc/systemd/system/dnsmasq.service.d/
