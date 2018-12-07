@@ -93,6 +93,8 @@
       - pcmanfm
       - powertop
       - pylint
+      - python-rope
+      - python3-rope
       - pylint3
       - net-tools
       - netperf
