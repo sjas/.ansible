@@ -49,6 +49,7 @@
       - geoip-bin
       - git-all
       - global
+      - graphviz
       - haveged
       - hdparm
       - hping3
