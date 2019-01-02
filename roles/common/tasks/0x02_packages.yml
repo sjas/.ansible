@@ -57,6 +57,7 @@
       - httping
       - iftop
       - inxi
+      - inotify-tools
       - iperf3
       - ioping
       - iotop
