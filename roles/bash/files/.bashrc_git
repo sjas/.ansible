@@ -182,7 +182,8 @@ githistoryfile() {
         git log --follow  -p -- "$*"
 }
 alias ghf=githistoryfile ## param: file, shows complete commit history for given file
-alias gsl="git shortlog -nse"                           ## shortlog
+alias gsl="git shortlog"				## commits grouped per user
+alias gslc="git shortlog -nse"                          ## commit count per user
 
 
 
