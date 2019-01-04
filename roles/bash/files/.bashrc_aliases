@@ -373,6 +373,44 @@ runonchange() {
 		echo
 	done
 }
+## this exits prior to running `dot` on the saved file and i have no clue why
+#rundotpreview() {
+#	[[ $# != 1 ]] && \
+#		echo && \
+#		echo "USAGE:" && \
+#		echo "    ${FUNCNAME[0]} FILE.dot" && \
+#		return
+#	FORMAT=png
+#	DOTFILE=$1
+#	IMGFILE=${DOTFILE%.dot}.$FORMAT
+#	dot -T$FORMAT -o $IMGFILE $DOTFILE
+#	okular $IMGFILE &>/dev/null &
+#	echo "["$'\e[37;1m'"+"$'\e[0m'"] inital setup done."
+#	echo
+#	while inotifywait -e close_write $DOTFILE 2>/dev/null
+#	do
+#		date && \
+#		dot -Tpng -o $IMGFILE $DOTFILE && \
+#		echo "["$'\e[32;1m'"+"$'\e[0m'"] PNG generated." || \
+#		echo "["$'\e[31;1m'"-"$'\e[0m'"] PNG could not be generated."
+#		echo
+#	done
+#}
+
+rundotpreview(){
+	[[ $# == 0 ]] && \
+		echo && \
+		echo "USAGE:" && \
+		echo "    ${FUNCNAME[0]} FILE.dot" && \
+		return
+	DOTFILE=$1
+	IMGFILE=${DOTFILE%.dot}.png
+	while :
+	do
+		dot -Tpng -o $IMGFILE $DOTFILE
+		okular $IMGFILE
+	done
+}
 
 
 
