@@ -354,7 +354,25 @@ godc() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
 	firefox --new-tab https://godoc.org/?q=$1
 }
-
+runonchange() {
+	[[ $# == 0 ]] && \
+		echo && \
+		echo "USAGE:" && \
+		echo "    ${FUNCNAME[0]} FILE_TO_WATCH bash_script_or_code_to_run_when_FILE_TO_WATCH_is_saved" && \
+		return
+	FILE=$1
+	shift
+	echo "["$'\e[37;1m'"+"$'\e[0m'"] setting up..."
+	echo
+	while inotifywait -e close_write $FILE 2>/dev/null
+	do
+		eval $* \
+		&& echo && \
+		echo "["$'\e[32;1m'"+"$'\e[0m'"] code/script was ran." || \
+		echo "["$'\e[31;1m'"-"$'\e[0m'"] code/script did not run."
+		echo
+	done
+}
 
 
 
