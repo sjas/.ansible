@@ -372,25 +372,26 @@ runonchange() {
 		echo "["$'\e[31;1m'"-"$'\e[0m'"] code/script did not run."
 		echo
 	done
-}
-## this exits prior to running `dot` on the saved file and i have no clue why
+#
+### this exits prior to running `dot` on the saved file and i have no clue why
 #rundotpreview() {
 #	[[ $# != 1 ]] && \
 #		echo && \
 #		echo "USAGE:" && \
 #		echo "    ${FUNCNAME[0]} FILE.dot" && \
 #		return
-#	FORMAT=png
+#	FORMAT=svg
 #	DOTFILE=$1
 #	IMGFILE=${DOTFILE%.dot}.$FORMAT
-#	dot -T$FORMAT -o $IMGFILE $DOTFILE
-#	okular $IMGFILE &>/dev/null &
+#	[[ -f $IMGFILE ]] || dot -T$FORMAT -o $IMGFILE $DOTFILE
+#	firefox $IMGFILE
 #	echo "["$'\e[37;1m'"+"$'\e[0m'"] inital setup done."
 #	echo
-#	while inotifywait -e close_write $DOTFILE 2>/dev/null
+#	while 
+#		inotifywait -e close_write $DOTFILE #2>/dev/null
 #	do
 #		date && \
-#		dot -Tpng -o $IMGFILE $DOTFILE && \
+#		dot -T$FORMAT -o $IMGFILE $DOTFILE && \
 #		echo "["$'\e[32;1m'"+"$'\e[0m'"] PNG generated." || \
 #		echo "["$'\e[31;1m'"-"$'\e[0m'"] PNG could not be generated."
 #		echo
@@ -403,11 +404,12 @@ rundotpreview(){
 		echo "USAGE:" && \
 		echo "    ${FUNCNAME[0]} FILE.dot" && \
 		return
+	FORMAT=png
 	DOTFILE=$1
-	IMGFILE=${DOTFILE%.dot}.png
+	IMGFILE=${DOTFILE%.dot}.$FORMAT
 	while :
 	do
-		dot -Tpng -o $IMGFILE $DOTFILE
+		dot -T$FORMAT -o $IMGFILE $DOTFILE
 		okular $IMGFILE
 	done
 }
