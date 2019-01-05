@@ -372,7 +372,7 @@ runonchange() {
 		echo "["$'\e[31;1m'"-"$'\e[0m'"] code/script did not run."
 		echo
 	done
-#
+}
 ### this exits prior to running `dot` on the saved file and i have no clue why
 #rundotpreview() {
 #	[[ $# != 1 ]] && \
