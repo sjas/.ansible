@@ -30,6 +30,7 @@
     -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
+    -e efanzh.graphviz-preview \
     -e gizak.shortcuts \
     -e jamiewoodio.junos \
     -e jebbs.plantuml \
@@ -55,7 +56,7 @@
   tags: vscode
 
 - name: set current vscode plugin count
-  command: echo 22
+  command: echo 23
   register: vsc_plugin_count_desired
   changed_when: false
   tags: vscode
@@ -76,6 +77,7 @@
     - austin.code-gnu-global
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
+    - efanzh.graphviz-preview
     - gizak.shortcuts
     - jamiewoodio.junos
     - jebbs.plantuml
