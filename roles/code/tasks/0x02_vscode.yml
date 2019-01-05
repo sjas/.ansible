@@ -32,7 +32,7 @@
     -e dbaeumer.vscode-eslint \
     -e gizak.shortcuts \
     -e jamiewoodio.junos \
-    -e jkeys089.plantuml \
+    -e jebbs.plantuml \
     -e jpogran.puppet-vscode \
     -e korekontrol.saltstack \
     -e LuxHackers.can-openr \
@@ -78,7 +78,7 @@
     - dbaeumer.vscode-eslint
     - gizak.shortcuts
     - jamiewoodio.junos
-    - jkeys089.plantuml
+    - jebbs.plantuml
     - jpogran.puppet-vscode
     - korekontrol.saltstack
     - LuxHackers.can-openr
