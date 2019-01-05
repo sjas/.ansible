@@ -29,6 +29,7 @@
     "open-in-vim.openMethod": "integrated-terminal",
     "plantuml.previewFileType": "svg",
     "plantuml.exportFormat": "svg",
+    "plantuml.exportOutDir": ".",
     "plantuml.previewSnapIndicators": true,
     "plantuml.server": "https://www.plantuml.com/plantuml.disabled",
     "search.showLineNumbers": true,
