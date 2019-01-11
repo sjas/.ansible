@@ -31,3 +31,7 @@
 - name: dnsmasq
   include: 0x08_dnsmasq.yml
   tags: dnsmasq
+
+- name: syncthing
+  include: 0x09_syncthing.yml
+  tags: syncthing

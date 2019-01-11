@@ -1,0 +1,15 @@
+---
+
+- name: syncthing apt-key
+  apt_key:
+    url: https://syncthing.net/release-key.txt
+
+- name: syncthing repo
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing candidate
+    filename: syncthing
+
+- name: syncthing package
+  apt:
+    name: syncthing
+    cache_valid_time: 1800
