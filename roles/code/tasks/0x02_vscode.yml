@@ -25,12 +25,11 @@
   become_user: sjas
   ignore_errors: true
   shell: |
-    code --list-extensions |
-    grep \
+    code --list-extensions | grep \
     -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
-    -e efanzh.graphviz-preview \
+    -e EFanZh.graphviz-preview \
     -e gizak.shortcuts \
     -e jamiewoodio.junos \
     -e jebbs.plantuml \
