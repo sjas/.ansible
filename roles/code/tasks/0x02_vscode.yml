@@ -45,6 +45,7 @@
     -e ryanolsonx.zenburn \
     -e ryu1kn.partial-diff \
     -e samuelcolvin.jinjahtml \
+    -e thracian.theme-badwolf-paradox \
     -e vscoss.vscode-ansible \
     -e wwm.better-align \
     -e yhirose.FilterText \
@@ -55,7 +56,7 @@
   tags: vscode
 
 - name: set current vscode plugin count
-  command: echo 23
+  command: echo 24
   register: vsc_plugin_count_desired
   changed_when: false
   tags: vscode
@@ -92,6 +93,7 @@
     - ryanolsonx.zenburn
     - ryu1kn.partial-diff
     - samuelcolvin.jinjahtml
+    - thracian.theme-badwolf-paradox
     - vscoss.vscode-ansible
     - wwm.better-align
     - yhirose.FilterText

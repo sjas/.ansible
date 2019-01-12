@@ -40,6 +40,6 @@
     "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "terminal.integrated.splitCwd": "inherited",
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Zenburn",
+    "workbench.colorTheme": "Badwolf Paradox",
     "workbench.startupEditor": "newUntitledFile"
 }
