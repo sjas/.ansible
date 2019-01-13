@@ -6,4 +6,3 @@
   copy:
     src: systemsettingsrc
     dest: /home/sjas/.config/
-
