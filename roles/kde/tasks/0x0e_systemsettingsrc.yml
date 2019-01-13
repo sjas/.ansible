@@ -1,0 +1,9 @@
+---
+
+- name: deploy systemssettingsrc
+  become: yes
+  become_user: sjas
+  copy:
+    src: systemsettingsrc
+    dest: /home/sjas/.config/
+

@@ -52,6 +52,10 @@
   include: 0x0d_gtk-settings.yml
   tags: kde
 
+- name: systemsettings rc
+  include: 0x0e_systemsettingsrc.yml
+  tags: kde
+
 - name: autostart
-  include: 0x0e_autostart.yml
-  tags: autostart
+  include: 0x0f_autostart.yml
+  tags: kde

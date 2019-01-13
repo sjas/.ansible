@@ -1,8 +1,8 @@
 [Keyboard]
 KeyboardRepeating=0
 NumLock=2
-RepeatDelay=300
-RepeatRate=66
+RepeatDelay=280
+RepeatRate=70
 
 [Mouse]
 Acceleration=1
@@ -10,3 +10,4 @@ AccelerationProfile=
 MouseButtonMapping=RightHanded
 ReverseScrollPolarity=false
 Threshold=0
+cursorTheme=breeze_cursors

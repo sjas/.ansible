@@ -1,14 +1,28 @@
 [Compositing]
+AnimationSpeed=0
+Backend=OpenGL
+Enabled=false
+GLCore=false
+GLPreferBufferSwap=e
+GLTextureFilter=2
+HiddenPreviews=5
 OpenGLIsUnsafe=false
+WindowsBlockCompositing=true
+XRenderSmoothScale=false
+
 
 [Desktops]
-Number=4
-Rows=4
+Number=6
+Rows=6
 
 [Effect-Cube]
 BorderActivate=9
 BorderActivateCylinder=9
 BorderActivateSphere=9
+DesktopLayout=org.kde.breeze.desktop
+DesktopListLayout=org.kde.breeze.desktop
+LayoutName=org.kde.breeze.desktop
+
 
 [Effect-DesktopGrid]
 BorderActivate=7

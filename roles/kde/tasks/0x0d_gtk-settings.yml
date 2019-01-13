@@ -4,5 +4,19 @@
   become: yes
   become_user: sjas
   copy:
+    src: gtkrc
+    dest: /home/sjas/.config/
+
+- name: deploy gtk 2.0 color scheme and icons
+  become: yes
+  become_user: sjas
+  copy:
+    src: gtkrc-2.0
+    dest: /home/sjas/.config/gtk-3.0
+
+- name: deploy gtk 3.0 color scheme and icons
+  become: yes
+  become_user: sjas
+  copy:
     src: settings.ini
     dest: /home/sjas/.config/gtk-3.0
