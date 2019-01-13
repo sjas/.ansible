@@ -128,6 +128,7 @@ alias bettercap='sudo bettercap'
 alias nload='nload -u m -U H -i 102400 -o 102400 -a 60' ## 100m graphen
 alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60' ## 1g graphen
 
+alias topcommands="history | awk '{CMD[\$2]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
 
 fdiff() {
 	wdiff -n $1 $2 | colordiff
