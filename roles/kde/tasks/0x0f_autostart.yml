@@ -5,4 +5,4 @@
   become_user: sjas
   copy:
     src: shutter.desktop
-    dest: /home/sjas/autostart/shutter.desktop
+    dest: /home/sjas/.config/autostart/shutter.desktop
