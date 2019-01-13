@@ -51,3 +51,7 @@
 - name: gtk settings
   include: 0x0d_gtk-settings.yml
   tags: kde
+
+- name: autostart
+  include: 0x0e_autostart.yml
+  tags: autostart
