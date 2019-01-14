@@ -70,6 +70,7 @@
       - linux-tools-generic
       - lnav
       - iputils-arping
+      - lftp
       - ltrace
       - lynx
       - mc
