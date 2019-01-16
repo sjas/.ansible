@@ -100,7 +100,6 @@
       - python3-rope
       - pylint3
       - net-tools
-      - netperf
       - ntfs-3g
       - p7zip
       - parallel
