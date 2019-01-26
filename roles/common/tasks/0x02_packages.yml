@@ -42,6 +42,7 @@
       - ext4magic
       - fail2ban
       - filezilla
+      - finger
       - fio
       - flex
       - flex-doc
