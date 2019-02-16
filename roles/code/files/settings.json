@@ -16,6 +16,7 @@
     "editor.lineNumbers": "interval",
     "editor.minimap.enabled": true,
     "editor.mouseWheelScrollSensitivity": 5,
+    "editor.mouseWheelZoom": true,
     "editor.multiCursorModifier": "alt",
     "editor.renderWhitespace": "all",
     "editor.rulers": [
