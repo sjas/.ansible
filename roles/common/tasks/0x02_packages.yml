@@ -120,6 +120,7 @@
       - scite
       - shellcheck
       - shutter
+      - snmp
       - strace
       - subversion
       - sysstat
