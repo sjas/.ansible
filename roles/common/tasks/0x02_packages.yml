@@ -121,6 +121,7 @@
       - shellcheck
       - shutter
       - snmp
+      - snmp-mibs-downloader
       - strace
       - subversion
       - sysstat
