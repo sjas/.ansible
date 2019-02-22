@@ -131,7 +131,8 @@ alias gfp=gitfastpush                                   ## commit all present ch
 #############################################################################################################
 # 0x05 - BRANCHING
 #############################################################################################################
-alias gb="git branch"
+alias gb="git branch"					## show local branches if used without args
+alias gba="git branch -a -v"				## show all currently existing local and remote branches plus latest commits
 alias gco="git checkout"                                ## checkout
 alias gcob="git checkout -b"                            ## checkout directly into new branch
 
