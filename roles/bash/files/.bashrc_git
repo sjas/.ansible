@@ -43,9 +43,14 @@ alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar
 alias glog="git log --oneline --graph --decorate=short -n 22"
 alias glogf="git log --oneline --graph --decorate=short"
 
-#show
+#show commits
 alias gsh="git show"                                    ## param: commit-id, show changes
 alias gshf="git show --stat --oneline"			## param: commit-id, show changes
+
+#show remote contents
+alias gsb="git show-branch -a --list --more=10 --no-name"  ## show-branch, show where commits are present
+alias gsbf="git show-branch -a --list --no-name"        ## show-branch, show where commits are present
+alias gsba="git show-branch -a --topics --current"	## show all dangling branches? FIXME
 
 #diff
 gitshowauthor() {
@@ -129,9 +134,6 @@ alias gfp=gitfastpush                                   ## commit all present ch
 alias gb="git branch"
 alias gco="git checkout"                                ## checkout
 alias gcob="git checkout -b"                            ## checkout directly into new branch
-alias gsb="git show-branch -a --list --more=10 --no-name"  ## show-branch, show where commits are present
-alias gsbf="git show-branch -a --list --no-name"        ## show-branch, show where commits are present
-alias gsba="git show-branch -a --topics --current"	## show all dangling branches? FIXME
 
 
 
