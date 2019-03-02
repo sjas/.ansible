@@ -16,8 +16,9 @@
       - aptsh
       - at
       - atop
+      - autossh
       - bash-completion
-      # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
+      - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/
       - bison
       - bzr
       - ccze
@@ -29,6 +30,7 @@
       - curl
       - dhcpdump
       - dhcping
+      - dialog
       - diffutils
       - dnsmasq
       - dnsmasq-utils
@@ -122,6 +124,7 @@
       - shutter
       - snmp
       - snmp-mibs-downloader
+      - source-highlight
       - strace
       - subversion
       - sysstat
