@@ -1,0 +1,9 @@
+---
+
+- name: deploy simplecurses bash lib
+  become: yes
+  become_user: sjas
+  copy:
+    src: simple_curses.sh
+    dest: /home/sjas/.local/bin/
+    mode: 0744
