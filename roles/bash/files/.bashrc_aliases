@@ -194,16 +194,17 @@ alias   etp="vim ~/.todo_prv"
 alias  etpi="vim ~/.todo_install"
 alias   ets="vim ~/.todo_srv"
 
+# the commented out lines where for syncing these with upstream, syncthing will make these obsolete eventually
 k() {
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
+	#if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
 	kanban $@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
+	#if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
 }
 n() {
 	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt | sort && echo && return
-	if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
+	#if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/txt/ /home/sjas/txt; fi
 	vim /home/sjas/txt/$@
-	if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
+	#if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/txt/ prv:/home/sjas/txt; fi
 }
 cn() {
 	[[ $# == 0 ]] && echo && ls -c1 /home/sjas/txt && echo && return
