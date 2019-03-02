@@ -106,6 +106,7 @@ alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
+vman() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
 
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
