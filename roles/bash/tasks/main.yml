@@ -10,7 +10,7 @@
   tags: bash
 
 - name: direnv hook
-  lineinfile: path=/home/sjas/.bashrc line='eval "$(direnv hook bash)"'
+  lineinfile: path=/home/sjas/.bashrc line='[[ $UID == 1000 ]] && eval "$(direnv hook bash)"'
   tags: bash
 
 - name: reference .bashrc_includes if present
