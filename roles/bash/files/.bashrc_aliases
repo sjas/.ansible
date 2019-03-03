@@ -112,6 +112,7 @@ alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
+
 vm() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
 cm() { PAGER=cat man $1 | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
 m() {
@@ -150,6 +151,7 @@ alias apts='sudo dpkg -l | grep'
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
+alias g=global
 
 alias ee="pcmanfm ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo

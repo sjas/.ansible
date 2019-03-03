@@ -43,3 +43,4 @@ nnoremap  <leader>ebe :vs $DOTFILES/roles/bash/files/.bashrc_env<cr>
 nnoremap  <leader>ebg :vs $DOTFILES/roles/bash/files/.bashrc_git<cr>
 
 nnoremap n nzt5<c-y>
+nnoremap * *zt5<c-y>
