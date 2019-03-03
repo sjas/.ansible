@@ -31,6 +31,7 @@ nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 
+
 nnoremap <leader>l :!go fmt %<cr>:<backspace>
 nnoremap <leader>fr :!./%<cr>
 
@@ -41,3 +42,4 @@ nnoremap  <leader>eba :vs $DOTFILES/roles/bash/files/.bashrc_aliases<cr>
 nnoremap  <leader>ebe :vs $DOTFILES/roles/bash/files/.bashrc_env<cr>
 nnoremap  <leader>ebg :vs $DOTFILES/roles/bash/files/.bashrc_git<cr>
 
+nnoremap n nzt5<c-y>
