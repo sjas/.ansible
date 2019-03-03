@@ -107,6 +107,31 @@ alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
 vm() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
+cm() { PAGER=cat man $1 | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
+m() { 
+	dpkg -s dialog &>/dev/null || { echo "Needs 'dialog' package which is not installed on this system!" && return; }
+	[[ $# != 1 ]] && echo 'Man page name consisting of a single word expected but not given.' && return
+	MANPAGE=$1
+	man $MANPAGE > /dev/null 2>&1 || { echo $MANPAGE man page not present on this system!; return; }
+	mapfile -t OUTLINE < <(PAGER=cat man $MANPAGE | grep ^\\w | grep -v -e AUTHOR -e COPYRIGHT | sed '1d;$d')
+	RESULTSIZE=$(echo ${#OUTLINE[*]})
+	CHOICE=$(
+		dialog --keep-tite --menu "$(
+			echo -n $MANPAGE | tr '[a-z]' '[A-Z]'
+		) manpage contents" $(( $RESULTSIZE + 8 )) 35 $RESULTSIZE $(
+			COUNT=0
+			for i in $( seq 0 $(( ${#OUTLINE[@]} - 1 )) )
+			do
+				echo -n $COUNT
+				echo -n " $( echo "${OUTLINE[i]}" | sed 's/ /\_/g' ) "
+				(( COUNT++ ))
+			done
+		) 2>&1 >/dev/tty || echo CANCEL
+	)
+	[[ $CHOICE =~ "CANCEL" ]] && return
+	MANPAGER="less +/^$( echo ${OUTLINE[$CHOICE]} | sed 's/ /\\ /g' )" man $MANPAGE
+	m $MANPAGE
+}
 
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
@@ -126,8 +151,8 @@ alias pipestatus='echo ${PIPESTATUS[@]}'
 
 alias bettercap='sudo bettercap'
 
-alias nload='nload -u m -U H -i 102400 -o 102400 -a 60' ## 100m graphen
-alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60' ## 1g graphen
+alias nload='nload -u m -U H -i 102400 -o 102400 -a 60'  ## 100m graphs
+alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60'  ## 1g graphs
 
 alias topcommands="history | awk '{CMD[\$2]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
 alias kdeversion="dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1"
