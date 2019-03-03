@@ -126,7 +126,7 @@ m() {
         CHOICE=$(
                 dialog --colors --keep-tite --default-item "$DEFAULTCHOICE" --menu "$(
                         echo -n \\Zb\\Z3 $MANPAGE | tr '[a-z]' '[A-Z]'
-                ) man page" $(( $RESULTSIZE + 8 )) 35 $RESULTSIZE $(
+                ) man page" $(( $RESULTSIZE + 8 )) 55 $RESULTSIZE $(
                         COUNT=0
                         for i in $( seq 0 $(( ${#OUTLINE[@]} - 1 )) )
                         do
