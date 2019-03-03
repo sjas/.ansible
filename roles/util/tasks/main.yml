@@ -39,3 +39,11 @@
 - name: golang dep
   include: 0x0a_go-dep.yml
   tags: golang
+
+- name: simplecurses
+  include: 0x0b_simplecurses.yml
+  tags: util
+
+- name: dialogrc
+  include: 0x0c_dialogrc.yml
+  tags: util

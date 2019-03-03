@@ -54,7 +54,13 @@ alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sja
 #############################################################################################################
 # 'reload'
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias   rea="( cd $DOTFILES; ansible-playbook neon.yml; date +%F_%T )"
+rea() {
+	(
+		cd $DOTFILES
+		ansible-playbook neon.yml $@
+		date +%F_%T
+	)
+}
 
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
@@ -108,29 +114,30 @@ alias o="popd"
 alias p="pushd"
 vm() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
 cm() { PAGER=cat man $1 | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
-m() { 
-	dpkg -s dialog &>/dev/null || { echo "Needs 'dialog' package which is not installed on this system!" && return; }
-	[[ $# != 1 ]] && echo 'Man page name consisting of a single word expected but not given.' && return
-	MANPAGE=$1
-	man $MANPAGE > /dev/null 2>&1 || { echo $MANPAGE man page not present on this system!; return; }
-	mapfile -t OUTLINE < <(PAGER=cat man $MANPAGE | grep ^\\w | grep -v -e AUTHOR -e COPYRIGHT | sed '1d;$d')
-	RESULTSIZE=$(echo ${#OUTLINE[*]})
-	CHOICE=$(
-		dialog --keep-tite --menu "$(
-			echo -n $MANPAGE | tr '[a-z]' '[A-Z]'
-		) manpage contents" $(( $RESULTSIZE + 8 )) 35 $RESULTSIZE $(
-			COUNT=0
-			for i in $( seq 0 $(( ${#OUTLINE[@]} - 1 )) )
-			do
-				echo -n $COUNT
-				echo -n " $( echo "${OUTLINE[i]}" | sed 's/ /\_/g' ) "
-				(( COUNT++ ))
-			done
-		) 2>&1 >/dev/tty || echo CANCEL
-	)
-	[[ $CHOICE =~ "CANCEL" ]] && return
-	MANPAGER="less +/^$( echo ${OUTLINE[$CHOICE]} | sed 's/ /\\ /g' )" man $MANPAGE
-	m $MANPAGE
+m() {
+        dpkg -s dialog &>/dev/null || { echo "Needs 'dialog' package which is not installed on this system!" && return; }
+        [[ $# -lt 1 ]] && echo 'Man page name consisting of a single word expected but not given.' && return
+        MANPAGE=$1
+        [[ -n $2 ]] && DEFAULTCHOICE=$2 || DEFAULTCHOICE='0'
+        man $MANPAGE > /dev/null 2>&1 || { echo $MANPAGE man page not present on this system!; return; }
+        mapfile -t OUTLINE < <(PAGER=cat man $MANPAGE | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d')
+        RESULTSIZE=$(echo ${#OUTLINE[*]})
+        CHOICE=$(
+                dialog --colors --keep-tite --default-item "$DEFAULTCHOICE" --menu "$(
+                        echo -n \\Zb\\Z3 $MANPAGE | tr '[a-z]' '[A-Z]'
+                ) man page" $(( $RESULTSIZE + 8 )) 35 $RESULTSIZE $(
+                        COUNT=0
+                        for i in $( seq 0 $(( ${#OUTLINE[@]} - 1 )) )
+                        do
+                                echo -n $COUNT
+                                echo -n " $( echo "${OUTLINE[i]}" | sed 's/ /\_/g' ) " 
+                                (( COUNT++ ))
+                        done
+                ) 2>&1 >/dev/tty || echo CANCEL
+        )
+        [[ $CHOICE =~ "CANCEL" ]] && return
+        MANPAGER="less +/^$( echo ${OUTLINE[$CHOICE]} | sed 's/ /\\ /g' )" man $MANPAGE
+        m $MANPAGE $CHOICE
 }
 
 alias reboot="sudo reboot"
