@@ -1,10 +1,10 @@
 [Compositing]
 AnimationSpeed=0
 Backend=OpenGL
-Enabled=false
-GLCore=false
-GLPreferBufferSwap=e
-GLTextureFilter=2
+Enabled=true
+GLCore=true
+GLPreferBufferSwap=a
+GLTextureFilter=1
 HiddenPreviews=5
 OpenGLIsUnsafe=false
 WindowsBlockCompositing=true
