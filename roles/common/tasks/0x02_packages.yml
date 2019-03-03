@@ -18,7 +18,7 @@
       - atop
       - autossh
       - bash-completion
-      #- bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/ ## not available in 18.04 yet
+      # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/ ## not available in 18.04 yet
       - bison
       - bzr
       - ccze
