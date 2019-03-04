@@ -12,18 +12,8 @@ XRenderSmoothScale=false
 
 
 [Desktops]
-Id_1=ec587c1d-097d-489e-a963-74982fc8470b
-Id_10=cb30927b-092e-4d4e-bb5f-5a8087507525
-Id_2=511322e6-1cb1-4250-b9ec-58d7dcd8801d
-Id_3=6af2673d-fd9f-45e6-a802-2dc6e3258c21
-Id_4=3ec815b6-e0b8-45f9-8dc9-298f8dcd303e
-Id_5=8d3559f6-9e67-4326-9e4f-9e35a6df20ed
-Id_6=870314c8-4f0f-4251-90cd-ad5fbea08076
-Id_7=706a5fd6-ca5c-47c2-a2d1-525e79d6fa13
-Id_8=dac29129-d0f8-4acd-adc1-e32c103fa16b
-Id_9=2ba05cdb-b64d-41c9-a021-ab3f8610034c
-Number=10
-Rows=5
+Number=6
+Rows=6
 
 [Effect-Cube]
 BorderActivate=9
@@ -71,7 +61,9 @@ CommandWindow3=Activate and pass click
 CommandWindowWheel=Scroll
 
 [Plugins]
+cubeslideEnabled=false
 desktopchangeosdEnabled=false
+kwin4_effect_fadedesktopEnabled=false
 slideEnabled=false
 windowgeometryEnabled=true
 
