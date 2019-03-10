@@ -6,13 +6,14 @@
     name:
       - qemu
       - qemu-utils
-      - libvirt-bin
-      - virtinst
-      - unrar-free
       - libguestfs-tools
       - libosinfo-bin
-      - virt-what
+      - libvirt-bin
+      - unrar-free
       - virt-manager
+      - virt-top
+      - virt-what
+      - virtinst
   tags: virt
 
 - name: ensure libvirtd group exists
