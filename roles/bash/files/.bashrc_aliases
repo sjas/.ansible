@@ -143,6 +143,7 @@ m() {
 
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
+alias powertop="sudo powertop"
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias aptc='sudo apt clean; sudo apt autoremove'

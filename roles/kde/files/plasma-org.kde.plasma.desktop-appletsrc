@@ -243,3 +243,4 @@ immutability=2
 [ScreenMapping]
 itemsOnDisabledScreens=
 screenMapping=desktop:/trash.desktop,0,desktop:/Home.desktop,0
+
