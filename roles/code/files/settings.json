@@ -31,7 +31,7 @@
     "git.enableSmartCommit": true,
     "open-in-vim.openMethod": "integrated-terminal",
     "plantuml.previewFileType": "svg",
-    "plantuml.exportFormat": "svg",
+    "plantuml.exportFormat": "png",
     "plantuml.exportOutDir": ".",
     "plantuml.previewSnapIndicators": true,
     "plantuml.server": "https://www.plantuml.com/plantuml.disabled",
