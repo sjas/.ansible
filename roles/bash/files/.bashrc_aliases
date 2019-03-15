@@ -112,6 +112,7 @@ alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
+alias v="vim"
 
 vm() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
 cm() { PAGER=cat man $1 | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
