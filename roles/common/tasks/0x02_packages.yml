@@ -88,6 +88,7 @@
       - ncdt
       - ncdu
       - network-manager-openvpn
+      - ngrep
       - nicstat
       - nload
       - nmap
@@ -124,6 +125,7 @@
       - shellcheck
       - shutter
       - sipcalc
+      - sngrep
       - snmp
       - snmp-mibs-downloader
       - source-highlight
