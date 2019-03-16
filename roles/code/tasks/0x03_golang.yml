@@ -1,45 +1,39 @@
 ---
 
-- name: make sure golang 1.10 is gone
-  file:
-    path: "/usr/lib/go-1.10"
-    state: absent
-  tags: golang
+# fix version number upon new releases
+- name: register current go version
+  command: "/bin/echo 1.12.1"
+  register: go_version
+  changed_when: false
 
 - name: register current golang install path
-  command: "/bin/echo /usr/local/lib/go-1.11"
+  command: "/bin/echo /usr/local/lib/go-{{ go_version.stdout }}"
   register: current_go_path
   changed_when: false
-  tags: golang
-
-# dont forget to change the download checksum below
-- name: register current golang release tarball name
-  command: "/bin/echo go1.11.1.linux-amd64.tar.gz"
-  register: current_golang_release_tarball
-  changed_when: false
-  tags: golang
 
 - name: check of current golang is already installed
   stat:
     path: "{{ current_go_path.stdout }}"
   register: golang_installed
   changed_when: false
-  tags: golang
 
 - name: remove /usr/local/go hardlink if present
   file:
     path: "/usr/local/go"
     state: absent
   when: not golang_installed.stat.exists
-  tags: golang
 
-- name: download official golang 1.11
+- name: register current golang release tarball name
+  command: "/bin/echo go{{ go_version.stdout }}.linux-amd64.tar.gz"
+  register: current_golang_release_tarball
+  changed_when: false
+  when: not golang_installed.stat.exists
+
+- name: download official golang {{ go_version.stdout }}
   get_url:
     url: "https://dl.google.com/go/{{ current_golang_release_tarball.stdout }}"
     dest: "/tmp"
-    checksum: "sha256:2871270d8ff0c8c69f161aaae42f9f28739855ff5c5204752a8d92a1c9f63993"
   when: not golang_installed.stat.exists
-  tags: golang
 
 - name: unarchive and install golang
   unarchive:
@@ -47,19 +41,16 @@
     dest: "/usr/local/lib/"
     remote_src: yes
   when: not golang_installed.stat.exists
-  tags: golang
 
 - name: move folder to have a version number in the foldername for easier changes in the future
   command: "mv /usr/local/lib/go {{ current_go_path.stdout }}"
   when: not golang_installed.stat.exists
-  tags: golang
 
 - name: remove extracted tarfile
   file:
     path: "/tmp/{{ current_golang_release_tarball.stdout }}"
     state: absent
   when: not golang_installed.stat.exists
-  tags: golang
 
 - name: create link to /usr/local/go folder so golang env vars in bash environment will work
   file:
@@ -67,20 +58,17 @@
     dest: "/usr/local/go"
     state: link
     force: yes
-  tags: golang
 
 - name: check if gorun is installed
   stat:
     path: /home/sjas/go/bin/gorun
   register: gorun_installed
-  tags: golang
 
 - name: install gorun if needed
   become: yes
   become_user: sjas
   command: "{{ current_go_path.stdout }}/bin/go get -v github.com/erning/gorun"
   when: not gorun_installed.stat.exists
-  tags: golang
 
 - name: copy gorun binary if not already in in /usr/local/bin
   copy:
@@ -88,7 +76,6 @@
     dest: /usr/local/bin
     mode: 0755
     force: no
-  tags: golang
 
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:
@@ -96,4 +83,3 @@
     line: "echo ':golang:E::go::/usr/local/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
     insertbefore: "exit 0"
     state: present
-  tags: golang
