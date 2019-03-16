@@ -51,3 +51,7 @@
 - name: jp JSON query tool
   include: 0x0d_jp.yml
   tags: util
+
+- name: jsonfui json explorer
+  include: 0x0e_jsonfui.yml
+  tags: util
