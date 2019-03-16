@@ -142,6 +142,7 @@
       - tree
       - uptimed
       - util-linux
+      - vifm
       - vim
       - w3m
       - wdiff
