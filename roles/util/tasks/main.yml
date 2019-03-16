@@ -47,3 +47,7 @@
 - name: dialogrc
   include: 0x0c_dialogrc.yml
   tags: util
+
+- name: jp JSON query tool
+  include: 0x0d_jp.yml
+  tags: util
