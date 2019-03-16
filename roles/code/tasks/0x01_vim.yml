@@ -6,4 +6,3 @@
   copy:
     src: .vimrc
     dest: /home/sjas/.vimrc
-  tags: vim
