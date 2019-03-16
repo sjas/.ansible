@@ -84,10 +84,12 @@ addtopath() {
 
 # DATA
 #export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/home/sjas/.nvm"
 export GOROOT=/usr/local/go
+# dont just get rid of GOPATH YET, `go get` still seems to use it
+export GO111MODULE=on
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 export GOPATH=/home/sjas/go 
-export NVM_DIR="/home/sjas/.nvm"
 
 for i in \
 	/usr/local/bin \
