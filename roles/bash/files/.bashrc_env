@@ -3,7 +3,7 @@
 ####################
 
 #0x01 - SYSTEM VARS
-#0x02 - PROMPT AND SHELL
+#0x02 - PROMPT AND SHELL OPTIONS
 #0x03 - LESS
 #0x04 - CODE AND $PATH
 
@@ -29,20 +29,52 @@ fi
 
 
 #############################################################################################################
-#0x02 - PROMPT AND SHELL
+#0x02 - PROMPT AND SHELL OPTIONS
 #############################################################################################################
 # old
 #export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[33;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo \\\[\e[32m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo \\\[\e[31m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo \\\[\e[36m\\\]; else echo \\\[\e[35\;1m\\\]; fi; fi; fi)$(__git_ps1)\[\e[0m\] \[\e[37;1m\]\$\[\e[m\]\[\e[36;1m\]$SHLVL \n\[\e[m\]'
 # now with history and command number
 export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[33;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo \\\[\e[32m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo \\\[\e[31m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo \\\[\e[36m\\\]; else echo \\\[\e[35\;1m\\\]; fi; fi; fi)$(__git_ps1)\[\e[0m\] \[\e[37;1m\]\$\[\e[m\]\[\e[36;1m\]$SHLVL \[\e[m\]\[\e[37;1m\]h\[\e[m\]\[\e[36;1m\]\! \[\e[m\]\[\e[37;1m\]c\[\e[m\]\[\e[36;1m\]\# \n\[\e[m\]'
 
-HISTSIZE="30000"
+export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
+#export PS2="> "  ## unchanged
+export PS3="select> "
+export PS4="___________________________ "  ## make `set -x` more readable for me by far
+
+HISTCONTROL=""
+HISTSIZE="-1"
+HISTFILESIZE="-1"
 
 export PROMPT_COMMAND=echo
-# $SHELLOPTS / $BASHOPTS
+# $SHELLOPTS `set +o`
 #set -x
+# go partially for 'bash strict mode'
+# but without -e / -u or changing IFS
+#set -e
+#set -u
+set -o pipefail
+#IFS="\n\t"
+
+# $BASHOPTS `shopt -p`
+shopt -s autocd
+shopt -s checkhash
+shopt -s checkjobs
 shopt -s checkwinsize
+shopt -s cmdhist
 shopt -s dotglob
+shopt -s globstar
+shopt -s gnu_errfmt
+shopt -s histappend
+shopt -s histverify
+shopt -s interactive_comments
+shopt -s no_empty_cmd_completion
+shopt -s nocaseglob
+shopt -s nullglob
+shopt -s progcomp
+shopt -s promptvars
+shopt -s shift_verbose
+shopt -u sourcepath  ## dont search PATH for `. FILE`! 
+
 
 
 
