@@ -114,6 +114,7 @@
       - pv
       - pwgen
       - python-optcomplete
+      - qalc
       - qmmp
       - rename
       - rlwrap
@@ -124,11 +125,13 @@
       - scite
       - shellcheck
       - shutter
+      - siege
       - sipcalc
       - sngrep
       - snmp
       - snmp-mibs-downloader
       - source-highlight
+      - stow
       - strace
       - subversion
       - sysstat
@@ -140,7 +143,9 @@
       - tmux
       - traceroute
       - tree
+      - tsung
       - tudu
+      - units
       - uptimed
       - util-linux
       - vifm
