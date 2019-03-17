@@ -1,16 +1,21 @@
 ####################
-# bash session env #
+# BASH SESSION ENV #
 ####################
 
-#0x01 - SYSTEM VARS
-#0x02 - PROMPT AND SHELL OPTIONS
-#0x03 - LESS
-#0x04 - CODE AND $PATH
+#0X01 - SYSTEM
+#0X02 - PROMPT
+#0X03 - SHELL
+#0X04 - BASH
+#0X05 - HISTORY
+#0X06 - LESS
+#0X07 - PATH AND LANGUAGE ENVS
+
+
 
 
 
 #############################################################################################################
-#0x01 - SYSTEM
+#0X01 - SYSTEM
 #############################################################################################################
 export EDITOR="vim"
 export VISUAL="vim"
@@ -29,7 +34,7 @@ fi
 
 
 #############################################################################################################
-#0x02 - PROMPT AND SHELL OPTIONS
+#0X02 - PROMPT
 #############################################################################################################
 # old
 #export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[33;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo \\\[\e[32m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo \\\[\e[31m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo \\\[\e[36m\\\]; else echo \\\[\e[35\;1m\\\]; fi; fi; fi)$(__git_ps1)\[\e[0m\] \[\e[37;1m\]\$\[\e[m\]\[\e[36;1m\]$SHLVL \n\[\e[m\]'
@@ -41,13 +46,15 @@ export PS0='\n'  ## show a newline after any entered command. works in unison wi
 export PS3="select> "
 export PS4="___________________________ "  ## make `set -x` more readable for me by far
 
-HISTCONTROL=""
-HISTSIZE="-1"
-HISTFILESIZE="-1"
-
 export PROMPT_COMMAND=echo
-# $SHELLOPTS `set +o`
-#set -x
+
+
+
+
+#############################################################################################################
+#0X03 - SHELL
+#############################################################################################################
+# show $SHELLOPTS `set +o`
 # go partially for 'bash strict mode'
 # but without -e / -u or changing IFS
 #set -e
@@ -55,7 +62,16 @@ export PROMPT_COMMAND=echo
 set -o pipefail
 #IFS="\n\t"
 
-# $BASHOPTS `shopt -p`
+#set -x
+
+
+
+
+
+#############################################################################################################
+#0X04 - BASH
+#############################################################################################################
+# show $BASHOPTS `shopt -p`
 shopt -s autocd
 shopt -s checkhash
 shopt -s checkjobs
@@ -80,7 +96,20 @@ shopt -u sourcepath  ## dont search PATH for `. FILE`!
 
 
 #############################################################################################################
-#0x03 - LESS
+#0X05 - HISTORY
+#############################################################################################################
+#unlimited history without getting cleaned up
+HISTCONTROL=""
+HISTSIZE="-1"
+HISTFILESIZE="-1"
+HISTTIMEFORMAT="%F_%T  "
+
+
+
+
+
+#############################################################################################################
+#0X06 - LESS
 #############################################################################################################
 #colored manpages
 export LESS_TERMCAP_mb=$'\E[1;31m'	# begin blinking
@@ -103,7 +132,7 @@ export LESS=' -R '
 
 
 #############################################################################################################
-#0x04 - CODE AND $PATH
+#0X07 - PATH AND LANGUAGE ENVS
 #############################################################################################################
 # HELPER, can be called from CLI, too
 addtopath() {
@@ -114,7 +143,6 @@ addtopath() {
 	PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
 }
 
-# DATA
 #export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="/home/sjas/.nvm"
 export GOROOT=/usr/local/go
