@@ -20,6 +20,7 @@
       - bash-completion
       # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/ ## not available in 18.04 yet
       - bison
+      - byobu
       - bzr
       - ccze
       - cmake
