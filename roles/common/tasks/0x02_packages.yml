@@ -140,6 +140,7 @@
       - tmux
       - traceroute
       - tree
+      - tudu
       - uptimed
       - util-linux
       - vifm
