@@ -2,21 +2,21 @@
 # git is absolutely elemental #
 ###############################
 
-# 0x01 - BASICS
-# 0x02 - LOG,SHOW,DIFF
-# 0x03 - COMMIT
-# 0x04 - UPSTREAM(ING)
-# 0x05 - BRANCHING
-# 0x06 - STASHING
-# 0x07 - TAGGING AND NOTES
-# 0x08 - ANALYSIS
-# 0x09 - CONFLICTS
+#0X01 - BASICS
+#0X02 - LOG,SHOW,DIFF
+#0X03 - COMMIT
+#0X04 - UPSTREAM(ING)
+#0X05 - BRANCHING
+#0X06 - STASHING
+#0X07 - TAGGING AND NOTES
+#0X08 - ANALYSIS
+#0X09 - CONFLICTS
 
 
 
 
 #############################################################################################################
-# 0x01 - BASICS
+#0X01 - BASICS
 #############################################################################################################
 alias gh="git help"                                     ## gh git_command = open manpage for it
 
@@ -35,7 +35,7 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 
 
 #############################################################################################################
-# 0x02 - LOG,SHOW,DIFF
+#0X02 - LOG,SHOW,DIFF
 #############################################################################################################
 #log
 alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
@@ -83,7 +83,7 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 
 
 #############################################################################################################
-# 0x03 - COMMIT
+#0X03 - COMMIT
 #############################################################################################################
 gitcommit() {
         git commit -m "$*"
@@ -109,7 +109,7 @@ alias grmc=gitrmcached
 
 
 #############################################################################################################
-# 0x04 - UPSTREAM(ING)
+#0X04 - UPSTREAM(ING)
 #############################################################################################################
 alias grem="git remote -v"                              ## show remotes
 alias grema="git remote add"                            ## add remote
@@ -129,7 +129,7 @@ alias gfp=gitfastpush                                   ## commit all present ch
 
 
 #############################################################################################################
-# 0x05 - BRANCHING
+#0X05 - BRANCHING
 #############################################################################################################
 alias gb="git branch"					## show local branches if used without args
 alias gba="git branch -a -v"				## show all currently existing local and remote branches plus latest commits
@@ -141,7 +141,7 @@ alias gcob="git checkout -b"                            ## checkout directly int
 
 
 #############################################################################################################
-# 0x06 - STASHING
+#0X06 - STASHING
 #############################################################################################################
 alias gst="git stash"                                   ## stash
 alias gstl="git stash list"                             ## show stash
@@ -156,7 +156,7 @@ alias gstc="git stash clear"                            ## delete all stashes
 
 
 #############################################################################################################
-# 0x07 - TAGGING AND NOTES
+#0X07 - TAGGING AND NOTES
 #############################################################################################################
 alias gt="git tag"                                      ## tagging
 alias gtl="git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' | grep --color -e 'HEAD -> [_.0-9A-Za-z-]\+' -e 'tag: [_.0-9A-Za-z-]\+'"  ## show HEAD and all tags plus count (1 = first commit, n = HEAD)
@@ -175,7 +175,7 @@ alias gnd="git notes remove"                            ## delete notes (default
 
 
 #############################################################################################################
-# 0x08 - ANALYSIS
+#0X08 - ANALYSIS
 #############################################################################################################
 githistorygrep() {
         git rev-list --all | xargs git grep "$*"
@@ -193,7 +193,7 @@ alias gslc="git shortlog -nse"                          ## commit count per user
 
 
 #############################################################################################################
-# 0x09 - CONFLICTS
+#0X09 - CONFLICTS
 #############################################################################################################
 alias gsc="git diff --diff-filter=U --name-only"        ## show conflicts
 giteditconflicts() {
