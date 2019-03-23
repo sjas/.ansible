@@ -46,6 +46,7 @@
       - fail2ban
       - filezilla
       - finger
+      - firejail
       - fio
       - flex
       - flex-doc
