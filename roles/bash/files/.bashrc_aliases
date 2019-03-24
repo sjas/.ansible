@@ -114,6 +114,12 @@ alias o="popd"
 alias p="pushd"
 alias v="vim"
 
+#v4test
+#for i in 0 $(ip -4 r | grep default | awk '{print $3}' | head -1) 1.1 one.one.one.one; do if ping -4 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
+#
+#v6test
+#for i in :: $(ip -6 r | grep default | awk '{print $3}' | head -1) 2606:4700:4700::1001 one.one.one.one; do if ping -6 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
+
 vm() { man $1 | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
 cm() { PAGER=cat man $1 | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
 m() {
