@@ -118,7 +118,11 @@ alias gremr="git remote remove"                         ## remove remote
 alias gf="git fetch origin master"                      ## fetch
 alias gp="git pull origin master"                       ## pull
 alias gpp="git push origin master"                      ## push
-alias gpup="git pull origin master; git push origin master"  ## for repositories where only I work on
+alias gpup="git pull origin master; git push origin master"  		## for repositories where only I work on
+
+alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
+alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## delete current branch at origin
+
 gitfastpush() {
         ( cd `git rev-parse --show-toplevel`; git add -A .; git commit -m fastcommit; git pull origin master; git push origin master )
 }
