@@ -113,6 +113,7 @@ alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
 alias v="vim"
+alias w="watch -n1 -d --color"
 
 #v4test
 #for i in 0 $(ip -4 r | grep default | awk '{print $3}' | head -1) 1.1 one.one.one.one; do if ping -4 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
