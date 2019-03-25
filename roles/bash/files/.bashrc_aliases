@@ -164,7 +164,7 @@ alias apts='sudo dpkg -l | grep'
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
-alias g=global
+alias gg=global
 
 alias ee="pcmanfm ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo

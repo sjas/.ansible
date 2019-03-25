@@ -2,6 +2,7 @@
 # git is absolutely elemental #
 ###############################
 
+#0X00 - BASH COMPLETION
 #0X01 - BASICS
 #0X02 - LOG,SHOW,DIFF
 #0X03 - COMMIT
@@ -11,6 +12,17 @@
 #0X07 - TAGGING AND NOTES
 #0X08 - ANALYSIS
 #0X09 - CONFLICTS
+
+
+
+
+#############################################################################################################
+#0X00 - BASH COMPLETION
+#############################################################################################################
+alias g=git
+. $(dpkg -L git | grep bash-completion | grep git$)
+complete -o bashdefault -o default -o nospace -F _git g
+
 
 
 
