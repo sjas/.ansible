@@ -19,6 +19,7 @@
 #############################################################################################################
 #0X00 - BASH COMPLETION
 #############################################################################################################
+# https://brbsix.github.io/2015/11/23/perform-tab-completion-for-aliases-in-bash/
 alias g=git
 . $(dpkg -L git | grep bash-completion | grep git$)
 complete -o bashdefault -o default -o nospace -F _git g
