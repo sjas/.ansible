@@ -141,6 +141,7 @@
       - tcpdump
       - thunderbird
       - thunderbird-locale-de
+      - tig
       - tldr
       - tmux
       - traceroute
