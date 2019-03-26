@@ -35,3 +35,7 @@
 - name: syncthing
   include: 0x09_syncthing.yml
   tags: syncthing
+
+- name: HaskLig font
+  include: 0x0a_hasklig.yml
+  tags: hasklig

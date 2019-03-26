@@ -5,7 +5,7 @@
   scroll_tabbar = True
   suppress_multiple_term_dialog = True
   tab_position = bottom
-  title_font = Noto Mono 13
+  title_font = Noto Sans Mono Bold 14
   title_inactive_bg_color = "#444444"
   title_inactive_fg_color = "#bcbcbc"
   title_transmit_bg_color = "#953030"
@@ -45,11 +45,10 @@
     copy_on_selection = True
     cursor_color = "#39ff35"
     cursor_color_fg = False
-    font = Noto Mono 10
+    font = Noto Sans Mono Bold 9
     foreground_color = "#bcbcbc"
     palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#5f87af:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
     scrollback_infinite = True
     urgent_bell = True
     use_system_font = False
     word_chars = "-A-Za-z0-9,./?%&#_~"
-
