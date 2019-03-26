@@ -35,4 +35,3 @@
   file:
     dest: "{{ ff_path.stdout }}/chrome"
     state: absent
-
