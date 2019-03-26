@@ -1,0 +1,61 @@
+---
+
+- name: reference configs from .bashrc
+  lineinfile: path=/home/sjas/.bashrc line='. /home/sjas/etc/.ansible/roles/bash/files/{{ item }}'
+  with_items:
+    - .bashrc_env
+    - .bashrc_aliases
+    - .bashrc_git
+    - .bashrc_completion
+
+- name: direnv hook
+  lineinfile: path=/home/sjas/.bashrc line='[[ $UID == 1000 ]] && eval "$(direnv hook bash)"'
+
+- name: reference .bashrc_includes if present
+  lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
+
+- name: fix git default settings
+  become: yes
+  become_user: sjas
+  git_config:
+    name: "{{ item.key }}"
+    scope: global
+    value: "{{ item.value }}"
+  with_items:
+    - { key: 'color.ui',                            value: 'true' }
+    - { key: 'color.diff-highlight.oldNormal',      value: 'red bold' }
+    - { key: 'color.diff-highlight.oldHighlight',   value: 'red bold 52' }
+    - { key: 'color.diff-highlight.newNormal',      value: 'green bold' }
+    - { key: 'color.diff-highlight.newHighlight',   value: 'green bold 22' }
+    - { key: 'color.diff.meta',                     value: 'yellow' }
+    - { key: 'color.diff.frag',                     value: 'magenta bold' }
+    - { key: 'color.diff.commit',                   value: 'yellow bold' }
+    - { key: 'color.diff.old',                      value: 'red bold' }
+    - { key: 'color.diff.new',                      value: 'green bold' }
+    - { key: 'color.diff.whitespace',               value: 'red reverse' }
+    - { key: 'push.default',                        value: 'matching' }
+    - { key: 'user.name',                           value: 'sjas' }
+    - { key: 'core.pager',                          value: 'bat --style=grid,header,numbers' }
+
+- name: mc def config def user
+  become: yes
+  become_user: sjas
+  copy:
+    src: "{{ item }}"
+    dest: /home/sjas/.config/mc/
+  with_items:
+    - ini
+    - panels.ini
+
+- name: ensure .config/mc folder exists for root user
+  file:
+    dest: /root/.config/mc
+    state: directory
+
+- name: mc def config root user
+  copy:
+    src: "{{ item }}"
+    dest: /root/.config/mc/
+  with_items:
+    - ini
+    - panels.ini
