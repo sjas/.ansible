@@ -6,6 +6,8 @@ user_pref("browser.startup.page", 3);
 user_pref("mousewheel.default.delta_multiplier_y", 550);
 // disable caching
 user_pref("browser.cache.disk.parent_directory", '/dev/null');
+// scroll tabs by mousewheel
+user_pref("toolkit.tabbox.switchByScrolling", true);
 
 // tron theme
 user_pref("lightweightThemes.persisted.headerURL", true);

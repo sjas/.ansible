@@ -31,23 +31,8 @@
     src: user.js
     dest: "{{ ff_path.stdout }}"
 
-- name: ensure firefox 'chrome' folder exists
-  become: yes
-  become_user: sjas
+- name: remove obsolete directories
   file:
-    path: "{{ ff_path.stdout }}/chrome"
-    state: directory
-
-- name: deploy bindings.xml
-  become: yes
-  become_user: sjas
-  copy:
-    src: bindings.xml
     dest: "{{ ff_path.stdout }}/chrome"
+    state: absent
 
-- name: deploy userChrome.css
-  become: yes
-  become_user: sjas
-  copy:
-    src: userChrome.css
-    dest: "{{ ff_path.stdout }}/chrome"
