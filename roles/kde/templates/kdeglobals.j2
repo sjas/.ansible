@@ -116,12 +116,15 @@ BrowserApplication[$e]=!firefox
 ColorScheme=Breeze High Contrast
 Name=Breeze Dark
 TerminalApplication[$e]=uxterm -sl 100000 +cm -cn -j -rw -s +samename -u8 -geometry 100x42 -fn "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1"
-XftHintStyle=
+XftHintStyle=hintnone
+XftSubPixel=
 dbfile={{ ff_path_fact }}/places.sqlite
-fixed=Hack,9,-1,5,50,0,0,0,0,0,Regular
+fixed=Hasklig ExtraLight,9,-1,5,12,0,0,0,0,0,Regular
 font=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
 menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
 shadeSortColumn=true
+smallestReadableFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
+toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
 widgetStyle=Breeze
 
 [Icons]
@@ -149,9 +152,10 @@ PathCombo Completionmode=5
 Previews=false
 Show Bookmarks=false
 Show Full Path=false
+Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=false
+Show hidden files=true
 Sort by=Name
 Sort directories first=true
 Sort reversed=false
@@ -172,6 +176,7 @@ LANGUAGE=en_US:de
 [WM]
 activeBackground=29,153,243
 activeBlend=29,153,243
+activeFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
 activeForeground=252,252,252
 inactiveBackground=49,54,59
 inactiveBlend=26,188,156
