@@ -1,7 +1,7 @@
 ---
 
 - name: hasklig install check
-  shell: find /home/sjas/.fonts -type f | grep HaskLig
+  shell: find /home/sjas/.fonts -type f | grep Hasklig
   register: exitcode_hasklig_install
   ignore_errors: true
   changed_when: false
