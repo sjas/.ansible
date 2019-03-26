@@ -55,3 +55,7 @@
 - name: jsonfui json explorer
   include: 0x0e_jsonfui.yml
   tags: util
+
+- name: shfmt
+  include: 0x0f_shfmt.yml
+  tags: util
