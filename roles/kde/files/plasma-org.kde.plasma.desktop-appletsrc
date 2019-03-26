@@ -144,6 +144,16 @@ PreloadWeight=34
 [Containments][2][General]
 AppletOrder=3;21;4;5;6;19;8
 
+[Containments][22]
+wallpaperplugin=org.kde.color
+
+[Containments][22][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][22][Wallpaper][org.kde.color][General]
+Color=0,0,0
+
 [Containments][7]
 activityId=
 formfactor=2
