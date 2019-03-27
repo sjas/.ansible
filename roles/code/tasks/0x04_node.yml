@@ -1,16 +1,18 @@
 ---
 
-- name: check if nvm is already installed
-  shell: . /home/sjas/.nvm/nvm.sh && nvm --version || exit 1
-  register: exitcode_nvm_install
-  ignore_errors: true
+- name: register nvm install script name
+  become: yes
+  become_user: sjas
+  command: echo v0.34.0
+  register: nvm_installer_version
   changed_when: false
 
-- name: copy nvm install script
-  copy:
-    src: nvm_v0.33.11-install.sh
-    dest: /tmp
-  when: exitcode_nvm_install.rc != 0
+- name: register current node version to be used
+  become: yes
+  become_user: sjas
+  command: echo v11.12.0
+  register: nodejs_version
+  changed_when: false
 
 - name: make sure destination folder exists
   become: yes
@@ -19,25 +21,19 @@
     path: "/home/sjas/.nvm"
     state: directory
 
-- name: install nvm
+- name: get nvm
   become: yes
   become_user: sjas
-  command: bash /tmp/nvm_v0.33.11-install.sh
-  when: exitcode_nvm_install.rc != 0
-  notify: nvm_shell_relogin
+  shell: >
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/{{ nvm_installer_version.stdout }}/install.sh | bash
+  args:
+    creates: "/home/sjas/.nvm/nvm.sh"
 
 - name: clean NVM_DIR var from .bashrc
   lineinfile:
     path: /home/sjas/.bashrc
     regex: "export NVM_DIR.*"
     state: absent
-  when: exitcode_nvm_install.rc != 0
-
-- name: cleanup nvm install script
-  file:
-    name: /tmp/nvm_v0.33.11-install.sh
-    state: absent
-  when: exitcode_nvm_install.rc != 0
 
 - name: always purge OS nodejs if exists
   apt:
@@ -47,26 +43,27 @@
       - nodejs
       - nodejs-doc
 
-- name: check if any node.js is already installed
+- name: check if node.js {{ nodejs_version.stdout }} is already installed
   become: yes
   become_user: sjas
-  shell: . /home/sjas/.nvm/nvm.sh && node --version || exit 1
+  shell: NVM_DIR=/home/sjas/.nvm . /home/sjas/.nvm/nvm.sh && nvm ls {{ nodejs_version.stdout }}
   register: exitcode_nodejs_install
   ignore_errors: true
-  changed_when: false
-
-- name: register current node version to be used
-  become: yes
-  become_user: sjas
-  command: echo v11.0.0
-  register: nodejs_version
   changed_when: false
 
 - name: install node.js {{ nodejs_version.stdout }}
   become: yes
   become_user: sjas
-  shell: . /home/sjas/.nvm/nvm.sh && nvm install {{ nodejs_version.stdout }}
+  shell: NVM_DIR=/home/sjas/.nvm . /home/sjas/.nvm/nvm.sh && nvm install {{ nodejs_version.stdout }}
   when: exitcode_nodejs_install.rc != 0
+  notify: node_shell_relogin
+
+- name: set node.js {{ nodejs_version.stdout }} as default
+  become: yes
+  become_user: sjas
+  shell: NVM_DIR=/home/sjas/.nvm . /home/sjas/.nvm/nvm.sh && nvm alias default {{ nodejs_version.stdout }}
+  when: exitcode_nodejs_install.rc != 0
+  notify: node_shell_relogin
 
 - name: get path current nodejs for setcap'ing
   shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
