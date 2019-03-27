@@ -9,8 +9,9 @@
   title_inactive_bg_color = "#444444"
   title_inactive_fg_color = "#bcbcbc"
   title_transmit_bg_color = "#953030"
-  title_transmit_fg_color = "#bcbcbc"
+  title_transmit_fg_color = "#eeeeec"
   title_use_system_font = False
+  use_custom_url_handler = True
 [keybindings]
   broadcast_all = <Primary><Shift>F8
   broadcast_group = <Primary><Shift>F10
@@ -39,14 +40,13 @@
 [profiles]
   [[default]]
     audible_bell = True
-    background_color = "#262626"
-    background_darkness = 0.89
+    background_darkness = 0.65
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#39ff35"
     cursor_color_fg = False
-    font = Noto Sans Mono Bold 9
-    foreground_color = "#bcbcbc"
+    font = Noto Sans Mono 10
+    foreground_color = "#edeaea"
     palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#5f87af:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
     scrollback_infinite = True
     urgent_bell = True
