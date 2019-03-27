@@ -12,4 +12,4 @@
 - name: brave package
   apt:
     name: brave-beta
-    cache_valid_time: 1800
+    cache_valid_time: 7200

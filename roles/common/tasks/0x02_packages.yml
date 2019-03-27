@@ -2,7 +2,7 @@
 
 - name: etckeeper first
   apt:
-    cache_valid_time: 1800
+    cache_valid_time: 7200
     name:
       - etckeeper
 
@@ -191,7 +191,7 @@
 
 - name: language packages
   apt:
-    cache_valid_time: 1800
+    cache_valid_time: 7200
     name:
       - aspell-de
       - hunspell-de-de

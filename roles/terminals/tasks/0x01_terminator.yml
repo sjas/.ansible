@@ -3,7 +3,7 @@
 - name: terminator package
   apt:
     name: terminator
-    cache_valid_time: 1800
+    cache_valid_time: 7200
 
 - name: terminator config folder
   become: yes

@@ -4,4 +4,4 @@
   apt:
     name: chromium-browser
     state: present
-    cache_valid_time: 1800
+    cache_valid_time: 7200

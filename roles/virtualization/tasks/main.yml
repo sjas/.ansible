@@ -2,7 +2,7 @@
 
 - name: install libvirt and virt-manager packages
   apt:
-    cache_valid_time: 1800
+    cache_valid_time: 7200
     name:
       - qemu
       - qemu-utils

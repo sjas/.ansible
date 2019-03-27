@@ -12,4 +12,4 @@
 - name: syncthing package
   apt:
     name: syncthing
-    cache_valid_time: 1800
+    cache_valid_time: 7200

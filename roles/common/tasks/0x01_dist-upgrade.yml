@@ -3,4 +3,4 @@
 - name: dist-upgrade
   apt:
     upgrade: dist
-    cache_valid_time: 1800
+    cache_valid_time: 7200
