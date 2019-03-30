@@ -93,3 +93,9 @@
     cap: "CAP_NET_BIND_SERVICE=+ep"
   when: nodejs_path.rc == 0
   changed_when: false
+
+- name: fix npm bash completion
+  lineinfile:
+    path: /home/sjas/.bashrc
+    line: '[ -s "$NVM_DIR/versions/node/$(nvm version)/lib/node_modules/npm/lib/utils/completion.sh" ] && . "$NVM_DIR/versions/node/$(nvm version)/lib/node_modules/npm/lib/utils/completion.sh"  # this loads npm completion'
+    state: present
