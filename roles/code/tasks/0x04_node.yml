@@ -97,5 +97,5 @@
 - name: fix npm bash completion
   lineinfile:
     path: /home/sjas/.bashrc
-    line: '[ -s "$NVM_DIR/versions/node/$(nvm version)/lib/node_modules/npm/lib/utils/completion.sh" ] && . "$NVM_DIR/versions/node/$(nvm version)/lib/node_modules/npm/lib/utils/completion.sh"  # this loads npm completion'
+    line: 'i="$NVM_DIR/versions/node/$(nvm version)/lib/node_modules/npm/lib/utils/completion.sh" && [ -s "$i" ] && . "$i" #npm completion'
     state: present
