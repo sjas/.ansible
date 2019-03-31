@@ -104,6 +104,8 @@
       - pcmanfm
       - powertop
       - pylint
+      - python-pip
+      - python3-pip
       - python-rope
       - python3-rope
       - pylint3
