@@ -13,6 +13,7 @@
     update_cache: yes
     name:
       - apt-file
+      - apt-rdepends
       - aptsh
       - at
       - atop
