@@ -29,7 +29,8 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     cat << EOF > ~/.ansible.cfg
     [defaults]
     inventory = $ANSIBLETEMPROOT/.ansible/hosts
-    stdout_callback = debug
+    #stdout_callback = debug
+    stdout_callback = yaml
     verbosity = 2
     roles_path = /etc/ansible/roles:./
     [ssh_connection]
