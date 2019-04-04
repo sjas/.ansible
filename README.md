@@ -31,6 +31,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     inventory = $ANSIBLETEMPROOT/.ansible/hosts
     stdout_callback = debug
     verbosity = 2
+    roles_path = /etc/ansible/roles:./
     [ssh_connection]
     ssh_args = -o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
     pipelining = yes
