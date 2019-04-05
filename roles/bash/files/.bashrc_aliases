@@ -2,22 +2,25 @@
 # unix is your IDE so you better make it work #
 ###############################################
 
-#0x01 - 'EDIT BASH' CONFIG MANAGMENT
-#0x02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
-#0x03 - 'LS'
-#0x04 - 'UTIL'
-#0x05 - 'CAT' AND 'VI'
-#0x06 - NOTES AND KANBAN
-#0x07 - 'SHOW'
-#0x08 - NETWORK
-#0x09 - CODE
+#0X01 - 'EDIT BASH' CONFIG MANAGMENT
+#0X02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
+#0X03 - LS
+#0X04 - SUDO
+#0X05 - 'UTIL'
+#0X06 - CAT / VI
+#0X07 - NOTES AND KANBAN
+#0X08 - 'SHOW'
+#0X09 - NETWORK
+#0X0A - CODE
 
 #0xFA - SCRAPYARD
 
 
 
+
+
 #############################################################################################################
-#0x01 - 'EDIT BASH' CONFIG MANAGMENT
+#0X01 - 'EDIT BASH' CONFIG MANAGMENT
 #############################################################################################################
 # 'edit bash'
 # "" = regular .bashrc, just needed for fixing includes and shit. all magic happens in the included files
@@ -51,7 +54,7 @@ alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sja
 
 
 #############################################################################################################
-#0x02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
+#0X02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 #############################################################################################################
 # 'reload'
 alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
@@ -86,7 +89,7 @@ alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias /
 
 
 #############################################################################################################
-#0x03 - 'LS'
+#0X03 - LS
 #############################################################################################################
 LS_OPT1='-h --color --time-style=long-iso'
 LS_OPT2='-is'
@@ -107,7 +110,31 @@ alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
 
 
 #############################################################################################################
-#0x04 - 'UTIL'
+#0X04 - SUDO
+#############################################################################################################
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+
+alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
+
+alias htop="sudo htop -d2"
+alias iotop="sudo iotop"
+alias powertop="sudo powertop"
+
+alias aptc="sudo apt clean; sudo apt autoremove"
+alias apts="sudo dpkg -l | grep"
+
+alias bettercap="sudo bettercap"
+
+alias fw="sudo firewall-cmd"
+alias iptables="sudo iptables"
+
+
+
+
+
+#############################################################################################################
+#0x05 - 'UTIL'
 #############################################################################################################
 alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
@@ -117,6 +144,7 @@ alias v="vim"
 alias w="watch -n1 -d --color"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
 
+alias apt-list-backports="aptitude search -t $(lsb_release -sc)-backports -F '%p %v -> %V' '~U ~Abackports'"
 
 #v4test
 #for i in 0 $(ip -4 r | grep default | awk '{print $3}' | head -1) 1.1 one.one.one.one; do if ping -4 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
@@ -152,27 +180,18 @@ m() {
         m $MANPAGE $CHOICE
 }
 
-alias reboot="sudo reboot"
-alias poweroff="sudo poweroff"
-alias powertop="sudo powertop"
-alias htop="sudo htop -d2"
-alias iotop="sudo iotop"
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
-alias aptc='sudo apt clean; sudo apt autoremove'
-alias apts='sudo dpkg -l | grep'
 
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 alias gg=global
 
-alias ee="pcmanfm ."
-alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
+alias ee="dolphin ."
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias pipestatus='echo ${PIPESTATUS[@]}'
 
-alias bettercap='sudo bettercap'
 alias r="tr 'A-Za-z0-9' 'N-ZA-Mn-za-m5-90-4'"
 
 alias nload='nload -u m -U H -i 102400 -o 102400 -a 60'  ## 100m graphs
@@ -202,7 +221,7 @@ alias pbpaste='xclip -selection clipboard -o'
 
 
 #############################################################################################################
-#0x05 - 'CAT' AND 'VI'
+#0x06 - 'CAT' AND 'VI'
 #############################################################################################################
 
 #VI
@@ -235,7 +254,7 @@ alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
 
 
 #############################################################################################################
-#0x06 - NOTES AND KANBAN
+#0x07 - NOTES AND KANBAN
 #############################################################################################################
 # FIXME: most of these need to be thrown out
 alias    et="vim ~/.todo2"
@@ -267,7 +286,7 @@ cn() {
 
 
 #############################################################################################################
-#0x07 - 'SHOW'
+#0x08 - 'SHOW'
 #############################################################################################################
 # apt
 # net
@@ -307,7 +326,7 @@ showdf() {
 
 
 #############################################################################################################
-#0x08 - NETWORK
+#0x09 - NETWORK
 #############################################################################################################
 # FIXME: here is quite some shit to finish
 # fix up missing radb / cymru functions
@@ -397,7 +416,7 @@ utrace() {
 
 
 #############################################################################################################
-#0x09 - CODE
+#0x0A - CODE
 #############################################################################################################
 god() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
