@@ -72,6 +72,7 @@
       - jq
       - kdiff3
       - leafpad
+      - lft
       - libinput-tools
       - libreoffice
       - libxml2-utils
