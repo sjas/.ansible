@@ -172,12 +172,21 @@
       - yamllint
       - zmap
 
+- name: firewalld
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/common/files/firewalld_0.6.3-1_all.deb
+
 - name: fd
   apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/fd_7.0.0_amd64.deb
+
 - name: rg
   apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/ripgrep_0.8.1_amd64.deb
+
+- name: eaglemode
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/common/files/eaglemode_0.94.0-1_amd64.deb
 
 # https://itsfoss.com/shutter-edit-button-disabled/
 - name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
