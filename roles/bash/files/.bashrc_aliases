@@ -358,7 +358,12 @@ showdu() {
 showdf() {
 	watch -n 1 -d 'df -h'
 }
-
+showproc() {
+	for i in $(find /proc -maxdepth 1 -type f | grep -v -e kallsyms -e sched_debug -e kcore -e kmsg -e kpagecgroup -e kpagecount -e kpageflags -e sysrq-trigger -e vmallocinfo); do echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo -en '\e[0m'; sudo cat $i; echo -e '\n\n\n\n\n'; done | less -RNS
+}
+showsym() {
+	for i in $(find /proc -maxdepth 1 -type f | grep -e kallsyms -e sched_debug -e vmallocinfo); do echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo -en '\e[0m'; sudo cat $i; echo -e '\n\n\n\n\n'; done | less -RNS
+}
 
 
 
