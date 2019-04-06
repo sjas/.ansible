@@ -129,6 +129,11 @@ alias bettercap="sudo bettercap"
 alias fw="sudo firewall-cmd"
 alias iptables="sudo iptables"
 fws() {
+	for i in iptables ip6tables
+	do
+		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+		echo "# ${i}"
+		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 	iptables -L -vnx --line-numbers | \
 		sed	"/^num.*/								s//$(printf "\033[33m&\033[0m")/		" | \
 		\
@@ -158,6 +163,10 @@ fws() {
 		sed   	"/\([^n][[:space:]]\)\(LOGDROP\)/					s//$(printf "\\\1\033[1;33m\\\2\033[0m")/	" | \
 		\
 		sed   	"/[[:space:]]LOG[[:space:]]/						s//$(printf "\033[36;1m&\033[0m")/       	"
+		echo
+		echo
+		echo
+	done | less -R
 }
 
 
