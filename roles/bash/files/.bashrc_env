@@ -126,7 +126,7 @@ export LESSGLOBALTAGS=global
 #syntax highlighting, needs `libsource-highlight-common` package
 #find path via `dpkg -L libsource-highlight-common | grep lesspipe`
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -RN '
+export LESS=' -R '
 
 
 
