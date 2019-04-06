@@ -182,6 +182,8 @@
 - name: firewall-applet
   apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/firewall-applet_0.6.3-1_all.deb
+- name: make sure firewalld uses iptables as backend, because nftables breaks shit
+  lineinfile: path=/etc/firewalld/firewalld.conf regex='^FirewallBackend=' line='FirewallBackend=iptables'
 
 - name: fd
   apt:
