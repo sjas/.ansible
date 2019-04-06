@@ -129,13 +129,14 @@ alias bettercap="sudo bettercap"
 alias fw="sudo firewall-cmd"
 alias iptables="sudo iptables"
 fws() {
+	# can take parameters
 	for IPTABLES in iptables ip6tables
 	do
 		printf '\n\n\n\n\n'
 		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 		echo "# ${IPTABLES}"
 		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-		sudo "${IPTABLES}" -L -vnx --line-numbers | \
+		sudo "${IPTABLES}" -L ${@} -vnx --line-numbers | \
 			sed	"/^num.*/								s//$(printf "\033[33m&\033[0m")/		" | \
 			\
 			sed	"/ DROP/								s//$(printf "\033[31;1m&\033[0m")/		" | \
