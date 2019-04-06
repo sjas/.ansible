@@ -8,6 +8,9 @@
     - .bashrc_git
     - .bashrc_completion
 
+- name: get a unlimited history
+  lineinfile: path=/home/sjas/.bashrc regex='HIST.*SIZE' state=absent
+
 - name: direnv hook
   lineinfile: path=/home/sjas/.bashrc line='[[ $UID == 1000 ]] && eval "$(direnv hook bash)"'
 
