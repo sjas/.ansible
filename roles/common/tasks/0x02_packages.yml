@@ -173,6 +173,11 @@
       - yamllint
       - zmap
 
+- name: no ufw allowed here
+  apt:
+    name: ufw
+    state: absent
+
 - name: firewalld
   apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/firewalld_0.6.3-1_all.deb
