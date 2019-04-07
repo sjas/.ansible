@@ -59,3 +59,7 @@
 - name: shfmt
   include: 0x0f_shfmt.yml
   tags: util
+
+- name: colorize iptables output
+  include: 0x10_colorize_iptables.yml
+  tags: util
