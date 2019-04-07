@@ -67,9 +67,10 @@ rea() {
 }
 
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
-alias   dbt="wdiff -n ~/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config | colordiff"
-alias	dbm="wdiff -n ~/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini | colordiff"
-alias	dbc="wdiff -n  /home/sjas/etc/.ansible/roles/code/files/settings.json /home/sjas/.config/Code/User/settings.json | colordiff"
+alias   dbt="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config) | colordiff"
+alias	dbm="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/bash/files/mc_ini ~/.config/mc/ini) | colordiff"
+alias	dbc="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/settings.json /home/sjas/.config/Code/User/settings.json) | colordiff"
+alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/.vimrc ~/.vimrc) | colordiff"
 
 # 'change directory'
 alias   cdd="cd $DOTFILES"			## dotfiles
@@ -425,6 +426,9 @@ cn() {
 # r
 # du
 # df
+# proc
+# sym
+# diff
 showapt() {
 	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v grep | cut -c 66-' 
 }
@@ -455,7 +459,9 @@ showproc() {
 showsym() {
 	for i in $(find /proc -maxdepth 1 -type f | grep -e kallsyms -e sched_debug -e vmallocinfo); do echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo -en '\e[0m'; sudo cat $i; echo -e '\n\n\n\n\n'; done | less -RNS
 }
-
+showdiff() {
+	wdiff -sdn <(diff -u4 "${1}" "${2}") | colordiff
+}
 
 
 
