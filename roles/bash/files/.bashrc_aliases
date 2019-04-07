@@ -130,26 +130,39 @@ alias bettercap="sudo bettercap"
 alias fw="sudo firewall-cmd"
 alias iptables="sudo iptables"
 
-# colorize_iptables_output.sh: script deployed externally
-# fw46_watch_helper: abstraction for fw4/fw6
-# fw4:  v4, when wanting to watch(1) a certain chain, takes parameters: CHAIN_NAME [-t TABLE]
-# fw6:  v6, when wanting to watch(1) a certain chain, takes parameters: CHAIN_NAME [-t TABLE]
-# fws: 	shows only v4/v6 NAT and FILTER tables
-# fwsa: shows all v4/v6 tables, hopefully i have chosen a sane order from the documentation
+# colorize_iptables_output.sh: script deployed externally so inclusion works with watch(1)
+# fw46_helper: abstraction for fw4/fw6
+# fw46_watch_helper: abstraction for fw4w/fw6w
 
+# fw4/fw6: shows a single chain given with parameters: CHAIN_NAME [-t TABLE] - or all chains from FILTER
+# fw4d/fw6d: shows all default tables from iptables/ip6tables for FILTER table
+# fw4w/fw6w: watch(1) a single chain given with parameters: CHAIN_NAME [-t TABLE] - or all chains from FILTER
+
+# fws: 	shows only NAT and FILTER tables from both v4/v6 
+# fwsa: shows all tables, from both v4/v6, hopefully i have chosen a sane order from the documentation, see below
+
+fw46_helper() {
+	local IPTABLES="${1}"; shift
+	local HEADER_COLOR="31"
+
+	echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+	[[ "${IPTABLES}" == "iptables" ]] && echo -n "# v4" || echo -n "# v6"; echo " ${@:-INPUT}"
+	echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+
+	sudo "${IPTABLES}" -vnx "${@:--L}" | colorize_iptables_output.sh
+}
 fw46_watch_helper() {
 	local IPTABLES="${1}"; shift
-	watch -n1 -d -c "sudo ${IPTABLES} -vnxL ${@:-INPUT} | colorize_iptables_output.sh"
+	watch -n1 -d -c "sudo ${IPTABLES} -vnx ${@:--L} | colorize_iptables_output.sh"
 }
-fw4() {
-	fw46_watch_helper iptables "${@}"
-}
-fw6() {
-	fw46_watch_helper ip6tables "${@}"
-}
+fw4() { fw46_helper iptables "${@}"; }
+fw6() { fw46_helper ip6tables "${@}"; }
+fw4w() { fw46_watch_helper iptables "${@}"; }
+fw6w() { fw46_watch_helper ip6tables "${@}"; }
 fws() {
-	HEADER_COLOR="33;1"
-	SUB_HEADER_COLOR="31"
+	local HEADER_COLOR="33;1"
+	local SUB_HEADER_COLOR="31"
+	local IPTABLES=
 	for IPTABLES in iptables ip6tables
 	do
 		echo -e '\n\n\n\n\n'
@@ -191,8 +204,9 @@ fwsa() {
 	# -t mangle -L POSTROUTING
 	# -t nat -L POSTROUTING
 
-	HEADER_COLOR="33;1"
-	SUB_HEADER_COLOR="31"
+	local HEADER_COLOR="33;1"
+	local SUB_HEADER_COLOR="31"
+	local IPTABLES=
 	for IPTABLES in iptables ip6tables
 	do
 		echo -e '\n\n\n\n\n'
