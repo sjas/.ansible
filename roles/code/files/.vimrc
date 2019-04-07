@@ -11,11 +11,11 @@ se clipboard=unnamedplus
 "se directory=$TEMP
 
 " LEADER bindings
-" spacebar, entered via ctrl_v,<space>
+" spacebar, character here was entered via ctrl_v,<space>
 let mapleader = ' '
 let maplocalleader = ','
 
-" SPACEMACS bindings
+" spacemacs-similar bindings
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
 nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
@@ -31,9 +31,10 @@ nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 
-
 nnoremap <leader>l :!go fmt %<cr>:<backspace>
 nnoremap <leader>fr :!./%<cr>
+
+nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpo
 
 "vnoremap < <gv
 "vnoremap > <gv
