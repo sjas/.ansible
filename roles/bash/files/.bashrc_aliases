@@ -134,9 +134,9 @@ alias iptables="sudo iptables"
 # fw46_helper: abstraction for fw4/fw6
 # fw46_watch_helper: abstraction for fw4w/fw6w
 
-# fw4/fw6: shows a single chain given with parameters: CHAIN_NAME [-t TABLE] - or all chains from FILTER
+# fw4/fw6: shows a single chain given with parameters: "-L CHAIN_NAME [-t TABLE]" - or all chains from FILTER
 # fw4d/fw6d: shows all default tables from iptables/ip6tables for FILTER table
-# fw4w/fw6w: watch(1) a single chain given with parameters: CHAIN_NAME [-t TABLE] - or all chains from FILTER
+# fw4w/fw6w: watch(1) a single chain given with parameters: "-L CHAIN_NAME [-t TABLE]" - or all chains from FILTER
 
 # fws: 	shows only NAT and FILTER tables from both v4/v6 
 # fwsa: shows all tables, from both v4/v6, hopefully i have chosen a sane order from the documentation, see below
