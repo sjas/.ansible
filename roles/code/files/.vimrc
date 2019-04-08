@@ -34,7 +34,7 @@ nnoremap <leader>sh :sh<cr>
 nnoremap <leader>l :!go fmt %<cr>:<backspace>
 nnoremap <leader>fr :!./%<cr>
 
-nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpl
+nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
 
 "vnoremap < <gv
 "vnoremap > <gv
