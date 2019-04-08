@@ -42,7 +42,7 @@ sed     "/\(ipv6-icmp \)\(\S\+\)$/                                              
 # src/dst
 sed     "/anywhere/                                                             s//$(printf "\033[37;1m&\033[0m")/g             " | \
 sed     "/\([0-9]\{1,3\}\\.\)\{3\}[0-9]\{1,3\}\(\\/\([0-9]\)\{1,3\}\)\{0,1\}/   s//$(printf "\033[37;1m&\033[0m")/g             " | \
-sed     "/\s[a-f0-9:]\{2,\}[:/][[:digit:]a-f]\{1,3\}\s/                         s//$(printf "\033[37;1m&\033[0m")/g             " | \
+sed     "/\s[a-f0-9:]\{2,\}[:/][[:digit:]a-f]\{1,4\}\s/                         s//$(printf "\033[37;1m&\033[0m")/g             " | \
 \
 # special chain names so 'Chain' will not be renamed
 sed     "/\([^n]\s\)\(LOGDROP\)/                                                s//$(printf "\\\1\033[1;31m\\\2\033[0m")/       " | \
