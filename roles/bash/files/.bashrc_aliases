@@ -128,6 +128,7 @@ alias apts="sudo dpkg -l | grep"
 alias bettercap="sudo bettercap"
 
 alias fw="sudo firewall-cmd"
+alias fwp="sudo firewall-cmd --runtime-to-permanent"
 alias iptables="sudo iptables"
 
 # colorize_iptables_output.sh: script deployed externally so inclusion works with watch(1)
