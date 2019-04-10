@@ -285,6 +285,9 @@ m() {
 }
 
 alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+alias k_suspendcomposite='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Suspend Compositing"'
+alias k_increaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Increase Opacity"'
+alias k_decreaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Decrease Opacity"'
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 
 alias rg="rg --hidden -i"
