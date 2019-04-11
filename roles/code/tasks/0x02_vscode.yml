@@ -29,11 +29,13 @@
     -e EFanZh.graphviz-preview \
     -e foxundermoon.shell-format \
     -e gizak.shortcuts \
+    -e grapecity.gc-excelviewer \
     -e jamiewoodio.junos \
     -e jebbs.plantuml \
     -e jpogran.puppet-vscode \
     -e korekontrol.saltstack \
     -e LuxHackers.can-openr \
+    -e mechatroner.rainbow-csv \
     -e mitaki28.vscode-clang \
     -e ms-python.python \
     -e ms-vscode.cpptools \
@@ -53,7 +55,7 @@
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 25
+  command: echo 27
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -75,11 +77,13 @@
     - efanzh.graphviz-preview
     - foxundermoon.shell-format
     - gizak.shortcuts
+    - grapecity.gc-excelviewer 
     - jamiewoodio.junos
     - jebbs.plantuml
     - jpogran.puppet-vscode
     - korekontrol.saltstack
     - LuxHackers.can-openr
+    - mechatroner.rainbow-csv
     - mitaki28.vscode-clang
     - ms-python.python
     - ms-vscode.cpptools
