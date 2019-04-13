@@ -31,6 +31,8 @@ complete -o bashdefault -o default -o nospace -F _git g
 #############################################################################################################
 #0X01 - BASICS
 #############################################################################################################
+alias gii="vim .gitignore"				## direly needed
+
 alias gh="git help"                                     ## gh git_command = open manpage for it
 
 alias gi="git init"                                     ## initialize local git repo
@@ -113,7 +115,7 @@ gitrm() {
 }
 alias grm=gitrm                                         ## param: filename, delete file and remove from versioning
 gitrmcached() {
-	git rm --cached "$*"
+	git rm --cached -r "$*"
 }
 alias grmc=gitrmcached
 
