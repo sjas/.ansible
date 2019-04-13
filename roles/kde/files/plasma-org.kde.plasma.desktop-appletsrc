@@ -154,6 +154,30 @@ DialogWidth=720
 [Containments][22][Wallpaper][org.kde.color][General]
 Color=0,0,0
 
+[Containments][27]
+activityId=b62bb13a-b40d-4f97-8e17-73bfa7c5b82e
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.desktopcontainment
+wallpaperplugin=org.kde.image
+
+[Containments][27][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][27][Configuration]
+PreloadWeight=2
+
+[Containments][27][Wallpaper][org.kde.image][General]
+Color=invalid
+Image=file:///home/sjas/etc/1118full-jaime-murray.jpg
+SlideInterval=0
+
+[Containments][27][Wallpaper][org.kde.potd][General]
+FillMode=2
+
 [Containments][7]
 activityId=
 formfactor=2
@@ -251,5 +275,5 @@ knownItems=org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.networ
 immutability=2
 
 [ScreenMapping]
-itemsOnDisabledScreens=
-screenMapping=desktop:/trash.desktop,0,desktop:/Home.desktop,0
+itemsOnDisabledScreens=0,2,desktop:/trash.desktop,desktop:/Home.desktop
+screenMapping=

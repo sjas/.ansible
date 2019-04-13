@@ -59,3 +59,7 @@
 - name: autostart
   include: 0x0f_autostart.yml
   tags: kde
+
+- name: wallpaper
+  include: 0x10_wallpaper.yml
+  tags: kde

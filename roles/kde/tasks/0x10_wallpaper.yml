@@ -1,0 +1,15 @@
+---
+
+- name: background
+  become: yes
+  become_user: sjas
+  copy:
+    src: 1118full-jaime-murray.jpg
+    dest: /home/sjas/etc
+
+- name: plasmarc
+  become: yes
+  become_user: sjas
+  copy:
+    src: plasmarc
+    dest: /home/sjas/.config
