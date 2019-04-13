@@ -12,7 +12,7 @@ XRenderSmoothScale=false
 
 [Desktops]
 Number=6
-Rows=6
+Rows=2
 
 [Effect-Cube]
 BorderActivate=9
