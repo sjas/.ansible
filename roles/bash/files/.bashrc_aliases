@@ -246,6 +246,7 @@ alias p="pushd"
 alias v="vim"
 alias w="watch -n1 -d --color"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
+alias h="history"
 
 alias apt-list-backports="aptitude search -t $(lsb_release -sc)-backports -F '%p %v -> %V' '~U ~Abackports'"
 alias apt-list-changelog="apt-get changelog -t $(lsb_release -sc)-backports"
