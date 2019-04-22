@@ -92,7 +92,7 @@ alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias /
 #############################################################################################################
 #0X03 - LS
 #############################################################################################################
-LS_OPT1='-h --color --time-style=long-iso'
+LS_OPT1='-h --color --time-style=long-iso -p'
 LS_OPT2='-is'
 #LS_OPT2=''
 #files
