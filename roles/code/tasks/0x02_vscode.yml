@@ -22,7 +22,7 @@
   become_user: sjas
   ignore_errors: true
   shell: |
-    code --list-extensions | grep \
+    code --list-extensions | grep -i \
     -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \

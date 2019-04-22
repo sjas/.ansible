@@ -8,7 +8,7 @@
 #0X04 - BASH
 #0X05 - HISTORY
 #0X06 - LESS
-#0X07 - PATH AND LANGUAGE ENVS
+#0X07 - LANGUAGE ENVS AND PATH
 
 
 
@@ -132,7 +132,7 @@ export LESS=' -R '
 
 
 #############################################################################################################
-#0X07 - PATH AND LANGUAGE ENVS
+#0X07 - LANGUAGE ENVS AND PATH
 #############################################################################################################
 # HELPER, can be called from CLI, too
 addtopath() {
@@ -143,14 +143,21 @@ addtopath() {
 	PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
 }
 
+#   N O D E J S
 #export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="/home/sjas/.nvm"
+
+#   G O L A N G
 export GOROOT=/usr/local/go
 # dont just get rid of GOPATH YET, `go get` still seems to use it
 export GO111MODULE=on
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 export GOPATH=/home/sjas/go 
 
+#   J A V A
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+#   P A T H
 for i in \
 	/usr/local/bin \
 	/usr/local/sbin \
