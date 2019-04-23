@@ -154,8 +154,13 @@ export GO111MODULE=on
 #export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
 export GOPATH=/home/sjas/go 
 
-#   J A V A
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+#   J A V A 
+#export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
+#export  J2SDKDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto
+#export   J2REDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre
+#export JAVA_HOME=/usr/lib/jvm/java-se-7u75-ri
+#export  J2SDKDIR=/usr/lib/jvm/java-se-7u75-ri
+#export   J2REDIR=/usr/lib/jvm/java-se-7u75-ri/jre
 
 #   P A T H
 for i in \

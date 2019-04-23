@@ -106,7 +106,7 @@ alias    lr="find | sort | cut -c 3-"  ## so no additional package is needed
 alias     d="ls $LS_OPT1 -l          -F  | grep ^d"
 alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
 
-
+alias   wlt="watch -n1 -d -c ls -h --color --time-style=long-iso -l -is -At"
 
 
 
