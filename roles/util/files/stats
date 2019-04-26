@@ -1,13 +1,16 @@
 #!/bin/bash
 
+# this works _perfectly_ on tmux 1.9
+# on 2.6 however it fucking doesnt
+
 tmux ls | grep 'systemstats' > /dev/null || (
     tmux new-session -d -s 'systemstats' -n 'stats' "sudo htop"
-    #tmux split-window -p70\; send-keys "sudo journalctl -f -n10000" C-m
-    tmux split-window -p70\; send-keys "sudo lnav" C-m
+    #tmux split-window -p70 \; send-keys "sudo journalctl -f -n10000" C-m
+    tmux split-window -p70 \; send-keys "sudo lnav" C-m
+    tmux resize-pane -t 1 -U 10
     tmux split-window -h "sudo iostat -xzdm 1"
-    tmux split-window -v -p70\; send-keys "sudo iotop" C-m
+    tmux split-window -v -p90 \; send-keys "sudo iotop" C-m
     tmux split-window -p50 "sudo nload -u m -U H -i 102400 -o 102400 -a 60 $(grep $(hostname -I | cut -d' ' -f1) <(ip a) -B2  | head -1 | cut -d ':' -f2 | sed 's/ //g')"
     tmux select-pane -t 1
 )
 exec tmux attach -t 'systemstats'
-
