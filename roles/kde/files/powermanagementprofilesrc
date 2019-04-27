@@ -10,11 +10,6 @@ idleTime=1800
 [AC][DimDisplay]
 idleTime=600000
 
-[AC][HandleButtonEvents]
-lidAction=1
-powerButtonAction=16
-triggerLidActionWhenExternalMonitorPresent=false
-
 [Battery]
 icon=battery-060
 
@@ -26,11 +21,6 @@ idleTime=900
 
 [Battery][DimDisplay]
 idleTime=300000
-
-[Battery][HandleButtonEvents]
-lidAction=1
-powerButtonAction=16
-triggerLidActionWhenExternalMonitorPresent=false
 
 [Battery][SuspendSession]
 idleTime=3600000
@@ -52,11 +42,6 @@ idleTime=120
 
 [LowBattery][DimDisplay]
 idleTime=60000
-
-[LowBattery][HandleButtonEvents]
-lidAction=1
-powerButtonAction=16
-triggerLidActionWhenExternalMonitorPresent=false
 
 [LowBattery][SuspendSession]
 idleTime=300000
