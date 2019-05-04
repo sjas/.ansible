@@ -1,0 +1,14 @@
+---
+
+- name: check if rustup is installed
+  command: "command -v $1 >/dev/null 2>&1"
+  register: exitcode_rustup_install
+  ignore_errors: true
+  changed_when: false
+
+- name: install rustup
+  shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
+  when: exitcode_rustup_install.rc != 0
+
+- name: rustup update
+  command: "rustup update"

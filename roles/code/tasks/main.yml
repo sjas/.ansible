@@ -14,5 +14,8 @@
 
 - name: node.js
   include: 0x04_node.yml
-  tags:
-    - node
+  tags: node
+
+- name: rust
+  include: 0x05_rustlang.yml
+  tags: rust
