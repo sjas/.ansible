@@ -9,6 +9,8 @@
 - name: install rustup
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
   when: exitcode_rustup_install.rc != 0
+  tags: dont_lint_this
 
 - name: rustup update
   command: "rustup update"
+  changed_when: false
