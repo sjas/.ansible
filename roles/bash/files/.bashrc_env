@@ -23,7 +23,7 @@ export PAGER="less"
 
 export LANGUAGE="en_US:en"
 
-export DOTFILES=/home/sjas/etc/.ansible
+export DOTFILES="/home/sjas/etc/.ansible"
 
 if ! shopt -oq posix; then
 	if [ -f /usr/share/bash-completion/bash_completion ]; then . /usr/share/bash-completion/bash_completion
@@ -46,7 +46,7 @@ export PS0='\n'  ## show a newline after any entered command. works in unison wi
 export PS3="select> "
 export PS4="___________________________ "  ## make `set -x` more readable for me by far
 
-export PROMPT_COMMAND=echo
+export PROMPT_COMMAND="echo"
 
 
 
@@ -121,12 +121,12 @@ export LESS_TERMCAP_so=$'\E[38m'	# begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'		# end underline
 
 #couple global(1) with less(1)
-export LESSGLOBALTAGS=global
+export LESSGLOBALTAGS="global"
 
 #syntax highlighting, needs `libsource-highlight-common` package
 #find path via `dpkg -L libsource-highlight-common | grep lesspipe`
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
+export LESS=" -R "
 
 
 
@@ -136,11 +136,11 @@ export LESS=' -R '
 #############################################################################################################
 # HELPER, can be called from CLI, too
 addtopath() {
-	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]
+	if [ -d "$1" ] && [[ ":${PATH}:" != *":$1:"* ]]
 	then
-		PATH="$1${PATH:+":$PATH:"}"
+		PATH="$1${PATH:+":${PATH}:"}"
 	fi
-	PATH=$(echo $PATH | sed -e 's/^:*//g' -e 's/:*$//g')
+	PATH=$(echo ${PATH} | sed -e 's/^:*//g' -e 's/:*$//g')
 }
 
 #   N O D E J S
@@ -148,11 +148,11 @@ addtopath() {
 export NVM_DIR="/home/sjas/.nvm"
 
 #   G O L A N G
-export GOROOT=/usr/local/go
+export GOROOT="/usr/local/go"
 # dont just get rid of GOPATH YET, `go get` still seems to use it
-export GO111MODULE=on
-#export GOPATH=$HOME/wrk/gocode  ## use default of $HOME/go for now
-export GOPATH=/home/sjas/go 
+export GO111MODULE="on"
+#export GOPATH="${HOME}/wrk/gocode"  ## use default of $HOME/go for now
+export GOPATH="/home/sjas/go"
 
 #   J A V A 
 #export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
@@ -162,12 +162,16 @@ export GOPATH=/home/sjas/go
 #export  J2SDKDIR=/usr/lib/jvm/java-se-7u75-ri
 #export   J2REDIR=/usr/lib/jvm/java-se-7u75-ri/jre
 
+#   R U S T L A N G
+export CARGO_HOME="/home/sjas/.cargo"  ## non-official var
+
 #   P A T H
 for i in \
 	/usr/local/bin \
 	/usr/local/sbin \
-	$GOROOT/bin \
-	$GOPATH/bin 
+	"${GOROOT:-}"/bin \
+	"${GOPATH:-}"/bin \
+	"${CARGO_HOME:-}"/bin
 do
 	addtopath $i
 done
