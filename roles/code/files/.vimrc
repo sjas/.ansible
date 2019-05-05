@@ -4,6 +4,8 @@ se is
 se ic
 se ai
 se nonu
+se nornu
+highlight CursorLineNR ctermbg=red
 se ar
 se clipboard=unnamedplus
 
@@ -30,6 +32,7 @@ nnoremap <leader>feR :!cp $DOTFILES/roles/code/files/.vimrc /home/sjas/.vimrc<cr
 nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
+nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
 
 nnoremap <leader>l :!go fmt %<cr>:<backspace>
 nnoremap <leader>fr :!./%<cr>
