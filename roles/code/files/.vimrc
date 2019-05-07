@@ -34,7 +34,12 @@ nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
 
-nnoremap <leader>l :!go fmt %<cr>:<backspace>
+nnoremap <leader>i zM
+nnoremap <leader>o zR
+nnoremap <leader>p zA
+
+nnoremap <leader>fdg :!go fmt %<cr><cr>
+nnoremap <leader>fdr :!rust fmt %<cr>
 nnoremap <leader>fr :!./%<cr>
 
 nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
