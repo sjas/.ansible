@@ -8,6 +8,7 @@ se nornu
 highlight CursorLineNR ctermbg=red
 se ar
 se clipboard=unnamedplus
+se foldmethod=syntax
 
 "se backupdir=$TEMP
 "se directory=$TEMP
@@ -34,13 +35,19 @@ nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
 
-nnoremap <leader>i zM
-nnoremap <leader>o zR
-nnoremap <leader>p zA
-
-nnoremap <leader>fdg :!go fmt %<cr><cr>
-nnoremap <leader>fdr :!rust fmt %<cr>
-nnoremap <leader>fr :!./%<cr>
+"aliases
+vnoremap <leader>a :s/.*/"&"<cr>
+	
+"fold
+nnoremap <leader>i zMzz
+nnoremap <leader>o zRzz
+nnoremap <leader>l zAzz
+"run
+nnoremap <leader>r :!./%<cr>
+"fmt
+nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
+nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
+nnoremap <leader>fr :w<cr>!rust fmt %<cr>
 
 nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
 
