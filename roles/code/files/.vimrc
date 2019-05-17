@@ -39,9 +39,9 @@ nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
 vnoremap <leader>a :s/.*/"&"<cr>
 	
 "fold
-nnoremap <leader>i zMzz
-nnoremap <leader>o zRzz
-nnoremap <leader>l zAzz
+nnoremap <leader>i zMggM
+nnoremap <leader>o zRzt
+nnoremap <leader>l zAzt
 "run
 nnoremap <leader>r :!./%<cr>
 "fmt
