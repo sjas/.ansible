@@ -172,6 +172,8 @@
       - xmlstarlet
       - xserver-xorg-input-libinput
       - yamllint
+      - yapf
+      - yapf3
       - zmap
 
 - name: no ufw allowed here
