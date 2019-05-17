@@ -5,9 +5,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 colo badwolf
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 syn on
 se hls
