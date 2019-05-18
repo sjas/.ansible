@@ -7,10 +7,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/paredit.vim'
 call plug#end()
 
 colo badwolf
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:paredit_mode = 1
 
 syn on
 se hls
@@ -61,7 +63,8 @@ nnoremap <leader>r :!./%<cr>
 "fmt
 nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
-nnoremap <leader>fr :w<cr>!rust fmt %<cr>
+nnoremap <leader>fr :w %<cr>:!rust fmt %<cr>
+nnoremap <leader>fp :w %<cr>:%!yapf3<cr>
 
 nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
 
