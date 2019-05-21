@@ -66,10 +66,11 @@
       - iftop
       - inxi
       - inotify-tools
-      - iperf3
       - ioping
       - iotop
       - ipcalc
+      - iperf3
+      - iptraf
       - jq
       - kdiff3
       - leafpad
