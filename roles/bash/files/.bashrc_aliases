@@ -645,12 +645,19 @@ cmddiff() {
 	ALT_PARAM=${3:- }
 	sdiff <(sudo $CMD $PARAM) <(sudo $CMD $ALT_PARAM) | colordiff
 }
-sshdiff() {
+sshsdiff() {
 	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
 	HOST1=$1
 	HOST2=$2
 	CMD=$3
 	sdiff -ds <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
+}
+sshwdiff() {
+	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
+	HOST1=$1
+	HOST2=$2
+	CMD=$3
+	wdiff -n <(ssh $HOST1 $CMD) <(ssh $HOST2 $CMD) | colordiff
 }
 
 rpmextract() {
