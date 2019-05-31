@@ -75,7 +75,7 @@ alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/.vim
 # 'change directory'
 alias   cdd="cd $DOTFILES"			## dotfiles
 alias  cddi="cd $DOTFILES/../.dotfiles"  	## dotfiles' includes
-alias	cdt="cd /home/sjas/txt"
+alias	cdn="cd /home/sjas/txt"
 alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
 
 # 'show aliases' (shows currently defined aliases)
