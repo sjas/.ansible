@@ -130,6 +130,7 @@
       - rpm2cpio
       - rsync
       - ruby-ronn
+      - rxvt-unicode
       - screen
       - scite
       - shellcheck
