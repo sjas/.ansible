@@ -51,4 +51,4 @@ class DumpToFile(plugin.MenuItem):
                 fd.write(content[0])
                 fd.flush()
         except Exception as e:
-print e
+            print e
