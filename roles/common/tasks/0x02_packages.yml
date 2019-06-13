@@ -108,10 +108,12 @@
       - pcmanfm
       - powertop
       - pylint
+      - pylint3
       - python-pip
       - python3-pip
       - python-rope
       - python3-rope
+      - python-gtksourceview2
       - pylint3
       - net-tools
       - ntfs-3g

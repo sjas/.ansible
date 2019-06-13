@@ -18,3 +18,38 @@
   copy:
     src: config
     dest: /home/sjas/.config/terminator/
+
+- name: ensure terminator ensure plugin folder exists
+  become: yes
+  become_user: sjas
+  file:
+    dest: /home/sjas/.config/terminator/plugins/
+    state: directory
+
+- name: deploy terminator plugins
+  become: yes
+  become_user: sjas
+  copy:
+    src: "{{ item }}"
+    dest: /home/sjas/.config/terminator/plugins/
+    mode: 0755
+  loop:
+    - dump_to_file.py
+    - clone_session.py
+    - clisnips.py
+    - clisnips_plugin.py
+
+- name: deploy clisnips files
+  become: yes
+  become_user: sjas
+  copy:
+    src: /home/sjas/etc/.ansible/roles/terminals/files/clisnips
+    dest: /home/sjas/.config/terminator/plugins/
+    mode: 0755
+    remote_src: yes
+
+- name: deploy clisnips dbus service file
+  copy:
+    src: org.ju1ius.CliSnips.service
+    dest: /usr/share/dbus-1/services/
+    mode: 0644
