@@ -24,7 +24,7 @@
     "editor.mouseWheelZoom": true,
     "editor.multiCursorModifier": "alt",
     "editor.renderIndentGuides": true,
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "boundary",
     "editor.rulers": [100],
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
     "editor.wordWrap": "on",
