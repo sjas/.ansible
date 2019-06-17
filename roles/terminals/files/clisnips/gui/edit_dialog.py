@@ -1,6 +1,8 @@
 import os
 
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
 
 from ..config import styles
 from .helpers import BuildableWidgetDecorator, SimpleTextView, replace_widget

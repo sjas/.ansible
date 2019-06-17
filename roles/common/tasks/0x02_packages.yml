@@ -109,11 +109,14 @@
       - powertop
       - pylint
       - pylint3
+      - python-ipdb
+      - python3-ipdb
       - python-pip
       - python3-pip
+      - python-pudb
+      - python3-pudb
       - python-rope
       - python3-rope
-      - python-gtksourceview2
       - pylint3
       - net-tools
       - ntfs-3g

@@ -5,7 +5,9 @@ import dbus
 import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
 
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
 
 DBusGMainLoop(set_as_default=True)
 

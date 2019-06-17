@@ -2,7 +2,9 @@ import os
 import string
 from collections import OrderedDict
 
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
 import glib
 
 from ..config import styles

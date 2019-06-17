@@ -1,11 +1,15 @@
+#/usr/bin/env python3
 """
 clisnips_plugin.py - Terminator Plugin to add a snippet library
 """
-
 from os.path import join
 
-import gtk
-import gobject
+import gi
+gi.require_version('Gtk','3.0')
+from gi.repository import Gtk as gtk
+from gi.repository import GObject as gobject
+from gi.repository import Vte as vte
+
 import glib
 
 import dbus
@@ -15,7 +19,6 @@ from terminatorlib.util import get_config_dir, dbg
 from terminatorlib import plugin
 from terminatorlib.config import Config
 from terminatorlib.terminal import Terminal
-import vte
 
 from clisnips.gui.main_dialog import MainDialog
 from clisnips.gui.error_dialog import ErrorDialog
@@ -31,7 +34,6 @@ DBusGMainLoop(set_as_default=True)
 
 
 class CliSnipsMenu(plugin.MenuItem):
-
     capabilities = ['terminal_menu']
 
     def __init__(self):
@@ -77,12 +79,12 @@ class CliSnipsMenu(plugin.MenuItem):
                                      signal_name='InsertSnippet')
 
         # Connect terminal focus signal
-        self.handlers['focus'] = gobject.add_emission_hook(
+        self.handlers['focus'] = GObject.add_emission_hook(
             Terminal,
             'focus-in',
             self.on_terminal_focus_in
         )
-        self.handlers["keypress"] = gobject.add_emission_hook(
+        self.handlers["keypress"] = GObject.add_emission_hook(
             vte.Terminal,
             'key-press-event',
             self.on_terminal_key_pressed
@@ -92,13 +94,13 @@ class CliSnipsMenu(plugin.MenuItem):
         if self.bus:
             self.bus.close()
         if self.handlers.get('focus'):
-            gobject.remove_emission_hook(
+            GObject.remove_emission_hook(
                 Terminal,
                 'focus-in',
                 self.handlers['focus']
             )
         if self.handlers.get('keypress'):
-            gobject.remove_emission_hook(
+            GObject.remove_emission_hook(
                 vte.Terminal,
                 'key-press-event',
                 self.handlers['keypress']

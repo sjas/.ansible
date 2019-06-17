@@ -1,9 +1,8 @@
-#!/usr/bin/env python2
 from __future__ import print_function
 import sys
 import time
 
-import gtk
+from gi.repository import Gtk as gtk
 import dbus
 import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
@@ -16,7 +15,6 @@ from clisnips.gui.error_dialog import ErrorDialog
 
 BUS_NAME = 'org.ju1ius.CliSnips'
 BUS_PATH = '/org/ju1ius/CliSnips'
-
 
 class Application(dbus.service.Object):
 
@@ -70,6 +68,8 @@ class Application(dbus.service.Object):
 
 
 if __name__ == '__main__':
+    import platform
+    print(platform.python_version())
 
     DBusGMainLoop(set_as_default=True)
     bus = dbus.SessionBus()

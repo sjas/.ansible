@@ -6,8 +6,10 @@ import threading
 import inspect
 
 import glib
-import gobject
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
+from gi.repository import GObject as gobject
 
 from .error_dialog import ErrorDialog
 

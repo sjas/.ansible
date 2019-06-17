@@ -2,9 +2,11 @@ from __future__ import print_function
 import os
 import time
 
-import gobject
 import glib
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
+from gi.repository import GObject as gobject
 
 from ..config import config, styles, HELP_URI
 from . import helpers

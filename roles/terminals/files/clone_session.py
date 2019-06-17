@@ -20,8 +20,10 @@
 @author: ilgar
 """
 
-import gobject
-import gtk
+import gi
+gi.require_version('Gtk','3.0')
+from gi.repository import Gtk as gtk
+from gi.repository import GObject as gobject
 import os
 import subprocess
 # import uuid
@@ -135,7 +137,7 @@ class ClonableTerminal(Terminal):
         Terminal.__init__(self)
 
     def spawn_child_with_command(self, init_command=None, widget=None, respawn=False, debugserver=False):
-        update_records = self.config['update_records']
+        #update_records = self.config['update_records']
         login = self.config['login_shell']
         args = []
         shell = None
@@ -202,7 +204,7 @@ class ClonableTerminal(Terminal):
             envv.append('TERMINATOR_DBUS_PATH=%s' % self.terminator.dbus_path)
 
         dbg('Forking shell: "%s" with args: %s' % (shell, args))
-        self.pid = self.vte.fork_command(command=shell, argv=args, envv=envv,
+        self.pid = self.vte.fork_command_full(command=shell, argv=args, envv=envv,
                                          loglastlog=login,
                                          logwtmp=update_records,
                                          logutmp=update_records,
@@ -214,4 +216,3 @@ class ClonableTerminal(Terminal):
         if self.pid == -1:
             self.vte.feed(_('Unable to start shell:') + shell)
             return(-1)
-

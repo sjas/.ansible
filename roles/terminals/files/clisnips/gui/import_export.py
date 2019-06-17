@@ -1,4 +1,6 @@
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
 
 from ..database.snippets_db import SnippetsDatabase
 from .progress import ProgressDialog

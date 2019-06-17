@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 # Plugin by Kaarel Moppel <kaarel.moppel@gmail.com>
 # See LICENSE of Terminator package.
 
@@ -35,7 +33,7 @@ class DumpToFile(plugin.MenuItem):
             item = Gtk.MenuItem.new_with_mnemonic(_('D_ump terminal to file'))
             item.connect("activate", self.dump_console, terminal)
         menuitems.append(item)
-                        
+
     def dump_console(self, _widget, Terminal):
         """ Handle menu item callback by saving console text to a predefined location and creating the ~/.terminator folder if necessary """
         try:
@@ -51,4 +49,4 @@ class DumpToFile(plugin.MenuItem):
                 fd.write(content[0])
                 fd.flush()
         except Exception as e:
-            print e
+             print e

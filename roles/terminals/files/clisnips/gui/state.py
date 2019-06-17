@@ -1,7 +1,9 @@
 import inspect
 from operator import itemgetter
 
-import gobject
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import GObject as gobject
 
 
 class State(gobject.GObject):

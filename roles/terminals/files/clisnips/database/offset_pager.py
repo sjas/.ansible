@@ -1,7 +1,9 @@
 from __future__ import division
 import math
 
-import gobject
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import GObject as gobject
 
 
 class OffsetPager(object):

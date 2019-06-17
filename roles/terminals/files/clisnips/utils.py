@@ -2,7 +2,9 @@ from __future__ import division
 
 from decimal import Decimal
 
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk as gtk
 import pango
 
 
