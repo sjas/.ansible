@@ -420,6 +420,9 @@ shownet4() {
 shownet6() {
 	watch -n 1 -d 'cat /etc/resolv.conf; echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
+showdns(){
+	watch -n1 -d 'fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/==========================================/g"'
+}
 showru() {
 	echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' | column -t | sort -k1; done | sed 's/default_via_/default via /'
 }
@@ -451,11 +454,15 @@ showdiff() {
 # fix up missing radb / cymru functions
 # make the existing ones take parameters
 # build in a security prompt for the route aliases asking wether the queried ASN is the right one
+digged() {
+	\dig +nocmd +nocomments +noquestion +nostats any "${@}"
+}
+alias dig=digged
 getip() {
-	dig $1 +short | xclip && echo $(xclip -o)
+	\dig "$1" +short | xclip && echo "$(xclip -o)"
 }
 rdns() {
-	dig -x $(dig $1 +short) +short
+	\dig -x "$(\dig $1 +short)" +short
 }
 cymru() {
 	echo enter ip/ASN for whois.cymru.com query
