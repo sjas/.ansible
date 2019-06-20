@@ -412,16 +412,16 @@ showapt() {
 	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v grep | cut -c 66-' 
 }
 shownet() {
-	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; cat /etc/resolv.conf; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 shownet4() {
-	watch -n 1 -d 'cat /etc/resolv.conf; echo; ip -d -4 r; echo; ip -s -d -4 a | grep -v lft; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+	watch -n 1 -d 'ip -d -4 r; echo; ip -s -d -4 a | grep -v lft; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 shownet6() {
-	watch -n 1 -d 'cat /etc/resolv.conf; echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+	watch -n 1 -d 'echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 showdns(){
-	watch -n1 -d 'fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/==========================================/g"'
+	watch -n1 -d 'ls -alh /etc/resolv.conf; echo; fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/==========================================/g"'
 }
 showru() {
 	echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i "$(ip ru | grep -e "^$i:" | awk '{print $NF}'); echo ================$'\e[0m'; ip -d r l t $i | sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' | column -t | sort -k1; done | sed 's/default_via_/default via /'
