@@ -26,12 +26,12 @@
     dest: /home/sjas/.config/terminator/plugins/
     state: directory
 
-# - name: install missing packages for plugins
-#   apt:
-#     name: "{{item}}"
-#   loop:
-#     - python-vte
-#     - python-gobject
+#- name: install missing packages for plugins
+#  apt:
+#    name: "{{item}}"
+#  loop:
+#    - python-vte
+#    - python-gobject
 
 - name: deploy terminator plugins
   become: yes
