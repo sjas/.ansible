@@ -1,5 +1,5 @@
 [global_config]
-  enabled_plugins = InactivityWatch, ActivityWatch, TerminalShot, Logger
+  enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
   focus = mouse
   geometry_hinting = True
   scroll_tabbar = True
