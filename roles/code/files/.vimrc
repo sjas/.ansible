@@ -71,6 +71,7 @@ nnoremap <leader>fp :w %<cr>:%!yapf3<cr>
 nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
 
 nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><cr>}<esc>ka<tab>
+nnoremap <leader>ph i#!/usr/bin/env python
 
 "vnoremap < <gv
 "vnoremap > <gv
