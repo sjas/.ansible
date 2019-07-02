@@ -10,5 +10,6 @@ AccelerationProfile=
 MouseButtonMapping=RightHanded
 ReverseScrollPolarity=false
 Threshold=0
+XLbInptPointerAcceleration=-0.6
 cursorSize=24
 cursorTheme=breeze_cursors
