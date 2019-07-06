@@ -19,5 +19,10 @@
     {
         "key": "shift+alt+v",
         "command": "open-in-vim.open",
+    },
+    {   "key": "ctrl+alt+=",  
+        "command": "wwm.aligncode",
+        "when": "editorTextFocus && !editorReadonly"
     }
+
 ]
