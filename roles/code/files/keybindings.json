@@ -19,5 +19,26 @@
     {
         "key": "shift+alt+v",
         "command": "open-in-vim.open",
+    },
+    {   "key": "ctrl+alt+=",
+        "command": "wwm.aligncode",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "-workbench.view.extensions"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.action.minimizeOtherEditors"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+      "key": "ctrl+shift+z",
+      "command": "workbench.action.evenEditorWidths"
     }
 ]
