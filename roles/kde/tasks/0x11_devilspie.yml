@@ -4,11 +4,11 @@
   apt:
     cache_valid_time: 7200
     name:
-      - devilspie
+      - devilspie2
 
 - name: ensure config folder exists
   file:
     dest: /home/sjas/.devilspie
     state: directory
-    user: sjas
+    owner: sjas
     group: sjas
