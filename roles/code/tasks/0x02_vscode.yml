@@ -2,8 +2,8 @@
 
 - name: deploy vscode transparent background config via devilspie
   copy:
-    src: vscode.ds
-    dest: /home/sjas/.devilspie/
+    src: vscode.lua
+    dest: /home/sjas/.config/devilspie2/
     mode: 0644
 
 - name: microsoft apt-key
