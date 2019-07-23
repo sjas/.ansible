@@ -6,7 +6,7 @@
 -- )
 
 if (get_application_name() == "code") then
-    set_window_opacity(0.85)
+    set_window_opacity(0.88)
     set_window_size(1000, 650)
     center()
 end

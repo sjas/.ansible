@@ -27,7 +27,17 @@
     owner: sjas
     group: sjas
 
-- name: enable and start systemd service
+- name: systemd daemon reload
+  become: yes
+  become_user: sjas
   systemd:
-    name: devilspie2
-    state: reload
+    daemon_reload: yes
+    scope: user
+
+- name: enable and start systemd service
+  become: yes
+  become_user: sjas
+  systemd:
+    name: devilspie2.service
+    scope: user
+    state: restarted
