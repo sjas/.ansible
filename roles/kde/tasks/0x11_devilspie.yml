@@ -10,3 +10,5 @@
   file:
     dest: /home/sjas/.devilspie
     state: directory
+    user: sjas
+    group: sjas
