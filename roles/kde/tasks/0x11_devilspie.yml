@@ -1,0 +1,12 @@
+---
+
+- name: install devilspie
+  apt:
+    cache_valid_time: 7200
+    name:
+      - devilspie
+
+- name: ensure config folder exists
+  file:
+    dest: /home/sjas/.devilspie
+    state: directory
