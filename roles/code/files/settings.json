@@ -18,6 +18,7 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorStyle": "line",
     "editor.cursorWidth": 1,
+    "editor.detectIndentation": false,
     "editor.emptySelectionClipboard": false,
     "editor.fontFamily": "'Noto Mono'",
     "editor.fontFamily": "'Hasklig ExtraLight'",
@@ -27,7 +28,6 @@
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
     "editor.fontWeight": "100",
-    "editor.insertSpaces": true,
     "editor.lineNumbers": "interval",
     "editor.minimap.enabled": true,
     "editor.mouseWheelScrollSensitivity": 5,
@@ -38,6 +38,8 @@
     "editor.rulers": [100],
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
     "editor.wordWrap": "on",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
     "files.autoSave": "onFocusChange",
     "files.eol": "\n",
     "files.trimFinalNewlines": true,
@@ -58,7 +60,6 @@
     "terminal.integrated.splitCwd": "inherited",
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Badwolf Paradox",
-    "workbench.startupEditor": "newUntitledFile",
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.startupEditor": "newUntitledFile"
 }
