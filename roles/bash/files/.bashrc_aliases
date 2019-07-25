@@ -326,6 +326,14 @@ alias oxc='openssl x509 -noout -text -in'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+# hex2dec and dec2hex
+xd() {
+    echo "$(( 0x${1} ))"
+}
+dx() {
+    printf '%x\n' $1
+}
+
 
 
 
