@@ -239,6 +239,7 @@ EOF
 #############################################################################################################
 #0x05 - 'UTIL'
 #############################################################################################################
+alias q="exit"
 alias ..="cd .."
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
@@ -324,6 +325,14 @@ alias oxc='openssl x509 -noout -text -in'
 #XCLIP like pb{copy,paste} on osx
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# hex2dec and dec2hex
+xd() {
+    echo "$(( 0x${1} ))"
+}
+dx() {
+    printf '%x\n' $1
+}
 
 
 

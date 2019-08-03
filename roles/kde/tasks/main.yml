@@ -63,3 +63,7 @@
 - name: wallpaper
   include: 0x10_wallpaper.yml
   tags: kde
+
+- name: devilspie for desktop window management
+  include: 0x11_devilspie.yml
+  tags: kde
