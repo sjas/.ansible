@@ -39,3 +39,7 @@
 - name: HaskLig font
   include: 0x0a_hasklig.yml
   tags: hasklig
+
+- name: wireguard
+  include: 0x0b_wireguard.yml
+  tags: wireguard
