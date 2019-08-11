@@ -72,6 +72,7 @@
       - iperf3
       - iptraf
       - jq
+      - kde-runtime
       - kdiff3
       - leafpad
       - lft
