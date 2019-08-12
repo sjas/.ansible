@@ -303,6 +303,8 @@ alias pipestatus='echo ${PIPESTATUS[@]}'
 
 alias r="tr 'A-Za-z0-9' 'N-ZA-Mn-za-m5-90-4'"
 
+alias rs='rsync -avzh --inplace --info=progress2'
+
 alias nload='nload -u m -U H -i 102400 -o 102400 -a 60'  ## 100m graphs
 alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60'  ## 1g graphs
 
@@ -342,7 +344,8 @@ dx() {
 #############################################################################################################
 
 #ED
-ed() { command ed -v -s -p\* "$@" ; }
+ed() { command ed -v -s "$@" ; }
+e() { command ed -v -p\* "$@" ; }
 
 #VI
 # hosts		= /etc/hosts
