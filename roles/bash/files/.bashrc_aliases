@@ -482,6 +482,14 @@ digged() {
 	\dig +nocmd +nocomments +noquestion +nostats any "${@}"
 }
 alias dig=digged
+drilled() {
+    \drill -T "${@}" | column -t | sed 's/IN/=&/' | column -t -s "="
+}
+alias drill=drilled
+drillet() {
+    \drill "${@}" |& grep "Query time"
+}
+alias drillt=drillet
 getip() {
 	\dig "$1" +short | xclip && echo "$(xclip -o)"
 }
