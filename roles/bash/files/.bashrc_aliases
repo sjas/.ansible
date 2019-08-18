@@ -330,10 +330,18 @@ alias pbpaste='xclip -selection clipboard -o'
 
 # hex2dec and dec2hex
 xd() {
-    echo "$(( 0x${1} ))"
+    printf "hex> "
+    while read i
+    do
+        printf "dec  $(( 0x${i} ))\n\nhex> "
+    done
 }
 dx() {
-    printf '%x\n' $1
+    printf "dec> "
+    while read i
+    do
+        printf 'hex  %x\n\ndec> ' $i
+    done
 }
 
 
