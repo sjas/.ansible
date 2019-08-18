@@ -82,6 +82,7 @@
       - linux-tools-generic
       - lnav
       - iputils-arping
+      - ldnsutils
       - lftp
       - ltrace
       - lynx
