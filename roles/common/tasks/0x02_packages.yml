@@ -86,6 +86,7 @@
       - lftp
       - ltrace
       - lynx
+      - mbuffer
       - mc
       - meld
       - mlocate
