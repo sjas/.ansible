@@ -33,6 +33,7 @@ alias  ebac="vim $DOTFILES/roles/bash/files/.bashrc_completion;	. /home/sjas/.ba
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   egi="vim .gitignore"
 # v  = vim
 # t  = terminator
 # tm = tmux
