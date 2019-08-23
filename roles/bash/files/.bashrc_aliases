@@ -78,6 +78,7 @@ alias   cdd="cd $DOTFILES"			## dotfiles
 alias  cddi="cd $DOTFILES/../.dotfiles"  	## dotfiles' includes
 alias	cdn="cd /home/sjas/txt"
 alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
+alias   cdw="cd /home/sjas/wrk"
 
 # 'show aliases' (shows currently defined aliases)
 # ba  = bash aliases
