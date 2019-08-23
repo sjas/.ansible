@@ -126,6 +126,7 @@
       - p7zip
       - parallel
       - parted
+      - patchutils
       - pbzip2
       - puppet-lint
       - pv
