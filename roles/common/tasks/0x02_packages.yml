@@ -53,6 +53,7 @@
       - firefox
       - flex
       - flex-doc
+      - fortunes-off
       - freerdp-x11
       - geoip-bin
       - git-all
