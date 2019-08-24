@@ -107,6 +107,7 @@
       - nttcp
       - nuttcp
       - openvpn
+      - percol
       - percona-toolkit
       - pcmanfm
       - powertop
