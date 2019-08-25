@@ -307,6 +307,10 @@ syscalls_h() {
     fi
 }
 alias syz=syscalls_h
+bpf_h() {
+    for i in $(sudo bpftrace -l | awk -F: '{print $1}' | sort | uniq); do printf "\e[41;1m$i\e[m\n"; sudo bpftrace -l ${i}: | awk -F: '{print $2}' | sort | uniq -c | awk 'NF>1{print $0}'; done | less -R +/^tracepoint
+}
+alias bpf=bpf_h
 
 alias ee="dolphin ."
 alias ssha='eval $(ssh-agent) && ssh-add'
