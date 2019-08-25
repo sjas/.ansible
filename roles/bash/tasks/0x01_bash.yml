@@ -15,7 +15,7 @@
   lineinfile: path=/home/sjas/.bashrc line='[[ $UID == 1000 ]] && eval "$(direnv hook bash)"'
 
 - name: fortune
-  lineinfile: path=/home/sjas/.bashrc line="fortune -o" insertafter=".bashrc_includes"
+  lineinfile: path=/home/sjas/.bashrc line="fortune -o -s" insertafter=".bashrc_includes"
 
 - name: reference .bashrc_includes if present
   lineinfile: path=/home/sjas/.bashrc line="[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
