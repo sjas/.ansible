@@ -298,6 +298,15 @@ alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 alias gg=global
+syscalls_h() {
+    if [[ $# != 0 ]]
+    then
+        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+' | grep $1 --color
+    else
+        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+'
+    fi
+}
+alias syz=syscalls_h
 
 alias ee="dolphin ."
 alias ssha='eval $(ssh-agent) && ssh-add'
