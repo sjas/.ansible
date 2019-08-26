@@ -33,7 +33,16 @@ complete -o bashdefault -o default -o nospace -F _git g
 #############################################################################################################
 alias gii="vim .gitignore"				## direly needed
 
-alias gh="git help"                                     ## gh git_command = open manpage for it
+githelp() {
+        if [[ $# == 0 ]] 
+        then
+                less /home/sjas/etc/.ansible/roles/bash/files/.bashrc_git && return
+        else
+                git help "${@}"
+        fi
+}
+alias gh=githelp                                        ## gh git_command = open manpage for it
+#alias gh="git help"                                     ## gh git_command = open manpage for it
 
 alias gi="git init"                                     ## initialize local git repo
 alias gcl="git clone --progress --recursive"            ## clone
@@ -73,6 +82,7 @@ gitshowauthor() {
 }
 alias gsha=gitshowauthor                                ## show all commit diffs for author
 alias gd="git diff"                                     ## diff
+alias gds="git diff --stat"                             ## show amount of changes in files
 alias gdc="git diff --cached"                    	## diff staged files on index
 alias gdh="git diff HEAD"                    		## diff everything against last commit
 gitdiffsofancy() {

@@ -54,7 +54,7 @@
       - flex
       - flex-doc
       - fortune
-      - fortune-off
+      - fortunes-off
       - freerdp-x11
       - geoip-bin
       - git-all
@@ -89,6 +89,7 @@
       - lftp
       - ltrace
       - lynx
+      - mbuffer
       - mc
       - meld
       - mlocate
@@ -109,6 +110,7 @@
       - nttcp
       - nuttcp
       - openvpn
+      - percol
       - percona-toolkit
       - pcmanfm
       - powertop
@@ -128,6 +130,7 @@
       - p7zip
       - parallel
       - parted
+      - patchutils
       - pbzip2
       - puppet-lint
       - pv

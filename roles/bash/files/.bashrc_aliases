@@ -33,6 +33,7 @@ alias  ebac="vim $DOTFILES/roles/bash/files/.bashrc_completion;	. /home/sjas/.ba
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias   egi="vim .gitignore"
 # v  = vim
 # t  = terminator
 # tm = tmux
@@ -77,6 +78,7 @@ alias   cdd="cd $DOTFILES"			## dotfiles
 alias  cddi="cd $DOTFILES/../.dotfiles"  	## dotfiles' includes
 alias	cdn="cd /home/sjas/txt"
 alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
+alias   cdw="cd /home/sjas/wrk"
 
 # 'show aliases' (shows currently defined aliases)
 # ba  = bash aliases
@@ -296,6 +298,19 @@ alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 alias gg=global
+syscalls_h() {
+    if [[ $# != 0 ]]
+    then
+        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+' | grep $1 --color
+    else
+        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+'
+    fi
+}
+alias syz=syscalls_h
+bpf_h() {
+    for i in $(sudo bpftrace -l | awk -F: '{print $1}' | sort | uniq); do printf "\e[41;1m$i\e[m\n"; sudo bpftrace -l ${i}: | awk -F: '{print $2}' | sort | uniq -c | awk 'NF>1{print $0}'; done | less -R +/^tracepoint
+}
+alias bpf=bpf_h
 
 alias ee="dolphin ."
 alias ssha='eval $(ssh-agent) && ssh-add'
