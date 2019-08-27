@@ -397,6 +397,7 @@ alias catip="curl -s telnetmyip.com| jq -r '.ip'"
 alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep -v SEE\ ALSO | awk 'NF>0"
 alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
 alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
+alias catredirection="PAGER=cat man bash | sed -n '/^REDIRECTION/,/ALIASES/p' | sed '\$d'"
 
 
 
