@@ -30,6 +30,7 @@
       - chrony
       - colordiff
       - conntrack
+      - cpanminus
       - curl
       - dhcpdump
       - dhcping
