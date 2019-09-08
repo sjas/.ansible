@@ -417,7 +417,7 @@ alias   ets="vim ~/.todo_srv"
 # the commented out lines where for syncing these with upstream, syncthing will make these obsolete eventually
 k() {
 	#if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
-	kanban $@
+	kanban "${@}"
 	#if ping -c1 -W1 prv &>/dev/null; then rsync -aq /home/sjas/.kanban/ prv:/home/sjas/.kanban; fi
 }
 n() {
