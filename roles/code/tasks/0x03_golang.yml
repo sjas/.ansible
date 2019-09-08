@@ -2,7 +2,7 @@
 
 # fix version number upon new releases
 - name: register current go version
-  command: "/bin/echo 1.12.9"
+  command: "/bin/echo 1.13"
   register: go_version
   changed_when: false
 
