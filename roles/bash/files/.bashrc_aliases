@@ -242,7 +242,7 @@ EOF
 #0X05 - 'UTIL'
 #############################################################################################################
 alias q="exit"
-alias ..="cd .."
+alias ..="cd ..; ls $LS_OPT1 -l $LS_OPT2"
 alias mkcd="pushd $(mktemp -d)"
 alias o="popd"
 alias p="pushd"
