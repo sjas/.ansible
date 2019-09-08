@@ -223,6 +223,10 @@
   apt:
     deb: /home/sjas/etc/.ansible/roles/common/files/eaglemode_0.94.0-1_amd64.deb
 
+- name: graph-easy
+  cpanm:
+    name: Graph::Easy
+
 # https://itsfoss.com/shutter-edit-button-disabled/
 - name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
   apt:
