@@ -1,0 +1,18 @@
+---
+
+- name: microsoft apt-key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: microsoft powershell repo
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+    state: present
+    filename: powershell
+
+- name: install powershell package
+  apt:
+    name: powershell
+    state: present
+    update_cache: yes
