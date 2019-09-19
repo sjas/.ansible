@@ -1,0 +1,5 @@
+---
+
+- name: powershell include
+  include: 0x01_powershell.yml
+  tags: powershell
