@@ -67,7 +67,8 @@ nnoremap <leader>i zMggM
 nnoremap <leader>o zRzt
 nnoremap <leader>l zAzt
 "run
-nnoremap <leader>r :!./%<cr>
+"nnoremap <leader>r :!chmod +x %; clear; ./%<cr>
+nnoremap <leader>r :w %<cr>:!chmod +x %; echo; clear; go fmt %; ./%<cr>
 "fmt
 nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
