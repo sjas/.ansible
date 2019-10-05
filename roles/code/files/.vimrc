@@ -58,6 +58,7 @@ nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
+nnoremap <leader>fd :r!date<cr>o<cr>
 
 "aliases
 vnoremap <leader>a :s/.*/"&"<cr>
