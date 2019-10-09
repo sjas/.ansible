@@ -15,6 +15,7 @@
       - apt-file
       - apt-rdepends
       - aptsh
+      - arp-scan
       - at
       - atop
       - autossh
