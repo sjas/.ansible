@@ -163,6 +163,7 @@
       - sysstat
       - tack
       - tcpdump
+      - thc-ipv6
       - thunderbird
       - thunderbird-locale-de
       - tig
