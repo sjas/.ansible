@@ -106,6 +106,7 @@
       - network-manager-openvpn
       - ngrep
       - nicstat
+      - nikto
       - nload
       - nmap
       - nmon
