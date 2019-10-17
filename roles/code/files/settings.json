@@ -62,5 +62,6 @@
     "workbench.colorTheme": "Badwolf Paradox",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "city-lights-icons-vsc-light"
+    "workbench.iconTheme": "city-lights-icons-vsc-light",
+    "VimTer.vimPath": "vim"
 }
