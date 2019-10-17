@@ -58,6 +58,7 @@ nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
+nnoremap <leader>fd :r!date<cr>o<cr>
 
 "aliases
 vnoremap <leader>a :s/.*/"&"<cr>
@@ -67,7 +68,8 @@ nnoremap <leader>i zMggM
 nnoremap <leader>o zRzt
 nnoremap <leader>l zAzt
 "run
-nnoremap <leader>r :!./%<cr>
+"nnoremap <leader>r :!chmod +x %; clear; ./%<cr>
+nnoremap <leader>r :w %<cr>:!chmod +x %; echo; clear; go fmt %; ./%<cr>
 "fmt
 nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>

@@ -15,6 +15,7 @@
       - apt-file
       - apt-rdepends
       - aptsh
+      - arp-scan
       - at
       - atop
       - autossh
@@ -105,6 +106,7 @@
       - network-manager-openvpn
       - ngrep
       - nicstat
+      - nikto
       - nload
       - nmap
       - nmon
@@ -163,6 +165,7 @@
       - sysstat
       - tack
       - tcpdump
+      - thc-ipv6
       - thunderbird
       - thunderbird-locale-de
       - tig

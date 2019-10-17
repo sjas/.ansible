@@ -325,7 +325,7 @@ alias rs='rsync -avzh --inplace --info=progress2'
 alias nload='nload -u m -U H -i 102400 -o 102400 -a 60'  ## 100m graphs
 alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60'  ## 1g graphs
 
-alias topcommands="history | awk '{CMD[\$2]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
+alias topcommands="history | awk '{CMD[\$3]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
 alias kdeversion="dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1"
 alias ansibletags="( cd /home/sjas/etc/.ansible; rg -e '^\s+tags:' --no-filename --no-line-number | sort | uniq | awk 'NR>1' )"
 
