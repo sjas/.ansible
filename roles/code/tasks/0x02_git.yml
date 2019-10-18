@@ -1,0 +1,11 @@
+---
+
+- name: git default settings
+  become: yes
+  become_user: sjas
+  shell: |
+    git config --global diff.noprefix "true"; \
+    git config --global core.pager "bat --style=grid,header,numbers"; \
+    git config --global push.default "matching"; \
+    git config --global color.ui "true";
+  changed_when: false
