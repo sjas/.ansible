@@ -9,7 +9,7 @@
 -- debug_print("Window Name: " .. get_window_name());
 -- debug_print("Application name: " .. get_application_name());
 if (get_application_name() == "Visual Studio Code") then
-    set_window_opacity(0.89)
+    set_window_opacity(0.92)
     set_window_size(1000, 650)
     center()
 end
