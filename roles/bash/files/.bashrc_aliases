@@ -253,7 +253,7 @@ alias h="history"
 
 alias bc="BC_ENV_ARGS=<(echo "scale=2") \bc"
 
-alias rec=’script -aq ~/term.log-$(date “+%Y%m%d-%H-%M”)’
+alias rec='script -aq ~/term.log-$(date "+%Y%m%d-%H-%M")'
 
 alias apt-list-backports="aptitude search -t $(lsb_release -sc)-backports -F '%p %v -> %V' '~U ~Abackports'"
 alias apt-list-changelog="apt-get changelog -t $(lsb_release -sc)-backports"
