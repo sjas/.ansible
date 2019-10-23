@@ -29,6 +29,7 @@
   ignore_errors: true
   shell: |
     code --list-extensions | grep -i \
+    -e albert.tabout \
     -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
@@ -41,6 +42,7 @@
     -e jpogran.puppet-vscode \
     -e korekontrol.saltstack \
     -e LuxHackers.can-openr \
+    -e matthias-schwarze.vimter \
     -e mechatroner.rainbow-csv \
     -e mitaki28.vscode-clang \
     -e ms-python.python \
@@ -61,7 +63,7 @@
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 27
+  command: echo 29
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -77,6 +79,7 @@
   become_user: sjas
   command: code --force --install-extension {{ item }}
   with_items:
+    - albert.tabout
     - austin.code-gnu-global
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
@@ -89,6 +92,7 @@
     - jpogran.puppet-vscode
     - korekontrol.saltstack
     - LuxHackers.can-openr
+    - matthias-schwarze.vimter
     - mechatroner.rainbow-csv
     - mitaki28.vscode-clang
     - ms-python.python
