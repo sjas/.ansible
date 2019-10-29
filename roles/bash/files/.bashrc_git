@@ -81,6 +81,10 @@ gitshowauthor() {
         git log --author=$1 --oneline | awk {'print $1'} | xargs git show
 }
 alias gsha=gitshowauthor                                ## show all commit diffs for author
+gitshowlog() {
+    for i in $(git log --oneline --color=never | awk '{print $1}'); do printf "\n\n\e[41;1m$i\e[m\n"; git show $i; done | less -R
+}
+alias gshl=gitshowlog                               ## show all logged commit:s diff:s
 alias gd="git diff"                                     ## diff
 alias gds="git diff --stat"                             ## show amount of changes in files
 alias gdc="git diff --cached"                    	## diff staged files on index
@@ -141,7 +145,7 @@ alias grema="git remote add"                            ## add remote
 alias gremr="git remote remove"                         ## remove remote
 
 alias gf="git fetch origin master"                      ## fetch
-alias gfa="for branch in $(git branch -r|grep -v ' -> '|cut -d\"/\" -f2); do git checkout $branch; git fetch; done"  ## "git fetch all"
+alias gfa="for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout $branch; git fetch; done"  ## "git fetch all"
 alias gp="git pull origin master"                       ## pull
 alias gpp="git push origin master"                      ## push
 alias gpup="git pull origin master; git push origin master"  		## for repositories where only I work on
@@ -195,7 +199,7 @@ alias gtlw="watch -n1 -d \"git log --oneline --decorate=short | tac | nl | tac |
 alias gtd="git tag -d"                                  ## param: tagname, delete tag
 
 gitnoteslist() {
-        for i in $(git notes list | cut -d' ' -f2); do git log --pretty=oneline --decorate=short | tac | nl | tac | grep \$i; git notes show \$i; done
+        for i in $(git notes list | cut -d' ' -f2); do git log --pretty=oneline --decorate=short | tac | nl | tac | grep $i; git notes show $i; done
 }
 alias gnl=gitnoteslist                                  ## list all notes
 alias gna="git notes append"                            ## add notes (defaults to HEAD)
