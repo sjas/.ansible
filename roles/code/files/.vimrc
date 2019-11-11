@@ -50,6 +50,7 @@ nnoremap <leader>bd :q<cr>
 nnoremap <leader>bp :N<cr>
 nnoremap <leader>bn :n<cr>
 nnoremap <leader>bN :vnew<cr>
+nnoremap <leader>fq :wq<cr>
 nnoremap <leader>fqq :wq!<cr>
 nnoremap <leader>qq :qall!<cr>
 nnoremap <leader>fed :vs $DOTFILES/roles/code/files/.vimrc<cr>
@@ -69,7 +70,7 @@ nnoremap <leader>o zRzt
 nnoremap <leader>l zAzt
 "run
 "nnoremap <leader>r :!chmod +x %; clear; ./%<cr>
-nnoremap <leader>r :w %<cr>:!chmod +x %; echo; clear; go fmt %; ./%<cr>
+nnoremap <leader>e :w %<cr>:!chmod +x %; echo; clear; go fmt %; ./%<cr>
 "fmt
 nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
