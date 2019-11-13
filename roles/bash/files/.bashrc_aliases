@@ -523,6 +523,19 @@ getip() {
 rdns() {
 	\dig -x "$(\dig $1 +short)" +short
 }
+bgpmon() {
+	echo enter ip/domain for whois.bgpmon.net query
+	echo
+	echo -n 'bgpmon> '
+
+	while
+	read i
+	do
+		whois -h whois.bgpmon.net $i | grep -v ^%
+		echo
+		echo -n 'bgpmon> '
+	done
+}
 cymru() {
 	echo enter ip/ASN for whois.cymru.com query
 	echo
@@ -551,7 +564,11 @@ radb() {
 	done
 }
 radb-routes() {
-	whois -h whois.radb.net -- "-i origin $(whois -h whois.cymru.com $(host $1 | grep address | awk '{print $NF}' | head -1) | tail -1 | awk '{$2=$3=$4=""; print $0}' | cut -d' ' -f1)" | grep ^route
+    [[ $# != 1 ]] && echo 'enter domain nameto get all routes for its corresponding ASN' && exit 0
+    _net=$(whois -h whois.radb.net -- "-i origin $(whois -h whois.cymru.com $(host $1 | grep address | awk '{print $NF}' | head -1) | tail -1 | awk '{$2=$3=$4=""; print $0}' | cut -d' ' -f1)" | grep ^route)
+    echo "${_net}" | grep "route:" | awk '{print $2}' | sed 's/\([[:alnum:]]\+\)[:.]/\1 @/' | sed 's/.\+/\L&/g' | sort -nk1,1 | sed 's/ @/./'
+    echo
+    echo "${_net}" | grep "route6:" | awk '{print $2}' | sed 's/\([[:alnum:]]\+\)[:.]/\1 @/' | sed 's/.\+/\L&/g' | sort -k1,1 | sed 's/ @/:/'
 }
 geoip() {
 	# needs package 'geoip-bin'
