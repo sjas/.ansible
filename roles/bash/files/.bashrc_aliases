@@ -101,14 +101,14 @@ LS_OPT2='-is'
 alias    ls="ls $LS_OPT1"
 alias     l="ls $LS_OPT1 -l $LS_OPT2"
 alias    ll="ls $LS_OPT1 -l $LS_OPT2 -A"
-alias    lt="ls $LS_OPT1 -l $LS_OPT2 -Atr"
+alias    lk="ls $LS_OPT1 -l $LS_OPT2 -Atr"
 alias    lS="ls $LS_OPT1 -l $LS_OPT2 -ASr"
 alias    lr="find | sort | cut -c 3-"  ## so no additional package is needed
 #directories
 alias     d="ls $LS_OPT1 -l          -F  | grep ^d"
 alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
 
-alias   wlt="watch -n1 -d -c ls -h --color --time-style=long-iso -l -is -At"
+alias   wlk="watch -n1 -d -c ls -h --color --time-style=long-iso -l -is -At"
 
 
 
@@ -261,6 +261,8 @@ alias w="watch -n1 -d --color"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
 alias h="history"
 
+alias cpr="rsync -avhH --progress"
+alias cpz="rsync -avzhH --progress"
 alias bc="BC_ENV_ARGS=<(echo "scale=2") \bc"
 
 alias rec='script -aq ~/term.log-$(date "+%Y%m%d-%H-%M")'
