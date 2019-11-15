@@ -243,7 +243,17 @@ EOF
 #############################################################################################################
 alias q="exit"
 alias ..="cd ..; ls $LS_OPT1 -l $LS_OPT2"
-alias mkcd="pushd $(mktemp -d)"
+makedirectory(){
+        if [[ $# == 0 ]]
+        then
+                pushd $(mktemp -d)
+        else
+                mkdir $1
+                pushd $1
+        fi
+
+}
+alias mkcd=makedirectory
 alias o="popd"
 alias p="pushd"
 alias v="vim"
