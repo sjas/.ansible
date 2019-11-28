@@ -44,7 +44,8 @@ export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[38\;5\;76\;1m\\\]$i; else
 export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
 #export PS2="> "  ## unchanged
 export PS3="select> "
-export PS4="___________________________ "  ## make `set -x` more readable for me by far
+#export PS4="___________________________ "  ## make `set -x` more readable for me by far
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 export PROMPT_COMMAND="echo"
 
