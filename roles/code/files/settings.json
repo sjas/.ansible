@@ -20,11 +20,11 @@
     "editor.cursorWidth": 1,
     "editor.detectIndentation": false,
     "editor.emptySelectionClipboard": false,
+    "editor.fontFamily": "'Noto Mono'",
     "editor.fontFamily": "'Hasklig ExtraLight'",
     "editor.fontFamily": "'Hasklig Light'",
-    "editor.fontFamily": "'Hasklig SemiBold'",
-    "editor.fontFamily": "'Noto Mono'",
     "editor.fontFamily": "'Hasklig Medium'",
+    "editor.fontFamily": "'Hasklig SemiBold'",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
     "editor.fontWeight": "100",
@@ -61,7 +61,5 @@
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Gotham",
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "city-lights-icons-vsc-light",
-    "VimTer.vimPath": "vim"
+    "workbench.startupEditor": "newUntitledFile"
 }
