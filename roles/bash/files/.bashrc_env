@@ -8,7 +8,7 @@
 #0X04 - BASH
 #0X05 - HISTORY
 #0X06 - LESS
-#0X07 - LANGUAGE ENVS AND PATH
+#0X07 - NODEJS, GOLANG, JAVA, RUSTLANG, $PATH
 
 
 
@@ -44,8 +44,7 @@ export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[38\;5\;76\;1m\\\]$i; else
 export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
 #export PS2="> "  ## unchanged
 export PS3="select> "
-#export PS4="___________________________ "  ## make `set -x` more readable for me by far
-export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'  ## make `set -x` more readable
 
 export PROMPT_COMMAND="echo"
 
@@ -133,9 +132,10 @@ export LESS=" -R "
 
 
 #############################################################################################################
-#0X07 - LANGUAGE ENVS AND PATH
+#0X07 - NODEJS, GOLANG, JAVA, RUSTLANG, $PATH
 #############################################################################################################
-# HELPER, can be called from CLI, too
+# helper function; the only sane way that works
+#fixme [..] vs. [[..]] and quoting
 addtopath() {
 	if [ -d "$1" ] && [[ ":${PATH}:" != *":$1:"* ]]
 	then
@@ -151,9 +151,9 @@ export NVM_DIR="/home/sjas/.nvm"
 #   G O L A N G
 export GOROOT="/usr/local/go"
 # dont just get rid of GOPATH YET, `go get` still seems to use it
+export GOPATH="/home/sjas/go"  ## def.: "${HOME}/go"
 export GO111MODULE="on"
-#export GOPATH="${HOME}/wrk/gocode"  ## use default of $HOME/go for now
-export GOPATH="/home/sjas/go"
+#export GOGC=100  ## def.: 100: run garbage collector once the heap size doubles
 
 #   J A V A 
 #export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
