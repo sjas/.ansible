@@ -519,6 +519,22 @@ showdiff() {
 # fix up missing radb / cymru functions
 # make the existing ones take parameters
 # build in a security prompt for the route aliases asking wether the queried ASN is the right one
+ipcalced() {
+    [[ $# -eq 1 ]] && \ipcalc $1 && return
+	echo enter ip net
+	echo
+	echo -n 'ipcalc> '
+
+	while
+	read i
+	do
+		\ipcalc $i
+		echo
+		echo -n 'ipcalc> '
+
+	done
+}
+alias ipcalc=ipcalced
 digged() {
 	\dig +nocmd +nocomments +noquestion +nostats any "${@}"
 }
