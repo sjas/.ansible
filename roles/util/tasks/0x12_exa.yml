@@ -1,0 +1,9 @@
+---
+
+- name: deploy exa
+  become: yes
+  become_user: sjas
+  copy:
+    src: exa
+    dest: /home/sjas/.local/bin
+    mode: 0775

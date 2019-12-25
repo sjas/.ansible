@@ -94,21 +94,31 @@ alias   sga="grep ^alias $DOTFILES/roles/bash/files/.bashrc_git | sed 's/alias /
 #############################################################################################################
 #0X03 - LS
 #############################################################################################################
-LS_OPT1='-h --color --time-style=long-iso -p'
-LS_OPT2='-is'
+# fixme add if to discern wether `ls` or `exa` is currently used and activate corresponding aliases
+LS=/home/sjas/.local/bin/exa
+#LS_OPT1='-h --color --time-style=long-iso -p'
+#LS_OPT2='-is'
+LS_OPT1='--color=always --time-style=long-iso -g --git -h -H'
+LS_OPT2='-iS'
 #LS_OPT2=''
 #files
-alias    ls="ls $LS_OPT1"
-alias     l="ls $LS_OPT1 -l $LS_OPT2"
-alias    ll="ls $LS_OPT1 -l $LS_OPT2 -A"
-alias    lk="ls $LS_OPT1 -l $LS_OPT2 -Atr"
-alias    lS="ls $LS_OPT1 -l $LS_OPT2 -ASr"
+alias    ls="$LS $LS_OPT1"
+alias     l="$LS $LS_OPT1 -l $LS_OPT2"
+#alias    ll="$LS $LS_OPT1 -l $LS_OPT2 -A"
+#alias    lk="$LS $LS_OPT1 -l $LS_OPT2 -Atr"
+#alias    lS="$LS $LS_OPT1 -l $LS_OPT2 -ASr"
+alias    ll="$LS $LS_OPT1 -l $LS_OPT2 -a"
+alias    lk="$LS $LS_OPT1 -l $LS_OPT2 -a --sort modified"
+alias    lS="$LS $LS_OPT1 -l $LS_OPT2 -a --sort size"
 alias    lr="find | sort | cut -c 3-"  ## so no additional package is needed
 #directories
-alias     d="ls $LS_OPT1 -l          -F  | grep ^d"
-alias    dl="ls $LS_OPT1 -l          -AF | grep ^d"
+#alias    dl="$LS $LS_OPT1 -l          -AF | grep ^d"
+#alias     d="$LS $LS_OPT1 -l          -F  | grep ^d"
+alias     d="$LS $LS_OPT1 -l --color=never -F  | grep ^d"
+alias    dl="$LS $LS_OPT1 -l --color=never -aF | grep ^d"
 
-alias   wlk="watch -n1 -d -c ls -h --color --time-style=long-iso -l -is -At"
+#alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -is -At"
+alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -iS -a --sort modified"
 
 
 
@@ -242,7 +252,7 @@ EOF
 #0X05 - 'UTIL'
 #############################################################################################################
 alias q="exit"
-alias ..="cd ..; ls $LS_OPT1 -l $LS_OPT2"
+alias ..="cd ..; $LS $LS_OPT1 -l $LS_OPT2"
 makedirectory(){
         if [[ $# == 0 ]]
         then

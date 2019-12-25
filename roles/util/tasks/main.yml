@@ -67,3 +67,7 @@
 - name: system stats overview through tmux
   include: 0x11_stats.yml
   tags: util
+
+- name: exa instead of ls
+  include: 0x12_exa.yml
+  tags: util
