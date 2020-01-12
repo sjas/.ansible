@@ -5,8 +5,9 @@
 # flip this switch to force update
 - name: register desired exitcode as dirty hack
   command: /bin/echo 0
-  #command: /bin/echo 1 
+  # command: /bin/echo 1
   register: telegram_exitcode_switch
+  changed_when: false
 
 - name: telegram install check
   shell: find /opt/Telegram -type f | grep Telegram
