@@ -3,6 +3,7 @@
 # there seem to be no easy ways to discern the installed version
 # nor getting the current version:s number
 # flip this switch to force update
+# fixme: make this work properly eventually if ever
 - name: register desired exitcode as dirty hack
   command: /bin/echo 0
   # command: /bin/echo 1
