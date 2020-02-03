@@ -1,7 +1,7 @@
 ---
 
 - name: get firefox profile folder path
-  shell: ls /home/sjas/.mozilla/firefox/*default -d
+  shell: ls /home/sjas/.mozilla/firefox/*default* -d
   register: ff_path
   changed_when: false
 
