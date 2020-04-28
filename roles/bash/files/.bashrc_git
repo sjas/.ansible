@@ -85,10 +85,10 @@ gitshowlog() {
     for i in $(git log --oneline --color=never | awk '{print $1}'); do printf "\n\n\e[41;1m$i\e[m\n"; git show $i; done | less -R
 }
 alias gshl=gitshowlog                               ## show all logged commit:s diff:s
-alias gd="git diff"                                     ## diff
+alias gd="git diff --word-diff --word-diff-regex='\w+'" ## diff
 alias gds="git diff --stat"                             ## show amount of changes in files
 alias gdc="git diff --cached"                    	## diff staged files on index
-alias gdh="git diff HEAD"                    		## diff everything against last commit
+alias gdh="git diff HEAD  --word-diff --word-diff-regex='\w+'"  ## diff everything against last commit
 gitdiffsofancy() {
         git diff "$*" | diff-so-fancy
 }
