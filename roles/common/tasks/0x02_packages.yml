@@ -43,6 +43,7 @@
       - edac-utils
       - elinks
       - ethstatus
+      - evince
       - exfat-fuse
       - exfat-utils
       - expect
@@ -131,7 +132,8 @@
       - pylint3
       - net-tools
       - ntfs-3g
-      - p7zip
+      - p7zip-full
+      - p7zip-rar
       - parallel
       - parted
       - patchutils
