@@ -678,21 +678,20 @@ runonfolderchange() {
 
 }
 runonchange() {
-	[[ $# == 0 ]] && \
-		echo && \
-		echo "USAGE:" && \
-		echo "    ${FUNCNAME[0]} FILE_TO_WATCH bash_script_or_code_to_run_when_FILE_TO_WATCH_is_saved" && \
+	[[ $# == 0 ]] &&\
+		echo &&\
+		echo "USAGE:" &&\
+		echo "    ${FUNCNAME[0]} FILE_TO_WATCH bash_script_or_code_to_run_when_FILE_TO_WATCH_is_saved" &&\
 		return
-	FILE=$1
-	shift
+	FILE=$1;shift
 	echo "["$'\e[37;1m'"+"$'\e[0m'"] setting up..."
 	echo
-	while inotifywait -e close_write $FILE 2>/dev/null
+	while inotifywait -e modify $FILE >/dev/null 2>&1 || true
 	do
-		eval $* \
-		&& echo && \
-		echo "["$'\e[32;1m'"+"$'\e[0m'"] code/script was ran." || \
-		echo "["$'\e[31;1m'"-"$'\e[0m'"] code/script did not run."
+		$*\
+		&& echo &&\
+		printf "[\e[32;1m+\e[m] code/script was ran.\n" ||\
+		printf "[\e[31;1m-\e[m] code/script did not run.\n"
 		echo
 	done
 }
