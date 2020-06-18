@@ -6,7 +6,7 @@ RepeatRate=70
 
 [Mouse]
 Acceleration=1
-AccelerationProfile=
+AccelerationProfile=true
 MouseButtonMapping=RightHanded
 ReverseScrollPolarity=false
 Threshold=0
