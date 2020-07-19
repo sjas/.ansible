@@ -67,6 +67,7 @@
       - haveged
       - hdparm
       - hping3
+      - html-xml-utils
       - htop
       - httping
       - iftop
