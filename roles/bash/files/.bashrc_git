@@ -61,6 +61,9 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 #############################################################################################################
 #0X02 - LOG,SHOW,DIFF
 #############################################################################################################
+#create a proper version string out of date and commit hash (UTC)
+alias gversion='echo $(date --utc --date="$(git show -s --format=%ci)" +%Y%m%d%H%M)-$(git rev-parse --short HEAD)'
+
 #log
 alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
 alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
