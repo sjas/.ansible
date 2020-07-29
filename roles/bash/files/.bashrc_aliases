@@ -33,7 +33,6 @@ alias  ebac="vim $DOTFILES/roles/bash/files/.bashrc_completion;	. /home/sjas/.ba
 alias   ebe="vim $DOTFILES/roles/bash/files/.bashrc_env; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebg="vim $DOTFILES/roles/bash/files/.bashrc_git; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded"
 alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.bashrc; echo [+] .bashrc reloaded"
-alias   egi="vim .gitignore"
 # v  = vim
 # t  = terminator
 # tm = tmux
@@ -58,7 +57,7 @@ alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sja
 #0X02 - 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 #############################################################################################################
 # 'reload'
-alias   reb=". /home/sjas/.bashrc; echo [+] .bashrc reloaded"
+alias sb=". ~/.bashrc&&printf '.bashrc sourced.'"
 rea() {
 	(
 		cd $DOTFILES
@@ -120,6 +119,7 @@ alias    dl="$LS $LS_OPT1 -l --color=never -aF | grep ^d"
 #alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -is -At"
 alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -iS -a --sort modified"
 
+alias nnn="\nnn -c0"
 
 
 #############################################################################################################
@@ -251,6 +251,36 @@ EOF
 #############################################################################################################
 #0X05 - 'UTIL'
 #############################################################################################################
+# pp=="prettyprint" (pph w/ 80 chars, colored)
+# pps=="prettyprintshort" (pph w/ 50 chars, uncolored)
+# pph=="prettyprinthelper" (first argument is the amount of max possible chars)
+pph() {
+        [[ $# == 0 ]]&&echo "usage: pph _char _maxcharpos _asciicolor YOUR_RANDOM_STRING_STUFF"&&return
+        local _char="$1";shift
+        local _maxcharpos=$1;shift
+        local _asciicolor="$1";shift
+        local _inputstring="$*"
+        #c="$(IFS=';' read -sdR -p $'\e[6n' ROW COL;echo "${ROW#*[}")"  ## cursorpos, unneeded
+        local _inputstringsize=${#_inputstring}  ## we need stringlength instead
+        local _terminalwidth="$(tput cols)"
+        local _fillstringwidth=$(( _maxcharpos - 1 - _inputstringsize ))
+
+        printf "\n\e[${_asciicolor}m${_inputstring}"
+        if [[ ${_maxcharpos} -le ${_terminalwidth} ]]&&[[ ${_maxcharpos} -gt $(( ${_inputstringsize} + 1 )) ]]
+        then
+                printf " "
+                printf "${_char}%.0s" $( seq 1 ${_fillstringwidth} )
+        elif [[ ${_maxcharpos} -gt ${_terminalwidth} ]]&&[[ ${_maxcharpos} -gt $(( ${_inputstringsize} + 1 )) ]]
+                then
+                _fillstringwidth=$(( _terminalwidth - 1 - _inputstringsize ))
+                printf " "
+                printf "${_char}%.0s" $( seq 1 ${_fillstringwidth} )
+        fi
+        printf "\e[m\n"
+}
+pp() { pph '*' 109 '41;1' $*;}
+pps() { pph '+' 80 '' $*;}
+
 alias q="exit"
 alias ..="cd ..; $LS $LS_OPT1 -l $LS_OPT2"
 makedirectory(){
@@ -267,6 +297,7 @@ alias mkcd=makedirectory
 alias o="popd"
 alias p="pushd"
 alias v="vim"
+e() { command ed -p'*' -v "$@";}  ## dont use the prompt, is ugly for automation
 alias w="watch -n1 -d --color"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
 alias h="history"
@@ -413,6 +444,7 @@ alias viresolv="sudo vim /etc/resolv.conf"
 alias vissh="vim /home/sjas/.ssh/config"
 alias viif="sudo vim /etc/network/interfaces"
 alias vinss="sudo vim /etc/nsswitch.conf"
+alias  vigi="vim .gitignore"
 
 #CAT
 # hosts		= /etc/hosts
@@ -656,6 +688,10 @@ utrace() {
 	done
 }
 
+asn() {
+        nc whois.cymru.com 43 < <(dig +short "$*")
+}
+
 
 
 
@@ -679,22 +715,18 @@ runonfolderchange() {
 }
 runonchange() {
 	[[ $# == 0 ]] &&\
-		echo &&\
-		echo "USAGE:" &&\
+		printf "\nUSAGE:\n\n" &&\
 		echo "    ${FUNCNAME[0]} FILE_TO_WATCH bash_script_or_code_to_run_when_FILE_TO_WATCH_is_saved" &&\
 		return
-	FILE=$1;shift
-	echo "["$'\e[37;1m'"+"$'\e[0m'"] setting up..."
-	echo
-	while inotifywait -e modify $FILE >/dev/null 2>&1 || true
-	do
-		$*\
-		&& echo &&\
-		printf "[\e[32;1m+\e[m] code/script was ran.\n" ||\
-		printf "[\e[31;1m-\e[m] code/script did not run.\n"
-		echo
-	done
+    FILENAME="$1"
+    shift
+    while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1 || true
+    do
+            "$*" || printf "[\e[31;1m-\e[m] code/script did not run.\n"
+            printf "\n===============\n\n"
+    done
 }
+
 ### this exits prior to running `dot` on the saved file and i have no clue why
 #rundotpreview() {
 #	[[ $# != 1 ]] && \
