@@ -15,24 +15,25 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 let g:paredit_mode = 1
 
 syn on
-se hls
-se is
-se ic
-se ai
-se nonu
-se nornu
+se hls  "hlsearch
+se is  "incsearch
+se ic  "ignorecase
+se ai  "autoindent
+se nonu  "nonumber
+se nornu  "norelativenumber
 highlight CursorLineNR ctermbg=red
-se ar
+se ar  "autoread
 se clipboard=unnamedplus
 se foldmethod=syntax
+se lbr  "linebreak
 
 " transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
-se ts=4
-se sw=4
-se sts=4
-se et
+se ts=4  "tabstop
+se sw=4  "shiftwidth
+se sts=4  "softtabstop
+se et  "expandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 
 "se backupdir=$TEMP
@@ -55,12 +56,15 @@ nnoremap <leader>fq :wq<cr>
 nnoremap <leader>fqq :wq!<cr>
 nnoremap <leader>qq :qall!<cr>
 nnoremap <leader>fed :vs $DOTFILES/roles/code/files/.vimrc<cr>
-nnoremap <leader>feR :!cp $DOTFILES/roles/code/files/.vimrc /home/sjas/.vimrc<cr>:source $MYVIMRC<cr>
-nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
+nnoremap <leader>sv :!cp $DOTFILES/roles/code/files/.vimrc /home/sjas/.vimrc<cr>:source $MYVIMRC<cr>
+"nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
+nnoremap <leader>cl :noh<cr>
 nnoremap <leader>tn :se nu!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
-nnoremap <leader>fd :r!date<cr>o<cr>
+nnoremap <leader>fd :r!date +%%F_%%T<cr>o<cr>
+
+
 
 "aliases
 vnoremap <leader>a :s/.*/"&"<cr>
@@ -78,7 +82,8 @@ nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
 nnoremap <leader>fr :w %<cr>:!rust fmt %<cr>
 nnoremap <leader>fp :w %<cr>:%!yapf3<cr>
 
-nnoremap <leader>hl O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
+
+nnoremap <leader>ll O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>109i#<esc>yyjpj
 nnoremap <leader>hk VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<cr>yy
 
 nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><cr>}<esc>ka<tab>
@@ -87,9 +92,11 @@ nnoremap <leader>ph i#!/usr/bin/env python
 "vnoremap < <gv
 "vnoremap > <gv
 
+nnoremap <leader>sb :!. ~/.bashrc<cr>
 nnoremap  <leader>eba :vs $DOTFILES/roles/bash/files/.bashrc_aliases<cr>
 nnoremap  <leader>ebe :vs $DOTFILES/roles/bash/files/.bashrc_env<cr>
 nnoremap  <leader>ebg :vs $DOTFILES/roles/bash/files/.bashrc_git<cr>
+
 
 nnoremap n nzt5<c-y>
 nnoremap * *zt5<c-y>
