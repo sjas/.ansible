@@ -47,4 +47,3 @@ rules:
   new-lines:
     type: unix
   trailing-spaces: enable
-
