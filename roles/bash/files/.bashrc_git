@@ -64,6 +64,40 @@ alias grshh="git reset --hard HEAD"			## unstage everthing and nix all changes m
 #create a proper version string out of date and commit hash (UTC)
 alias gversion='echo $(date --utc --date="$(git show -s --format=%ci)" +%Y%m%d%H%M)-$(git rev-parse --short HEAD)'
 
+ 
+#status of all repositories in a single folder
+repostatus() {
+    [[ 0 -eq $#  ]]&&printf "\nusage:\n\t%s FOLDER\n" "${FUNCNAME[0]}"&&return
+    _originalfolder="${PWD}"
+    if [[ "." == $1 ]];then _rootfolder="${PWD}";else _rootfolder=$1;fi;shift
+    printf "\e[41;1mStatus of all git repositories in %s\e[m\n\n" "${_rootfolder}"
+    for i in $(find "${_rootfolder}" -type d|grep \.git$)
+    do
+        i="${i##./}"
+        i="${i%%/.git}"
+        cd "${i}"||return
+        if git status 2>/dev/null|grep -q "nothing to commit"
+        then
+            printf "\e[48;5;34;37;1m"
+        else
+            if git status 2>/dev/null|grep -qi -e"^Changes not staged for commit" -e"^Untracked files:"
+            then
+                printf "\e[48;5;196;37;1m"
+            else
+                if git status 2>/dev/null|grep -q "to be committed"
+                then
+                    printf "\e[46;37;1m"
+                else
+                    printf "\e[45;37;1m"
+                fi
+            fi
+        fi
+        printf "%s\e[m\n" "${i}"
+    done
+    cd "${_originalfolder}"
+}
+
+
 #log
 alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
 alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
