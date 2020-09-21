@@ -45,7 +45,7 @@ alias gh=githelp                                        ## gh git_command = open
 #alias gh="git help"                                     ## gh git_command = open manpage for it
 
 alias gi="git init"                                     ## initialize local git repo
-alias gcl="git clone --progress --recursive"            ## clone
+alias gcl="git clone -v --progress --recursive"         ## clone
 
 alias ga="git add"                                      ## regular add
 alias gaa="git add ."                                   ## regular add
