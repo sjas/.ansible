@@ -96,7 +96,8 @@ repostatus() {
     done
     cd "${_originalfolder}"
 }
-
+alias rp="repostatus"
+alias rph="repostatus ~"
 
 #log
 alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
