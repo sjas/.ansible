@@ -1,9 +1,0 @@
----
-
-- name: deploy tweep script
-  become: yes
-  become_user: sjas
-  copy:
-    src: tweep
-    dest: /home/sjas/.local/bin
-    mode: 0744

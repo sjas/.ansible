@@ -4,24 +4,26 @@
   include: 0x01_kanban.yml
   tags: util
 
-#- name: diff-so-fancy
-#  include: 0x02_diff-so-fancy.yml
-#  tags: util
-#
-#- name: tweep
-#  include: 0x03_tweep.yml
-#  tags: util
+- name: diff-so-fancy
+  include: 0x02_diff-so-fancy.yml
+  tags: util
+
+- name: tweep
+  include: 0x03_nextcloud_desktop_client.yml
+  tags: util
 
 - name: direnv
   include: 0x04_direnv.yml
   tags: util
 
-##0x05 freee
-#
-#- name: scc code counter
-#  include: 0x06_scc.yml
-#  tags: util
-#
+- name: keepassxc
+  include: 0x05_keepassxc.yml
+  tags: util
+
+- name: scc code counter
+  include: 0x06_scc.yml
+  tags: util
+
 #- name: bat
 #  include: 0x07_bat.yml
 #  tags: util
@@ -33,18 +35,14 @@
 #- name: xidel
 #  include: 0x09_xidel.yml
 #  tags: util
-#
-#- name: golang dep
-#  include: 0x0a_go-dep.yml
-#  tags: golang
-#
+
+##0x0a free
+
 #- name: simplecurses
 #  include: 0x0b_simplecurses.yml
 #  tags: util
 
-- name: dialogrc
-  include: 0x0c_dialogrc.yml
-  tags: util
+##0x0c free
 
 #- name: jp JSON query tool
 #  include: 0x0d_jp.yml
@@ -52,16 +50,4 @@
 #
 #- name: jsonfui json explorer
 #  include: 0x0e_jsonfui.yml
-#  tags: util
-#
-#- name: shfmt
-#  include: 0x0f_shfmt.yml
-#  tags: util
-
-- name: colorize iptables output
-  include: 0x10_colorize_iptables.yml
-  tags: util
-
-#- name: system stats overview through tmux
-#  include: 0x11_stats.yml
 #  tags: util

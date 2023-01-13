@@ -131,6 +131,17 @@
     option: AutoRaiseInterval
     value: 500
 
+- name: mouse - focus follows mouse, alt button to rise
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: MouseBindings
+    option: CommandAllKey
+    value: Alt
+
 
 
 

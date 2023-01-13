@@ -1,9 +1,0 @@
----
-
-- name: deploy .dialogrc
-  become: yes
-  become_user: sjas
-  copy:
-    src: .dialogrc
-    dest: /home/sjas/
-    mode: 0664

@@ -83,3 +83,12 @@
     line: "echo ':golang:E::go::/usr/local/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
     insertbefore: "exit 0"
     state: present
+
+- name: deploy golang 'dep' binary
+  become: yes
+  become_user: sjas
+  copy:
+    src: dep
+    dest: /home/sjas/.local/bin/
+    mode: 0744
+

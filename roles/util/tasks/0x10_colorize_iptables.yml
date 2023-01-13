@@ -1,9 +1,0 @@
----
-
-- name: deploy iptables colorize script
-  become: yes
-  become_user: sjas
-  copy:
-    src: colorize_iptables_output.sh
-    dest: /home/sjas/.local/bin
-    mode: 0775

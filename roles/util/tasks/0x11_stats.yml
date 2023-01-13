@@ -1,9 +1,0 @@
----
-
-- name: deploy stats script
-  become: yes
-  become_user: sjas
-  copy:
-    src: stats
-    dest: /home/sjas/.local/bin
-    mode: 0775

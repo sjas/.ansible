@@ -1,0 +1,6 @@
+---
+
+- name: nextcloud desktop client via snap
+  snap:
+    name: keepassxc
+    channel: latest/stable

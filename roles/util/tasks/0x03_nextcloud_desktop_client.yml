@@ -1,0 +1,16 @@
+---
+
+- name: nextcloud desktop client via snap
+  snap:
+    name: nextcloud-desktop-client
+    channel: latest/stable
+
+- name: nextcloud data folders
+  become: yes
+  become_user: sjas
+  file:
+    dest: /home/sjas/{{ item }}
+    state: directory
+  with_items:
+    - kp
+
