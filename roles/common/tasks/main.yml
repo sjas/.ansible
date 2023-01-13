@@ -34,3 +34,8 @@
 
 - name: systemd user folder
   include: 0x09_systemd_user_folder.yml
+  tags: common
+
+- name: long live /etc/rc.local
+  include: 0x0a_rc_local.yml
+  tags: common

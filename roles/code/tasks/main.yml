@@ -12,14 +12,14 @@
   include: 0x03_vscode.yml
   tags: vscode
 
-#- name: golang
-#  include: 0x04_golang.yml
-#  tags: golang
-#
-#- name: node.js
-#  include: 0x05_node.yml
-#  tags: node
-#
-#- name: rust
-#  include: 0x06_rustlang.yml
-#  tags: rustlang
+- name: golang
+  include: 0x04_golang.yml
+  tags: golang
+
+- name: node.js
+  include: 0x05_node.yml
+  tags: node
+
+- name: rust
+  include: 0x06_rustlang.yml
+  tags: rustlang

@@ -11,11 +11,11 @@
 #- name: tweep
 #  include: 0x03_tweep.yml
 #  tags: util
-#
-##- name: direnv
-##  include: 0x04_direnv.yml
-##  tags: util
-#
+
+- name: direnv
+  include: 0x04_direnv.yml
+  tags: util
+
 ##0x05 freee
 #
 #- name: scc code counter

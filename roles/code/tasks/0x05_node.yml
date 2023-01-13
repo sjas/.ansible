@@ -3,14 +3,14 @@
 - name: register nvm install script name
   become: yes
   become_user: sjas
-  command: echo v0.34.0
+  command: echo v0.39.3
   register: nvm_installer_version
   changed_when: false
 
 - name: register current node version to be used
   become: yes
   become_user: sjas
-  command: echo v11.12.0
+  command: echo v19.4.0
   register: nodejs_version
   changed_when: false
 
@@ -31,7 +31,7 @@
   block:
     - name: get nvm
       get_url:
-        url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_installer_version.stdout }}/install.sh
+        url: https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_installer_version.stdout }}/install.sh
         dest: /tmp
         mode: 0755
     - name: install nvm

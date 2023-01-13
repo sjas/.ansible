@@ -146,7 +146,7 @@ nnoremap <leader>fd :.!date +\%F_\%T<cr>
 nnoremap <leader>scd O# shellcheck disable=SC
 
 "fastrun binding
-nnoremap <leader>e :w %<cr>:!chmod +x %; echo; clear; ./%<cr>
+nnoremap <leader>e :w %<cr>:!chmod +x %;clear;printf "1\n2\n3\n4\n5"; ./%<cr>
 
 "better searching
 nnoremap n nzt5<c-y>
