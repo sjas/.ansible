@@ -118,10 +118,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['python']
-let g:syntastic_sh_shellcheck_args="-x"
+"let g:syntastic_sh_shellcheck_args="-x"
 "fixme this doesnt work
 "let g:syntastic_sh_checkers = ["sh","shellcheck"]
-let g:syntastic_sh_checkers = ["bashate","sh","shellcheck"]
+"let g:syntastic_sh_checkers = ["bashate","sh","shellcheck"]
 "let g:syntastic_sh_checkers = ["checkbashisms","sh","shellcheck"]
 "let g:syntastic_sh_checkers = ["bashate","checkbashisms","sh","shellcheck"]
 "set stl=%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P  "'statusline' .. default?  START statusline default
