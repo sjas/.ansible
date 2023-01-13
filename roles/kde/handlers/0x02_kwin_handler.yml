@@ -1,0 +1,7 @@
+---
+
+- name: restart kwin handler
+  become: yes
+  become_user: sjas
+  shell: DISPLAY=:0 nohup kwin --replace &
+  listen: kwin_reload

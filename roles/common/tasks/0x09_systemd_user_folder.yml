@@ -1,0 +1,8 @@
+---
+
+- name: ensure systemd user folder exists
+  file:
+    dest: /home/sjas/.config/systemd/user/
+    state: directory
+    owner: sjas
+    group: sjas

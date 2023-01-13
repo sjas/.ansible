@@ -1,0 +1,273 @@
+# git
+#
+# shellcheck shell=bash
+
+## BASH COMPLETION
+## BASICS
+## LOG,SHOW,DIFF
+## COMMIT
+## UPSTREAM(ING)
+## BRANCHING
+## STASHING
+## TAGGING AND NOTES
+## ANALYSIS
+## CONFLICTS
+
+
+
+
+
+## BASH COMPLETION ##########################################################################################
+# https://brbsix.github.io/2015/11/23/perform-tab-completion-for-aliases-in-bash/
+# shellcheck source=/usr/share/bash-completion/completions/git
+. "$(dpkg -L git | grep bash-completion | grep git$)"
+#alias g=git
+#complete -o bashdefault -o default -o nospace -F _git g
+
+
+
+
+
+## BASICS ###################################################################################################
+alias gi="vim .gitignore;git add .gitignore;git commit -m gi;git status -s"			  ## direly needed
+
+githelp() {
+		if [[ $# == 0 ]] 
+		then
+				less /home/sjas/etc/.ansible/roles/shells/files/.bashrc_git && return
+		else
+				git help "${@}"
+		fi
+}
+alias gh=githelp										## gh git_command = open manpage for it
+
+alias gii="git init"									 ## initialize local git repo
+alias gcl="git clone -v --progress --recursive"		 ## clone
+
+alias ga="git add"									  ## regular add
+alias gaa="git add ."								   ## regular add
+alias gat="git add -u"								  ## add all changes in files already being tracked
+alias gs="git status -s"								## status
+alias grs="git reset"								   ## unstage everything
+alias grshh="git reset --hard HEAD"					 ## unstage everthing and nix all changes made on HEAD
+
+
+
+
+
+## LOG,SHOW,DIFF ############################################################################################
+#create a proper version string out of date and commit hash (UTC)
+alias gversion='echo $(date --utc --date="$(git show -s --format=%ci)" +%Y%m%d%H%M)-$(git rev-parse --short HEAD)'
+
+ 
+#status of all repositories in a single folder
+repostatus() {
+	[[ 0 -eq $#  ]]&&printf "\nusage:\n\t%s FOLDER\n" "${FUNCNAME[0]}"&&return
+	_originalfolder="${PWD}"
+	if [[ "." == "$1" ]];then _rootfolder="${PWD}";else _rootfolder=$1;fi;shift
+	printf "\e[41;1mStatus of all git repositories in %s\e[m\n\n" "${_rootfolder}"
+	for i in $(find "${_rootfolder}" -type d|grep \.git$)
+	do
+		i="${i##./}"
+		i="${i%%/.git}"
+		cd "${i}"||return
+		if git status 2>/dev/null|grep -q "nothing to commit"
+		then
+			printf "\e[48;5;34;37;1m"
+		else
+			if git status 2>/dev/null|grep -qi -e"^Changes not staged for commit" -e"^Untracked files:"
+			then
+				printf "\e[48;5;196;37;1m"
+			else
+				if git status 2>/dev/null|grep -q "to be committed"
+				then
+					printf "\e[46;37;1m"
+				else
+					printf "\e[45;37;1m"
+				fi
+			fi
+		fi
+		printf "%s\e[m\n" "${i}"
+	done
+	cd "${_originalfolder}"||return
+}
+alias rp="repostatus"
+alias rph="repostatus ~"
+
+#log
+alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
+alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
+alias glog="git log --oneline --graph --decorate=short -n 22"
+alias glogf="git log --oneline --graph --decorate=short"
+
+#show commits
+alias gsh="git show"										## param: commit-id, show changes
+alias gshf="git show --stat --oneline"					  ## param: commit-id, show changes
+
+#show remote contents
+alias gsb="git show-branch -a --list --more=10 --no-name"   ## show-branch, show where commits are present
+alias gsbf="git show-branch -a --list --no-name"			## show-branch, show where commits are present
+alias gsba="git show-branch -a --topics --current"		  ## show all dangling branches? FIXME
+
+#diff
+gitshowauthor() {
+		git log --author="$1" --oneline | awk '{print $1}' | xargs git show
+}
+alias gsha=gitshowauthor									## show all commit diffs for author
+gitshowlog() {
+	for i in $(git log --oneline --color=never | awk '{print $1}'); do printf "\n\n\e[41;1m%s\e[m\n" "$i"; git show "$i"; done | less -R
+}
+alias gshl=gitshowlog							   ## show all logged commit:s diff:s
+alias gd="git diff --word-diff --word-diff-regex='\w+'" ## diff
+alias gds="git diff --stat"							 ## show amount of changes in files
+alias gdc="git diff --cached"					   ## diff staged files on index
+alias gdh="git diff HEAD  --word-diff --word-diff-regex='\w+'"  ## diff everything against last commit
+gitdiffsofancy() {
+		git diff "$*" | diff-so-fancy
+}
+alias gdff=gitdiffsofancy								## diff-so-fancy FILE
+gitdfiffsofancyall() {
+	for i in $(git status -s | awk '{print $2}'); do gitdiffsofancy "$i" ;done
+}
+alias gdf=gitdfiffsofancyall				## diff-so-fancy on all of `git status -s` files
+gitdiffsofancy() {
+		git diff --cached "$*" | diff-so-fancy
+}
+gitdifftool() {
+		git difftool -t "$*"
+}
+alias gdt=gitdifftool								   ## gdt <difftool>, difftools: meld, kdiff3 
+
+# shellcheck disable=SC2142
+alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2~/blob/ { print \$4 }'"  ## ls-tree, show versioned files
+
+
+
+
+
+## COMMIT ###################################################################################################
+gitcommit() {
+		git commit -m "$*"
+}
+alias gc=gitcommit									  ## commit
+gitfastcommit() {
+	[[ $# -eq 0 ]]&&git commit -m "fc"&&git status -s&&return
+	git add "$@"
+	git commit -m "fc"
+	git status -s
+}
+alias gcg=gitfastcommit
+gitfastaddcommitall() {
+	(cd "$(git rev-parse --show-toplevel)"||return; git add .; git commit -m "add all and commit" )
+}
+alias gfc=gitfastaddcommitall							 ## commit all present changes quickly
+alias gca="git commit --amend"						  ## amend last commit
+alias gr="git revert HEAD"							  ## revert, undo last commit
+gitrm() {
+		git rm "$*"
+}
+alias grm=gitrm										 ## param: filename, delete file and remove from versioning
+gitrmcached() {
+	for i
+	in "$@"
+	do
+		git rm --cached -r "$i"
+	done
+}
+alias grmc=gitrmcached
+
+
+
+
+
+## UPSTREAM(ING) ############################################################################################
+alias grem="git remote -v"							  ## show remotes
+alias grema="git remote add"							## add remote
+alias gremr="git remote remove"						 ## remove remote
+
+alias gf="git fetch origin master"					  ## fetch
+gitfetchall() {
+	for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout "${branch}"; git fetch; done
+}
+alias gfa=gitfetchall
+alias gp="git pull origin master"					   ## pull
+alias gpp="git push origin master"					  ## push
+alias gpup="git pull origin master; git push origin master"		 ## for repositories where only I work on
+
+# shellcheck disable=SC2139
+alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
+# shellcheck disable=SC2139
+alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"  ## delete current branch at origin
+
+gitfastpush() {
+	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git commit -m fastcommit; git pull origin master; git push origin master )
+}
+alias gfp=gitfastpush								   ## commit all present changes with message 'fastcommit', pull and push
+
+
+
+
+
+## BRANCHING ################################################################################################
+alias gb="git branch"				   ## show local branches if used without args
+alias gba="git branch -a -v"				## show all currently existing local and remote branches plus latest commits
+alias gbw="watch -n1 -d -c git branch -a -v --color"	## running overview so you see what you are doing and can copy paste, colored
+alias gco="git checkout"								## checkout
+alias gcob="git checkout -b"							## checkout directly into new branch
+
+
+
+
+
+## STASHING #################################################################################################
+alias gst="git stash"								## stash
+alias gstl="git stash list"							## show stash
+alias gsta="git stash apply"						## apply, leave in stash
+alias gstp="git stash pop"							## apply, remove from stash
+alias gstd="git stash drop"							## drop last stash (or a specific one)
+alias gstb="git stash branch"						## param: branchname, create+checkout new branch, apply changes
+alias gstc="git stash clear"						## delete all stashes
+
+
+
+
+
+## TAGGING AND NOTES ########################################################################################
+alias gt="git tag"									## tagging
+alias gtl="git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' | grep --color -e 'HEAD -> [_.0-9A-Za-z-]\+' -e 'tag: [_.0-9A-Za-z-]\+'"  ## show HEAD and all tags plus count (1 = first commit, n = HEAD)
+alias gtlw="watch -n1 -d \"git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' \""  ## list tags in watch, helps when changing them
+alias gtd="git tag -d"								## param: tagname, delete tag
+
+gitnoteslist() {
+		for i in $(git notes list | cut -d' ' -f2); do git log --pretty=oneline --decorate=short | tac | nl | tac | grep "$i"; git notes show "$i"; done
+}
+alias gnl=gitnoteslist								## list all notes
+alias gna="git notes append"						## add notes (defaults to HEAD)
+alias gnd="git notes remove"						## delete notes (defaults to HEAD)
+
+
+
+
+
+## ANALYSIS #################################################################################################
+githistorygrep() {
+		git rev-list --all | xargs git grep "$*"
+}
+alias ghg=githistorygrep							## grep for changes in all commit contents (not git log)
+githistoryfile() {
+		git log --follow  -p -- "$*"
+}
+alias ghf=githistoryfile							## param: file, shows complete commit history for given file
+alias gsl="git shortlog"				## commits grouped per user
+alias gslc="git shortlog -nse"						  ## commit count per user
+
+
+
+
+
+## CONFLICTS ################################################################################################
+alias gsc="git diff --diff-filter=U --name-only"		## show conflicts
+giteditconflicts() {
+	( cd "$(git rev-parse --show-toplevel)"||return; vim "$(git diff --diff-filter=U --name-only)" )
+}
+alias gec=giteditconflicts							  ## edit all conflicted files

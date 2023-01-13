@@ -1,0 +1,12 @@
+---
+
+- name: imwheel user service restart handler
+  become: yes
+  become_user: sjas
+  systemd:
+    name: imwheel.service
+    scope: user
+    state: restarted
+  listen: imwheel_restart
+  changed_when: false
+

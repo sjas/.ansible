@@ -11,3 +11,7 @@
   file:
       path: /home/sjas/.local/bin/direnv
       mode: 0744
+
+- name: direnv hook
+  lineinfile: path=/home/sjas/.bashrc line='[[ $UID == 1000 ]] && eval "$(direnv hook bash)"'
+

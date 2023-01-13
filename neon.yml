@@ -8,13 +8,12 @@
 
   roles:
     - common
-    - bash
-    - powershell
+    - shells
     - terminals
-    - browsers
     - code
+    - browsers
     - messengers
-    - networking
+      #   - networking
     - util
     - kde
     - virtualization

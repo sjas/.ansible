@@ -1,4 +1,10 @@
 ---
 
-- name: reload .xbindkeysrc handler
-  include: 0x01_xbindkeysrc.yml
+- name: restarting imwheel
+  include: 0x01_imwheel_handler.yml
+
+- name: restarting kwin
+  include: 0x02_kwin_handler.yml
+
+#- name: restarting xbindkeys
+#  include: 0x03_xbindkeys_handler.yml

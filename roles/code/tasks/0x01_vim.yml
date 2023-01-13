@@ -1,8 +1,9 @@
 ---
 
-- name: vim config
+- name: symlink to repo .vimrc
   become: yes
   become_user: sjas
-  copy:
-    src: .vimrc
-    dest: /home/sjas/.vimrc
+  file:
+    src: /home/sjas/etc/.ansible/roles/code/files/.vimrc
+    path: /home/sjas/.vimrc
+    state: link

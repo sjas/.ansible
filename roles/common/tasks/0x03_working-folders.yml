@@ -24,6 +24,7 @@
     - .local
     - .local/bin
     - go
+    - py
 
 - name: remove obsolete directories
   file:

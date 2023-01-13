@@ -21,34 +21,34 @@ separate_widget = ""
 tab_len = 0
 
 # Make tab-traversal for checklist, etc., include the list.
-visit_items = OFF
+visit_items = ON
 
 # Shadow dialog boxes? This also turns on color.
-use_shadow = ON
+use_shadow = OFF
 
 # Turn color support ON or OFF
 use_colors = ON
 
 # Screen color
 ##screen_color = (CYAN,BLUE,ON)
-screen_color = (CYAN,BLACK,ON)
+screen_color = (WHITE,BLACK,ON)
 
 # Shadow color
 shadow_color = (BLACK,BLACK,ON)
 
 # Dialog box color
-dialog_color = (BLACK,WHITE,OFF)
+dialog_color = (BLACK,WHITE,ON)
 
 # Dialog box title color
 ##title_color = (BLUE,WHITE,ON)
-title_color = (YELLOW,WHITE,ON)
+title_color = (BLACK,YELLOW,ON)
 
 # Dialog box border color
 border_color = (WHITE,WHITE,ON)
 
 # Active button color
 ##button_active_color = (WHITE,BLUE,ON)
-button_active_color = (WHITE,RED,ON)
+button_active_color = (BLACK,RED,ON)
 
 # Inactive button color
 button_inactive_color = dialog_color
@@ -57,10 +57,10 @@ button_inactive_color = dialog_color
 button_key_active_color = button_active_color
 
 # Inactive button key color
-button_key_inactive_color = (RED,WHITE,OFF)
+button_key_inactive_color = (BLACK,RED,ON)
 
 # Active button label color
-##button_label_active_color = (YELLOW,BLUE,ON)
+#button_label_active_color = (YELLOW,BLUE,ON)
 button_label_active_color = (YELLOW,RED,ON)
 
 # Inactive button label color
@@ -100,7 +100,7 @@ item_selected_color = button_active_color
 tag_color = title_color
 
 # Selected tag color
-tag_selected_color = button_label_active_color
+tag_selected_color = button_active_color
 
 # Tag key color
 tag_key_color = button_key_inactive_color
@@ -122,7 +122,7 @@ uarrow_color = (GREEN,WHITE,ON)
 darrow_color = uarrow_color
 
 # Item help-text color
-itemhelp_color = (WHITE,BLACK,OFF)
+itemhelp_color = (WHITE,BLACK,ON)
 
 # Active form text color
 form_active_text_color = button_active_color

@@ -7,7 +7,7 @@ sed     "/^\s\+pkts.*/                                                          
 # chains
 # special chain names so 'Chain' will not be renamed
 sed     "/\([^n]\s\)\(LOGDROP\)/                                                s//$(printf "\\\1\033[1;31m\\\2\033[0m")/       " | \
-sed     "/\([^n]\s\+\)\(MY_\w\+\)/                                              s//$(printf "\\\1\033[1;34m\\\2\033[0m")/       " | \
+sed     "/\([^n]\s\+\)\(MY_\S\+\)/                                              s//$(printf "\\\1\033[1;34m\\\2\033[0m")/       " | \
 sed     "/Chain\s\+\S\+/                                                        s//$(printf "\033[34;1m&\033[0m")/              " | \
 \
 # targets
@@ -20,10 +20,10 @@ sed     "/\s\[goto\]/                                                           
 \
 # chain names
 sed     "/\sNODE/                                                               s//$(printf "\033[34;1m&\033[0m")/              " | \
-sed     "/\sFORWARD\w*/                                                         s//$(printf "\033[34;1m&\033[0m")/              " | \
-sed     "/\sFWD\w*/                                                             s//$(printf "\033[34;1m&\033[0m")/              " | \
-sed     "/\sIN\w*/                                                              s//$(printf "\033[34;1m&\033[0m")/              " | \
-sed     "/\sOUT\w*/                                                             s//$(printf "\033[34;1m&\033[0m")/              " | \
+sed     "/\sFORWARD\S*/                                                         s//$(printf "\033[34;1m&\033[0m")/              " | \
+sed     "/\sFWD\S*/                                                             s//$(printf "\033[34;1m&\033[0m")/              " | \
+sed     "/\sIN\S*/                                                              s//$(printf "\033[34;1m&\033[0m")/              " | \
+sed     "/\sOUT\S*/                                                             s//$(printf "\033[34;1m&\033[0m")/              " | \
 sed     "/\sf2b-sshd/                                                           s//$(printf "\033[34;1m&\033[0m")/              " | \
 \
 # ct states
@@ -32,6 +32,7 @@ sed     "/RELATED/                                                              
 sed     "/ESTABLISHED/                                                          s//$(printf "\033[32;1m&\033[0m")/              " | \
 sed     "/NEW/                                                                  s//$(printf "\033[36;1m&\033[0m")/              " | \
 sed     "/UNTRACKED/                                                            s//$(printf "\033[36;1m&\033[0m")/              " | \
+sed     "/DNAT/                                                                 s//$(printf "\033[36;1m&\033[0m")/              " | \
 \
 # ports
 sed     "/\([ds]pt[s]\?:\)\([0-9A-Za-z]\+\([,:][0-9A-Za-z]\+\)\?\)/             s//$(printf "\\\1\033[33;1m\\\2\033[0m")/g      " | \

@@ -1,10 +1,44 @@
-# For the benefit of emacs users: -*- shell-script -*-
-###########################
-# xbindkeys configuration #
-###########################
-#
-# Version: 1.8.6
+# xbindkeys configuration
 
+## open clipboard tool: c_m_b (from other config) or caps_b:8 (c_mouse-backward)
+## additional enter key: caps-b:9 (c_mouse-forward)
+## mouse forward/backward == alt+left/right
+## old
+
+
+
+
+
+## open clipboard tool: c_m_b (from other config) or caps_b:8 (c_mouse-backward) ############################
+#to test changes to this file, run `sudo killall -s1 xbindkeys`
+"xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
+  Control + Caps_Lock + b:8 + Release
+
+
+
+
+
+## additional enter key: caps-b:9 (c_mouse-forward) #########################################################
+"xte 'key Return'"
+  Control + Caps_Lock + b:9 + Release
+
+
+
+
+
+## mouse forward/backward == alt+left/right #################################################################
+#so vscode with additional keybinds can do proper code navigation w/ mouse
+"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
+  b:8 + Release
+"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
+  b:9 + Release
+
+
+
+
+
+## old ######################################################################################################
+# Version: 1.8.6
 # If you edit this file, do not forget to uncomment any lines
 # that you change.
 # The pound(#) symbol may be used anywhere for comments.
@@ -25,72 +59,42 @@
 #   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
 #   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
 #
-
+#
 # The release modifier is not a standard X modifier, but you can
 # use it if you want to catch release events instead of press events
-
+#
 # By defaults, xbindkeys does not pay attention with the modifiers
 # NumLock, CapsLock and ScrollLock.
 # Uncomment the lines above if you want to pay attention to them.
-
+#
 #keystate_numlock = enable
 #keystate_capslock = enable
 #keystate_scrolllock= enable
-
+#
 # Examples of commands:
-
+#
 #"xbindkeys_show" 
 #  control+shift + q
-
+#
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4
-
+#
 # specify a mouse button
 #"xterm"
 #  control + b:2
-
+#
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
 #
-## set directly keycode (here control+alt+mod2 + f with my keyboard)
+### set directly keycode (here control+alt+mod2 + f with my keyboard)
 #"xterm"
 #  alt + c:0x29 + m:4 + mod2
 #
-## Control+Shift+a  release event starts rxvt
+### Control+Shift+a  release event starts rxvt
 #"rxvt"
 #  release+control+shift + a
 #
-## Control + mouse button 2 release event starts rxvt
+### Control + mouse button 2 release event starts rxvt
 #"rxvt"
 #  Control + b:2 + Release
-
-
-
-##########################################################################################################
-# c-m-b = clipboard, caps-b:8 = mouse-backward
-##########################################################################################################
-# to test changes to this file, run `sudo killall -s1 xbindkeys`
-
-"xte 'keydown Control_L' 'keydown Alt_L' 'key b' 'keyup Alt_L' 'keyup Control_L'"
-  Control + Caps_Lock + b:8 + Release
-
-##########################################################################################################
-# additional enter key on, caps-b:9 = mouse-forward
-##########################################################################################################
-"xte 'key Return'"
-  Control + Caps_Lock + b:9 + Release
-
-##########################################################################################################
-# mouse forward/backward == alt+left/right
-# so vscode with additional keybinds can do proper code navigation w/ mouse
-##########################################################################################################
-"xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'"
-  b:8 + Release
-"xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'"
-  b:9 + Release
-
-
-##################################
-# End of xbindkeys configuration #
-##################################

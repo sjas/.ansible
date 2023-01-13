@@ -1,0 +1,223 @@
+---
+
+# this stuff bases on libinput not libevdev because i dont need that
+# /usr/share/X11/xorg.conf.d/40-libinput.conf or similar if i were to switch libinput->libevdev
+# https://help.ubuntu.com/community/MouseCustomizations#Evdev_Driver
+# libevdev config(?) from kcminputrc
+#[Mouse]
+#Acceleration=1
+#AccelerationProfile=true
+#MouseButtonMapping=RightHanded
+#ReverseScrollPolarity=false
+#Threshold=0
+#XLbInptPointerAcceleration=-0.6
+#cursorSize=24
+#cursorTheme=breeze_cursors
+
+
+
+
+
+## mouse ####################################################################################################
+- name: mouse - acceleration
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: no
+    no_extra_spaces: yes
+    section: Mouse
+    option: XLbInptPointerAcceleration
+    value: -0.525
+
+- name: mouse - nonflat accel curve
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: no
+    no_extra_spaces: yes
+    section: Mouse
+    option: XLbInptAccelProfileFlat
+    value: false
+
+- name: mouse - nonflat accel curve 2
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: no
+    no_extra_spaces: yes
+    section: Mouse
+    option: X11LibInputXAccelProfileFlat
+    value: false
+
+- name: fix up imwheel as a user service
+  copy:
+    src: imwheel.service
+    dest: /home/sjas/.config/systemd/user/
+    owner: sjas
+    group: sjas
+  notify: imwheel_restart
+
+- name: systemd daemon reload
+  become: yes
+  become_user: sjas
+  systemd:
+    daemon_reload: yes
+    scope: user
+  notify: imwheel_restart
+
+- name: start imwheel user service
+  become: yes
+  become_user: sjas
+  systemd:
+    name: imwheel.service
+    scope: user
+    state: restarted
+    enabled: yes
+    masked: no
+  changed_when: false
+
+- name: mouse - fix buttons and scroll speed
+  become: yes
+  become_user: sjas
+  copy:
+    src: .imwheelrc
+    dest: /home/sjas/.imwheelrc
+  notify: imwheel_restart
+
+- name: mouse - focus follows mouse
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: FocusPolicy
+    value: FocusFollowsMouse
+
+- name: mouse - focus follows mouse delay interval
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: DelayFocusInterval
+    value: 200
+
+- name: mouse - focus follows mouse autoraise
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: AutoRaise
+    value: true
+
+- name: mouse - focus follows mouse autoraise delay interval
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: AutoRaiseInterval
+    value: 500
+
+
+
+
+
+## keyboard #################################################################################################
+- name: keyboard - repeat delay
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: no
+    no_extra_spaces: yes
+    section: Keyboard
+    option: RepeatDelay
+    value: 200
+
+- name: keyboard - repeat rate
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: no
+    no_extra_spaces: yes
+    section: Keyboard
+    option: RepeatRate
+    value: 100
+
+- name: keyboard - layoutlist
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kxkbrc
+    create: no
+    no_extra_spaces: yes
+    section: Layout
+    option: LayoutList
+    value: us
+
+- name: keyboard - nocaps
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kxkbrc
+    create: no
+    no_extra_spaces: yes
+    section: Layout
+    option: Options
+    value: caps:ctrl_modifier
+
+- name: keyboard - reset old options whatever this is
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kxkbrc
+    create: no
+    no_extra_spaces: yes
+    section: Layout
+    option: ResetOldOptions
+    value: true
+
+- name: keyboard - "yes"
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kxkbrc
+    create: no
+    no_extra_spaces: yes
+    section: Layout
+    option: Use
+    value: true
+
+- name: keyboard - variant
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kxkbrc
+    create: no
+    no_extra_spaces: yes
+    section: Layout
+    option: VariantList
+    value: altgr-intl
+
+- name: plasma locale
+  become: yes
+  become_user: sjas
+  copy:
+    src: "{{ item }}"
+    dest: /home/sjas/.config
+  with_items:
+    - plasma-localerc

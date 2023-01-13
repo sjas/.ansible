@@ -8,27 +8,28 @@
 
 - name: basic packages from upstream
   apt:
+    cache_valid_time: 7200
     autoclean: yes
     autoremove: yes
     update_cache: yes
     name:
       - apt-file
       - apt-rdepends
-      - aptsh
       - arp-scan
       - at
       - atop
       - autossh
+      - barrier
       - bash-completion
-      - bfs
       # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/ ## not available in 18.04 yet
+      - bfs
       - bison
       - byobu
       - bzr
       - ccze
-      - cmake
       - checkinstall
       - chrony
+      - cmake
       - colordiff
       - conntrack
       - cpanminus
@@ -45,20 +46,21 @@
       - ethstatus
       - evince
       - exfat-fuse
-      - exfat-utils
       - expect
       - ext4magic
       - fail2ban
       - filezilla
       - finger
-      - firejail
       - fio
       - firefox
+      - firewall-applet
+      - firewall-config
+      - firewalld
       - flex
       - flex-doc
-      - fortune
+      - fortunes
       - fortunes-off
-      - freerdp-x11
+        #- freerdp-x11
       - geoip-bin
       - git-all
       - global
@@ -71,26 +73,25 @@
       - htop
       - httping
       - iftop
-      - inxi
       - inotify-tools
+      - inxi
       - ioping
       - iotop
       - ipcalc
       - iperf3
-      - iptraf
+      - iptraf-ng
+      - iputils-arping
       - jq
-      - kde-runtime
       - kdiff3
-      - leafpad
+      - l3afpad
+      - ldnsutils
       - lft
+      - lftp
       - libinput-tools
       - libreoffice
       - libxml2-utils
       - linux-tools-generic
       - lnav
-      - iputils-arping
-      - ldnsutils
-      - lftp
       - ltrace
       - lynx
       - mbuffer
@@ -105,6 +106,7 @@
       - ncdt
       - ncdu
       - neofetch
+      - net-tools
       - network-manager-openvpn
       - ngrep
       - nicstat
@@ -113,47 +115,38 @@
       - nmap
       - nmon
       - nomacs
+      - ntfs-3g
       - nttcp
       - nuttcp
       - openvpn
-      - percol
-      - percona-toolkit
-      - pcmanfm
-      - powertop
-      - pylint
-      - pylint3
-      - python-ipdb
-      - python3-ipdb
-      - python-pip
-      - python3-pip
-      - python-pudb
-      - python3-pudb
-      - python-rope
-      - python3-rope
-      - pylint3
-      - net-tools
-      - ntfs-3g
       - p7zip-full
       - p7zip-rar
       - parallel
       - parted
       - patchutils
       - pbzip2
+      - pcmanfm
+      - percol
+      - percona-toolkit
       - puppet-lint
       - pv
       - pwgen
-      - python-optcomplete
+      - python3-ipdb
+      - python3-pip
+      - python3-pudb
+      - python3-rope
       - qalc
       - qmmp
       - rename
+      - ripgrep
       - rlwrap
       - rpm2cpio
       - rsync
       - ruby-ronn
       - rxvt-unicode
+      - scite
       - screen
       - screenfetch
-      - scite
       - shellcheck
       - shutter
       - siege
@@ -189,6 +182,7 @@
       - wget
       - whois
       - whowatch
+      - wireguard
       - x2x
       - xautomation
       - xbindkeys
@@ -197,7 +191,6 @@
       - xmlstarlet
       - xserver-xorg-input-libinput
       - yamllint
-      - yapf
       - yapf3
       - zmap
 
@@ -206,44 +199,19 @@
     name: ufw
     state: absent
 
-- name: firewalld
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/firewalld_0.6.3-1_all.deb
-- name: firewall-config
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/firewall-config_0.6.3-1_all.deb
-- name: firewall-applet
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/firewall-applet_0.6.3-1_all.deb
 - name: make sure firewalld uses iptables as backend, because nftables breaks shit
   lineinfile: path=/etc/firewalld/firewalld.conf regex='^FirewallBackend=' line='FirewallBackend=iptables'
 
-- name: fd
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/fd_7.0.0_amd64.deb
-
-- name: rg
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/ripgrep_0.8.1_amd64.deb
-
-- name: eaglemode
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/eaglemode_0.94.0-1_amd64.deb
-
-- name: graph-easy
-  cpanm:
-    name: Graph::Easy
-
-# https://itsfoss.com/shutter-edit-button-disabled/
-- name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas-common_1.0.0-1_all.deb
-- name: additionally needed shutter package for 18.04 - libgoocanvas3_1.0.0-1_amd64.deb
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas3_1.0.0-1_amd64.deb
-- name: additionally needed shutter package for 18.04 - libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
-  apt:
-    deb: /home/sjas/etc/.ansible/roles/common/files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
+## https://itsfoss.com/shutter-edit-button-disabled/
+#- name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
+#  apt:
+#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas-common_1.0.0-1_all.deb
+#- name: additionally needed shutter package for 18.04 - libgoocanvas3_1.0.0-1_amd64.deb
+#  apt:
+#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas3_1.0.0-1_amd64.deb
+#- name: additionally needed shutter package for 18.04 - libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
+#  apt:
+#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
 
 - name: language packages
   apt:

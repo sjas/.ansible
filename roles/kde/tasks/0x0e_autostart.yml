@@ -1,8 +1,0 @@
----
-
-- name: shutter autostart
-  become: yes
-  become_user: sjas
-  copy:
-    src: shutter.desktop
-    dest: /home/sjas/autostart/shutter.desktop

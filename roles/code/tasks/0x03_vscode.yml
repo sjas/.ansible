@@ -1,11 +1,49 @@
 ---
 
+## devilspie2 ###############################################################################################
+- name: install devilspie2 so lua scripts for window actions work to get transparent background to vscode
+  apt:
+    cache_valid_time: 7200
+    name:
+      - devilspie2
+
+- name: ensure config folder exists
+  file:
+    dest: /home/sjas/.config/devilspie2/
+    state: directory
+    owner: sjas
+    group: sjas
+
+- name: deploy devilspie2 systemd unit file
+  copy:
+    src: devilspie2.service
+    dest: /home/sjas/.config/systemd/user/
+    owner: sjas
+    group: sjas
+
+- name: systemd daemon reload
+  become: yes
+  become_user: sjas
+  systemd:
+    daemon_reload: yes
+    scope: user
+
+- name: enable and start systemd service
+  become: yes
+  become_user: sjas
+  systemd:
+    name: devilspie2.service
+    scope: user
+    state: restarted
+  changed_when: false
+
 - name: deploy vscode transparent background config via devilspie
   copy:
     src: vscode.lua
     dest: /home/sjas/.config/devilspie2/
     mode: 0644
 
+## vscode ###################################################################################################
 - name: microsoft apt-key
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
@@ -31,7 +69,6 @@
     code --list-extensions | grep -i \
     -e albert.tabout \
     -e alireza94.theme-gotham \
-    -e austin.code-gnu-global \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
     -e EFanZh.graphviz-preview \
@@ -48,14 +85,12 @@
     -e mitaki28.vscode-clang \
     -e ms-python.python \
     -e ms-vscode.cpptools \
-    -e ms-vscode.Go \
     -e redhat.vscode-yaml \
     -e Rubymaniac.vscode-direnv \
     -e ryanolsonx.zenburn \
     -e ryu1kn.partial-diff \
     -e samuelcolvin.jinjahtml \
     -e thracian.theme-badwolf-paradox \
-    -e vscoss.vscode-ansible \
     -e wwm.better-align \
     -e yhirose.FilterText \
     -e Yummygum.city-lights-icon-vsc \
@@ -64,7 +99,7 @@
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 30
+  command: echo 27
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -82,7 +117,6 @@
   with_items:
     - albert.tabout
     - alireza94.theme-gotham
-    - austin.code-gnu-global
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
     - efanzh.graphviz-preview
@@ -99,14 +133,12 @@
     - mitaki28.vscode-clang
     - ms-python.python
     - ms-vscode.cpptools
-    - ms-vscode.go
     - redhat.vscode-yaml
     - Rubymaniac.vscode-direnv
     - ryanolsonx.zenburn
     - ryu1kn.partial-diff
     - samuelcolvin.jinjahtml
     - thracian.theme-badwolf-paradox
-    - vscoss.vscode-ansible
     - wwm.better-align
     - yhirose.FilterText
     - Yummygum.city-lights-icon-vsc

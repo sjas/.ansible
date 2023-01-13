@@ -2,9 +2,9 @@
 
 workstation bootstrapping, rebase this onto a blank kde neon install
 
-- tested with neon 5.19.x on 18.04
+- tested with neon 5.26.5 on 22.04
 - uses newest ansible from PPA instead of distro upstream, so human-readable output via callback works
-- default verbosity changed to '-vv' so the FILE:LINE position of the currently run task is shown
+- default verbosity changed to '-vv' so the FILE:LINE position of the currently run task is shown FIXME THIS STOPPED WORKING
 - ansible-lint and yamllint are run on every commit, use `gc` (without a message so no actual commit takes place) after deploy to see wether they find something
 
 ## bootstrapping
@@ -22,6 +22,8 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     sudo apt update
     sudo apt install ansible -y
     sudo apt install git -y
+    git config --global user.name sjas
+    git config --global user.email some@mail.here
     ANSIBLETEMPROOT=~/etc
     mkdir -p $ANSIBLETEMPROOT
     cd $ANSIBLETEMPROOT
@@ -29,10 +31,12 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     cat << EOF > ~/.ansible.cfg
     [defaults]
     inventory = $ANSIBLETEMPROOT/.ansible/hosts
-    #stdout_callback = debug
+    #default,oneline,minimal,yaml,debug
     stdout_callback = yaml
+	bin_ansible_callbacks=yes
     verbosity = 2
     roles_path = /etc/ansible/roles:./
+	interpreter_python=auto_silent
     [ssh_connection]
     ssh_args = -o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
     pipelining = yes
@@ -63,6 +67,6 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     ## first: cd ~/.config; git init; git add .; git commit -m init
     watch -n1 -d 'git diff HEAD | grep -e diff -e \+\+\+ -e^\+ | grep --color -e$ -ediff\ \-\-.\* | wc -l; echo; git status'
 
-## todo
+## known issues
 
 currently a lot of hardcoded path's are used, most revolves around `/home/sjas`. possibly this will not get cleaned up in the foreseeable future, use `sed`/`grep` to fix this for yourself.

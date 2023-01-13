@@ -1,0 +1,9 @@
+---
+
+- name: reference configs from .bashrc
+  include: 0x01_bash.yml
+  tags: bash
+
+- name: setup powershell
+  include: 0x02_powershell.yml
+  tags: powershell

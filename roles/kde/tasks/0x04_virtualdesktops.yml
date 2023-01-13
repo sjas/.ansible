@@ -1,8 +1,0 @@
----
-
-- name: virtual desktops config
-  become: yes
-  become_user: sjas
-  copy:
-    src: kwinrc
-    dest: /home/sjas/.config

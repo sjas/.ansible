@@ -1,22 +1,106 @@
 ---
 
-- name: deploy gtk color scheme and icons
+- name: breeze dark theme for gtk 4.0
   become: yes
   become_user: sjas
-  copy:
-    src: gtkrc
-    dest: /home/sjas/.config/
+  ini_file:
+    path: /home/sjas/.config/gtk-4.0/settings.ini
+    create: no
+    no_extra_spaces: yes
+    section: Settings
+    option: gtk-icon-theme-name
+    value: breeze-dark
 
-- name: deploy gtk 2.0 color scheme and icons
+- name: breeze dark theme for gtk 3.0
   become: yes
   become_user: sjas
-  copy:
-    src: gtkrc-2.0
-    dest: /home/sjas/.config/gtk-3.0
+  ini_file:
+    path: /home/sjas/.config/gtk-3.0/settings.ini
+    create: no
+    no_extra_spaces: yes
+    section: Settings
+    option: gtk-icon-theme-name
+    value: breeze-dark
 
-- name: deploy gtk 3.0 color scheme and icons
+- name: prefer dark theme for gtk 3.0
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/gtk-3.0/settings.ini
+    create: no
+    no_extra_spaces: yes
+    section: Settings
+    option: gtk-application-prefer-dark-theme
+    value: true
+
+- name: prefer dark theme for gtk 4.0
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/gtk-4.0/settings.ini
+    create: no
+    no_extra_spaces: yes
+    section: Settings
+    option: gtk-application-prefer-dark-theme
+    value: true
+
+- name: breeze dark icon theme
+  become: yes
+  become_user: sjas
+  lineinfile:
+    path: /home/sjas/.config/xsettingsd/xsettingsd.conf
+    regexp: "^Net/IconThemeName .*"
+    line: Net/IconThemeName "breeze-dark"
+    state: present
+
+- name: kde look and feel package
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: KDE
+    option: LookAndFeelPackage
+    value: org.kde.breezedark.desktop
+
+- name: kdedefaults kdeglobals
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: General
+    option: ColorScheme
+    value: BreezeDark
+
+- name: kdedefaults package
   become: yes
   become_user: sjas
   copy:
-    src: settings.ini
-    dest: /home/sjas/.config/gtk-3.0
+    src: package
+    dest: /home/sjas/.config/kdedefaults/package
+    mode: 0664
+
+- name: kdedefaults kdeglobals
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: Icons
+    option: Theme
+    value: breeze-dark
+
+- name: dark kate, too
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/katerc
+    create: no
+    no_extra_spaces: yes
+    section: KTextEditor Renderer
+    option: Color Theme
+    value: Breeze Dark

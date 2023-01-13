@@ -1,8 +1,11 @@
 ---
 
-- name: deploy systemssettingsrc
-  become: yes
+- name: highlight changes in system settings
   become_user: sjas
-  copy:
-    src: systemsettingsrc
-    dest: /home/sjas/.config/
+  ini_file:
+    path: /home/sjas/.config/systemsettingsrc
+    create: no
+    no_extra_spaces: yes
+    section: systemsettings_sidebar_mode
+    option: HighlightNonDefaultSettings
+    value: true

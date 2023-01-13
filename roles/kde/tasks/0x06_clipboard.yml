@@ -1,0 +1,17 @@
+---
+
+- name: get plasma version for template
+  shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
+  register: plasma_version
+  changed_when: false
+
+- name: setfact plasma_version
+  set_fact:
+    plasma_version_fact: "{{ plasma_version.stdout }}"
+
+- name: klipper config
+  become: yes
+  become_user: sjas
+  template:
+    src: klipperrc.j2
+    dest: /home/sjas/.config/klipperrc

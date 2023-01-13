@@ -1,15 +1,22 @@
 ---
 
-- name: brave apt-key
-  apt_key:
-    url: https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc
+- name: Get keyring file
+  get_url:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    dest: "/usr/share/keyrings/brave-browser-archive-keyring.gpg"
+    mode: "0644"
+  become: true
 
 - name: brave repo
   apt_repository:
-    repo: deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging bionic main
-    filename: brave
+    repo: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+    filename: brave-browser-release
+
+- name: Update apt cache
+  apt:
+    update_cache: true
 
 - name: brave package
   apt:
-    name: brave-beta
+    name: brave-browser
     cache_valid_time: 7200

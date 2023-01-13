@@ -1,5 +1,0 @@
----
-
-- name: reference configs from .bashrc
-  include: 0x01_bash.yml
-  tags: bash

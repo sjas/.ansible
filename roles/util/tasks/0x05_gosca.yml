@@ -1,9 +1,0 @@
----
-
-- name: deploy gosca
-  become: yes
-  become_user: sjas
-  copy:
-    src: gosca
-    dest: /home/sjas/.local/bin
-    mode: 0744

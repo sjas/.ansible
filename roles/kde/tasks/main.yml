@@ -1,69 +1,61 @@
 ---
 
-- name: mouse / keyboard
-  include: 0x01_mouse-keyboard.yml
-  tags: mouse
-
-- name: touchpad
-  include: 0x02_touchpad.yml
-  tags: mouse
-
-- name: powersettings
-  include: 0x03_powersettings.yml
+- name: autostart
+  include: 0x01_autostart.yml
   tags: kde
 
+- name: mouse / keyboard
+  include: 0x02_mouse-keyboard.yml
+  tags: mouse
+
+#- name: touchpad
+#  include: 0x03_touchpad.yml
+#  tags: mouse
+#
+#- name: powersettings
+#  include: 0x04_powersettings.yml
+#  tags: kde
+
 - name: virtual desktops
-  include: 0x04_virtualdesktops.yml
+  include: 0x05_virtualdesktops.yml
   tags: kde
 
 - name: clipboard
-  include: 0x05_clipboard.yml
-  tags: kde
-
-- name: lockscreen
-  include: 0x06_lockscreen.yml
+  include: 0x06_clipboard.yml
   tags: kde
 
 - name: taskbar
   include: 0x07_taskbar.yml
   tags: kde
 
-- name: kdeglobals / other input settings
-  include: 0x08_kdeglobals.yml
-  tags: kde
-
-- name: widgets + settings
-  include: 0x09_widgets.yml
-  tags: kde
-
-- name: shortcuts
-  include: 0x0a_shortcuts.yml
-  tags: kde
-
-- name: email defaults
-  include: 0x0b_emaildefaults.yml
-  tags: kde
-
-- name: some image handling settings
-  include: 0x0c_image-handling.yml
-  tags: kde
+#- name: kdeglobals / other input settings
+#  include: 0x08_kdeglobals.yml
+#  tags: kde
+#
+#- name: widgets + settings
+#  include: 0x09_widgets.yml
+#  tags: kde
+#
+#- name: shortcuts
+#  include: 0x0a_shortcuts.yml
+#  tags: kde
+#
+#- name: email defaults
+#  include: 0x0b_emaildefaults.yml
+#  tags: kde
+#
+#- name: some image handling settings
+#  include: 0x0c_image-handling.yml
+#  tags: kde
 
 - name: gtk settings
   include: 0x0d_gtk-settings.yml
   tags: kde
 
-- name: systemsettings rc
+- name: systemsettingsrc
   include: 0x0e_systemsettingsrc.yml
   tags: kde
 
-- name: autostart
-  include: 0x0f_autostart.yml
-  tags: kde
-
-- name: wallpaper
-  include: 0x10_wallpaper.yml
-  tags: kde
-
-- name: devilspie for desktop window management
-  include: 0x11_devilspie.yml
-  tags: kde
+#- name: wallpaper
+#  include: 0x0f_wallpaper.yml
+#  tags: kde

@@ -1,12 +1,5 @@
 ---
 
-- name: set widget config
-  become: yes
-  become_user: sjas
-  copy:
-    src: plasma-org.kde.plasma.desktop-appletsrc
-    dest: /home/sjas/.config
-
 - name: set holiday regions
   become: yes
   become_user: sjas

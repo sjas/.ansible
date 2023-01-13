@@ -18,7 +18,7 @@
 
 - name: download telegram
   get_url:
-    url: https://tdesktop.com/linux
+    url: https://telegram.org/dl/desktop/linux
     dest: /tmp/telegram.tar.xz
   when: exitcode_telegram_install.rc != "{{ telegram_exitcode_switch.stdout }}"
 

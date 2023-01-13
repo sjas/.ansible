@@ -1,0 +1,67 @@
+---
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Desktops
+    option: Id_2
+    value: 5be4b110-1940-4f69-9851-9925a9a2181b
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Desktops
+    option: Id_3
+    value: 69f30292-fa5b-4998-b841-7c7e99fec588
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Desktops
+    option: Number
+    value: 3
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Desktops
+    option: Rows
+    value: 3
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Plugins
+    option: slideEnabled
+    value: false
+
+- name: kde virtual desktops
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: RollOverDesktops
+    value: true

@@ -8,7 +8,6 @@
       - qemu-utils
       - libguestfs-tools
       - libosinfo-bin
-      - libvirt-bin
       - unrar-free
       - virt-manager
       - virt-top

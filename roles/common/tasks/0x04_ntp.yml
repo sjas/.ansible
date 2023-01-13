@@ -1,6 +1,6 @@
 ---
 
-- name: undo systemd-timesyncd
+- name: mask systemd-timesyncd
   systemd:
     name: systemd-timesyncd
     state: stopped

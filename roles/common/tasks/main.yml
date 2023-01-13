@@ -20,26 +20,17 @@
   include: 0x05_ansible-lint.yml
   tags: lint
 
-- name: mouse scrolling speedup
-  include: 0x06_mouse-scolling-speedup.yml
-  tags: mouse
-
 - name: sysctls
-  include: 0x07_sysctls.yml
+  include: 0x06_sysctls.yml
   tags: sysctls
 
 - name: dnsmasq
-  include: 0x08_dnsmasq.yml
+  include: 0x07_dnsmasq.yml
   tags: dnsmasq
 
-- name: syncthing
-  include: 0x09_syncthing.yml
-  tags: syncthing
-
 - name: HaskLig font
-  include: 0x0a_hasklig.yml
+  include: 0x08_hasklig.yml
   tags: hasklig
 
-- name: wireguard
-  include: 0x0b_wireguard.yml
-  tags: wireguard
+- name: systemd user folder
+  include: 0x09_systemd_user_folder.yml
