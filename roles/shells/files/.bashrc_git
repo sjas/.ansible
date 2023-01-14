@@ -38,7 +38,6 @@ gitignore() {
 			git commit -m gi
 			git status -s
 		else
-			echo "$*" >.gitignore
 			for i
 			in "$@"
 			do
@@ -183,7 +182,7 @@ gitfastaddcommitall() {
 }
 alias gfc=gitfastaddcommitall							 ## commit all present changes quickly
 alias gca="git commit --amend"						  ## amend last commit
-alias gr="git revert HEAD"							  ## revert, undo last commit
+alias grv="git revert HEAD"							  ## revert, undo last commit
 gitrm() {
 		git rm "$*"
 }
