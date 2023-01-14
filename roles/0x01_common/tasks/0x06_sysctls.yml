@@ -6,13 +6,16 @@
   sysctl:
     name: fs.inotify.max_user_watches
     value: "524288"
+  changed_when: false
 
 - name: increase user inotify limits
   sysctl:
     name: user.max_inotify_watches
     value: "16384"
+  changed_when: false
 
 - name: fuck off, swapspace
   sysctl:
     name: vm.swappiness
     value: "0"
+  changed_when: false

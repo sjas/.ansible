@@ -56,7 +56,7 @@ alias gi="gitignore"
 githelp() {
 		if [[ $# == 0 ]] 
 		then
-				less /home/sjas/etc/.ansible/roles/shells/files/.bashrc_git && return
+				less /home/sjas/etc/.ansible/roles/0x02_shells/files/.bashrc_git && return
 		else
 				git help "${@}"
 		fi

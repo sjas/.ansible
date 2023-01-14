@@ -4,6 +4,6 @@
   become: yes
   become_user: sjas
   file:
-    src: /home/sjas/etc/.ansible/roles/code/files/.vimrc
+    src: /home/sjas/etc/.ansible/roles/0x04_code/files/.vimrc
     path: /home/sjas/.vimrc
     state: link

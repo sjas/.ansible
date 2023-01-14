@@ -157,7 +157,7 @@ nnoremap * *zt5<c-y>
 " spacemacs-similar bindings
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
-nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
+nnoremap <leader>ffs :se noro<cr>:w !sudo tee %<cr><cr><cr>Ll<cr>
 nnoremap <leader>fq :qa!<cr>
 nnoremap <leader>wq :wq<cr>
 nnoremap <leader>bd :q<cr>
@@ -167,15 +167,15 @@ nnoremap <leader>bN :vnew<cr>
 nnoremap <leader>fw :wq!<cr>
 nnoremap <leader>qq :qall!<cr>
 "vimrc editing
-nnoremap <leader>fed :sp $DOTFILES/roles/code/files/.vimrc<cr>
-nnoremap <leader>ebv :vsp $DOTFILES/roles/code/files/.vimrc<cr>
+nnoremap <leader>fed :sp $DOTFILES/roles/0x04_code/files/.vimrc<cr>
+nnoremap <leader>ebv :vsp $DOTFILES/roles/0x04_code/files/.vimrc<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 autocmd bufwritepost .vimrc :source $MYVIMRC
 "bash editing
 nnoremap <leader>sb :!. ~/.bashrc<cr>
-nnoremap <leader>eba :vs $DOTFILES/roles/shells/files/.bashrc_aliases<cr>
-nnoremap <leader>ebe :vs $DOTFILES/roles/shells/files/.bashrc_env<cr>
-nnoremap <leader>ebg :vs $DOTFILES/roles/shells/files/.bashrc_git<cr>
+nnoremap <leader>eba :vs $DOTFILES/roles/0x02_shells/files/.bashrc_aliases<cr>
+nnoremap <leader>ebe :vs $DOTFILES/roles/0x02_shells/files/.bashrc_env<cr>
+nnoremap <leader>ebg :vs $DOTFILES/roles/0x02_shells/files/.bashrc_git<cr>
 
 
 "nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>

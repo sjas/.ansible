@@ -3,7 +3,7 @@
 - name: reference configs from .bashrc
   lineinfile:
     path: /home/sjas/.bashrc
-    line: '. /home/sjas/etc/.ansible/roles/shells/files/{{ item }}'
+    line: '. /home/sjas/etc/.ansible/roles/0x02_shells/files/{{ item }}'
   with_items:
     - .bashrc_env
     - .bashrc_aliases

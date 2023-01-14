@@ -26,13 +26,13 @@
 #g  = git
 alias    eb="vim /home/sjas/.bashrc; 				            . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 # shellcheck disable=SC2153,SC2139
-alias   eba="vim ${DOTFILES}/roles/shells/files/.bashrc_aliases; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded."
+alias   eba="vim ${DOTFILES}/roles/0x02_shells/files/.bashrc_aliases; 	. /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 # shellcheck disable=SC2139
-alias  ebac="vim ${DOTFILES}/roles/shells/files/.bashrc_completion;	. /home/sjas/.bashrc; echo [+] .bashrc reloaded."
+alias  ebac="vim ${DOTFILES}/roles/0x02_shells/files/.bashrc_completion;	. /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 # shellcheck disable=SC2139
-alias   ebe="vim ${DOTFILES}/roles/shells/files/.bashrc_env; 	    . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
+alias   ebe="vim ${DOTFILES}/roles/0x02_shells/files/.bashrc_env; 	    . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 # shellcheck disable=SC2139
-alias   ebg="vim ${DOTFILES}/roles/shells/files/.bashrc_git; 	    . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
+alias   ebg="vim ${DOTFILES}/roles/0x02_shells/files/.bashrc_git; 	    . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 #local aliases go in here for inclusion
 alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.bashrc; echo [+] .bashrc reloaded."
 # v  = vim
@@ -43,7 +43,7 @@ alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.ba
 # c  = vscode
 # ce = vscode extensions
 # shellcheck disable=SC2139
-alias   ebv="vim ${DOTFILES}/roles/code/files/.vimrc"
+alias   ebv="vim ${DOTFILES}/roles/0x04_code/files/.vimrc"
 # shellcheck disable=SC2139
 alias	ebt="vim ${DOTFILES}/roles/terminals/files/config; cp -va ${DOTFILES}/roles/terminals/files/config /home/sjas/.config/terminator/config"
 # shellcheck disable=SC2139
@@ -51,15 +51,15 @@ alias  ebtr="vim /home/sjas/.config/terminator/config; cp -va /home/sjas/.config
 # shellcheck disable=SC2139
 alias  ebtm="vim /home/sjas/.tmux.conf; cp -va /home/sjas/.tmux.conf ${DOTFILES}/roles/terminals/files/.tmux.conf"
 # shellcheck disable=SC2139
-alias   ebm="vim ${DOTFILES}/roles/shells/files/ini; cp -va ${DOTFILES}/roles/shells/files/ini /home/sjas/.config/mc/ini"
+alias   ebm="vim ${DOTFILES}/roles/0x02_shells/files/ini; cp -va ${DOTFILES}/roles/0x02_shells/files/ini /home/sjas/.config/mc/ini"
 # shellcheck disable=SC2139
 alias   ebp="vim ${DOTFILES}/roles/common/tasks/0x02_packages.yml"
 # shellcheck disable=SC2139
-alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.config/Code/User/settings.json ${DOTFILES}/roles/code/files/settings.json"
+alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.config/Code/User/settings.json ${DOTFILES}/roles/0x04_code/files/settings.json"
 # shellcheck disable=SC2139
-alias  ebcp="vim ${DOTFILES}/roles/code/tasks/0x03_vscode.yml"
+alias  ebcp="vim ${DOTFILES}/roles/0x04_code/tasks/0x03_vscode.yml"
 # shellcheck disable=SC2139
-alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sjas/.config/Code/User/keybindings.json ${DOTFILES}/roles/code/files/keybindings.json"
+alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sjas/.config/Code/User/keybindings.json ${DOTFILES}/roles/0x04_code/files/keybindings.json"
 
 
 
@@ -79,9 +79,9 @@ rea() {
 
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/terminals/files/config ~/.config/terminator/config) | colordiff"
-alias	dbm="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/shells/files/mc_ini ~/.config/mc/ini) | colordiff"
-alias	dbc="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/settings.json /home/sjas/.config/Code/User/settings.json) | colordiff"
-alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/.vimrc ~/.vimrc) | colordiff"
+alias	dbm="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x02_shells/files/mc_ini ~/.config/mc/ini) | colordiff"
+alias	dbc="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x04_code/files/settings.json /home/sjas/.config/Code/User/settings.json) | colordiff"
+alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x04_code/files/.vimrc ~/.vimrc) | colordiff"
 
 # 'change directory'
 # shellcheck disable=SC2139
@@ -97,9 +97,9 @@ alias   cdw="cd /home/sjas/wrk"
 # ba  = bash aliases
 # ga  = git aliases
 # shellcheck disable=SC2139
-alias    sba="grep -e alias -e'()' ${DOTFILES}/roles/shells/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
+alias    sba="grep -e alias -e'()' ${DOTFILES}/roles/0x02_shells/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
 # shellcheck disable=SC2139
-alias   sga="grep ^alias ${DOTFILES}/roles/shells/files/.bashrc_git | sed 's/alias //' | sort | grep -e ^.\*= --color"
+alias   sga="grep ^alias ${DOTFILES}/roles/0x02_shells/files/.bashrc_git | sed 's/alias //' | sort | grep -e ^.\*= --color"
 
 
 
