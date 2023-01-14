@@ -1,12 +1,25 @@
 ---
 
-- name: git default settings
+- name: fix git default settings
   become: yes
   become_user: sjas
-  shell: |
-    git config --global diff.noprefix "true"; \
-    git config --global push.default "matching"; \
-    git config --global core.pager "cat"; \
-    git config --global color.ui "true";
-  changed_when: false
-  tags: skip_ansible_lint
+  git_config:
+    name: "{{ item.key }}"
+    scope: global
+    value: "{{ item.value }}"
+  with_items:
+    - { key: 'color.diff.commit',                   value: 'yellow bold' }
+    - { key: 'color.diff.frag',                     value: 'magenta bold' }
+    - { key: 'color.diff-highlight.newHighlight',   value: 'green bold 22' }
+    - { key: 'color.diff-highlight.newNormal',      value: 'green bold' }
+    - { key: 'color.diff-highlight.oldHighlight',   value: 'red bold 52' }
+    - { key: 'color.diff-highlight.oldNormal',      value: 'red bold' }
+    - { key: 'color.diff.meta',                     value: 'yellow' }
+    - { key: 'color.diff.new',                      value: 'green bold' }
+    - { key: 'color.diff.old',                      value: 'red bold' }
+    - { key: 'color.diff.whitespace',               value: 'red reverse' }
+    - { key: 'color.ui',                            value: 'true' }
+    - { key: 'core.pager',                          value: 'cat' }
+    - { key: 'diff.noprefix',                       value: 'true' }
+    - { key: 'push.default',                        value: 'matching' }
+    - { key: 'user.name',                           value: 'sjas' }
