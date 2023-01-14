@@ -24,7 +24,7 @@
 - name: reference .bashrc_includes if present
   lineinfile:
     path: /home/sjas/.bashrc
-    line: "[[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ]] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
+    line: "[[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ]]&&. /home/sjas/etc/.dotfiles/.bashrc_includes||:"
 
 - name: mc def config def user
   become: yes
