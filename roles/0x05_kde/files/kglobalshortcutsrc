@@ -36,9 +36,8 @@ _k_friendly_name=Custom Shortcuts Service
 {84096022-a191-490d-9ff6-26dacf063ae3}=Meta+U,none,teams
 {c1597ba8-0407-40ec-bda6-b93288395a4d}=Meta+I,none,controlpanel
 {cb2781a7-3823-4fc0-99aa-244dc4edf22b}=Meta+X,none,vscode
-{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {fc4d0180-8007-4aa1-ae21-460bef8b779f}=Meta+F,none,thunderbird
-{fddb35cf-3070-4865-b6a8-cd74df1fff40}=,none,chrome
+{fddb35cf-3070-4865-b6a8-cd74df1fff40}=none,none,chrome
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -219,7 +218,7 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 
 [org.kde.dolphin.desktop]
 _k_friendly_name=Dolphin
-_launch=,Meta+E,Dolphin
+_launch=none,Meta+E,Dolphin
 
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
@@ -278,8 +277,8 @@ previous activity=Meta+Shift+Tab,Meta+Shift+Tab,Walk through activities (Reverse
 repeat_action=Meta+Ctrl+R,Meta+Ctrl+R,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
-show-on-mouse-pos=,Meta+V,Open Klipper at Mouse Position
-stop current activity=,Meta+S,Stop Current Activity
+show-on-mouse-pos=none,Meta+V,Open Klipper at Mouse Position
+stop current activity=none,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
