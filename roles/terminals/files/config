@@ -4,9 +4,10 @@
   tab_position = bottom
   scroll_tabbar = True
   use_custom_url_handler = True
-  title_transmit_fg_color = "#d3d7cf"
+  title_transmit_fg_color = "#f6f5f4"
   title_transmit_bg_color = "#953030"
-  title_inactive_fg_color = "#bcbcbc"
+  title_receive_fg_color = "#f6f5f4"
+  title_inactive_fg_color = "#3d3846"
   title_inactive_bg_color = "#444444"
   enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
   suppress_multiple_term_dialog = True
@@ -34,8 +35,6 @@
   help = None
 [profiles]
   [[default]]
-    audible_bell = True
-    urgent_bell = True
     background_darkness = 0.8
     background_type = transparent
     cursor_color = "#39ff35"
@@ -43,9 +42,10 @@
     font = Noto Sans Mono 10
     foreground_color = "#babdb6"
     scrollback_infinite = True
-    palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#3465a4:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
+    palette = "#1c1c1c:#ff5757:#5f875f:#87875f:#3465a4:#5f5f87:#5f8787:#3d3846:#444444:#fe1010:#42e544:#cfe21b:#8fafd7:#8787af:#5fafaf:#ffffff"
     word_chars = "-A-Za-z0-9,./?%&#_~"
     use_system_font = False
+    use_theme_colors = True
     bold_is_bright = True
     copy_on_selection = True
 [layouts]
