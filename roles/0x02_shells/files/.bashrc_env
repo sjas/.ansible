@@ -7,7 +7,7 @@
 ## SHELL
 ## BASH
 ## HISTORY
-## LESS
+## $EDITOR,$PAGER,LESS(1)
 ## $PATH,NODEJS,GOLANG,JAVA,RUSTLANG,$PATH
 
 
@@ -15,10 +15,6 @@
 
 
 ## GENERAL ##################################################################################################
-export EDITOR="vim"
-export VISUAL="vim"
-export PAGER="less"
-
 export LANGUAGE="en_US:en"
 
 export DOTFILES="/home/sjas/etc/.ansible"
@@ -105,7 +101,12 @@ HISTTIMEFORMAT="%F_%T  "
 
 
 
-## LESS #####################################################################################################
+## $EDITOR,$PAGER,LESS(1) ###################################################################################
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less"
+export LESS=" -IR "
+
 #colored manpages
 export LESS_TERMCAP_mb=$'\E[32m'	# begin blinking
 export LESS_TERMCAP_md=$'\E[38;5;196m'	# begin bold				== RED    = command and flag color
@@ -121,7 +122,6 @@ export LESSGLOBALTAGS="global"
 #syntax highlighting, needs `libsource-highlight-common` package
 #find path via `dpkg -L libsource-highlight-common | grep lesspipe`
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=" -R "
 
 
 
