@@ -25,16 +25,18 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
-{08dc3c8d-5691-4a9e-919c-0817906513a0}=Meta+R,none,New Action
+{06873440-19d1-489c-8306-ece90fa8ee07}=Meta+S,none,signal
+{08dc3c8d-5691-4a9e-919c-0817906513a0}=Meta+R,none,terminator
 {2a3399bd-2b65-4ef4-8851-ffc80fb29730}=Meta+E,none,dolphin: dl
-{3987286b-b104-45c5-a882-60ba6cea4f5f}=Meta+V,none,New Action
-{3e33ff53-179e-44d4-b784-432c73f1c8dc}=Meta+T,none,New Action
-{82a7573f-89eb-44be-b65a-ceb7c996731d}=Meta+N,none,New Action
+{3987286b-b104-45c5-a882-60ba6cea4f5f}=Meta+V,none,firefox
+{3e33ff53-179e-44d4-b784-432c73f1c8dc}=Meta+T,none,uxterm
+{49cd0d36-54fe-42d0-827b-b4a53c2736c6}=Meta+A,none,telegram
+{82a7573f-89eb-44be-b65a-ceb7c996731d}=Meta+N,none,chromium
 {c1597ba8-0407-40ec-bda6-b93288395a4d}=Meta+I,none,controlpanel
 {cb2781a7-3823-4fc0-99aa-244dc4edf22b}=Meta+X,none,vscode
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {fc4d0180-8007-4aa1-ae21-460bef8b779f}=Meta+F,none,thunderbird
-{fddb35cf-3070-4865-b6a8-cd74df1fff40}=,none,New Action
+{fddb35cf-3070-4865-b6a8-cd74df1fff40}=,none,chrome
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -275,7 +277,7 @@ repeat_action=Meta+Ctrl+R,Meta+Ctrl+R,Manually Invoke Action on Current Clipboar
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
 show-on-mouse-pos=,Meta+V,Open Klipper at Mouse Position
-stop current activity=Meta+S,Meta+S,Stop Current Activity
+stop current activity=,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
