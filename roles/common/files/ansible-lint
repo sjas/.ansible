@@ -1,3 +1,3 @@
 #!/bin/bash
 
-PYTHONPATH=$PYTHONPATH:/opt/ansible-lint/lib /opt/ansible-lint/bin/ansible-lint $@
+PYTHONPATH=$PYTHONPATH:/opt/ansible-lint/lib /usr/bin/python3 /opt/ansible-lint/bin/ansible-lint "$@"
