@@ -7,6 +7,8 @@ Shift_L,    Up,      Shift_L|Button4
 Shift_L,    Down,    Shift_L|Button5
 none,       Thumb1,  Alt_L|Left
 none,       Thumb2,  Alt_L|Right
+Caps_Lock,  Thumb1,  Super_L|v
+Caps_Lock,  Thumb2,  Return
 Control_L,  Thumb1,  Super_L|v
 Control_L,  Thumb2,  Return
 
