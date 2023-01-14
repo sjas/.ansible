@@ -507,6 +507,7 @@ alias  vigi="vim .gitignore"
 alias cathosts="cat /etc/hosts"
 alias catssh="cat /home/sjas/.ssh/config"
 alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
+alias catgi="cat .gitignore"
 # shellcheck disable=SC2142,SC2139
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 alias catip="curl -s telnetmyip.com| jq -r '.ip'"
