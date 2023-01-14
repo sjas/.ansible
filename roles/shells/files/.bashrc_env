@@ -40,13 +40,7 @@ fi
 
 
 ## PROMPT ###################################################################################################
-# old
-## #export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[32\;1m\\\]$i; else echo \\\[\e[31\;1m\\\]$i; fi )\
-# now with history and command number
-#export PS1='$( i=$?; if [ $i -eq 0 ]; then echo \\\[\e[38\;5\;76\;1m\\\]$i; else echo \\\[\e[38\;5\;196\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null | grep -q "nothing to commit"; then echo " "\\\[\e[48\;5\;34\;37\;1m\\\]; else if git status 2>/dev/null | grep -qi -e "^Changes not staged for commit" -e "^Untracked files:"; then echo " "\\\[\e[48\;5\;196\;37\;1m\\\]; else if git status 2>/dev/null | grep -q "to be committed"; then echo " "\\\[\e[46\;37\;1m\\\]; else echo \\\[\e[45\;37\;1m\\\]; fi; fi; fi)$(__git_ps1 | cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
-#from wsl
-export PS1='$(i=$?;if [[ $i -eq 0 ]];then echo \\\[\e[38\;5\;76\;1m\\\]$i;else echo \\\[\e[38\;5\;196\;1m\\\]$i; fi)\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null|grep -q "nothing to commit";then echo " "\\\[\e[48\;5\;34\;37\;1m\\\];else if git status 2>/dev/null|grep -qi -e"^Changes not staged for commit" -e"^Untracked files:";then echo " "\\\[\e[48\;5\;196\;37\;1m\\\];else if git status 2>/dev/null|grep -q "to be committed";then echo " "\\\[\e[46\;37\;1m\\\];else echo \\\[\e[45\;37\;1m\\\];fi;fi;fi)$(__git_ps1|cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
-
+export PS1='$( i=$?;if [[ $i -eq 0 ]];then echo \\\[\e[38\;5\;76\;1m\\\]$i; else echo \\\[\e[38\;5\;196\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null|grep -q "nothing to commit";then echo " "\\\[\e[48\;5\;34\;37\;1m\\\];else if git status 2>/dev/null|grep -qi -e"^Changes not staged for commit" -e"^Untracked files:";then echo " "\\\[\e[48\;5\;196\;37\;1m\\\];else if git status 2>/dev/null|grep -q "to be committed";then echo " "\\\[\e[46\;37\;1m\\\];else echo \\\[\e[45\;37\;1m\\\];fi;fi;fi)$(__git_ps1|cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
 
 #export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
 export PS0='command start: \t\n\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
