@@ -1,38 +1,53 @@
 [global_config]
-  enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
   focus = mouse
   geometry_hinting = True
-  scroll_tabbar = True
-  suppress_multiple_term_dialog = True
   tab_position = bottom
-  title_font = Noto Sans Mono 9
-  title_inactive_bg_color = "#444444"
-  title_inactive_fg_color = "#bcbcbc"
-  title_transmit_bg_color = "#953030"
-  #title_transmit_fg_color = "#eeeeec"
-  title_transmit_fg_color = "#d3d7cf"
-  title_use_system_font = False
+  scroll_tabbar = True
   use_custom_url_handler = True
+  title_transmit_fg_color = "#d3d7cf"
+  title_transmit_bg_color = "#953030"
+  title_inactive_fg_color = "#bcbcbc"
+  title_inactive_bg_color = "#444444"
+  enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
+  suppress_multiple_term_dialog = True
+  title_use_system_font = False
+  title_font = Noto Sans Mono 9
 [keybindings]
-  broadcast_all = <Primary><Shift>F8
-  broadcast_group = <Primary><Shift>F10
-  broadcast_off = <Primary><Shift>F9
-  edit_tab_title = <Shift><Alt>x
-  edit_terminal_title = <Shift><Alt>a
-  edit_window_title = <Shift><Alt>d
-  full_screen = <Primary>F11
+  go_up = <Primary><Shift>k
   go_down = <Primary><Shift>j
   go_left = <Primary><Shift>h
   go_right = <Primary><Shift>l
-  go_up = <Primary><Shift>k
-  group_all = <Primary><Shift>F8
-  help = None
-  layout_launcher = None
+  rotate_cw = <Primary><Alt>e
+  search = <Primary><Shift>f
+  scaled_zoom = None
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
-  rotate_cw = <Primary><Alt>e
-  scaled_zoom = None
-  search = <Primary><Shift>f
+  full_screen = <Primary>F11
+  group_all = <Primary><Shift>F8
+  broadcast_off = <Primary><Shift>F9
+  broadcast_group = <Primary><Shift>F10
+  broadcast_all = <Primary><Shift>F8
+  edit_window_title = <Shift><Alt>d
+  edit_tab_title = <Shift><Alt>x
+  edit_terminal_title = <Shift><Alt>a
+  layout_launcher = None
+  help = None
+[profiles]
+  [[default]]
+    audible_bell = True
+    urgent_bell = True
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#39ff35"
+    cursor_color_fg = False
+    font = Noto Sans Mono 10
+    foreground_color = "#babdb6"
+    scrollback_infinite = True
+    palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#3465a4:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
+    word_chars = "-A-Za-z0-9,./?%&#_~"
+    use_system_font = False
+    bold_is_bright = True
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[child1]]]
@@ -42,20 +57,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    audible_bell = True
-    background_darkness = 0.8
-    background_type = transparent
-    copy_on_selection = True
-    cursor_color = "#39ff35"
-    cursor_color_fg = False
-    cursor_shape = block
-    font = Noto Sans Mono 10
-    #foreground_color = "#edeaea"
-    foreground_color = "#babdb6"
-    palette = "#1c1c1c:#af5f5f:#5f875f:#87875f:#3465a4:#5f5f87:#5f8787:#6c6c6c:#444444:#ff8700:#87af87:#ffffaf:#8fafd7:#8787af:#5fafaf:#ffffff"
-    scrollback_infinite = True
-    urgent_bell = True
-    use_system_font = False
-    word_chars = "-A-Za-z0-9,./?%&#_~"
