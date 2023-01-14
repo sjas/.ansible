@@ -46,6 +46,7 @@ alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.ba
 alias   ebv="vim ${DOTFILES}/roles/code/files/.vimrc"
 # shellcheck disable=SC2139
 alias	ebt="vim ${DOTFILES}/roles/terminals/files/config; cp -va ${DOTFILES}/roles/terminals/files/config /home/sjas/.config/terminator/config"
+alias  ebtr="vim /home/sjas/.config/terminator/config; cp -va /home/sjas/.config/terminator/config ${DOTFILES}/roles/terminals/files/config "
 # shellcheck disable=SC2139
 alias  ebtm="vim /home/sjas/.tmux.conf; cp -va /home/sjas/.tmux.conf ${DOTFILES}/roles/terminals/files/.tmux.conf"
 # shellcheck disable=SC2139
