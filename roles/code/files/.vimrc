@@ -157,7 +157,7 @@ nnoremap * *zt5<c-y>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
 nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
-nnoremap <leader>fq :qa!<cr>
+nnoremap <leader>fw :qa!<cr>
 nnoremap <leader>wq :wq<cr>
 nnoremap <leader>bd :q<cr>
 nnoremap <leader>bp :N<cr>
@@ -170,7 +170,6 @@ nnoremap <leader>qq :qall!<cr>
 nnoremap <leader>fed :sp $DOTFILES/roles/code/files/.vimrc<cr>
 nnoremap <leader>ebv :vsp $DOTFILES/roles/code/files/.vimrc<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-"autocmd bufwritepost .vimrc source $MYVIMRC
 autocmd bufwritepost .vimrc :source $MYVIMRC
 "bash editing
 nnoremap <leader>sb :!. ~/.bashrc<cr>
