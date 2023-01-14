@@ -98,6 +98,17 @@
     option: FocusPolicy
     value: FocusFollowsMouse
 
+- name: mouse - focus follows mouse, next focus
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: Windows
+    option: NextFocusPrefersMouse
+    value: true
+
 - name: mouse - focus follows mouse delay interval
   become: yes
   become_user: sjas
