@@ -157,14 +157,13 @@ nnoremap * *zt5<c-y>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
 nnoremap <leader>ffs :w !sudo tee %<cr><cr>L<cr>
-nnoremap <leader>fw :qa!<cr>
+nnoremap <leader>fq :qa!<cr>
 nnoremap <leader>wq :wq<cr>
 nnoremap <leader>bd :q<cr>
 nnoremap <leader>bp :N<cr>
 nnoremap <leader>bn :n<cr>
 nnoremap <leader>bN :vnew<cr>
-nnoremap <leader>fq :wq<cr>
-nnoremap <leader>fqq :wq!<cr>
+nnoremap <leader>fw :wq!<cr>
 nnoremap <leader>qq :qall!<cr>
 "vimrc editing
 nnoremap <leader>fed :sp $DOTFILES/roles/code/files/.vimrc<cr>
