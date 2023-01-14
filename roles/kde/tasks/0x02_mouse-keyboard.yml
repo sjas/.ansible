@@ -142,6 +142,28 @@
     option: CommandAllKey
     value: Alt
 
+- name: mouse - focus follows mouse, alt-button1 to rise
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: MouseBindings
+    option: CommandAll1
+    value: Toggle raise and lower
+
+- name: mouse - focus follows mouse, alt-button3 to move
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: no
+    no_extra_spaces: yes
+    section: MouseBindings
+    option: CommandAll2
+    value: Move
+
 
 
 
