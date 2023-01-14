@@ -2,24 +2,24 @@
 
 - name: vim
   include: 0x01_vim.yml
-  tags: vim
+  tags: code,vim
 
 - name: git
   include: 0x02_git.yml
-  tags: git
+  tags: code,git
 
 - name: vscode
   include: 0x03_vscode.yml
-  tags: vscode
+  tags: code,vscode
 
 - name: golang
   include: 0x04_golang.yml
-  tags: golang
+  tags: code,golang
 
 - name: node.js
   include: 0x05_node.yml
-  tags: node
+  tags: code,node
 
 - name: rust
   include: 0x06_rustlang.yml
-  tags: rustlang
+  tags: code,rustlang

@@ -2,35 +2,35 @@
 
 - name: system upgrade
   include: 0x01_dist-upgrade.yml
-  tags: distupgrade
+  tags: common,distupgrade
 
 - name: base software
   include: 0x02_packages.yml
-  tags: packages
+  tags: common,packages
 
 - name: working folders
   include: 0x03_working-folders.yml
-  tags: workingfolders
+  tags: common,workingfolders
 
 - name: ntp
   include: 0x04_ntp.yml
-  tags: ntp
+  tags: common,ntp
 
 - name: ansible-lint
   include: 0x05_ansible-lint.yml
-  tags: lint
+  tags: common,lint
 
 - name: sysctls
   include: 0x06_sysctls.yml
-  tags: sysctls
+  tags: common,sysctls
 
 - name: dnsmasq
   include: 0x07_dnsmasq.yml
-  tags: dnsmasq
+  tags: common,dnsmasq
 
 - name: HaskLig font
   include: 0x08_hasklig.yml
-  tags: hasklig
+  tags: common,hasklig
 
 - name: systemd user folder
   include: 0x09_systemd_user_folder.yml

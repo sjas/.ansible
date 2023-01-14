@@ -1,0 +1,4 @@
+[master ea6d287] rename role virtualization- and complete tagging overhaul
+ 12 files changed, 40 insertions(+), 37 deletions(-)
+ rename roles/{virtualization/tasks/main.yml => virt/tasks/0x01_libvirt.yml} (91%)
+ create mode 100644 roles/virt/tasks/main.yml

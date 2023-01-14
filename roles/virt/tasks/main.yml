@@ -1,0 +1,6 @@
+---
+
+- name: libvirt include
+  include: 0x01_libvirt.yml
+  tags: virt,libvirt
+

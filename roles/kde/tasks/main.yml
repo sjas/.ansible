@@ -6,7 +6,7 @@
 
 - name: mouse / keyboard
   include: 0x02_mouse-keyboard.yml
-  tags: mouse
+  tags: kde,mouse,keyboard
 
 #- name: touchpad
 #  include: 0x03_touchpad.yml
@@ -22,7 +22,7 @@
 
 - name: clipboard
   include: 0x06_clipboard.yml
-  tags: kde
+  tags: kde,clipboard
 
 - name: taskbar
   include: 0x07_taskbar.yml

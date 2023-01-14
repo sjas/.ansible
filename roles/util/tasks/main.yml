@@ -8,17 +8,17 @@
   include: 0x02_diff-so-fancy.yml
   tags: util
 
-- name: tweep
+- name: nextcloud snap
   include: 0x03_nextcloud_desktop_client.yml
-  tags: util
+  tags: util,nextcloud,snaps
 
 - name: direnv
   include: 0x04_direnv.yml
   tags: util
 
-- name: keepassxc
+- name: keepassxc snap
   include: 0x05_keepassxc.yml
-  tags: util
+  tags: util,keepass,snaps
 
 - name: scc code counter
   include: 0x06_scc.yml
