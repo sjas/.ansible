@@ -12,12 +12,12 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/paredit.vim'
 call plug#end()
 
-"# leaderkeys 
-"# general settings 
-"# colorscheme 
-"# statusline&&syntastic, must be combined 
-"# shortcuts&&keybindings general 
-"# shortcuts&&keybindings bash&&markdown&&vim formatting 
+"# leaderkeys
+"# general settings
+"# colorscheme
+"# statusline&&syntastic, must be combined
+"# shortcuts&&keybindings general
+"# shortcuts&&keybindings bash&&markdown&&vim formatting
 
 
 
@@ -109,7 +109,7 @@ se bg=dark
 "highlight CursorLineNR ctermbg=red
 "transparent background
 hi Normal guibg=NONE ctermbg=NONE
-highlight StatusLine    cterm=bold ctermfg=red ctermbg=235
+highlight StatusLine    cterm=bold ctermfg=208 ctermbg=235
 highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
 "# statusline&&syntastic, must be combined ##################################################################
 let g:syntastic_always_populate_loc_list = 1
