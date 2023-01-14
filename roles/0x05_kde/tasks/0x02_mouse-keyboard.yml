@@ -197,15 +197,16 @@
     option: SingleClick
     value: false
 
-- name: open files by doubleclick yes really
-  become: yes
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/khotkeysrc
-    create: no
-    no_extra_spaces: yes
-    section: KDE
-    option: SingleClick[$d]
+##cant fix this because khotkeysrc is replaced globally
+#- name: open files by doubleclick yes really
+#  become: yes
+#  become_user: sjas
+#  ini_file:
+#    path: /home/sjas/.config/khotkeysrc
+#    create: no
+#    no_extra_spaces: yes
+#    section: KDE
+#    option: SingleClick[$d]
 
 
 
