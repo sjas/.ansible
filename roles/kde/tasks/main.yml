@@ -36,10 +36,10 @@
   include: 0x09_widgets.yml
   tags: kde
 
-#- name: shortcuts
-#  include: 0x0a_shortcuts.yml
-#  tags: kde
-#
+- name: shortcuts
+  include: 0x0a_shortcuts.yml
+  tags: kde
+
 #- name: email defaults
 #  include: 0x0b_emaildefaults.yml
 #  tags: kde

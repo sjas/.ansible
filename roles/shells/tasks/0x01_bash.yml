@@ -37,18 +37,15 @@
     - panels.ini
     - mc.ext  ## this fixes enter to be able to open files!!!
 
-- name: ensure .config/mc folder exists for root user
+- name: ensure .config folder exists for root user
   file:
-    dest: /root/.config/mc
+    dest: /root/.config
     state: directory
 
-- name: mc def config root user
+- name: mc folder link for root user
   copy:
-    src: "{{ item }}"
+    src: /home/sjas/.config/mc
     dest: /root/.config/mc/
-  with_items:
-    - ini
-    - panels.ini
 
 - name: deploy iptables colorize script
   become: yes
