@@ -2,7 +2,7 @@
 
 - name: terminator
   include: 0x01_terminator.yml
-  tags: shell
+  tags: shell,terminator
 
 - name: xterm
   include: 0x02_xterm.yml
