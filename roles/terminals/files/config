@@ -43,7 +43,7 @@
     font = Noto Sans Mono 10
     foreground_color = "#deddda"
     scrollback_infinite = True
-    palette = "#1c1c1c:#ff5757:#26a269:#f8e45c:#3465a4:#5f5f87:#668e87:#3d3846:#000000:#fe1010:#42e544:#f8e45c:#8fafd7:#8787af:#5fafaf:#ffffff"
+    palette = "#1c1c1c:#ff5757:#26a269:#f8e45c:#3465a4:#5f5f87:#668e87:#3d3846:#3d3846:#fe1010:#42e544:#f8e45c:#8fafd7:#8787af:#5fafaf:#ffffff"
     word_chars = "-A-Za-z0-9,./?%&#_~"
     use_system_font = False
     bold_is_bright = True
