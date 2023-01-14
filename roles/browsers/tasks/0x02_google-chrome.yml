@@ -14,8 +14,6 @@
     update_cache: yes
     name:
       - fonts-liberation
-      - libappindicator3-1
-      - libindicator3-7
 
 - name: google-chrome package
   apt:
