@@ -175,6 +175,29 @@
     option: CommandAll2
     value: Move
 
+- name: scrollbar jump to position
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: KDE
+    option: ScrollbarLeftClickNavigatesByPage
+    value: false
+
+- name: open files by doubleclick
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: KDE
+    option: SingleClick
+    value: false
+
+
 
 
 
