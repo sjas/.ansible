@@ -203,17 +203,6 @@
 - name: make sure firewalld uses iptables as backend, because nftables breaks shit
   lineinfile: path=/etc/firewalld/firewalld.conf regex='^FirewallBackend=' line='FirewallBackend=iptables'
 
-## https://itsfoss.com/shutter-edit-button-disabled/
-#- name: additionally needed shutter package for 18.04 - libgoocanvas-common_1.0.0-1_all.deb
-#  apt:
-#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas-common_1.0.0-1_all.deb
-#- name: additionally needed shutter package for 18.04 - libgoocanvas3_1.0.0-1_amd64.deb
-#  apt:
-#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoocanvas3_1.0.0-1_amd64.deb
-#- name: additionally needed shutter package for 18.04 - libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
-#  apt:
-#    deb: /home/sjas/etc/.ansible/roles/common/files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb
-
 - name: language packages
   apt:
     cache_valid_time: 7200
