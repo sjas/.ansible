@@ -188,7 +188,7 @@ nnoremap <leader>fd :r!date +%%F_%%T<cr>o<cr>
 
 
 "aliases
-"vnoremap <leader>a :s/.*/"&"<cr>" "fixme what is this
+"vnoremap <leader>a :s/.*/"&"<cr>" "fixme what is this - not working proper
 
 "fold
 nnoremap <leader>i zMggM
@@ -212,6 +212,8 @@ nnoremap <leader>hk VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<
 
 nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><cr>}<esc>ka<tab>
 nnoremap <leader>ph i#!/usr/bin/env python3
+
+vnoremap <leader>c :s/^/#/<cr>:noh<cr>
 
 "vnoremap < <gv
 "vnoremap > <gv
