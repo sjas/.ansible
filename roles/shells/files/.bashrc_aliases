@@ -329,10 +329,14 @@ makedirectory(){
 
 }
 alias mkcd=makedirectory
-alias g=the_missing_grep
 the_missing_grep() {
 	grep -Hin "$@"
 }
+alias g=the_missing_grep
+the_missing_grep_but_recursive() {
+	grep -Hrin "$@"
+}
+alias gr=the_missing_grep_but_recursive
 alias o="popd"
 alias p="pushd"
 alias v="vim"
