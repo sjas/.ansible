@@ -48,8 +48,8 @@
 #  include: 0x0c_image-handling.yml
 #  tags: kde
 
-- name: gtk settings
-  include: 0x0d_gtk-settings.yml
+- name: make desktop theme dark
+  include: 0x0d_desktop-theme-settings.yml
   tags: kde
 
 - name: systemsettingsrc
