@@ -31,11 +31,11 @@
 #- name: kdeglobals / other input settings
 #  include: 0x08_kdeglobals.yml
 #  tags: kde
-#
-#- name: widgets + settings
-#  include: 0x09_widgets.yml
-#  tags: kde
-#
+
+- name: widgets + settings
+  include: 0x09_widgets.yml
+  tags: kde
+
 #- name: shortcuts
 #  include: 0x0a_shortcuts.yml
 #  tags: kde
