@@ -19,14 +19,32 @@
 - name: fortune
   lineinfile:
     path: /home/sjas/.bashrc
-    line: "echo "$-" | grep -q i && fortune -o -s"
+    line: 'echo "$-" | grep -q i && fortune -o -s'
 
 - name: reference .bashrc_includes if present
   lineinfile:
     path: /home/sjas/.bashrc
     line: "[[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ]]&&. /home/sjas/etc/.dotfiles/.bashrc_includes||:"
 
-- name: mc def config def user
+- name: check the current root .bashrc file/symlink
+  stat:
+    path: /root/.bashrc
+  register: root_bashrc_exists
+  changed_when: false
+
+- name: remove if current root .bashrc is not a symlink
+  file:
+    path: /root/.bashrc
+    state: absent
+  when: not root_bashrc_exists.stat.islnk
+
+- name: symlink .bashrc for root
+  file:
+    dest: /root/.bashrc
+    src: /home/sjas/.bashrc
+    state: link
+
+- name: mc config
   become: yes
   become_user: sjas
   copy:
@@ -43,9 +61,10 @@
     state: directory
 
 - name: mc folder link for root user
-  copy:
+  file:
+    dest: /root/.config/mc
     src: /home/sjas/.config/mc
-    dest: /root/.config/mc/
+    state: link
 
 - name: deploy iptables colorize script
   become: yes
