@@ -1,12 +1,19 @@
 ---
 
-- name: create /etc/rc.local
+- name: check /etc/rc.local existence
+  stat:
+    path: /etc/rc.local
+  register: rc_local_stat
+  changed_when: false
+
+- name: create /etc/rc.local if needed
   copy:
     src: rc.local
     dest: /etc/rc.local
     owner: root
     group: root
     mode: 0700
+  when: not rc_local_stat.stat.exists
 
 - name: deploy rc-local unit file
   copy:
