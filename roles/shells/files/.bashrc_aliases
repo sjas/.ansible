@@ -84,6 +84,7 @@ alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/code/files/.vim
 # 'change directory'
 # shellcheck disable=SC2139
 alias   cdd="cd ${DOTFILES}"||:			    ## dotfiles
+alias   cdc="cd /home/sjas/.config"||:	    ## kde configs where the diffing takes plaace
 # shellcheck disable=SC2139
 alias  cddi="cd ${DOTFILES}/../.dotfiles"  	## dotfiles' includes
 alias	cdn="cd /home/sjas/txt"

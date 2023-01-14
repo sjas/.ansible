@@ -42,7 +42,7 @@ gitignore() {
 			for i
 			in "$@"
 			do
-				echo "$i" >.gitignore
+				echo "$i" >>.gitignore
 			done
 			cat .gitignore  ##fixme remove when testing is done
 			git add .gitignore
