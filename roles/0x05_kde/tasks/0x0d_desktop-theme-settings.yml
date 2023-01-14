@@ -53,6 +53,14 @@
     line: Net/IconThemeName "breeze-dark"
     state: present
 
+- name: kdedefaults package name
+  become: yes
+  become_user: sjas
+  copy:
+    src: package
+    dest: /home/sjas/.config/kdedefaults/package
+    mode: 0664
+
 - name: kde look and feel package
   become: yes
   become_user: sjas
@@ -64,7 +72,18 @@
     option: LookAndFeelPackage
     value: org.kde.breezedark.desktop
 
-- name: kdedefaults kdeglobals
+- name: kde plasma style
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/plasmarc
+    create: yes
+    no_extra_spaces: yes
+    section: Theme
+    option: name
+    value: breeze-dark
+
+- name: kde colorscheme breeze dark
   become: yes
   become_user: sjas
   ini_file:
@@ -75,15 +94,7 @@
     option: ColorScheme
     value: BreezeDark
 
-- name: kdedefaults package
-  become: yes
-  become_user: sjas
-  copy:
-    src: package
-    dest: /home/sjas/.config/kdedefaults/package
-    mode: 0664
-
-- name: kdedefaults kdeglobals
+- name: kde icon theme breeze dark
   become: yes
   become_user: sjas
   ini_file:
@@ -94,7 +105,18 @@
     option: Theme
     value: breeze-dark
 
-- name: dark kate, too
+- name: kde icon theme breeze dark
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/kdeglobals
+    create: no
+    no_extra_spaces: yes
+    section: Icons
+    option: Theme
+    value: breeze-dark
+
+- name: dark kate
   become: yes
   become_user: sjas
   ini_file:
