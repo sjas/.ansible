@@ -138,7 +138,9 @@ torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
 
-simple_swap=false
+simple_swap=true
+
+terminal:xterm-256color
 
 [Panelize]
 Find *.orig after patching=find . -name \\*.orig -print
