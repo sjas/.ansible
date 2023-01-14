@@ -1,7 +1,9 @@
 ---
 
 - name: reference configs from .bashrc
-  lineinfile: path=/home/sjas/.bashrc line='. /home/sjas/etc/.ansible/roles/shells/files/{{ item }}'
+  lineinfile:
+    path: /home/sjas/.bashrc
+    line: '. /home/sjas/etc/.ansible/roles/shells/files/{{ item }}'
   with_items:
     - .bashrc_env
     - .bashrc_aliases
@@ -9,13 +11,20 @@
     - .bashrc_completion
 
 - name: get a unlimited history
-  lineinfile: path=/home/sjas/.bashrc regex='HIST.*SIZE' state=absent
+  lineinfile:
+    path: /home/sjas/.bashrc
+    regex: 'HIST.*SIZE'
+    state: absent
 
 - name: fortune
-  lineinfile: path=/home/sjas/.bashrc line="echo "$-" | grep -q i && fortune -o -s"
+  lineinfile:
+    path: /home/sjas/.bashrc
+    line: "echo "$-" | grep -q i && fortune -o -s"
 
 - name: reference .bashrc_includes if present
-  lineinfile: path=/home/sjas/.bashrc line="[[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ]] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
+  lineinfile:
+    path: /home/sjas/.bashrc
+    line: "[[ -f /home/sjas/etc/.dotfiles/.bashrc_includes ]] && . /home/sjas/etc/.dotfiles/.bashrc_includes || :"
 
 - name: mc def config def user
   become: yes

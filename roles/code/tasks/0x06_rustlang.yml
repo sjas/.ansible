@@ -20,3 +20,10 @@
   become_user: sjas
   command: "/home/sjas/.cargo/bin/rustup update"
   changed_when: false
+
+- name: fix cargo error message when cant source the env (for root user)
+  lineinfile:
+    path=/home/sjas/.bashrc
+    regexp='. "\$HOME/.cargo/env"$'
+    line='. "$HOME/.cargo/env"||:'
+
