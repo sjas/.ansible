@@ -1,43 +1,6 @@
 ---
 
-# there seem to be no easy ways to discern the installed version
-# nor getting the current version:s number
-# flip this switch to force update
-# fixme: make this work properly eventually if ever
-- name: register desired exitcode as dirty hack
-  command: /bin/echo 0
-  # command: /bin/echo 1
-  register: telegram_exitcode_switch
-  changed_when: false
-
-- name: telegram install check
-  shell: find /opt/Telegram -type f | grep Telegram
-  register: exitcode_telegram_install
-  ignore_errors: true
-  changed_when: false
-
-- name: download telegram
-  get_url:
-    url: https://telegram.org/dl/desktop/linux
-    dest: /tmp/telegram.tar.xz
-  when: exitcode_telegram_install.rc != "{{ telegram_exitcode_switch.stdout }}"
-
-- name: unarchive telegram
-  unarchive:
-    src: /tmp/telegram.tar.xz
-    dest: /opt
-  when: exitcode_telegram_install.rc != "{{ telegram_exitcode_switch.stdout }}"
-
-- name: cleanup telegram install files
-  file:
-    path: /tmp/telegram.tar.xz
-    state: absent
-  when: exitcode_telegram_install.rc != "{{ telegram_exitcode_switch.stdout }}"
-
-- name: link telegram to $PATH
-  become: yes
-  become_user: sjas
-  file:
-    src: /opt/Telegram/Telegram
-    dest: /home/sjas/.local/bin/telegram
-    state: link
+- name: telegram
+  snap:
+    name: telegram-desktop
+    channel: latest/stable
