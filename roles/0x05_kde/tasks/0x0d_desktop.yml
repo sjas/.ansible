@@ -105,6 +105,17 @@
     option: Theme
     value: breeze-dark
 
+- name: ksplashrc
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kdedefaults/ksplashrc
+    create: yes
+    no_extra_spaces: yes
+    section: KSplash
+    option: Theme
+    value: org.kde.breezedark.desktop
+
 - name: kde icon theme breeze dark
   become: yes
   become_user: sjas

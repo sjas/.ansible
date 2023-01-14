@@ -28,9 +28,9 @@
   include: 0x07_taskbar.yml
   tags: kde
 
-#- name: kdeglobals / other input settings
-#  include: 0x08_kdeglobals.yml
-#  tags: kde
+- name: screenlocker
+  include: 0x08_screenlocker.yml
+  tags: kde
 
 - name: widgets + settings
   include: 0x09_widgets.yml

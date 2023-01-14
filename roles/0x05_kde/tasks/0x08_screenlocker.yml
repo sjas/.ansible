@@ -1,0 +1,12 @@
+---
+
+- name: screenlockerrc
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kscreenlockerrc
+    create: yes
+    no_extra_spaces: yes
+    section: Greeter
+    option: Theme
+    value: org.kde.breezedark.desktop
