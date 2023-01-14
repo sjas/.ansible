@@ -19,4 +19,6 @@
 - name: make xterm shortcuts behave
   become: yes
   become_user: sjas
-  lineinfile: dest=/home/sjas/.Xdefaults line="xterm*metaSendsEscape:true"
+  lineinfile:
+    dest: /home/sjas/.Xdefaults
+    line: "xterm*metaSendsEscape:true"
