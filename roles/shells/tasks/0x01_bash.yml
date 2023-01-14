@@ -50,6 +50,7 @@
   with_items:
     - ini
     - panels.ini
+    - mc.ext  ## this fixes enter to be able to open files!!!
 
 - name: ensure .config/mc folder exists for root user
   file:
