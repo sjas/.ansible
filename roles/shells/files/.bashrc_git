@@ -20,6 +20,7 @@
 ## BASH COMPLETION ##########################################################################################
 # https://brbsix.github.io/2015/11/23/perform-tab-completion-for-aliases-in-bash/
 # shellcheck source=/usr/share/bash-completion/completions/git
+# shellcheck disable=SC1091
 . "$(dpkg -L git | grep bash-completion | grep git$)"
 #alias g=git
 #complete -o bashdefault -o default -o nospace -F _git g
@@ -29,7 +30,27 @@
 
 
 ## BASICS ###################################################################################################
-alias gi="vim .gitignore;git add .gitignore;git commit -m gi;git status -s"			  ## direly needed
+gitignore() {
+	if [[ $# == 0 ]] 
+        then
+			vim .gitignore
+			git add .gitignore
+			git commit -m gi
+			git status -s
+		else
+			echo "$*" >.gitignore
+			for i
+			in "$@"
+			do
+				echo "$i" >.gitignore
+			done
+			cat .gitignore  ##fixme remove when testing is done
+			git add .gitignore
+			git commit -m gi
+			git status -s
+		fi
+}
+alias gi="gitignore"
 
 githelp() {
 		if [[ $# == 0 ]] 
