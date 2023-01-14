@@ -1,17 +1,61 @@
 ---
 
-- name: get plasma version for template
-  shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
-  register: plasma_version
-  changed_when: false
+#- name: get plasma version for template
+#  shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
+#  register: plasma_version
+#  changed_when: false
+#
+#- name: setfact plasma_version
+#  set_fact:
+#    plasma_version_fact: "{{ plasma_version.stdout }}"
+#
+#- name: klipper config
+#  become: yes
+#  become_user: sjas
+#  template:
+#    src: klipperrc.j2
+#    dest: /home/sjas/.config/klipperrc
 
-- name: setfact plasma_version
-  set_fact:
-    plasma_version_fact: "{{ plasma_version.stdout }}"
-
-- name: klipper config
+- name: klipper do not strip whitespace action
   become: yes
   become_user: sjas
-  template:
-    src: klipperrc.j2
-    dest: /home/sjas/.config/klipperrc
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: yes
+    no_extra_spaces: yes
+    section: Actions
+    option: StripWhiteSpace
+    value: false
+
+- name: klipper also put images into clipboard history
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: yes
+    no_extra_spaces: yes
+    section: General
+    option: IgnoreImages
+    value: false
+
+- name: klipper clipboard history size maxed out
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: yes
+    no_extra_spaces: yes
+    section: General
+    option: MaxClipItems
+    value: 2048
+
+- name: klipper dont show action helper popup
+  become: yes
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: yes
+    no_extra_spaces: yes
+    section: General
+    option: PopupInfoMessageShown
+    value: false
