@@ -14,7 +14,7 @@
     "city-lights-icons-vsc.hidesExplorerArrows": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.acceptSuggestionOnEnter": "smart",
-    "editor.autoIndent": true,
+    "editor.autoIndent": "full",
     "editor.cursorBlinking": "phase",
     "editor.cursorStyle": "line",
     "editor.cursorWidth": 1,
@@ -33,7 +33,6 @@
     "editor.mouseWheelScrollSensitivity": 5,
     "editor.mouseWheelZoom": true,
     "editor.multiCursorModifier": "alt",
-    "editor.renderIndentGuides": true,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [100],
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
@@ -61,5 +60,6 @@
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Gotham",
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.guides.indentation": true
 }
