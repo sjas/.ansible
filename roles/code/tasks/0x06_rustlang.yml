@@ -25,5 +25,4 @@
   lineinfile:
     path=/home/sjas/.bashrc
     regexp='. "\$HOME/.cargo/env"$'
-    line='. "$HOME/.cargo/env"||:'
-
+    line='. "/home/sjas/.cargo/env"'
