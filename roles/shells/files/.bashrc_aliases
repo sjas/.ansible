@@ -611,10 +611,47 @@ showdns(){
 	watch -n1 -d 'ls -alh /etc/resolv.conf; echo; fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/==========================================/g"'
 }
 showru() {
-	echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"; echo ================$'\e[0m'; ip -d r l t "$i" | sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' | column -t | sort -k1; done | sed 's/default_via_/default via /'
+	#echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"; echo ================$'\e[0m'; ip -d r l t "$i" | sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' | column -t | sort -k1; done | sed 's/default_via_/default via /'
+	echo
+	ip ru
+	echo
+	for i in $(ip ru | awk '{print $1}' | tr -d ':')
+	do
+		echo
+		echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"
+		echo ================$'\e[0m'
+		ip -d r l t "$i"\
+			|sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' \
+			| column -t \
+			| sort -k1
+	done|sed 's/default_via_/default via /'
 }
 showr() {
-	( echo DST GW DEV PROTO SCOPE SRC METRIC; while read -r j; do if ! echo "$j" | grep -q src; then echo "${j/metric/ . . metric}"; else echo "$j"; fi; done < <(while read -r i; do if ! echo "$i" | grep -q via ; then echo "${i/dev/ . . dev}"; else echo "$i"; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
+	#( echo DST GW DEV PROTO SCOPE SRC METRIC; while read -r j; do if ! echo "$j" | grep -q src; then echo "${j/metric/ . . metric}"; else echo "$j"; fi; done < <(while read -r i; do if ! echo "$i" | grep -q via ; then echo "${i/dev/ . . dev}"; else echo "$i"; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
+	(
+		echo DST GW DEV PROTO SCOPE SRC METRIC
+		while read -r j
+		do
+			if ! echo "$j"|grep -q src
+			then
+				echo "${j/metric/ . . metric}"
+			else
+				echo "$j"
+			fi
+		done < <(
+			while read -r i
+			do
+				if ! echo "$i" | grep -q via
+				then
+					echo "${i/dev/ . . dev}"
+				else
+					echo "$i"
+				fi
+			done  < <(ip -d r)) \
+				|awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}'
+	) \
+		|column -t \
+		|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
 showdu() {
 	du -sh ../* | sort -hk1
