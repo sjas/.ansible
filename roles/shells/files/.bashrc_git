@@ -30,6 +30,7 @@
 
 
 ## BASICS ###################################################################################################
+#https://stackoverflow.com/a/15702135/805284
 gitignore() {
 	if [[ $# == 0 ]] 
         then
@@ -42,6 +43,7 @@ gitignore() {
 			in "$@"
 			do
 				echo "$i" >>.gitignore
+				git rm --cached -r "$i"
 			done
 			cat .gitignore  ##fixme remove when testing is done
 			git add .gitignore
