@@ -89,6 +89,7 @@
       - lftp
       - libinput-tools
       - libreoffice
+      - libsource-highlight-common
       - libxml2-utils
       - linux-tools-generic
       - lnav
