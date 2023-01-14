@@ -405,7 +405,7 @@ alias k_suspendcomposite='qdbus org.kde.kglobalaccel /component/kwin invokeShort
 alias k_increaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Increase Opacity"'
 alias k_decreaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Decrease Opacity"'
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
-alias synchotkeysback='cp -va /home/sjas/.config/kglobalshortcutsrc /home/sjas/.config/khotkeysrc  /home/sjas/etc/.ansible/roles/0x05_kde/files/
+alias synchotkeysback='cp -va /home/sjas/.config/kglobalshortcutsrc /home/sjas/.config/khotkeysrc  /home/sjas/etc/.ansible/roles/0x05_kde/files/'
 
 alias rg="rg --hidden -i"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
