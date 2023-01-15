@@ -9,7 +9,7 @@
   title_receive_fg_color = "#f6f5f4"
   title_inactive_fg_color = "#77767b"
   title_inactive_bg_color = "#444444"
-  inactive_color_offset = 0.7252252252252253
+  inactive_color_offset = 0.7702702702702703
   enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
   suppress_multiple_term_dialog = True
   title_use_system_font = False
