@@ -180,8 +180,8 @@ nnoremap <leader>ebg :vs $DOTFILES/roles/0x02_shells/files/.bashrc_git<cr>
 
 "nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
 nnoremap <leader>cl :noh<cr>
-nnoremap <leader>nu :se nu!<cr>
-nnoremap <leader>ln :se nu!<cr>:se rnu!<cr>
+nnoremap <leader>ln :se nu!<cr>
+nnoremap <leader>nu :se nu!<cr>:se rnu!<cr>
 nnoremap <leader>ls :se list!<cr>
 nnoremap <leader>sh :sh<cr>
 nnoremap <leader>fd :r!date +%%F_%%T<cr>o<cr>
@@ -214,6 +214,8 @@ nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><c
 nnoremap <leader>ph i#!/usr/bin/env python3
 
 vnoremap <leader>c :s/^/#/<cr>:noh<cr>
+vnoremap <leader>cc :s/^/# /<cr>:noh<cr>
+nnoremap <leader>nt :%s/\s\+$//<cr>
 
 "vnoremap < <gv
 "vnoremap > <gv

@@ -13,4 +13,3 @@
     state: directory
   with_items:
     - kp
-
