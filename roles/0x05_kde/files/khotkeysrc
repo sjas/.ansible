@@ -220,7 +220,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_10_3Actions0]
-CommandURL=flatpak run --branch=stable --arch=x86_64 --command=teams --file-forwarding com.microsoft.Teams @@u %U @@
+CommandURL=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=teams --file-forwarding com.microsoft.Teams @@u %U @@
 Type=COMMAND_URL
 
 [Data_10_3Conditions]
