@@ -5,13 +5,20 @@ Control_L,	Up,				Control_L|Button4		#ctrl-scrollup still works
 Control_L,	Down,			Control_L|Button5		#ctrl-scrolldown still works
 Shift_L,	Up,				Shift_L|Button4			#shift-scrollup still works
 Shift_L,	Down,			Shift_L|Button5			#shift-scrolldown still works
+
 none,		Thumb1,			Alt_L|Left				#front_thumb does alt-left
 none,		Thumb2,			Alt_L|Right				#rear_thumb does alt-right
+
 Caps_Lock,	Thumb2,			Return					#caps/ctrl-front_thumb are enter press
 Control_L,	Thumb2,			Return					#caps/ctrl-front_thumb are enter press
+
+Alt_L,		Thumb2,			Print					#alt-front_thumb opens shutter
+
 Caps_Lock,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
 Control_L,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
+
 Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
+
 Super_L,	Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
 
 
