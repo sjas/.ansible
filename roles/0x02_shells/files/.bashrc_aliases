@@ -61,7 +61,9 @@ alias   ebc="vim /home/sjas/.config/Code/User/settings.json; cp -va /home/sjas/.
 alias  ebcp="vim ${DOTFILES}/roles/0x04_code/tasks/0x03_vscode.yml"
 # shellcheck disable=SC2139
 alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sjas/.config/Code/User/keybindings.json ${DOTFILES}/roles/0x04_code/files/keybindings.json"
+# shellcheck disable=SC2139
 alias   ebk="vim ${DOTFILES}/roles/0x05_kde/tasks/0x02_mouse-keyboard.yml;rea -t mouse"
+alias  ebki="vim ${DOTFILES}/roles/0x05_kde/files/.imwheelrc;rea -t mouse"
 
 
 

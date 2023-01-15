@@ -1,36 +1,38 @@
 ".*"
-None,       Up,      Button4,           4
-None,       Down,    Button5,           4
-Control_L,  Up,      Control_L|Button4
-Control_L,  Down,    Control_L|Button5
-Shift_L,    Up,      Shift_L|Button4
-Shift_L,    Down,    Shift_L|Button5
-none,       Thumb1,  Alt_L|Left
-none,       Thumb2,  Alt_L|Right
-Caps_Lock,  Thumb1,  Super_L|v
-Caps_Lock,  Thumb2,  Return
-Control_L,  Thumb1,  Super_L|v
-Control_L,  Thumb2,  Return
+None,		Up,				Button4,			4	#fast scroll up
+None,		Down,			Button5,			4	#fast scroll down
+Control_L,	Up,				Control_L|Button4		#ctrl-scrollup still works
+Control_L,	Down,			Control_L|Button5		#ctrl-scrolldown still works
+Shift_L,	Up,				Shift_L|Button4			#shift-scrollup still works
+Shift_L,	Down,			Shift_L|Button5			#shift-scrolldown still works
+none,		Thumb1,			Alt_L|Left				#front_thumb does alt-left
+none,		Thumb2,			Alt_L|Right				#rear_thumb does alt-right
+Caps_Lock,	Thumb2,			Return					#caps/ctrl-front_thumb are enter press
+Control_L,	Thumb2,			Return					#caps/ctrl-front_thumb are enter press
+Caps_Lock,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
+Control_L,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
+Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
 
 
 
-#https://www.mankier.com/1/imwheel`
-
-#KeySym   IMWheel Input  Real Mouse
-#------   -------------  ----------
-#Button1  (none)         Left Mouse Button
-#Button2  (none)         Middle Mouse Button
-#Button3  (none)         Right Mouse Button
-#Button4  Up             Mouse Wheel Up
-#Button5  Down           Mouse Wheel Down
-#Button6  Left           Mouse Wheel Left
-#Button7  Right          Mouse Wheel Right
-#Button8  Thumb1         Side Mouse Button 1 (left/up)
-#Button9  Thumb2         Side Mouse Button 2 (right/down)
-
+#https://www.mankier.com/1/imwheel
+#mouse1,2,3 are not possible to redefine in here?
+#
+#			IMWheel Input	KeySym replacing it		#Real Mouse
+#			-------------	-------------------		#----------
+#			(none)			Button1					#Left Mouse Button
+#			(none)			Button2					#Middle Mouse Button
+#			(none)			Button3					#Right Mouse Button
+#			Up				Button4					#Mouse Wheel Up
+#			Down			Button5					#Mouse Wheel Down
+#			Left			Button6					#Mouse Wheel Left
+#			Right			Button7					#Mouse Wheel Right
+#			Thumb1			Button8					#Side Mouse Button 1 (left/up)
+#			Thumb2			Button9					#Side Mouse Button 2 (right/down)
+#
 #Modifiers
 #---------
-#Shift_L     Shift_R
-#Control_L   Control_R
-#Alt_L       Alt_R
-#Super_L	 Super_R
+#Shift_L/R					Shift_L/R
+#Control_L/R				Control_L/R
+#Alt_L/R					Alt_L/R
+#Super_L/R					Super_L/R
