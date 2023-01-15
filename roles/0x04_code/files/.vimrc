@@ -214,7 +214,7 @@ nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><c
 nnoremap <leader>ph i#!/usr/bin/env python3
 
 noremap  <leader>c  :s/^/# /<cr>:noh<cr>
-vnoremap <leader>c  :s/^/# /<cr>:noh<cr>
+vnoremap <leader>c  :s/^/# /<cr>gv:s/\s\+$//<cr>:noh<cr>
 vnoremap <leader>cc :s/^/#/<cr>:noh<cr>
 nnoremap <leader>nt :%s/\s\+$//<cr>
 
