@@ -1,6 +1,6 @@
 ---
 
-- name: Get keyring file
+- name: brave keyring file
   get_url:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     dest: "/usr/share/keyrings/brave-browser-archive-keyring.gpg"
@@ -12,7 +12,7 @@
     repo: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
     filename: brave-browser-release
 
-- name: Update apt cache
+- name: update apt cache
   apt:
     update_cache: true
 
