@@ -28,10 +28,10 @@
   include: 0x07_bat.yml
   tags: util,bat
 
-# - name: CF mm tools
-#   include: 0x08_mm.yml
-#   tags: util
-#
+- name: CF mm tools
+  include: 0x08_mm.yml
+  tags: util
+
 # - name: xidel
 #   include: 0x09_xidel.yml
 #   tags: util
