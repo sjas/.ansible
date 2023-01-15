@@ -1104,24 +1104,23 @@ godc() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
 	firefox --new-tab https://godoc.org/?q="$1"
 }
+#fixme does this work? 
 runonfolderchange() {
 	[[ $# == 0 ]] && printf "\n\nUSAGE: enter command to run when anything it the current folder was written"
 	inotifywait -r -m . -e close_write | while read -r; do echo $'\e[38;5;220;1m'"RUNNING...:"$'\e[0m'; "${@}"; echo $'\e[38;5;220;1m'"... DONE."$'\e[0m\n'; done
 
 }
+
 runonchange() {
-	[[ $# == 0 ]] &&\
-		printf "\nUSAGE:\n\n" &&\
-		echo "    ${FUNCNAME[0]} FILE_TO_WATCH bash_script_or_code_to_run_when_FILE_TO_WATCH_is_saved" &&\
-		return
-    FILENAME="$1"
-    shift
-    while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1 || true
+    [[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n" "${FUNCNAME[0]}"&&return
+    FILENAME="$1";shift
+    while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
     do
-            "$*" || printf "[\e[31;1m-\e[m] code/script did not run.\n"
-            printf "\n===============\n\n"
+        eval "$*"
+        printf "\n===============\n\n"
     done
 }
+
 
 ### this exits prior to running `dot` on the saved file and i have no clue why
 #rundotpreview() {
