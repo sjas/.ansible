@@ -1,5 +1,7 @@
 ---
 
+# https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/
+# https://github.com/cloudflare/cloudflare-blog/tree/master/2017-06-29-ssdp
 - name: deploy CF mm tools
   become: true
   become_user: sjas
