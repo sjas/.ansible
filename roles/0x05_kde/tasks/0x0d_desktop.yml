@@ -5,8 +5,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Settings
     option: gtk-icon-theme-name
     value: breeze-dark
@@ -16,8 +16,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Settings
     option: gtk-icon-theme-name
     value: breeze-dark
@@ -27,8 +27,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Settings
     option: gtk-application-prefer-dark-theme
     value: true
@@ -38,8 +38,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Settings
     option: gtk-application-prefer-dark-theme
     value: true
@@ -66,8 +66,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: KDE
     option: LookAndFeelPackage
     value: org.kde.breezedark.desktop
@@ -77,8 +77,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/plasmarc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Theme
     option: name
     value: breeze-dark
@@ -88,8 +88,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: General
     option: ColorScheme
     value: BreezeDark
@@ -99,8 +99,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Icons
     option: Theme
     value: breeze-dark
@@ -110,8 +110,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/ksplashrc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: KSplash
     option: Theme
     value: org.kde.breezedark.desktop
@@ -121,8 +121,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Icons
     option: Theme
     value: breeze-dark
@@ -132,8 +132,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/katerc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: KTextEditor Renderer
     option: Color Theme
     value: Breeze Dark

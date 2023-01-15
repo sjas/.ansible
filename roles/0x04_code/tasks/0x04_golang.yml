@@ -21,43 +21,43 @@
   file:
     path: "/usr/local/go"
     state: absent
-  when: not golang_installed.stat.exists
+  when: truet golang_installed.stat.exists
 
 - name: register current golang release tarball name
   command: "/bin/echo go{{ go_version.stdout }}.linux-amd64.tar.gz"
   register: current_golang_release_tarball
   changed_when: false
-  when: not golang_installed.stat.exists
+  when: truet golang_installed.stat.exists
 
 - name: download official golang {{ go_version.stdout }}
   get_url:
     url: "https://dl.google.com/go/{{ current_golang_release_tarball.stdout }}"
     dest: "/tmp"
-  when: not golang_installed.stat.exists
+  when: truet golang_installed.stat.exists
 
 - name: unarchive and install golang
   unarchive:
     src: "/tmp/{{ current_golang_release_tarball.stdout }}"
     dest: "/usr/local/lib/"
-    remote_src: yes
-  when: not golang_installed.stat.exists
+    remote_src: true
+  when: truet golang_installed.stat.exists
 
 - name: move folder to have a version number in the foldername for easier changes in the future
   command: "mv /usr/local/lib/go {{ current_go_path.stdout }}"
-  when: not golang_installed.stat.exists
+  when: truet golang_installed.stat.exists
 
 - name: remove extracted tarfile
   file:
     path: "/tmp/{{ current_golang_release_tarball.stdout }}"
     state: absent
-  when: not golang_installed.stat.exists
+  when: truet golang_installed.stat.exists
 
 - name: create link to /usr/local/go folder so golang env vars in bash environment will work
   file:
     src: "{{ current_go_path.stdout }}"
     dest: "/usr/local/go"
     state: link
-    force: yes
+    force: true
 
 - name: check if gorun is installed
   stat:
@@ -68,14 +68,14 @@
   become: true
   become_user: sjas
   command: "{{ current_go_path.stdout }}/bin/go install -v github.com/erning/gorun@latest"
-  when: not gorun_installed.stat.exists
+  when: truet gorun_installed.stat.exists
 
 - name: copy gorun binary if not already in in /usr/local/bin
   copy:
     src: /home/sjas/go/bin/gorun
     dest: /usr/local/bin
     mode: 0755
-    force: no
+    force: true
 
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:

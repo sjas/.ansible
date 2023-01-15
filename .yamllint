@@ -20,14 +20,14 @@ rules:
     max-spaces-after: 99
   comments:
     level: warning
-    require-starting-space: yes
+    require-starting-space: true
     min-spaces-from-content: 2
   comments-indentation:
     level: warning
   document-end: disable
   document-start:
     level: warning
-    present: yes
+    present: true
   empty-lines:
     max: 2
     max-start: 0
@@ -36,12 +36,12 @@ rules:
     max-spaces-after: 1
   indentation:
     spaces: consistent
-    indent-sequences: yes
-    check-multi-line-strings: no
+    indent-sequences: true
+    check-multi-line-strings: true
   key-duplicates: enable
   line-length:
     max: 145
-    allow-non-breakable-words: yes
+    allow-non-breakable-words: true
     allow-non-breakable-inline-mappings: false
   new-line-at-end-of-file: enable
   new-lines:

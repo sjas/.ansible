@@ -54,7 +54,7 @@
 
 - name: always purge OS nodejs if exists
   apt:
-    purge: yes
+    purge: true
     state: absent
     name:
       - nodejs

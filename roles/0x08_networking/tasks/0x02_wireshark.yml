@@ -27,6 +27,6 @@
 - name: sjas into wireshark group
   user:
     name: sjas
-    append: yes
+    append: true
     groups: wireshark
   notify: user_group_wireshark_added

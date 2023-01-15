@@ -53,7 +53,7 @@
 #     src: /home/sjas/etc/.ansible/roles/terminals/files/clisnips
 #     dest: /home/sjas/.config/terminator/plugins/
 #     mode: 0755
-#     remote_src: yes
+#     remote_src: true
 #
 # - name: deploy clisnips dbus service file
 #   copy:

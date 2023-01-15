@@ -20,8 +20,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Mouse
     option: XLbInptPointerAcceleration
     value: -0.525
@@ -31,8 +31,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Mouse
     option: XLbInptAccelProfileFlat
     value: false
@@ -42,8 +42,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Mouse
     option: X11LibInputXAccelProfileFlat
     value: false
@@ -60,7 +60,7 @@
   become: true
   become_user: sjas
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
     scope: user
   notify: imwheel_restart
 
@@ -71,8 +71,8 @@
     name: imwheel.service
     scope: user
     state: restarted
-    enabled: yes
-    masked: no
+    enabled: true
+    masked: true
   changed_when: false
 
 - name: mouse - fix buttons and scroll speed
@@ -88,8 +88,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Windows
     option: FocusPolicy
     value: FocusFollowsMouse
@@ -99,8 +99,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Windows
     option: NextFocusPrefersMouse
     value: true
@@ -110,8 +110,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Windows
     option: DelayFocusInterval
     value: 200
@@ -121,8 +121,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Windows
     option: AutoRaise
     value: true
@@ -132,8 +132,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Windows
     option: AutoRaiseInterval
     value: 500
@@ -143,8 +143,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: MouseBindings
     option: CommandAllKey
     value: Alt
@@ -154,8 +154,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: MouseBindings
     option: CommandAll1
     value: Toggle raise and lower
@@ -165,8 +165,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: MouseBindings
     option: CommandAll2
     value: Move
@@ -176,8 +176,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: KDE
     option: ScrollbarLeftClickNavigatesByPage
     value: false
@@ -187,8 +187,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: KDE
     option: SingleClick
     value: false
@@ -199,8 +199,8 @@
 #   become_user: sjas
 #   ini_file:
 #     path: /home/sjas/.config/khotkeysrc
-#     create: no
-#     no_extra_spaces: yes
+#     create: true
+#     no_extra_spaces: true
 #     section: KDE
 #     option: SingleClick[$d]
 
@@ -210,8 +210,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Keyboard
     option: RepeatDelay
     value: 200
@@ -221,8 +221,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Keyboard
     option: RepeatRate
     value: 100
@@ -232,8 +232,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Layout
     option: LayoutList
     value: us
@@ -243,8 +243,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Layout
     option: Options
     value: caps:ctrl_modifier
@@ -254,8 +254,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Layout
     option: ResetOldOptions
     value: true
@@ -265,8 +265,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Layout
     option: Use
     value: true
@@ -278,8 +278,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Layout
     option: VariantList
     value: altgr-intl

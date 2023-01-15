@@ -21,8 +21,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/mimeapps.list
-    create: no
-    no_extra_spaces: yes
+    create: false
+    no_extra_spaces: true
     section: Default Applications
     option: x-scheme-handler/msteams
     value: teams.desktop

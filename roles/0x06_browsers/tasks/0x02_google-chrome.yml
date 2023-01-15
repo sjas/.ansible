@@ -11,7 +11,7 @@
 
 - name: chrome dependencies
   apt:
-    update_cache: yes
+    update_cache: true
     name:
       - fonts-liberation
 

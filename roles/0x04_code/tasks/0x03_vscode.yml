@@ -25,7 +25,7 @@
   become: true
   become_user: sjas
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
     scope: user
 
 - name: enable and start systemd service
@@ -59,7 +59,7 @@
   apt:
     name: code
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: vscode extension install check
   become: true

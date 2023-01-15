@@ -21,8 +21,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: Actions
     option: StripWhiteSpace
     value: false
@@ -32,8 +32,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: General
     option: IgnoreImages
     value: false
@@ -43,8 +43,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: General
     option: MaxClipItems
     value: 2048
@@ -54,8 +54,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
-    create: yes
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: General
     option: PopupInfoMessageShown
     value: false

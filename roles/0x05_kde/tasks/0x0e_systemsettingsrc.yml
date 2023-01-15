@@ -4,8 +4,8 @@
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/systemsettingsrc
-    create: no
-    no_extra_spaces: yes
+    create: true
+    no_extra_spaces: true
     section: systemsettings_sidebar_mode
     option: HighlightNonDefaultSettings
     value: True
