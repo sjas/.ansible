@@ -1,7 +1,7 @@
 ---
 
 - name: directories
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/{{ item }}
@@ -40,14 +40,14 @@
     - Videos
 
 - name: fix up folders with kde
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: user-dirs.dirs
     dest: /home/sjas/.config
 
 - name: fix up folder encoding
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: user-dirs.locale

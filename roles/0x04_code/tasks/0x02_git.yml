@@ -1,7 +1,7 @@
 ---
 
 - name: fix git default settings
-  become: yes
+  become: true
   become_user: sjas
   git_config:
     name: "{{ item.key }}"

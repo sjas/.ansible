@@ -18,7 +18,7 @@
 #     version: 23bba0c525ee7349a81a2480bc12c2533af979fa
 #
 # - name: deploy ansible-lint wrapper
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   copy:
 #     src: ansible-lint
@@ -27,7 +27,7 @@
 #   when: exitcode_ansiblelint_install.rc != 0
 #
 # - name: deploy yamllint/ansible-lint hook
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   copy:
 #     src: pre-commit

@@ -10,7 +10,7 @@
     ff_path_fact: "{{ ff_path.stdout }}"
 
 - name: deploy kdeglobals template
-  become: yes
+  become: true
   become_user: sjas
   template:
     src: kdeglobals.j2

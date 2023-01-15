@@ -9,7 +9,7 @@
       - xtermset
 
 - name: make sure .Xdefaults is present
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/.Xdefaults
@@ -17,7 +17,7 @@
   changed_when: false
 
 - name: make xterm shortcuts behave
-  become: yes
+  become: true
   become_user: sjas
   lineinfile:
     dest: /home/sjas/.Xdefaults

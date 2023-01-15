@@ -1,7 +1,7 @@
 ---
 
 - name: deploy diff-so-fancy script
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: diff-so-fancy

@@ -10,14 +10,14 @@
 #     plasma_version_fact: "{{ plasma_version.stdout }}"
 #
 # - name: klipper config
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   template:
 #     src: klipperrc.j2
 #     dest: /home/sjas/.config/klipperrc
 
 - name: klipper do not strip whitespace action
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
@@ -28,7 +28,7 @@
     value: false
 
 - name: klipper also put images into clipboard history
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
@@ -39,7 +39,7 @@
     value: false
 
 - name: klipper clipboard history size maxed out
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc
@@ -50,7 +50,7 @@
     value: 2048
 
 - name: klipper dont show action helper popup
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/klipperrc

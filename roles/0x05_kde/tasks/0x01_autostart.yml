@@ -1,14 +1,14 @@
 ---
 
 - name: ensure autostart folder exists
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/.config/autostart
     state: directory
 
 # - name: shutter autostart
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   copy:
 #     src: shutter.desktop

@@ -1,14 +1,14 @@
 ---
 
 - name: deploy filetypesrc
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: filetypesrc
     dest: /home/sjas/.config
 
 - name: actually set nomacs as image handler for the most common image formats
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: mimeapps.list

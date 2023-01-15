@@ -45,7 +45,7 @@
     state: link
 
 - name: mc config
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: "{{ item }}"
@@ -67,7 +67,7 @@
     state: link
 
 - name: deploy iptables colorize script
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: colorize_iptables_output.sh
@@ -75,7 +75,7 @@
     mode: 0775
 
 - name: deploy shfmt
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: shfmt
@@ -83,7 +83,7 @@
     mode: 0775
 
 - name: deploy stats script
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: stats
@@ -91,7 +91,7 @@
     mode: 0775
 
 - name: deploy .dialogrc
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: .dialogrc

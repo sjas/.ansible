@@ -6,21 +6,21 @@
     cache_valid_time: 7200
 
 - name: terminator config folder
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/.config/terminator/
     state: directory
 
 - name: terminator config
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: config
     dest: /home/sjas/.config/terminator/
 
 - name: ensure terminator ensure plugin folder exists
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/.config/terminator/plugins/
@@ -34,7 +34,7 @@
 # #     - python-gobject
 #
 # - name: deploy terminator plugins
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   copy:
 #     src: "{{ item }}"
@@ -47,7 +47,7 @@
 #     - clisnips_plugin.py
 #
 # - name: deploy clisnips files
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   copy:
 #     src: /home/sjas/etc/.ansible/roles/terminals/files/clisnips

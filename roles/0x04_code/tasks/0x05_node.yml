@@ -1,14 +1,14 @@
 ---
 
 - name: register nvm install script name
-  become: yes
+  become: true
   become_user: sjas
   command: echo v0.39.3
   register: nvm_installer_version
   changed_when: false
 
 - name: register current node version to be used
-  become: yes
+  become: true
   become_user: sjas
   command: echo v19.4.0
   register: nodejs_version
@@ -21,7 +21,7 @@
   changed_when: false
 
 - name: make sure destination folder exists
-  become: yes
+  become: true
   become_user: sjas
   file:
     path: "/home/sjas/.nvm"
@@ -43,7 +43,7 @@
         path: "/tmp/install.sh"
         state: absent
   when: exitcode_nvm_install.rc != 0
-  become: yes
+  become: true
   become_user: sjas
 
 - name: clean NVM_DIR var from .bashrc
@@ -61,7 +61,7 @@
       - nodejs-doc
 
 - name: check if node.js {{ nodejs_version.stdout }} is already installed
-  become: yes
+  become: true
   become_user: sjas
   shell: export NVM_DIR=/home/sjas/.nvm && . /home/sjas/.nvm/nvm.sh && nvm ls {{ nodejs_version.stdout }}
   register: exitcode_nodejs_install
@@ -69,14 +69,14 @@
   changed_when: false
 
 - name: install node.js {{ nodejs_version.stdout }}
-  become: yes
+  become: true
   become_user: sjas
   shell: export NVM_DIR=/home/sjas/.nvm && . /home/sjas/.nvm/nvm.sh && nvm install {{ nodejs_version.stdout }}
   when: exitcode_nodejs_install.rc != 0
   notify: node_shell_relogin
 
 - name: set node.js {{ nodejs_version.stdout }} as default
-  become: yes
+  become: true
   become_user: sjas
   shell: export NVM_DIR=/home/sjas/.nvm && . /home/sjas/.nvm/nvm.sh && nvm alias default {{ nodejs_version.stdout }}
   when: exitcode_nodejs_install.rc != 0

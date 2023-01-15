@@ -1,7 +1,7 @@
 ---
 
 - name: breeze dark theme for gtk 4.0
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
@@ -12,7 +12,7 @@
     value: breeze-dark
 
 - name: breeze dark theme for gtk 3.0
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
@@ -23,7 +23,7 @@
     value: breeze-dark
 
 - name: prefer dark theme for gtk 3.0
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
@@ -34,7 +34,7 @@
     value: true
 
 - name: prefer dark theme for gtk 4.0
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
@@ -45,7 +45,7 @@
     value: true
 
 - name: breeze dark icon theme
-  become: yes
+  become: true
   become_user: sjas
   lineinfile:
     path: /home/sjas/.config/xsettingsd/xsettingsd.conf
@@ -54,7 +54,7 @@
     state: present
 
 - name: kdedefaults package name
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: package
@@ -62,7 +62,7 @@
     mode: 0664
 
 - name: kde look and feel package
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdeglobals
@@ -73,7 +73,7 @@
     value: org.kde.breezedark.desktop
 
 - name: kde plasma style
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/plasmarc
@@ -84,7 +84,7 @@
     value: breeze-dark
 
 - name: kde colorscheme breeze dark
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
@@ -95,7 +95,7 @@
     value: BreezeDark
 
 - name: kde icon theme breeze dark
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
@@ -106,7 +106,7 @@
     value: breeze-dark
 
 - name: ksplashrc
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/ksplashrc
@@ -117,7 +117,7 @@
     value: org.kde.breezedark.desktop
 
 - name: kde icon theme breeze dark
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
@@ -128,7 +128,7 @@
     value: breeze-dark
 
 - name: dark kate
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/katerc

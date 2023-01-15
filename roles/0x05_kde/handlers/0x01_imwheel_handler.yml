@@ -1,7 +1,7 @@
 ---
 
 - name: imwheel user service restart handler
-  become: yes
+  become: true
   become_user: sjas
   systemd:
     name: imwheel.service

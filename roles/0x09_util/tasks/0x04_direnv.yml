@@ -1,7 +1,7 @@
 ---
 
 - name: get direnv 2.16
-  become: yes
+  become: true
   become_user: sjas
   get_url:
     url: https://github.com/direnv/direnv/releases/download/v2.16.0/direnv.linux-amd64

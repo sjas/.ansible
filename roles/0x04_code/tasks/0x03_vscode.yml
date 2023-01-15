@@ -22,14 +22,14 @@
     group: sjas
 
 - name: systemd daemon reload
-  become: yes
+  become: true
   become_user: sjas
   systemd:
     daemon_reload: yes
     scope: user
 
 - name: enable and start systemd service
-  become: yes
+  become: true
   become_user: sjas
   systemd:
     name: devilspie2.service
@@ -62,7 +62,7 @@
     update_cache: yes
 
 - name: vscode extension install check
-  become: yes
+  become: true
   become_user: sjas
   ignore_errors: true
   shell: |
@@ -111,7 +111,7 @@
   changed_when: false
 
 - name: install vscode extensions if not present
-  become: yes
+  become: true
   become_user: sjas
   command: code --force --install-extension {{ item }}
   with_items:
@@ -146,21 +146,21 @@
   tags: dont_lint_this
 
 - name: set vscode configuration
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: settings.json
     dest: /home/sjas/.config/Code/User/settings.json
 
 - name: set vscode keybindings for code navigation
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: keybindings.json
     dest: /home/sjas/.config/Code/User/
 
 - name: start vscode if it was stopped
-  become: yes
+  become: true
   become_user: sjas
   command: code
   delegate_to: localhost

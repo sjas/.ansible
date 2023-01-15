@@ -1,7 +1,7 @@
 ---
 
 - name: deploy simplecurses bash lib
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: simple_curses.sh

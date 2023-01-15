@@ -1,7 +1,7 @@
 ---
 
 - name: tmux config
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: .tmux.conf

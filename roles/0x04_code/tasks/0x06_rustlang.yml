@@ -1,7 +1,7 @@
 ---
 
 - name: rustup install check
-  become: yes
+  become: true
   become_user: sjas
   shell: find /home/sjas/.cargo/bin/ -type f | grep rustup
   register: exitcode_rustup_install
@@ -9,14 +9,14 @@
   changed_when: false
 
 - name: install rustup
-  become: yes
+  become: true
   become_user: sjas
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
   when: exitcode_rustup_install.rc != 0
   tags: skip_ansible_lint
 
 - name: rustup update
-  become: yes
+  become: true
   become_user: sjas
   command: "/home/sjas/.cargo/bin/rustup update"
   changed_when: false

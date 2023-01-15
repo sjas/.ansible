@@ -1,7 +1,7 @@
 ---
 
 - name: set holiday regions
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: plasma_calendar_holiday_regions

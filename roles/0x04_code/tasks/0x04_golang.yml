@@ -65,7 +65,7 @@
   register: gorun_installed
 
 - name: install gorun if needed
-  become: yes
+  become: true
   become_user: sjas
   command: "{{ current_go_path.stdout }}/bin/go install -v github.com/erning/gorun@latest"
   when: not gorun_installed.stat.exists
@@ -85,7 +85,7 @@
     state: present
 
 - name: deploy golang 'dep' binary
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: dep

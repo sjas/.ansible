@@ -1,7 +1,7 @@
 ---
 
 - name: deploy xidel
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: xidel

@@ -1,7 +1,7 @@
 ---
 
 - name: deploy email default configuration
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: emaildefaults

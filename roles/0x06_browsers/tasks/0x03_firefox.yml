@@ -6,14 +6,14 @@
   changed_when: false
 
 - name: ensure firefox 'lwtheme' folder exists for theme
-  become: yes
+  become: true
   become_user: sjas
   file:
     path: "{{ ff_path.stdout }}/lwtheme"
     state: directory
 
 - name: deploy tron theme files
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: "{{ item }}"
@@ -25,7 +25,7 @@
     - lightweighttheme-header-1920x1080
 
 - name: deploy firefox base settings
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: user.js

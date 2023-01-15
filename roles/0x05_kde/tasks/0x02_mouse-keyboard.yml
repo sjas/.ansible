@@ -16,7 +16,7 @@
 
 ## mouse ####################################################################################################
 - name: mouse - acceleration
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
@@ -27,7 +27,7 @@
     value: -0.525
 
 - name: mouse - nonflat accel curve
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
@@ -38,7 +38,7 @@
     value: false
 
 - name: mouse - nonflat accel curve 2
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
@@ -57,7 +57,7 @@
   notify: imwheel_restart
 
 - name: systemd daemon reload
-  become: yes
+  become: true
   become_user: sjas
   systemd:
     daemon_reload: yes
@@ -65,7 +65,7 @@
   notify: imwheel_restart
 
 - name: start imwheel user service
-  become: yes
+  become: true
   become_user: sjas
   systemd:
     name: imwheel.service
@@ -76,7 +76,7 @@
   changed_when: false
 
 - name: mouse - fix buttons and scroll speed
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: .imwheelrc
@@ -84,7 +84,7 @@
   notify: imwheel_restart
 
 - name: mouse - focus follows mouse
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -95,7 +95,7 @@
     value: FocusFollowsMouse
 
 - name: mouse - focus follows mouse, next focus
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -106,7 +106,7 @@
     value: true
 
 - name: mouse - focus follows mouse delay interval
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -117,7 +117,7 @@
     value: 200
 
 - name: mouse - focus follows mouse autoraise
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -128,7 +128,7 @@
     value: true
 
 - name: mouse - focus follows mouse autoraise delay interval
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -139,7 +139,7 @@
     value: 500
 
 - name: mouse - focus follows mouse, alt button to rise
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -150,7 +150,7 @@
     value: Alt
 
 - name: mouse - focus follows mouse, alt-button1 to rise
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -161,7 +161,7 @@
     value: Toggle raise and lower
 
 - name: mouse - focus follows mouse, alt-button3 to move
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kwinrc
@@ -172,7 +172,7 @@
     value: Move
 
 - name: scrollbar jump to position
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
@@ -183,7 +183,7 @@
     value: false
 
 - name: open files by doubleclick
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
@@ -195,7 +195,7 @@
 
 # #cant fix this because khotkeysrc is replaced globally
 # - name: open files by doubleclick yes really
-#   become: yes
+#   become: true
 #   become_user: sjas
 #   ini_file:
 #     path: /home/sjas/.config/khotkeysrc
@@ -206,7 +206,7 @@
 
 ## keyboard #################################################################################################
 - name: keyboard - repeat delay
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
@@ -217,7 +217,7 @@
     value: 200
 
 - name: keyboard - repeat rate
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kcminputrc
@@ -228,7 +228,7 @@
     value: 100
 
 - name: keyboard - layoutlist
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
@@ -239,7 +239,7 @@
     value: us
 
 - name: keyboard - nocaps
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
@@ -250,7 +250,7 @@
     value: caps:ctrl_modifier
 
 - name: keyboard - reset old options whatever this is
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
@@ -261,7 +261,7 @@
     value: true
 
 - name: keyboard - "yes"
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
@@ -272,7 +272,7 @@
     value: true
 
 - name: keyboard - variant
-  become: yes
+  become: true
   become_user: sjas
   ini_file:
     path: /home/sjas/.config/kxkbrc
@@ -283,7 +283,7 @@
     value: altgr-intl
 
 - name: plasma locale
-  become: yes
+  become: true
   become_user: sjas
   copy:
     src: "{{ item }}"

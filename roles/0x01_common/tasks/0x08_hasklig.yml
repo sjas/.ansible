@@ -7,14 +7,14 @@
   changed_when: false
 
 - name: make sure .fonts folder exists
-  become: yes
+  become: true
   become_user: sjas
   file:
     dest: /home/sjas/.fonts
     state: directory
 
 - name: unarchive hasklig
-  become: yes
+  become: true
   become_user: sjas
   unarchive:
     src: Hasklig-1.2.zip
