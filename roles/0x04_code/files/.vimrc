@@ -90,6 +90,7 @@ se t_te=
 se t_ti=
 
 se clipboard=unnamedplus
+se timeoutlen=250
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
@@ -213,9 +214,9 @@ nnoremap <leader>hk VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<
 nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><cr>}<esc>ka<tab>
 nnoremap <leader>ph i#!/usr/bin/env python3
 
-noremap  <leader>c  :s/^/# /<cr>:noh<cr>
-vnoremap <leader>c  :s/^/# /<cr>gv:s/\s\+$//<cr>:noh<cr>
-vnoremap <leader>cc :s/^/#/<cr>:noh<cr>
+noremap  <leader>c  :s/^/#/<cr>:noh<cr>
+vnoremap <leader>cc :s/^/# /<cr>gv:s/\s\+$//<cr>:noh<cr>
+vnoremap <leader>c	:s/^/#/<cr>:noh<cr>
 nnoremap <leader>nt :%s/\s\+$//<cr>
 
 "vnoremap < <gv
