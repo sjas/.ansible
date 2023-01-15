@@ -63,6 +63,7 @@ alias  ebcp="vim ${DOTFILES}/roles/0x04_code/tasks/0x03_vscode.yml"
 alias  ebck="vim /home/sjas/.config/Code/User/keybindings.json; cp -va /home/sjas/.config/Code/User/keybindings.json ${DOTFILES}/roles/0x04_code/files/keybindings.json"
 # shellcheck disable=SC2139
 alias   ebk="vim ${DOTFILES}/roles/0x05_kde/tasks/0x02_mouse-keyboard.yml;rea -t mouse"
+# shellcheck disable=SC2139
 alias  ebki="vim ${DOTFILES}/roles/0x05_kde/files/.imwheelrc;rea -t mouse"
 
 
@@ -115,15 +116,15 @@ LS_OPT1='--color=always --file-type -H'
 LS_OPT2='-lisha --time-style=long-iso'
 #FILES
 # shellcheck disable=SC2139
-alias     l="$LS"
+alias     l="$LS		$LS_OPT1"
 # shellcheck disable=SC2139
-alias    ll="$LS -a"
+alias    ll="$LS -a		$LS_OPT1"
 # shellcheck disable=SC2139
-alias	 ls="$LS $LS_OPT1 $LS_OPT2"
+alias	 ls="$LS		$LS_OPT1 $LS_OPT2"
 # shellcheck disable=SC2139
-alias    lt="$LS $LS_OPT1 $LS_OPT2 -tr"
+alias    lt="$LS		$LS_OPT1 $LS_OPT2 -tr"
 # shellcheck disable=SC2139
-alias    lS="$LS $LS_OPT1 $LS_OPT2 -Sr"
+alias    lS="$LS		$LS_OPT1 $LS_OPT2 -Sr"
 alias    lr="find | sort | cut -c 3-"  ## so no additional package is needed
 #DIRECTORIES
 # shellcheck disable=SC2139
@@ -380,8 +381,13 @@ alias apt-list-changelog="apt-get changelog -t $(lsb_release -sc)-backports"
 #for i in :: $(ip -6 r | grep default | awk '{print $3}' | head -1) 2606:4700:4700::1001 one.one.one.one; do if ping -6 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
 
 vm() { man "$1" | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
-cm() { PAGER="cat" man "$1" | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d'; }
 m() {
+	PAGER="cat" man "$1" | grep ^\\w | sed '1d;$d'
+	echo
+	read -p"> " -r
+	LESS="+/^${REPLY}" man "$1"
+}
+ms() {
         dpkg -s dialog &>/dev/null || { echo "Needs 'dialog' package which is not installed on this system!" && return; }
         [[ $# -lt 1 ]] && echo 'Man page name consisting of a single word expected but not given.' && return
         MANPAGE=$1
