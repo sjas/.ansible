@@ -6,6 +6,7 @@
   file:
     dest: /home/sjas/{{ item }}
     state: directory
+    mode: 0644
   with_items:
     - dl
     - doc
