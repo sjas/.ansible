@@ -6,6 +6,7 @@
   ini_file:
     path: /home/sjas/.config/kscreenlockerrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Greeter
     option: Theme
