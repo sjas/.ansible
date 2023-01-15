@@ -57,6 +57,7 @@
     dest: /home/sjas/.config/systemd/user/
     owner: sjas
     group: sjas
+    mode: 0644
   notify: imwheel_restart
 
 - name: systemd daemon reload
@@ -84,6 +85,7 @@
   copy:
     src: .imwheelrc
     dest: /home/sjas/.imwheelrc
+    mode: 0644
   notify: imwheel_restart
 
 - name: mouse - focus follows mouse
@@ -92,6 +94,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Windows
     option: FocusPolicy
