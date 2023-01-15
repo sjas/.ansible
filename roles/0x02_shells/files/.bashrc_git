@@ -117,9 +117,9 @@ alias rp="repostatus"
 alias rph="repostatus ~"
 
 #log
-alias gl="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
-alias glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
-alias glog="git log --oneline --graph --decorate=short -n 22"
+alias	 gl="git log --reverse --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
+alias   glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
+alias  glog="git log --oneline --graph --decorate=short -n 22"
 alias glogf="git log --oneline --graph --decorate=short"
 
 #show commits
