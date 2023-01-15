@@ -356,6 +356,7 @@ alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
 alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
 
+#https://stackoverflow.com/questions/3001177/how-do-i-grep-for-all-non-ascii-characters
 alias findallunicodechars='find|xargs grep --color=auto -P -n "[^\x00-\x7F]" 2>/dev/null'
 
 alias rec='script -aq ~/term.log-$(date "+%Y%m%d-%H-%M")'
@@ -785,7 +786,7 @@ geoip() {
 	echo
 	echo -n 'geoip> '
 
-	while 
+	while
 	read -r i
 	do
 		geoiplookup "$i" | sed -e 's/GeoIP Country Edition: //'
