@@ -213,8 +213,9 @@ nnoremap <leader>hk VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<
 nnoremap <leader>gh ipackage main<cr><cr>import "fmt"<cr><cr>func main() {<cr><cr>}<esc>ka<tab>
 nnoremap <leader>ph i#!/usr/bin/env python3
 
-vnoremap <leader>c :s/^/#/<cr>:noh<cr>
-vnoremap <leader>cc :s/^/# /<cr>:noh<cr>
+noremap  <leader>c  :s/^/# /<cr>:noh<cr>
+vnoremap <leader>c  :s/^/# /<cr>:noh<cr>
+vnoremap <leader>cc :s/^/#/<cr>:noh<cr>
 nnoremap <leader>nt :%s/\s\+$//<cr>
 
 "vnoremap < <gv
@@ -241,7 +242,7 @@ nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><
 "MARKDOWN: headline from current line after five newlines plus codeblock
 nnoremap <leader>jjk 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jji```<cr><cr>```<esc>k
 "MARKDOWN: code blockk
-nnoremap <leader>c VgUO<cr><cr><esc>jo<esc>40i~<esc>yypO<esc>DkAbash<esc>j
+nnoremap <leader>cc VgUO<cr><cr><esc>jo<esc>40i~<esc>yypO<esc>DkAbash<esc>j
 "MARKDOWN: update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
 nnoremap <silent> <leader>mt mzgg}d}d/.<cr>O<cr>```<cr><cr><esc>k:redir @y<cr>:g/^## /p<cr>:redir END<cr>gg}}"ypdkdd}i```<cr><cr><cr><cr><cr><esc>kkkkk:noh<cr>gg}V}:s/ #\+$//<cr>:noh<cr>'zgg
 "old: nnoremap <silent> <leader>mt mzgg}d}d/.<cr>O<cr>```<cr><cr><esc>k:redir @y<cr>:g/^## /p<cr>:redir END<cr>gg}}"ypdkdd}i```<cr><cr><cr><cr><cr><esc>kkkkk:noh<cr>gg}V}:s/^## //<cr>gv<cr>:s/#\+$//<cr>:noh<cr>'zgg

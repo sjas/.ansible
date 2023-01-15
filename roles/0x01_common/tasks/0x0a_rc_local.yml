@@ -29,4 +29,3 @@
     name: rc-local.service
     state: restarted
   changed_when: false
-

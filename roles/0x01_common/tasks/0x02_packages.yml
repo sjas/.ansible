@@ -62,7 +62,7 @@
       - flex-doc
       - fortunes
       - fortunes-off
-        #- freerdp-x11
+#       - freerdp-x11
       - geoip-bin
       - git-all
       - global

@@ -91,4 +91,3 @@
     src: dep
     dest: /home/sjas/.local/bin/
     mode: 0744
-
