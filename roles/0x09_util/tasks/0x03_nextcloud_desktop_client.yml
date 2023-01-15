@@ -11,6 +11,6 @@
   file:
     dest: /home/sjas/{{ item }}
     state: directory
-    mode: 0644
+    mode: 0775
   with_items:
     - kp

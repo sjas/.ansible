@@ -26,7 +26,7 @@
   file:
     path: "/home/sjas/.nvm"
     state: directory
-    mode: 0644
+    mode: 0775
 
 - name: nvm
   block:
@@ -84,8 +84,8 @@
   notify: node_shell_relogin
 
 - name: get path current nodejs for setcap'ing
-  command: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
-  # shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
+  #command: "find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}"
+  shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
   register: nodejs_path
   changed_when: false
 

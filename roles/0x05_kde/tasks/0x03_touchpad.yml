@@ -6,4 +6,4 @@
   copy:
     src: touchpadrc
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664

@@ -6,7 +6,7 @@
   file:
     dest: /home/sjas/{{ item }}
     state: directory
-    mode: 0644
+    mode: 0775
   with_items:
     - dl
     - doc
@@ -46,7 +46,7 @@
   copy:
     src: user-dirs.dirs
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664
 
 - name: fix up folder encoding
   become: true
@@ -54,4 +54,4 @@
   copy:
     src: user-dirs.locale
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664

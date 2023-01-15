@@ -15,4 +15,4 @@
   template:
     src: kdeglobals.j2
     dest: /home/sjas/.config/kdeglobals
-    mode: 0644
+    mode: 0664

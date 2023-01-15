@@ -6,4 +6,4 @@
   copy:
     src: emaildefaults
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664

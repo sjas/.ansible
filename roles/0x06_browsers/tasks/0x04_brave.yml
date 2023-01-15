@@ -4,7 +4,7 @@
   get_url:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     dest: "/usr/share/keyrings/brave-browser-archive-keyring.gpg"
-    mode: "0644"
+    mode: "0664"
   become: true
 
 - name: brave repo

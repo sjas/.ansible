@@ -6,7 +6,7 @@
   copy:
     src: 1118full-jaime-murray.jpg
     dest: /home/sjas/etc
-    mode: 0644
+    mode: 0664
 
 - name: plasmarc
   become: true
@@ -14,4 +14,4 @@
   copy:
     src: plasmarc
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664

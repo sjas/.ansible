@@ -5,7 +5,7 @@
   ini_file:
     path: /home/sjas/.config/systemsettingsrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: systemsettings_sidebar_mode
     option: HighlightNonDefaultSettings

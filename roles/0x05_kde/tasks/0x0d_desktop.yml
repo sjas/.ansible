@@ -6,7 +6,7 @@
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Settings
     option: gtk-icon-theme-name
@@ -18,7 +18,7 @@
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Settings
     option: gtk-icon-theme-name
@@ -30,7 +30,7 @@
   ini_file:
     path: /home/sjas/.config/gtk-3.0/settings.ini
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Settings
     option: gtk-application-prefer-dark-theme
@@ -42,7 +42,7 @@
   ini_file:
     path: /home/sjas/.config/gtk-4.0/settings.ini
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Settings
     option: gtk-application-prefer-dark-theme
@@ -71,7 +71,7 @@
   ini_file:
     path: /home/sjas/.config/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: KDE
     option: LookAndFeelPackage
@@ -83,7 +83,7 @@
   ini_file:
     path: /home/sjas/.config/plasmarc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Theme
     option: name
@@ -95,7 +95,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: ColorScheme
@@ -107,7 +107,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Icons
     option: Theme
@@ -119,7 +119,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/ksplashrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: KSplash
     option: Theme
@@ -131,7 +131,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Icons
     option: Theme
@@ -143,7 +143,7 @@
   ini_file:
     path: /home/sjas/.config/katerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: KTextEditor Renderer
     option: Color Theme

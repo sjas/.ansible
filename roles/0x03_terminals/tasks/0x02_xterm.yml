@@ -14,7 +14,7 @@
   file:
     dest: /home/sjas/.Xdefaults
     state: touch
-    mode: 0644
+    mode: 0664
   changed_when: false
 
 - name: make xterm shortcuts behave

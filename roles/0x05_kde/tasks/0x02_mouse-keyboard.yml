@@ -21,7 +21,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Mouse
     option: XLbInptPointerAcceleration
@@ -33,7 +33,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Mouse
     option: XLbInptAccelProfileFlat
@@ -45,7 +45,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Mouse
     option: X11LibInputXAccelProfileFlat
@@ -57,7 +57,7 @@
     dest: /home/sjas/.config/systemd/user/
     owner: sjas
     group: sjas
-    mode: 0644
+    mode: 0664
   notify: imwheel_restart
 
 - name: systemd daemon reload
@@ -85,7 +85,7 @@
   copy:
     src: .imwheelrc
     dest: /home/sjas/.imwheelrc
-    mode: 0644
+    mode: 0664
   notify: imwheel_restart
 
 - name: mouse - focus follows mouse
@@ -94,7 +94,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Windows
     option: FocusPolicy
@@ -106,7 +106,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Windows
     option: NextFocusPrefersMouse
@@ -118,7 +118,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Windows
     option: DelayFocusInterval
@@ -130,7 +130,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Windows
     option: AutoRaise
@@ -142,7 +142,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Windows
     option: AutoRaiseInterval
@@ -154,7 +154,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: MouseBindings
     option: CommandAllKey
@@ -166,7 +166,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: MouseBindings
     option: CommandAll1
@@ -178,7 +178,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: MouseBindings
     option: CommandAll2
@@ -190,7 +190,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: KDE
     option: ScrollbarLeftClickNavigatesByPage
@@ -202,7 +202,7 @@
   ini_file:
     path: /home/sjas/.config/kdedefaults/kdeglobals
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: KDE
     option: SingleClick
@@ -214,7 +214,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: MouseBindings
     option: CommandTitlebarWheel
@@ -227,7 +227,7 @@
 #   ini_file:
 #     path: /home/sjas/.config/khotkeysrc
 #     create: true
-#     mode: 0644
+#     mode: 0664
 #     no_extra_spaces: true
 #     section: KDE
 #     option: SingleClick[$d]
@@ -239,7 +239,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Keyboard
     option: RepeatDelay
@@ -251,7 +251,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Keyboard
     option: RepeatRate
@@ -263,7 +263,7 @@
   ini_file:
     path: /home/sjas/.config/kxkbrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Layout
     option: LayoutList
@@ -275,7 +275,7 @@
   ini_file:
     path: /home/sjas/.config/kxkbrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Layout
     option: Options
@@ -287,7 +287,7 @@
   ini_file:
     path: /home/sjas/.config/kxkbrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Layout
     option: ResetOldOptions
@@ -299,7 +299,7 @@
   ini_file:
     path: /home/sjas/.config/kxkbrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Layout
     option: Use
@@ -313,7 +313,7 @@
   ini_file:
     path: /home/sjas/.config/kxkbrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Layout
     option: VariantList
@@ -325,6 +325,6 @@
   copy:
     src: "{{ item }}"
     dest: /home/sjas/.config
-    mode: 0644
+    mode: 0664
   with_items:
     - plasma-localerc

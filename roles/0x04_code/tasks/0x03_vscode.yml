@@ -13,7 +13,7 @@
     state: directory
     owner: sjas
     group: sjas
-    mode: 0644
+    mode: 0775
 
 - name: deploy devilspie2 systemd unit file
   copy:
@@ -21,7 +21,7 @@
     dest: /home/sjas/.config/systemd/user/
     owner: sjas
     group: sjas
-    mode: 0644
+    mode: 0664
 
 - name: systemd daemon reload
   become: true
@@ -43,7 +43,7 @@
   copy:
     src: vscode.lua
     dest: /home/sjas/.config/devilspie2/
-    mode: 0644
+    mode: 0664
 
 ## vscode ###################################################################################################
 - name: microsoft apt-key
@@ -153,7 +153,7 @@
   copy:
     src: settings.json
     dest: /home/sjas/.config/Code/User/settings.json
-    mode: 0644
+    mode: 0664
 
 - name: set vscode keybindings for code navigation
   become: true
@@ -161,7 +161,7 @@
   copy:
     src: keybindings.json
     dest: /home/sjas/.config/Code/User/
-    mode: 0644
+    mode: 0664
 
 - name: start vscode if it was stopped
   become: true

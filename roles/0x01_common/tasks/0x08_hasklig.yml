@@ -12,7 +12,7 @@
   file:
     dest: /home/sjas/.fonts
     state: directory
-    mode: 0644
+    mode: 0775
 
 - name: unarchive hasklig
   become: true

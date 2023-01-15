@@ -6,7 +6,7 @@
   file:
     dest: /home/sjas/.config/autostart
     state: directory
-    mode: 0644
+    mode: 0775
 
 # - name: shutter autostart
 #   become: true

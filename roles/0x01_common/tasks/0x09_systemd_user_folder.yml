@@ -6,4 +6,4 @@
     state: directory
     owner: sjas
     group: sjas
-    mode: 0644
+    mode: 0775

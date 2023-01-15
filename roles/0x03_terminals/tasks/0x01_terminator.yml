@@ -11,7 +11,7 @@
   file:
     dest: /home/sjas/.config/terminator/
     state: directory
-    mode: 0644
+    mode: 0775
 
 - name: terminator config
   become: true
@@ -19,7 +19,7 @@
   copy:
     src: config
     dest: /home/sjas/.config/terminator/
-    mode: 0644
+    mode: 0664
 
 - name: ensure terminator ensure plugin folder exists
   become: true
@@ -27,7 +27,7 @@
   file:
     dest: /home/sjas/.config/terminator/plugins/
     state: directory
-    mode: 0644
+    mode: 0775
 
 # # - name: install missing packages for plugins
 # #   apt:
@@ -62,4 +62,4 @@
 #   copy:
 #     src: org.ju1ius.CliSnips.service
 #     dest: /usr/share/dbus-1/services/
-#     mode: 0644
+#     mode: 0664

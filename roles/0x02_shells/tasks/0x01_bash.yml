@@ -60,7 +60,7 @@
   file:
     dest: /root/.config
     state: directory
-    mode: 0644
+    mode: 0755
 
 - name: mc folder link for root user
   file:

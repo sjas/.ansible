@@ -19,7 +19,7 @@
   copy:
     src: rc-local.service
     dest: /etc/systemd/system/
-    mode: 0644
+    mode: 0664
 
 - name: systemd daemon reload
   systemd:

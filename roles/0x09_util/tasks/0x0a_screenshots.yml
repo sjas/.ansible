@@ -13,7 +13,7 @@
 #   ini_file:
 #     path: /home/sjas/.config/
 #     create: true
-#     mode: 0644
+#     mode: 0664
 #     no_extra_spaces: true
 #     section:
 #     option:
@@ -25,7 +25,7 @@
 #   ini_file:
 #     path: /home/sjas/.config/
 #     create: true
-#     mode: 0644
+#     mode: 0664
 #     no_extra_spaces: true
 #     section:
 #     option:
@@ -58,7 +58,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: autoSaveImage
@@ -70,7 +70,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: onLaunchAction
@@ -82,7 +82,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: rememberLastRectangularRegion
@@ -94,7 +94,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: showCaptureInstructions
@@ -106,7 +106,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: General
     option: useReleaseToCapture
@@ -118,7 +118,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: GuiConfig
     option: captureMode
@@ -130,7 +130,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: GuiConfig
     option: quitAfterSaveCopyExport
@@ -142,7 +142,7 @@
   ini_file:
     path: /home/sjas/.config/spectaclerc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Save
     option: saveFilenameFormat
@@ -154,7 +154,7 @@
   ini_file:
     path: /home/sjas/.config/plasmanotifyrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Applications][org.kde.spectacle
     option: ShowBadges
@@ -166,7 +166,7 @@
   ini_file:
     path: /home/sjas/.config/plasmanotifyrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Applications][org.kde.spectacle
     option: ShowInHistory
@@ -178,7 +178,7 @@
   ini_file:
     path: /home/sjas/.config/plasmanotifyrc
     create: true
-    mode: 0644
+    mode: 0664
     no_extra_spaces: true
     section: Applications][org.kde.spectacle
     option: ShowPopups
