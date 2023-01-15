@@ -31,6 +31,26 @@
 #     option:
 #     value:
 
+## shutter config ###########################################################################################
+# this is yucky because its not in ~/.config and using xml instead of ini files ..
+# no its not if you can speak xpath
+# manually this could look like this:
+#
+# xmlstarlet edit --inplace --update "/opt/general[@filename]/@filename" --value "asdf" ~/.shutter/settings.xml
+# xpath -e '/opt/general/@filename' ~/.shutter/settings.xml
+#
+# Found 1 nodes in /home/sjas/.shutter/settings.xml:
+# -- NODE --
+#  filename="asdf"
+- name: shutter
+  become: true
+  become_user: sjas
+  xml:
+    path: /home/sjas/.shutter/settings.xml
+    xpath: /opt/general[@filename]
+    attribute: filename
+    value: shutter_$name_%NNN_%Y%m%d_%T
+
 ## spectacle config #########################################################################################
 - name: spectacle autosave image
   become: true
