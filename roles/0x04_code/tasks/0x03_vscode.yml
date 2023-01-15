@@ -13,6 +13,7 @@
     state: directory
     owner: sjas
     group: sjas
+    mode: 0644
 
 - name: deploy devilspie2 systemd unit file
   copy:
@@ -20,6 +21,7 @@
     dest: /home/sjas/.config/systemd/user/
     owner: sjas
     group: sjas
+    mode: 0644
 
 - name: systemd daemon reload
   become: true
