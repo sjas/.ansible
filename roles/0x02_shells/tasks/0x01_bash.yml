@@ -50,6 +50,7 @@
   copy:
     src: "{{ item }}"
     dest: /home/sjas/.config/mc/
+    mode: 0644
   with_items:
     - ini
     - panels.ini
@@ -59,6 +60,7 @@
   file:
     dest: /root/.config
     state: directory
+    mode: 0644
 
 - name: mc folder link for root user
   file:

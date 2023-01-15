@@ -4,8 +4,10 @@
   file:
     path: /etc/systemd/system/dnsmasq.service.d/
     state: directory
+    mode: 0644
 
 - name: fix systemd-resolved not blocking dnsmasq
   copy:
     src: dnsmasq-resolved-FIX.conf
     dest: /etc/systemd/system/dnsmasq.service.d/
+    mode: 0644

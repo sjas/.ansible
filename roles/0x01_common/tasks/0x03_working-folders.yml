@@ -46,6 +46,7 @@
   copy:
     src: user-dirs.dirs
     dest: /home/sjas/.config
+    mode: 0644
 
 - name: fix up folder encoding
   become: true
@@ -53,3 +54,4 @@
   copy:
     src: user-dirs.locale
     dest: /home/sjas/.config
+    mode: 0644
