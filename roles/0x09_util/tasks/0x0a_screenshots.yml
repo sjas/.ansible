@@ -1,0 +1,129 @@
+---
+
+# spectacle already preinstalled
+- name: install screenshot packages
+  apt:
+    cache_valid_time: 7200
+    name:
+      - shutter
+
+# - name: spectacle
+#   become: true
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/
+#     create: true
+#     mode: 0644
+#     no_extra_spaces: true
+#     section:
+#     option:
+#     value:
+#
+# - name: shutter
+#   become: true
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/
+#     create: true
+#     mode: 0644
+#     no_extra_spaces: true
+#     section:
+#     option:
+#     value:
+
+## spectacle config #########################################################################################
+- name: spectacle autosave image
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: General
+    option: autoSaveImage
+    value: true
+
+- name: spectacle use last used capture method
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: General
+    option: onLaunchAction
+    value: UseLastUsedCapturemode
+
+- name: spectacle remember region only until spectacle closes
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: General
+    option: rememberLastRectangularRegion
+    value: UntilSpectacleIsClosed
+
+- name: spectacle no nagging
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: General
+    option: showCaptureInstructions
+    value: false
+
+- name: spectacle capture on release
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: General
+    option: useReleaseToCapture
+    value: true
+
+- name: spectacle selection capturing
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: GuiConfig
+    option: captureMode
+    value: 5
+
+- name: spectacle quit after save/copy/export
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: GuiConfig
+    option: quitAfterSaveCopyExport
+    value: true
+
+- name: spectacle filename format
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: Save
+    option: saveFilenameFormat
+    value: spectacle_%Y%M%D_%H%m%S

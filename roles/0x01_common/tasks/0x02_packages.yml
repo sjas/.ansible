@@ -153,7 +153,6 @@
       - screen
       - screenfetch
       - shellcheck
-      - shutter
       - siege
       - sipcalc
       - sngrep
@@ -205,7 +204,10 @@
     state: absent
 
 - name: make sure firewalld uses iptables as backend, because nftables breaks shit
-  lineinfile: path=/etc/firewalld/firewalld.conf regex='^FirewallBackend=' line='FirewallBackend=iptables'
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    regex: '^FirewallBackend='
+    line: 'FirewallBackend=iptables'
 
 - name: language packages
   apt:

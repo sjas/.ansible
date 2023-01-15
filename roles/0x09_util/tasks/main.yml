@@ -35,9 +35,11 @@
 # - name: xidel
 #   include: 0x09_xidel.yml
 #   tags: util
-#
-# #0x0a free
-#
+
+- name: screenshot tools
+  include: 0x0a_screenshots.yml
+  tags: util,screenshot,shutter,spectacle
+
 # - name: simplecurses
 #   include: 0x0b_simplecurses.yml
 #   tags: util
