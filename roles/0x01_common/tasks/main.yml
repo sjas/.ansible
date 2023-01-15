@@ -38,4 +38,8 @@
 
 - name: long live /etc/rc.local
   include: 0x0a_rc_local.yml
-  tags: common
+  tags: common,rclocal
+
+- name: pipewire
+  include: 0x0b_pipewire.yml
+  tags: common,pipewire

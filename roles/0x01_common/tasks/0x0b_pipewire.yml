@@ -1,0 +1,39 @@
+---
+
+# https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/
+- name: remove obsolete packages
+  apt:
+    name: pipewire-media-session
+    state: absent
+
+- name: pipewire packages
+  apt:
+    cache_valid_time: 7200
+    name:
+      - pipewire-audio-client-libraries
+      - libspa-0.2-bluetooth
+      - libspa-0.2-jack
+      - wireplumber
+
+- name: alsa config
+  copy:
+    src: /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf
+    dest: /etc/alsa/conf.d/
+    mode: 0664
+
+- name: jack client
+  copy:
+    src: "{{ item }}"
+    dest: /etc/ld.so.conf.d/
+    mode: 0664
+  with_fileglob:
+    - "/usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf"
+
+- name: run ldconfig
+  command: ldconfig
+  changed_when: false
+
+- name: remove obsolete packages, again
+  apt:
+    name: pulseaudio-module-bluetooth
+    state: absent
