@@ -6,6 +6,7 @@
   copy:
     src: powermanagementprofilesrc
     dest: /home/sjas/.config
+    mode: 0644
 
 - name: crit action config
   become: true
@@ -13,3 +14,4 @@
   copy:
     src: powerdevilrc
     dest: /home/sjas/.config
+    mode: 0644

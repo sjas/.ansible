@@ -6,6 +6,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Desktops
     option: Id_2
@@ -17,6 +18,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Desktops
     option: Id_3
@@ -28,6 +30,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Desktops
     option: Number
@@ -39,6 +42,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Desktops
     option: Rows
@@ -50,6 +54,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Plugins
     option: slideEnabled
@@ -61,6 +66,7 @@
   ini_file:
     path: /home/sjas/.config/kwinrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Windows
     option: RollOverDesktops

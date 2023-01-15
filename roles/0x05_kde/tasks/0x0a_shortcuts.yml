@@ -6,6 +6,7 @@
   copy:
     src: khotkeysrc
     dest: /home/sjas/.config
+    mode: 0644
 
 - name: deploy shortcuts
   become: true
@@ -13,3 +14,4 @@
   copy:
     src: kglobalshortcutsrc
     dest: /home/sjas/.config
+    mode: 0644

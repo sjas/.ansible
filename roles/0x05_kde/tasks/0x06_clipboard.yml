@@ -22,6 +22,7 @@
   ini_file:
     path: /home/sjas/.config/klipperrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Actions
     option: StripWhiteSpace
@@ -33,6 +34,7 @@
   ini_file:
     path: /home/sjas/.config/klipperrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: General
     option: IgnoreImages
@@ -44,6 +46,7 @@
   ini_file:
     path: /home/sjas/.config/klipperrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: General
     option: MaxClipItems
@@ -55,6 +58,7 @@
   ini_file:
     path: /home/sjas/.config/klipperrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: General
     option: PopupInfoMessageShown

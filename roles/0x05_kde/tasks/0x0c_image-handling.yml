@@ -6,6 +6,7 @@
   copy:
     src: filetypesrc
     dest: /home/sjas/.config
+    mode: 0644
 
 - name: actually set nomacs as image handler for the most common image formats
   become: true
@@ -13,3 +14,4 @@
   copy:
     src: mimeapps.list
     dest: /home/sjas/.config
+    mode: 0644

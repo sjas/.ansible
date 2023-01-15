@@ -6,3 +6,4 @@
   copy:
     src: plasma_calendar_holiday_regions
     dest: /home/sjas/.config
+    mode: 0644
