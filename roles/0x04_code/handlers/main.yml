@@ -1,6 +1,7 @@
 ---
 
 - name: message to relogin into shell after nvm was deployed
-  debug:
-    msg: "relogin else node version will not be current"
-  listen: node_shell_relogin
+  command: echo asdf
+#   debug:
+#     msg: "relogin else node version will not be current"
+#   listen: node_shell_relogin
