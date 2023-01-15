@@ -30,19 +30,20 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     git clone https://github.com/sjas/.ansible
     cat << EOF > ~/.ansible.cfg
     [defaults]
-    inventory = $ANSIBLETEMPROOT/.ansible/hosts
+    inventory=/home/sjas/etc/.ansible/hosts
     #default,oneline,minimal,yaml,debug
-    stdout_callback = yaml
-	bin_ansible_callbacks=yes
-    verbosity = 2
-    roles_path = /etc/ansible/roles:./
-	interpreter_python=auto_silent
+    #https://rndmh3ro.github.io/
+    stdout_callback=actionable
+    bin_ansible_callbacks=yes
+    verbosity=2
+    roles_path=/etc/ansible/roles:./
+    interpreter_python=auto_silent
     [ssh_connection]
-    ssh_args = -o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
-    pipelining = yes
+    ssh_args=-o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
+    pipelining=yes
     [diff]
-    always = yes
-    context = 4
+    always=yes
+    context=4
     EOF
     cd .ansible
 
