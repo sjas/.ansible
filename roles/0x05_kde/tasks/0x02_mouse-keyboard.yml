@@ -4,19 +4,15 @@
 # /usr/share/X11/xorg.conf.d/40-libinput.conf or similar if i were to switch libinput->libevdev
 # https://help.ubuntu.com/community/MouseCustomizations#Evdev_Driver
 # libevdev config(?) from kcminputrc
-#[Mouse]
-#Acceleration=1
-#AccelerationProfile=true
-#MouseButtonMapping=RightHanded
-#ReverseScrollPolarity=false
-#Threshold=0
-#XLbInptPointerAcceleration=-0.6
-#cursorSize=24
-#cursorTheme=breeze_cursors
-
-
-
-
+# [Mouse]
+# Acceleration=1
+# AccelerationProfile=true
+# MouseButtonMapping=RightHanded
+# ReverseScrollPolarity=false
+# Threshold=0
+# XLbInptPointerAcceleration=-0.6
+# cursorSize=24
+# cursorTheme=breeze_cursors
 
 ## mouse ####################################################################################################
 - name: mouse - acceleration
@@ -197,21 +193,16 @@
     option: SingleClick
     value: false
 
-##cant fix this because khotkeysrc is replaced globally
-#- name: open files by doubleclick yes really
-#  become: yes
-#  become_user: sjas
-#  ini_file:
-#    path: /home/sjas/.config/khotkeysrc
-#    create: no
-#    no_extra_spaces: yes
-#    section: KDE
-#    option: SingleClick[$d]
-
-
-
-
-
+# #cant fix this because khotkeysrc is replaced globally
+# - name: open files by doubleclick yes really
+#   become: yes
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/khotkeysrc
+#     create: no
+#     no_extra_spaces: yes
+#     section: KDE
+#     option: SingleClick[$d]
 
 ## keyboard #################################################################################################
 - name: keyboard - repeat delay

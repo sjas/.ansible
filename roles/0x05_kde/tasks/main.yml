@@ -8,13 +8,13 @@
   include: 0x02_mouse-keyboard.yml
   tags: kde,mouse,keyboard
 
-#- name: touchpad
-#  include: 0x03_touchpad.yml
-#  tags: mouse
+# - name: touchpad
+#   include: 0x03_touchpad.yml
+#   tags: mouse
 #
-#- name: powersettings
-#  include: 0x04_powersettings.yml
-#  tags: kde
+# - name: powersettings
+#   include: 0x04_powersettings.yml
+#   tags: kde
 
 - name: virtual desktops
   include: 0x05_virtualdesktops.yml
@@ -40,13 +40,13 @@
   include: 0x0a_shortcuts.yml
   tags: kde
 
-#- name: email defaults
-#  include: 0x0b_emaildefaults.yml
-#  tags: kde
+# - name: email defaults
+#   include: 0x0b_emaildefaults.yml
+#   tags: kde
 #
-#- name: some image handling settings
-#  include: 0x0c_image-handling.yml
-#  tags: kde
+# - name: some image handling settings
+#   include: 0x0c_image-handling.yml
+#   tags: kde
 
 - name: make desktop theme dark
   include: 0x0d_desktop.yml
@@ -56,6 +56,6 @@
   include: 0x0e_systemsettingsrc.yml
   tags: kde
 
-#- name: wallpaper
-#  include: 0x0f_wallpaper.yml
-#  tags: kde
+# - name: wallpaper
+#   include: 0x0f_wallpaper.yml
+#   tags: kde

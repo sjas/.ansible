@@ -1,6 +1,6 @@
 ---
 
-#https://askubuntu.com/questions/213680/how-to-restart-kwin-when-it-is-hung
+# https://askubuntu.com/questions/213680/how-to-restart-kwin-when-it-is-hung
 - name: fix taskbar size
   replace:
     path: /home/sjas/.config/plasmashellrc
