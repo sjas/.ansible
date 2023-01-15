@@ -35,6 +35,7 @@ _k_friendly_name=Custom Shortcuts Service
 {674b4cd8-72b2-499a-ba0c-98b962c94d7d}=Meta+M,none,edge
 {82a7573f-89eb-44be-b65a-ceb7c996731d}=Meta+N,none,chromium
 {84096022-a191-490d-9ff6-26dacf063ae3}=Meta+U,none,teams
+{9bdd9384-0d60-4bc9-9d99-030c2f13e512}=Print,none,shutter
 {c1597ba8-0407-40ec-bda6-b93288395a4d}=Meta+I,none,controlpanel
 {cb2781a7-3823-4fc0-99aa-244dc4edf22b}=Meta+X,none,vscode
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
@@ -209,11 +210,11 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,,Media volume down
-mediavolumeup=none,,Media volume up
+mediavolumedown=none,none,Media volume down
+mediavolumeup=none,none,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,,Play media playback
+playmedia=none,none,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
@@ -236,10 +237,10 @@ ActiveWindowScreenShot=Meta+Print,Meta+Print,Capture Active Window
 CurrentMonitorScreenShot=none,none,Capture Current Monitor
 FullScreenScreenShot=Shift+Print,Shift+Print,Capture Entire Desktop
 OpenWithoutScreenshot=none,none,Launch Spectacle without capturing
-RectangularRegionScreenShot=Meta+Shift+Print\tAlt+Shift+S,Meta+Shift+Print,Capture Rectangular Region
+RectangularRegionScreenShot=Meta+Shift+S,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
-_launch=Print,Print,Launch Spectacle
+_launch=none,Print,Launch Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
