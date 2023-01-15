@@ -1,0 +1,18 @@
+---
+
+- name: microsoft apt signing key
+  apt_key:
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+
+- name: teams repo
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
+    state: present
+    filename: microsoft-teams-release
+
+- name: install teams
+  apt:
+    name: teams
+    state: latest
+    update_cache: true

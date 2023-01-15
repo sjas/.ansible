@@ -7,3 +7,7 @@
 - name: signal
   include: 0x02_signal.yml
   tags: messengers,signal
+
+- name: teams
+  include: 0x03_teams.yml
+  tags: messengers,teams
