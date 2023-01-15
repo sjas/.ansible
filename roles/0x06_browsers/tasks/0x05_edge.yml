@@ -1,0 +1,22 @@
+---
+
+- name: edge keyring file
+  get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: "/usr/share/keyrings/microsoft-edge-archive-keyring.gpg"
+    mode: "0644"
+
+- name: edge repo
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/microsoft-edge-archive-keyring.gpg arch=amd64] https://packages.microsoft.com/repos/edge stable main
+    filename: microsoft-edge-browser-release
+
+- name: Update apt cache
+  apt:
+    update_cache: true
+
+- name: brave package
+  apt:
+    name: microsoft-edge-stable
+    cache_valid_time: 7200
+

@@ -15,3 +15,7 @@
 - name: brave
   include: 0x04_brave.yml
   tags: browsers,brave
+
+- name: microsoft edge
+  include: 0x05_edge.yml
+  tags: browsers,edge
