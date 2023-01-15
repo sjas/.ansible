@@ -313,5 +313,6 @@
   copy:
     src: "{{ item }}"
     dest: /home/sjas/.config
+    mode: 0644
   with_items:
     - plasma-localerc
