@@ -220,6 +220,30 @@
     option: CommandTitlebarWheel
     value: Change Opacity
 
+- name: alt+mouse3 minimizes
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: MouseBindings
+    option: CommandAll2
+    value: Minimize
+
+- name: alt+mouse3 minimizes
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: MouseBindings
+    option: CommandAll3
+    value: Move
+
 # #cant fix this because khotkeysrc is replaced globally
 # - name: open files by doubleclick yes really
 #   become: true
