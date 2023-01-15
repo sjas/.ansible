@@ -15,6 +15,7 @@
     name:
       - apt-file
       - apt-rdepends
+      - apt-transport-https
       - arp-scan
       - at
       - atop
