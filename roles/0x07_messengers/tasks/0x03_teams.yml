@@ -16,3 +16,14 @@
     name: teams
     state: latest
     update_cache: true
+
+- name: teams mime type
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/mimeapps.list
+    create: no
+    no_extra_spaces: yes
+    section: Default Applications
+    option: x-scheme-handler/msteams
+    value: teams.desktop
+

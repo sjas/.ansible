@@ -32,6 +32,7 @@ _k_friendly_name=Custom Shortcuts Service
 {3987286b-b104-45c5-a882-60ba6cea4f5f}=Meta+V,none,firefox
 {3e33ff53-179e-44d4-b784-432c73f1c8dc}=Meta+T,none,uxterm
 {49cd0d36-54fe-42d0-827b-b4a53c2736c6}=Meta+A,none,telegram
+{674b4cd8-72b2-499a-ba0c-98b962c94d7d}=Meta+M,none,edge
 {82a7573f-89eb-44be-b65a-ceb7c996731d}=Meta+N,none,chromium
 {84096022-a191-490d-9ff6-26dacf063ae3}=Meta+U,none,teams
 {c1597ba8-0407-40ec-bda6-b93288395a4d}=Meta+I,none,controlpanel
@@ -208,11 +209,11 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,none,Media volume down
-mediavolumeup=none,none,Media volume up
+mediavolumedown=none,,Media volume down
+mediavolumeup=none,,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,none,Play media playback
+playmedia=none,,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
