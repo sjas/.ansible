@@ -65,7 +65,7 @@ se sts=4  "'softtabstop'
 se noet  "'noexpandtab' .. use tabs not spaces
 se sr  "'shiftround'
 se bs=indent,eol,start  "'backspace'
-se nolist  "'nolist'
+se list  "'nolist'
 se lcs=eol:$,tab:>\ ,space:•,multispace:•••+,trail:•,nbsp:~  "'listchars' .. space is 'c-k . M'
  ".. show trailing spaces properly
 match ErrorMsg '\s\+$'
