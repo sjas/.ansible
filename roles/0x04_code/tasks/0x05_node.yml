@@ -85,7 +85,7 @@
 
 - name: get path current nodejs for setcap'ing
   command: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
-#   shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
+  # shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
   register: nodejs_path
   changed_when: false
 
