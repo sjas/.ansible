@@ -4,13 +4,13 @@
   become: yes
   become_user: sjas
   get_url:
-      url: https://github.com/direnv/direnv/releases/download/v2.16.0/direnv.linux-amd64
-      dest: /home/sjas/.local/bin/direnv
+    url: https://github.com/direnv/direnv/releases/download/v2.16.0/direnv.linux-amd64
+    dest: /home/sjas/.local/bin/direnv
 
 - name: make direnv executable
   file:
-      path: /home/sjas/.local/bin/direnv
-      mode: 0744
+    path: /home/sjas/.local/bin/direnv
+    mode: 0744
 
 - name: direnv hook
   lineinfile:
