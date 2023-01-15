@@ -56,7 +56,7 @@ se fdn=3  "'foldnestmax'
 se nofen  "'nofoldenable'
 se fo+=j  "'formatoptions' .. remove comments when joining lines
 "linenumbers
-se nu  "'nonumbers'
+se nonu  "'nonumbers'
 se nornu  "'norelativenumbers'
 "shifts&&tabs
 se ts=4  "'tabsize'
@@ -65,7 +65,7 @@ se sts=4  "'softtabstop'
 se noet  "'noexpandtab' .. use tabs not spaces
 se sr  "'shiftround'
 se bs=indent,eol,start  "'backspace'
-se list  "'nolist'
+se nolist  "'nolist'
 se lcs=eol:$,tab:>\ ,space:•,multispace:•••+,trail:•,nbsp:~  "'listchars' .. space is 'c-k . M'
  ".. show trailing spaces properly
 match ErrorMsg '\s\+$'

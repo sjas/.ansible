@@ -1,6 +1,6 @@
 ".*"
-None,		Up,				Button4,			4	#fast scroll up
-None,		Down,			Button5,			4	#fast scroll down
+None,		Up,				Button4,			3	#fast scroll up
+None,		Down,			Button5,			3	#fast scroll down
 Control_L,	Up,				Control_L|Button4		#ctrl-scrollup still works
 Control_L,	Down,			Control_L|Button5		#ctrl-scrolldown still works
 Shift_L,	Up,				Shift_L|Button4			#shift-scrollup still works
@@ -12,6 +12,7 @@ Control_L,	Thumb2,			Return					#caps/ctrl-front_thumb are enter press
 Caps_Lock,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
 Control_L,	Thumb1,			Control_L|Alt_L|b		#caps/ctrl-rear_thumb opens clipboard
 Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
+Super_L,	Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
 
 
 
