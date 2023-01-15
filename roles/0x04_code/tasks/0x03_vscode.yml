@@ -161,7 +161,7 @@
   copy:
     src: keybindings.json
     dest: /home/sjas/.config/Code/User/
-	mode: 0644
+    mode: 0644
 
 - name: start vscode if it was stopped
   become: true
