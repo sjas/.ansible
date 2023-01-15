@@ -208,6 +208,18 @@
     option: SingleClick
     value: false
 
+- name: mousewheel on titlebar changes window opacity
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: MouseBindings
+    option: CommandTitlebarWheel
+    value: Change Opacity
+
 # #cant fix this because khotkeysrc is replaced globally
 # - name: open files by doubleclick yes really
 #   become: true
