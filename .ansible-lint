@@ -4,6 +4,5 @@ use_default_rules: true
 verbosity: 0
 skip_list:
   - dont_lint_this
-warn_list:
   - package-latest
   - no-jinja-when
