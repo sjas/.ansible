@@ -159,12 +159,12 @@ nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
 nnoremap <leader>ffs :se noro<cr>:w !sudo tee %<cr><cr><cr>Ll<cr>
 nnoremap <leader>fq :qa!<cr>
-nnoremap <leader>wq :wq<cr>
+nnoremap <leader>wq :wq!<cr>
+nnoremap <leader>fw :wq<cr>
 nnoremap <leader>bd :q<cr>
 nnoremap <leader>bp :N<cr>
 nnoremap <leader>bn :n<cr>
 nnoremap <leader>bN :vnew<cr>
-nnoremap <leader>fw :wq!<cr>
 nnoremap <leader>qq :qall!<cr>
 "vimrc editing
 nnoremap <leader>fed :sp $DOTFILES/roles/0x04_code/files/.vimrc<cr>
