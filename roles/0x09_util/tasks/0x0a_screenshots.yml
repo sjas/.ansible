@@ -147,3 +147,39 @@
     section: Save
     option: saveFilenameFormat
     value: spectacle_%Y%M%D_%H%m%S
+
+- name: spectacle noshowbadges
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/plasmanotifyrc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: Applications][org.kde.spectacle
+    option: ShowBadges
+    value: false
+
+- name: spectacle noshowinhistory
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/plasmanotifyrc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: Applications][org.kde.spectacle
+    option: ShowInHistory
+    value: false
+
+- name: spectacle noshowpopups
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/plasmanotifyrc
+    create: true
+    mode: 0644
+    no_extra_spaces: true
+    section: Applications][org.kde.spectacle
+    option: ShowPopups
+    value: false
