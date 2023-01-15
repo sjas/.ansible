@@ -21,6 +21,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Mouse
     option: XLbInptPointerAcceleration
@@ -32,6 +33,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Mouse
     option: XLbInptAccelProfileFlat
@@ -43,6 +45,7 @@
   ini_file:
     path: /home/sjas/.config/kcminputrc
     create: true
+    mode: 0644
     no_extra_spaces: true
     section: Mouse
     option: X11LibInputXAccelProfileFlat

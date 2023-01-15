@@ -26,6 +26,7 @@
   file:
     path: "/home/sjas/.nvm"
     state: directory
+	mode: 0644
 
 - name: nvm
   block:

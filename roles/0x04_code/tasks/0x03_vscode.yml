@@ -153,6 +153,7 @@
   copy:
     src: settings.json
     dest: /home/sjas/.config/Code/User/settings.json
+	mode: 0644
 
 - name: set vscode keybindings for code navigation
   become: true
@@ -160,6 +161,7 @@
   copy:
     src: keybindings.json
     dest: /home/sjas/.config/Code/User/
+	mode: 0644
 
 - name: start vscode if it was stopped
   become: true

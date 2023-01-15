@@ -56,7 +56,7 @@ se fdn=3  "'foldnestmax'
 se nofen  "'nofoldenable'
 se fo+=j  "'formatoptions' .. remove comments when joining lines
 "linenumbers
-se nonu  "'nonumbers'
+se nu  "'nonumbers'
 se nornu  "'norelativenumbers'
 "shifts&&tabs
 se ts=4  "'tabsize'
