@@ -44,7 +44,7 @@
   include: 0x0b_simplecurses.yml
   tags: util
 
-#0x0c free
+# 0x0c free
 
 - name: jp JSON query tool
   include: 0x0d_jp.yml
