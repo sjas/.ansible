@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+#usage:
+#mmwatch ifconfig
+
 import sys
 import time
 import subprocess
