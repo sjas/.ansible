@@ -4,7 +4,7 @@
   hosts: all
   remote_user: sjas
   become: yes
-  gather_facts: false
+  gather_facts: False
 
   roles:
     - 0x01_common
