@@ -8,4 +8,4 @@
     no_extra_spaces: true
     section: systemsettings_sidebar_mode
     option: HighlightNonDefaultSettings
-    value: True
+    value: true
