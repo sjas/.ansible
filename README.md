@@ -17,6 +17,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     mkdir -p ~/.ssh/controlmasters
 
 ### setup ansible itself
+    sudo apt update
     sudo apt install software-properties-common -y
     sudo apt-add-repository ppa:ansible/ansible -y
     sudo apt update
