@@ -9,7 +9,9 @@
 
 - name: brave repo
   apt_repository:
-    repo: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+    repo: >
+      deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64]
+      https://brave-browser-apt-release.s3.brave.com/ stable main
     filename: brave-browser-release
 
 - name: update apt cache

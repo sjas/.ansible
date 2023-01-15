@@ -9,4 +9,3 @@
     state: restarted
   listen: imwheel_restart
   changed_when: false
-
