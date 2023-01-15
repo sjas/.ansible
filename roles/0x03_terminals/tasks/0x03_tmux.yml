@@ -6,3 +6,4 @@
   copy:
     src: .tmux.conf
     dest: /home/sjas/
+    mode: 0644

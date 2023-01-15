@@ -11,6 +11,7 @@
   file:
     dest: /home/sjas/.config/terminator/
     state: directory
+    mode: 0644
 
 - name: terminator config
   become: true
@@ -18,6 +19,7 @@
   copy:
     src: config
     dest: /home/sjas/.config/terminator/
+    mode: 0644
 
 - name: ensure terminator ensure plugin folder exists
   become: true
@@ -25,6 +27,7 @@
   file:
     dest: /home/sjas/.config/terminator/plugins/
     state: directory
+    mode: 0644
 
 # # - name: install missing packages for plugins
 # #   apt:
