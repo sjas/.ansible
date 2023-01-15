@@ -27,6 +27,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 _k_friendly_name=Custom Shortcuts Service
 {06873440-19d1-489c-8306-ece90fa8ee07}=Meta+S,none,signal
 {08dc3c8d-5691-4a9e-919c-0817906513a0}=Meta+R,none,terminator
+{291e0dd9-af7f-4446-8189-c4e29f0182e8}=Meta+B,none,brave
 {2a3399bd-2b65-4ef4-8851-ffc80fb29730}=Meta+E,none,dolphin: dl
 {385a7d03-023c-408b-8ac4-c8f8450a507d}=Meta+K,none,keepassxc
 {3987286b-b104-45c5-a882-60ba6cea4f5f}=Meta+V,none,firefox
@@ -210,11 +211,11 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,none,Media volume down
-mediavolumeup=none,none,Media volume up
+mediavolumedown=none,,Media volume down
+mediavolumeup=none,,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,none,Play media playback
+playmedia=none,,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
