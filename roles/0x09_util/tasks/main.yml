@@ -24,10 +24,10 @@
   include: 0x06_scc.yml
   tags: util
 
-# - name: bat
-#   include: 0x07_bat.yml
-#   tags: util
-#
+- name: bat sucks to install
+  include: 0x07_bat.yml
+  tags: util,bat
+
 # - name: CF mm tools
 #   include: 0x08_mm.yml
 #   tags: util
@@ -53,3 +53,7 @@
 # - name: jsonfui json explorer
 #   include: 0x0e_jsonfui.yml
 #   tags: util
+
+- name: libvirt
+  include: 0x0f_libvirt.yml
+  tags: util,virt
