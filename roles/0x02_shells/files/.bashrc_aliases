@@ -356,6 +356,8 @@ alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
 alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
 
+alias findallunicodechars='find|xargs grep --color=auto -P -n "[^\x00-\x7F]" 2>/dev/null'
+
 alias rec='script -aq ~/term.log-$(date "+%Y%m%d-%H-%M")'
 rammed() {
     watch -n1 -d "ps aux | awk '{print \$6/1024\"M \" \$11}\' | sed 's/\.[[:digit:]]\+M/M/' | sort -rhk1,1 | head -25 | column -t"
