@@ -1,0 +1,6 @@
+---
+
+- name: authy via snap
+  snap:
+    name: authy
+    channel: latest/stable

@@ -44,7 +44,9 @@
   include: 0x0b_simplecurses.yml
   tags: util
 
-# 0x0c free
+- name: authy
+  include: 0x0c_authy.yml
+  tags: util,authy,snaps
 
 - name: jp JSON query tool
   include: 0x0d_jp.yml
