@@ -43,3 +43,7 @@
 - name: pipewire
   include: 0x0b_pipewire.yml
   tags: common,pipewire
+
+- name: baloo
+  include: 0x0c_baloo.yml
+  tags: common,baloo

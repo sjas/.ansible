@@ -1,0 +1,24 @@
+---
+
+- name: check if baloo is disabled
+  shell: balooctl status | grep 'Baloo is currently disabled. To enable, please run balooctl enable'
+  register: exitcode_baloo_check
+  ignore_errors: true
+  changed_when: false
+
+- name: disable baloo
+  shell: balooctl disable
+  when: exitcode_baloo_check.rc == 0
+
+- name: delete baloo index
+  shell: balooctl purge
+  when: exitcode_baloo_check.rc == 0
+
+- name: dont let baloo do contentindexing
+  shell: balooctl config set contentIndexing no
+  when: exitcode_baloo_check.rc == 0
+
+- name: kill baloo processes if existing
+  shell: pkill baloorunner
+  when: exitcode_baloo_check.rc == 0
+  changed_when: false
