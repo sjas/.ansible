@@ -9,6 +9,7 @@
 ## HISTORY
 ## $EDITOR,$PAGER,LESS(1)
 ## $PATH,NODEJS,GOLANG,JAVA,RUSTLANG,$PATH
+## SCRAPYARD
 
 
 
@@ -175,3 +176,20 @@ do
 done
 
 export PATH
+
+
+
+
+
+## SCRAPYARD ################################################################################################
+#if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#        eval `ssh-agent`
+#        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+#fi
+#export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+#ssh-add -l > /dev/null || ssh-add
+#
+#function sshdiff() {
+#        colordiff <(ssh $1 cat $3) <(ssh $2 cat $3)
+#}
+#
