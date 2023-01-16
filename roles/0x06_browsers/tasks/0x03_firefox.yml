@@ -1,29 +1,9 @@
 ---
 
 - name: get firefox profile folder path
-  shell: ls /home/sjas/.mozilla/firefox/*default* -d
+  shell: ls /home/sjas/.mozilla/firefox/*default-release -d
   register: ff_path
   changed_when: false
-
-- name: ensure firefox 'lwtheme' folder exists for theme
-  become: true
-  become_user: sjas
-  file:
-    path: "{{ ff_path.stdout }}/lwtheme"
-    state: directory
-    mode: 0775
-- name: deploy tron theme files
-  become: true
-  become_user: sjas
-  copy:
-    src: "{{ item }}"
-    dest: "{{ ff_path.stdout }}/lwtheme"
-    mode: 0664
-  with_items:
-    - lightweighttheme-footer-1280x1024
-    - lightweighttheme-footer-1920x1080
-    - lightweighttheme-header-1280x1024
-    - lightweighttheme-header-1920x1080
 
 - name: deploy firefox base settings
   become: true

@@ -10,7 +10,7 @@
 
 - name: firefox
   include: 0x03_firefox.yml
-  tags: browsers,firefox
+  tags: browsers,firefox,ff
 
 - name: brave
   include: 0x04_brave.yml
