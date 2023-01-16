@@ -61,5 +61,6 @@
     "workbench.colorTheme": "Gotham",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "editor.guides.indentation": true
+    "editor.guides.indentation": true,
+    "redhat.telemetry.enabled": false
 }

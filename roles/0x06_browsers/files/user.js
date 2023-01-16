@@ -18,6 +18,14 @@ user_pref("browser.tabs.inTitlebar", '1');
 widget.non-native-theme.win.scrollbar.use-system-size false
 widget.non-native-theme.scrollbar.size.override 25
 
+user_pref("browser.aboutConfig.showWarning", false);
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.messaging-system.whatsNewPanel.enabled", false);
+user_pref("browser.laterrun.enabled", false);
+user_pref("browser.library.activity-stream.enabled", false);
+user_pref("browser.discovery.enabled", false);
+user_pref("toolkit.telemetry.eventping.minimumFrequency", 6000);
+user_pref("toolkit.telemetry.eventping.maximumFrequency", 6001);
 
 
 
@@ -28,6 +36,62 @@ widget.non-native-theme.scrollbar.size.override 25
 //user_pref("lightweightThemes.selectedThemeID", "265427");
 //user_pref("lightweightThemes.usedThemes", "[{\"id\":\"265427\",\"name\":\"Tron Legacy Beau Garrett\",\"headerURL\":\"https://addons.cdn.mozilla.net/user-media/addons/265427/h_tron1.jpg?modified=060a68f9\",\"footerURL\":\"https://addons.cdn.mozilla.net/user-media/addons/265427/f_tron1.jpg?modified=060a68f9\",\"textcolor\":\"#bdebfc\",\"accentcolor\":\"#0c1c2b\",\"iconURL\":\"https://addons.cdn.mozilla.net/user-media/addons/265427/preview_small.jpg?modified=060a68f9\",\"previewURL\":\"https://addons.cdn.mozilla.net/user-media/addons/265427/preview_large.jpg?modified=060a68f9\",\"author\":\"EatingStick\",\"description\":\"Beau Garrett in TRON Legacy. Movie, Disney, blue, black, pretty, sexy\",\"updateURL\":\"https://versioncheck.addons.mozilla.org/en-US/themes/update-check/265427\",\"version\":\"1.0\",\"updateDate\":1538861699460,\"installDate\":1538861699460}]");
 
+
+// RIP Chromium Wheel Smooth Scroller
+
+// https://www.reddit.com/r/firefox/comments/lev5wy/natural_smooth_scrolling/
+// https://github.com/AveYo/fox/blob/main/Natural%20Smooth%20Scrolling%20for%20user.js
+///  NATURAL SMOOTH SCROLLING V4 "SHARP" - AveYo, 2020-2022             preset     [default]
+///  copy into firefox/librewolf profile as user.js, add to existing, or set in about:config
+user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS",   12);//NSS    [120]
+user_pref("general.smoothScroll.msdPhysics.enabled",                    true);//NSS  [false]
+user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant",   200);//NSS   [1250]
+user_pref("general.smoothScroll.msdPhysics.regularSpringConstant",       250);//NSS   [1000]
+user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaMS",           25);//NSS     [12]
+user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio",     "2.0");//NSS    [1.3]
+user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant",      250);//NSS   [2000]
+user_pref("general.smoothScroll.currentVelocityWeighting",             "1.0");//NSS ["0.25"]
+user_pref("general.smoothScroll.stopDecelerationWeighting",            "1.0");//NSS  ["0.4"]
+
+/// adjust multiply factor for mousewheel - or set to false if scrolling is way too fast  
+user_pref("mousewheel.system_scroll_override.horizontal.factor",         200);//NSS    [200]
+user_pref("mousewheel.system_scroll_override.vertical.factor",           200);//NSS    [200]
+user_pref("mousewheel.system_scroll_override_on_root_content.enabled",  true);//NSS   [true]
+user_pref("mousewheel.system_scroll_override.enabled",                  true);//NSS   [true]
+
+/// adjust pixels at a time count for mousewheel - cant do more than a page at once if <100
+user_pref("mousewheel.default.delta_multiplier_x",                       100);//NSS    [100]
+user_pref("mousewheel.default.delta_multiplier_y",                       100);//NSS    [100]
+user_pref("mousewheel.default.delta_multiplier_z",                       100);//NSS    [100]
+
+///  this preset will reset couple extra variables for consistency
+user_pref("apz.allow_zooming",                                          true);//NSS   [true]
+user_pref("apz.force_disable_desktop_zooming_scrollbars",              false);//NSS  [false]
+user_pref("apz.paint_skipping.enabled",                                 true);//NSS   [true]
+user_pref("apz.windows.use_direct_manipulation",                        true);//NSS   [true]
+user_pref("dom.event.wheel-deltaMode-lines.always-disabled",           false);//NSS  [false]
+user_pref("general.smoothScroll.durationToIntervalRatio",                200);//NSS    [200]
+user_pref("general.smoothScroll.lines.durationMaxMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.lines.durationMinMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.other.durationMaxMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.other.durationMinMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.pages.durationMaxMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.pages.durationMinMS",                    150);//NSS    [150]
+user_pref("general.smoothScroll.pixels.durationMaxMS",                   150);//NSS    [150]
+user_pref("general.smoothScroll.pixels.durationMinMS",                   150);//NSS    [150]
+user_pref("general.smoothScroll.scrollbars.durationMaxMS",               150);//NSS    [150]
+user_pref("general.smoothScroll.scrollbars.durationMinMS",               150);//NSS    [150]
+user_pref("general.smoothScroll.mouseWheel.durationMaxMS",               200);//NSS    [200]
+user_pref("general.smoothScroll.mouseWheel.durationMinMS",                50);//NSS     [50]
+user_pref("layers.async-pan-zoom.enabled",                              true);//NSS   [true]
+user_pref("layout.css.scroll-behavior.spring-constant",                "250");//NSS    [250]
+user_pref("mousewheel.transaction.timeout",                             1500);//NSS   [1500]
+user_pref("mousewheel.acceleration.factor",                               10);//NSS     [10]
+user_pref("mousewheel.acceleration.start",                                -1);//NSS     [-1]
+user_pref("mousewheel.min_line_scroll_amount",                             5);//NSS      [5]
+user_pref("toolkit.scrollbox.horizontalScrollDistance",                    5);//NSS      [5]
+user_pref("toolkit.scrollbox.verticalScrollDistance",                      3);//NSS      [3]
+///
 
 
 
