@@ -17,5 +17,5 @@
 - name: fuck off, swapspace
   sysctl:
     name: vm.swappiness
-    value: "0"
+    value: "1"
   changed_when: false
