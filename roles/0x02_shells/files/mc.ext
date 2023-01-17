@@ -837,7 +837,7 @@ include/video
 
 
 ### Default ###
-regex/\.(.*)$
+regex/(.*)$
 	Open=%var{EDITOR:editor} %f
 
 # Default target for anything not described above
