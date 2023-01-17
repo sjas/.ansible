@@ -4,7 +4,7 @@
 // start with previous tabs
 user_pref("browser.startup.page", 3);
 // proper scrollspeed
-user_pref("mousewheel.default.delta_multiplier_y", 280);
+user_pref("mousewheel.default.delta_multiplier_y", 225);
 // disable disk caching
 //user_pref("browser.cache.disk.parent_directory", '/dev/null');
 user_pref("browser.cache.disk.enable", 'false');
@@ -61,7 +61,7 @@ user_pref("mousewheel.system_scroll_override.enabled",                  true);//
 
 /// adjust pixels at a time count for mousewheel - cant do more than a page at once if <100
 user_pref("mousewheel.default.delta_multiplier_x",                       100);//NSS    [100]
-user_pref("mousewheel.default.delta_multiplier_y",                       100);//NSS    [100]
+//user_pref("mousewheel.default.delta_multiplier_y",                       100);//NSS    [100] // set on top of file
 user_pref("mousewheel.default.delta_multiplier_z",                       100);//NSS    [100]
 
 ///  this preset will reset couple extra variables for consistency
@@ -232,7 +232,8 @@ user_pref("experiments.enabled", false);
 user_pref("experiments.manifest.uri", "");
 user_pref("experiments.supported", false);
 user_pref("extensions.CanvasBlocker@kkapsner.de.whiteList", "");
-user_pref("extensions.autoDisableScopes", 14);
+user_pref("extensions.autoDisableScopes", 0);
+user_pref("extensions.enabledScopes", 15);
 user_pref("extensions.getAddons.cache.enabled", false);
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.greasemonkey.stats.optedin", false);
@@ -241,7 +242,7 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.shield-recipe-client.api_url", "");
 user_pref("extensions.shield-recipe-client.enabled", false);
 user_pref("extensions.webservice.discoverURL", "");
-user_pref("keyword.enabled", false);
+user_pref("keyword.enabled", true);
 user_pref("media.autoplay.default", 1);
 user_pref("media.autoplay.enabled", false);
 user_pref("media.navigator.enabled", false);
