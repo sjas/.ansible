@@ -153,6 +153,7 @@ alias poweroff="sudo poweroff"
 alias updatedb="sudo updatedb"
 alias locate="sudo locate"
 
+alias ee="dolphin ."
 alias eer="sudo pcmanfm ."  ## dolphin wont let you sudo
 
 alias htop="sudo htop -d2"
@@ -445,7 +446,6 @@ bpf_h() {
 }
 alias bpf=bpf_h
 
-alias ee="dolphin ."
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias pipestatus='echo ${PIPESTATUS[@]}'
 
