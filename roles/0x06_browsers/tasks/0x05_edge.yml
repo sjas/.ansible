@@ -9,7 +9,7 @@
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main
     state: present
-    filename: microsoft-edge-browser-release
+    filename: edge
 
 - name: Install microsoft-edge-stable
   apt:
