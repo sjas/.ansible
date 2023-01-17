@@ -8,15 +8,16 @@ user_pref("mousewheel.default.delta_multiplier_y", 225);
 // disable disk caching
 //user_pref("browser.cache.disk.parent_directory", '/dev/null');
 user_pref("browser.cache.disk.enable", 'false');
-user_pref("browser.cache.disk.parent_directory", '1048576');  //in KB
+//user_pref("browser.cache.disk.parent_directory", '1048576');  //in KB
+user_pref("browser.cache.disk.parent_directory", '5242880');  //in KB
 user_pref("browser.cache.disk.smart_size.enabled", 'false');
 // scroll tabs by mousewheel
 user_pref("toolkit.tabbox.switchByScrolling", 'false');
 // no titlebar
 user_pref("browser.tabs.inTitlebar", '1');
 // scrollbar
-widget.non-native-theme.win.scrollbar.use-system-size false
-widget.non-native-theme.scrollbar.size.override 25
+user_pref("widget.non-native-theme.win.scrollbar.use-system-size", false);
+user_pref("widget.non-native-theme.scrollbar.size.override",  '25');
 
 user_pref("browser.aboutConfig.showWarning", false);
 user_pref("extensions.pocket.enabled", false);
