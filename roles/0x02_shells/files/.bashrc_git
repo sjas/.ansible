@@ -63,7 +63,7 @@ githelp() {
 }
 alias gh=githelp										## gh git_command = open manpage for it
 
-alias gii="git init"									 ## initialize local git repo
+alias gii="git init;git add .;git commit -m init"		 ## initialize local git repo
 alias gcl="git clone -v --progress --recursive"		 ## clone
 
 alias ga="git add"									  ## regular add
