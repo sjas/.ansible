@@ -65,6 +65,8 @@
     - { key: "application/x-extension-xht",   value: "firefox.desktop" }
 
 ## extensions here we come ##################################################################################
+# get the id's via:
+# about:config -> extensions.webextensions.uuids
 - name: ff download and install extensions
   become: true
   become_user: sjas
