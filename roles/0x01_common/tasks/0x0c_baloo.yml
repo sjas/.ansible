@@ -8,17 +8,20 @@
 
 - name: disable baloo
   shell: balooctl disable
-  when: exitcode_baloo_check.rc == 0
+  changed_when: false
 
 - name: delete baloo index
   shell: balooctl purge
-  when: exitcode_baloo_check.rc == 0
+  when: exitcode_baloo_check.rc != 0
+  changed_when: false
 
 - name: dont let baloo do contentindexing
   shell: balooctl config set contentIndexing no
-  when: exitcode_baloo_check.rc == 0
+  when: exitcode_baloo_check.rc != 0
+  changed_when: false
 
 - name: kill baloo processes if existing
-  shell: pkill baloorunner
-  when: exitcode_baloo_check.rc == 0
+  shell: pkill -kill baloorunner;pkill -kill baloo_file
+  when: exitcode_baloo_check.rc != 0
+  ignore_errors: true
   changed_when: false
