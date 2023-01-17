@@ -1,5 +1,81 @@
 ---
 
+# TERMINALS
+# terminator
+#   start terminator fullscreen
+#   r
+#   terminator -m
+# uxterm
+#   start a faster terminal with a specified size
+#   t
+#   uxterm -sl 100000 +cm -cn -j -rw -s +samename -u8 -geometry 100x42 -fn "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1"
+#
+# dolphin: dl
+#   dolphin in /home/sjas/dl
+#   e
+#   dolphin /home/sjas/dl
+#
+# controlpanel
+#   controlpanel
+#   i
+#   systemsettings
+#
+# BROWSERS
+# firefox
+#   firefox
+#   v
+#   firefox
+# chrome
+#   chrome
+#   c
+#   google-chrome-stable %U
+# chromium
+#   chromium
+#   n
+#   chromium-browser %U
+# edge
+#   edge
+#   m
+#   microsoft-edge-stable
+# brave
+#   brave
+#   b
+#   brave-browser-stable
+#
+# thunderbird
+#   open thunderbird
+#   f
+#   thunderbird
+#
+# vscode
+#   vscode
+#   x
+#   code
+#
+# MESSENGERS
+# telegram
+#   telegram
+#   a
+#   telegram-desktop
+# signal
+#   signal
+#   s
+#   signal-desktop
+# teams
+#   teams
+#   u
+#   teams %U
+#
+# keepassxc
+#   keepassxc
+#   k
+#   keepassxc
+#
+# shutter
+#   shutter
+#   print
+#   shutter -s
+
 - name: deploy shortcut actions
   become: true
   become_user: sjas
