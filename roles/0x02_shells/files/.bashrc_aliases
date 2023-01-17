@@ -43,6 +43,7 @@ alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.ba
 # c  = vscode
 # ce = vscode extensions
 # k  = keyboard+mouse
+# aa = ansible config
 # shellcheck disable=SC2139
 alias   ebv="vim ${DOTFILES}/roles/0x04_code/files/.vimrc"
 # shellcheck disable=SC2139
@@ -67,6 +68,8 @@ alias   ebk="vim ${DOTFILES}/roles/0x05_kde/tasks/0x02_mouse-keyboard.yml;rea -t
 alias  ebki="vim ${DOTFILES}/roles/0x05_kde/files/.imwheelrc;rea -t mouse"
 # shellcheck disable=SC2139
 alias   ebf="vim ${DOTFILES}/roles/0x06_browsers/files/user.js"
+# shellcheck disable=SC2139
+alias  ebaa="vim /home/sjas/.ansible.cfg"
 
 
 
