@@ -8,9 +8,13 @@
 # left, right and wheel in the middle.
 # If you have a mouse with complications or special needs,
 # use the command xev to find what your wheel does.
-#
-### see if imwheel config exists, if not create it ###
-if [ ! -f ~/.imwheelrc ]
+
+
+
+
+
+## see if imwheel config exists, if not create it ########
+if ! [[ -f ~/.imwheelrc ]]
 then
 
 cat >~/.imwheelrc<<EOF
@@ -26,16 +30,20 @@ EOF
 fi
 ##########################################################
 
-CURRENT_VALUE=$(awk -F 'Button4,' '{print $2}' ~/.imwheelrc)
 
-NEW_VALUE=$(zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step 1)
 
-if [ "$NEW_VALUE" == "" ];
-then exit 0
-fi
 
-sed -i "s/\($TARGET_KEY *Button4, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button4, and write new value.
-sed -i "s/\($TARGET_KEY *Button5, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button5, and write new value.
+
+CURRENT_VALUE=$(awk -F 'Button4,' '{print $2}' ~/.imwheelrc|awk '{print $1}')
+
+NEW_VALUE=$(zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step=1)
+
+[[ "$NEW_VALUE" == "" ]]&&exit 0
+
+# this will eat your EOL comments if you had some
+sed -i "s/\(.*Button4, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button4, and write new value.
+sed -i "s/\(.*Button5, *\).*/\1$NEW_VALUE/" ~/.imwheelrc # find the string Button5, and write new value.
+
 
 cat ~/.imwheelrc
 imwheel -kill
