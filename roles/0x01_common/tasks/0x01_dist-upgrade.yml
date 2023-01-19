@@ -4,3 +4,7 @@
   apt:
     upgrade: dist
     cache_valid_time: 7200
+
+- name: enable multiarch
+  command: dpkg --add-architecture i386
+  tags: asdf
