@@ -9,12 +9,13 @@ user_pref("mousewheel.default.delta_multiplier_y", 225);
 //user_pref("browser.cache.disk.parent_directory", '/dev/null');
 user_pref("browser.cache.disk.enable", 'false');
 //user_pref("browser.cache.disk.parent_directory", '1048576');  //in KB
-user_pref("browser.cache.disk.parent_directory", '5242880');  //in KB
+user_pref("browser.cache.disk.parent_directory", '10485760');  //in KB
 user_pref("browser.cache.disk.smart_size.enabled", 'false');
-// scroll tabs by mousewheel
+// scroll tabs by mousewheel - not
 user_pref("toolkit.tabbox.switchByScrolling", 'false');
 // no titlebar
 user_pref("browser.tabs.inTitlebar", '1');
+user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 // scrollbar
 user_pref("widget.non-native-theme.win.scrollbar.use-system-size", false);
 user_pref("widget.non-native-theme.scrollbar.size.override",  '25');
@@ -27,6 +28,7 @@ user_pref("browser.library.activity-stream.enabled", false);
 user_pref("browser.discovery.enabled", false);
 user_pref("toolkit.telemetry.eventping.minimumFrequency", 6000);
 user_pref("toolkit.telemetry.eventping.maximumFrequency", 6001);
+user_pref('xpinstall.signatures.required', 'false');
 
 
 
@@ -116,7 +118,6 @@ user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 user_pref("dom.webnotifications.serviceworker.enabled", false);
 user_pref("dom.webnotifications.enabled", false);
 
-user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 
 // https://github.com/pyllyukko/user.js
 // PREF: Disable Service Workers
