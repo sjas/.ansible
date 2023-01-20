@@ -158,6 +158,7 @@
       - sngrep
       - snmp
       - snmp-mibs-downloader
+      - sqlite3
       - source-highlight
       - stow
       - strace
