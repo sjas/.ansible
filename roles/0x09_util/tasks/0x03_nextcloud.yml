@@ -3,7 +3,6 @@
 - name: nextcloud desktop client via snap
   snap:
     name: nextcloud-desktop-client
-    channel: latest/stable
 
 - name: nextcloud data folders
   become: true

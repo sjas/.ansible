@@ -9,7 +9,7 @@
   tags: util
 
 - name: nextcloud snap
-  include: 0x03_nextcloud_desktop_client.yml
+  include: 0x03_nextcloud.yml
   tags: util,nextcloud,snaps
 
 - name: direnv

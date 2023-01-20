@@ -4,4 +4,3 @@
 - name: telegram
   snap:
     name: telegram-desktop
-    channel: latest/stable
