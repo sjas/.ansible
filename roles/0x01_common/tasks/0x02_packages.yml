@@ -131,6 +131,7 @@
       - pcmanfm
       - percol
       - percona-toolkit
+      - pgpdump
       - puppet-lint
       - pv
       - pwgen
