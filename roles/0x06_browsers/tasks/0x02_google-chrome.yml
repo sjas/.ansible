@@ -3,6 +3,7 @@
 - name: google apt-key
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
+    keyring: /etc/apt/trusted.gpg.d/google.gpg
 
 - name: google-chrome repo
   apt_repository:
