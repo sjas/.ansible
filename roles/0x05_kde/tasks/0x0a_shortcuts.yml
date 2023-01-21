@@ -55,7 +55,7 @@
 # MESSENGERS
 # telegram
 #   telegram
-#   a
+#   y
 #   telegram-desktop
 # signal
 #   signal
@@ -75,6 +75,10 @@
 #   shutter
 #   print
 #   shutter -s
+# authy
+#   authy
+#   a
+#   authy %U
 
 - name: deploy shortcut actions
   become: true
