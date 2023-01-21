@@ -37,7 +37,33 @@ fi
 
 
 ## PROMPT ###################################################################################################
-export PS1='$( i=$?;if [[ $i -eq 0 ]];then echo \\\[\e[38\;5\;76\;1m\\\]$i; else echo \\\[\e[38\;5\;196\;1m\\\]$i; fi )\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(if git status 2>/dev/null|grep -q "nothing to commit";then echo \ \\\[\e[48\;5\;34\;37\;1m\\\];else if git status 2>/dev/null|grep -qi -e"^Changes not staged for commit" -e"^Untracked files:";then echo \ \\\[\e[48\;5\;196\;37\;1m\\\];else if git status 2>/dev/null|grep -q "to be committed";then echo \ \\\[\e[46\;37\;1m\\\];else echo \\\[\e[45\;37\;1m\\\];fi;fi;fi)$(__git_ps1|cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
+# - https://stackoverflow.com/questions/21358613/how-can-i-make-my-terminal-prompt-extend-the-width-of-the-terminal
+# shellcheck disable=SC2154
+# if "nothing to commit" -> 48 5 34 37 1
+# else if "to be committed" AND ("Changes not staged" or "Untracked files") -> 45 37 1
+# else if "Changes not staged" or "Untracked files" -> 48 5 196 37 1
+# else if "to be committed" -> 46 37 1
+# else -> 43 37 1
+export PS1='$( i=$?;if [[ $i -eq 0 ]];then echo \\\[\e[38\;5\;76\;1m\\\]$i;else echo \\\[\e[38\;5\;196\;1m\\\]$i;fi )\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(_gitstatus=$(git status 2>/dev/null);
+if echo ${_gitstatus}|grep -q "nothing to commit";
+then
+	echo \ \\\[\e[48\;5\;34\;37\;1m\\\];
+else
+	if echo ${_gitstatus}|grep -qi -e"not staged" -e"Untracked"&&echo ${_gitstatus}|grep -q "to be committed";
+	then
+		echo \ \\\[\e[45\;37\;1m\\\];
+	elif echo ${_gitstatus}|grep -q "to be committed";
+	then
+		echo \ \\\[\e[46\;37\;1m\\\];
+	else
+		if echo ${_gitstatus}|grep -qi -e"not staged" -e"Untracked";
+		then
+			echo \ \\\[\e[48\;5\;196\;37\;1m\\\];
+		else
+			echo \\\[\e[43\;37\;1m\\\];
+		fi;
+	fi;
+fi)$(__git_ps1|cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
 
 #export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
 export PS0='command start: \t\n\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
@@ -85,7 +111,7 @@ shopt -s nullglob
 shopt -s progcomp
 shopt -s promptvars
 shopt -s shift_verbose
-shopt -u sourcepath  ## dont search PATH for `. FILE`! 
+shopt -u sourcepath  ## dont search PATH for `. FILE`!
 
 
 
@@ -150,7 +176,7 @@ export GOPATH="/home/sjas/go"  ## def.: "${HOME}/go"
 export GO111MODULE="on"
 #export GOGC=100  ## def.: 100: run garbage collector once the heap size doubles
 
-#   J A V A 
+#   J A V A
 #export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
 #export  J2SDKDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto
 #export   J2REDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre
