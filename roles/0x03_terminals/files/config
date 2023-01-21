@@ -9,7 +9,7 @@
   title_receive_fg_color = "#f6f5f4"
   title_inactive_fg_color = "#77767b"
   title_inactive_bg_color = "#444444"
-  inactive_color_offset = 0.7702702702702703
+  inactive_color_offset = 0.6756756756756757
   enabled_plugins = InactivityWatch, JumpUp, ActivityWatch, TerminalShot, Logger
   suppress_multiple_term_dialog = True
   title_use_system_font = False
@@ -36,7 +36,7 @@
   help = None
 [profiles]
   [[default]]
-    background_darkness = 0.7
+    background_darkness = 0.88
     background_type = transparent
     cursor_color = "#39ff35"
     cursor_color_fg = False
