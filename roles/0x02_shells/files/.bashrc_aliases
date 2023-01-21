@@ -160,8 +160,9 @@ alias htop="sudo htop -d2"
 alias iotop="sudo iotop"
 alias powertop="sudo powertop"
 
+alias apt="sudo apt"
 alias aptc="sudo apt clean; sudo apt autoremove"
-alias apts="sudo dpkg -l | grep"
+alias aptg="sudo dpkg -l | grep"
 
 alias bettercap="sudo bettercap"
 
@@ -348,7 +349,7 @@ the_missing_grep_but_recursive() {
 	grep -Hrin "$@"
 }
 alias gr=the_missing_grep_but_recursive
-alias rmf="sudo rm -rf"
+alias rf="sudo rm -rf"
 alias o="popd"
 alias p="pushd"
 alias v="vim"
