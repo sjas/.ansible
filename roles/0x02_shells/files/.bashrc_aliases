@@ -360,6 +360,24 @@ watchitallproper() {
 alias w="watchitallproper"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
 alias h="history"
+alias hgg="history|grep -i"
+
+backup() {
+	mv "$1" "$1".bu
+}
+alias bu=backup
+unbackup() {
+	mv "$1" "${1%%\.bu}"
+}
+alias unbu=unbackup
+aptfilesearchupdate() {
+	sudo apt-file update
+}
+alias afsu=aptfilesearchupdate
+aptfilesearch() {
+	apt-file search "$1"|grep /"$1"$
+}
+alias afs=aptfilesearch
 
 alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
