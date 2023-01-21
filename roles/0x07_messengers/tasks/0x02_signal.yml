@@ -3,6 +3,7 @@
 - name: whisper systems apt-key
   apt_key:
     url: https://updates.signal.org/desktop/apt/keys.asc
+    keyring: /etc/apt/trusted.gpg.d/signal.gpg
 
 - name: signal repo
   apt_repository:
