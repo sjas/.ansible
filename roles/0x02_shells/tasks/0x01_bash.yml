@@ -19,7 +19,7 @@
 - name: fortune
   lineinfile:
     path: /home/sjas/.bashrc
-    line: 'echo "$-" | grep -q i && fortune -o -s'
+    line: 'echo "$-"|grep -q i&&fortune -o -s'
 
 - name: reference .bashrc_includes if present
   lineinfile:
