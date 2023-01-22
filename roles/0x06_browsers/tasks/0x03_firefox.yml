@@ -64,7 +64,7 @@
     mode: 0644
 
 - name: ff get profile folder path
-  # shell: ls /home/sjas/.mozilla/firefox/*default-release -d
+  # shell: ls /home/sjas/.mozilla/firefox/*default-release -d  ##this is for the regular ff version not ff dev ed
   shell: ls /home/sjas/.mozilla/firefox/*.dev-edition-default -d
   register: ff_path
   changed_when: false
