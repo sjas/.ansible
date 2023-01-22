@@ -119,8 +119,9 @@ alias rph="repostatus ~"
 #log
 alias	 gl="git log --reverse --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
 alias   glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
-alias  glog="git log --oneline --graph --decorate=short -n 22"
-alias glogf="git log --oneline --graph --decorate=short"
+alias  glog="git log --oneline --graph --decorate=short -n 22"  ## graph
+alias glogf="git log --oneline --graph --decorate=short"  ## full graph
+alias   glp="git log -p --"  ## use with a filename to get full history of said file
 
 #show commits
 alias gsh="git show"										## param: commit-id, show changes
