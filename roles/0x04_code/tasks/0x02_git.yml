@@ -23,3 +23,4 @@
     - { key: 'diff.noprefix',                       value: 'true' }
     - { key: 'push.default',                        value: 'matching' }
     - { key: 'user.name',                           value: 'sjas' }
+    - { key: 'init.defaultBranch',                  value: 'main' }
