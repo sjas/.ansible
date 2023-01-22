@@ -153,7 +153,7 @@
     dest: "{{ ff_path.stdout }}/extensions/{{ item.value }}.xpi"
     mode: 0644
   with_items:
-    - { key: 'brandon1024-find',            value: '{6fa42eda-38ca-4126-96d5-3163f0de6900}' }
+    - { key: 'brandon1024-find',            value: '{6fa42eda-38ca-4126-96d5-3163f0de6900}' }   # {find+}
     - { key: 'keepassxc-browser',           value: 'keepassxc-browser@keepassxc.org' }
     - { key: 'ublock-origin',               value: 'uBlock0@raymondhill.net' }
     - { key: 'cookie-autodelete',           value: 'CookieAutoDelete@kennydo.com' }
