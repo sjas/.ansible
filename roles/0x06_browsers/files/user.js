@@ -31,6 +31,7 @@ user_pref("browser.aboutConfig.showWarning", false);
 //user_pref("toolkit.telemetry.eventping.minimumFrequency", 6000);
 //user_pref("toolkit.telemetry.eventping.maximumFrequency", 6001);
 user_pref("xpinstall.signatures.required", false);
+user_pref("extensions.ui.theme.hidden", false);
 
 // fuck pocket
 user_pref("extensions.pocket.enabled", false);
@@ -46,8 +47,10 @@ user_pref("browser.newtab.preload", false);
 user_pref("browser.newtabpage.enhanced", false);
 user_pref("browser.newtabpage.introShown", true);
 
-// do not track
+// privacy
 user_pref("privacy.donottrackheader.enabled", true);
+user_pref("privacy.purge_trackers.date_in_cookie_database", 0);
+
 
 // devtools
 user_pref("devtools.everOpened", true);
