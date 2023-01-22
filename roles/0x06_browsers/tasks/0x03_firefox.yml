@@ -134,6 +134,7 @@
 ## extensions here we come ##################################################################################
 # - https://wiringbits.net/browser-extensions/2020/11/27/installing-unsigned-extensions-permanently-to-firefox.html
 # - https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings
+# - https://stackoverflow.com/questions/37728865/install-webextensions-on-firefox-from-the-command-line
 
 - name: ensure ff extensions folder exists
   become: true
