@@ -246,7 +246,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_11Actions0]
-CommandURL=keepassxc
+CommandURL=xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc
 Type=COMMAND_URL
 
 [Data_11Conditions]
