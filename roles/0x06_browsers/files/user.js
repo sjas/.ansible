@@ -14,14 +14,15 @@ user_pref("mousewheel.default.delta_multiplier_y", 225);
 //user_pref("browser.cache.disk.parent_directory", '10485760');  //in KB
 //user_pref("browser.cache.disk.smart_size.enabled", 'false');
 // scroll tabs by mousewheel - not
-user_pref("toolkit.tabbox.switchByScrolling", 'false');
+user_pref("toolkit.tabbox.switchByScrolling", false);
 // no titlebar
-user_pref("browser.tabs.inTitlebar", '1');
+user_pref("browser.tabs.inTitlebar", 1);
 user_pref("browser.ctrlTab.recentlyUsedOrder", false);
 // scrollbar
 user_pref("widget.gtk.overlay-scrollbars.enabled", false);  //always show scrollbars
 user_pref("widget.non-native-theme.win.scrollbar.use-system-size", false);
-user_pref("widget.non-native-theme.scrollbar.size.override",  '25');
+user_pref("widget.non-native-theme.scrollbar.size.override",  25);
+user_pref("extensions.activeThemeID", "{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}");
 
 user_pref("browser.aboutConfig.showWarning", false);
 //user_pref("browser.messaging-system.whatsNewPanel.enabled", false);
@@ -32,6 +33,7 @@ user_pref("browser.aboutConfig.showWarning", false);
 //user_pref("toolkit.telemetry.eventping.maximumFrequency", 6001);
 user_pref("xpinstall.signatures.required", false);
 user_pref("extensions.ui.theme.hidden", false);
+user_pref("browser.theme.toolbar-theme", 0);
 
 // fuck pocket
 user_pref("extensions.pocket.enabled", false);
@@ -50,6 +52,20 @@ user_pref("browser.newtabpage.introShown", true);
 // privacy
 user_pref("privacy.donottrackheader.enabled", true);
 user_pref("privacy.purge_trackers.date_in_cookie_database", 0);
+user_pref("privacy.userContext.enabled", true);
+user_pref("privacy.userContext.extension", "CookieAutoDelete@kennydo.com");
+user_pref("privacy.userContext.ui.enabled", true);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.http.speculative-parallel-limit", 0);
+user_pref("network.predictor.enabled", false);
+user_pref("network.prefetch-next", false);
+user_pref("accessibility.typeaheadfind.flashBar", 0);
+
+
+// themes&&extensions
+user_pref("extensions.activeThemeID", "{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}");
+user_pref("extensions.webextensions.uuids", "{\"formautofill@mozilla.org\":\"2ae7cd06-9cb1-4b4c-8194-f936b3851eab\",\"pictureinpicture@mozilla.org\":\"f619d2df-e1a0-44b8-895a-538507214a65\",\"screenshots@mozilla.org\":\"badfc350-8100-4273-82a9-a3ac6a3b8e86\",\"webcompat-reporter@mozilla.org\":\"46893d33-3cf9-485e-845e-b8f0de0d47c5\",\"webcompat@mozilla.org\":\"84975e9e-7b25-4942-8396-645ebd444fab\",\"addons-search-detection@mozilla.com\":\"def7fcff-4fe0-4c79-8ec2-0f4fbac1e55b\",\"firefox-compact-dark@mozilla.org\":\"bf150616-5d7c-463a-a67b-edf41089cce5\",\"google@search.mozilla.org\":\"f69da3d9-dbf5-4314-aef9-6e50d99d1765\",\"leo_ende_de@search.mozilla.org\":\"d25997df-ac8b-4c76-a90b-61bd575a6cdc\",\"ecosia@search.mozilla.org\":\"919cd3c0-0266-4c9a-b821-255daf67a453\",\"wikipedia@search.mozilla.org\":\"21d6f630-a5c1-408a-b4f9-76383c580f3e\",\"bing@search.mozilla.org\":\"f9749061-45a3-4599-8801-a9a65f8deac8\",\"ddg@search.mozilla.org\":\"808b39ef-23b6-4a07-b4f6-915074521425\",\"ebay@search.mozilla.org\":\"c8b8c719-ce22-46c1-8a43-0b90c5b09d3f\",\"amazon@search.mozilla.org\":\"628034a2-5f1c-4b80-b11d-54e863b4388f\",\"{a0da06f4-9f95-41f1-9e42-eb189dc8c758}\":\"bfb75665-d3a8-4da6-800a-499ec145c6cb\",\"default-theme@mozilla.org\":\"39487044-d595-4f87-9400-bd6b3248de28\",\"{+CookieAutoDelete@kennydo.com\":\"29648197-3083-42a4-a961-993a0dbe0f8d\",\"keepassxc-browser@keepassxc.org\":\"3d9aecc7-0296-4974-b8d6-d5c0e51e4a3c\",\"uBlock0@raymondhill.net\":\"22e44514-d065-4b71-a3b8-921512ea532b\",\"{d37dc5d0-431d-44e5-8c91-49419370caa1}\":\"77334234-10a5-468b-b1b2-8d3b8b77fffd\",\"jid0-GXjLLfbCoAx0LcltEdFrEkQdQPI@jetpack\":\"c6ccedde-9358-4bd9-b031-b71296e6fff1\",\"{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}\":\"440c23a0-ae8b-4270-b9c1-ede39df24867\",\"{6fa42eda-38ca-4126-96d5-3163f0de6900}\":\"beb0dad8-9f21-4bbf-933d-4a4113956426\",\"{c9a5755e-2b16-41c1-a551-a79c7e98269f}\":\"bf3ce6d2-049e-4fac-b8e0-426aee033052+}\"}");
+
 
 
 // devtools
@@ -120,7 +136,7 @@ user_pref("general.smoothScroll.scrollbars.durationMinMS",               150);//
 user_pref("general.smoothScroll.mouseWheel.durationMaxMS",               200);//NSS    [200]
 user_pref("general.smoothScroll.mouseWheel.durationMinMS",                50);//NSS     [50]
 user_pref("layers.async-pan-zoom.enabled",                              true);//NSS   [true]
-user_pref("layout.css.scroll-behavior.spring-constant",                "250");//NSS    [250]
+user_pref("layout.css.scroll-behavior.spring-constant",                  250);//NSS    [250]
 user_pref("mousewheel.transaction.timeout",                             1500);//NSS   [1500]
 user_pref("mousewheel.acceleration.factor",                               10);//NSS     [10]
 user_pref("mousewheel.acceleration.start",                                -1);//NSS     [-1]
@@ -278,10 +294,7 @@ user_pref("toolkit.scrollbox.verticalScrollDistance",                      3);//
 //user_pref("network.allow-experiments", false);
 //user_pref("network.captive-portal-service.enabled", false);
 //user_pref("network.cookie.cookieBehavior", 1);
-//user_pref("network.dns.disablePrefetch", true);
 //user_pref("network.http.referer.XOriginPolicy", 1);
-//user_pref("network.http.speculative-parallel-limit", "0");
-//user_pref("network.prefetch-next", false);
 //user_pref("network.trr.mode", 5);
 //user_pref("privacy.donottrackheader.enabled", true);
 //user_pref("privacy.donottrackheader.value", 1);
