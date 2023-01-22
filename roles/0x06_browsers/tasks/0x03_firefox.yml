@@ -1,7 +1,71 @@
 ---
 
+# fuck this shit, the ppa doesnt work and ubutnu make doesnt update
+# https://askubuntu.com/questions/548003/how-do-i-install-the-firefox-developer-edition
+
+# # this doesnt work because there is no jammy release
+# - name: mozilla apt signing key
+#   apt_key:
+#     keyserver: pgpkeys.mit.edu
+#     id: EF4186FE247510BE
+#     keyring: /etc/apt/trusted.gpg.d/mozilla.gpg
+#
+# - name: firefox developer edition repo
+#   apt_repository:
+#     repo: deb https://ppa.launchpadcontent.net/ubuntu-mozilla-daily/firefox-aurora/ubuntu/ jammy main
+#     state: present
+#     filename: firefox-developer-edition
+#
+# - name: firefox developer edition install
+#   apt:
+#     name: firefox
+#     update_cache: true
+
+- name: check if firefox developer edition is already installed
+  stat:
+    path: /opt/firefox
+  register: firefox_installed
+  changed_when: false
+
+- name: uninstall ff snap if needed
+  snap:
+    name: firefox
+    state: absent
+
+- name: uninstall ff package if needed
+  apt:
+    name: firefox
+    state: absent
+
+- name: download ff dev ed
+  get_url:
+    url: https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
+    dest: /tmp/ff.tar.bz2
+  when: not firefox_installed.stat.exists
+
+- name: unarchive ff dev ed
+  unarchive:
+    src: /tmp/ff.tar.bz2
+    dest: /opt
+  when: not firefox_installed.stat.exists
+
+- name: cleanup ff dev ed install files
+  file:
+    path: /tmp/ff.tar.bz2
+    state: absent
+  when: not firefox_installed.stat.exists
+
+- name: ff dev ed .desktop file
+  become: true
+  become_user: sjas
+  copy:
+    src: firefox.desktop
+    dest: /home/sjas/.local/share/applications/
+    mode: 0644
+
 - name: ff get profile folder path
-  shell: ls /home/sjas/.mozilla/firefox/*default-release -d
+  # shell: ls /home/sjas/.mozilla/firefox/*default-release -d
+  shell: ls /home/sjas/.mozilla/firefox/*.dev-edition-default -d
   register: ff_path
   changed_when: false
 
@@ -12,11 +76,6 @@
     src: user.js
     dest: "{{ ff_path.stdout }}"
     mode: 0664
-
-- name: ff remove obsolete directories
-  file:
-    dest: "{{ ff_path.stdout }}/chrome"
-    state: absent
 
 - name: ff default
   become: true
@@ -65,6 +124,17 @@
     - { key: "application/x-extension-xht",   value: "firefox.desktop" }
 
 ## extensions here we come ##################################################################################
+# - https://wiringbits.net/browser-extensions/2020/11/27/installing-unsigned-extensions-permanently-to-firefox.html
+# - https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings
+
+- name: ensure ff extension folder exists
+  become: true
+  become_user: sjas
+  file:
+    path: "{{ ff_path.stdout }}/extensions"
+    state: directory
+    mode: 0755
+
 # get the id's via:
 # about:config -> extensions.webextensions.uuids
 - name: ff download and install extensions

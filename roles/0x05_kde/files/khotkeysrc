@@ -1290,16 +1290,16 @@ Comment=
 ConditionsCount=0
 
 [Data_7_1]
-Comment=firefox
+Comment=firefox developer edition
 Enabled=true
-Name=firefox
+Name=firefox dev ed
 Type=SIMPLE_ACTION_DATA
 
 [Data_7_1Actions]
 ActionsCount=1
 
 [Data_7_1Actions0]
-CommandURL=firefox
+CommandURL=/opt/firefox/firefox
 Type=COMMAND_URL
 
 [Data_7_1Conditions]
