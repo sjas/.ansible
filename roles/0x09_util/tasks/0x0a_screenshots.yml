@@ -42,6 +42,10 @@
 # Found 1 nodes in /home/sjas/.shutter/settings.xml:
 # -- NODE --
 #  filename="asdf"
+#
+# also:
+# https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
+#
 - name: shutter
   become: true
   become_user: sjas
