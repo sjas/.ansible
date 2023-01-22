@@ -87,7 +87,7 @@
   become: true
   become_user: sjas
   # command: "find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}"
-  shell: find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
+  shell: set -o pipefail&&find /home/sjas/.nvm/versions/node/ -type f -iname node | grep {{ nodejs_version.stdout }}
   register: nodejs_path
   changed_when: false
 
