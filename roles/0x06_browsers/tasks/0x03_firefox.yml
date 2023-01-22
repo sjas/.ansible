@@ -163,6 +163,9 @@
     - { key: 'localise-timezones',          value: '{a0da06f4-9f95-41f1-9e42-eb189dc8c758}' }  ## https://addons.mozilla.org/en-US/firefox/addon/localise-timezones/
     - { key: 'timezonify',                  value: '{c9a5755e-2b16-41c1-a551-a79c7e98269f}' }  ## https://addons.mozilla.org/en-US/firefox/addon/timezonify/
 
+# because this is all shit:
+# /opt/firefox/firefox -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/brandon1024-find/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/screenshot-capture-annotate/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/foxclocks/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/tron-legacy-beau-garrett/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/localise-timezones/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/timezonify/
+
 
 # 0 sjas@ssg 11:09:25 ~/.mozilla (master) $1 h3337 c92 $
 # gd firefox/py31k47c.dev-edition-default/addons.json
