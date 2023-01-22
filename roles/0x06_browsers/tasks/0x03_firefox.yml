@@ -135,11 +135,19 @@
 # - https://wiringbits.net/browser-extensions/2020/11/27/installing-unsigned-extensions-permanently-to-firefox.html
 # - https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings
 
-- name: ensure ff extension folder exists
+- name: ensure ff extensions folder exists
   become: true
   become_user: sjas
   file:
     path: "{{ ff_path.stdout }}/extensions"
+    state: directory
+    mode: 0755
+
+- name: ensure ff themes folder exists
+  become: true
+  become_user: sjas
+  file:
+    path: "{{ ff_path.stdout }}/themes"
     state: directory
     mode: 0755
 
@@ -159,6 +167,16 @@
     - { key: 'cookie-autodelete',           value: 'CookieAutoDelete@kennydo.com' }
     - { key: 'screenshot-capture-annotate', value: 'jid0-GXjLLfbCoAx0LcltEdFrEkQdQPI@jetpack' }
     - { key: 'foxclocks',                   value: '{d37dc5d0-431d-44e5-8c91-49419370caa1}' }
-    - { key: 'tron-legacy-beau-garrett',    value: '{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}' }
     - { key: 'localise-timezones',          value: '{a0da06f4-9f95-41f1-9e42-eb189dc8c758}' }
     - { key: 'timezonify',                  value: '{c9a5755e-2b16-41c1-a551-a79c7e98269f}' }
+    # - { key: 'tron-legacy-beau-garrett',    value: '{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}' }
+
+- name: ff download and install themes
+  become: true
+  become_user: sjas
+  get_url:
+    url: "https://addons.mozilla.org/firefox/downloads/latest/{{ item.key }}/latest.xpi"
+    dest: "{{ ff_path.stdout }}/themes/{{ item.value }}.xpi"
+    mode: 0644
+  with_items:
+    - { key: 'tron-legacy-beau-garrett',    value: '{b2d342ea-30a3-4a95-bf6b-a655c01ce1ad}' }

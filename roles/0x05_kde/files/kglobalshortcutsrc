@@ -42,7 +42,7 @@ _k_friendly_name=Custom Shortcuts Service
 {cb2781a7-3823-4fc0-99aa-244dc4edf22b}=Meta+X,none,vscode
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
 {fc4d0180-8007-4aa1-ae21-460bef8b779f}=Meta+F,none,thunderbird
-{fddb35cf-3070-4865-b6a8-cd74df1fff40}=none,none,chrome
+{fddb35cf-3070-4865-b6a8-cd74df1fff40}=Meta+C,none,chrome
 
 [kmix]
 _k_friendly_name=Audio Volume
