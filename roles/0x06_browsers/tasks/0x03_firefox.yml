@@ -27,6 +27,12 @@
   register: firefox_installed
   changed_when: false
 
+# to build a version check maybe use this:
+# upstream:
+# curl -s 'https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US'|grep -o 'releases/[^/]\+/'|cut -d/ -f2
+# local:
+# /opt/firefox/firefox --version|awk '{print $NF}'
+
 - name: uninstall ff snap if needed
   snap:
     name: firefox
