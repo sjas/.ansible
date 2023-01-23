@@ -1,0 +1,28 @@
+---
+
+- name: fortinet key
+  apt_key:
+    url: "https://repo.fortinet.com/repo/ubuntu/DEB-GPG-KEY"
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/fortinet.gpg
+
+- name: fortinet repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://repo.fortinet.com/repo/7.0/ubuntu bionic multiverse"
+    state: present
+    filename: fortinet
+
+- name: all them vpn packages
+  apt:
+    cache_valid_time: 7200
+    autoclean: true
+    autoremove: true
+    update_cache: true
+    name:
+      - forticlient
+      - strongswan
+      - strongswan-nm
+      - openfortivpn
+      - openfortigui
+      - network-manager-fortisslvpn
+      - network-manager-fortisslvpn-gnome
