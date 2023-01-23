@@ -1,7 +1,7 @@
 ---
 
 - name: check if baloo is disabled
-  shell: balooctl status | grep 'Baloo is currently disabled. To enable, please run balooctl enable'
+  shell: 2>&1 balooctl status | grep 'Baloo is currently disabled. To enable, please run balooctl enable'
   register: exitcode_baloo_check
   ignore_errors: true
   changed_when: false
