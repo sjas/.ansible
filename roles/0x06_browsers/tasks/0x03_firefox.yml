@@ -2,78 +2,79 @@
 
 # %u: https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html
 
-# fuck this shit, the ppa doesnt work and ubuntu make doesnt update
+
+# fuck this shit, the ff.dev.ed ppa doesnt work and ubuntu make doesnt update the program afterwards
 # https://askubuntu.com/questions/548003/how-do-i-install-the-firefox-developer-edition
+# .. also keepassxc cannot be integrated with ff.dev.ed because its considered beta
 
-# # this doesnt work because there is no jammy release
-# - name: mozilla apt signing key
-#   apt_key:
-#     keyserver: pgpkeys.mit.edu
-#     id: EF4186FE247510BE
-#     keyring: /etc/apt/trusted.gpg.d/mozilla.gpg
+# # # this doesnt work because there is no jammy release
+# # - name: mozilla apt signing key
+# #   apt_key:
+# #     keyserver: pgpkeys.mit.edu
+# #     id: EF4186FE247510BE
+# #     keyring: /etc/apt/trusted.gpg.d/mozilla.gpg
+# #
+# # - name: firefox developer edition repo
+# #   apt_repository:
+# #     repo: deb https://ppa.launchpadcontent.net/ubuntu-mozilla-daily/firefox-aurora/ubuntu/ jammy main
+# #     state: present
+# #     filename: firefox-developer-edition
+# #
+# # - name: firefox developer edition install
+# #   apt:
+# #     name: firefox
+# #     update_cache: true
 #
-# - name: firefox developer edition repo
-#   apt_repository:
-#     repo: deb https://ppa.launchpadcontent.net/ubuntu-mozilla-daily/firefox-aurora/ubuntu/ jammy main
-#     state: present
-#     filename: firefox-developer-edition
+# - name: check if firefox developer edition is already installed
+#   stat:
+#     path: /opt/firefox
+#   register: firefox_installed
+#   changed_when: false
 #
-# - name: firefox developer edition install
-#   apt:
-#     name: firefox
-#     update_cache: true
-
-- name: check if firefox developer edition is already installed
-  stat:
-    path: /opt/firefox
-  register: firefox_installed
-  changed_when: false
-
-# to build a version check maybe use this:
-# upstream:
-# curl -s 'https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US'|grep -o 'releases/[^/]\+/'|cut -d/ -f2
-# local:
-# /opt/firefox/firefox --version|awk '{print $NF}'
+# ## to build a version check maybe use this:
+# ## upstream:
+# ## curl -s 'https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US'|grep -o 'releases/[^/]\+/'|cut -d/ -f2
+# ## local:
+# ## /opt/firefox/firefox --version|awk '{print $NF}'
 
 - name: uninstall ff snap if needed
   snap:
     name: firefox
     state: absent
 
-- name: uninstall ff package if needed
+- name: install ff package if needed
   apt:
     name: firefox
-    state: absent
 
-- name: download ff dev ed
-  get_url:
-    url: https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
-    dest: /tmp/ff.tar.bz2
-  when: not firefox_installed.stat.exists
-
-- name: unarchive ff dev ed
-  unarchive:
-    src: /tmp/ff.tar.bz2
-    dest: /opt
-  when: not firefox_installed.stat.exists
-
-- name: cleanup ff dev ed install files
-  file:
-    path: /tmp/ff.tar.bz2
-    state: absent
-  when: not firefox_installed.stat.exists
-
-- name: ff dev ed .desktop file
-  become: true
-  become_user: sjas
-  copy:
-    src: firefox.desktop
-    dest: /home/sjas/.local/share/applications/
-    mode: 0644
+# - name: download ff dev ed
+#   get_url:
+#     url: https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US
+#     dest: /tmp/ff.tar.bz2
+#   when: not firefox_installed.stat.exists
+#
+# - name: unarchive ff dev ed
+#   unarchive:
+#     src: /tmp/ff.tar.bz2
+#     dest: /opt
+#   when: not firefox_installed.stat.exists
+#
+# - name: cleanup ff dev ed install files
+#   file:
+#     path: /tmp/ff.tar.bz2
+#     state: absent
+#   when: not firefox_installed.stat.exists
+#
+# - name: ff dev ed .desktop file
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: firefox.desktop
+#     dest: /home/sjas/.local/share/applications/
+#     mode: 0644
 
 - name: ff get profile folder path
-  # shell: ls /home/sjas/.mozilla/firefox/*default-release -d  ##this is for the regular ff version not ff dev ed
-  shell: ls /home/sjas/.mozilla/firefox/*.dev-edition-default -d
+  shell: ls /home/sjas/.mozilla/firefox/*default-release -d  ## this is for the regular
+  # shell: ls /home/sjas/.mozilla/firefox/*.dev-edition-default -d  ## ff version not ff dev ed
   register: ff_path
   changed_when: false
 
@@ -165,7 +166,7 @@
     - { key: 'timezonify',                  value: '{c9a5755e-2b16-41c1-a551-a79c7e98269f}' }  ## https://addons.mozilla.org/en-US/firefox/addon/timezonify/
 
 # because this is all shit:
-# /opt/firefox/firefox -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/brandon1024-find/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/screenshot-capture-annotate/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/foxclocks/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/tron-legacy-beau-garrett/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/localise-timezones/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/timezonify/
+# firefox -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/brandon1024-find/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/screenshot-capture-annotate/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/foxclocks/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/tron-legacy-beau-garrett/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/localise-timezones/ -new-tab -url https://addons.mozilla.org/en-US/firefox/addon/timezonify/
 
 
 # 0 sjas@ssg 11:09:25 ~/.mozilla (master) $1 h3337 c92 $
