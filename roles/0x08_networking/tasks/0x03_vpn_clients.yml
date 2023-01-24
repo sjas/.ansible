@@ -26,3 +26,17 @@
       - openfortigui
       - network-manager-fortisslvpn
       - network-manager-fortisslvpn-gnome
+
+- name: forticlient as default handler
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/mimeapps.list
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: Default Applications
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { key: "x-scheme-handler/forticlient", value: "FortiClient.desktop" }
