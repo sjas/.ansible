@@ -1,16 +1,16 @@
 ---
 
-- name: fortinet key
-  apt_key:
-    url: "https://repo.fortinet.com/repo/ubuntu/DEB-GPG-KEY"
-    state: present
-    keyring: /etc/apt/trusted.gpg.d/fortinet.gpg
-
-- name: fortinet repo
-  apt_repository:
-    repo: "deb [arch=amd64] https://repo.fortinet.com/repo/7.0/ubuntu bionic multiverse"
-    state: present
-    filename: fortinet
+# - name: fortinet key
+#   apt_key:
+#     url: "https://repo.fortinet.com/repo/ubuntu/DEB-GPG-KEY"
+#     state: present
+#     keyring: /etc/apt/trusted.gpg.d/fortinet.gpg
+#
+# - name: fortinet repo
+#   apt_repository:
+#     repo: "deb [arch=amd64] https://repo.fortinet.com/repo/7.0/ubuntu bionic multiverse"
+#     state: present
+#     filename: fortinet
 
 - name: all them vpn packages
   apt:
@@ -19,7 +19,7 @@
     autoremove: true
     update_cache: true
     name:
-      - forticlient
+#       - forticlient
       - strongswan
       - strongswan-nm
       - openfortivpn
@@ -27,16 +27,16 @@
       - network-manager-fortisslvpn
       - network-manager-fortisslvpn-gnome
 
-- name: forticlient as default handler
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/mimeapps.list
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Default Applications
-    option: "{{ item.key }}"
-    value: "{{ item.value }}"
-  with_items:
-    - { key: "x-scheme-handler/forticlient", value: "FortiClient.desktop" }
+# - name: forticlient as default handler
+#   become: true
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/mimeapps.list
+#     create: true
+#     mode: 0664
+#     no_extra_spaces: true
+#     section: Default Applications
+#     option: "{{ item.key }}"
+#     value: "{{ item.value }}"
+#   with_items:
+#     - { key: "x-scheme-handler/forticlient", value: "FortiClient.desktop" }
