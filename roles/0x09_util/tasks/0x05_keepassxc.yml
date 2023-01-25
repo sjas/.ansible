@@ -1,17 +1,45 @@
 ---
 
-- name: nextcloud desktop client via snap
-  snap:
-    name: keepassxc
+- name: keepass install
+  apt:
+    name:
+      - keepassxc
+      - webext-keepassxc-browser
 
-- name: enable browser integration
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/snap/keepassxc/current/.config/keepassxc/keepassxc.ini
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Browser
-    option: Enabled
-    value: true
+# - name: enable browser integration
+#   become: true
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/snap/keepassxc/current/.config/keepassxc/keepassxc.ini
+#     create: true
+#     mode: 0664
+#     no_extra_spaces: true
+#     section: Browser
+#     option: Enabled
+#     value: true
+
+# diff --git keepassxc/keepassxc.ini keepassxc/keepassxc.ini
+# index 1da673f..774e34c 100644
+# --- keepassxc/keepassxc.ini
+# +++ keepassxc/keepassxc.ini
+# @@ -1,6 +1,19 @@
+# [General]
+# ConfigVersion=1
+#
+# [{+Browser]+}
+# {+CustomProxyLocation=+}
+# {+Enabled=true+}
+#
+# {+[GUI]+}
+# {+TrayIconAppearance=monochrome-light+}
+#
+# {+[KeeShare]+}
+# {+Active="<?xml version=\"1.0\"?>\n<KeeShare xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <Active/>\n</KeeShare>\n"+}
+# {+Foreign="<?xml version=\"1.0\"?>\n<KeeShare xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <Foreign/>\n</KeeShare>\n"+}
+# {+Own="<?xml version=\"1.0\"?>\n<KeeShare xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <PrivateKey/>\n  <PublicKey/>\n</KeeShare>\n"+}
+# {+QuietSuccess=true+}
+#
+# [PasswordGenerator]
+# AdditionalChars=
+# ExcludedChars=
+
