@@ -134,19 +134,19 @@
     no_extra_spaces: true
     section: Windows
     option: AutoRaise
-    value: true
+    value: false
 
-- name: mouse - focus follows mouse autoraise delay interval
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Windows
-    option: AutoRaiseInterval
-    value: 500
+# - name: mouse - focus follows mouse autoraise delay interval
+#   become: true
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/kwinrc
+#     create: true
+#     mode: 0664
+#     no_extra_spaces: true
+#     section: Windows
+#     option: AutoRaiseInterval
+#     value: 1100
 
 - name: mouse - focus follows mouse, alt button to rise
   become: true
