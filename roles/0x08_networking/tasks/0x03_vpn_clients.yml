@@ -19,7 +19,7 @@
     autoremove: true
     update_cache: true
     name:
-#       - forticlient
+      # - forticlient
       - strongswan
       - strongswan-nm
       - openfortivpn
