@@ -24,4 +24,4 @@
     - { key: 'push.default',                        value: 'matching' }
     - { key: 'user.name',                           value: 'sjas' }
     - { key: 'init.defaultBranch',                  value: 'main' }
-    - { key: 'pull.rebase',                         value: 'true}
+    - { key: 'pull.rebase',                         value: 'true' }
