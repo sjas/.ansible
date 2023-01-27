@@ -567,9 +567,9 @@ alias catredirection='PAGER="cat" man bash | sed -n "/^REDIRECTION/,/ALIASES/p" 
 
 ## NOTES;PRV;WRK ############################################################################################
 # shellcheck disable=SC2034
-_folder_notes="${HOME}/n"
-_folder_docs_prv="${HOME}/dp"
-_folder_docs_wrk="${HOME}/dw"
+   _folder_notes="/home/sjas/n"
+_folder_docs_prv="/home/sjas/dp"
+_folder_docs_wrk="/home/sjas/dw"
 
 #`cd{p,w}` for `cd {prv,wrk}` cant be abbreviated; use `cd;{prv,wrk}` instead
 alias cddn='__cdd "${_folder_notes}"'
