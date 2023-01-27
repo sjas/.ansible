@@ -299,7 +299,7 @@ user_pref("toolkit.scrollbox.verticalScrollDistance",                      3);//
 //user_pref("privacy.donottrackheader.enabled", true);
 //user_pref("privacy.donottrackheader.value", 1);
 //user_pref("privacy.firstparty.isolate", true);
-//user_pref("privacy.resistFingerprinting", true);
+//user_pref("privacy.resistFingerprinting", true);  // https://askubuntu.com/questions/1175969/how-to-set-firefox-to-open-as-a-maximized-window
 //user_pref("privacy.trackingprotection.enabled", true);
 //user_pref("privacy.trackingprotection.pbmode.enabled", true);
 //user_pref("privacy.usercontext.about_newtab_segregation.enabled", true);
