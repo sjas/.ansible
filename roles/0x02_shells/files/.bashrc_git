@@ -169,6 +169,11 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 
 
 ## COMMIT ###################################################################################################
+gitaddcommit() {
+		git add .
+		git commit -m "$*"
+}
+alias gac=gitaddcommit
 gitcommit() {
 		git commit -m "$*"
 }
