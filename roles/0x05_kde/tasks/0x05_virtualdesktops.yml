@@ -21,20 +21,8 @@
     mode: 0664
     no_extra_spaces: true
     section: Desktops
-    option: Id_3
-    value: 69f30292-fa5b-4998-b841-7c7e99fec588
-
-- name: kde virtual desktops
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Desktops
     option: Number
-    value: 3
+    value: 2
 
 - name: kde virtual desktops
   become: true
@@ -46,7 +34,7 @@
     no_extra_spaces: true
     section: Desktops
     option: Rows
-    value: 3
+    value: 2
 
 - name: kde virtual desktops
   become: true
