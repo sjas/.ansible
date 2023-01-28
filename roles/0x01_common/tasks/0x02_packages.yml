@@ -121,6 +121,7 @@
       - ntfs-3g
       - nttcp
       - nuttcp
+      - oathtool
       - openvpn
       - p7zip-full
       - p7zip-rar
