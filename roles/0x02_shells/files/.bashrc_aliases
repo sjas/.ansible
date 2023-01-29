@@ -362,6 +362,7 @@ alias w="watchitallproper"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
 alias h="history"
 alias hgg="history|grep -i"
+alias powershell="pwsh"
 
 backup() {
 	mv "$1" "$1".bu
@@ -482,7 +483,7 @@ alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60'  ## 1g graphs
 # shellcheck disable=SC2142
 alias topcommands="history | awk '{CMD[\$3]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
 # shellcheck disable=SC2139
-alias kdeversion="dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1"
+alias kdeversion="dpkg -l | awk -F'[:-]' '/plasma-desktop\s/{print \$3}'"
 alias ansibletags="( cd /home/sjas/etc/.ansible; rg -e '^\s+tags:' --no-filename --no-line-number | sort | uniq | awk 'NR>1' )"
 
 fdiff() {
