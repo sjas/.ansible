@@ -169,32 +169,34 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 
 
 ## COMMIT ###################################################################################################
-gitaddcommit() {
-		git add .
-		git commit -m "$*"
-}
-alias gac=gitaddcommit
 gitcommit() {
+		[[ $# -eq 0 ]]&&git commit
 		git commit -m "$*"
 }
-alias gc=gitcommit									  ## commit
-gitfastcommit() {
+alias gc="gitcommit"
+gitcommitgeneral() {
 	[[ $# -eq 0 ]]&&git commit -m "fc"&&git status -s&&return
 	git add "$@"
 	git commit -m "fc"
 	git status -s
 }
-alias gcg=gitfastcommit
-gitfastaddcommitall() {
-	(cd "$(git rev-parse --show-toplevel)"||return; git add .; git commit -m "add all and commit" )
+alias gcg="gitcommitgeneral"						  ## commit only what has been added or was specified
+gitfullcommit() {
+	( cd "$(git rev-parse --show-toplevel)"||return;git add .;git commit -m "add all and commit" )
 }
-alias gfc=gitfastaddcommitall							 ## commit all present changes quickly
+alias gfc="gitfullcommit"							  ## commit all present changes quickly
 alias gca="git commit --amend"						  ## amend last commit
 alias grv="git revert HEAD"							  ## revert, undo last commit
+gitaddcommit() {
+		git add "$*"
+		git commit
+}
+alias gac="gitaddcommit"
+
 gitrm() {
 		git rm "$*"
 }
-alias grm=gitrm										 ## param: filename, delete file and remove from versioning
+alias grm="gitrm"									 ## param: filename, delete file and remove from versioning
 gitrmcached() {
 	for i
 	in "$@"
@@ -202,7 +204,7 @@ gitrmcached() {
 		git rm --cached -r "$i"
 	done
 }
-alias grmc=gitrmcached
+alias grmc="gitrmcached"
 
 
 
