@@ -483,6 +483,7 @@ alias nload1g='nload -u m -U H -i 1024000 -o 1024000 -a 60'  ## 1g graphs
 # shellcheck disable=SC2142
 alias topcommands="history | awk '{CMD[\$3]++;count++;} END { for (i in CMD)print CMD[i] \" \" CMD[i]/count*100 \"% \" i;}' | grep -v \"./\" | column -c3 -s\" \" -t | sort -nr | head -20 | nl"
 # shellcheck disable=SC2139
+# shellcheck disable=SC2142
 alias kdeversion="dpkg -l | awk -F'[:-]' '/plasma-desktop\s/{print \$3}'"
 alias ansibletags="( cd /home/sjas/etc/.ansible; rg -e '^\s+tags:' --no-filename --no-line-number | sort | uniq | awk 'NR>1' )"
 
