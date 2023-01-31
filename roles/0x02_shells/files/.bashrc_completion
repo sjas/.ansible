@@ -184,4 +184,5 @@ _virsh() {
 
 
 ## firewall-cmd #############################################################################################
+# shellcheck disable=SC1091
 . /usr/share/bash-completion/completions/firewall-cmd && complete -F _firewall_cmd fw

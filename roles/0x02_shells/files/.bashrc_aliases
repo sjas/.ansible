@@ -201,7 +201,7 @@ fwstatus ()
 # fwsa: shows all tables, from both v4/v6, hopefully i have chosen a sane order from the documentation, see below
 
 fw46_helper() {
-	local IPTABLES="${1}"; shift
+	local IPTABLES="${1}";shift
 	local HEADER_COLOR="31"
 
 	echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
@@ -211,7 +211,7 @@ fw46_helper() {
 	sudo "${IPTABLES}" -vnx "${@:--L}" | colorize_iptables_output.sh
 }
 fw46_watch_helper() {
-	local IPTABLES="${1}"; shift
+	local IPTABLES="${1}";shift
 	watch -n1 -d -c "sudo ${IPTABLES} -vnx ${*:--L} | colorize_iptables_output.sh"
 }
 fw4() { fw46_helper iptables "${@}"; }
@@ -594,7 +594,7 @@ __d() {
     local _folder=$1;shift
     #if no argument is given, vim will open the folder so you have files to choose
     #any other binary will just get the folder contents printed
-    ! [[ "vim" == "${_binary}" ]]&&[[ $# -eq 0 ]]&&echo&&ls -1 --sort=time -r "${_folder}"&&echo&&return  ## shift changes $#
+    ! [[ "vim" == "${_binary}" ]]&&[[ $# -eq 0 ]]&&echo&&\ls -1 --sort=time -r "${_folder}"&&echo&&return  ## shift changes $#
     "${_binary}" "${_folder}"/"$*"
     __push_to_git "${_folder}" "$*"
 }
@@ -619,8 +619,8 @@ __dautocompletion() {
 
     __autocompletehelper() {
         local _folder=$1;shift
-        local _files="";_files="$(ls -1 "${_folder}")"
-        COMPREPLY=("$(compgen -W "${_files}" -- "${_cur}")")
+        local _files="";_files="$(\ls -1 "${_folder}")"
+        mapfile -t COMPREPLY < <(compgen -W "${_files}" -- "${_cur}")
      }
 
     case "${_word}" in

@@ -188,13 +188,13 @@ alias gfc="gitfullcommit"							  ## commit all present changes quickly
 alias gca="git commit --amend"						  ## amend last commit
 alias grv="git revert HEAD"							  ## revert, undo last commit
 gitaddcommit() {
-		git add "$*"
-		git commit
+	( cd "$(git rev-parse --show-toplevel)"||return;git add .)
+	git commit -m "$*"
 }
 alias gac="gitaddcommit"
 
 gitrm() {
-		git rm "$*"
+	git rm "$*"
 }
 alias grm="gitrm"									 ## param: filename, delete file and remove from versioning
 gitrmcached() {
