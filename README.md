@@ -34,7 +34,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     inventory=/home/sjas/etc/.ansible/hosts
     #default,oneline,minimal,yaml,debug
     #https://rndmh3ro.github.io/
-    stdout_callback=actionable
+    stdout_callback=default
     bin_ansible_callbacks=yes
     verbosity=2
     roles_path=/etc/ansible/roles:./
