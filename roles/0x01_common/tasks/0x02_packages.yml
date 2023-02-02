@@ -13,6 +13,7 @@
     autoremove: true
     update_cache: true
     name:
+      - alien
       - apt-file
       - apt-rdepends
       - apt-transport-https
