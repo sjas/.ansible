@@ -243,6 +243,7 @@ alias gfp=gitfastpush								   ## commit all present changes with message 'fast
 ## BRANCHING ################################################################################################
 alias gb="git branch"				   ## show local branches if used without args
 alias gba="git branch -a -v"				## show all currently existing local and remote branches plus latest commits
+alias gbd="git branch -D"				## force delete shit
 alias gbw="watch -n1 -d -c git branch -a -v --color"	## running overview so you see what you are doing and can copy paste, colored
 alias gco="git checkout"								## checkout
 alias gcob="git checkout -b"							## checkout directly into new branch
