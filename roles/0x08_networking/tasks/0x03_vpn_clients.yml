@@ -35,7 +35,7 @@
       - strongswan
       - strongswan-nm
       - openfortivpn
-#      - openfortigui
+      - openfortigui
       - network-manager-fortisslvpn
       - network-manager-fortisslvpn-gnome
 
