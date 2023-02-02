@@ -23,3 +23,7 @@
 - name: rust
   include: 0x06_rustlang.yml
   tags: code,rustlang
+
+- name: oracle java 8u202 include
+  include: 0x07_java8u202.yml
+  tags: code,java
