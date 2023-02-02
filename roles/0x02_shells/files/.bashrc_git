@@ -130,9 +130,9 @@ alias gsh="git show"										## param: commit-id, show changes
 alias gshf="git show --stat --oneline"					  ## param: commit-id, show changes
 
 #show remote contents
-alias gsb="git show-branch -a --list --more=10 --no-name"   ## show-branch, show where commits are present
-alias gsbf="git show-branch -a --list --no-name"			## show-branch, show where commits are present
-alias gsba="git show-branch -a --topics --current"		  ## show all dangling branches? FIXME
+alias gsb="git show-branch -a --list --more=10 --sha1-name"		## show-branch, show where commits are present
+alias gsbf="git show-branch -a --list --sha1-name"				## show-branch, show where commits are present
+alias gsba="git show-branch -a --topics --current --sha1-name"	## show all dangling branches? FIXME
 
 #diff
 gitshowauthor() {
