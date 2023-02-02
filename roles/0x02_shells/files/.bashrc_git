@@ -246,7 +246,7 @@ alias gba="git branch -a -v"				## show all currently existing local and remote 
 alias gbw="watch -n1 -d -c git branch -a -v --color"	## running overview so you see what you are doing and can copy paste, colored
 alias gco="git checkout"								## checkout
 alias gcob="git checkout -b"							## checkout directly into new branch
-
+alias gcpp="git cherry-pick"
 
 
 
