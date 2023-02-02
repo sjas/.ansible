@@ -1,0 +1,21 @@
+---
+
+- name: check if java8u202 is already installed
+  stat:
+    path: /usr/java/jdk1.8.0_202-amd64
+  register: java8_installed
+  changed_when: false
+
+- name: create .deb from parts because shithub sucks
+  command: cat jdk1.8_1.8.0202-1_amd64.deb.a? > jdk1.8_1.8.0202-1_amd64.deb
+  when: not java8_installed.stat.exists
+
+- name: java8u202 install
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/0x04_code/files/jdk1.8_1.8.0202-1_amd64.deb
+  when: not java8_installed.stat.exists
+
+- name: remove remants
+  file:
+    path: /home/sjas/etc/.ansible/roles/0x04_code/files/jdk1.8_1.8.0202-1_amd64.deb
+    state: absent
