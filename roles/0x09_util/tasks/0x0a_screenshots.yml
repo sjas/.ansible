@@ -46,14 +46,15 @@
 # also:
 # https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
 #
-- name: shutter
-  become: true
-  become_user: sjas
-  xml:
-    path: /home/sjas/.shutter/settings.xml
-    xpath: /opt/general[@filename]
-    attribute: filename
-    value: shutter_$name_%NNN_%Y%m%d_%T
+#fixme
+# - name: shutter
+#   become: true
+#   become_user: sjas
+#   xml:
+#     path: /home/sjas/.shutter/settings.xml
+#     xpath: /opt/general[@filename]
+#     attribute: filename
+#     value: shutter_$name_%NNN_%Y%m%d_%T
 
 ## spectacle config #########################################################################################
 - name: spectacle autosave image
