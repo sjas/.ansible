@@ -1,22 +1,22 @@
 ---
 
-- name: kanban
+- name: kanban include
   include: 0x01_kanban.yml
   tags: util
 
-- name: diff-so-fancy
+- name: diff-so-fancy include
   include: 0x02_diff-so-fancy.yml
   tags: util
 
-- name: nextcloud snap
+- name: nextcloud snap include
   include: 0x03_nextcloud.yml
   tags: util,nextcloud,snaps
 
-- name: direnv
+- name: direnv include
   include: 0x04_direnv.yml
   tags: util
 
-- name: keepassxc snap
+- name: keepassxc snap include
   include: 0x05_keepassxc.yml
   tags: util,keepass,snaps
 
@@ -24,38 +24,42 @@
   include: 0x06_scc.yml
   tags: util
 
-- name: bat sucks to install
+- name: bat which sucks to install include
   include: 0x07_bat.yml
   tags: util,bat
 
-- name: CF mm tools
+- name: CF mm tools include
   include: 0x08_mm.yml
   tags: util
 
-- name: xidel
+- name: xidel include
   include: 0x09_xidel.yml
   tags: util
 
-- name: screenshot tools
+- name: screenshot tools include
   include: 0x0a_screenshots.yml
   tags: util,screenshot,shutter,spectacle
 
-- name: simplecurses
+- name: simplecurses include
   include: 0x0b_simplecurses.yml
   tags: util
 
-- name: authy
+- name: authy include
   include: 0x0c_authy.yml
   tags: util,authy,snaps
 
-- name: jp JSON query tool
+- name: jp JSON query tool include
   include: 0x0d_jp.yml
   tags: util
 
-- name: jsonfui json explorer
+- name: jsonfui json explorer include
   include: 0x0e_jsonfui.yml
   tags: util
 
-- name: libvirt
+- name: libvirt include
   include: 0x0f_libvirt.yml
   tags: util,virt
+
+- name: apache directory studio include
+  include: 0x10_apache-directory-studio.yml
+  tags: util,apacheds

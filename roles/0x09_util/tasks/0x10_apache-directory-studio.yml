@@ -1,0 +1,21 @@
+---
+
+- name: apache directory studio key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 23CAE45582EB0928
+    keyring: /etc/apt/trusted.gpg.d/openfortigui.gpg
+
+- name: apache directory studio repo
+  apt_repository:
+    repo: deb [arch=amd64] https://apt.iteas.at/iteas focal main
+    state: present
+    filename: apacheds
+
+- name: apache directory studio install
+  apt:
+    cache_valid_time: 7200
+    autoclean: true
+    autoremove: true
+    update_cache: true
+    name: apache-directory-studio
