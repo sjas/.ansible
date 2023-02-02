@@ -10,4 +10,4 @@
 
 - name: vpn clients include
   include: 0x03_vpn_clients.yml
-  tags: networking,forti
+  tags: networking,vpn,forti
