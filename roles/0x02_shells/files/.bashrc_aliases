@@ -658,8 +658,21 @@ shownet4() {
 shownet6() {
 	watch -n 1 -d 'echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
-showdns(){
-	watch -n1 -d 'ls -alh /etc/resolv.conf; echo; fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/==========================================/g"'
+showgw()  {
+	_pinghelper() {
+		pp "$3: $1 && $2"
+		ping -4 -c1 -W1 "$1"|grep -E 'from|,'||echo FAILED
+		ping -6 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
+	}
+	_pinghelper 0 ::1 localhost
+	_gw4=$(ip -4 r|grep default|awk '{print $3}')
+	_gw6=$(ip -6 r|grep default|awk '{print $3}')
+	_pinghelper "${_gw4}" "${_gw6}" defgw
+	_pinghelper 1.1 2606:4700:4700::1111 remote-ip
+	_pinghelper ix.de ix.de remote-dns
+}
+showdns() {
+	watch -n1 -d 'ls -alh /etc/resolv.conf; echo; fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/=================================/g"'
 }
 showru() {
 	#echo; ip ru; echo; for i in $(ip ru | awk '{print $1}' | tr -d ':'); do echo; echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"; echo ================$'\e[0m'; ip -d r l t "$i" | sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' | column -t | sort -k1; done | sed 's/default_via_/default via /'
