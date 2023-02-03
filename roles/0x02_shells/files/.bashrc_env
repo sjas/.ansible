@@ -178,16 +178,13 @@ export GOPATH="/home/sjas/go"  ## def.: "${HOME}/go"
 export GO111MODULE="on"
 #export GOGC=100  ## def.: 100: run garbage collector once the heap size doubles
 
-#   J A V A
-#export JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
-#export  J2SDKDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto
-#export   J2REDIR=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre
-#export JAVA_HOME=/usr/lib/jvm/java-se-7u75-ri
-#export  J2SDKDIR=/usr/lib/jvm/java-se-7u75-ri
-#export   J2REDIR=/usr/lib/jvm/java-se-7u75-ri/jre
-
 #   R U S T L A N G
 export CARGO_HOME="/home/sjas/.cargo"  ## non-official var
+
+#   J A V A
+export JAVA_HOME=/usr/java/jdk1.8.0_202-amd64
+export  J2SDKDIR=/usr/java/jdk1.8.0_202-amd64
+export   J2REDIR=/usr/java/jdk1.8.0_202-amd64/jre
 
 #   P A T H
 for i
@@ -197,6 +194,8 @@ in  /usr/local/bin \
 	"${GOROOT:-}"/bin \
 	"${GOPATH:-}"/bin \
 	"${CARGO_HOME:-}"/bin \
+	"${JAVA_HOME:-}"/bin \
+	"${J2REDIR:-}"/bin \
 	/usr/lib/cargo/bin \
 	/usr/games
 do
