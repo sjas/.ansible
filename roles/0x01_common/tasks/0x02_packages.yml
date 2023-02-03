@@ -83,6 +83,7 @@
       - iperf3
       - iptraf-ng
       - iputils-arping
+      - java-package
       - jq
       - kdiff3
       - l3afpad
