@@ -20,6 +20,7 @@
       - arp-scan
       - at
       - atop
+      - autofs
       - autossh
       - barrier
       - bash-completion
@@ -31,6 +32,7 @@
       - ccze
       - checkinstall
       - chrony
+      - cifs-utils
       - cmake
       - colordiff
       - conntrack
@@ -160,6 +162,7 @@
       - shellcheck
       - siege
       - sipcalc
+      - smb4k
       - sngrep
       - snmp
       - snmp-mibs-downloader
