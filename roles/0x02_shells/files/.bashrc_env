@@ -157,8 +157,7 @@ export LESS_TERMCAP_ue=$'\E[0m'		# end underline
 
 
 ## $PATH,NODEJS,GOLANG,JAVA,RUSTLANG,$PATH ##################################################################
-# helper function; the only sane way that works
-#fixme [..] vs. [[..]] and quoting
+# helper function; its the only sane way that works
 addtopath() {
 	if [[ -d "$1" ]] && [[ ":${PATH}:" != *":$1:"* ]]
 	then
