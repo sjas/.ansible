@@ -7,21 +7,17 @@
   changed_when: false
 
 - name: create .deb from parts because shithub sucks
-  command:
+  shell:
     cmd: cat oracle-java8-jdk_8u202_amd64.deb.a? >oracle-java8-jdk_8u202_amd64.deb
     chdir: /home/sjas/etc/.ansible/roles/0x04_code/files/
   when: not javaws.stat.exists
-  tags: asdf
 
 - name: java8u202 install
   apt:
     deb: /home/sjas/etc/.ansible/roles/0x04_code/files/oracle-java8-jdk_8u202_amd64.deb
   when: not javaws.stat.exists
-  tags: asdf
-
 
 - name: remove remants
   file:
     path: /home/sjas/etc/.ansible/roles/0x04_code/files/oracle-java8-jdk_8u202_amd64.deb
     state: absent
-  tags: asdf
