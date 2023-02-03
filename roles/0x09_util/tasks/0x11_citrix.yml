@@ -9,7 +9,7 @@
 - name: create .deb from parts because shithub sucks
   shell:
     cmd: cat icaclient_22.12.0.12_amd64.deb.a? >icaclient_22.12.0.12_amd64.deb
-    chdir: /home/sjas/etc/.ansible/roles/0x0_util/files/
+    chdir: /home/sjas/etc/.ansible/roles/0x09_util/files/
   when: not icaclient.stat.exists
 
 - name: icaclient install
