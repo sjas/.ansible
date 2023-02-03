@@ -26,6 +26,19 @@
     - .local/bin
     - go
     - py
+    - n
+    - dw
+    - dp
+
+- name: directories
+  file:
+    dest: /{{ item }}
+    state: directory
+    mode: 0775
+  with_items:
+    - asdf
+    - qwer
+    - zxcv
 
 - name: remove obsolete directories
   file:
