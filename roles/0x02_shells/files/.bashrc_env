@@ -182,9 +182,9 @@ export GO111MODULE="on"
 export CARGO_HOME="/home/sjas/.cargo"  ## non-official var
 
 #   J A V A
-export JAVA_HOME=/usr/java/jdk1.8.0_202-amd64
-export  J2SDKDIR=/usr/java/jdk1.8.0_202-amd64
-export   J2REDIR=/usr/java/jdk1.8.0_202-amd64/jre
+#export JAVA_HOME=/usr/java/jdk1.8.0_202-amd64
+#export  J2SDKDIR=/usr/java/jdk1.8.0_202-amd64
+#export   J2REDIR=/usr/java/jdk1.8.0_202-amd64/jre
 
 #   P A T H
 for i
@@ -194,12 +194,12 @@ in  /usr/local/bin \
 	"${GOROOT:-}"/bin \
 	"${GOPATH:-}"/bin \
 	"${CARGO_HOME:-}"/bin \
-	"${JAVA_HOME:-}"/bin \
-	"${J2REDIR:-}"/bin \
+	\ #"${JAVA_HOME:-}"/bin \
+	\ #"${J2REDIR:-}"/bin \
 	/usr/lib/cargo/bin \
 	/usr/games
 do
-	addtopath $i
+	addtopath "$i"
 done
 
 export PATH
