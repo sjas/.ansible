@@ -29,6 +29,7 @@
     - n
     - dw
     - dp
+    - kp
 
 - name: directories
   file:
