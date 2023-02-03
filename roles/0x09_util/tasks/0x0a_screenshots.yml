@@ -46,7 +46,7 @@
 # also:
 # https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
 #
-#fixme
+# fixme
 # - name: shutter
 #   become: true
 #   become_user: sjas
