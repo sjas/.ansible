@@ -1,21 +1,23 @@
 ---
 
-- name: check if java8u202 is already installed
+- name: check if javaws exists is already installed
   stat:
-    path: /usr/java/jdk1.8.0_202-amd64
-  register: java8_installed
+    path: /usr/bin/javaws
+  register: javaws
   changed_when: false
 
 - name: create .deb from parts because shithub sucks
-  shell: "(cd /home/sjas/etc/.ansible/roles/0x04_code/files/;cat jdk1.8_1.8.0202-1_amd64.deb.a? >jdk1.8_1.8.0202-1_amd64.deb)"
-  when: not java8_installed.stat.exists
+  command:
+    cmd: cat oracle-java8-jdk_8u202_amd64.deb.a? >oracle-java8-jdk_8u202_amd64.deb
+    chdir: /home/sjas/etc/.ansible/roles/0x04_code/files/
+  when: not javaws.stat.exists
 
 - name: java8u202 install
   apt:
-    deb: /home/sjas/etc/.ansible/roles/0x04_code/files/jdk1.8_1.8.0202-1_amd64.deb
-  when: not java8_installed.stat.exists
+    deb: /home/sjas/etc/.ansible/roles/0x04_code/files/oracle-java8-jdk_8u202_amd64.deb
+  when: not javaws.stat.exists
 
 - name: remove remants
   file:
-    path: /home/sjas/etc/.ansible/roles/0x04_code/files/jdk1.8_1.8.0202-1_amd64.deb
+    path: /home/sjas/etc/.ansible/roles/0x04_code/files/oracle-java8-jdk_8u202_amd64.deb
     state: absent
