@@ -135,6 +135,7 @@
       - percol
       - percona-toolkit
       - pgpdump
+      - powertop
       - puppet-lint
       - pv
       - pwgen
