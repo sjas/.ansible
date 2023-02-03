@@ -1,0 +1,23 @@
+---
+
+- name: check if icaclient exists is already installed
+  stat:
+    path: /opt/Citrix/ICAClient/selfservice
+  register: icaclient
+  changed_when: false
+
+- name: create .deb from parts because shithub sucks
+  shell:
+    cmd: cat icaclient_22.12.0.12_amd64.deb.a? >icaclient_22.12.0.12_amd64.deb
+    chdir: /home/sjas/etc/.ansible/roles/0x0_util/files/
+  when: not icaclient.stat.exists
+
+- name: icaclient install
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/0x09_util/files/icaclient_22.12.0.12_amd64.deb
+  when: not icaclient.stat.exists
+
+- name: remove remants
+  file:
+    path: /home/sjas/etc/.ansible/roles/0x09_util/files/icaclient_22.12.0.12_amd64.deb
+    state: absent

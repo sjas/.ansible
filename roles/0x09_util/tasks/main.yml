@@ -63,3 +63,7 @@
 - name: apache directory studio include
   include: 0x10_apache-directory-studio.yml
   tags: util,apacheds
+
+- name: citrix client include
+  include: 0x11_citrix.yml
+  tags: util,citrix
