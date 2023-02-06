@@ -142,6 +142,7 @@
       - puppet-lint
       - pv
       - pwgen
+      - python3.10-venv
       - python3-ipdb
       - python3-pip
       - python3-pudb
