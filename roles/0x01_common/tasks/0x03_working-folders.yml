@@ -8,28 +8,29 @@
     state: directory
     mode: 0775
   with_items:
+    - .config
+    - .local
+    - .local/bin
+    - bkg
     - dl
     - doc
+    - dp
+    - dw
     - etc
+    - etc/.dotfiles
+    - go
     - img
+    - kp
     - mp3
+    - n
     - pdf
     - prv
     - pub
+    - py
     - tmpl
     - txt
     - vid
     - wrk
-    - etc/.dotfiles
-    - .config
-    - .local
-    - .local/bin
-    - go
-    - py
-    - n
-    - dw
-    - dp
-    - kp
 
 - name: directories
   file:
