@@ -109,6 +109,7 @@
       - multitail
       - mysql-client
       - mytop
+      - nagstamon
       - ncdt
       - ncdu
       - neofetch
