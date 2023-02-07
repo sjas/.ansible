@@ -98,9 +98,10 @@ alias   cdc="cd /home/sjas/.config;git status -s"	    ## kde configs where the d
 # shellcheck disable=SC2139
 alias  cddi="cd ${DOTFILES}/../.dotfiles;\ls"  	## dotfiles' includes
 alias	cdn="cd /home/sjas/txt;\ls"
-alias 	cds="cd /home/sjas/.ssh/controlmasters;\ls -lahsi"
+alias 	cds="cd /home/sjas/.ssh/controlmasters;\ls -Alhtr --color"
 alias   cdw="cd /home/sjas/wrk;\ls"
-alias    py="cd /home/sjas/py;\ls"
+alias  cdpy="cd /home/sjas/py;\ls"
+alias  cdts="cd /home/sjas/ts;\ls -Alhtr --color"
 
 # 'show aliases' (shows currently defined aliases)
 # ba  = bash aliases
