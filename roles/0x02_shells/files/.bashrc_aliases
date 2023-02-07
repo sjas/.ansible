@@ -93,13 +93,14 @@ alias   dbv="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x04_code/files
 
 # 'change directory'
 # shellcheck disable=SC2139
-alias   cdd="cd ${DOTFILES}"||:			    ## dotfiles
-alias   cdc="cd /home/sjas/.config"||:	    ## kde configs where the diffing takes plaace
+alias   cdd="cd ${DOTFILES};git status -s"			    ## dotfiles
+alias   cdc="cd /home/sjas/.config;git status -s"	    ## kde configs where the diffing takes plaace
 # shellcheck disable=SC2139
-alias  cddi="cd ${DOTFILES}/../.dotfiles"  	## dotfiles' includes
-alias	cdn="cd /home/sjas/txt"
-alias 	cds="cd /home/sjas/.ssh/controlmasters; ls -liash /home/sjas/.ssh/controlmasters"
-alias   cdw="cd /home/sjas/wrk"
+alias  cddi="cd ${DOTFILES}/../.dotfiles;\ls"  	## dotfiles' includes
+alias	cdn="cd /home/sjas/txt;\ls"
+alias 	cds="cd /home/sjas/.ssh/controlmasters;\ls -lahsi"
+alias   cdw="cd /home/sjas/wrk;\ls"
+alias    py="cd /home/sjas/py;\ls"
 
 # 'show aliases' (shows currently defined aliases)
 # ba  = bash aliases
