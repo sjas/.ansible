@@ -365,11 +365,11 @@ alias hgg="history|grep -i"
 alias powershell="pwsh"
 
 backup() {
-	mv "$1" "$1".bu
+	sudo cp -v "$1" "$1".bu
 }
 alias bu=backup
 unbackup() {
-	mv "$1" "${1%%\.bu}"
+	sudo cp -v "$1" "${1%%\.bu}"
 }
 alias unbu=unbackup
 aptfilesearchupdate() {
@@ -536,9 +536,9 @@ e() { command ed -v -p\* "$@" ; }
 alias vihosts="sudo vim /etc/hosts"
 alias viresolv="sudo vim /etc/resolv.conf"
 alias vissh="vim /home/sjas/.ssh/config"
+alias visshcl="vim /home/sjas/.cloginrc"
 alias viif="sudo vim /etc/network/interfaces"
 alias vinss="sudo vim /etc/nsswitch.conf"
-alias  vigi="vim .gitignore"
 
 #CAT
 # hosts		= /etc/hosts
