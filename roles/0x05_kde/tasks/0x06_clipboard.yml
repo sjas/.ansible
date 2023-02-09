@@ -28,6 +28,7 @@
     option: StripWhiteSpace
     value: false
 
+-
 - name: klipper sync clipboards
   become: true
   become_user: sjas
@@ -50,6 +51,18 @@
     no_extra_spaces: true
     section: General
     option: SelectionTextOnly
+    value: false
+
+- name: no really, put everything in clipboard
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: General
+    option: IgnoreSelection
     value: false
 
 - name: klipper also put images into clipboard history
