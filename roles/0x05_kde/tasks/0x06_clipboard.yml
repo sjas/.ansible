@@ -28,6 +28,18 @@
     option: StripWhiteSpace
     value: false
 
+- name: klipper sync clipboards
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: General
+    option: SyncClipboards
+    value: true
+
 - name: klipper also put images into clipboard history
   become: true
   become_user: sjas
