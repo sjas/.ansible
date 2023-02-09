@@ -46,6 +46,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     always=yes
     context=4
     EOF
+	ansible-galaxy collection install community.general
     cd .ansible
 
 ## run ansible to get the workstation up and running
