@@ -11,7 +11,7 @@
 # - name: touchpad
 #   include: 0x03_touchpad.yml
 #   tags: mouse
-#
+
 # - name: powersettings
 #   include: 0x04_powersettings.yml
 #   tags: kde

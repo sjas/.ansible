@@ -204,6 +204,7 @@
       - xbindkeys-config
       - xdotool
       - xmlstarlet
+      - xserver-xorg-input-synaptics
       - xserver-xorg-input-libinput
       - yamllint
       - yapf3
