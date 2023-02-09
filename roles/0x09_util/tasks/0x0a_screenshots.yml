@@ -66,6 +66,18 @@
     mode: 0664
     no_extra_spaces: true
     section: General
+    option: clipboardGroup
+    value: PostScreenshotCopyImagee
+
+- name: spectacle autosave image
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/spectaclerc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: General
     option: autoSaveImage
     value: true
 
