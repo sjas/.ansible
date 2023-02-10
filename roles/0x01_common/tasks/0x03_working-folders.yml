@@ -8,10 +8,8 @@
     state: directory
     mode: 0775
   with_items:
-    - .config
-    - .local
-    - .local/bin
     - bkg
+    - .config
     - dl
     - doc
     - dp
@@ -20,7 +18,10 @@
     - etc/.dotfiles
     - go
     - img
+    - InstantUpload
     - kp
+    - .local
+    - .local/bin
     - mp3
     - n
     - pdf
@@ -31,7 +32,6 @@
     - tmpl
     - vid
     - wrk
-    - InstantUpload
 
 - name: directories
   file:
