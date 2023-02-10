@@ -57,7 +57,7 @@
 #     value: shutter_$name_%NNN_%Y%m%d_%T
 
 ## spectacle config #########################################################################################
-- name: spectacle autosave image
+- name: spectacle copy to clipboard automatically
   become: true
   become_user: sjas
   ini_file:
@@ -67,7 +67,7 @@
     no_extra_spaces: true
     section: General
     option: clipboardGroup
-    value: PostScreenshotCopyImagee
+    value: PostScreenshotCopyImage
 
 - name: spectacle autosave image
   become: true
