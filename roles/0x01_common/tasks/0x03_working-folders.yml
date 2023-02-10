@@ -28,9 +28,9 @@
     - pub
     - py
     - tmpl
-    - txt
     - vid
     - wrk
+    - InstantUpload
 
 - name: directories
   file:
