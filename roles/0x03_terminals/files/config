@@ -40,7 +40,7 @@
     background_type = transparent
     cursor_color = "#39ff35"
     cursor_color_fg = False
-    font = Noto Sans Mono 10
+    font = Noto Sans Mono 9
     foreground_color = "#deddda"
     scrollback_infinite = True
     palette = "#1c1c1c:#ff5757:#26a269:#f6d32d:#3465a4:#dc8add:#668e87:#deddda:#77767b:#fe1010:#42e544:#f2ff00:#8fafd7:#c061cb:#5fafaf:#ffffff"
