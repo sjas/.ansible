@@ -2,24 +2,72 @@
 KeyboardActivityTimeoutMs=300
 
 [parameters]
-AccelFactor=0.11219643908901684
+AccelFactor=0.13840755820274353
 CircScrollDelta=5.73
+FingerHigh=26
+FingerLow=26
+HorizScrollDelta=2.3
+MaxSpeed=2.5634742169714775
+MaxTapMove=3.6
+PressureMotionMaxZ=52
+PressureMotionMinZ=7
+Tapping=false
+ThreeFingerTapButton=MiddleButton
+VertScrollDelta=2.3
+
+[autodisable]
+KeyboardActivityTimeoutMs=300
+
+[parameters]
+AccelFactor=0.1384075577307315
+CircScrollDelta=5.73
+HorizScrollDelta=2.3
+MaxSpeed=2.1746924624584905
+MaxTapMove=3.6
+Tapping=false
+ThreeFingerTapButton=MiddleButton
+VertScrollDelta=2.3
+
+#MaxSpeed=7.204635919773425
+#MinSpeed=4.013546653690207
+# AccelFactor=0.11219643908901684
+
 CoastingSpeed=5
 FingerHigh=26
 FingerLow=26
 HorizHysteresis=16
-HorizScrollDelta=6.3
 HorizTwoFingerScroll=true
 MaxDoubleTapTime=150
-MaxSpeed=7.204635919773425
 MaxTapMove=2.1
 MaxTapTime=250
-MinSpeed=4.013546653690207
 PressureMotionMaxZ=52
 PressureMotionMinZ=7
 SingleTapTimeout=100
-Tapping=false
-ThreeFingerTapButton=MiddleButton
 VertEdgeScroll=false
 VertHysteresis=16
-VertScrollDelta=2.1
+
+# [autodisable]
+# KeyboardActivityTimeoutMs=300
+#
+# [parameters]
+# AccelFactor=0.11219643908901684
+# CircScrollDelta=5.73
+# CoastingSpeed=5
+# FingerHigh=26
+# FingerLow=26
+# HorizHysteresis=16
+# HorizScrollDelta=6.3
+# HorizTwoFingerScroll=true
+# MaxDoubleTapTime=150
+# MaxSpeed=7.204635919773425
+# MaxTapMove=2.1
+# MaxTapTime=250
+# MinSpeed=4.013546653690207
+# PressureMotionMaxZ=52
+# PressureMotionMinZ=7
+# SingleTapTimeout=100
+# Tapping=false
+# ThreeFingerTapButton=MiddleButton
+# VertEdgeScroll=false
+# VertHysteresis=16
+# VertScrollDelta=2.1

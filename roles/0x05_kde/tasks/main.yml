@@ -8,9 +8,9 @@
   include: 0x02_mouse-keyboard.yml
   tags: kde,mouse,keyboard
 
-# - name: touchpad include
-#   include: 0x03_touchpad.yml
-#   tags: kde,mouse,touchpad
+- name: touchpad include
+  include: 0x03_touchpad.yml
+  tags: kde,mouse,touchpad
 
 - name: powersettings include
   include: 0x04_powersettings.yml
