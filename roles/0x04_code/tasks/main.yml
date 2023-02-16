@@ -26,4 +26,8 @@
 
 - name: oracle java 8u202 include
   include: 0x07_java8u202.yml
-  tags: code,java
+  tags: code,java,java8
+
+- name: eclipse temurin java 19 include
+  include: 0x08_java19.yml
+  tags: code,java,java19
