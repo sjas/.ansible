@@ -71,3 +71,7 @@
 - name: jless include
   include: 0x12_jless.yml
   tags: util,jless
+
+- name: ghidra include
+  include: 0x13_ghidra.yml
+  tags: util,ghidra

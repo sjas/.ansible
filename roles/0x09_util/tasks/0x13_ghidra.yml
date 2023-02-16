@@ -1,0 +1,66 @@
+---
+
+# https://gitlab.oit.duke.edu/devil-ops/ansible-ghidra-desktop
+#
+# fix download path upon new releases
+# get this from the github download url at https://github.com/NationalSecurityAgency/ghidra/releases
+- name: register current ghidra version download path
+  command: "/bin/echo Ghidra_10.2.3_build/ghidra_10.2.3_PUBLIC_20230208.zip"
+  register: ghidra_download_path
+  changed_when: false
+
+- name: register ghidra version
+  command: "/bin/echo {{ ghidra_download_path.stdout | regex_search('ghidra_.+_PUBLIC') }}"
+  register: ghidra_version
+  changed_when: false
+
+- name: register ghidra install path
+  command: "/bin/echo /opt/ghidra/{{ ghidra_version.stdout }}"
+  register: ghidra_install_path
+  changed_when: false
+
+- name: ghidra install check
+  stat:
+    path: "/opt/ghidra/{{ ghidra_version.stdout }}"
+  register: ghidra_installed
+  changed_when: false
+
+- name: ensure /opt/ghidra exists
+  file:
+    path: /opt/ghidra
+    state: directory
+  when: not ghidra_installed.stat.exists
+
+- name: download ghidra
+  get_url:
+    url: "https://github.com/NationalSecurityAgency/ghidra/releases/download/{{ ghidra_download_path.stdout }}"
+    dest: /tmp/ghidra.zip
+  when: not ghidra_installed.stat.exists
+
+- name: unarchive ghidra
+  unarchive:
+    src: /tmp/ghidra.zip
+    dest: /opt/ghidra
+  when: not ghidra_installed.stat.exists
+
+- name: cleanup ghidra install files
+  file:
+    path: /tmp/ghidra.zip
+    state: absent
+  when: not ghidra_installed.stat.exists
+
+- name: link ghidra to $PATH
+  become: yes
+  become_user: sjas
+  file:
+    src: "{{ ghidra_install_path.stdout }}/ghidraRun"
+    dest: /home/sjas/.local/bin/ghidra
+    state: link
+
+- name: ghidra desktop file
+  become: yes
+  become_user: sjas
+  template:
+    src: ghidra.desktop.j2
+    dest: /home/sjas/.local/share/applications/ghidra.desktop
+    mode: 0644
