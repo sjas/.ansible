@@ -38,6 +38,7 @@
       - conntrack
       - cpanminus
       - curl
+      - desktop-file-utils
       - dhcpdump
       - dhcping
       - dialog
