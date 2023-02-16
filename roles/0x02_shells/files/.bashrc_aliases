@@ -76,7 +76,7 @@ alias  ebaa="vim /home/sjas/.ansible.cfg"
 
 ## 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES' ###################################################################
 # 'reload'
-alias sb=". ~/.bashrc&&printf '.bashrc sourced.'"
+alias sb=". ~/.bashrc&&printf '\n.bashrc sourced.\n'"
 alias reb=". ~/.bashrc&&printf '.bashrc sourced.'"
 rea() {
 	(
@@ -365,6 +365,14 @@ alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*
 alias h="history"
 alias hgg="history|grep -i"
 alias powershell="pwsh"
+
+krestart() {
+	for i in $@
+	do
+		pkill "$i"
+		kstart "$i"
+	done
+}
 
 backup() {
 	sudo cp -v "$1" "$1".bu
