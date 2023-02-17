@@ -19,3 +19,9 @@
     name: vm.swappiness
     value: "1"
   changed_when: false
+
+- name: make iotop(1) work again
+  sysctl:
+    name: kernel.task_delayacct
+    value: 1
+  changed_when: false
