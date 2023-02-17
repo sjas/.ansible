@@ -367,7 +367,7 @@ alias hgg="history|grep -i"
 alias powershell="pwsh"
 
 krestart() {
-	for i in $@
+	for i in "$@"
 	do
 		pkill "$i"
 		kstart "$i"
@@ -561,7 +561,16 @@ alias vinss="sudo vim /etc/nsswitch.conf"
 # fonts		= list system font names
 alias cathosts="cat /etc/hosts"
 alias catssh="cat /home/sjas/.ssh/config"
-alias catpub="cat /home/sjas/.ssh/id_rsa.pub"
+catpub() {
+	for i in id_rsa id_ecdsa id_ecdsa_sk id_ed25519 id_ed25519_sk id_dsa
+	do
+		if [[ -f /home/sjas/.ssh/$i ]]
+		then
+			pp "$i"
+			cat /home/sjas/.ssh/"$i".pub 2>/dev/null||echo PUBKEY MISSING
+		fi
+	done
+}
 alias catgi="cat .gitignore"
 # shellcheck disable=SC2142,SC2139
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
