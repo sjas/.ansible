@@ -6,6 +6,21 @@
       - keepassxc
       - webext-keepassxc-browser
 
+- name: keepass default security settings
+  ini_file:
+    path: /home/sjas/.config/keepassxc/keepassxc.ini
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: Security
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { key: 'ClearClipboardTimeout', value: '60'}
+    - { key: 'ClearSearchTimeout', value: '60'}
+    - { key: 'LockDatabaseScreenLock', value: 'false'}
+
+
 # - name: enable browser integration
 #   become: true
 #   become_user: sjas
