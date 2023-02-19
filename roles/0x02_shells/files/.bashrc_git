@@ -32,7 +32,7 @@
 ## BASICS ###################################################################################################
 #https://stackoverflow.com/a/15702135/805284
 gitignore() {
-	if [[ $# == 0 ]] 
+	if [[ $# == 0 ]]
         then
 			vim .gitignore
 			git add .gitignore
@@ -54,7 +54,7 @@ gitignore() {
 alias gi="gitignore"
 
 githelp() {
-		if [[ $# == 0 ]] 
+		if [[ $# == 0 ]]
 		then
 				less /home/sjas/etc/.ansible/roles/0x02_shells/files/.bashrc_git && return
 		else
@@ -81,7 +81,7 @@ alias grshh="git reset --hard HEAD"					 ## unstage everthing and nix all change
 #create a proper version string out of date and commit hash (UTC)
 alias gversion='echo $(date --utc --date="$(git show -s --format=%ci)" +%Y%m%d%H%M)-$(git rev-parse --short HEAD)'
 
- 
+
 #status of all repositories in a single folder
 repostatus() {
 	[[ 0 -eq $#  ]]&&printf "\nusage:\n\t%s FOLDER\n" "${FUNCNAME[0]}"&&return
@@ -161,7 +161,7 @@ gitdiffsofancy() {
 gitdifftool() {
 		git difftool -t "$*"
 }
-alias gdt=gitdifftool								   ## gdt <difftool>, difftools: meld, kdiff3 
+alias gdt=gitdifftool								   ## gdt <difftool>, difftools: meld, kdiff3
 
 # shellcheck disable=SC2142
 alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2~/blob/ { print \$4 }'"  ## ls-tree, show versioned files
