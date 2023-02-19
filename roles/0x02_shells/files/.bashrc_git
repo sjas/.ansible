@@ -172,8 +172,12 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 
 ## COMMIT ###################################################################################################
 gitcommit() {
-		[[ $# -eq 0 ]]&&git commit
-		git commit -m "$*"
+		if [[ $# -eq 0 ]]
+		then
+			git commit
+		else
+			git commit -m "$*"
+		fi
 		git status -s
 }
 alias gc="gitcommit"
