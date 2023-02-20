@@ -42,15 +42,15 @@
 #   b
 #   brave-browser-stable
 #
-# thunderbird
-#   open thunderbird
+# EMAIL
+# evolution
+#   evolution
 #   f
+#   evolution %U
+# thunderbird
 #   thunderbird
-#
-# vscode
-#   vscode
-#   x
-#   code
+#   g
+#   thunderbird
 #
 # MESSENGERS
 # telegram
@@ -66,6 +66,11 @@
 #   u
 #   teams %U
 #
+# authy
+#   authy
+#   a
+#   authy %U
+#
 # keepassxc  ## https://askubuntu.com/questions/703628/how-to-close-minimize-and-maximize-a-specified-window-from-terminal
 #   xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc
 #   k
@@ -75,10 +80,12 @@
 #   shutter
 #   print
 #   shutter -s
-# authy
-#   authy
-#   a
-#   authy %U
+#
+# vscode
+#   vscode
+#   x
+#   code
+#
 
 - name: deploy shortcut actions
   become: true

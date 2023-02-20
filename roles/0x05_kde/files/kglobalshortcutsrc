@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-9305e9e1-40e8-4920-8756-299c8464377b=none,none,Switch to activity "Default"
+switch-to-activity-e493e035-45a4-4fd7-a33b-e7c5c8c74112=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US, alt. intl.)=none,none,Switch keyboard layout to English (US\\, alt. intl.)
@@ -35,12 +36,14 @@ _k_friendly_name=Custom Shortcuts Service
 {3e33ff53-179e-44d4-b784-432c73f1c8dc}=Meta+T,none,uxterm
 {49cd0d36-54fe-42d0-827b-b4a53c2736c6}=Meta+Y,none,telegram
 {674b4cd8-72b2-499a-ba0c-98b962c94d7d}=Meta+M,none,edge
+{7b7426bb-7413-4023-9a74-ce72979d54c3}=Meta+F,none,evolution
 {82a7573f-89eb-44be-b65a-ceb7c996731d}=Meta+N,none,chromium
 {84096022-a191-490d-9ff6-26dacf063ae3}=Meta+U,none,teams
 {9bdd9384-0d60-4bc9-9d99-030c2f13e512}=Print,none,shutter
 {c1597ba8-0407-40ec-bda6-b93288395a4d}=Meta+I,none,controlpanel
 {cb2781a7-3823-4fc0-99aa-244dc4edf22b}=Meta+X,none,vscode
-{fc4d0180-8007-4aa1-ae21-460bef8b779f}=Meta+F,none,thunderbird
+{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
+{fc4d0180-8007-4aa1-ae21-460bef8b779f}=Meta+G,none,thunderbird
 {fddb35cf-3070-4865-b6a8-cd74df1fff40}=Meta+C,none,chrome
 
 [kmix]
@@ -269,7 +272,7 @@ activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
 activate widget 27=none,none,Activate Icons-only Task Manager Widget
-activate widget 4=none,none,Activate Application Launcher Widget
+activate widget 4=Alt+F1,none,Activate Application Launcher Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=Meta+Ctrl+X,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=Meta+Alt+P,Meta+Alt+P,Move keyboard focus between panels
