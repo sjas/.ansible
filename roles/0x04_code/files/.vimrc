@@ -226,43 +226,53 @@ nnoremap n nzt5<c-y>
 nnoremap * *zt5<c-y>
 
 "# shortcuts&&keybindings bash&&markdown&&vim formatting ####################################################
-"ANY: search current line (for navigation from the 'toc' to paragraph
+"ANY:
+"search current line (for navigation from the 'toc' to paragraph
 nnoremap <leader>8 /\V<c-r>=escape(getline('.'),'\')<cr><cr>:noh<cr>zz
-"ANY: headline from current line
+"headline from current line
 nnoremap <leader>jl 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d$o<esc>
-"ANY: separator line
+"separator line
 nnoremap <leader>- O<esc>109i#<esc>o
-"ANY: uppercase and spaces inserted
+"uppercase and spaces inserted
 nnoremap <leader>sp VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<cr>yy
-"ANY: small headline (####)
+"small headline (####)
 nnoremap <leader>h 0i#### <esc>o<esc>D
 
-"MARKDOWN: headline from current line after five newlines
+
+
+"MARKDOWN:
+"headline from current line after five newlines
 "nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d$O<cr><cr><cr><cr><cr><esc>jj
 nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jj
-"MARKDOWN: headline from current line after five newlines plus codeblock
+"headline from current line after five newlines plus codeblock
 nnoremap <leader>jjk 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jji```<cr><cr>```<esc>k
-"MARKDOWN: code blockk
+"code block
 nnoremap <leader>cc VgUO<esc>jo<esc>40i~<esc>yypO<esc>DkAbash<esc>j
-"MARKDOWN: update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
+"update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
 nnoremap <silent> <leader>mt mzgg}d}d/.<cr>O<cr>```<cr><cr><esc>k:redir @y<cr>:g/^## /p<cr>:redir END<cr>gg}}"ypdkdd}i```<cr><cr><cr><cr><cr><esc>kkkkk:noh<cr>gg}V}:s/ #\+$//<cr>:noh<cr>'zgg
 "old: nnoremap <silent> <leader>mt mzgg}d}d/.<cr>O<cr>```<cr><cr><esc>k:redir @y<cr>:g/^## /p<cr>:redir END<cr>gg}}"ypdkdd}i```<cr><cr><cr><cr><cr><esc>kkkkk:noh<cr>gg}V}:s/^## //<cr>gv<cr>:s/#\+$//<cr>:noh<cr>'zgg
 
-"VIM: update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
+
+
+"VIM:
+"update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
 nnoremap <silent> <leader>vt mzgg}d}d/.<cr>O<esc>DO<esc>:redir @y<cr>:g/^"# /p<cr>:redir END<cr>gg}"ypdk}i<cr><esc>gg}V}:s/ #\+$//<cr>:noh<cr>o<esc>Do<cr><esc>D'zgg
-"VIM: headline from current line after five newlines
+"headline from current line after five newlines
 nnoremap <leader>vj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d$0r"o<esc>kO<esc>Di<cr><cr><cr><cr><esc>jjx
-"VIM: headline from current line
+"headline from current line
 nnoremap <leader>vl 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d$0r"o<esc>x
 
-"BASH: update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
+
+
+"BASH:
+"update toc (1 above and 3 empty lines below), and show it. (get back via c-o)
 nnoremap <silent> <leader>bt mzgg}d}d/.<cr>O<cr><esc>:redir @y<cr>:g/^## /p<cr>:redir END<cr>gg}"ypdk}i<cr><esc>gg}V}:s/ #\+$//<cr>:noh<cr>o<cr><cr><esc>'zgg
-"BASH: box with unchanged letter-casing
+"box with unchanged letter-casing
 nnoremap <leader>hl I# <esc>A #<esc>yyPVr#yyjp<cr>
-"BASH: box with uppercase content
+"box with uppercase content
 nnoremap <leader>Hl I# <esc>A #<esc>VgUyyPVr#yyjp<cr>
-"BASH: box with spaced uppercase content
+"box with spaced uppercase content
 nnoremap <leader>HL I# <esc>A #<esc>:s/./&  /g<cr>$xxyyPVr#yyjpPVr 0r#$r#yykkpjjjj:nohl<cr>
-"BASH: surrounding lines for current line
+"surrounding lines for current line
 nnoremap <leader>ll ddP0O<esc>109i#<esc>yyjpj
 
