@@ -8,54 +8,12 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Desktops
-    option: Id_2
-    value: 5be4b110-1940-4f69-9851-9925a9a2181b
-
-- name: kde virtual desktops
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Desktops
-    option: Number
-    value: 2
-
-- name: kde virtual desktops
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Desktops
-    option: Rows
-    value: 2
-
-- name: kde virtual desktops
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Plugins
-    option: slideEnabled
-    value: false
-
-- name: kde virtual desktops
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Windows
-    option: RollOverDesktops
-    value: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: 'Desktops', option: 'Id_2', value: '5be4b110-1940-4f69-9851-9925a9a2181b' }
+    - { section: 'Desktops', option: 'Number', value: '2' }
+    - { section: 'Desktops', option: 'Rows', value: '2' }
+    - { section: 'Plugins', option: 'slideEnabled', value: 'false' }
+    - { section: 'Windows', option: 'RollOverDesktops', value: 'true' }

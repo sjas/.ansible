@@ -20,7 +20,7 @@
     cache_valid_time: 7200
     name: imwheel
 
-- name: mouse - acceleration
+- name: mouse kcminputrc
   become: true
   become_user: sjas
   ini_file:
@@ -28,33 +28,13 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Mouse
-    option: XLbInptPointerAcceleration
-    value: -0.525
-
-- name: mouse - nonflat accel curve
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kcminputrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Mouse
-    option: XLbInptAccelProfileFlat
-    value: false
-
-- name: mouse - nonflat accel curve 2
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kcminputrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Mouse
-    option: X11LibInputXAccelProfileFlat
-    value: false
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.525" }
+    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
+    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
 
 - name: fix up imwheel as a user service
   copy:
@@ -93,7 +73,7 @@
     mode: 0664
   notify: imwheel_restart
 
-- name: mouse - focus follows mouse
+- name: mouse kwinrc
   become: true
   become_user: sjas
   ini_file:
@@ -101,107 +81,22 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Windows
-    option: FocusPolicy
-    value: FocusFollowsMouse
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Windows", option: "FocusPolicy", value: "FocusFollowsMouse" }
+    - { section: "Windows", option: "NextFocusPrefersMouse", value: "true" }
+    - { section: "Windows", option: "DelayFocusInterval", value: "200" }
+    - { section: "Windows", option: "AutoRaise", value: "false" }
+    - { section: "Windows", option: "AutoRaiseInterval", value: "1100" }
+    - { section: "MouseBindings", option: "CommandAllKey", value: "Alt" }
+    - { section: "MouseBindings", option: "CommandAll1", value: "Toggle raise and lower" }
+    - { section: "MouseBindings", option: "CommandAll2", value: "Minimize" }
+    - { section: "MouseBindings", option: "CommandAll3", value: "Move" }
+    - { section: "MouseBindings", option: "CommandTitlebarWheel", value: "Change Opacity" }
 
-- name: mouse - focus follows mouse, next focus
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Windows
-    option: NextFocusPrefersMouse
-    value: true
-
-- name: mouse - focus follows mouse delay interval
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Windows
-    option: DelayFocusInterval
-    value: 200
-
-- name: mouse - focus follows mouse autoraise
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Windows
-    option: AutoRaise
-    value: false
-
-# - name: mouse - focus follows mouse autoraise delay interval
-#   become: true
-#   become_user: sjas
-#   ini_file:
-#     path: /home/sjas/.config/kwinrc
-#     create: true
-#     mode: 0664
-#     no_extra_spaces: true
-#     section: Windows
-#     option: AutoRaiseInterval
-#     value: 1100
-
-- name: mouse - focus follows mouse, alt button to rise
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: MouseBindings
-    option: CommandAllKey
-    value: Alt
-
-- name: mouse - focus follows mouse, alt-button1 to rise
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: MouseBindings
-    option: CommandAll1
-    value: Toggle raise and lower
-
-- name: alt+mouse3 minimizes
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: MouseBindings
-    option: CommandAll2
-    value: Minimize
-
-- name: alt+mouse2 moves
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: MouseBindings
-    option: CommandAll3
-    value: Move
-
-- name: scrollbar jump to position
+- name: mouse kdeglobals
   become: true
   become_user: sjas
   ini_file:
@@ -209,33 +104,12 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: KDE
-    option: ScrollbarLeftClickNavigatesByPage
-    value: false
-
-- name: open files by doubleclick
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: KDE
-    option: SingleClick
-    value: false
-
-- name: mousewheel on titlebar changes window opacity
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kwinrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: MouseBindings
-    option: CommandTitlebarWheel
-    value: Change Opacity
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "KDE", option: "ScrollbarLeftClickNavigatesByPage", value: "false" }
+    - { section: "KDE", option: "SingleClick", value: "false" }
 
 # #cant fix this because khotkeysrc is replaced globally
 # - name: open files by doubleclick yes really
@@ -250,7 +124,7 @@
 #     option: SingleClick[$d]
 
 ## keyboard #################################################################################################
-- name: keyboard - repeat delay
+- name: keyboard - kcminputrc
   become: true
   become_user: sjas
   ini_file:
@@ -258,73 +132,16 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Keyboard
-    option: RepeatDelay
-    value: 200
-
-- name: keyboard - repeat rate
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kcminputrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Keyboard
-    option: RepeatRate
-    value: 100
-
-- name: keyboard - layoutlist
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kxkbrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Layout
-    option: LayoutList
-    value: us
-
-- name: keyboard - nocaps
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kxkbrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Layout
-    option: Options
-    value: caps:ctrl_modifier
-
-- name: keyboard - reset old options whatever this is
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kxkbrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Layout
-    option: ResetOldOptions
-    value: true
-
-- name: keyboard - "yes"
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kxkbrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Layout
-    option: Use
-    value: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Keyboard", option: "RepeatDelay", value: "200" }
+    - { section: "Keyboard", option: "RepeatRate", value: "100" }
 
 # us altgr-intl (aka us international no dead keys gibts eig. überall vorinstalliert)
 # EurKey -> https://eurkey.steffen.bruentjen.eu/?lang=de  Hier liegt ö ü besser und mehr Tasten belegt
-- name: keyboard - variant
+- name: keyboard kxkbrc
   become: true
   become_user: sjas
   ini_file:
@@ -332,9 +149,16 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Layout
-    option: VariantList
-    value: altgr-intl
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Layout", option: "LayoutList", value: "us" }
+    - { section: "Layout", option: "Options", value: "caps:ctrl_modifier" }
+    - { section: "Layout", option: "ResetOldOptions", value: "true" }
+    - { section: "Layout", option: "ResetOldOptions", value: "true" }
+    - { section: "Layout", option: "Use", value: "true" }
+    - { section: "Layout", option: "VariantList", value: "altgr-intl" }
 
 - name: plasma locale
   become: true

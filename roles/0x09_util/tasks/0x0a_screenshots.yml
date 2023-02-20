@@ -7,30 +7,6 @@
     name:
       - shutter
 
-# - name: spectacle
-#   become: true
-#   become_user: sjas
-#   ini_file:
-#     path: /home/sjas/.config/
-#     create: true
-#     mode: 0664
-#     no_extra_spaces: true
-#     section:
-#     option:
-#     value:
-#
-# - name: shutter
-#   become: true
-#   become_user: sjas
-#   ini_file:
-#     path: /home/sjas/.config/
-#     create: true
-#     mode: 0664
-#     no_extra_spaces: true
-#     section:
-#     option:
-#     value:
-
 ## shutter config ###########################################################################################
 # this is yucky because its not in ~/.config and using xml instead of ini files ..
 # no its not if you can speak xpath
@@ -57,7 +33,7 @@
 #     value: shutter_$name_%NNN_%Y%m%d_%T
 
 ## spectacle config #########################################################################################
-- name: spectacle copy to clipboard automatically
+- name: spectacle spectaclerc
   become: true
   become_user: sjas
   ini_file:
@@ -65,107 +41,22 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: General
-    option: clipboardGroup
-    value: PostScreenshotCopyImage
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "", option: "", value: "" }
+    - { section: "General", option: "clipboardGroup", value: "PostScreenshotCopyImage" }
+    - { section: "General", option: "autoSaveImage", value: "true" }
+    - { section: "General", option: "onLaunchAction", value: "UseLastUsedCapturemode" }
+    - { section: "General", option: "rememberLastRectangularRegion", value: "UntilSpectacleIsClosed" }
+    - { section: "General", option: "showCaptureInstructions", value: "false" }
+    - { section: "General", option: "useReleaseToCapture", value: "true" }
+    - { section: "GuiConfig", option: "captureMode", value: "5" }
+    - { section: "GuiConfig", option: "quitAfterSaveCopyExport", value: "true" }
+    - { section: "Save", option: "saveFilenameFormat", value: "spectacle_%Y%M%D_%H%m%S" }
 
-- name: spectacle autosave image
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: autoSaveImage
-    value: true
-
-- name: spectacle use last used capture method
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: onLaunchAction
-    value: UseLastUsedCapturemode
-
-- name: spectacle remember region only until spectacle closes
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: rememberLastRectangularRegion
-    value: UntilSpectacleIsClosed
-
-- name: spectacle no nagging
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: showCaptureInstructions
-    value: false
-
-- name: spectacle capture on release
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: useReleaseToCapture
-    value: true
-
-- name: spectacle selection capturing
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: GuiConfig
-    option: captureMode
-    value: 5
-
-- name: spectacle quit after save/copy/export
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: GuiConfig
-    option: quitAfterSaveCopyExport
-    value: true
-
-- name: spectacle filename format
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/spectaclerc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Save
-    option: saveFilenameFormat
-    value: spectacle_%Y%M%D_%H%m%S
-
-- name: spectacle noshowbadges
+- name: spectacle plasmanotify
   become: true
   become_user: sjas
   ini_file:
@@ -173,30 +64,10 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Applications][org.kde.spectacle
-    option: ShowBadges
-    value: false
-
-- name: spectacle noshowinhistory
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/plasmanotifyrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Applications][org.kde.spectacle
-    option: ShowInHistory
-    value: false
-
-- name: spectacle noshowpopups
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/plasmanotifyrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Applications][org.kde.spectacle
-    option: ShowPopups
-    value: false
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Applications][org.kde.spectacle", option: "ShowBadges", value: "false" }
+    - { section: "Applications][org.kde.spectacle", option: "ShowInHistory", value: "false" }
+    - { section: "Applications][org.kde.spectacle", option: "ShowPopups", value: "false" }

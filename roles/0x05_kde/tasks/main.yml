@@ -18,7 +18,7 @@
 
 - name: virtual desktops include
   include: 0x05_virtualdesktops.yml
-  tags: kde
+  tags: kde,virtualdesktops
 
 - name: clipboard include
   include: 0x06_clipboard.yml

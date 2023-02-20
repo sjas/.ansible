@@ -95,43 +95,31 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: Default Applications
-    option: "{{ item.key }}"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { key: "text/html",                     value: "firefox.desktop" }
-    - { key: "x-scheme-handler/http",         value: "firefox.desktop" }
-    - { key: "x-scheme-handler/https",        value: "firefox.desktop" }
-    - { key: "x-scheme-handler/chrome",       value: "firefox.desktop" }
-    - { key: "application/x-extension-htm",   value: "firefox.desktop" }
-    - { key: "application/x-extension-html",  value: "firefox.desktop" }
-    - { key: "application/x-extension-shtml", value: "firefox.desktop" }
-    - { key: "application/xhtml+xml",         value: "firefox.desktop" }
-    - { key: "application/x-extension-xhtml", value: "firefox.desktop" }
-    - { key: "application/x-extension-xht",   value: "firefox.desktop" }
+    - { section: "Default Applications", option: "text/html",                     value: "firefox.desktop" }
+    - { section: "Default Applications", option: "x-scheme-handler/http",         value: "firefox.desktop" }
+    - { section: "Default Applications", option: "x-scheme-handler/https",        value: "firefox.desktop" }
+    - { section: "Default Applications", option: "x-scheme-handler/chrome",       value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/x-extension-htm",   value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/x-extension-html",  value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/x-extension-shtml", value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/xhtml+xml",         value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/x-extension-xhtml", value: "firefox.desktop" }
+    - { section: "Default Applications", option: "application/x-extension-xht",   value: "firefox.desktop" }
+    - { section: "Added Associations", option: "x-scheme-handler/http",         value: "firefox.desktop" }
+    - { section: "Added Associations", option: "x-scheme-handler/https",        value: "firefox.desktop" }
+    - { section: "Added Associations", option: "x-scheme-handler/chrome",       value: "firefox.desktop" }
+    - { section: "Added Associations", option: "text/html",                     value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/x-extension-htm",   value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/x-extension-html",  value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/x-extension-shtml", value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/xhtml+xml",         value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/x-extension-xhtml", value: "firefox.desktop" }
+    - { section: "Added Associations", option: "application/x-extension-xht",   value: "firefox.desktop" }
 
-- name: ff default, more associations
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/mimeapps.list
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Added Associations
-    option: "{{ item.key }}"
-    value: "{{ item.value }}"
-  with_items:
-    - { key: "x-scheme-handler/http",         value: "firefox.desktop" }
-    - { key: "x-scheme-handler/https",        value: "firefox.desktop" }
-    - { key: "x-scheme-handler/chrome",       value: "firefox.desktop" }
-    - { key: "text/html",                     value: "firefox.desktop" }
-    - { key: "application/x-extension-htm",   value: "firefox.desktop" }
-    - { key: "application/x-extension-html",  value: "firefox.desktop" }
-    - { key: "application/x-extension-shtml", value: "firefox.desktop" }
-    - { key: "application/xhtml+xml",         value: "firefox.desktop" }
-    - { key: "application/x-extension-xhtml", value: "firefox.desktop" }
-    - { key: "application/x-extension-xht",   value: "firefox.desktop" }
 
 ## extensions here we come ##################################################################################
 # - https://wiringbits.net/browser-extensions/2020/11/27/installing-unsigned-extensions-permanently-to-firefox.html

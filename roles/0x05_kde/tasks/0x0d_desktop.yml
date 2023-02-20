@@ -1,52 +1,21 @@
 ---
 
-- name: breeze dark theme for gtk 4.0
+- name: breeze dark theme for gtk x.0
   become: true
   become_user: sjas
   ini_file:
-    path: /home/sjas/.config/gtk-4.0/settings.ini
+    path: "{{ item.path }}"
     create: true
     mode: 0664
     no_extra_spaces: true
     section: Settings
-    option: gtk-icon-theme-name
-    value: breeze-dark
-
-- name: breeze dark theme for gtk 3.0
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/gtk-3.0/settings.ini
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Settings
-    option: gtk-icon-theme-name
-    value: breeze-dark
-
-- name: prefer dark theme for gtk 3.0
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/gtk-3.0/settings.ini
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Settings
-    option: gtk-application-prefer-dark-theme
-    value: true
-
-- name: prefer dark theme for gtk 4.0
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/gtk-4.0/settings.ini
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Settings
-    option: gtk-application-prefer-dark-theme
-    value: true
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { path: "/home/sjas/.config/gtk-4.0/settings.ini",option: "gtk-icon-theme-name",value: "breeze-dark" }
+    - { path: "/home/sjas/.config/gtk-4.0/settings.ini",option: "gtk-application-prefer-dark-theme",value: "true" }
+    - { path: "/home/sjas/.config/gtk-3.0/settings.ini",option: "gtk-icon-theme-name",value: "breeze-dark" }
+    - { path: "/home/sjas/.config/gtk-3.0/settings.ini",option: "gtk-application-prefer-dark-theme",value: "true" }
 
 - name: breeze dark icon theme
   become: true
@@ -65,7 +34,7 @@
     dest: /home/sjas/.config/kdedefaults/package
     mode: 0664
 
-- name: kde look and feel package
+- name: kdeglobals settings
   become: true
   become_user: sjas
   ini_file:
@@ -73,9 +42,13 @@
     create: true
     mode: 0664
     no_extra_spaces: true
-    section: KDE
-    option: LookAndFeelPackage
-    value: org.kde.breezedark.desktop
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "KDE",     option: "LookAndFeelPackage", value: "org.kde.breezedark.desktop" }
+    - { section: "General", option: "ColorScheme",        value: "BreezeDark" }
+    - { section: "Icons",   option: "Theme",              value: "breeze-dark" }
 
 - name: kde plasma style
   become: true
@@ -89,30 +62,6 @@
     option: name
     value: breeze-dark
 
-- name: kde colorscheme breeze dark
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: General
-    option: ColorScheme
-    value: BreezeDark
-
-- name: kde icon theme breeze dark
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Icons
-    option: Theme
-    value: breeze-dark
-
 - name: ksplashrc
   become: true
   become_user: sjas
@@ -124,18 +73,6 @@
     section: KSplash
     option: Theme
     value: org.kde.breezedark.desktop
-
-- name: kde icon theme breeze dark
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/kdedefaults/kdeglobals
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: Icons
-    option: Theme
-    value: breeze-dark
 
 - name: dark kate
   become: true
