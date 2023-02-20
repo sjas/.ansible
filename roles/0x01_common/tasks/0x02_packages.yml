@@ -50,6 +50,8 @@
       - elinks
       - ethstatus
       - evince
+      - evolution
+      - evolution-ews
       - exfat-fuse
       - expect
       - ext4magic
