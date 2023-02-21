@@ -1,9 +1,38 @@
 ---
 
-- name: touchpad config
+# MaxSpeed=7.204635919773425
+# MinSpeed=4.013546653690207
+# AccelFactor=0.11219643908901684
+- name: touchpad touchpadrc
   become: true
   become_user: sjas
-  copy:
-    src: touchpadrc
-    dest: /home/sjas/.config
+  ini_file:
+    path: /home/sjas/.config/touchpadrc
+    create: true
     mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "autodisable", option: "KeyboardActivityTimeoutMs", value: "300" }
+    - { section: "parameters", option: "AccelFactor", value: "0.13840755820274353" }
+    - { section: "parameters", option: "CircScrollDelta", value: "5.73" }
+    - { section: "parameters", option: "FingerHigh", value: "26" }
+    - { section: "parameters", option: "FingerLow", value: "26" }
+    - { section: "parameters", option: "HorizScrollDelta", value: "2.3" }
+    - { section: "parameters", option: "MaxSpeed", value: "2.5634742169714775" }
+    - { section: "parameters", option: "MaxTapMove", value: "3.6" }
+    - { section: "parameters", option: "PressureMotionMaxZ", value: "52" }
+    - { section: "parameters", option: "PressureMotionMinZ", value: "7" }
+    - { section: "parameters", option: "Tapping", value: "false" }
+    - { section: "parameters", option: "ThreeFingerTapButton", value: "MiddleButton" }
+    - { section: "parameters", option: "VertScrollDelta", value: "2.3" }
+    - { section: "parameters", option: "CoastingSpeed" value: "5" }
+    - { section: "parameters", option: "HorizHysteresis" value: "16" }
+    - { section: "parameters", option: "HorizTwoFingerScroll" value: "true" }
+    - { section: "parameters", option: "MaxDoubleTapTime" value: "200" }
+    - { section: "parameters", option: "MaxTapTime" value: "200" }
+    - { section: "parameters", option: "SingleTapTimeout" value: "100" }
+    - { section: "parameters", option: "VertEdgeScroll" value: "false" }
+    - { section: "parameters", option: "VertHysteresis" value: "16" }
