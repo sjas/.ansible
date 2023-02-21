@@ -16,7 +16,7 @@
 #     src: klipperrc.j2
 #     dest: /home/sjas/.config/klipperrc
 
-- name: klipper do not strip whitespace action
+- name: klipper klipperrc
   become: true
   become_user: sjas
   ini_file:
