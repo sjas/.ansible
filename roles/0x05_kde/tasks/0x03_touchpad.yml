@@ -28,11 +28,11 @@
     - { section: "parameters", option: "Tapping", value: "false" }
     - { section: "parameters", option: "ThreeFingerTapButton", value: "MiddleButton" }
     - { section: "parameters", option: "VertScrollDelta", value: "2.3" }
-    - { section: "parameters", option: "CoastingSpeed" value: "5" }
-    - { section: "parameters", option: "HorizHysteresis" value: "16" }
-    - { section: "parameters", option: "HorizTwoFingerScroll" value: "true" }
-    - { section: "parameters", option: "MaxDoubleTapTime" value: "200" }
-    - { section: "parameters", option: "MaxTapTime" value: "200" }
-    - { section: "parameters", option: "SingleTapTimeout" value: "100" }
-    - { section: "parameters", option: "VertEdgeScroll" value: "false" }
-    - { section: "parameters", option: "VertHysteresis" value: "16" }
+    - { section: "parameters", option: "CoastingSpeed", value: "5" }
+    - { section: "parameters", option: "HorizHysteresis", value: "16" }
+    - { section: "parameters", option: "HorizTwoFingerScroll", value: "true" }
+    - { section: "parameters", option: "MaxDoubleTapTime", value: "200" }
+    - { section: "parameters", option: "MaxTapTime", value: "200" }
+    - { section: "parameters", option: "SingleTapTimeout", value: "100" }
+    - { section: "parameters", option: "VertEdgeScroll", value: "false" }
+    - { section: "parameters", option: "VertHysteresis", value: "16" }
