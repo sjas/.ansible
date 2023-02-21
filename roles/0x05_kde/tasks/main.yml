@@ -59,3 +59,7 @@
 # - name: wallpaper include
 #   include: 0x0f_wallpaper.yml
 #   tags: kde
+
+- name: pulseaudiorc include
+  include: 0x10_pulseaudiorc.yml
+  tags: kde,pa
