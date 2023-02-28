@@ -355,7 +355,6 @@ alias rf="sudo rm -rf"
 alias o="popd"
 alias p="pushd"
 alias v="vim"
-e() { command ed -p'*' -v "$@";}  ## dont use the prompt, is ugly for automation
 # shellcheck disable=SC2145
 watchitallproper() {
 	watch -n1 -d --color ''"$@"'|grep -v grep'
@@ -536,8 +535,8 @@ dx() {
 
 ## ED(1);CAT(1);VIM(1) ######################################################################################
 #ED
-ed() { command ed -v -s "$@" ; }
-e() { command ed -v -p\* "$@" ; }
+ed() { command ed -v -s "$@";}  ## dont use the prompt, is ugly for automation
+e() { command ed -v -p\* "$@";}
 
 #VI
 # hosts		= /etc/hosts
