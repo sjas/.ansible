@@ -361,8 +361,10 @@ watchitallproper() {
 }
 alias w="watchitallproper"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
-alias h="history"
-alias hgg="history|grep -i"
+h() {
+	[[ $# -lt 1 ]]&&history&& return
+	history|grep -i "$*"
+}
 alias powershell="pwsh"
 
 krestart() {
