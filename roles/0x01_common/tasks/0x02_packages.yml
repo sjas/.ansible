@@ -87,6 +87,7 @@
       - iotop
       - ipcalc
       - iperf3
+      - ipmitool
       - iptraf-ng
       - iputils-arping
       - java-package
