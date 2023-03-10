@@ -11,6 +11,8 @@
 - name: install rustup
   become: true
   become_user: sjas
+  # https://www.rust-lang.org/learn/get-started
+  # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
   when: exitcode_rustup_install.rc != 0
   tags: skip_ansible_lint
@@ -19,6 +21,7 @@
   become: true
   become_user: sjas
   command: "/home/sjas/.cargo/bin/rustup update"
+  when: exitcode_rustup_install.rc == 0
   changed_when: false
 
 - name: fix cargo error message when cant source the env (for root user)
