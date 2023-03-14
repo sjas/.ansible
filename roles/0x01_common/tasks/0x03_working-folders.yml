@@ -32,6 +32,9 @@
     - tmpl
     - vid
     - wrk
+    - wrk/py
+    - wrk/rust
+    - wrk/golang
 
 - name: directories
   file:
