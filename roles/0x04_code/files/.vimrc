@@ -67,8 +67,9 @@ se sr  "'shiftround'
 se bs=indent,eol,start  "'backspace'
 se nolist  "'nolist'
 se lcs=eol:$,tab:>\ ,space:•,multispace:•••+,trail:•,nbsp:~  "'listchars' .. space is 'c-k . M'
- ".. show trailing spaces properly
+".. show trailing spaces properly and lines longer than 110 characters
 match ErrorMsg '\s\+$'
+match ErrorMsg '\%110v.\+'
 "display
 se notitle  "'notitle' .. else it updates terminator title+tabs
 se dy+=lastline  "'display'
@@ -76,16 +77,16 @@ se ls=2  "'laststatus'
 se noru  "'noruler'
 se noeb  "'noerrorbells'
 se novb  "'novisualbell'
-se wrap  "'wrap'
+se nowrap  "'nowrap'
 se nolbr  "'nolinebreak'
-se history=250  "'history' .. undo history length
+se history=500  "'history' .. undo history length
 se so=0  "'scrolloff'
 se siso=5  "'sidescrolloff'
 se sm  "'showmatch'.. -ing parens/brackets when typing the closing one
 "autocompletion
 se wim=list:longest,list:full  "'wildmode'
 se cpt=.,w,t  "'complete'
-"*magic* .. shows contents after editing (like more(1) vs. less(1))
+"these are *magic* .. will show contents after editing (like more(1) vs. less(1))
 se t_te=
 se t_ti=
 
