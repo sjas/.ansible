@@ -65,5 +65,5 @@
     "editor.guides.indentation": true,
     "redhat.telemetry.enabled": false,
     "VimTer.vimPath": "/usr/bin/vim",
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
+    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim"
 }

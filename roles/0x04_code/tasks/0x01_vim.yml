@@ -7,3 +7,8 @@
     src: /home/sjas/etc/.ansible/roles/0x04_code/files/.vimrc
     path: /home/sjas/.vimrc
     state: link
+
+- name: neovim via snap
+  snap:
+    name: nvim
+    classic: true
