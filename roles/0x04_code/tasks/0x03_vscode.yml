@@ -72,15 +72,17 @@
     code --list-extensions | grep -i \
     -e albert.tabout \
     -e alireza94.theme-gotham \
+    -e bungcip.better-toml \
+    -e chouzz.vscode-better-align \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
     -e EFanZh.graphviz-preview \
+    -e eamodio.gitlens \
     -e foxundermoon.shell-format \
     -e gizak.shortcuts \
     -e grapecity.gc-excelviewer \
     -e jamiewoodio.junos \
     -e jebbs.plantuml \
-    -e jpogran.puppet-vscode \
     -e korekontrol.saltstack \
     -e LuxHackers.can-openr \
     -e matthias-schwarze.vimter \
@@ -88,13 +90,17 @@
     -e mitaki28.vscode-clang \
     -e ms-python.python \
     -e ms-vscode.cpptools \
+    -e mtxr.sqltools \
+    -e puppet.puppet-vscode \
     -e redhat.vscode-yaml \
     -e Rubymaniac.vscode-direnv \
+    -e rust-lang.rust-analyzer \
     -e ryanolsonx.zenburn \
     -e ryu1kn.partial-diff \
     -e samuelcolvin.jinjahtml \
     -e thracian.theme-badwolf-paradox \
-    -e wwm.better-align \
+    -e usernamehw.errorlens \
+    -e vadimcn.vscode-lldb \
     -e yhirose.FilterText \
     -e Yummygum.city-lights-icon-vsc \
     | wc -l
@@ -102,7 +108,7 @@
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 27
+  command: echo 34
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -120,15 +126,17 @@
   with_items:
     - albert.tabout
     - alireza94.theme-gotham
+    - bungcip.better-toml
+    - chouzz.vscode-better-align
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
     - efanzh.graphviz-preview
+    - eamodio.gitlens
     - foxundermoon.shell-format
     - gizak.shortcuts
     - grapecity.gc-excelviewer
     - jamiewoodio.junos
     - jebbs.plantuml
-    - jpogran.puppet-vscode
     - korekontrol.saltstack
     - LuxHackers.can-openr
     - matthias-schwarze.vimter
@@ -136,13 +144,17 @@
     - mitaki28.vscode-clang
     - ms-python.python
     - ms-vscode.cpptools
+    - mtxr.sqltools
+    - puppet.puppet-vscode
     - redhat.vscode-yaml
     - Rubymaniac.vscode-direnv
+    - rust-lang.rust-analyzer
     - ryanolsonx.zenburn
     - ryu1kn.partial-diff
     - samuelcolvin.jinjahtml
     - thracian.theme-badwolf-paradox
-    - wwm.better-align
+    - usernamehw.errorlens
+    - vadimcn.vscode-lldb
     - yhirose.FilterText
     - Yummygum.city-lights-icon-vsc
   when: not vsc_plugin_count.stdout is search( "{{ vsc_plugin_count_desired.stdout }}" )

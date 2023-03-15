@@ -62,5 +62,6 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.guides.indentation": true,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+	"VimTer.vimPath": "/usr/bin/vim"
 }
