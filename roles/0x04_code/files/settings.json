@@ -26,7 +26,8 @@
     "editor.fontFamily": "'Hasklig Medium'",
     "editor.fontFamily": "'Hasklig SemiBold'",
     "editor.fontLigatures": true,
-    "editor.fontSize": 13,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 16,
     "editor.fontWeight": "100",
     "editor.lineNumbers": "interval",
     "editor.minimap.enabled": true,
@@ -34,7 +35,7 @@
     "editor.mouseWheelZoom": true,
     "editor.multiCursorModifier": "alt",
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [100],
+    "editor.rulers": [109],
     "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",<>/?",
     "editor.wordWrap": "on",
     "explorer.confirmDragAndDrop": false,
@@ -57,11 +58,12 @@
     "terminal.integrated.env.linux": {},
     "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "terminal.integrated.splitCwd": "inherited",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -2,
     "workbench.colorTheme": "Gotham",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.guides.indentation": true,
     "redhat.telemetry.enabled": false,
-	"VimTer.vimPath": "/usr/bin/vim"
+    "VimTer.vimPath": "/usr/bin/vim",
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
 }
