@@ -8,7 +8,11 @@
 - name: google-chrome repo
   apt_repository:
     repo: deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
-    filename: chrome
+    filename: google-chrome
+
+- name: update apt cache
+  apt:
+    update_cache: true
 
 - name: chrome dependencies
   apt:
