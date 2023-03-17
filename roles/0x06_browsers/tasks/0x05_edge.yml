@@ -10,7 +10,11 @@
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
     state: present
-    filename: edge
+    filename: microsoft-edge
+
+- name: update apt cache
+  apt:
+    update_cache: true
 
 - name: Install microsoft-edge-stable
   apt:
