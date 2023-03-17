@@ -1,29 +1,35 @@
 ---
 
-- name: microsoft apt signing key
-  apt_key:
-    url: "https://packages.microsoft.com/keys/microsoft.asc"
-    state: present
-    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
-
-- name: teams repo
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
-    state: present
-    filename: teams
-
-- name: install teams
-  apt:
-    name: teams
-    state: latest
-    update_cache: true
-
-- name: teams mime type
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/mimeapps.list
-    create: false
-    no_extra_spaces: true
-    section: Default Applications
-    option: x-scheme-handler/msteams
-    value: teams.desktop
+#linux client dead: https://blogs.ed.ac.uk/sopa-scientific-computing/2023/01/12/microsoft-teams-for-linux-changes/
+#need to use PWA: https://www.xda-developers.com/microsoft-teams-pwa-available-linux/
+#- name: microsoft apt signing key
+#  apt_key:
+#    url: "https://packages.microsoft.com/keys/microsoft.asc"
+#    state: present
+#    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+#
+#- name: teams repo
+#  apt_repository:
+#    repo: deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
+#    state: present
+#    filename: teams
+#
+#- name: update apt cache
+#  apt:
+#    update_cache: true
+#
+#- name: install teams
+#  apt:
+#    name: teams
+#    state: latest
+#    update_cache: true
+#
+#- name: teams mime type
+#  become_user: sjas
+#  ini_file:
+#    path: /home/sjas/.config/mimeapps.list
+#    create: false
+#    no_extra_spaces: true
+#    section: Default Applications
+#    option: x-scheme-handler/msteams
+#    value: teams.desktop
