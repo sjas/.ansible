@@ -2,6 +2,9 @@
 
 #linux client dead: https://blogs.ed.ac.uk/sopa-scientific-computing/2023/01/12/microsoft-teams-for-linux-changes/
 #need to use PWA: https://www.xda-developers.com/microsoft-teams-pwa-available-linux/
+#
+#teams PWA: microsoft-edge: teams.microsoft.com >> three dots >> apps >> install microsoft teams
+#
 #- name: microsoft apt signing key
 #  apt_key:
 #    url: "https://packages.microsoft.com/keys/microsoft.asc"
