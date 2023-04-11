@@ -6,11 +6,11 @@
   apt_key:
     url: "https://packages.adoptium.net/artifactory/api/gpg/key/public"
     state: present
-    keyring: /etc/apt/trusted.gpg.d/adoptium.gpg
+    keyring: /etc/apt/keyrings/adoptium.gpg
 
 - name: adoptium repo
   apt_repository:
-    repo: deb https://packages.adoptium.net/artifactory/deb jammy main
+    repo: deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb jammy main
     state: present
     filename: adoptium
 
