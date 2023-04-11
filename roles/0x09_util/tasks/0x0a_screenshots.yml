@@ -1,6 +1,6 @@
 ---
 
-# spectacle already preinstalled
+# spectacle is already preinstalled so skipped here
 - name: install screenshot packages
   apt:
     cache_valid_time: 7200
@@ -22,6 +22,21 @@
 # also:
 # https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
 #
+- name: check if shutter config exists
+  stat:
+    path: /home/sjas/.shutter/settings.xml
+  register: shutter_config
+  changed_when: false
+
+- name: deploy shutter config if not exists so next task will not fail in initial run
+  become: true
+  become_user: sjas
+  copy:
+    src: settings.xml
+    dest: /home/sjas/.shutter/settings.xml
+    mode: 0664
+  when: not shutter_config.stat.exists
+
 - name: shutter
   become: true
   become_user: sjas
