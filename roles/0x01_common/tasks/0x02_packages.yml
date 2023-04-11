@@ -6,6 +6,12 @@
     name:
       - etckeeper
 
+- name: ensure keyrings folder exists
+  file:
+    dest: /etc/apt/keyrings
+    state: directory
+    mode: 0755
+
 - name: basic packages from upstream
   apt:
     cache_valid_time: 7200
