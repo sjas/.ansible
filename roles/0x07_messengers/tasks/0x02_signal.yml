@@ -3,11 +3,11 @@
 - name: whisper systems apt-key
   apt_key:
     url: https://updates.signal.org/desktop/apt/keys.asc
-    keyring: /etc/apt/trusted.gpg.d/signal.gpg
+    keyring: /etc/apt/keyrings/signal.gpg
 
 - name: signal repo
   apt_repository:
-    repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/signal.gpg] https://updates.signal.org/desktop/apt xenial main
     filename: signal
 
 - name: signal package
