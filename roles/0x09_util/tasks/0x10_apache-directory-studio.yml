@@ -4,11 +4,11 @@
   apt_key:
     keyserver: keyserver.ubuntu.com
     id: 23CAE45582EB0928
-    keyring: /etc/apt/trusted.gpg.d/openfortigui.gpg
+    keyring: /etc/apt/keyrings/openfortigui.gpg
 
 - name: apache directory studio repo
   apt_repository:
-    repo: deb [arch=amd64] https://apt.iteas.at/iteas focal main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/openfortigui.gpg] https://apt.iteas.at/iteas focal main
     state: present
     filename: apacheds
 
