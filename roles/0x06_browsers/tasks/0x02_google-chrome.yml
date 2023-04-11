@@ -3,11 +3,11 @@
 - name: google apt-key
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
-    keyring: /etc/apt/trusted.gpg.d/google.gpg
+    keyring: /etc/apt/keyrings/google.gpg
 
 - name: google-chrome repo
   apt_repository:
-    repo: deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
 
 - name: update apt cache
