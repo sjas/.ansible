@@ -351,7 +351,7 @@ the_missing_grep() {
 }
 alias g=the_missing_grep
 the_missing_grep_but_recursive() {
-	grep -Hrin "$@"
+	grep -Hri "$@"
 }
 alias gr=the_missing_grep_but_recursive
 alias rf="sudo rm -rf"
