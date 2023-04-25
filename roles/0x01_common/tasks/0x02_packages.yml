@@ -162,6 +162,7 @@
       - qmmp
       - rclone  ## https://rclone.org/onedrive/
       - rclone-browser
+      - remmina
       - rename
       - ripgrep
       - rlwrap
