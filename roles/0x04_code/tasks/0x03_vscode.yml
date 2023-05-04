@@ -74,6 +74,7 @@
     -e alireza94.theme-gotham \
     -e asvetliakov.vscode-neovim \
     -e bungcip.better-toml \
+    -e charliermarsh.ruff \
     -e chouzz.vscode-better-align \
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
@@ -109,7 +110,7 @@
   changed_when: false
 
 - name: set current vscode plugin count
-  command: echo 35
+  command: echo 36
   register: vsc_plugin_count_desired
   changed_when: false
 
@@ -129,6 +130,7 @@
     - alireza94.theme-gotham
     - asvetliakov.vscode-neovim
     - bungcip.better-toml
+    - charliermarsh.ruff
     - chouzz.vscode-better-align
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
