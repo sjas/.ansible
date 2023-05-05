@@ -27,7 +27,7 @@
     "editor.fontFamily": "'Hasklig Light'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
-    "editor.lineHeight": 16,
+    "editor.lineHeight": 15,
     "editor.fontWeight": "100",
     "editor.lineNumbers": "interval",
     "editor.minimap.enabled": true,
@@ -58,12 +58,12 @@
     "terminal.integrated.env.linux": {},
     "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "terminal.integrated.splitCwd": "inherited",
-    "window.zoomLevel": -2,
     "workbench.colorTheme": "Gotham",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.guides.indentation": true,
     "redhat.telemetry.enabled": false,
     "VimTer.vimPath": "/usr/bin/vim",
-    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim"
+    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
+    "editor.stickyScroll.enabled": true
 }
