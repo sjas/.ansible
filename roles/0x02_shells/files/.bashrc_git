@@ -63,15 +63,15 @@ githelp() {
 }
 alias gh=githelp										## gh git_command = open manpage for it
 
-alias gii="git init;git add .;git commit -m init"		 ## initialize local git repo
-alias gcl="git clone -v --progress --recursive"		 ## clone
+alias gii="git init;git add .;git commit -m init"		## initialize local git repo
+alias gcl="git clone -v --progress --recursive"			## clone
 
-alias ga="git add"									  ## regular add
-alias gaa="git add ."								   ## regular add
-alias gat="git add -u"								  ## add all changes in files already being tracked
+alias ga="git add"										## regular add
+alias gaa="git add ."									## regular add
+alias gat="git add -u"									## add all changes in files already being tracked
 alias gs="git status -s"								## status
-alias grs="git reset"								   ## unstage everything
-alias grshh="git reset --hard HEAD"					 ## unstage everthing and nix all changes made on HEAD
+alias grs="git reset"									## unstage everything
+alias grshh="git reset --hard HEAD"						## unstage everthing and nix all changes made on HEAD
 
 
 
@@ -126,8 +126,8 @@ alias glogf="git log --oneline --graph --decorate=short"  ## full graph
 alias   glp="git log -p --"  ## use with a filename to get full history of said file
 
 #show commits
-alias gsh="git show"										## param: commit-id, show changes
-alias gshf="git show --stat --oneline"					  ## param: commit-id, show changes
+alias gsh="git show"						## param: commit-id, show changes
+alias gshf="git show --stat --oneline"		## param: commit-id, show changes
 
 #show remote contents
 alias gsb="git show-branch -a --list --more=10 --sha1-name"		## show-branch, show where commits are present
@@ -138,14 +138,18 @@ alias gsba="git show-branch -a --topics --current --sha1-name"	## show all dangl
 gitshowauthor() {
 		git log --author="$1" --oneline | awk '{print $1}' | xargs git show
 }
-alias gsha=gitshowauthor									## show all commit diffs for author
+alias gsha=gitshowauthor  ## show all commit diffs for author
 gitshowlog() {
-	for i in $(git log --oneline --color=never | awk '{print $1}'); do printf "\n\n\e[41;1m%s\e[m\n" "$i"; git show "$i"; done | less -R
+	for i in $(git log --oneline --color=never | awk '{print $1}')
+	do
+		printf "\n\n\e[41;1m%s\e[m\n" "$i"
+		git show "$i"
+	done|less -R
 }
-alias gshl=gitshowlog							   ## show all logged commit:s diff:s
+alias gshl=gitshowlog									## show all logged commit:s diff:s
 alias gd="git diff --word-diff --word-diff-regex='\w+'" ## diff
-alias gds="git diff --stat"							 ## show amount of changes in files
-alias gdc="git diff --cached"					   ## diff staged files on index
+alias gds="git diff --stat"								## show amount of changes in files
+alias gdc="git diff --cached"							## diff staged files on index
 alias gdh="git diff HEAD  --word-diff --word-diff-regex='\w+'"  ## diff everything against last commit
 gitdiffsofancy() {
 		git diff "$*" | diff-so-fancy
@@ -154,7 +158,7 @@ alias gdff=gitdiffsofancy								## diff-so-fancy FILE
 gitdfiffsofancyall() {
 	for i in $(git status -s | awk '{print $2}'); do gitdiffsofancy "$i" ;done
 }
-alias gdf=gitdfiffsofancyall				## diff-so-fancy on all of `git status -s` files
+alias gdf=gitdfiffsofancyall							## diff-so-fancy on all of `git status -s` files
 gitdiffsofancy() {
 		git diff --cached "$*" | diff-so-fancy
 }
@@ -197,7 +201,10 @@ alias gfc="gitfastcommit"							  ## commit all present changes quickly
 alias gca="git commit --amend"						  ## amend last commit
 alias grv="git revert HEAD"							  ## revert, undo last commit
 gitaddcommit() {
-	( cd "$(git rev-parse --show-toplevel)"||return;git add .)
+	(
+		cd "$(git rev-parse --show-toplevel)"||return
+		git add .
+	)
 	git commit -m "$*"
 }
 alias gac="gitaddcommit"
