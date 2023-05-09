@@ -104,6 +104,7 @@
       - lft
       - lftp
       - libinput-tools
+      - libpcap-dev
       - libreoffice
       - libsource-highlight-common
       - libxml2-utils
