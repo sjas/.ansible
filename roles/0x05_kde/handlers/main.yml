@@ -8,3 +8,6 @@
 
 # - name: restarting xbindkeys
 #   include: 0x03_xbindkeys_handler.yml
+ 
+- name: restart kcminput
+  include: 0x04_kcminit.yml

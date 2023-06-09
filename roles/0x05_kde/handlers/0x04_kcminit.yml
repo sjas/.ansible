@@ -1,0 +1,8 @@
+---
+
+- name: kcminit for applying input/mouse changes
+  become: true
+  become_user: sjas
+  command: /usr/bin/kcminit
+  listen: kcminit
+  changed_when: false
