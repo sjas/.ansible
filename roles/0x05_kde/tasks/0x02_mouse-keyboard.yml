@@ -32,9 +32,12 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.525" }
+    #- { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.525" }
+    #- { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.225" }
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-3.525" }
     - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
     - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
+  notify: kcminit
 
 - name: fix up imwheel as a user service
   copy:
