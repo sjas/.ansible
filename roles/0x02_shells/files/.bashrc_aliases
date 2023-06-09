@@ -354,6 +354,10 @@ the_missing_grep_but_recursive() {
 	grep -Hri "$@"
 }
 alias gr=the_missing_grep_but_recursive
+the_missing_grep_but_recursive_to_less() {
+	grep -Hri "$@"|less
+}
+alias grl="the_missing_grep_but_recursive_to_less"
 alias rf="sudo rm -rf"
 alias o="popd"
 alias p="pushd"

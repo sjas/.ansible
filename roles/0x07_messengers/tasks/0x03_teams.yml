@@ -1,5 +1,10 @@
 ---
 
+#https://github.com/IsmaelMartinez/teams-for-linux
+- name: teams via snap
+  snap:
+    name: teams-for-linux
+
 #linux client dead: https://blogs.ed.ac.uk/sopa-scientific-computing/2023/01/12/microsoft-teams-for-linux-changes/
 #need to use PWA: https://www.xda-developers.com/microsoft-teams-pwa-available-linux/
 #
