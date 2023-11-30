@@ -43,6 +43,9 @@ rules:
     max: 145
     allow-non-breakable-words: true
     allow-non-breakable-inline-mappings: false
+    ignore: |
+      /home/sjas/etc/.ansible/roles/0x09_util/tasks/0x05_keepassxc.yml
+      /home/sjas/etc/.ansible/roles/0x06_browsers/tasks/0x03_firefox.yml
   new-line-at-end-of-file: enable
   new-lines:
     type: unix
