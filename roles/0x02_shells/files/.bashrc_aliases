@@ -350,6 +350,10 @@ the_missing_grep() {
 	grep -Hin "$@"
 }
 alias g=the_missing_grep
+the_missing_grep_v() {
+	grep -Hin -v "$@"
+}
+alias gv=the_missing_grep_v
 the_missing_grep_but_recursive() {
 	grep -Hri "$@"
 }
@@ -362,9 +366,10 @@ alias rf="sudo rm -rf"
 alias o="popd"
 alias p="pushd"
 alias v="vim"
+alias watch='watch -n1 -d --color '
 # shellcheck disable=SC2145
 watchitallproper() {
-	watch -n1 -d --color ''"$@"'|grep -v grep'
+	watch -n1 -d --color "$@"'|grep -v grep'
 }
 alias w="watchitallproper"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
@@ -786,7 +791,7 @@ ipcalced() {
 }
 alias ipcalc=ipcalced
 digged() {
-	\dig +nocmd +nocomments +noquestion +nostats any "${@}"
+	\dig +nocmd +nocomments +noquestion +nostats "${@}"|column -t
 }
 alias dig=digged
 drilled() {
