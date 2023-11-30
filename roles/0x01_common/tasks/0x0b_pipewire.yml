@@ -6,8 +6,8 @@
     groups: audio
     append: true
 
-#if nothing shows up, check that `systemctl --user status wireplumber` is running
-#https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/
+# if nothing shows up, check that `systemctl --user status wireplumber` is running
+# https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/
 - name: remove obsolete packages
   apt:
     name: pipewire-media-session

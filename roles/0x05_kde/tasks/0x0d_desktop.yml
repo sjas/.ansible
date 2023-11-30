@@ -12,10 +12,10 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { path: "/home/sjas/.config/gtk-4.0/settings.ini",option: "gtk-icon-theme-name",value: "breeze-dark" }
-    - { path: "/home/sjas/.config/gtk-4.0/settings.ini",option: "gtk-application-prefer-dark-theme",value: "true" }
-    - { path: "/home/sjas/.config/gtk-3.0/settings.ini",option: "gtk-icon-theme-name",value: "breeze-dark" }
-    - { path: "/home/sjas/.config/gtk-3.0/settings.ini",option: "gtk-application-prefer-dark-theme",value: "true" }
+    - { path: "/home/sjas/.config/gtk-4.0/settings.ini", option: "gtk-icon-theme-name", value: "breeze-dark" }
+    - { path: "/home/sjas/.config/gtk-4.0/settings.ini", option: "gtk-application-prefer-dark-theme", value: "true" }
+    - { path: "/home/sjas/.config/gtk-3.0/settings.ini", option: "gtk-icon-theme-name", value: "breeze-dark" }
+    - { path: "/home/sjas/.config/gtk-3.0/settings.ini", option: "gtk-application-prefer-dark-theme", value: "true" }
 
 - name: breeze dark icon theme
   become: true
