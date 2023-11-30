@@ -2,7 +2,7 @@
 
 workstation bootstrapping, rebase this onto a blank kde neon install
 
-- tested with neon 5.26.5 on 22.04
+- tested with neon 5.27.9 on 22.04
 - uses newest ansible from PPA instead of distro upstream, so human-readable output via callback works
 - default verbosity changed to '-vv' so the FILE:LINE position of the currently run task is shown
 - ansible-lint and yamllint are run on every commit, use `gc` (without a message so no actual commit takes place) after deploy to see wether they find something
