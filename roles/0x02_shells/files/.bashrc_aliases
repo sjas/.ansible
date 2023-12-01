@@ -776,10 +776,11 @@ showdiff() {
 # make the existing ones take parameters
 # build in a security prompt for the route aliases asking wether the queried ASN is the right one
 td(){
-    ssh "$1" "sudo -S echo; sudo ip a|grep -v valid_lft|&sed '1d'"
+    ssh "$1" "sudo echo; sudo ip a|grep -v valid_lft"
+	echo
     read -p"interface> "
     # shellcheck disable=SC2029
-    ssh "$1" "sudo -S tcpdump -i ${REPLY} -U -s0 -w-"|wireshark -k -i -
+    ssh "$1" "sudo tcpdump -U -s0 -i ${REPLY} -w-"|wireshark -ki-
 }
 
 ipcalced() {
