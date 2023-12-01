@@ -6,7 +6,7 @@
 ## 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 ## LS(1)
 ## SUDO(1)
-## UTIL
+# UTIL
 ## ED(1);CAT(1);VIM(1)
 ## NOTES;PRV;WRK
 ## SHOW COMMANDS
@@ -332,6 +332,8 @@ pph() {
 pp() { pph '*' 109 '41;1' "$*";}
 pps() { pph '+' 80 '' "$*";}
 
+tail1() { find . -maxdepth 1 -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
+tail1r() { find . -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
 alias q="exit"
 # shellcheck disable=SC2139
 alias ..="cd ..; $LS $LS_OPT1 -l $LS_OPT2"
