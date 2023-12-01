@@ -93,6 +93,7 @@
       - iotop
       - ipcalc
       - iperf3
+      - ipv6calc
       - ipmitool
       - iptraf-ng
       - iputils-arping
@@ -212,6 +213,7 @@
       - whois
       - whowatch
       - wireguard
+      - wireshark
       - x2x
       - xautomation
       - xbindkeys
