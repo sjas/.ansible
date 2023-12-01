@@ -349,7 +349,7 @@ makedirectory(){
 }
 alias mkcd=makedirectory
 the_missing_grep() {
-	grep -Hin "$@"
+	grep -i "$@"
 }
 alias g=the_missing_grep
 the_missing_grep_v() {
