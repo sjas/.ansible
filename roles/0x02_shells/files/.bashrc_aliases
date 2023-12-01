@@ -775,6 +775,13 @@ showdiff() {
 # fix up missing radb / cymru functions
 # make the existing ones take parameters
 # build in a security prompt for the route aliases asking wether the queried ASN is the right one
+td(){
+    ssh "$1" "sudo -S echo; sudo ip a|grep -v valid_lft|&sed '1d'"
+    read -p"interface> "
+    # shellcheck disable=SC2029
+    ssh "$1" "sudo -S tcpdump -i ${REPLY} -U -s0 -w-"|wireshark -k -i -
+}
+
 ipcalced() {
     [[ $# -eq 1 ]] && \ipcalc "$1" && return
 	echo enter ip net
