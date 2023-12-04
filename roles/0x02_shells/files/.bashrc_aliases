@@ -782,7 +782,7 @@ td(){
 	echo
     read -p"interface> "
     # shellcheck disable=SC2029
-    ssh "$1" "sudo tcpdump -U -s0 -i ${REPLY} -w-"|wireshark -ki-
+	ssh "$1" "sudo tcpdump -U -s0 -i ${REPLY} \"not (host \$(echo \$SSH_CLIENT|awk '{print \$1}') and port \$(echo \$SSH_CLIENT|awk '{print \$3}'))\" -w-"|wireshark -ki-
 }
 
 ipcalced() {
