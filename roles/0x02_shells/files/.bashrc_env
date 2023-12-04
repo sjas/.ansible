@@ -45,6 +45,7 @@ fi
 # 5;228==pale yellow  ## time
 # 5;34==green,5;208==orange,46==cyan bg,5;196==neon red,43==yellow bg  ## git
 #
+# the last echo in the last else clause may have a bug due to a nonhandled edge case
 # shellcheck disable=SC2154
 export PS1='$( i=$?;if [[ $i -eq 0 ]];then echo \\\[\e[38\;5\;76\;1m\\\]$i;else echo \\\[\e[38\;5\;196\;1m\\\]$i;fi )\[\e[0m\] \u@\h \[\e[38;5;228;1m\]\t\[\e[0m\] \w$(_gitstatus=$(git status 2>/dev/null);
 if echo ${_gitstatus}|grep -q "nothing to commit";
@@ -63,7 +64,7 @@ else
 			then
 				echo \ \\\[\e[48\;5\;196\;37\;1m\\\];
 			else
-				echo \ \\[\e[43\;37\;1m\\\];
+				echo \\\[\e[43\;37\;1m\\\];
 			fi;
 		fi;
 	fi;
