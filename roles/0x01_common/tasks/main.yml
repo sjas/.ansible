@@ -47,3 +47,7 @@
 - name: baloo
   include: 0x0c_baloo.yml
   tags: common,baloo
+
+- name: pip
+  include: 0x0d_python-packages.yml
+  tags: common,pip

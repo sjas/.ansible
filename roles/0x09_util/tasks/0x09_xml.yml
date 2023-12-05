@@ -1,0 +1,18 @@
+---
+
+- name: deploy xidel
+  become: true
+  become_user: sjas
+  copy:
+    src: xidel
+    dest: /home/sjas/.local/bin
+    mode: 0744
+
+- name: xq from github release
+  become: true
+  become_user: sjas
+  github_release:
+    user: sibprogrammer
+    repo: xq
+    action: latest_release
+  tags: asdf
