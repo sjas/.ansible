@@ -44,6 +44,24 @@
     src: /home/sjas/.bashrc
     state: link
 
+- name: check the current root .ssh file/symlink
+  stat:
+    path: /root/.ssh
+  register: root_ssh_exists
+  changed_when: false
+
+- name: remove if current root .ssh is not a symlink
+  file:
+    path: /root/.ssh
+    state: absent
+  when: not root_ssh_exists.stat.islnk
+
+- name: symlink .ssh for root
+  file:
+    dest: /root/.ssh
+    src: /home/sjas/.ssh
+    state: link
+
 - name: mc config
   become: true
   become_user: sjas
