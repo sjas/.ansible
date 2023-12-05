@@ -20,6 +20,9 @@
     - { key: 'ClearSearchTimeout', value: '60'}
     - { key: 'LockDatabaseScreenLock', value: 'false'}
 
+- name: install keepass-diff from cargo
+  community.general.cargo:
+    name: keepass-diff
 
 # - name: enable browser integration
 #   become: true
