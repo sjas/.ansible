@@ -32,8 +32,8 @@
   include: 0x08_mm.yml
   tags: util
 
-- name: xidel include
-  include: 0x09_xidel.yml
+- name: xml toolset
+  include: 0x09_xml.yml
   tags: util
 
 - name: screenshot tools include
