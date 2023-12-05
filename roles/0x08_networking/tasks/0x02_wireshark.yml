@@ -3,22 +3,22 @@
 # - name: install precompiled wireshark
 #   apt:
 #     deb: /home/sjas/etc/.ansible/roles/networking/files/wireshark_2.9.0rc0-HEAD-b6598d5ec3-1_amd64.deb
-# 
+#
 # - name: create wireshark group
 #   group:
 #     name: wireshark
-# 
+#
 # - name: dumpcap group and DAC
 #   file:
 #     path: /usr/local/bin/dumpcap
 #     group: wireshark
 #     mode: 0750
-# 
+#
 # - name: CAP_NET_RAW for dumpcap
 #   capabilities:
 #     path: /usr/local/bin/dumpcap
 #     cap: CAP_NET_RAW+eip
-# 
+#
 # - name: CAP_NET_ADMIN for dumpcap
 #   capabilities:
 #     path: /usr/local/bin/dumpcap
