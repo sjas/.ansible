@@ -4,9 +4,9 @@
   include: 0x01_bettercap.yml
   tags: networking,bettercap
 
-# - name: install compiled wireshark
-#   include: 0x02_wireshark.yml
-#   tags: networking,wireshark
+- name: install compiled wireshark
+  include: 0x02_wireshark.yml
+  tags: networking,wireshark
 
 - name: vpn clients include
   include: 0x03_vpn_clients.yml
