@@ -24,9 +24,18 @@
 #     path: /usr/local/bin/dumpcap
 #     cap: CAP_NET_ADMIN+eip
 
-- name: install precompiled wireshark
+- name: wireshark package
   apt:
-    deb: wireshark
+    cache_valid_time: 7200
+    name:
+      - wireshark
+      - tshark
+
+- name: fix window layout
+  lineinfile:
+    path: /home/sjas/.config/wireshark/preferences
+    regexp: "^#*gui.layout_type.*"
+    line: "gui.layout_type: 4"
 
 - name: sjas into wireshark group
   user:
