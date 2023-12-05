@@ -188,7 +188,7 @@ alias gc="gitcommit"
 gitcommitgeneral() {
 	[[ $# -eq 0 ]]&&git commit -m "fc"&&git status -s&&return
 	git add "$@"
-	git commit -m "fc"
+	git commit -m "$@"
 	git status -s
 }
 alias gcg="gitcommitgeneral"						  ## commit only what has been added or was specified
