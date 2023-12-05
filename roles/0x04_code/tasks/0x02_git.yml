@@ -21,7 +21,8 @@
     - { key: 'color.ui',                            value: 'true' }
     - { key: 'core.pager',                          value: 'cat' }
     - { key: 'diff.noprefix',                       value: 'true' }
-    - { key: 'push.default',                        value: 'matching' }
-    - { key: 'user.name',                           value: 'sjas' }
+    - { key: 'http.sslverify',                      value: 'true' }
     - { key: 'init.defaultBranch',                  value: 'main' }
     - { key: 'pull.rebase',                         value: 'true' }
+    - { key: 'push.default',                        value: 'matching' }
+    - { key: 'user.name',                           value: 'sjas' }

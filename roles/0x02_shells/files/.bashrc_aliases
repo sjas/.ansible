@@ -635,7 +635,7 @@ __d() {
 }
 __push_to_git() {
     local _folder="$1";shift
-    if ping -c1 -W1 git.sjas.de >/dev/null 2>&1
+    if ping -c1 -W1 gitlab.sjas.de >/dev/null 2>&1
     then
 
         cd "${_folder}"||return
