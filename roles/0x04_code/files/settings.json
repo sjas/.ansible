@@ -21,13 +21,13 @@
     "editor.detectIndentation": false,
     "editor.emptySelectionClipboard": false,
     "editor.fontFamily": "'Noto Mono'",
-    "editor.fontFamily": "'Hasklig SemiBold'",
-    "editor.fontFamily": "'Hasklig Medium'",
     "editor.fontFamily": "'Hasklig ExtraLight'",
     "editor.fontFamily": "'Hasklig Light'",
+    "editor.fontFamily": "'Hasklig Medium'",
+    "editor.fontFamily": "'Hasklig SemiBold'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
-    "editor.lineHeight": 15,
+    "editor.lineHeight": 16,
     "editor.fontWeight": "100",
     "editor.lineNumbers": "interval",
     "editor.minimap.enabled": true,
@@ -40,6 +40,9 @@
     "editor.wordWrap": "on",
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
     "files.autoSave": "onFocusChange",
     "files.eol": "\n",
     "files.trimFinalNewlines": true,
@@ -64,6 +67,5 @@
     "editor.guides.indentation": true,
     "redhat.telemetry.enabled": false,
     "VimTer.vimPath": "/usr/bin/vim",
-    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
-    "editor.stickyScroll.enabled": true
+    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim"
 }
