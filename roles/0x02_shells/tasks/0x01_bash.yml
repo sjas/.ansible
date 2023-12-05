@@ -92,6 +92,14 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
+- name: deploy .infokey
+  become: true
+  become_user: sjas
+  copy:
+    src: .infokey
+    dest: /home/sjas/
+    mode: 0664
+
 - name: deploy .dialogrc
   become: true
   become_user: sjas
