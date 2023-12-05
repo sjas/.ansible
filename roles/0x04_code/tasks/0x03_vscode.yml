@@ -73,7 +73,6 @@
     -e albert.tabout \
     -e alireza94.theme-gotham \
     -e asvetliakov.vscode-neovim \
-    -e bungcip.better-toml \
     -e charliermarsh.ruff \
     -e chouzz.vscode-better-align \
     -e DavidAnson.vscode-markdownlint \
@@ -90,6 +89,7 @@
     -e matthias-schwarze.vimter \
     -e mechatroner.rainbow-csv \
     -e mitaki28.vscode-clang \
+    -e ms-python.isort \
     -e ms-python.python \
     -e ms-vscode.cpptools \
     -e mtxr.sqltools \
@@ -100,6 +100,7 @@
     -e ryanolsonx.zenburn \
     -e ryu1kn.partial-diff \
     -e samuelcolvin.jinjahtml \
+    -e tamasfe.even-better-toml \
     -e thracian.theme-badwolf-paradox \
     -e usernamehw.errorlens \
     -e vadimcn.vscode-lldb \
@@ -129,7 +130,6 @@
     - albert.tabout
     - alireza94.theme-gotham
     - asvetliakov.vscode-neovim
-    - bungcip.better-toml
     - charliermarsh.ruff
     - chouzz.vscode-better-align
     - DavidAnson.vscode-markdownlint
@@ -146,6 +146,7 @@
     - matthias-schwarze.vimter
     - mechatroner.rainbow-csv
     - mitaki28.vscode-clang
+    - ms-python.isort
     - ms-python.python
     - ms-vscode.cpptools
     - mtxr.sqltools
@@ -156,6 +157,7 @@
     - ryanolsonx.zenburn
     - ryu1kn.partial-diff
     - samuelcolvin.jinjahtml
+    - tamasfe.even-better-toml
     - thracian.theme-badwolf-paradox
     - usernamehw.errorlens
     - vadimcn.vscode-lldb
