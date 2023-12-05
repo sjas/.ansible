@@ -36,7 +36,7 @@
   file:
     path: /root/.bashrc
     state: absent
-  when: not root_bashrc_exists.stat.islnk
+  when: root_bashrc_exists.stat.exists and not root_bashrc_exists.stat.islnk
 
 - name: symlink .bashrc for root
   file:
@@ -54,7 +54,7 @@
   file:
     path: /root/.ssh
     state: absent
-  when: not root_ssh_exists.stat.islnk
+  when: root_ssh_exists.stat.exists and not root_ssh_exists.stat.islnk
 
 - name: symlink .ssh for root
   file:
