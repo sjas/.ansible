@@ -36,9 +36,9 @@
   include: 0x09_xidel.yml
   tags: util
 
-# - name: screenshot tools include
-#   include: 0x0a_screenshots.yml
-#   tags: util,screenshot,shutter,spectacle
+- name: screenshot tools include
+  include: 0x0a_screenshots.yml
+  tags: util,screenshot,shutter,spectacle
 
 - name: simplecurses include
   include: 0x0b_simplecurses.yml
@@ -72,6 +72,6 @@
   include: 0x12_jless.yml
   tags: util,jless
 
-# - name: ghidra include
-#   include: 0x13_ghidra.yml
-#   tags: util,ghidra
+- name: ghidra include
+  include: 0x13_ghidra.yml
+  tags: util,ghidra
