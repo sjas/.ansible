@@ -21,7 +21,10 @@
     - { key: 'LockDatabaseScreenLock', value: 'false'}
 
 - name: install keepass-diff from cargo
+  become: true
+  become_user: sjas
   community.general.cargo:
+    executable: /home/sjas/.cargo/bin/cargo
     name: keepass-diff
 
 # - name: enable browser integration
