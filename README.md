@@ -34,7 +34,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     inventory=/home/sjas/etc/.ansible/hosts
     #default,oneline,minimal,yaml,debug
     #https://rndmh3ro.github.io/
-    stdout_callback=default
+    stdout_callback=yaml
     bin_ansible_callbacks=yes
     verbosity=2
     roles_path=/etc/ansible/roles:./
@@ -70,10 +70,6 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     ## first: cd ~/.config; git init; git add .; git commit -m init
     watch -n1 -d 'git diff HEAD | grep -e diff -e \+\+\+ -e^\+ | grep --color -e$ -ediff\ \-\-.\* | wc -l; echo; git status'
 
-## repo state before latest overhaul
-
-https://github.com/sjas/.ansible/tree/644b75c6260125869983906c1995daf2b35de49e
-
 ## known issues
 
-currently a lot of hardcoded path's are used, most revolves around `/home/sjas`. possibly this will not get cleaned up in the foreseeable future, use `sed`/`grep` to fix this for yourself.
+`/home/sjas` is pretty hardcoded everywhere and will not get cleaned up in the foreseeable future
