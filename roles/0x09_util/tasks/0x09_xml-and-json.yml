@@ -1,12 +1,12 @@
 ---
 
-# currently: Xidel_0.9.8
-- name: get xidel version from github release
-  github_release:
-    user: benibela
-    repo: xidel
-    action: latest_release
-  tags: github
+# # currently: Xidel_0.9.8
+# - name: get xidel version from github release
+#   github_release:
+#     user: benibela
+#     repo: xidel
+#     action: latest_release
+#   tags: github
 
 - name: deploy xidel
   become: true
@@ -16,13 +16,13 @@
     dest: /home/sjas/.local/bin
     mode: 0744
 
-# currently: v1.2.3
-- name: get xq version from github release
-  github_release:
-    user: sibprogrammer
-    repo: xq
-    action: latest_release
-  tags: github
+# # currently: v1.2.3
+# - name: get xq version from github release
+#   github_release:
+#     user: sibprogrammer
+#     repo: xq
+#     action: latest_release
+#   tags: github
 
 - name: deploy xq
   become_user: sjas
@@ -31,13 +31,13 @@
     dest: /home/sjas/.local/bin
     mode: 0744
 
-# currently: 0.2.1
-- name: get jp version from github release
-  github_release:
-    user: jmespath
-    repo: jp
-    action: latest_release
-  tags: github
+# # currently: 0.2.1
+# - name: get jp version from github release
+#   github_release:
+#     user: jmespath
+#     repo: jp
+#     action: latest_release
+#   tags: github
 
 - name: deploy jp
   become: true
@@ -47,13 +47,13 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
-# currently: 1.2.6
-- name: get jsonfui version from github release
-  github_release:
-    user: AdrianSchneider
-    repo: jsonfui
-    action: latest_release
-  tags: github
+# # currently: 1.2.6
+# - name: get jsonfui version from github release
+#   github_release:
+#     user: AdrianSchneider
+#     repo: jsonfui
+#     action: latest_release
+#   tags: github
 
 - name: deploy jsonfui
   become: true
@@ -63,13 +63,13 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
-# currently: v0.9.0
-- name: get jless version from github release
-  github_release:
-    user: PaulJuliusMartinez
-    repo: jless
-    action: latest_release
-  tags: github
+# # currently: v0.9.0
+# - name: get jless version from github release
+#   github_release:
+#     user: PaulJuliusMartinez
+#     repo: jless
+#     action: latest_release
+#   tags: github
 
 - name: deploy jless
   become: true
@@ -79,13 +79,13 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
-# currently: v0.5.0
-- name: get jqp version from github release
-  github_release:
-    user: noahgorstein
-    repo: jqp
-    action: latest_release
-  tags: github
+# # currently: v0.5.0
+# - name: get jqp version from github release
+#   github_release:
+#     user: noahgorstein
+#     repo: jqp
+#     action: latest_release
+#   tags: github
 
 - name: deploy jqp
   become: true
@@ -95,13 +95,13 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
-# currently: v4.40.4
-- name: get yq version from github release
-  github_release:
-    user: mikefarah
-    repo: yq
-    action: latest_release
-  tags: github
+# # currently: v4.40.4
+# - name: get yq version from github release
+#   github_release:
+#     user: mikefarah
+#     repo: yq
+#     action: latest_release
+#   tags: github
 
 - name: deploy yq
   become: true
