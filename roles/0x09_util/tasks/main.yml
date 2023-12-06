@@ -32,9 +32,9 @@
   include: 0x08_mm.yml
   tags: util
 
-- name: xml toolset
-  include: 0x09_xml.yml
-  tags: util
+- name: xml and json toolset
+  include: 0x09_xml-and-json.yml
+  tags: util,xml,json
 
 - name: screenshot tools include
   include: 0x0a_screenshots.yml
@@ -48,30 +48,18 @@
   include: 0x0c_authy.yml
   tags: util,authy,snaps
 
-- name: jp JSON query tool include
-  include: 0x0d_jp.yml
-  tags: util
-
-- name: jsonfui json explorer include
-  include: 0x0e_jsonfui.yml
-  tags: util
-
 - name: libvirt include
-  include: 0x0f_libvirt.yml
+  include: 0x0d_libvirt.yml
   tags: util,virt
 
 - name: apache directory studio include
-  include: 0x10_apache-directory-studio.yml
+  include: 0x0e_apache-directory-studio.yml
   tags: util,apacheds
 
 - name: citrix client include
-  include: 0x11_citrix.yml
+  include: 0x0f_citrix.yml
   tags: util,citrix
 
-- name: jless include
-  include: 0x12_jless.yml
-  tags: util,jless
-
 - name: ghidra include
-  include: 0x13_ghidra.yml
+  include: 0x10_ghidra.yml
   tags: util,ghidra

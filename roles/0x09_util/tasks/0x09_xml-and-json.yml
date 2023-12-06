@@ -1,0 +1,57 @@
+---
+
+# currently: Xidel_0.9.8
+- name: get xidel version from github release
+  github_release:
+    user: benibela
+    repo: xidel
+    action: latest_release
+  tags: github
+
+- name: deploy xidel
+  become: true
+  become_user: sjas
+  copy:
+    src: xidel
+    dest: /home/sjas/.local/bin
+    mode: 0744
+
+# currently: v1.2.3
+- name: get xq version from github release
+  github_release:
+    user: sibprogrammer
+    repo: xq
+    action: latest_release
+  tags: github
+
+- name: deploy xq
+  become_user: sjas
+  copy:
+    src: xq
+    dest: /home/sjas/.local/bin
+    mode: 0744
+
+- name: deploy jp
+  become: true
+  become_user: sjas
+  copy:
+    src: jp
+    dest: /home/sjas/.local/bin
+    mode: 0775
+
+- name: deploy jsonfui
+  become: true
+  become_user: sjas
+  copy:
+    src: jsonfui
+    dest: /home/sjas/.local/bin
+    mode: 0775
+
+- name: deploy jless
+  become: true
+  become_user: sjas
+  copy:
+    src: jless
+    dest: /home/sjas/.local/bin
+    mode: 0775
+

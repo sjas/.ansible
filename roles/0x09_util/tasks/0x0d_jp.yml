@@ -1,9 +1,0 @@
----
-
-- name: deploy jp
-  become: true
-  become_user: sjas
-  copy:
-    src: jp
-    dest: /home/sjas/.local/bin
-    mode: 0775
