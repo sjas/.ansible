@@ -31,6 +31,14 @@
     dest: /home/sjas/.local/bin
     mode: 0744
 
+# currently: 0.2.1
+- name: get jp version from github release
+  github_release:
+    user: jmespath
+    repo: jp
+    action: latest_release
+  tags: github
+
 - name: deploy jp
   become: true
   become_user: sjas
@@ -38,6 +46,14 @@
     src: jp
     dest: /home/sjas/.local/bin
     mode: 0775
+
+# currently: 1.2.6
+- name: get jsonfui version from github release
+  github_release:
+    user: AdrianSchneider
+    repo: jsonfui
+    action: latest_release
+  tags: github
 
 - name: deploy jsonfui
   become: true
@@ -47,10 +63,50 @@
     dest: /home/sjas/.local/bin
     mode: 0775
 
+# currently: v0.9.0
+- name: get jless version from github release
+  github_release:
+    user: PaulJuliusMartinez
+    repo: jless
+    action: latest_release
+  tags: github
+
 - name: deploy jless
   become: true
   become_user: sjas
   copy:
     src: jless
+    dest: /home/sjas/.local/bin
+    mode: 0775
+
+# currently: v0.5.0
+- name: get jqp version from github release
+  github_release:
+    user: noahgorstein
+    repo: jqp
+    action: latest_release
+  tags: github
+
+- name: deploy jqp
+  become: true
+  become_user: sjas
+  copy:
+    src: jqp
+    dest: /home/sjas/.local/bin
+    mode: 0775
+
+# currently: v4.40.4
+- name: get yq version from github release
+  github_release:
+    user: mikefarah
+    repo: yq
+    action: latest_release
+  tags: github
+
+- name: deploy yq
+  become: true
+  become_user: sjas
+  copy:
+    src: jqp
     dest: /home/sjas/.local/bin
     mode: 0775
