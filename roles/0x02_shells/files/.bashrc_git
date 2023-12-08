@@ -47,7 +47,7 @@ gitignore() {
 			done
 			cat .gitignore  ##fixme remove when testing is done
 			git add .gitignore
-			git commit -m gi
+			git commit -m .gitignore
 			git status -s
 		fi
 }
