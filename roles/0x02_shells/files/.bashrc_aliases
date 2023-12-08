@@ -687,7 +687,7 @@ __dautocompletion() {
 # sym
 # diff
 showapt() {
-	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v grep | cut -c 66-'
+	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep | cut -c 68-'
 }
 shownet() {
 	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
