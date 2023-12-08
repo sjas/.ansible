@@ -119,7 +119,7 @@
   shell: pkill -9 code && echo 0 || echo 1
   register: vscode_stopped
   ignore_errors: true
-  when: not vsc_plugin_count.stdout is search( "{{ vsc_plugin_count_desired.stdout }}" )
+  when: not vsc_plugin_count.stdout is search( vsc_plugin_count_desired.stdout )
   changed_when: false
 
 - name: install vscode extensions if not present
@@ -163,7 +163,7 @@
     - vadimcn.vscode-lldb
     - yhirose.FilterText
     - Yummygum.city-lights-icon-vsc
-  when: not vsc_plugin_count.stdout is search( "{{ vsc_plugin_count_desired.stdout }}" )
+  when: not vsc_plugin_count.stdout is search( vsc_plugin_count_desired.stdout )
   tags: dont_lint_this
 
 - name: set vscode configuration
@@ -187,5 +187,5 @@
   become_user: sjas
   command: code
   delegate_to: localhost
-  when: not vsc_plugin_count.stdout is search("{{ vsc_plugin_count_desired.stdout }}") and vscode_stopped.stdout == "0"
+  when: not vsc_plugin_count.stdout is search( vsc_plugin_count_desired.stdout ) and vscode_stopped.stdout == "0"
   changed_when: false
