@@ -2,6 +2,8 @@
 
 # fix version number upon new releases
 - name: register current go version
+  # # in case you need to hardcode a version
+  # command: "/bin/echo 1.21.4"
   shell: "/usr/bin/curl -s 'https://go.dev/VERSION?m=text'|/usr/bin/head -1|/usr/bin/sed 's/go//'"
   register: go_version
   changed_when: false
