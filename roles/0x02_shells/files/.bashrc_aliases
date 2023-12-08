@@ -385,7 +385,12 @@ krestart() {
 	for i in "$@"
 	do
 		pkill "$i"
-		kstart "$i"
+		if [[ $i == "kwin" ]]
+		then 
+			kstart --replace kwin
+		else
+			kstart "$i"
+		fi
 	done
 }
 
