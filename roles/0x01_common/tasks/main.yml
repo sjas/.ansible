@@ -49,5 +49,5 @@
   tags: common,baloo
 
 - name: pip
-  include: 0x0d_python-packages.yml
+  include: 0x0d_python-packages-via-pip.yml
   tags: common,pip
