@@ -4,12 +4,12 @@
   snap:
     name: nextcloud-desktop-client
 
-- name: nextcloud data folders
-  become: true
-  become_user: sjas
-  file:
-    dest: /home/sjas/{{ item }}
-    state: directory
-    mode: 0775
-  with_items:
-    - kp
+# - name: nextcloud data folders
+#   become: true
+#   become_user: sjas
+#   file:
+#     dest: /home/sjas/{{ item }}
+#     state: directory
+#     mode: 0775
+#   with_items:
+#     - kp

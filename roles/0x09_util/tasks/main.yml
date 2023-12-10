@@ -63,3 +63,7 @@
 - name: ghidra include
   include: 0x10_ghidra.yml
   tags: util,ghidra
+
+- name: dbeaver include
+  include: 0x11_dbeaver.yml
+  tags: util,dbeaver

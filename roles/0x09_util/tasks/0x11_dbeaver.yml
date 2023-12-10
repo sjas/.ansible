@@ -1,0 +1,5 @@
+---
+
+- name: dbeaver via snap
+  snap:
+    name: dbeaver-ce
