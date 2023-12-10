@@ -165,7 +165,7 @@ gitdiffsofancy() {
 gitdifftool() {
 		git difftool -t "$*"
 }
-alias gdt=gitdifftool								   ## gdt <difftool>, difftools: meld, kdiff3
+alias gdt=gitdifftool									## gdt <difftool>, difftools: meld, kdiff3
 
 # shellcheck disable=SC2142
 alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2~/blob/ { print \$4 }'"  ## ls-tree, show versioned files
@@ -191,15 +191,15 @@ gitcommitgeneral() {
 	git commit -m "$@"
 	git status -s
 }
-alias gcg="gitcommitgeneral"						  ## commit only what has been added or was specified
+alias gcg="gitcommitgeneral"						## commit only what has been added or was specified
 gitfastcommit() {
 	[[ $# -eq 0 ]]&&( cd "$(git rev-parse --show-toplevel)"||return;git add .;git commit -m "add all and commit" )&&return
     git add "$@"
 	git commit -m "add $* and commit"
 }
-alias gfc="gitfastcommit"							  ## commit all present changes quickly
-alias gca="git commit --amend"						  ## amend last commit
-alias grv="git revert HEAD"							  ## revert, undo last commit
+alias gfc="gitfastcommit"							## commit all present changes quickly
+alias gca="git commit --amend"						## amend last commit
+alias grv="git revert HEAD"							## revert, undo last commit
 gitaddcommit() {
 	(
 		cd "$(git rev-parse --show-toplevel)"||return
@@ -212,7 +212,7 @@ alias gac="gitaddcommit"
 gitrm() {
 	git rm "$*"
 }
-alias grm="gitrm"									 ## param: filename, delete file and remove from versioning
+alias grm="gitrm"									## param: filename, delete file and remove from versioning
 gitrmcached() {
 	for i
 	in "$@"
@@ -227,37 +227,37 @@ alias grmc="gitrmcached"
 
 
 ## UPSTREAM(ING) ############################################################################################
-alias grem="git remote -v"							  ## show remotes
+alias grem="git remote -v"								## show remotes
 alias grema="git remote add"							## add remote
-alias gremd="git remote remove"						 ## remove remote
+alias gremd="git remote remove"							## remove remote
 
-alias gf="git fetch origin master"					  ## fetch
+alias gf="git fetch origin master"						## fetch
 gitfetchall() {
 	for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout "${branch}"; git fetch; done
 }
 alias gfa=gitfetchall
-alias gp="git pull origin master"					   ## pull
-alias gpp="git push origin master"					  ## push
-alias gpup="git pull origin master; git push origin master"		 ## for repositories where only I work on
+alias gp="git pull origin master"						## pull
+alias gpp="git push origin master"						## push
+alias gpup="git pull origin master;echo;git push origin master"		## for repositories where only I work on
 
 # shellcheck disable=SC2139
 alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
 # shellcheck disable=SC2139
-alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"  ## delete current branch at origin
+alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## delete current branch at origin
 
 gitfastpush() {
 	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git commit -m fastcommit; git pull origin master; git push origin master )
 }
-alias gfp=gitfastpush								   ## commit all present changes with message 'fastcommit', pull and push
+alias gfp=gitfastpush									## commit all present changes with message 'fastcommit', pull and push
 
 
 
 
 
 ## BRANCHING ################################################################################################
-alias gb="git branch"				   ## show local branches if used without args
-alias gba="git branch -a -v"				## show all currently existing local and remote branches plus latest commits
-alias gbd="git branch -D"				## force delete shit
+alias gb="git branch"									## show local branches if used without args
+alias gba="git branch -a -v"							## show all currently existing local and remote branches plus latest commits
+alias gbd="git branch -D"								## force delete shit
 alias gbw="watch -n1 -d -c git branch -a -v --color"	## running overview so you see what you are doing and can copy paste, colored
 alias gco="git checkout"								## checkout
 alias gcob="git checkout -b"							## checkout directly into new branch
