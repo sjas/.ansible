@@ -3,3 +3,24 @@
 - name: dbeaver via snap
   snap:
     name: dbeaver-ce
+
+# 0 sjas@ssg 03:56:39 ~/snap/dbeaver-ce (main) $2 h15482 c14 $
+# cat 273/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.ui.statistics.prefs
+# command start: 03:57:02
+# 
+# eclipse.preferences.version=1
+# feature.tracking.skipConfirmation=true
+# 
+# 0 sjas@ssg 03:57:02 ~/snap/dbeaver-ce (main) $2 h15483 c15 $
+# 
+# 130 sjas@ssg 03:58:51 ~/snap/dbeaver-ce (main) $2 h15487 c19 $
+# cat 273/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
+# command start: 03:58:54
+# 
+# driver.selector.orderBy=score
+# eclipse.preferences.version=1
+# sample.database.canceled=true
+# tipOfTheDayInitializer.notFirstRun=true
+# ui.auto.update.check.time=1702176905551
+# 
+# 0 sjas@ssg 03:58:54 ~/snap/dbeaver-ce (main) $2 h15488 c20 
