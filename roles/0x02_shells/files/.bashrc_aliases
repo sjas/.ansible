@@ -353,7 +353,7 @@ the_missing_grep() {
 }
 alias g=the_missing_grep
 the_missing_grep_v() {
-	grep -Hin -v "$@"
+	grep -i -v "$@"
 }
 alias gv=the_missing_grep_v
 the_missing_grep_but_recursive() {
