@@ -250,7 +250,9 @@ gitfastpush() {
 }
 alias gfp=gitfastpush									## commit all present changes with message 'fastcommit', pull and push
 
-
+#to clean a file completely from a repository, backup file before as it will get delete in the process from the working copy
+#git filter-branch --tree-filter 'rm -f <relative_path_to_file>' HEAD
+#git push origin --force --all
 
 
 
