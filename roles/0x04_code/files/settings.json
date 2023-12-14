@@ -80,6 +80,7 @@
         "single-h1": false,
         "no-space-in-emphasis": false,
         "no-missing-space-atx": false,
-        "fenced-code-language": false
+        "fenced-code-language": false,
+        "links": false
     }
 }
