@@ -81,6 +81,7 @@
         "no-space-in-emphasis": false,
         "no-missing-space-atx": false,
         "fenced-code-language": false,
-        "links": false
+        "links": false,
+        "single-trailing-newline": false,
     }
 }
