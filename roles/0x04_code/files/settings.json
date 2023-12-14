@@ -55,9 +55,7 @@
     "plantuml.previewSnapIndicators": true,
     "plantuml.server": "https://www.plantuml.com/plantuml.disabled",
     "search.showLineNumbers": true,
-    "search.usePCRE2": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "terminal.integrated.env.linux": {},
     "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "terminal.integrated.splitCwd": "inherited",
@@ -70,5 +68,18 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
     "workbench.editor.empty.hint": "hidden",
     "git.confirmSync": false,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "markdownlint.config": {
+        "no-bare-urls": false,
+        "no-multiple-blanks": false,
+        "MD013": {
+            "line_length": 109
+        },
+        "blanks-around-headings": false,
+        "blanks-around-fences": false,
+        "single-h1": false,
+        "no-space-in-emphasis": false,
+        "no-missing-space-atx": false,
+        "fenced-code-language": false
+    }
 }
