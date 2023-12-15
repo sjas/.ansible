@@ -1,0 +1,5 @@
+---
+
+- name: install nagstamon via flatpak so hopefully it keeps working in floating mode
+  flatpak:
+    name: Nagstamon

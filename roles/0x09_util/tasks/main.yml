@@ -67,3 +67,7 @@
 - name: dbeaver include
   include: 0x11_dbeaver.yml
   tags: util,dbeaver
+
+- name: nagstamon include
+  include: 0x12_nagstamon.yml
+  tags: util,nagstamon
