@@ -138,7 +138,7 @@ export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
 
-export LESS=" -IR "
+export LESS=" -IRM "
 #syntax highlighting, needs `libsource-highlight-common` package
 #find path via `dpkg -L libsource-highlight-common | grep lesspipe`
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
