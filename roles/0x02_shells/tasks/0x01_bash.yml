@@ -118,6 +118,14 @@
     dest: /home/sjas/
     mode: 0664
 
+- name: deploy .lesskey
+  become: true
+  become_user: sjas
+  copy:
+    src: .lesskey
+    dest: /home/sjas/
+    mode: 0664
+
 - name: deploy .dialogrc
   become: true
   become_user: sjas
