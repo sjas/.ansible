@@ -133,3 +133,18 @@
     src: .dialogrc
     dest: /home/sjas/
     mode: 0664
+
+- name: deploy yaml langfile for less highlighing
+  copy:
+    src: yaml.lang
+    dest: /usr/share/source-highlight/
+    mode: 0644
+
+- name: link yaml.lang
+  lineinfile:
+    path: /usr/share/source-highlight/lang.map
+    line: '{{ item }}'
+  with_items:
+    - yaml = yaml.lang
+    - yml = yaml.lang
+

@@ -1,0 +1,20 @@
+# source-highlight's language definition file for YAML
+# Source from: https://gist.github.com/tkfm-yamaguchi/c4952b355bb7a27552a5f23e0c53b65f
+
+include "script_comment.lang"
+include "number.lang"
+
+keyword = "true|false|null"
+
+section start '^---'
+(symbol,name,symbol) = `(^[[:blank:]-]*)([[:alnum:]_]+)(:)`
+symbol = '^[[:blank:]]*-'
+
+# TODO:
+#   - hredoc
+#   - alias indicators
+
+string delim "\"" "\"" escape "\\"
+string delim "'" "'"  escape "\\"
+
+# vim: ft=conf
