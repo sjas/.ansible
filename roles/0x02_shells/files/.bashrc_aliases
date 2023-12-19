@@ -412,11 +412,38 @@ aptfilesearch() {
 alias afs=aptfilesearch
 
 datefromepoch() {
+    if [[ $# -lt 1 ]]
+	then
+		echo specify epoch timestamp... ctrl+c to abort
+		echo
+		while :
+		do
+			read -rp"epoch> "
+			date -d@"${REPLY}"
+			echo
+		done
+	fi
 	date -d@"$1"
 }
 
 datetoepoch() {
-    [[ $# -lt 1 ]]&&echo specify YYYYmmdd or YYYYmmdd HHMM...&& return
+    if [[ $# -lt 1 ]]
+	then
+		echo specify YYYYmmdd or YYYYmmdd HHMM... ctrl+c to abort
+		echo
+		while :
+		do
+			read -rp"date> "
+			local _date=
+			local _time=
+			_date="$(echo "${REPLY}"|awk '{print $1}')"
+			_time="$(echo "${REPLY}"|awk '{print $2}')"
+			[[ -z $_time ]]&&_time="0000"
+			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}" 
+			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}" +%s
+			echo
+		done
+	fi
 	local _inputdate="$*"
 	[[ $# -lt 2 ]]&&_inputdate="${_inputdate}0000"
 	busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" 
