@@ -411,6 +411,18 @@ aptfilesearch() {
 }
 alias afs=aptfilesearch
 
+datefromepoch() {
+	date -d@"$1"
+}
+
+datetoepoch() {
+    [[ $# -lt 1 ]]&&echo specify YYYYmmdd or YYYYmmdd HHMM...&& return
+	local _inputdate="$*"
+	[[ $# -lt 2 ]]&&_inputdate="${_inputdate}0000"
+	busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" 
+    busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" +%s
+}
+
 alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
 alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
