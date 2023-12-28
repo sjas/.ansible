@@ -669,6 +669,7 @@ alias cdw='__d cat "${_folder_docs_wrk}"'
 
 # shellcheck disable=SC2012
 __d() {
+	local _upstream="gitlab.sjas.de"
     local _binary=$1;shift
     local _folder=$1;shift
     #if no argument is given, vim will open the folder so you have files to choose
@@ -680,7 +681,7 @@ __d() {
 }
 __pull_from_git() {
     local _folder="$1";shift
-    if ping -c1 -W1 gitlab.sjas.de >/dev/null 2>&1
+    if ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
     then
         cd "${_folder}"||return
         git add "$*"
@@ -692,7 +693,7 @@ __pull_from_git() {
 
 __push_to_git() {
     local _folder="$1";shift
-    if ping -c1 -W1 gitlab.sjas.de >/dev/null 2>&1
+    if ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
     then
         cd "${_folder}"||return
         git add "$*"
