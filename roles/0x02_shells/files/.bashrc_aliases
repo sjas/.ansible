@@ -674,14 +674,26 @@ __d() {
     #if no argument is given, vim will open the folder so you have files to choose
     #any other binary will just get the folder contents printed
     ! [[ "vim" == "${_binary}" ]]&&[[ $# -eq 0 ]]&&echo&&\ls -1 --sort=time -r "${_folder}"&&echo&&return  ## shift changes $#
+    __pull_from_git "${_folder}" "$*"
     "${_binary}" "${_folder}"/"$*"
     __push_to_git "${_folder}" "$*"
 }
+__pull_from_git() {
+    local _folder="$1";shift
+    if ping -c1 -W1 gitlab.sjas.de >/dev/null 2>&1
+    then
+        cd "${_folder}"||return
+        git add "$*"
+        git commit -m "update $*"
+        git pull
+        cd -||return
+    fi
+}
+
 __push_to_git() {
     local _folder="$1";shift
     if ping -c1 -W1 gitlab.sjas.de >/dev/null 2>&1
     then
-
         cd "${_folder}"||return
         git add "$*"
         git commit -m "update $*"
