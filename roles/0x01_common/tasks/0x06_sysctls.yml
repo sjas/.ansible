@@ -17,7 +17,7 @@
 - name: fuck off, swapspace
   sysctl:
     name: vm.swappiness
-    value: "1"
+    value: "0"
   changed_when: false
 
 - name: make iotop(1) work again
