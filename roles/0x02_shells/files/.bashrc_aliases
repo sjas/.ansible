@@ -518,7 +518,7 @@ alias k_decreaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortc
 #alias logoff="loginctl terminate-user sjas"  ## deprecated
 alias synchotkeysback='cp -va /home/sjas/.config/kglobalshortcutsrc /home/sjas/.config/khotkeysrc  /home/sjas/etc/.ansible/roles/0x05_kde/files/'
 
-alias rg="rg --hidden -i"
+alias rg="rg --hidden -i --glob '!\.git/'"
 alias mc=". /usr/share/mc/bin/mc-wrapper.sh"
 tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 alias gg=global
