@@ -168,6 +168,7 @@ alias powertop="sudo powertop"
 alias apt="sudo apt"
 alias aptc="sudo apt clean; sudo apt autoremove"
 alias aptg="sudo dpkg -l | grep"
+alias pkcon="sudo pkcon"
 
 alias bettercap="sudo bettercap"
 
