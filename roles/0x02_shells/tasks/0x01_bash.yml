@@ -32,7 +32,7 @@
   register: root_bashrc_exists
   changed_when: false
 
-- name: remove if current root .bashrc is not a symlink
+- name: remove it if current root .bashrc is not a symlink
   file:
     path: /root/.bashrc
     state: absent
@@ -42,6 +42,24 @@
   file:
     dest: /root/.bashrc
     src: /home/sjas/.bashrc
+    state: link
+
+- name: check the current root .vimrc file/symlink
+  stat:
+    path: /root/.vimrc
+  register: root_vimrc_exists
+  changed_when: false
+
+- name: remove it if current root .vimrc is not a symlink
+  file:
+    path: /root/.vimrc
+    state: absent
+  when: root_vimrc_exists.stat.exists and not root_vimrc_exists.stat.islnk
+
+- name: symlink .vimrc for root
+  file:
+    dest: /root/.vimrc
+    src: /home/sjas/.vimrc
     state: link
 
 - name: check the current root .ssh file/symlink
