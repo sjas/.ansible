@@ -10,7 +10,7 @@
 - name: register current node version to be used
   become: true
   become_user: sjas
-  command: echo v19.4.0
+  command: echo v21.6.1
   register: nodejs_version
   changed_when: false
 
