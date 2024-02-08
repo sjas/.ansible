@@ -609,7 +609,9 @@ e() { command ed -v -p\* "$@";}
 alias vihosts="sudo vim /etc/hosts"
 alias viresolv="sudo vim /etc/resolv.conf"
 alias vissh="vim /home/sjas/.ssh/config"
+alias catssh="cat /home/sjas/.ssh/config"
 alias visshcl="vim /home/sjas/.cloginrc"
+alias catsshcl="cat /home/sjas/.cloginrc"
 alias viif="sudo vim /etc/network/interfaces"
 alias vinss="sudo vim /etc/nsswitch.conf"
 
