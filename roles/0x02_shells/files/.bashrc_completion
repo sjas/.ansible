@@ -15,40 +15,41 @@
 ## go #######################################################################################################
 _go() {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
-
-	case "${COMP_WORDS[COMP_CWORD - 1]}" in
-	"go")
-		subcommands=" bug build clean doc env fix fmt generate get help install list mod run test tool version vet"
-		#COMPREPLY=($(compgen -W "${subcommands}" -- "${cur}"))
-		mapfile -t COMPREPLY < <(compgen -W "${subcommands}" -- "${cur}")
+	case "${COMP_WORDS[COMP_CWORD - 1]}"
+	in
+		"go")
+			subcommands=" bug build clean doc env fix fmt generate get help install list mod run test tool version vet"
+			#COMPREPLY=($(compgen -W "${subcommands}" -- "${cur}"))
+			mapfile -t COMPREPLY < <(compgen -W "${subcommands}" -- "${cur}")
 		;;
-	*)
-		files=$(find "${PWD}" -mindepth 1 -maxdepth 1 -type f -iname "*.go" -exec basename {} \;)
-		dirs=$(find "${PWD}" -mindepth 1 -maxdepth 1 -type d -not -name ".*" -exec basename {} \;)
-		repl="${files} ${dirs}"
-		#COMPREPLY=($(compgen -W "${repl}" -- "${cur}"))
-		mapfile -t COMPREPLY < <(compgen -W "${repl}" -- "${cur}")
+		*)
+			files=$(find "${PWD}" -mindepth 1 -maxdepth 1 -type f -iname "*.go" -exec basename {} \;)
+			dirs=$(find "${PWD}" -mindepth 1 -maxdepth 1 -type d -not -name ".*" -exec basename {} \;)
+			repl="${files} ${dirs}"
+			#COMPREPLY=($(compgen -W "${repl}" -- "${cur}"))
+			mapfile -t COMPREPLY < <(compgen -W "${repl}" -- "${cur}")
 		;;
 	esac
 	return 0
-} &&
-	complete -F _go go
+}&&complete -F _go go
 
 
 
 
 
 ## virsh ####################################################################################################
-_contain_cmd()
-{
+_contain_cmd() {
     local e f
     local array1=($1) array2=($2)
     
-    for e in "${array1[@]}"
+    for e
+	in "${array1[@]}"
     do
-        for f in "${array2[@]}"
+        for f
+		in "${array2[@]}"
         do
-            if [[ "$e" == "$f" ]] ; then
+            if [[ "$e" == "$f" ]]
+			then
                 echo $e
                 return
             fi
@@ -59,20 +60,18 @@ _contain_cmd()
     return
 }
 
-_virsh_list_networks()
-{
+_virsh_list_networks() {
     local flag_all=$1 flags
-
-    if [ "$flag_all" -eq 1 ]; then
+    if [[ "$flag_all" -eq 1 ]]
+	then
         flags="--all"
     else
         flags="--inactive"
     fi
-    virsh -q net-list $flags | cut -d\  -f2 | awk '{print $1}'
+    virsh -q net-list $flags|awk '{print $1}'
 }
 
-_virsh_list_domains()
-{
+_virsh_list_domains() {
     local flag_all=$1 flags
 
     if [ "$flag_all" -eq 1 ]; then
@@ -80,11 +79,10 @@ _virsh_list_domains()
     else
         flags="--inactive"
     fi
-    virsh -q list $flags | cut -d\  -f7 | awk '{print $1}'
+    virsh -q list $flags|awk '{print $2}'
 }
 
-_virsh_list_pools()
-{
+_virsh_list_pools() {
     local flag_all=$1 flags
 
     if [ "$flag_all" -eq 1 ]; then
@@ -92,11 +90,11 @@ _virsh_list_pools()
     else
         flags="--inactive"
     fi
+	#fixme
     virsh -q pool-list $flags | cut -d\  -f2 | awk '{print $1}'
 }
 
-_virsh_list_ifaces()
-{
+_virsh_list_ifaces() {
     local flag_all=$1 flags
 
     if [ "$flag_all" -eq 1 ]; then
@@ -104,26 +102,21 @@ _virsh_list_ifaces()
     else
         flags="--inactive"
     fi
-    virsh -q iface-list $flags | cut -d\  -f2 | awk '{print $1}'
+    virsh -q iface-list $flags|awk '{print $1}'
 }
 
-_virsh_list_nwfilters()
-{
-
-    virsh -q nwfilter-list | cut -d\  -f4 | awk '{print $1}'
+_virsh_list_nwfilters() {
+    virsh -q nwfilter-list|awk '{print $2}'
 }
 
-_virsh() 
-{
+_virsh() {
     local cur prev cmds doms options nets pools cmds_help
     local flag_all=1 array ret a b ifaces nwfilters files
-
 #   not must use bash-completion now :)
 #    _init_completion -s || return
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-
     cmds=$( echo "$(virsh -h| grep '^    ' | cut -d\  -f5)" \
             "$(virsh -h| grep '\--' | cut -d\  -f7 | cut -d= -f1)")
     cmds_help=$(virsh help| grep '^    ' | cut -d\  -f5)
@@ -132,37 +125,35 @@ _virsh()
             doms=$(_virsh_list_domains "$flag_all")
             COMPREPLY=( $(compgen -W "$doms" -- "$cur") )
             return 0
-            ;;
+		;;
         --network)
             nets=$(_virsh_list_networks "$flag_all")
             COMPREPLY=( $(compgen -W "$nets" -- "$cur") )
             return 0
-            ;;
+		;;
         --pool)
             pools=$(_virsh_list_pools "$flag_all")
             COMPREPLY=( $(compgen -W "$pools" -- "$cur") )
             return 0
-            ;;
+		;;
         --interface)
             ifaces=$(_virsh_list_ifaces "$flag_all")
             COMPREPLY=( $(compgen -W "$ifaces" -- "$cur") )
             return 0
-            ;;
+		;;
         --nwfilter)
             nwfilters=$(_virsh_list_nwfilters)
             COMPREPLY=( $(compgen -W "$nwfilters" -- "$cur") )
             return 0
-            ;;
+		;;
         --file|--xml)
             files=$(ls)
             COMPREPLY=( $(compgen -W "$files" -- "$cur") )
             return 0
-            ;;
+		;;
     esac
-
     array=$(IFS=$'\n'; echo "${COMP_WORDS[*]}")
     ret=$(_contain_cmd "$array" "$cmds_help")
-
     if [[ "$ret" != "notfound" && "$ret" != "$cur" ]]; then
         a=$(virsh help "$ret" |grep '^    --'|cut -d\  -f5)
         b=$(virsh help "$ret" |grep '^    \[--'|cut -d\  -f5|cut -d[  -f2|cut -d]  -f1)
@@ -170,15 +161,14 @@ _virsh()
         COMPREPLY=( $(compgen -W "$options" -- "$cur") )
         return 0
     fi
-
-    case "$cur" in
+    case "$cur"
+	in
         *)
             COMPREPLY=( $(compgen -W "$cmds" -- "$cur") )
             return 0
             ;;
     esac
-} &&
-complete -o default -F _virsh virsh
+}&&complete -o default -F _virsh virsh
 
 
 
