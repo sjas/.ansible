@@ -177,3 +177,61 @@ _virsh() {
 ## firewall-cmd #############################################################################################
 # shellcheck disable=SC1091
 . /usr/share/bash-completion/completions/firewall-cmd && complete -F _firewall_cmd fw
+
+
+
+
+
+## keytool ##################################################################################################
+_keytool() {
+    local cur prev words cword
+    _init_completion || return
+
+    local commands command options formats
+    commands='-help -list -delete -importcert -importkeystore'
+
+    if [[ $cword -eq 1 ]]
+	then
+        COMPREPLY=( $(compgen -W "$commands" -- "$cur") )
+    else
+        command=${words[1]}
+        case $prev
+		in
+            '-keystore'|'-file'|'-srckeystore'|'-destkeystore')
+                _filedir
+                return
+			;;
+            '-storetype'|'-srcstoretype'|'-deststoretype')
+                formats='JKS PKCS11 PKCS12'
+                COMPREPLY=( $(compgen -W "$formats" -- "$cur") )
+                return
+			;;
+            '-alias'|'-storepass'|'-srcstorepass'|'-deststorepass'|'-srcalias'|'-destalias'|'-srckeypass'|'-destkeypass'|'-keypass')
+                return
+			;;
+        esac
+
+        case $command
+		in
+            '-list')
+                options='-keystore -v -alias -storepass -storetype'
+			;;
+             '-delete')
+                options='-alias -keystore -storepass -storetype \
+                                    -v -noprompt'
+			;;
+             '-importcert')
+                options='-trustcacerts -alias -file -keypass -keystore \
+                                    -storepass -storetype \
+                                    -v -noprompt'
+			;;
+             '-importkeystore')
+                options='-srckeystore -srcstoretype -srcstorepass -srcalias -srckeypass \
+                                    -destkeystore -deststoretype -deststorepass -destalias -destkeypass \
+                                    -v -noprompt'
+			;;
+        esac
+        COMPREPLY=( $(compgen -W "$options" -- "$cur") )
+
+    fi
+}&&complete -F _keytool -o default keytool
