@@ -81,6 +81,7 @@
       - graphviz
       - grepcidr
       - haveged
+      - hexyl
       - hdparm
       - hping3
       - html-xml-utils
