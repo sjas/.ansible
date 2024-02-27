@@ -1,0 +1,5 @@
+#!/bin/bash
+[[ $# -lt 1 ]]&&echo "usage: ${FUNCNAME[0]} PROGRAM_NAME"&&return
+(1>/dev/null nohup "$(eval "$(find /home/sjas/.local/share/appimage -maxdepth 1 -type f -name "${1}*")")"&) \
+	&&(killall "$1"||:)
+
