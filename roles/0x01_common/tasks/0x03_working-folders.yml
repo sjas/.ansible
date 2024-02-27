@@ -24,6 +24,7 @@
     - .local
     - .local/bin
     - .local/share/applications
+    - .local/share/appimage
     - mnt
     - mp3
     - n

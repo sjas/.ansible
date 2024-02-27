@@ -165,3 +165,11 @@
   with_items:
     - yaml = yaml.lang
     - yml = yaml.lang
+
+- name: deploy appimage wrapper
+  become: true
+  become_user: sjas
+  copy:
+    src: appimage
+    dest: /home/sjas/.local/bin
+    mode: 0775
