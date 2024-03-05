@@ -1,13 +1,13 @@
 ---
 
 - name: restarting imwheel
-  include_tasks: 0x01_imwheel_handler.yml
+  import_tasks: 0x01_imwheel_handler.yml
 
 - name: restarting kwin
-  include_tasks: 0x02_kwin_handler.yml
+  import_tasks: 0x02_kwin_handler.yml
 
 # - name: restarting xbindkeys
-#   include_tasks: 0x03_xbindkeys_handler.yml
+#   import_tasks: 0x03_xbindkeys_handler.yml
 
 - name: restart kcminput
-  include_tasks: 0x04_kcminit.yml
+  import_tasks: 0x04_kcminit.yml

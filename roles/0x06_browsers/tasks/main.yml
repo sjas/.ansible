@@ -1,21 +1,21 @@
 ---
 
 - name: chromium
-  include_tasks: 0x01_chromium.yml
+  import_tasks: 0x01_chromium.yml
   tags: browsers,chromium
 
 - name: google-chrome
-  include_tasks: 0x02_google-chrome.yml
+  import_tasks: 0x02_google-chrome.yml
   tags: browsers,chrome
 
 - name: firefox
-  include_tasks: 0x03_firefox.yml
+  import_tasks: 0x03_firefox.yml
   tags: browsers,firefox,ff
 
 - name: brave
-  include_tasks: 0x04_brave.yml
+  import_tasks: 0x04_brave.yml
   tags: browsers,brave
 
 - name: microsoft edge
-  include_tasks: 0x05_edge.yml
+  import_tasks: 0x05_edge.yml
   tags: browsers,edge

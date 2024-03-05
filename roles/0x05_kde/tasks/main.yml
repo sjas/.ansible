@@ -1,65 +1,65 @@
 ---
 
 - name: autostart include
-  include_tasks: 0x01_autostart.yml
+  import_tasks: 0x01_autostart.yml
   tags: kde
 
 - name: mouse / keyboard include
-  include_tasks: 0x02_mouse-keyboard.yml
+  import_tasks: 0x02_mouse-keyboard.yml
   tags: kde,mouse,keyboard
 
 - name: touchpad include
-  include_tasks: 0x03_touchpad.yml
+  import_tasks: 0x03_touchpad.yml
   tags: kde,mouse,touchpad
 
 - name: powersettings include
-  include_tasks: 0x04_powersettings.yml
+  import_tasks: 0x04_powersettings.yml
   tags: kde,power
 
 - name: virtual desktops include
-  include_tasks: 0x05_virtualdesktops.yml
+  import_tasks: 0x05_virtualdesktops.yml
   tags: kde,virtualdesktops
 
 - name: clipboard include
-  include_tasks: 0x06_clipboard.yml
+  import_tasks: 0x06_clipboard.yml
   tags: kde,clipboard
 
 - name: taskbar include
-  include_tasks: 0x07_taskbar.yml
+  import_tasks: 0x07_taskbar.yml
   tags: kde
 
 - name: screenlocker include
-  include_tasks: 0x08_screenlocker.yml
+  import_tasks: 0x08_screenlocker.yml
   tags: kde
 
 - name: widgets + settings include
-  include_tasks: 0x09_widgets.yml
+  import_tasks: 0x09_widgets.yml
   tags: kde
 
 - name: shortcuts include
-  include_tasks: 0x0a_shortcuts.yml
+  import_tasks: 0x0a_shortcuts.yml
   tags: kde
 
 # - name: email defaults include
-#   include_tasks: 0x0b_emaildefaults.yml
+#   import_tasks: 0x0b_emaildefaults.yml
 #   tags: kde
 #
 # - name: some image handling settings include
-#   include_tasks: 0x0c_image-handling.yml
+#   import_tasks: 0x0c_image-handling.yml
 #   tags: kde
 
 - name: make desktop theme dark include
-  include_tasks: 0x0d_desktop.yml
+  import_tasks: 0x0d_desktop.yml
   tags: kde
 
 - name: systemsettingsrc include
-  include_tasks: 0x0e_systemsettingsrc.yml
+  import_tasks: 0x0e_systemsettingsrc.yml
   tags: kde
 
 # - name: wallpaper include
-#   include_tasks: 0x0f_wallpaper.yml
+#   import_tasks: 0x0f_wallpaper.yml
 #   tags: kde
 
 - name: pulseaudiorc include
-  include_tasks: 0x10_pulseaudiorc.yml
+  import_tasks: 0x10_pulseaudiorc.yml
   tags: kde,pa

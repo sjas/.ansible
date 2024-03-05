@@ -1,13 +1,13 @@
 ---
 
 - name: telegram
-  include_tasks: 0x01_telegram.yml
+  import_tasks: 0x01_telegram.yml
   tags: messengers,telegram,snaps
 
 - name: signal
-  include_tasks: 0x02_signal.yml
+  import_tasks: 0x02_signal.yml
   tags: messengers,signal
 
 # - name: teams
-#   include_tasks: 0x03_teams.yml
+#   import_tasks: 0x03_teams.yml
 #   tags: messengers,teams

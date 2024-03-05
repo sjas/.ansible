@@ -1,53 +1,53 @@
 ---
 
 - name: system upgrade
-  include_tasks: 0x01_dist-upgrade.yml
+  import_tasks: 0x01_dist-upgrade.yml
   tags: common,distupgrade
 
 - name: base software
-  include_tasks: 0x02_packages.yml
+  import_tasks: 0x02_packages.yml
   tags: common,packages
 
 - name: working folders
-  include_tasks: 0x03_working-folders.yml
+  import_tasks: 0x03_working-folders.yml
   tags: common,workingfolders
 
 - name: ntp
-  include_tasks: 0x04_ntp.yml
+  import_tasks: 0x04_ntp.yml
   tags: common,ntp
 
 - name: ansible-lint
-  include_tasks: 0x05_ansible-lint.yml
+  import_tasks: 0x05_ansible-lint.yml
   tags: common,lint
 
 - name: sysctls
-  include_tasks: 0x06_sysctls.yml
+  import_tasks: 0x06_sysctls.yml
   tags: common,sysctls
 
 - name: dnsmasq
-  include_tasks: 0x07_dnsmasq.yml
+  import_tasks: 0x07_dnsmasq.yml
   tags: common,dnsmasq
 
 - name: HaskLig font
-  include_tasks: 0x08_hasklig.yml
+  import_tasks: 0x08_hasklig.yml
   tags: common,hasklig
 
 - name: systemd user folder
-  include_tasks: 0x09_systemd_user_folder.yml
+  import_tasks: 0x09_systemd_user_folder.yml
   tags: common
 
 - name: long live /etc/rc.local
-  include_tasks: 0x0a_rc_local.yml
+  import_tasks: 0x0a_rc_local.yml
   tags: common,rclocal
 
 - name: pipewire
-  include_tasks: 0x0b_pipewire.yml
+  import_tasks: 0x0b_pipewire.yml
   tags: common,pipewire
 
 - name: baloo
-  include_tasks: 0x0c_baloo.yml
+  import_tasks: 0x0c_baloo.yml
   tags: common,baloo
 
 - name: pip
-  include_tasks: 0x0d_python-packages-via-pip.yml
+  import_tasks: 0x0d_python-packages-via-pip.yml
   tags: common,pip

@@ -159,7 +159,6 @@
     - { section: "Layout", option: "LayoutList", value: "us" }
     - { section: "Layout", option: "Options", value: "caps:ctrl_modifier" }
     - { section: "Layout", option: "ResetOldOptions", value: "true" }
-    - { section: "Layout", option: "ResetOldOptions", value: "true" }
     - { section: "Layout", option: "Use", value: "true" }
     - { section: "Layout", option: "VariantList", value: "altgr-intl" }
 

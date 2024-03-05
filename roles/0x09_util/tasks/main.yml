@@ -1,73 +1,73 @@
 ---
 
 - name: kanban include
-  include_tasks: 0x01_kanban.yml
+  import_tasks: 0x01_kanban.yml
   tags: util
 
 - name: diff-so-fancy include
-  include_tasks: 0x02_diff-so-fancy.yml
+  import_tasks: 0x02_diff-so-fancy.yml
   tags: util
 
 - name: nextcloud snap include
-  include_tasks: 0x03_nextcloud.yml
+  import_tasks: 0x03_nextcloud.yml
   tags: util,nextcloud,snaps
 
 - name: direnv include
-  include_tasks: 0x04_direnv.yml
+  import_tasks: 0x04_direnv.yml
   tags: util
 
 - name: keepassxc snap include
-  include_tasks: 0x05_keepassxc.yml
+  import_tasks: 0x05_keepassxc.yml
   tags: util,keepass,snaps
 
 - name: scc code counter
-  include_tasks: 0x06_scc.yml
+  import_tasks: 0x06_scc.yml
   tags: util
 
 - name: bat which sucks to install include
-  include_tasks: 0x07_bat.yml
+  import_tasks: 0x07_bat.yml
   tags: util,bat
 
 - name: CF mm tools include
-  include_tasks: 0x08_mm.yml
+  import_tasks: 0x08_mm.yml
   tags: util
 
 - name: xml and json toolset
-  include_tasks: 0x09_xml-and-json.yml
+  import_tasks: 0x09_xml-and-json.yml
   tags: util,xml,json
 
 - name: screenshot tools include
-  include_tasks: 0x0a_screenshots.yml
+  import_tasks: 0x0a_screenshots.yml
   tags: util,screenshot,shutter,spectacle
 
 - name: simplecurses include
-  include_tasks: 0x0b_simplecurses.yml
+  import_tasks: 0x0b_simplecurses.yml
   tags: util
 
 - name: authy include
-  include_tasks: 0x0c_authy.yml
+  import_tasks: 0x0c_authy.yml
   tags: util,authy,snaps
 
 - name: libvirt include
-  include_tasks: 0x0d_libvirt.yml
+  import_tasks: 0x0d_libvirt.yml
   tags: util,virt
 
 - name: apache directory studio include
-  include_tasks: 0x0e_apache-directory-studio.yml
+  import_tasks: 0x0e_apache-directory-studio.yml
   tags: util,apacheds
 
 - name: citrix client include
-  include_tasks: 0x0f_citrix.yml
+  import_tasks: 0x0f_citrix.yml
   tags: util,citrix
 
 - name: ghidra include
-  include_tasks: 0x10_ghidra.yml
+  import_tasks: 0x10_ghidra.yml
   tags: util,ghidra
 
 - name: dbeaver include
-  include_tasks: 0x11_dbeaver.yml
+  import_tasks: 0x11_dbeaver.yml
   tags: util,dbeaver
 
 - name: nagstamon include
-  include_tasks: 0x12_nagstamon.yml
+  import_tasks: 0x12_nagstamon.yml
   tags: util,nagstamon
