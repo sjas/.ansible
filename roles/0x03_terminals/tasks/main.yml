@@ -1,13 +1,13 @@
 ---
 
 - name: terminator
-  include: 0x01_terminator.yml
+  include_tasks: 0x01_terminator.yml
   tags: terminals,terminator
 
 - name: xterm
-  include: 0x02_xterm.yml
+  include_tasks: 0x02_xterm.yml
   tags: terminals,xterm
 
 - name: tmux bindings
-  include: 0x03_tmux.yml
+  include_tasks: 0x03_tmux.yml
   tags: terminals,tmux

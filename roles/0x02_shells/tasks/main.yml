@@ -1,9 +1,9 @@
 ---
 
 - name: reference configs from .bashrc
-  include: 0x01_bash.yml
+  include_tasks: 0x01_bash.yml
   tags: shells,bash
 
 - name: setup powershell
-  include: 0x02_powershell.yml
+  include_tasks: 0x02_powershell.yml
   tags: shells,powershell

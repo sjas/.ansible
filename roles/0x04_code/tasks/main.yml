@@ -1,33 +1,33 @@
 ---
 
 - name: vim
-  include: 0x01_vim.yml
+  include_tasks: 0x01_vim.yml
   tags: code,vim
 
 - name: git
-  include: 0x02_git.yml
+  include_tasks: 0x02_git.yml
   tags: code,git
 
 - name: vscode
-  include: 0x03_vscode.yml
+  include_tasks: 0x03_vscode.yml
   tags: code,vscode
 
 - name: golang
-  include: 0x04_golang.yml
+  include_tasks: 0x04_golang.yml
   tags: code,golang,go
 
 - name: node.js
-  include: 0x05_node.yml
+  include_tasks: 0x05_node.yml
   tags: code,node
 
 - name: rust
-  include: 0x06_rustlang.yml
+  include_tasks: 0x06_rustlang.yml
   tags: code,rustlang
 
 - name: oracle java 8u202 include
-  include: 0x07_java8u202.yml
+  include_tasks: 0x07_java8u202.yml
   tags: code,java,java8
 
 - name: eclipse temurin java 19 include
-  include: 0x08_java19.yml
+  include_tasks: 0x08_java19.yml
   tags: code,java,java19
