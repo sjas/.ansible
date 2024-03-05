@@ -6,4 +6,4 @@
 
 - name: setup powershell
   import_tasks: 0x02_powershell.yml
-  tags: shells,powershell
+  tags: shells,powershell,pwsh,ps
