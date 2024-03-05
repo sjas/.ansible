@@ -87,14 +87,6 @@
 #   code
 #
 
-- name: deploy shortcut actions
-  become: true
-  become_user: sjas
-  copy:
-    src: khotkeysrc
-    dest: /home/sjas/.config
-    mode: 0664
-
 - name: deploy shortcuts
   become: true
   become_user: sjas
