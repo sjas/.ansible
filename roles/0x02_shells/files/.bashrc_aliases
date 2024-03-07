@@ -1259,12 +1259,22 @@ runonfolderchange() {
 
 runonchange() {
     [[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n" "${FUNCNAME[0]}"&&return
-    FILENAME="$1";shift
-    while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
-    do
-        eval "$*"
-        printf "\n===============\n\n"
-    done
+	if [[ $# -eq 1 ]]
+	then
+		while inotifywait -e modify "$1" >/dev/null 2>&1||true
+        do
+            eval "$1"
+            printf "\n===============\n\n"
+        done
+	elif [[ $# -eq 2 ]]
+	then
+		FILENAME="$1";shift
+		while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
+		do
+			eval "$*"
+			printf "\n===============\n\n"
+		done
+	fi
 }
 
 
