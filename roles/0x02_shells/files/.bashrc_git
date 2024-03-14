@@ -236,9 +236,46 @@ gitfetchall() {
 	for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout "${branch}"; git fetch; done
 }
 alias gfa=gitfetchall
-alias gp="git pull origin master"						## pull
-alias gpp="git push origin master"						## push
-alias gpup="git pull origin master;echo;git push origin master"		## for repositories where only I work on
+gitpull() {
+	if [[ $# == 0 ]]
+	then
+		git pull origin master
+	elif [[ $# == 2 ]]
+	then
+		git pull "$*"
+	else
+		echo "only specify tracked repo and branch"
+	fi
+}
+alias gp=gitpull
+gitpush() {
+	if [[ $# == 0 ]]
+	then
+		git push origin master
+	elif [[ $# == 2 ]]
+	then
+		git push "$*"
+	else
+		echo "only specify tracked repo and branch"
+	fi
+}
+alias gpp=gitpush
+gitpushandpull() {
+	if [[ $# == 0 ]]
+	then
+		git pull origin master
+		echo
+		git push origin master
+	elif [[ $# == 2 ]]
+	then
+		git pull "$*"
+		echo
+		git push "$*"
+	else
+		echo "only specify tracked repo and branch"
+	fi
+}
+alias gpup=gitpushandpull
 
 # shellcheck disable=SC2139
 alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
