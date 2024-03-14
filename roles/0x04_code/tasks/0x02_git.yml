@@ -24,5 +24,6 @@
     - { key: 'http.sslverify',                      value: 'true' }
     - { key: 'init.defaultBranch',                  value: 'main' }
     - { key: 'pull.rebase',                         value: 'true' }
-    - { key: 'push.default',                        value: 'matching' }
+    - { key: 'push.default',                        value: 'current' }
+    - { key: 'push.autoSetupRemote',                value: 'true' }
     - { key: 'user.name',                           value: 'sjas' }

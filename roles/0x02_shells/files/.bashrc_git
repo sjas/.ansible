@@ -130,9 +130,8 @@ alias gsh="git show"						## param: commit-id, show changes
 alias gshf="git show --stat --oneline"		## param: commit-id, show changes
 
 #show remote contents
-alias gsb="git show-branch -a --list --more=10 --sha1-name"		## show-branch, show where commits are present
-alias gsbf="git show-branch -a --list --sha1-name"				## show-branch, show where commits are present
-alias gsba="git show-branch -a --topics --current --sha1-name"	## show all dangling branches? FIXME
+alias gsb="git show-branch -a --topics --current --sha1-name"
+alias gsba="git show-branch -a --sha1-name"
 
 #diff
 gitshowauthor() {
@@ -294,8 +293,8 @@ alias gfp=gitfastpush									## commit all present changes with message 'fastco
 
 
 ## BRANCHING ################################################################################################
-alias gb="git branch"									## show local branches if used without args
-alias gba="git branch -a -v"							## show all currently existing local and remote branches plus latest commits
+alias gb="git branch -a -v"								## show all currently existing local and remote branches plus latest commits
+#alias gbf="git show-branch -a --list --sha1-name"		## show-branch, show where commits are present, obsolete due to gb alias
 alias gbd="git branch -D"								## force delete shit
 alias gbw="watch -n1 -d -c git branch -a -v --color"	## running overview so you see what you are doing and can copy paste, colored
 alias gco="git checkout"								## checkout
