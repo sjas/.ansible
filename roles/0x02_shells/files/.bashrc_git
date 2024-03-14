@@ -36,7 +36,7 @@ gitignore() {
         then
 			vim .gitignore
 			git add .gitignore
-			git commit -m gi
+			git commit -v -m gi
 			git status -s
 		else
 			for i
@@ -47,7 +47,7 @@ gitignore() {
 			done
 			cat .gitignore  ##fixme remove when testing is done
 			git add .gitignore
-			git commit -m .gitignore
+			git commit -v -m .gitignore
 			git status -s
 		fi
 }
@@ -178,24 +178,24 @@ alias gsf="git ls-tree HEAD --full-tree -r -t --full-name --full-tree | awk '\$2
 gitcommit() {
 		if [[ $# -eq 0 ]]
 		then
-			git commit
+			git commit -v
 		else
-			git commit -m "$*"
+			git commit -v -m "$*"
 		fi
 		git status -s
 }
 alias gc="gitcommit"
 gitcommitgeneral() {
-	[[ $# -eq 0 ]]&&git commit -m "fc"&&git status -s&&return
+	[[ $# -eq 0 ]]&&git commit -v -m "fc"&&git status -s&&return
 	git add "$@"
-	git commit -m "$@"
+	git commit -v -m "$@"
 	git status -s
 }
 alias gcg="gitcommitgeneral"						## commit only what has been added or was specified
 gitfastcommit() {
-	[[ $# -eq 0 ]]&&( cd "$(git rev-parse --show-toplevel)"||return;git add .;git commit -m "add all and commit" )&&return
+	[[ $# -eq 0 ]]&&( cd "$(git rev-parse --show-toplevel)"||return;git add .;git commit -v -m "add all and commit" )&&return
     git add "$@"
-	git commit -m "add $* and commit"
+	git commit -v -m "add $* and commit"
 }
 alias gfc="gitfastcommit"							## commit all present changes quickly
 alias gca="git commit --amend"						## amend last commit
@@ -205,7 +205,7 @@ gitaddcommit() {
 		cd "$(git rev-parse --show-toplevel)"||return
 		git add .
 	)
-	git commit -m "$*"
+	git commit -v -m "$*"
 }
 alias gac="gitaddcommit"
 
@@ -246,7 +246,7 @@ alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push cur
 alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## delete current branch at origin
 
 gitfastpush() {
-	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git commit -m fastcommit; git pull origin master; git push origin master )
+	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git -v commit -m fastcommit; git pull origin master; git push origin master )
 }
 alias gfp=gitfastpush									## commit all present changes with message 'fastcommit', pull and push
 
