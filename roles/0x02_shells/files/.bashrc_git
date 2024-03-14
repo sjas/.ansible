@@ -242,7 +242,7 @@ gitpull() {
 		git pull origin master
 	elif [[ $# == 2 ]]
 	then
-		git pull "$*"
+		git pull "$@"
 	else
 		echo "only specify tracked repo and branch"
 	fi
@@ -254,7 +254,7 @@ gitpush() {
 		git push origin master
 	elif [[ $# == 2 ]]
 	then
-		git push "$*"
+		git push "$@"
 	else
 		echo "only specify tracked repo and branch"
 	fi
@@ -268,9 +268,9 @@ gitpushandpull() {
 		git push origin master
 	elif [[ $# == 2 ]]
 	then
-		git pull "$*"
+		git pull "$@"
 		echo
-		git push "$*"
+		git push "$@"
 	else
 		echo "only specify tracked repo and branch"
 	fi
