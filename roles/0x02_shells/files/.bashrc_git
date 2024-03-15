@@ -230,7 +230,18 @@ alias grem="git remote -v"								## show remotes
 alias grema="git remote add"							## add remote
 alias gremd="git remote remove"							## remove remote
 
-alias gf="git fetch origin master"						## fetch
+alias gf=gitfetch
+gitpush() {
+	if [[ $# == 0 ]]
+	then
+		git fetch origin master
+	elif [[ $# == 2 ]]
+	then
+		git fetch "$@"
+	else
+		echo "only specify tracked repo and branch"
+	fi
+}
 gitfetchall() {
 	for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout "${branch}"; git fetch; done
 }
@@ -285,6 +296,9 @@ gitfastpush() {
 	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git -v commit -m fastcommit; git pull origin master; git push origin master )
 }
 alias gfp=gitfastpush									## commit all present changes with message 'fastcommit', pull and push
+
+alias gm="git merge"
+alias grb="git rebase"
 
 #to clean a file completely from a repository, backup file before as it will get delete in the process from the working copy
 #git filter-branch --tree-filter 'rm -f <relative_path_to_file>' HEAD
