@@ -1261,7 +1261,7 @@ runonfolderchange() {
 }
 
 runonchange() {
-    [[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n" "${FUNCNAME[0]}"&&return
+    [[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n\t%s FILE\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"&&return
 	if [[ $# -eq 1 ]]
 	then
 		while inotifywait -e modify "$1" >/dev/null 2>&1||true
