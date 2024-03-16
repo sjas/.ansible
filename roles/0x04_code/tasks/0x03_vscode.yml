@@ -78,7 +78,6 @@
     -e DavidAnson.vscode-markdownlint \
     -e dbaeumer.vscode-eslint \
     -e EFanZh.graphviz-preview \
-    -e eamodio.gitlens \
     -e foxundermoon.shell-format \
     -e gizak.shortcuts \
     -e grapecity.gc-excelviewer \
@@ -86,6 +85,7 @@
     -e jebbs.plantuml \
     -e korekontrol.saltstack \
     -e LuxHackers.can-openr \
+    -e maattdd.gitless \
     -e matthias-schwarze.vimter \
     -e mechatroner.rainbow-csv \
     -e mitaki28.vscode-clang \
@@ -135,7 +135,6 @@
     - DavidAnson.vscode-markdownlint
     - dbaeumer.vscode-eslint
     - efanzh.graphviz-preview
-    - eamodio.gitlens
     - foxundermoon.shell-format
     - gizak.shortcuts
     - grapecity.gc-excelviewer
@@ -143,6 +142,7 @@
     - jebbs.plantuml
     - korekontrol.saltstack
     - LuxHackers.can-openr
+    - maattdd.gitless \
     - matthias-schwarze.vimter
     - mechatroner.rainbow-csv
     - mitaki28.vscode-clang
