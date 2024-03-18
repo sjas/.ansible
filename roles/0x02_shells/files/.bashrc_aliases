@@ -100,6 +100,7 @@ alias   cdd="cd ${DOTFILES};git status -s"			    ## dotfiles
 alias   cdc="cd /home/sjas/.config;git status -s"	    ## kde configs where the diffing takes plaace
 # shellcheck disable=SC2139
 alias  cddi="cd ${DOTFILES}/../.dotfiles;\ls"  	## dotfiles' includes
+alias  cddl="cd /home/sjas/dl;\ls --color=always --file-type -H -lisha --time-style=long-iso -tr" ## dotfiles' includes
 
 alias 	cds="cd /home/sjas/.ssh/controlmasters;\ls -Alhtr --color"
 alias   cdw="__cdd /home/sjas/wrk"
