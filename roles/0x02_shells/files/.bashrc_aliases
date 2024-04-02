@@ -6,7 +6,7 @@
 ## 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 ## LS(1)
 ## SUDO(1)
-# UTIL
+## UTIL
 ## ED(1);CAT(1);VIM(1)
 ## NOTES;PRV;WRK
 ## SHOW COMMANDS
@@ -401,6 +401,8 @@ krestart() {
 	done
 }
 
+alias fix_scrollback_in_terminal="tput rmcup"
+
 backup() {
 	sudo cp -v "$1" "$1".bu
 }
@@ -460,6 +462,22 @@ datetoepoch() {
 alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
 alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
+
+ta() {
+    if [[ $# -lt 1 ]]
+	then
+		# shellcheck disable=SC2016
+		echo 'specify command to `type -a` for... ctrl+c to abort'
+		echo
+		while :
+		do
+			read -rp"type -a> "
+			type -a "${REPLY}"
+			echo
+		done
+	fi
+	type -a "$1"
+}
 
 #https://stackoverflow.com/questions/3001177/how-do-i-grep-for-all-non-ascii-characters
 alias findallunicodechars='find|xargs grep --color=auto -P -n "[^\x00-\x7F]" 2>/dev/null'
