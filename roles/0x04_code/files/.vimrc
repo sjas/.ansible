@@ -115,7 +115,6 @@ se bg=dark
 hi Normal guibg=NONE ctermbg=NONE
 highlight StatusLine    cterm=bold ctermfg=208 ctermbg=235
 highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
-<<<<<<< HEAD
 
 
 "https://github.com/dense-analysis/ale#how-can-i-customise-the-statusline
