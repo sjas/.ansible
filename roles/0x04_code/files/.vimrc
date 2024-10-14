@@ -106,7 +106,7 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkey
 "https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
 "colo desert
 "colo badwolf
-colo delek
+colo desert
 se bg=dark
 "se bg=light
 "highlight CursorLineNR ctermbg=red
@@ -114,28 +114,29 @@ se bg=dark
 hi Normal guibg=NONE ctermbg=NONE
 highlight StatusLine    cterm=bold ctermfg=208 ctermbg=235
 highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
+<<<<<<< HEAD
 
 
 "https://github.com/dense-analysis/ale#how-can-i-customise-the-statusline
 "# statusline ###############################################################################################
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = ['python']
-"let g:syntastic_sh_shellcheck_args="-x"
-"fixme this doesnt work
-"let g:syntastic_sh_checkers = ["sh","shellcheck"]
-"let g:syntastic_sh_checkers = ["bashate","sh","shellcheck"]
-"let g:syntastic_sh_checkers = ["checkbashisms","sh","shellcheck"]
-"let g:syntastic_sh_checkers = ["bashate","checkbashisms","sh","shellcheck"]
-"set stl=%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P  "'statusline' .. default?  START statusline default
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_python_python_exec = 'python3'
+"let g:syntastic_python_checkers = ['python']
+""let g:syntastic_sh_shellcheck_args="-x"
+""fixme this doesnt work
+""let g:syntastic_sh_checkers = ["sh","shellcheck"]
+""let g:syntastic_sh_checkers = ["bashate","sh","shellcheck"]
+""let g:syntastic_sh_checkers = ["checkbashisms","sh","shellcheck"]
+""let g:syntastic_sh_checkers = ["bashate","checkbashisms","sh","shellcheck"]
+""set stl=%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P  "'statusline' .. default?  START statusline default
 set statusline=%f\ %h%w%m%r
 " NOTE: preceding line has a trailing space character
 " ADD Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%* " END of default statusline (with ruler)
 set statusline+=%=%-14.(%l,%c%V\ %=\ %P%)
 

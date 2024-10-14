@@ -16,6 +16,8 @@
 
 
 
+# oui lookup fixme
+# cat `locate nmap-mac-prefixes` | grep -i ^YOUR_OID_START
 
 
 ## 'EDIT BASH' CONFIG MANAGMENT #############################################################################
