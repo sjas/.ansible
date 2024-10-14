@@ -10,6 +10,7 @@ Plug 'sjl/badwolf'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/paredit.vim'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 "# leaderkeys
