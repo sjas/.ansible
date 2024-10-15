@@ -129,19 +129,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "let g:ale_sign_error = '>>'
 "let g:ale_sign_warning = '--'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_python_python_exec = 'python3'
-"let g:syntastic_python_checkers = ['python']
+
 ""let g:syntastic_sh_shellcheck_args="-x"
-""fixme this doesnt work
-""let g:syntastic_sh_checkers = ["sh","shellcheck"]
-""let g:syntastic_sh_checkers = ["bashate","sh","shellcheck"]
-""let g:syntastic_sh_checkers = ["checkbashisms","sh","shellcheck"]
-""let g:syntastic_sh_checkers = ["bashate","checkbashisms","sh","shellcheck"]
-""set stl=%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P  "'statusline' .. default?  START statusline default
 function! LinterStatus() abort
     let l:counts=ale#statusline#Count(bufnr(''))
     let l:all_errors=l:counts.error+l:counts.style_error
