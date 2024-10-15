@@ -1,5 +1,0 @@
----
-
-- name: authy via snap
-  snap:
-    name: authy

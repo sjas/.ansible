@@ -1,16 +1,5 @@
 ---
 
-- name: whisper systems apt-key
-  apt_key:
-    url: https://updates.signal.org/desktop/apt/keys.asc
-    keyring: /etc/apt/keyrings/signal.gpg
-
-- name: signal repo
-  apt_repository:
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/signal.gpg] https://updates.signal.org/desktop/apt xenial main
-    filename: signal
-
-- name: signal package
-  apt:
+- name: signal via snap
+  snap:
     name: signal-desktop
-    cache_valid_time: 7200

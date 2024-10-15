@@ -2,7 +2,7 @@
 
 - name: vim
   import_tasks: 0x01_vim.yml
-  tags: code,vim
+  tags: code,vim,snaps
 
 - name: git
   import_tasks: 0x02_git.yml
@@ -31,3 +31,7 @@
 - name: eclipse temurin java 19 include
   import_tasks: 0x08_java19.yml
   tags: code,java,java19
+
+- name: python
+  import_tasks: 0x09_python.yml
+  tags: code,python,snaps

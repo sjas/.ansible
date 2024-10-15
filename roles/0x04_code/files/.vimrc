@@ -16,7 +16,7 @@ call plug#end()
 "# leaderkeys
 "# general settings
 "# colorscheme
-"# statusline
+"# statusline and ALE
 "# shortcuts&&keybindings general
 "# shortcuts&&keybindings bash&&markdown&&vim formatting
 
@@ -105,9 +105,9 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkey
 
 "# colorscheme ##############################################################################################
 "https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
+colo delek
 "colo desert
 "colo badwolf
-colo desert
 se bg=dark
 "se bg=light
 "highlight CursorLineNR ctermbg=red
@@ -116,9 +116,19 @@ hi Normal guibg=NONE ctermbg=NONE
 highlight StatusLine    cterm=bold ctermfg=208 ctermbg=235
 highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
 
-
-"https://github.com/dense-analysis/ale#how-can-i-customise-the-statusline
-"# statusline ###############################################################################################
+"# statusline and ALE #######################################################################################
+highlight ALEWarning ctermbg=DarkMagenta
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_fixers = {
+    \    '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \    'python': ['ruff']
+    \}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '--'
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
@@ -132,12 +142,23 @@ highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
 ""let g:syntastic_sh_checkers = ["checkbashisms","sh","shellcheck"]
 ""let g:syntastic_sh_checkers = ["bashate","checkbashisms","sh","shellcheck"]
 ""set stl=%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P  "'statusline' .. default?  START statusline default
+function! LinterStatus() abort
+    let l:counts=ale#statusline#Count(bufnr(''))
+    let l:all_errors=l:counts.error+l:counts.style_error
+    let l:all_non_errors=l:counts.total-l:all_errors
+    return l:counts.total==0?'OK':printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
 set statusline=%f\ %h%w%m%r
 " NOTE: preceding line has a trailing space character
 " ADD Syntastic
 ""set statusline+=%#warningmsg#
 ""set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%* " END of default statusline (with ruler)
+set statusline+=%=%-10.{LinterStatus()}
 set statusline+=%=%-14.(%l,%c%V\ %=\ %P%)
 
 nnoremap <leader>n :w<cr>:ll<cr>
@@ -212,7 +233,7 @@ nnoremap <leader>fp :w %<cr>:%!yapf3<cr>
 nnoremap <leader>hl I# <esc>A #<esc>VgUyyPVr#yyjp<cr>
 nnoremap <leader>HL I# <esc>A #<esc>:s/./&  /g<cr>$xxyyPVr#yyjpPVr 0r#$r#yykkpjjjj:nohl<cr>
 
-"nnoremap <leader>ll P0O<esc>109i#<esc>yyjpj "see EOF in bash settings? 
+"nnoremap <leader>ll P0O<esc>109i#<esc>yyjpj "see EOF in bash settings?
 nnoremap <leader>lls O<esc>o<esc>o<esc>o<esc>o<esc>o<esc>0<esc>PO<esc>109i#<esc>yyjpj
 nnoremap <leader>hk VgU:s/./& /g<cr>:s/^# 0 x \(.\) \(.\)   -   /#0x\1\2  -  /i<cr>yy
 
@@ -280,4 +301,3 @@ nnoremap <leader>Hl I# <esc>A #<esc>VgUyyPVr#yyjp<cr>
 nnoremap <leader>HL I# <esc>A #<esc>:s/./&  /g<cr>$xxyyPVr#yyjpPVr 0r#$r#yykkpjjjj:nohl<cr>
 "surrounding lines for current line
 nnoremap <leader>ll ddP0O<esc>109i#<esc>yyjpj
-

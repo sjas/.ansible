@@ -207,7 +207,6 @@
       - util-linux
       - vifm
       - vim
-      - vim-syntastic
       - w3m
       - wdiff
       - wget

@@ -1,6 +1,6 @@
 ---
 
 # https://askubuntu.com/questions/1064722/which-telegram-version-for-ubuntu
-- name: telegram
+- name: telegram via snap
   snap:
     name: telegram-desktop

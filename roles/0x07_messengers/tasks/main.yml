@@ -6,7 +6,7 @@
 
 - name: signal
   import_tasks: 0x02_signal.yml
-  tags: messengers,signal
+  tags: messengers,signal,snaps
 
 # - name: teams
 #   import_tasks: 0x03_teams.yml

@@ -44,9 +44,6 @@
   import_tasks: 0x0b_simplecurses.yml
   tags: util
 
-- name: authy include
-  import_tasks: 0x0c_authy.yml
-  tags: util,authy,snaps
 
 - name: libvirt include
   import_tasks: 0x0d_libvirt.yml
@@ -66,7 +63,7 @@
 
 - name: dbeaver include
   import_tasks: 0x11_dbeaver.yml
-  tags: util,dbeaver
+  tags: util,dbeaver,snaps
 
 - name: nagstamon include
   import_tasks: 0x12_nagstamon.yml

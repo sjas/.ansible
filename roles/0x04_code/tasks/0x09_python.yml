@@ -1,0 +1,5 @@
+---
+
+- name: ruff via snap
+  snap:
+    name: ruff
