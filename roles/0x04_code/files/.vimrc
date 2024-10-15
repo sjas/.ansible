@@ -105,8 +105,8 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkey
 
 "# colorscheme ##############################################################################################
 "https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
-colo delek
-"colo desert
+"colo delek
+colo desert
 "colo badwolf
 se bg=dark
 "se bg=light
