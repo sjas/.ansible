@@ -7,6 +7,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
+Plug 'simnalamburt/vim-mundo'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/paredit.vim'
