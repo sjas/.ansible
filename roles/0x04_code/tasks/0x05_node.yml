@@ -3,14 +3,14 @@
 - name: register nvm install script name
   become: true
   become_user: sjas
-  command: echo v0.39.3
+  command: echo v0.40.1
   register: nvm_installer_version
   changed_when: false
 
 - name: register current node version to be used
   become: true
   become_user: sjas
-  command: echo v21.6.1
+  command: echo v23.7.0
   register: nodejs_version
   changed_when: false
 

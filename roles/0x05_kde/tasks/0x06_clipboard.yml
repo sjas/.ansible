@@ -1,37 +1,37 @@
 ---
 
-# - name: get plasma version for template
-#   shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
-#   register: plasma_version
-#   changed_when: false
+## - name: get plasma version for template
+##   shell: dpkg -l | grep plasma-desktop\ | awk '{print $3}' | cut -d':' -f2 | cut -d'-' -f1
+##   register: plasma_version
+##   changed_when: false
+##
+## - name: setfact plasma_version
+##   set_fact:
+##     plasma_version_fact: "{{ plasma_version.stdout }}"
+##
+## - name: klipper config
+##   become: true
+##   become_user: sjas
+##   template:
+##     src: klipperrc.j2
+##     dest: /home/sjas/.config/klipperrc
 #
-# - name: setfact plasma_version
-#   set_fact:
-#     plasma_version_fact: "{{ plasma_version.stdout }}"
-#
-# - name: klipper config
-#   become: true
-#   become_user: sjas
-#   template:
-#     src: klipperrc.j2
-#     dest: /home/sjas/.config/klipperrc
-
-- name: klipper klipperrc
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/klipperrc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: "{{ item.section }}"
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
-  with_items:
-    - { section: "Actions", option: "StripWhiteSpace", value: "false" }
-    - { section: "General", option: "SyncClipboards", value: "true" }
-    - { section: "General", option: "SelectionTextOnly", value: "false" }
-    - { section: "General", option: "IgnoreSelection", value: "false" }
-    - { section: "General", option: "IgnoreImages", value: "false" }
-    - { section: "General", option: "MaxClipItems", value: "2048" }
-    - { section: "General", option: "PopupInfoMessageShown", value: "false" }
+#- name: klipper klipperrc
+#  become: true
+#  become_user: sjas
+#  ini_file:
+#    path: /home/sjas/.config/klipperrc
+#    create: true
+#    mode: 0664
+#    no_extra_spaces: true
+#    section: "{{ item.section }}"
+#    option: "{{ item.option }}"
+#    value: "{{ item.value }}"
+#  with_items:
+#    - { section: "Actions", option: "StripWhiteSpace", value: "false" }
+#    - { section: "General", option: "SyncClipboards", value: "true" }
+#    - { section: "General", option: "SelectionTextOnly", value: "false" }
+#    - { section: "General", option: "IgnoreSelection", value: "false" }
+#    - { section: "General", option: "IgnoreImages", value: "false" }
+#    - { section: "General", option: "MaxClipItems", value: "2048" }
+#    - { section: "General", option: "PopupInfoMessageShown", value: "false" }

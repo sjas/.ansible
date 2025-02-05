@@ -32,6 +32,7 @@
   edit_window_title = <Shift><Alt>d
   edit_tab_title = <Shift><Alt>x
   edit_terminal_title = <Shift><Alt>a
+  preferences_keybindings = None
   layout_launcher = None
   help = None
 [profiles]

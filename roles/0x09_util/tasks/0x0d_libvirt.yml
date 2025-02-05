@@ -4,8 +4,6 @@
   apt:
     cache_valid_time: 7200
     name:
-      - qemu
-      - qemu-utils
       - libguestfs-tools
       - libosinfo-bin
       - unrar-free

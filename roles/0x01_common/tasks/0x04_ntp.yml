@@ -1,10 +1,9 @@
 ---
 
 - name: mask systemd-timesyncd
-  systemd:
+  apt:
     name: systemd-timesyncd
-    state: stopped
-    enabled: false
+    state: absent
 
 - name: make chrony great again
   systemd:

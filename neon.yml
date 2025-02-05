@@ -12,7 +12,7 @@
     - 0x03_terminals
     - 0x04_code
     - 0x05_kde
-    - 0x06_browsers
-    - 0x07_messengers
-    - 0x08_networking
+#    - 0x06_browsers
+#    - 0x07_messengers
+#    - 0x08_networking
     - 0x09_util

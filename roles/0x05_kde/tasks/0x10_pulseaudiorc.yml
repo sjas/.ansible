@@ -1,16 +1,16 @@
 ---
 
-- name: kde plasmaparc
-  become: true
-  become_user: sjas
-  ini_file:
-    path: /home/sjas/.config/plasmaparc
-    create: true
-    mode: 0664
-    no_extra_spaces: true
-    section: "{{ item.section }}"
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
-  with_items:
-    - { section: "General", option: "RaiseMaximumVolume", value: "true" }
-    - { section: "General", option: "VolumeStep", value: "10" }
+#- name: kde plasmaparc
+#  become: true
+#  become_user: sjas
+#  ini_file:
+#    path: /home/sjas/.config/plasmaparc
+#    create: true
+#    mode: 0664
+#    no_extra_spaces: true
+#    section: "{{ item.section }}"
+#    option: "{{ item.option }}"
+#    value: "{{ item.value }}"
+#  with_items:
+#    - { section: "General", option: "RaiseMaximumVolume", value: "true" }
+#    - { section: "General", option: "VolumeStep", value: "10" }

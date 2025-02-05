@@ -1,17 +1,17 @@
 ---
 
-- name: powersettings config
-  become: true
-  become_user: sjas
-  copy:
-    src: powermanagementprofilesrc
-    dest: /home/sjas/.config
-    mode: 0664
-
-- name: crit action config
-  become: true
-  become_user: sjas
-  copy:
-    src: powerdevilrc
-    dest: /home/sjas/.config
-    mode: 0664
+#- name: powersettings config
+#  become: true
+#  become_user: sjas
+#  copy:
+#    src: powermanagementprofilesrc
+#    dest: /home/sjas/.config
+#    mode: 0664
+#
+#- name: crit action config
+#  become: true
+#  become_user: sjas
+#  copy:
+#    src: powerdevilrc
+#    dest: /home/sjas/.config
+#    mode: 0664

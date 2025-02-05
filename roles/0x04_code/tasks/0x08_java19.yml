@@ -10,12 +10,12 @@
 
 - name: adoptium repo
   apt_repository:
-    repo: deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb jammy main
+    repo: deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb noble main
     state: present
     filename: adoptium
 
-- name: Install temurin java 19
+- name: Install temurin java 23
   apt:
-    name: "temurin-19-jdk"
+    name: "temurin-23-jdk"
     state: latest
     update_cache: true

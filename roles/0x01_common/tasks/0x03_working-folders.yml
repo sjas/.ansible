@@ -8,19 +8,16 @@
     state: directory
     mode: 0775
   with_items:
-    - bkg
     - .config
+    - desktop
     - dl
     - doc
     - dp
     - dw
-    - ebo
     - etc
     - etc/.dotfiles
     - go
     - img
-    - InstantUpload
-    - kp
     - .local
     - .local/bin
     - .local/share/applications
@@ -30,12 +27,9 @@
     - n
     - nc
     - opt
-    - pdf
-    - pdx
-    - prv
     - pub
     - py
-    - tmpl
+    - templates
     - vid
     - wrk
     - wrk/py
@@ -57,6 +51,7 @@
     dest: /home/sjas/{{ item }}
     state: absent
   with_items:
+    - Desktop
     - Downloads
     - Templates
     - Public

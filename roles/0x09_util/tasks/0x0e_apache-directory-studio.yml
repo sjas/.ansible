@@ -8,7 +8,7 @@
 
 - name: apache directory studio repo
   apt_repository:
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/iteas.gpg] https://apt.iteas.at/iteas focal main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/iteas.gpg] https://apt.iteas.at/iteas noble main
     state: present
     filename: apacheds
 

@@ -8,9 +8,9 @@
     state: directory
     mode: 0775
 
-# - name: shutter autostart
-#   become: true
-#   become_user: sjas
-#   copy:
-#     src: shutter.desktop
-#     dest: /home/sjas/.config/autostart/shutter.desktop
+- name: shutter autostart
+  become: true
+  become_user: sjas
+  copy:
+    src: shutter.desktop
+    dest: /home/sjas/.config/autostart/shutter.desktop

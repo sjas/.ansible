@@ -1,17 +1,17 @@
 ---
 
-- name: background
-  become: true
-  become_user: sjas
-  copy:
-    src: 1118full-jaime-murray.jpg
-    dest: /home/sjas/etc
-    mode: 0664
-
-- name: plasmarc
-  become: true
-  become_user: sjas
-  copy:
-    src: plasmarc
-    dest: /home/sjas/.config
-    mode: 0664
+#- name: background
+#  become: true
+#  become_user: sjas
+#  copy:
+#    src: 1118full-jaime-murray.jpg
+#    dest: /home/sjas/etc
+#    mode: 0664
+#
+#- name: plasmarc
+#  become: true
+#  become_user: sjas
+#  copy:
+#    src: plasmarc
+#    dest: /home/sjas/.config
+#    mode: 0664

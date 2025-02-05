@@ -8,7 +8,7 @@
 
 - name: microsoft powershell repo
   apt_repository:
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/24.04/prod noble main
     state: present
     filename: powershell
 

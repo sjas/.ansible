@@ -19,7 +19,7 @@
 - name: fortune
   lineinfile:
     path: /home/sjas/.bashrc
-    line: 'echo "$-"|grep -q i&&fortune -o -s'
+    line: 'echo "$-"|grep -q i&&fortune -s bofh-excuses|sed "1d;2d"'
 
 - name: reference .bashrc_includes if present
   lineinfile:
@@ -61,6 +61,7 @@
     dest: /root/.vimrc
     src: /home/sjas/.vimrc
     state: link
+    force: yes
 
 - name: check the current root .ssh file/symlink
   stat:
@@ -90,7 +91,7 @@
   with_items:
     - ini
     - panels.ini
-    - mc.ext  ## this fixes enter to be able to open files!!!
+    - mc.ext.ini  ## this fixes enter to be able to open files!!!
 
 - name: ensure .config folder exists for root user
   file:

@@ -199,7 +199,7 @@ fwstatus ()
     printf "PANIC MODE=%s\e[m\n" "${_panicstate}"
     printf "LOCKDOWN=%s\n\n" "$(sudo firewall-cmd --query-lockdown)"
     _defaultzone=$(sudo firewall-cmd --get-default-zone)
-    sudo firewall-cmd --list-all-zones | sed 's/^'"$_defaultzone"'/& (default)/' | sed -n '/^'"$_defaultzone"'\|active/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color=auto --color -e$ -e^\\w.\\+
+    sudo firewall-cmd --list-all-zones | sed 's/^'"$_defaultzone"'/& (default)/' | sed -n '/^'"$_defaultzone"'\|active/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
 }
 
 
@@ -395,7 +395,7 @@ krestart() {
 	do
 		pkill "$i"
 		if [[ $i == "kwin" ]]
-		then 
+		then
 			kstart --replace kwin
 		else
 			kstart "$i"
@@ -450,14 +450,14 @@ datetoepoch() {
 			_date="$(echo "${REPLY}"|awk '{print $1}')"
 			_time="$(echo "${REPLY}"|awk '{print $2}')"
 			[[ -z $_time ]]&&_time="0000"
-			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}" 
+			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}"
 			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}" +%s
 			echo
 		done
 	fi
 	local _inputdate="$*"
 	[[ $# -lt 2 ]]&&_inputdate="${_inputdate}0000"
-	busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" 
+	busybox date -D "%Y%m%d %H%M" -d "${_inputdate}"
     busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" +%s
 }
 
