@@ -713,7 +713,7 @@ __d() {
 }
 __pull_from_git() {
     local _folder="$1";shift
-    if ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
+    if \ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
     then
         cd "${_folder}"||return
         git add "$*"
@@ -725,7 +725,7 @@ __pull_from_git() {
 
 __push_to_git() {
     local _folder="$1";shift
-    if ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
+    if \ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
     then
         cd "${_folder}"||return
         git add "$*"
@@ -785,8 +785,8 @@ shownet6() {
 showgw()  {
 	_pinghelper() {
 		pp "$3: $1 && $2"
-		ping -4 -c1 -W1 "$1"|grep -E 'from|,'||echo FAILED
-		ping -6 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
+		\ping -4 -c1 -W1 "$1"|grep -E 'from|,'||echo FAILED
+		\ping -6 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
 	}
 	_pinghelper 0 ::1 localhost
 	_gw4=$(ip -4 r|grep default|awk '{print $3}')
@@ -874,6 +874,10 @@ td(){
 	ssh "$1" "sudo tcpdump -U -s0 -i ${REPLY} \"not (host \$(echo \$SSH_CLIENT|awk '{print \$1}') and port \$(echo \$SSH_CLIENT|awk '{print \$3}'))\" -w-"|wireshark -ki-
 }
 
+alias ping=pingt
+pingt() {
+	([[ -t 1 ]]&&\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[\033[32m%F %T\033[m]", $1); print; fflush()}')||\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[%F %T]", $1); print; fflush()}'
+}
 ipcalced() {
     [[ $# -eq 1 ]] && \ipcalc "$1" && return
 	echo enter ip net
@@ -906,8 +910,38 @@ alias drillt=drillet
 getip() {
 	\dig "$1" +short | xclip && xclip -o
 }
+dns() {
+#	[[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n\t%s FILE\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"&&return
+	__dnshelper() {
+		printf "dns > %s\n" "$(\dig "$1" +short)"
+		printf "rdns> %s\n" "$(\dig -x "$(\dig "$1" +short)" +short)"
+	}
+    [[ $# -eq 1 ]]&&printf "host> %s\n" "$1"&& __dnshelper "$1" && return
+	echo -n 'host> '
+	while
+	read -r i
+	do
+		__dnshelper "$i"
+		echo
+		echo -n 'host> '
+
+	done
+}
 rdns() {
-	\dig -x "$(\dig "$1" +short)" +short
+	__rdnshelper() {
+		printf "rdns> %s\n" "$(\dig -x "$1" +short)"
+		printf "dns > %s\n" "$(\dig "$(\dig -x "$1" +short)" +short)"
+	}
+    [[ $# -eq 1 ]]&&printf "ip  > %s\n" "$1"&&__rdnshelper "$1" && return
+	echo -n 'ip  > '
+	while
+	read -r i
+	do
+		__rdnshelper "$i"
+		echo
+		echo -n 'ip  > '
+
+	done
 }
 bgpmon() {
     [[ $# -eq 1 ]] && whois -h whois.bgpmon.net "$1" && return

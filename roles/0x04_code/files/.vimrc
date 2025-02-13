@@ -7,7 +7,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'sjl/badwolf'
-Plug 'simnalamburt/vim-mundo'
+Plug 'mbbill/undotree'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/paredit.vim'
@@ -79,7 +79,7 @@ se ls=2  "'laststatus'
 se noru  "'noruler'
 se noeb  "'noerrorbells'
 se novb  "'novisualbell'
-se nowrap  "'nowrap'
+se wrap  "'nowrap'
 se nolbr  "'nolinebreak'
 se history=500  "'history' .. undo history length
 se so=0  "'scrolloff'
@@ -130,6 +130,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "let g:ale_sign_error = '>>'
 "let g:ale_sign_warning = '--'
+let g:ale_completion_enabled = 1
 
 ""let g:syntastic_sh_shellcheck_args="-x"
 function! LinterStatus() abort
@@ -158,13 +159,14 @@ nnoremap <leader>n :w<cr>:ll<cr>
 
 
 "# shortcuts&&keybindings general ###########################################################################
+nnoremap <f5> :UndotreeToggle<cr>
 nnoremap Y y$
 
 nnoremap <leader>fd :.!date +\%F_\%T<cr>
 nnoremap <leader>scd O# shellcheck disable=SC
 
 "fastrun binding
-nnoremap <leader>e :w %<cr>:!chmod +x %;clear;printf "1\n2\n3\n4\n5"; ./%<cr>
+"nnoremap <leader>e :w %<cr>:!chmod +x %;clear;printf "1\n2\n3\n4\n5"; ./%<cr>
 
 "better searching
 nnoremap n nzt5<c-y>
@@ -187,7 +189,7 @@ nnoremap <leader>qq :qall!<cr>
 nnoremap <leader>fed :sp $DOTFILES/roles/0x04_code/files/.vimrc<cr>
 nnoremap <leader>ebv :vsp $DOTFILES/roles/0x04_code/files/.vimrc<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-autocmd bufwritepost .vimrc :source $MYVIMRC
+"autocmd #tepost .vimrc :source $MYVIMRC
 "bash editing
 nnoremap <leader>sb :!. ~/.bashrc<cr>
 nnoremap <leader>eba :vs $DOTFILES/roles/0x02_shells/files/.bashrc_aliases<cr>
@@ -195,7 +197,7 @@ nnoremap <leader>ebe :vs $DOTFILES/roles/0x02_shells/files/.bashrc_env<cr>
 nnoremap <leader>ebg :vs $DOTFILES/roles/0x02_shells/files/.bashrc_git<cr>
 
 
-"nnoremap <leader>cl :s/^/#/<cr>/asdf<cr>
+"nnoremap <leader>cl :s/^/#/<cr>/yoozu9PhiBei5cheicaec5AeG5shie2m<cr>
 nnoremap <leader>cl :noh<cr>
 nnoremap <leader>ln :se nu!<cr>
 nnoremap <leader>nu :se nu!<cr>:se rnu!<cr>
@@ -213,7 +215,7 @@ nnoremap <leader>o zRzt
 nnoremap <leader>l zAzt
 "run
 "nnoremap <leader>r :!chmod +x %; clear; ./%<cr>
-nnoremap <leader>e :w %<cr>:!chmod +x %; echo; clear; ./%<cr>
+nnoremap <leader>e :w %<cr>:!chmod +x %; echo; ./%<cr>
 "fmt
 nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>

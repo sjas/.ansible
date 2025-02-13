@@ -4,10 +4,11 @@
 #
 # shellcheck shell=bash
 
+
 ## go
 ## virsh
 ## firewall-cmd
-
+## keytool
 
 
 
@@ -41,7 +42,7 @@ _go() {
 _contain_cmd() {
     local e f
     local array1=($1) array2=($2)
-    
+
     for e
 	in "${array1[@]}"
     do
