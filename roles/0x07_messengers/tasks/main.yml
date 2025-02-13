@@ -11,3 +11,7 @@
 # - name: teams
 #   import_tasks: 0x03_teams.yml
 #   tags: messengers,teams
+
+- name: whatsapp
+  import_tasks: 0x04_whatsapp.yml
+  tags: messengers,whatsapp
