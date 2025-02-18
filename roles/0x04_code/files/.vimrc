@@ -174,8 +174,8 @@ nnoremap N Nzt5<c-y>
 nnoremap * *zt5<c-y>
 
 " spacemacs-similar bindings
-nnoremap <leader>fs :w<cr>
 nnoremap <leader>fe :e!<cr>
+nnoremap <leader>fs :w<cr>
 nnoremap <leader>ffs :se noro<cr>:w !sudo tee %<cr><cr><cr>Ll<cr>
 nnoremap <leader>fq :qa!<cr>
 nnoremap <leader>wq :wq!<cr>
