@@ -790,7 +790,10 @@ showgw()  {
 	}
 	_pinghelper 0 ::1 localhost
 	_gw4=$(ip -4 r|grep default|awk '{print $3}')
-	_gw6=$(ip -6 r|grep default|awk '{print $3}')
+	#fe80::1 doesnt work
+	#_gw6=$(ip -6 r|grep default|awk '{print $3}')
+	#since fe80::1 is not pingable,try the first ULA ip instead
+	_gw6=$(for i in $(ip -6 r|grep -v default|awk '{print $1}');do echo $i|grepcidr fc00::/7;done|sed 's/\/64/1/')
 	_pinghelper "${_gw4}" "${_gw6}" defgw
 	_pinghelper 1.1 2606:4700:4700::1111 remote-ip
 	_pinghelper ix.de ix.de remote-dns
