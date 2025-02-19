@@ -789,12 +789,12 @@ showgw()  {
 		\ping -4 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
 		\ping -6 -c1 -W1 "$3"|grep -E 'from|,'||echo FAILED
 	}
-	_pinghelper localhost 0 ::1
 	_gw4=$(ip -4 r|grep default|awk '{print $3}')
 	#fe80::1 doesnt work
 	#_gw6=$(ip -6 r|grep default|awk '{print $3}')
 	#since first LLU ip fe80::1 is not pingable,try the first ULA ip instead ... fe80::/64 and fc00::/7 do not overlap so the cidr grep is easy
 	_gw6=$(for i in $(ip -6 r|awk '{print $1}');do echo "${i}"|grepcidr fc00::/7;done|sed 's/\/64/1/')
+	_pinghelper localhost 0 ::1
 	_pinghelper defgw "${_gw4}" "${_gw6}"
 	_pinghelper remote-ip 1.1 2606:4700:4700::1111
 	_pinghelper remote-dns ix.de ix.de
