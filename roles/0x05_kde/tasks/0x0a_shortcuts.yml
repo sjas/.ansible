@@ -10,15 +10,27 @@
 #   t
 #   uxterm -sl 100000 +cm -cn -j -rw -s +samename -u8 -geometry 100x42 -fn "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1"
 #
+# UTILS
 # dolphin: dl
 #   dolphin in /home/sjas/dl
 #   e
 #   dolphin /home/sjas/dl
-#
 # controlpanel
 #   controlpanel
 #   i
 #   systemsettings
+# keepassxc  ## https://askubuntu.com/questions/703628/how-to-close-minimize-and-maximize-a-specified-window-from-terminal
+#   xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc
+#   k
+#   keepassxc
+# shutter
+#   shutter
+#   print
+#   shutter -s
+# vscode
+#   vscode
+#   x
+#   code
 #
 # BROWSERS
 # firefox
@@ -61,36 +73,28 @@
 #   signal
 #   s
 #   signal-desktop
+# whatsapp
+#   whatsie
+#   h
+#   whatsie
 # teams
 #   teams
 #   u
 #   teams %U
 #
-# authy
-#   authy
-#   a
-#   authy %U
-#
-# keepassxc  ## https://askubuntu.com/questions/703628/how-to-close-minimize-and-maximize-a-specified-window-from-terminal
-#   xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc
-#   k
-#   keepassxc
-#
-# shutter
-#   shutter
-#   print
-#   shutter -s
-#
-# vscode
-#   vscode
-#   x
-#   code
-#
 
-#- name: deploy shortcuts
-#  become: true
-#  become_user: sjas
-#  copy:
-#    src: kglobalshortcutsrc
-#    dest: /home/sjas/.config
-#    mode: 0664
+- name: deploy shortcut files 1
+  become: true
+  become_user: sjas
+  copy:
+    src: khotkeysrc
+    dest: /home/sjas/.config
+    mode: 0664
+
+- name: deploy shortcut files 2
+  become: true
+  become_user: sjas
+  copy:
+    src: kglobalshortcutsrc
+    dest: /home/sjas/.config
+    mode: 0664
