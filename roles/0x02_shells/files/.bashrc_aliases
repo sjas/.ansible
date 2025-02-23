@@ -791,9 +791,10 @@ showgw()  {
 	}
 	_gw4=$(ip -4 r|grep default|awk '{print $3}')
 	#fe80::1 doesnt work
-	#_gw6=$(ip -6 r|grep default|awk '{print $3}')
+	_gw6=$(ip -6 r|grep default|awk '{print $3}')
 	#since first LLU ip fe80::1 is not pingable,try the first ULA ip instead ... fe80::/64 and fc00::/7 do not overlap so the cidr grep is easy
-	_gw6=$(for i in $(ip -6 r|awk '{print $1}');do echo "${i}"|grepcidr fc00::/7;done|sed 's/\/64/1/')
+	#update: only didnt work for an older box even though all routing tables looked "same"
+	#_gw6=$(for i in $(ip -6 r|awk '{print $1}');do echo "${i}"|grepcidr fc00::/7;done|sed 's/\/64/1/')
 	_pinghelper localhost 0 ::1
 	_pinghelper defgw "${_gw4}" "${_gw6}"
 	_pinghelper remote-ip 1.1 2606:4700:4700::1111
@@ -807,7 +808,7 @@ showru() {
 	echo
 	ip ru
 	echo
-	for i in $(ip ru | awk '{print $1}' | tr -d ':')
+	for i in $(ip ru | awk '{print $NF}' | tr -d ':')
 	do
 		echo
 		echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"
@@ -820,6 +821,7 @@ showru() {
 }
 showr() {
 	#( echo DST GW DEV PROTO SCOPE SRC METRIC; while read -r j; do if ! echo "$j" | grep -q src; then echo "${j/metric/ . . metric}"; else echo "$j"; fi; done < <(while read -r i; do if ! echo "$i" | grep -q via ; then echo "${i/dev/ . . dev}"; else echo "$i"; fi; done  < <(ip -d r)) | awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}' ) | column -t | sed 's/\(\s\)\.\(\s\)/\1 \2/g'
+#4
 	(
 		echo DST GW DEV PROTO SCOPE SRC METRIC
 		while read -r j
@@ -844,6 +846,34 @@ showr() {
 	) \
 		|column -t \
 		|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
+
+	echo
+
+#v6
+	(
+		echo DST GW DEV PROTO SCOPE SRC METRIC
+		while read -r j
+		do
+			if ! echo "$j"|grep -q src
+			then
+				echo "${j/metric/ . . metric}"
+			else
+				echo "$j"
+			fi
+		done < <(
+			while read -r i
+			do
+				if ! echo "$i" | grep -q via
+				then
+					echo "${i/dev/ . . dev}"
+				else
+					echo "$i"
+				fi
+			done  < <(ip -d -6 r)) \
+			|awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}'
+	) \
+	|column -t \
+	|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
 showdu() {
 	du -sh ../* | sort -hk1
