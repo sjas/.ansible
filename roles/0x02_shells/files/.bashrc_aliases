@@ -187,6 +187,7 @@ alias iptables="sudo iptables"
 
 fwstatus ()
 {
+	pp state
     _fwstate=$(sudo firewall-cmd --state 2>&1)
     printf "FIREWALLD=%s\n" "${_fwstate}"
     [[ "not running" == "${_fwstate}" ]]&&return
@@ -198,9 +199,13 @@ fwstatus ()
         printf "\e[32;1m"
     fi
     printf "PANIC MODE=%s\e[m\n" "${_panicstate}"
-    printf "LOCKDOWN=%s\n\n" "$(sudo firewall-cmd --query-lockdown)"
+    printf "LOCKDOWN=%s\n" "$(sudo firewall-cmd --query-lockdown)"
+	pp zones
     _defaultzone=$(sudo firewall-cmd --get-default-zone)
-    sudo firewall-cmd --list-all-zones | sed 's/^'"$_defaultzone"'/& (default)/' | sed -n '/^'"$_defaultzone"'\|active/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
+    sudo firewall-cmd --list-all-zones | sed -n '/^'"$_defaultzone"'\|active/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
+	pp policies
+	sudo firewall-cmd --list-all-policies | sed -n '/(active)$/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
+
 }
 
 
