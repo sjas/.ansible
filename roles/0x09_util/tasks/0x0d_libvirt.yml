@@ -21,3 +21,9 @@
     name: sjas
     append: true
     groups: libvirtd
+
+- name: change default network 1
+  replace:
+    regexp: '192.168.122'
+    replace: '172.16.172'
+    dest: /etc/libvirt/qemu/networks/default.xml
