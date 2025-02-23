@@ -76,7 +76,7 @@ export PS0='command start: \t\n\n'  ## show a newline after any entered command.
 export PS3="select> "
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'  ## make `set -x` more readable
 
-export PROMPT_COMMAND='printf "\n"'
+export PROMPT_COMMAND='echo "$(date +"%F %T") [$SHELL] $(echo $(fc -ln -0)|sed 's/^\\s\+//g')  ## PID:$$,${USER}@$(hostname):${PWD},SUDO_USER:${SUDO_USER},SSH_CLIENT:${SSH_CLIENT}" >> /home/sjas/.bash_history_complete;printf "\n"'
 
 
 
