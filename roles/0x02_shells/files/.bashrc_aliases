@@ -784,21 +784,38 @@ shownet6() {
 	watch -n 1 -d 'echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 showgw()  {
-	_pinghelper() {
-		pp "$1: $2 && $3"
-		\ping -4 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
-		\ping -6 -c1 -W1 "$3"|grep -E 'from|,'||echo FAILED
-	}
+	#proper code;sadly that wont work inside a watch(1) as it cant handle functions and im not putting this into a single file to make it work
+#	_pinghelper() {
+#		pp "$1: $2 && $3"
+#		\ping -4 -c1 -W1 "$2"|grep -E 'from|,'||echo FAILED
+#		\ping -6 -c1 -W1 "$3"|grep -E 'from|,'||echo FAILED
+#	}
+#	_gw4=$(ip -4 r|grep default|awk '{print $3}')
+#	#fe80::1 doesnt work
+#	_gw6=$(ip -6 r|grep default|awk '{print $3}')
+#	#since first LLU ip fe80::1 is not pingable,try the first ULA ip instead ... fe80::/64 and fc00::/7 do not overlap so the cidr grep is easy
+#	#update: only didnt work for an older box even though all routing tables looked "same"
+#	#_gw6=$(for i in $(ip -6 r|awk '{print $1}');do echo "${i}"|grepcidr fc00::/7;done|sed 's/\/64/1/')
+#	_pinghelper localhost 0 ::1
+#	_pinghelper defgw "${_gw4}" "${_gw6}"
+#	_pinghelper remote-ip 1.1 2606:4700:4700::1111
+#	_pinghelper remote-dns ix.de ix.de
 	_gw4=$(ip -4 r|grep default|awk '{print $3}')
-	#fe80::1 doesnt work
 	_gw6=$(ip -6 r|grep default|awk '{print $3}')
-	#since first LLU ip fe80::1 is not pingable,try the first ULA ip instead ... fe80::/64 and fc00::/7 do not overlap so the cidr grep is easy
-	#update: only didnt work for an older box even though all routing tables looked "same"
-	#_gw6=$(for i in $(ip -6 r|awk '{print $1}');do echo "${i}"|grepcidr fc00::/7;done|sed 's/\/64/1/')
-	_pinghelper localhost 0 ::1
-	_pinghelper defgw "${_gw4}" "${_gw6}"
-	_pinghelper remote-ip 1.1 2606:4700:4700::1111
-	_pinghelper remote-dns ix.de ix.de
+	\watch -n1 -c '\
+		printf "\033[41;1m\nlocalhost: 0 && ::1\n\033[m";\
+		\ping -4 -c1 -W1 0|grep -E "from|,"||echo FAILED;\
+		\ping -6 -c1 -W1 ::1|grep -E "from|,"||echo FAILED;\
+		printf "\033[41;1m\ndefgw: '"$_gw4"' && '"$_gw6"'\n\033[m";\
+		\ping -4 -c1 -W1 '"$_gw4"'|grep -E "from|,"||echo FAILED;\
+		\ping -6 -c1 -W1 '"$_gw6"'|grep -E "from|,"||echo FAILED;\
+		printf "\033[41;1m\nremote-ip: 1.1 && 2606:4700:4700::1111\n\033[m";\
+		\ping -4 -c1 -W1 1.1|grep -E "from|,"||echo FAILED;\
+		\ping -6 -c1 -W1 2606:4700:4700::1111|grep -E "from|,"||echo FAILED;\
+		printf "\033[41;1m\nremote-dns: ix.de && ix.de\n\033[m";\
+		\ping -4 -c1 -W1 ix.de|grep -E "from|,"||echo FAILED;\
+		\ping -6 -c1 -W1 ix.de|grep -E "from|,"||echo FAILED;\
+		'
 }
 showdns() {
 	watch -n1 -d 'ls -alh /etc/resolv.conf; echo; fd resolv.conf /run/ | xargs tail -n +1 | grep -v ^# | sed "s/==/=================================/g"'
