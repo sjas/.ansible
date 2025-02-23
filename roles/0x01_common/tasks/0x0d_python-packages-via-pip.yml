@@ -1,5 +1,6 @@
 ---
 
-#- name: github3 module for to install github releases via ansible
-#  pip:
-#    name: github3.py
+- name: github3 module for to install github releases via ansible
+  pip:
+    name: github3.py
+    break_system_packages: true
