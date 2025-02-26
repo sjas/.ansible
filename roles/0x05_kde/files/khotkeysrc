@@ -1007,7 +1007,7 @@ ConditionsCount=0
 
 [Data_4_1]
 Comment=Comment
-DataCount=2
+DataCount=3
 Enabled=true
 Name=TERMINALS
 SystemGroup=0
@@ -1068,6 +1068,32 @@ TriggersCount=1
 Key=Meta+T
 Type=SHORTCUT
 Uuid={25f7c5df-8cb5-4835-9cd9-a972c7f7edb8}
+
+[Data_4_1_3]
+Comment=ghostty
+Enabled=true
+Name=ghostty
+Type=SIMPLE_ACTION_DATA
+
+[Data_4_1_3Actions]
+ActionsCount=1
+
+[Data_4_1_3Actions0]
+CommandURL=ghostty --background-opacity=0.8 --background=black --font-size=10 --maximize --scrollback-limit=4294967295 --focus-follows-mouse --clipboard-trim-trailing-spaces --clipboard-paste-protection --copy-on-select=true --keybind="ctrl+shift+e=new_split:right" --keybind="ctrl+shift+o=new_split:down" --keybind="ctrl+shift+h=goto_split:left" --keybind="ctrl+shift+j=goto_split:down" --keybind="ctrl+shift+k=goto_split:up" --keybind="ctrl+shift+l=goto_split:right" --unfocused-split-opacity="0.6" --keybind="ctrl+shift+up=resize_split:up,10"  --keybind="ctrl+shift+down=resize_split:down,10" --keybind="ctrl+shift+left=resize_split:left,10" --keybind="ctrl+shift+right=resize_split:right,10"
+Type=COMMAND_URL
+
+[Data_4_1_3Conditions]
+Comment=
+ConditionsCount=0
+
+[Data_4_1_3Triggers]
+Comment=Simple_action
+TriggersCount=1
+
+[Data_4_1_3Triggers0]
+Key=Meta+Return
+Type=SHORTCUT
+Uuid={ef0d84e3-b62b-4f73-9a5d-860d731f1b35}
 
 [Data_4_2]
 Comment=Comment
