@@ -11,3 +11,7 @@
 - name: tmux bindings
   import_tasks: 0x03_tmux.yml
   tags: terminals,tmux
+
+- name: ghostty
+  import_tasks: 0x04_ghostty.yml
+  tags: terminals,ghostty
