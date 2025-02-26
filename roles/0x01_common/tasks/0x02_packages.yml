@@ -99,6 +99,7 @@
       - ipmitool
       - iptraf-ng
       - iputils-arping
+      - irqbalance
       - java-package
       - jq
       - kdiff3
