@@ -32,6 +32,9 @@ then
     fi
 fi
 
+#ghostty fix for tmux else i.e. backspace acts as space
+[[ "$TERM_PROGRAM" == "ghostty" ]]&&export TERM=xterm-256color
+
 
 
 
