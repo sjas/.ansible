@@ -17,8 +17,8 @@
   become: true
   become_user: sjas
   copy:
-    src: config
-    dest: /home/sjas/.config/terminator/
+    src: config_terminator
+    dest: /home/sjas/.config/terminator/config
     mode: 0664
 
 - name: ensure terminator ensure plugin folder exists

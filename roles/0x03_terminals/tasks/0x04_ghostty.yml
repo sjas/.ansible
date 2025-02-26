@@ -54,3 +54,19 @@
     path: "/tmp/{{ ghostty_latest_release_fullname.stdout }}"
     state: absent
   when: not ghostty_installed.stat.exists or (ghostty_installed_version.stdout != ghostty_installed_version.stdout)
+
+- name: ghostty config folder
+  become: true
+  become_user: sjas
+  file:
+    dest: /home/sjas/.config/ghostty/
+    state: directory
+    mode: 0775
+
+- name: ghostty config
+  become: true
+  become_user: sjas
+  copy:
+    src: config_ghostty
+    dest: /home/sjas/.config/ghostty/config
+    mode: 0664

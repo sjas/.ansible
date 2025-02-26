@@ -1079,7 +1079,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_4_1_3Actions0]
-CommandURL=ghostty --background-opacity=0.8 --background=black --font-size=10 --maximize --scrollback-limit=4294967295 --focus-follows-mouse --clipboard-trim-trailing-spaces --clipboard-paste-protection --copy-on-select=true --keybind="ctrl+shift+e=new_split:right" --keybind="ctrl+shift+o=new_split:down" --keybind="ctrl+shift+h=goto_split:left" --keybind="ctrl+shift+j=goto_split:down" --keybind="ctrl+shift+k=goto_split:up" --keybind="ctrl+shift+l=goto_split:right" --unfocused-split-opacity="0.6" --keybind="ctrl+shift+up=resize_split:up,10"  --keybind="ctrl+shift+down=resize_split:down,10" --keybind="ctrl+shift+left=resize_split:left,10" --keybind="ctrl+shift+right=resize_split:right,10"
+CommandURL=ghostty
 Type=COMMAND_URL
 
 [Data_4_1_3Conditions]
