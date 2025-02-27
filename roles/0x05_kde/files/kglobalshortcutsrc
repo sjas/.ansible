@@ -29,7 +29,7 @@ _k_friendly_name=Custom Shortcuts Service
 {25f7c5df-8cb5-4835-9cd9-a972c7f7edb8}=Meta+T,none,uxterm
 {349e45c9-00e5-447f-8de8-fdf33d6081d2}=Meta+X,none,vscode
 {394fa311-e8d2-4f8b-956f-207ff2425193}=Meta+Y,none,telegram
-{3faae456-870d-477c-9ab1-e7368c982cd6}=Meta+R,none,terminator
+{3faae456-870d-477c-9ab1-e7368c982cd6}=Meta+Return,none,terminator
 {45eb1024-974e-42bd-8292-1a86c021b468}=Meta+C,none,chrome
 {5dd465ee-bbb4-4c06-a0a3-d64cc6cd138b}=Meta+B,none,brave
 {60a0696c-6db6-4c43-b8d9-4cbc0c534329}=Meta+U,none,teams
@@ -45,7 +45,7 @@ _k_friendly_name=Custom Shortcuts Service
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {d61923c9-d6ac-4423-8435-0439462e1cbe}=,none,New Action
 {e0070231-cec6-4c95-ade4-d18bc6960776}=Meta+H,none,whatsapp
-{ef0d84e3-b62b-4f73-9a5d-860d731f1b35}=Meta+Return,none,ghostty
+{ef0d84e3-b62b-4f73-9a5d-860d731f1b35}=Meta+R,none,ghostty
 
 [kmix]
 _k_friendly_name=Audio Volume
