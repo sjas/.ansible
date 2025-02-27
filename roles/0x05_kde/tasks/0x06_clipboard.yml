@@ -15,23 +15,31 @@
 ##   template:
 ##     src: klipperrc.j2
 ##     dest: /home/sjas/.config/klipperrc
-#
-#- name: klipper klipperrc
-#  become: true
-#  become_user: sjas
-#  ini_file:
-#    path: /home/sjas/.config/klipperrc
-#    create: true
-#    mode: 0664
-#    no_extra_spaces: true
-#    section: "{{ item.section }}"
-#    option: "{{ item.option }}"
-#    value: "{{ item.value }}"
-#  with_items:
-#    - { section: "Actions", option: "StripWhiteSpace", value: "false" }
-#    - { section: "General", option: "SyncClipboards", value: "true" }
-#    - { section: "General", option: "SelectionTextOnly", value: "false" }
-#    - { section: "General", option: "IgnoreSelection", value: "false" }
-#    - { section: "General", option: "IgnoreImages", value: "false" }
-#    - { section: "General", option: "MaxClipItems", value: "2048" }
-#    - { section: "General", option: "PopupInfoMessageShown", value: "false" }
+
+# https://github.com/KlipperScreen/KlipperScreen/issues/857#issuecomment-1362088701
+- name: stop and disable and mask modemmanager
+  systemd:
+    name: ModemManager
+    state: stopped
+    masked: true
+    enabled: false
+
+- name: klipper klipperrc
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/klipperrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Actions", option: "StripWhiteSpace", value: "false" }
+    - { section: "General", option: "SyncClipboards", value: "true" }
+    - { section: "General", option: "SelectionTextOnly", value: "false" }
+    - { section: "General", option: "IgnoreSelection", value: "false" }
+    - { section: "General", option: "IgnoreImages", value: "false" }
+    - { section: "General", option: "MaxClipItems", value: "2048" }
+    - { section: "General", option: "PopupInfoMessageShown", value: "false" }
