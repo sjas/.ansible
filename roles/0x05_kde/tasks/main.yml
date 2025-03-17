@@ -43,10 +43,10 @@
 # - name: email defaults include
 #   import_tasks: 0x0b_emaildefaults.yml
 #   tags: kde
-#
-# - name: some image handling settings include
-#   import_tasks: 0x0c_image-handling.yml
-#   tags: kde
+
+- name: some image handling settings include
+  import_tasks: 0x0c_default_applications.yml
+  tags: kde
 
 - name: make desktop theme dark include
   import_tasks: 0x0d_desktop.yml
