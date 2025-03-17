@@ -22,3 +22,4 @@ keybind=ctrl+shift+f=write_scrollback_file:open
 keybind=ctrl+shift+x=toggle_split_zoom
 keybind=ctrl+,=open_config
 keybind=ctrl+.=reload_config
+theme="Desert"
