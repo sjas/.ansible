@@ -76,29 +76,29 @@
     mode: 0664
   notify: imwheel_restart
 
-#- name: mouse kwinrc
-#  become: true
-#  become_user: sjas
-#  ini_file:
-#    path: /home/sjas/.config/kwinrc
-#    create: true
-#    mode: 0664
-#    no_extra_spaces: true
-#    section: "{{ item.section }}"
-#    option: "{{ item.option }}"
-#    value: "{{ item.value }}"
-#  with_items:
-#    - { section: "Windows", option: "FocusPolicy", value: "FocusFollowsMouse" }
-#    - { section: "Windows", option: "NextFocusPrefersMouse", value: "true" }
-#    - { section: "Windows", option: "DelayFocusInterval", value: "200" }
-#    - { section: "Windows", option: "AutoRaise", value: "false" }
-#    - { section: "Windows", option: "AutoRaiseInterval", value: "1100" }
-#    - { section: "MouseBindings", option: "CommandAllKey", value: "Alt" }
-#    - { section: "MouseBindings", option: "CommandAll1", value: "Toggle raise and lower" }
-#    - { section: "MouseBindings", option: "CommandAll2", value: "Minimize" }
-#    - { section: "MouseBindings", option: "CommandAll3", value: "Move" }
-#    - { section: "MouseBindings", option: "CommandTitlebarWheel", value: "Change Opacity" }
-#
+- name: mouse kwinrc
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kwinrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Windows", option: "FocusPolicy", value: "FocusFollowsMouse" }
+    # - { section: "Windows", option: "NextFocusPrefersMouse", value: "true" }
+    - { section: "Windows", option: "DelayFocusInterval", value: "200" }
+    - { section: "Windows", option: "AutoRaise", value: "false" }
+    - { section: "Windows", option: "AutoRaiseInterval", value: "1100" }
+    - { section: "MouseBindings", option: "CommandAllKey", value: "Alt" }
+    # - { section: "MouseBindings", option: "CommandAll1", value: "Toggle raise and lower" }
+    - { section: "MouseBindings", option: "CommandAll2", value: "Minimize" }
+    # - { section: "MouseBindings", option: "CommandAll3", value: "Move" }
+    - { section: "MouseBindings", option: "CommandAllWheel", value: "Change Opacity" }
+
 #- name: mouse kdeglobals
 #  become: true
 #  become_user: sjas
