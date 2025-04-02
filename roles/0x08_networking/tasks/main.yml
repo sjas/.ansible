@@ -3,6 +3,7 @@
 # - name: install bettercap
 #   import_tasks: 0x01_bettercap.yml
 #   tags: networking,bettercap
+<<<<<<< HEAD
 #
 # - name: install compiled wireshark
 #   import_tasks: 0x02_wireshark.yml
@@ -23,3 +24,13 @@
 - name: containerlab include
   import_tasks: 0x06_clab.yml
   tags: networking,docker,containerlab,clab
+=======
+
+- name: install wireshark
+  import_tasks: 0x02_wireshark.yml
+  tags: networking,wireshark
+
+# - name: vpn clients include
+#   import_tasks: 0x03_vpn_clients.yml
+#   tags: networking,vpn,forti
+>>>>>>> 2edbb95 (fix wireshark deploy)
