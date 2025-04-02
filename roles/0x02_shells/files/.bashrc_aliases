@@ -112,6 +112,7 @@ alias  cddl="cd /home/sjas/dl;\ls --color=always --file-type -H -lisha --time-st
 alias 	cds="cd /home/sjas/.ssh/controlmasters;\ls -Alhtr --color"
 alias   cdw="__cdd /home/sjas/wrk"
 alias  cdts="cd /home/sjas/ts;\ls -Alhtr --color"
+alias   wrk="__cdd /home/sjas/wrk"
 alias    py="__cdd /home/sjas/wrk/py"
 alias  rust="__cdd /home/sjas/wrk/rust"
 alias golang="__cdd /home/sjas/wrk/golang"
