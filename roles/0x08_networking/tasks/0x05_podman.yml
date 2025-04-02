@@ -8,7 +8,7 @@
       - podman-docker
       - docker-compose
 
-- name: enable podman socket so docker-compose works
+- name: enable podman user socket so docker-compose works
   become: true
   become_user: sjas
   systemd:
@@ -16,3 +16,12 @@
     scope: user
     enabled: true
     state: started
+
+- name: enable podman root socket so docker-compose works
+  systemd:
+    name: podman.socket
+    enabled: false
+    state: stopped
+
+# - name: containerlab bash completion
+# # fixme
