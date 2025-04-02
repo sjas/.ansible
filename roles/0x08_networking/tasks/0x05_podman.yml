@@ -1,0 +1,18 @@
+---
+
+- name: podman packages
+  apt:
+    cache_valid_time: 7200
+    name:
+      - podman
+      - podman-docker
+      - docker-compose
+
+- name: enable podman socket so docker-compose works
+  become: true
+  become_user: sjas
+  systemd:
+    name: podman.socket
+    scope: user
+    enabled: true
+    state: started

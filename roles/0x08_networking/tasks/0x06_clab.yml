@@ -1,0 +1,15 @@
+---
+
+- name: containerlab repository
+  apt_repository:
+    repo: deb [trusted=yes] https://netdevops.fury.site/apt/ /
+    state: present
+    filename: containerlab
+
+- name: install containerlab
+  apt:
+    cache_valid_time: 7200
+    autoclean: true
+    autoremove: true
+    update_cache: true
+    name: containerlab
