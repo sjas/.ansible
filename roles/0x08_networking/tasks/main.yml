@@ -11,3 +11,7 @@
 - name: vpn clients include
   import_tasks: 0x03_vpn_clients.yml
   tags: networking,vpn,forti
+
+- name: libvirt include
+  import_tasks: 0x04_libvirt.yml
+  tags: networking,virt

@@ -2,7 +2,7 @@
 
 - name: vim
   import_tasks: 0x01_vim.yml
-  tags: code,vim,snaps
+  tags: code,vim,snap
 
 - name: git
   import_tasks: 0x02_git.yml
@@ -34,4 +34,4 @@
 
 - name: python
   import_tasks: 0x09_python.yml
-  tags: code,python,snaps
+  tags: code,python,snap

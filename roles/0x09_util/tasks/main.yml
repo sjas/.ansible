@@ -8,17 +8,17 @@
   import_tasks: 0x02_diff-so-fancy.yml
   tags: util
 
-#- name: nextcloud snap include
-#  import_tasks: 0x03_nextcloud.yml
-#  tags: util,nextcloud,snaps
+# - name: nextcloud snap include
+#   import_tasks: 0x03_nextcloud.yml
+#   tags: util,nextcloud,snap
 
 - name: direnv include
   import_tasks: 0x04_direnv.yml
   tags: util
 
-#- name: keepassxc snap include
-#  import_tasks: 0x05_keepassxc.yml
-#  tags: util,keepass,snaps
+# - name: keepassxc snap include
+#   import_tasks: 0x05_keepassxc.yml
+#   tags: util,keepass,snap
 
 - name: scc code counter
   import_tasks: 0x06_scc.yml
@@ -44,26 +44,20 @@
   import_tasks: 0x0b_simplecurses.yml
   tags: util
 
-- name: libvirt include
-  import_tasks: 0x0d_libvirt.yml
-  tags: util,virt
-
 - name: apache directory studio include
-  import_tasks: 0x0e_apache-directory-studio.yml
+  import_tasks: 0x0c_apache-directory-studio.yml
   tags: util,apacheds
 
-#- name: citrix client include
-#  import_tasks: 0x0f_citrix.yml
-#  tags: util,citrix
-#
 - name: ghidra include
-  import_tasks: 0x10_ghidra.yml
+  import_tasks: 0x0d_ghidra.yml
   tags: util,ghidra
 
 - name: dbeaver include
-  import_tasks: 0x11_dbeaver.yml
-  tags: util,dbeaver,snaps
+  import_tasks: 0x0e_dbeaver.yml
+  tags: util,dbeaver,snap
 
-#- name: nagstamon include
-#  import_tasks: 0x12_nagstamon.yml
-#  tags: util,nagstamon
+# - name: nagstamon include
+#   import_tasks: 0x0f_nagstamon.yml
+#   tags: util,nagstamon
+
+# - name: citrix client include
