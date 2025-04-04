@@ -903,6 +903,27 @@ showr() {
 	|column -t \
 	|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
+showss() {
+	#while read i;do _uid=$(echo "$i"|grep -oe "uid:[[:digit:]]\+"|cut -d: -f 2);echo "$i"|sed 's/uid:\S\+/user:'$(id -nu $_uid)'/';done < <(ss -tulpenO|sed '1s/\(Local\|Peer\) /\1_/g;s/PortProcess/Port Process/'|sed 's/\(v6only\|ino\|sk\|users\):\S\+\s\+//g')
+	while read -r i
+	do
+		_uid=$(echo "$i"|grep -oe "uid:[[:digit:]]\+"|cut -d: -f2)
+		#echo "$i"|sed 's/uid:\S\+/user:'"$(id -nu "$_uid")"'/'
+		if (echo "$i"|grep -q uid:)
+		then
+			echo "${i//uid:+([[:digit:]])/user:"$(id -nu "$_uid")"}"
+		else
+			echo "${i}"
+		fi
+	done < <(
+				i=$(ss -tulpenO\
+				|sed '1s/\(Local\|Peer\) /\1_/g;s/PortProcess/Port Process/'\
+				|sed 's/\(v6only\|ino\|sk\|users\):\S\+\s\+//g')
+				echo "$i"|head -1
+				echo "$i"|grep -e '^tcp'
+				echo "$i"|grep -e '^udp'
+			)
+}
 showdu() {
 	du -sh ../* | sort -hk1
 }
