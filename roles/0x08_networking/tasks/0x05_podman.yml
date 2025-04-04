@@ -14,14 +14,14 @@
   systemd:
     name: podman.socket
     scope: user
-    enabled: true
-    state: started
+    enabled: false
+    state: stopped
 
 - name: enable podman root socket so docker-compose works
   systemd:
     name: podman.socket
-    enabled: false
-    state: stopped
+    enabled: true
+    state: started
 
 # - name: containerlab bash completion
 # # fixme
