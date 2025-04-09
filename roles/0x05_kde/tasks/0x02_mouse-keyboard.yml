@@ -64,7 +64,7 @@
     scope: user
     state: restarted
     enabled: true
-    masked: true
+    masked: false
   changed_when: false
 
 - name: mouse - fix buttons and scroll speed
