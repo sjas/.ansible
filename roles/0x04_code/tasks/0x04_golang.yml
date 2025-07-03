@@ -80,6 +80,9 @@
 #     mode: 0755
 #     force: true
 
+# https://en.wikipedia.org/wiki/Binfmt_misc
+# cat /proc/sys/fs/binfmt_misc/golang  ## show runtime configuration
+# echo -1 > /proc/sys/fs/binfmt_misc/golang  ## to remove during runtime
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:
     path: /etc/rc.local
