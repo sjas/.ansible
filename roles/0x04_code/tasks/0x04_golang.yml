@@ -72,6 +72,7 @@
   command: "{{ current_go_path.stdout }}/bin/go install -v github.com/erning/gorun@latest"
   when: not gorun_installed.stat.exists
 
+# this was only done to not having to refer to /home/sjas/go/ in the next step
 # - name: copy gorun binary if not already in in /usr/local/bin
 #   copy:
 #     src: /home/sjas/go/bin/gorun
@@ -82,7 +83,7 @@
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:
     path: /etc/rc.local
-    line: "echo ':golang:E::go::/usr/local/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
+    line: "echo ':golang:E::go::/home/sjas/go/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
     insertbefore: "exit 0"
     state: present
 
