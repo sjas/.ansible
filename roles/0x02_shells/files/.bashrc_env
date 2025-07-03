@@ -177,6 +177,7 @@ export NVM_DIR="/home/sjas/.nvm"
 
 #   G O L A N G
 #https://pkg.go.dev/cmd/go#hdr-Environment_variables
+#GOPATH==defining the root for GOBIN and GOMODCACHE so these need not be set
 export GOROOT="/usr/local/go"
 # dont just get rid of GOPATH YET, `go get` still seems to use it
 export GOPATH="/home/sjas/go"  ## def.: "${HOME}/go"
