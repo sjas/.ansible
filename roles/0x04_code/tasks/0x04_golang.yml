@@ -72,12 +72,12 @@
   command: "{{ current_go_path.stdout }}/bin/go install -v github.com/erning/gorun@latest"
   when: not gorun_installed.stat.exists
 
-- name: copy gorun binary if not already in in /usr/local/bin
-  copy:
-    src: /home/sjas/go/bin/gorun
-    dest: /usr/local/bin
-    mode: 0755
-    force: true
+# - name: copy gorun binary if not already in in /usr/local/bin
+#   copy:
+#     src: /home/sjas/go/bin/gorun
+#     dest: /usr/local/bin
+#     mode: 0755
+#     force: true
 
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:
