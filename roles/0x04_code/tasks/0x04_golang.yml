@@ -86,7 +86,7 @@
 - name: make sure rc.local deploys binfmt string upon boot
   lineinfile:
     path: /etc/rc.local
-    line: "echo ':golang:E::go::/home/sjas/go/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
+    line: "echo ':golang:E::go::{{ lookup('ansible.builtin.env', 'GOPATH') }}/bin/gorun:OC' | tee /proc/sys/fs/binfmt_misc/register 1>/dev/null"
     insertbefore: "exit 0"
     state: present
 
