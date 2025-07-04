@@ -322,6 +322,7 @@ EOF
 
 ## UTIL #####################################################################################################
 # pp=="prettyprint"
+# ppp=="prettyprintplain"
 # pps=="prettyprintshort"
 # ppss=="prettyprintshortshort"
 # pph=="prettyprinthelper" (params: char,charcount,color,text)
@@ -351,6 +352,7 @@ pph() {
         printf "\e[m\n"
 }
 pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T%N)";}
+ppp() { pph '*' 109 '41;1' "$*";}
 ppnodate() { pph '*' 109 '41;1' "$*";}
 pps() { pph '+' 80 '42' "$*";}
 ppss() { pph '+' 50 '33' "$*";}
