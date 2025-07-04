@@ -349,9 +349,9 @@ pph() {
         fi
         printf "\e[m\n"
 }
-pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T)";}
+pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T%N)";}
 ppnodate() { pph '*' 109 '41;1' "$*";}
-pps() { pph '+' 80 '' "$*";}
+pps() { pph '+' 80 '42' "$*";}
 
 tail1() { find . -maxdepth 1 -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
 tail1r() { find . -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
