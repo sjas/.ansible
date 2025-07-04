@@ -790,7 +790,7 @@ showapt() {
 	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep | cut -c 68-'
 }
 shownet() {
-	watch -n 1 -d 'ip -s -d l; echo; echo =================================================================; echo; ip -d r; echo; ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
+	watch -n 1 -d 'printf "\033[41;1mIP LINK\033[m\n";ip -s -d l;printf "\n\033[41;1mIP ROUTE\033[m\n";ip -d r;printf "\n\033[41;1mIP ADDR\033[m\n";ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
 }
 shownet4() {
 	watch -n 1 -d 'ip -d -4 r; echo; ip -s -d -4 a | grep -v lft; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
