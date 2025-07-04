@@ -321,9 +321,10 @@ EOF
 
 
 ## UTIL #####################################################################################################
-# pp=="prettyprint" (pph w/ 80 chars, colored)
-# pps=="prettyprintshort" (pph w/ 50 chars, uncolored)
-# pph=="prettyprinthelper" (first argument is the amount of max possible chars)
+# pp=="prettyprint"
+# pps=="prettyprintshort"
+# ppss=="prettyprintshortshort"
+# pph=="prettyprinthelper" (params: char,charcount,color,text)
 pph() {
         [[ $# == 0 ]]&&echo "usage: pph _char _maxcharpos _asciicolor YOUR_RANDOM_STRING_STUFF"&&return
         local _char="$1";shift
@@ -352,6 +353,7 @@ pph() {
 pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T%N)";}
 ppnodate() { pph '*' 109 '41;1' "$*";}
 pps() { pph '+' 80 '42' "$*";}
+ppss() { pph '+' 50 '33' "$*";}
 
 tail1() { find . -maxdepth 1 -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
 tail1r() { find . -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
