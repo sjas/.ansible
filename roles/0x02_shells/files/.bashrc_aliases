@@ -1521,6 +1521,12 @@ alias   etp="vim ~/.todo_prv"
 alias  etpi="vim ~/.todo_install"
 alias   ets="vim ~/.todo_srv"
 
+alias k=kanban
+
+stripcolors() {
+	sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g"
+}
+
 # the commented out lines where for syncing these with upstream, syncthing will make these obsolete eventually
 #k() {
 #	#if ping -c1 -W1 prv &>/dev/null; then rsync -auq prv:/home/sjas/.kanban/ /home/sjas/.kanban; fi
