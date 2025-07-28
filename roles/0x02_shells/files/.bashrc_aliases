@@ -1524,7 +1524,7 @@ alias   ets="vim ~/.todo_srv"
 alias k=kanban
 
 stripcolors() {
-	sed -r "s/[[:cntrl:]]\[[0-9]{1,3}m//g"
+	sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g"
 }
 
 # the commented out lines where for syncing these with upstream, syncthing will make these obsolete eventually
