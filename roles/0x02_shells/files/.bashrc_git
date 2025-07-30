@@ -230,8 +230,7 @@ alias grem="git remote -v"								## show remotes
 alias grema="git remote add"							## add remote
 alias gremd="git remote remove"							## remove remote
 
-alias gf=gitfetch
-gitpush() {
+gitfetch() {
 	if [[ $# == 0 ]]
 	then
 		git fetch origin master
@@ -242,6 +241,7 @@ gitpush() {
 		echo "only specify tracked repo and branch"
 	fi
 }
+alias gf=gitfetch
 gitfetchall() {
 	for branch in $(git branch -r | grep -v ' -> '| cut -d'/' -f2); do git checkout "${branch}"; git fetch; done
 }
@@ -261,10 +261,10 @@ alias gp=gitpull
 gitpush() {
 	if [[ $# == 0 ]]
 	then
-		git push origin master
+		git push origin master --follow-tags
 	elif [[ $# == 2 ]]
 	then
-		git push "$@"
+		git push "$@" --follow-tags
 	else
 		echo "only specify tracked repo and branch"
 	fi
@@ -275,7 +275,7 @@ gitpushandpull() {
 	then
 		git pull origin master
 		echo
-		git push origin master
+		git push origin master --follow-tags
 	elif [[ $# == 2 ]]
 	then
 		git pull "$@"

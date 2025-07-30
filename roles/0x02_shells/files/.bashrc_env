@@ -180,6 +180,8 @@ export NVM_DIR="/home/sjas/.nvm"
 #GOPATH==defining the root for GOBIN and GOMODCACHE so these need not be set
 export GOROOT="/usr/local/go"
 # dont just get rid of GOPATH YET, `go get` still seems to use it
+# $GOPATH/pkg == download location of libraries via `go get` or `go mod tidy`
+# $GOPATH/bin == install location of binaries via `go install` fixme
 export GOPATH="/home/sjas/go"  ## def.: "${HOME}/go"
 export GO111MODULE="on"
 #export GOGC=100  ## def.: 100: run garbage collector once the heap size doubles
