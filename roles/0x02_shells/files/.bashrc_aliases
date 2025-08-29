@@ -1521,6 +1521,8 @@ alias   etp="vim ~/.todo_prv"
 alias  etpi="vim ~/.todo_install"
 alias   ets="vim ~/.todo_srv"
 
+kw() { export KANBANFILE=/home/sjas/.kanban/wrk.csv;}
+kp() { export KANBANFILE=/home/sjas/.kanban/prv.csv;}
 alias k=kanban
 
 stripcolors() {
