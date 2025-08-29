@@ -16,6 +16,6 @@
 
 - name: Install temurin java 23
   apt:
-    name: "temurin-23-jdk"
+    name: "temurin-24-jdk"
     state: latest
     update_cache: true
