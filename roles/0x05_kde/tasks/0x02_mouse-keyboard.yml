@@ -159,7 +159,7 @@
     value: "{{ item.value }}"
   with_items:
     - { section: "Keyboard", option: "RepeatDelay", value: "200" }
-    - { section: "Keyboard", option: "RepeatRate", value: "200" }
+    - { section: "Keyboard", option: "RepeatRate", value: "165" }
   notify: kcminit
 
 ## us altgr-intl (aka us international no dead keys gibts eig. überall vorinstalliert)
