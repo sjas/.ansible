@@ -45,6 +45,8 @@
       - conntrack
       - cpanminus
       - curl
+      - d-feet
+      - d-spy
       - desktop-file-utils
       - dhcpdump
       - dhcping
