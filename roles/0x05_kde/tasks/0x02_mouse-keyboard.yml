@@ -1,5 +1,7 @@
 ---
 
+# https://unix.stackexchange.com/questions/132308/changing-kdes-mouse-theme-and-buttons-settings-from-a-shell-script
+
 # this stuff bases on libinput not libevdev because i dont need that
 # /usr/share/X11/xorg.conf.d/40-libinput.conf or similar if i were to switch libinput->libevdev
 # https://help.ubuntu.com/community/MouseCustomizations#Evdev_Driver
@@ -38,6 +40,23 @@
 #    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
 #    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
 #  notify: kcminit
+
+- name: mouse kcminputrc
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.2" }
+    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "true" }
+    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "true" }
+  notify: kcminit
 
 - name: fix up imwheel as a user service
   copy:
@@ -126,22 +145,23 @@
 ##     section: KDE
 ##     option: SingleClick[$d]
 #
-### keyboard #################################################################################################
-#- name: keyboard - kcminputrc
-#  become: true
-#  become_user: sjas
-#  ini_file:
-#    path: /home/sjas/.config/kcminputrc
-#    create: true
-#    mode: 0664
-#    no_extra_spaces: true
-#    section: "{{ item.section }}"
-#    option: "{{ item.option }}"
-#    value: "{{ item.value }}"
-#  with_items:
-#    - { section: "Keyboard", option: "RepeatDelay", value: "250" }
-#    - { section: "Keyboard", option: "RepeatRate", value: "100" }
-#
+## keyboard #################################################################################################
+- name: keyboard - kcminputrc
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Keyboard", option: "RepeatDelay", value: "200" }
+    - { section: "Keyboard", option: "RepeatRate", value: "200" }
+  notify: kcminit
+
 ## us altgr-intl (aka us international no dead keys gibts eig. überall vorinstalliert)
 ## EurKey -> https://eurkey.steffen.bruentjen.eu/?lang=de  Hier liegt ö ü besser und mehr Tasten belegt
 #- name: keyboard kxkbrc
