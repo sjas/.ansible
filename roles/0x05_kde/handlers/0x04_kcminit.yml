@@ -1,8 +1,23 @@
 ---
 
-- name: kcminit for applying input/mouse changes
+# shits probably broken so mouse speed doesnt change - run `kcminit` manually
+- name: kcminit for applying all changes
   become: true
   become_user: sjas
   command: /usr/bin/kcminit
+  listen: kcminit
+  changed_when: false
+
+# - name: kcminit for applying mouse changes
+#   become: true
+#   become_user: sjas
+#   command: /usr/bin/kcminit kcm_mouse
+#   listen: kcminit
+#   changed_when: false
+
+- name: dbus-send command for applying keyboard changes
+  become: true
+  become_user: sjas
+  command: /usr/bin/dbus-send --session --type=signal --reply-timeout=100 --dest=org.kde.keyboard /Layouts org.kde.keyboard.reloadConfig
   listen: kcminit
   changed_when: false
