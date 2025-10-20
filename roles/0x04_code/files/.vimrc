@@ -92,7 +92,7 @@ se cpt=.,w,t  "'complete'
 se t_te=
 se t_ti=
 
-se clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 se timeoutlen=250
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
