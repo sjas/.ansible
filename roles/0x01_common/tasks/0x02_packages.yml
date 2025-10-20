@@ -212,6 +212,7 @@
       - util-linux
       - vifm
       - vim
+      - vim-gtk3
       - w3m
       - wdiff
       - wget
