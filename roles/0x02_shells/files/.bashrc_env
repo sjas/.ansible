@@ -125,6 +125,14 @@ shopt -u sourcepath  ## dont search PATH for `. FILE`!
 
 
 
+## ssh ######################################################################################################
+unset SSH_ASKPASS
+unset SSH_ASKPASS_REQUIRE
+
+
+
+
+
 ## HISTORY ##################################################################################################
 #unlimited history without getting cleaned up
 HISTCONTROL=""
