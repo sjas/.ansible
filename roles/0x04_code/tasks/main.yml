@@ -30,7 +30,7 @@
 
 - name: eclipse temurin java include
   import_tasks: 0x08_java.yml
-  tags: code,java,java19
+  tags: code,java
 
 - name: python
   import_tasks: 0x09_python.yml
