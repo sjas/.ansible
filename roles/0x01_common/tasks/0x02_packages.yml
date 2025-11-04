@@ -158,6 +158,7 @@
       - pgpdump
       - plocate
       - powertop
+      - postfix
       - puppet-lint
       - pv
       - pwgen
