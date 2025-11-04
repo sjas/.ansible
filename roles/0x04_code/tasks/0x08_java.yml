@@ -1,4 +1,4 @@
----
+--
 
 # zulu: https://docs.azul.com/core/zulu-openjdk/install/debian#install-from-azul-apt-repository
 # temurin: https://adoptium.net/blog/2021/12/eclipse-temurin-linux-installers-available/
@@ -14,8 +14,8 @@
     state: present
     filename: adoptium
 
-- name: Install temurin java 23
+- name: Install current temurin java
   apt:
-    name: "temurin-24-jdk"
+    name: "temurin-25-jdk"
     state: latest
     update_cache: true

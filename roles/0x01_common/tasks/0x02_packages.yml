@@ -131,7 +131,7 @@
       - ncdu
       - neofetch
       - net-tools
-#      - network-manager-fortisslvpn-gnome
+      # - network-manager-fortisslvpn-gnome
       - network-manager-openvpn
       - ngrep
       - nicstat
@@ -158,7 +158,6 @@
       - pgpdump
       - plocate
       - powertop
-      - postfix
       - puppet-lint
       - pv
       - pwgen
