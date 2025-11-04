@@ -1,5 +1,98 @@
 ---
 
-- name: signal via snap
+- name: signal gui via snap
   snap:
     name: signal-desktop
+
+- name: register current java install path for installing zulu policies
+  become_user: sjas
+  shell: "/usr/sbin/update-java-alternatives -l|/usr/bin/tail -1|/usr/bin/awk '{print $NF}'"
+  register: current_java_path
+  changed_when: false
+
+- name: check of current signal-cli is already installed
+  stat:
+    path: "{{ current_java_path.stdout }}/lib/security/local_policy.jar"
+  register: zulu_policies_installed
+  changed_when: false
+
+- name: get zulu crypt lib for signal cli client
+  unarchive:
+    copy: no
+    src: "https://cdn.azul.com/zcek/bin/ZuluJCEPolicies.zip"
+    dest: "/tmp/"
+  when: not zulu_policies_installed.stat.exists
+
+- name: copy zulu crypt policies to current JDK
+  shell: "cp -r /tmp/ZuluJCEPolicies/*.jar {{ current_java_path.stdout }}/lib/security/"
+  when: not zulu_policies_installed.stat.exists
+
+
+- name: cleanup zulu download
+  file:
+    path: "/tmp/tmp/ZuluJCEPolicies/"
+    state: absent
+  when: not zulu_policies_installed.stat.exists
+
+
+# fix version number upon new releases
+- name: register current signal-cli version
+  become_user: sjas
+  # # in case you need to hardcode a version
+  # command: "/bin/echo 1.21.4"
+  shell: "/usr/bin/curl -s https://github.com/AsamK/signal-cli/releases|grep /AsamK/signal-cli/tree/|/usr/bin/head -1|/usr/bin/cut -d'\"' -f2|/usr/bin/cut -d'v' -f2"
+  register: signal_cli_version
+  changed_when: false
+
+- name: register current signal-cli install path
+  command: "/bin/echo /usr/local/lib/signal-cli-{{ signal_cli_version.stdout }}"
+  register: current_signal_cli_path
+  changed_when: false
+
+- name: check of current signal-cli is already installed
+  stat:
+    path: "{{ current_signal_cli_path.stdout }}"
+  register: signal_cli_installed
+  changed_when: false
+
+- name: Ensure target directory
+  file:
+    path: "/usr/local/lib/signal-cli-{{ signal_cli_version.stdout }}"
+    state: directory
+    owner: "sjas"
+    group: "sjas"
+    mode: 0755
+  when: not signal_cli_installed.stat.exists
+
+- name: register current signal-cli release tarball name
+  command: "/bin/echo signal-cli-{{ signal_cli_version.stdout }}-Linux-native.tar.gz"
+  register: current_signal_cli_release_tarball
+  changed_when: false
+
+  when: not signal_cli_installed.stat.exists
+- name: download signal-cli {{ signal_cli_version.stdout }}
+  become_user: sjas
+  get_url:
+    url: "https://github.com/AsamK/signal-cli/releases/download/v{{ signal_cli_version.stdout }}/{{ current_signal_cli_release_tarball.stdout }}"
+    dest: "/tmp"
+  when: not signal_cli_installed.stat.exists
+
+- name: unarchive and install signal-cli
+  unarchive:
+    src: "/tmp/{{ current_signal_cli_release_tarball.stdout }}"
+    dest: "/usr/local/lib/signal-cli-{{ signal_cli_version.stdout }}"
+    remote_src: true
+  when: not signal_cli_installed.stat.exists
+
+- name: cleanup signal-cli download
+  file:
+    path: "/tmp/{{ current_signal_cli_release_tarball.stdout }}"
+    state: absent
+  when: not signal_cli_installed.stat.exists
+
+- name: Create symlink to signal client
+  file:
+    src: "/usr/local/lib/signal-cli-{{ signal_cli_version.stdout }}/signal-cli"
+    dest: "/usr/local/bin/signal-cli"
+    state: link
+  when: not signal_cli_installed.stat.exists
