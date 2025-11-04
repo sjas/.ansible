@@ -10,6 +10,8 @@
   register: current_java_path
   changed_when: false
 
+- msg: "configuration afterwards: https://github.com/AsamK/signal-cli/wiki/Linking-other-devices-%28Provisioning%29"
+
 - name: check of current signal-cli is already installed
   stat:
     path: "{{ current_java_path.stdout }}/lib/security/local_policy.jar"
