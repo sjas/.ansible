@@ -64,6 +64,8 @@
 # xinput set-prop 11 "libinput Accel Profile Enabled" 0 0 1
 # xinput set-prop 11 "libinput Accel Custom Motion Step" 0.2
 # xinput set-prop 11 "libinput Accel Custom Motion Points" 0.003 0.004 0.008 0.018 0.036 0.052 0.080 0.120 0.200 0.482 0.571 0.659 0.748 0.837 0.926 1.014 1.103 1.192 1.281 1.369 1.458 1.56
+# xinput set-prop 11 "libinput Accel Custom Motion Points" 0.002 0.004 0.008 0.016 0.032 0.064 0.128 0.256 0.512 1.024 1.2 1.4 1.55
+# xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.032 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.55
 
 
 - name: fix up imwheel as a user service
