@@ -10,7 +10,12 @@
   register: current_java_path
   changed_when: false
 
-- msg: "configuration afterwards: https://github.com/AsamK/signal-cli/wiki/Linking-other-devices-%28Provisioning%29"
+# https://github.com/AsamK/signal-cli/wiki/Linking-other-devices-%28Provisioning%29'"
+# signal-cli link -n "ssg" | tee >(xargs -L 1 qrencode -t utf8)
+# then scan with signal on phone
+# signal-cli -u PHONENUMBER listDevices  ## should work now
+# signal-cli -u PHONENUMBER receive
+# signal-cli -u PHONENUMBER send -m "My first message from the CLI" PHONENUMBER
 
 - name: check of current signal-cli is already installed
   stat:
@@ -29,7 +34,6 @@
   shell: "cp -r /tmp/ZuluJCEPolicies/*.jar {{ current_java_path.stdout }}/lib/security/"
   when: not zulu_policies_installed.stat.exists
 
-
 - name: cleanup zulu download
   file:
     path: "/tmp/tmp/ZuluJCEPolicies/"
@@ -42,7 +46,9 @@
   become_user: sjas
   # # in case you need to hardcode a version
   # command: "/bin/echo 1.21.4"
-  shell: "/usr/bin/curl -s https://github.com/AsamK/signal-cli/releases|grep /AsamK/signal-cli/tree/|/usr/bin/head -1|/usr/bin/cut -d'\"' -f2|/usr/bin/cut -d'v' -f2"
+  shell: >-
+    /usr/bin/curl -s https://github.com/AsamK/signal-cli/releases
+    |grep /AsamK/signal-cli/tree/|/usr/bin/head -1|/usr/bin/cut -d'\"' -f2|/usr/bin/cut -d'v' -f2
   register: signal_cli_version
   changed_when: false
 
