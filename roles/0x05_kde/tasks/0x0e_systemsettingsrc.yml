@@ -1,12 +1,12 @@
 ---
 
-#- name: highlight changes in system settings
-#  become_user: sjas
-#  ini_file:
-#    path: /home/sjas/.config/systemsettingsrc
-#    create: true
-#    mode: 0664
-#    no_extra_spaces: true
-#    section: systemsettings_sidebar_mode
-#    option: HighlightNonDefaultSettings
-#    value: True
+# - name: highlight changes in system settings
+#   become_user: sjas
+#   ini_file:
+#     path: /home/sjas/.config/systemsettingsrc
+#     create: true
+#     mode: 0664
+#     no_extra_spaces: true
+#     section: systemsettings_sidebar_mode
+#     option: HighlightNonDefaultSettings
+#     value: True

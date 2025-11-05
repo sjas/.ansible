@@ -24,9 +24,9 @@
   import_tasks: 0x06_sysctls.yml
   tags: common,sysctls
 
-#- name: dnsmasq
-#  import_tasks: 0x07_dnsmasq.yml
-#  tags: common,dnsmasq
+# - name: dnsmasq
+#   import_tasks: 0x07_dnsmasq.yml
+#   tags: common,dnsmasq
 
 - name: HaskLig font
   import_tasks: 0x08_hasklig.yml
@@ -40,9 +40,9 @@
   import_tasks: 0x0a_rc_local.yml
   tags: common,rclocal
 
-#- name: pipewire
-#  import_tasks: 0x0b_pipewire.yml
-#  tags: common,pipewire
+# - name: pipewire
+#   import_tasks: 0x0b_pipewire.yml
+#   tags: common,pipewire
 
 - name: baloo
   import_tasks: 0x0c_baloo.yml

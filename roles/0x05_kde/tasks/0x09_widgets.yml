@@ -1,9 +1,9 @@
 ---
 
-#- name: set holiday regions
-#  become: true
-#  become_user: sjas
-#  copy:
-#    src: plasma_calendar_holiday_regions
-#    dest: /home/sjas/.config
-#    mode: 0664
+# - name: set holiday regions
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: plasma_calendar_holiday_regions
+#     dest: /home/sjas/.config
+#     mode: 0664

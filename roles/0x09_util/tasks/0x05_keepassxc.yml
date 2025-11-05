@@ -1,5 +1,7 @@
 ---
 
+# yamllint disable rule:line-length
+
 - name: keepass install
   apt:
     name:

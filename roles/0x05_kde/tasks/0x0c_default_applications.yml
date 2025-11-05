@@ -1,13 +1,13 @@
 ---
 
-#- name: deploy filetypesrc
-#  become: true
-#  become_user: sjas
-#  copy:
-#    src: filetypesrc
-#    dest: /home/sjas/.config
-#    mode: 0664
-#
+# - name: deploy filetypesrc
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: filetypesrc
+#     dest: /home/sjas/.config
+#     mode: 0664
+
 - name: default applications
   become: true
   become_user: sjas

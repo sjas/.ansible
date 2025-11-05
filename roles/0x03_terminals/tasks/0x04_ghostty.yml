@@ -17,11 +17,11 @@
     user: mkasberg
     repo: ghostty-ubuntu
     action: latest_release
-  register: latest_ghostty_release_version
+  register: gtty_version
   changed_when: false
 
 - name: register latest ghostty upstream version in short for comparison
-  shell: "/bin/echo {{ latest_ghostty_release_version.tag }} | sed 's/-.*//'"
+  shell: "/bin/echo {{ gtty_version.tag }} | sed 's/-.*//'"
   register: latest_ghostty_release_version_short
   when: ghostty_installed.stat.exists
   changed_when: false
@@ -33,25 +33,25 @@
   changed_when: false
 
 - name: register latest ghostty release name
-  shell: "/bin/echo ghostty_{{ latest_ghostty_release_version.tag }}_amd64_{{ ubuntu_version.stdout }}.deb | /bin/sed 's/-\\(ppa1\\)/.\\1/'"
-  register: ghostty_latest_release_fullname
+  shell: "/bin/echo ghostty_{{ gtty_version.tag }}_amd64_{{ ubuntu_version.stdout }}.deb | /bin/sed 's/-\\(ppa1\\)/.\\1/'"
+  register: gtty_rel_fname
   when: not ghostty_installed.stat.exists or (ghostty_installed_version.stdout != ghostty_installed_version.stdout)
   changed_when: false
 
 - name: download current ghostty version
   get_url:
-    url: "https://github.com/mkasberg/ghostty-ubuntu/releases/download/{{ latest_ghostty_release_version.tag }}/{{ ghostty_latest_release_fullname      .stdout }}"
+    url: "https://github.com/mkasberg/ghostty-ubuntu/releases/download/{{ gtty_version.tag }}/{{ gtty_rel_fname.stdout }}"
     dest: "/tmp"
   when: not ghostty_installed.stat.exists or (ghostty_installed_version.stdout != ghostty_installed_version.stdout)
 
 - name: install ghostty
   apt:
-    deb: "/tmp/{{ ghostty_latest_release_fullname.stdout }}"
+    deb: "/tmp/{{ gtty_rel_fname.stdout }}"
   when: not ghostty_installed.stat.exists or (ghostty_installed_version.stdout != ghostty_installed_version.stdout)
 
 - name: cleanup .deb file
   file:
-    path: "/tmp/{{ ghostty_latest_release_fullname.stdout }}"
+    path: "/tmp/{{ gtty_rel_fname.stdout }}"
     state: absent
   when: not ghostty_installed.stat.exists or (ghostty_installed_version.stdout != ghostty_installed_version.stdout)
 

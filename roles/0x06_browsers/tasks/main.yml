@@ -1,16 +1,16 @@
 ---
 
-#- name: chromium
-#  import_tasks: 0x01_chromium.yml
-#  tags: browsers,chromium
+# - name: chromium
+#   import_tasks: 0x01_chromium.yml
+#   tags: browsers,chromium
 #
-#- name: google-chrome
-#  import_tasks: 0x02_google-chrome.yml
-#  tags: browsers,chrome
+# - name: google-chrome
+#   import_tasks: 0x02_google-chrome.yml
+#   tags: browsers,chrome
 #
-#- name: firefox
-#  import_tasks: 0x03_firefox.yml
-#  tags: browsers,firefox,ff
+# - name: firefox
+#   import_tasks: 0x03_firefox.yml
+#   tags: browsers,firefox,ff
 #
 - name: brave
   import_tasks: 0x04_brave.yml
