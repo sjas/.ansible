@@ -170,6 +170,7 @@
       - python3-venv
       - qalc
       - qmmp
+      - qrencode
       - rclone  ## https://rclone.org/onedrive/
       - rclone-browser
       - remmina
