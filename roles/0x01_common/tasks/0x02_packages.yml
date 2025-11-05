@@ -1,5 +1,7 @@
 ---
 
+# yamllint disable rule:line-length
+
 - name: etckeeper first
   apt:
     cache_valid_time: 7200
@@ -238,7 +240,7 @@
     name: ufw
     state: absent
 
-- name: make sure firewalld uses iptables as backend, because nftables breaks shit
+- name: make sure firewalld uses iptables as backend, nftables breaks shit
   lineinfile:
     path: /etc/firewalld/firewalld.conf
     regex: '^FirewallBackend='
