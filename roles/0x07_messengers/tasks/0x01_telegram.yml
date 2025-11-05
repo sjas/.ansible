@@ -4,3 +4,8 @@
 - name: telegram via snap
   snap:
     name: telegram-desktop
+
+# this one is broken, need to check out https://github.com/TehDmitry/tg-cli
+# - name: telegram-cli via snap
+#   snap:
+#     name: telegram-cli
