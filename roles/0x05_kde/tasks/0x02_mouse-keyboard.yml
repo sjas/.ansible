@@ -1,5 +1,7 @@
 ---
 
+# yamllint disable rule:line-length
+
 # https://unix.stackexchange.com/questions/132308/changing-kdes-mouse-theme-and-buttons-settings-from-a-shell-script
 
 # this stuff bases on libinput not libevdev because i dont need that
@@ -66,6 +68,19 @@
 # xinput set-prop 11 "libinput Accel Custom Motion Points" 0.003 0.004 0.008 0.018 0.036 0.052 0.080 0.120 0.200 0.482 0.571 0.659 0.748 0.837 0.926 1.014 1.103 1.192 1.281 1.369 1.458 1.56
 # xinput set-prop 11 "libinput Accel Custom Motion Points" 0.002 0.004 0.008 0.016 0.032 0.064 0.128 0.256 0.512 1.024 1.2 1.4 1.55
 # xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.032 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.55
+#
+#
+#
+# sudo cat  /etc/cron.d/xinput
+#
+# PATH="/home/sjas/.nvm/versions/node/v23.7.0/bin:/usr/lib/cargo/bin:/home/sjas/go/bin:/usr/local/go/bin:/home/sjas/.cargo/bin:/home/sjas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+# MAILTO=""
+#
+# * * * * * sjas xinput set-prop 11 "libinput Accel Profile Enabled" 0 0 1
+# * * * * * sjas xinput set-prop 11 "libinput Accel Custom Motion Step" 0.2
+# #* * * * * sjas xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.032 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.55
+# #xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.55
+# * * * * * sjas xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.54
 
 
 - name: fix up imwheel as a user service
