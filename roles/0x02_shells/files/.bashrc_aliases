@@ -406,6 +406,17 @@ h() {
 }
 alias powershell="pwsh"
 
+getpass() {
+	# shellcheck disable=SC2010
+	[[ $# -lt 1 ]]&&ls /home/sjas/.secrets -A|grep pass&&return
+	cat /home/sjas/.secrets/"$1"
+}
+getuser() {
+	# shellcheck disable=SC2010
+	[[ $# -lt 1 ]]&&ls /home/sjas/.secrets -A|grep user&&return
+	cat /home/sjas/.secrets/"$1"
+}
+
 krestart() {
 	for i in "$@"
 	do
