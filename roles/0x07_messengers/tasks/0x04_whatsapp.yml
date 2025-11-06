@@ -3,3 +3,6 @@
 - name: whatsapp via snap
   snap:
     name: whatsie
+
+# fixme https://github.com/robvanderleek/mudslide
+# https://docs.ansible.com/ansible/latest/collections/community/general/npm_module.html
