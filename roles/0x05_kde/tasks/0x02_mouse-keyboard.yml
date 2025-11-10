@@ -43,22 +43,22 @@
 #     - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
 #   notify: kcminit
 
-# - name: mouse kcminputrc
-#   become: true
-#   become_user: sjas
-#   ini_file:
-#     path: /home/sjas/.config/kcminputrc
-#     create: true
-#     mode: 0664
-#     no_extra_spaces: true
-#     section: "{{ item.section }}"
-#     option: "{{ item.option }}"
-#     value: "{{ item.value }}"
-#   with_items:
-#     - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-1" }
-#     - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
-#     - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
-#   notify: kcminit
+- name: mouse kcminputrc
+  become: true
+  become_user: sjas
+  ini_file:
+    path: /home/sjas/.config/kcminputrc
+    create: true
+    mode: 0664
+    no_extra_spaces: true
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "0" }
+    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "true" }
+    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "true" }
+  notify: kcminit
 
 # to persists, you have to add first line to autostart
 # kde settings: startup and shutdown >> autostart >> add >> add application >> ...
@@ -216,3 +216,26 @@
 #     mode: 0664
 #   with_items:
 #     - plasma-localerc
+
+# - name: solaar apt-key
+#   apt_key:
+#     url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x643ff34af9151dc814dd3a1b2303d595ee907473
+#     state: present
+#     keyring: /etc/apt/keyrings/solaar.asc
+#
+# - name: install solaar ppa for logitech mice
+#   apt_repository:
+#     repo: deb [signed-by=/etc/apt/keyrings/solaar.asc] https://ppa.launchpadcontent.net/solaar-unifying/stable/ubuntu noble main
+#     state: present
+#     filename: solaar
+#
+# - name: update apt cache
+#   apt:
+#     update_cache: true
+#     cache_valid_time: 7200
+#
+# - name: install solaar
+#   apt:
+#     name: "solaar"
+#     state: latest
+#     update_cache: true
