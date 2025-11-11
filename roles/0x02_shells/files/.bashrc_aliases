@@ -666,7 +666,7 @@ alias vinss="sudo vim /etc/nsswitch.conf"
 # pub		= id_rsa.pub
 # sh		= current shell type
 # ip		= get upstream ip
-# attr		= list ext4 extended attributes and supported kernel versions
+# ext4attr	= list ext4 extended attributes and supported kernel versions
 # keys		= list bash shortcuts
 # fonts		= list system font names
 alias cathosts="cat /etc/hosts"
@@ -685,7 +685,7 @@ alias catgi="cat .gitignore"
 # shellcheck disable=SC2142,SC2139
 alias catsh="ps -p $$ |& tail -1 | awk '{ print \$4 }'"
 alias catip="curl -s telnetmyip.com| jq -r '.ip'"
-alias catattr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep -v SEE\ ALSO | awk 'NF>0'"
+alias catext4attr="PAGER=cat man ext4 | sed -n '/^FILE ATTRIBUTES/,/SEE ALSO/p' | grep -v SEE\ ALSO | awk 'NF>0'"
 alias catkeys="PAGER=cat man bash | grep '([CM]-\|ESC' | grep ')$' --color=none | sort -nk1,1 | grep -v 'meta\ key' | sed 's/ /|/g; s/^|\+//; s/|(/ (/' | column -t | sed 's/|/ /g; s/^/        /; s/(//; s/)$//'"
 # shellcheck disable=SC2154
 alias cattmuxkeys="PAGER=cat man tmux|sed -n '/DEFAULT KEY BINDINGS/,/COMMAND PARSING AND EXECUTION/p'|sed '\$d'"

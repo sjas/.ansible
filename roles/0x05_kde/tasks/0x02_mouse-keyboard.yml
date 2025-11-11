@@ -239,3 +239,8 @@
 #     name: "solaar"
 #     state: latest
 #     update_cache: true
+#
+
+# hotkeystuff to change; 400 dpi, sens 2
+# sed -i 's/\(XLbInptPointerAcceleration=\).*/\1-1/' /home/sjas/.config/kcminputrc;kcminit;notify-send precision
+# sed -i 's/\(XLbInptPointerAcceleration=\).*/\1-0.5/' /home/sjas/.config/kcminputrc;kcminit;notify-send regular
