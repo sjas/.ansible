@@ -83,18 +83,18 @@
 #   teams %U
 #
 
-- name: deploy shortcut files 1
-  become: true
-  become_user: sjas
-  copy:
-    src: khotkeysrc
-    dest: /home/sjas/.config
-    mode: 0664
-
-- name: deploy shortcut files 2
-  become: true
-  become_user: sjas
-  copy:
-    src: kglobalshortcutsrc
-    dest: /home/sjas/.config
-    mode: 0664
+# - name: deploy shortcut files 1
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: khotkeysrc
+#     dest: /home/sjas/.config
+#     mode: 0664
+#
+# - name: deploy shortcut files 2
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: kglobalshortcutsrc
+#     dest: /home/sjas/.config
+#     mode: 0664

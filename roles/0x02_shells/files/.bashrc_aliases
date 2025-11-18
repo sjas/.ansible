@@ -574,7 +574,7 @@ alias logoff="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 alias k_suspendcomposite='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Suspend Compositing"'
 alias k_increaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Increase Opacity"'
 alias k_decreaseopacity='qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Decrease Opacity"'
-alias synchotkeysback='cp -va /home/sjas/.config/kglobalshortcutsrc /home/sjas/.config/khotkeysrc  /home/sjas/etc/.ansible/roles/0x05_kde/files/'
+#alias synchotkeysback='cp -va /home/sjas/.config/kglobalshortcutsrc /home/sjas/.config/khotkeysrc  /home/sjas/etc/.ansible/roles/0x05_kde/files/'
 
 alias swapdo="sudo swapoff -a;sudo swapon -a"
 alias rg="rg --hidden -i --glob '!\.git/'"
