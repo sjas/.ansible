@@ -190,6 +190,7 @@
       - siege
       - sipcalc
       - smb4k
+      - smem
       - sngrep
       - snmp
       - snmp-mibs-downloader
