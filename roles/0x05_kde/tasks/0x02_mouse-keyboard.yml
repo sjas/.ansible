@@ -183,7 +183,7 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { section: "Keyboard", option: "RepeatDelay", value: "200" }
+    - { section: "Keyboard", option: "RepeatDelay", value: "220" }
     - { section: "Keyboard", option: "RepeatRate", value: "100" }
   notify: kcminit
 
