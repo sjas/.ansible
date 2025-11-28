@@ -703,7 +703,8 @@ alias cattmuxkeys="PAGER=cat man tmux|sed -n '/DEFAULT KEY BINDINGS/,/COMMAND PA
 # shellcheck disable=SC2142
 alias catfonts="fc-list | awk '{\$1=\"\"}1' | cut -d: -f1 | sort| uniq"
 # shellcheck disable=SC2154
-alias catredirection='PAGER="cat" man bash | sed -n "/^REDIRECTION/,/ALIASES/p" | sed "\$d"'
+alias catredirection='PAGER="cat" man bash | sed -n "/^REDIRECTION/,/^ALIASES/p" | sed "\$d"'
+alias catexpansion='PAGER="cat" man bash | sed -n "/^EXPANSION/,/^REDIRECTION/p" | sed "\$d"'
 
 
 
