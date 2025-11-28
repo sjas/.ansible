@@ -71,7 +71,7 @@ else
 			fi;
 		fi;
 	fi;
-fi)$(__git_ps1|cut -c2-)\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
+fi)$(__git_ps1|cut -c2-|sed "s/^.//;s/.$//")\[\e[m\] \[\e[m\]$\[\e[m\]\[\e[36;1m\]$SHLVL\[\e[m\] \[\e[m\]h\[\e[m\]\[\e[36;1m\]\!\[\e[m\] \[\e[m\]c\[\e[m\]\[\e[36;1m\]\#\[\e[m\] \[\e[37;1m\]\$\[\e[m\] \n'
 
 #export PS0='\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
 export PS0='command start: \t\n\n'  ## show a newline after any entered command. works in unison with a `echo` in PROMPT_COMMAND
