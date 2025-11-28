@@ -195,6 +195,7 @@ nnoremap <leader>sb :!. ~/.bashrc<cr>
 nnoremap <leader>eba :vs $DOTFILES/roles/0x02_shells/files/.bashrc_aliases<cr>
 nnoremap <leader>ebe :vs $DOTFILES/roles/0x02_shells/files/.bashrc_env<cr>
 nnoremap <leader>ebg :vs $DOTFILES/roles/0x02_shells/files/.bashrc_git<cr>
+nnoremap <leader>t :ALEToggle<cr>
 
 
 "nnoremap <leader>cl :s/^/#/<cr>/yoozu9PhiBei5cheicaec5AeG5shie2m<cr>
