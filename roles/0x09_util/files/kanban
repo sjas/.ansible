@@ -54,14 +54,14 @@ BAR=(▁ ▂ ▃ ▄ ▅ ▆ ▆ ▇ ▇ '█' '█')
 TMP=~/.kanban.tmp
 locale | grep -q "UTF-8" && UTF8=1
 X=$(tput cols)    # get size of terminal window
-Y=$(tput lines)   #
+#Y=$(tput lines)   #
 #SMALLSCREEN=('HOLD' 'DOING' 'CODE')  # uncomment to get simplified kanban board
-[[ ! -n $KANBANCONF ]] && KANBANCONF=~/.kanban/config
-if [[ ! -n $KANBANFILE ]]; then
+[[ -z $KANBANCONF ]] && KANBANCONF=~/.kanban/config
+if [[ -z $KANBANFILE ]]; then
   [[ -f ".kanban.csv" ]] && KANBANFILE="$(pwd)/.kanban/db.csv"
-  [[ ! -n $KANBANFILE ]] && KANBANFILE=~/".kanban/db.csv";
+  [[ -z $KANBANFILE ]] && KANBANFILE=~/".kanban/db.csv";
 fi
-[[ ! -f $KANBANFILE ]] && echo "status,tag,description,history,date" > $KANBANFILE
+[[ ! -f $KANBANFILE ]] && echo "status,tag,description,history,date" > "$KANBANFILE"
 
 ## config_example="# kanban config file
 ##
@@ -88,9 +88,9 @@ maximum_todo['HK']=3
 "
 
 # usage: fb put <x> <y> <string>
-put() { printf "\x1B["$2";"$1"f$3" "$4"; }
+put() { printf "\x1B[%s;%sf%s %s" "$2" "$1" "$3" "$4"; }
 
-strtoline(){ for((i=0;i<${#1};i++)); do printf "$2"; done; }
+strtoline(){ for((i=0;i<${#1};i++)); do printf "%s" "$2"; done; }
 
 draw_line(){
   for((i=0;i<$1;i++)); do printf "-"; done
@@ -99,15 +99,15 @@ draw_line(){
 # usage: fb box <x> <y> <width> <height>
 draw_topline(){
   w=$((X-2));
-  printf ${BOX[0]}; draw_line $w; printf "${BOX[2]}\n"
+  printf "%s" "${BOX[0]}"; draw_line $w; printf "%s\n" "${BOX[2]}"
 }
 
 createconfig(){
   [[ -f $KANBANCONF ]] && {
-    read -p "overwrite current config? (y/n)" overwrite;
+    read -rp "overwrite current config? (y/n)" overwrite;
     [[ ! "$overwrite" == "y" ]] && echo "aborted" && exit 1;
   }
-  echo "$config_example" > $KANBANCONF
+  echo "$config_example" > "$KANBANCONF"
 }
 
 t(){
@@ -115,40 +115,40 @@ t(){
   tags "$@"
 }
 tags(){
-  cat $KANBANFILE | awk -F',' '{ print $2 }' | sed 's/,.*//g;s/"//g' | tail -n+2 | sort | uniq | tr '\n' ' '
+  awk -F',' '{ print $2 }' "$KANBANFILE" | sed 's/,.*//g;s/"//g' | tail -n+2 | sort | uniq | tr '\n' ' '
 }
 
 get_statuses(){
-  echo ${statuses[@]}
+  echo "${statuses[@]}"
 }
 
 add_interactive(){
   echo "enter description:"
-  read -p "> " description
-  echo "enter one of statuses: ${statuses[@]}"
-  read -p "> " status
+  read -rp "> " description
+  echo "enter one of statuses: ${statuses[*]}"
+  read -rp "> " status
   echo "enter one of tags: $(tags)"
-  read -p "> " tag
+  read -rp "> " tag
   add "$status" "$tag" "$description"
 }
 
 a(){
-  [[ ! -n $1 ]] && { add_interactive "$@"; return 0; }
+  [[ -z $1 ]] && { add_interactive "$@"; return 0; }
   add "$@"
 }
 add(){
-  [[ ! -n $1 ]] && { add_interactive "$@"; return 0; }
-  [[ ! "${statuses[*]}" =~ "$1" ]] && echo "invalid status $1 (possible: ${statuses[*]})" && exit 1
+  [[ -z $1 ]] && { add_interactive "$@"; return 0; }
+  [[ ! "${statuses[*]}" =~ $1 ]] && echo "invalid status $1 (possible: ${statuses[*]})" && exit 1
   csvline="$( for col in "$@"; do printf "%s" "\"$col\","; done )\"${1:0:1}\",\"$(get_current_date)\"\""
-  echo "${csvline:0:$((${#csvline}-1))}" >> $KANBANFILE
+  echo "${csvline:0:$((${#csvline}-1))}" >> "${KANBANFILE}"
 }
 
 st(){
-  [[ ! -n $1 ]] && exit 1
+  [[ -z $1 ]] && exit 1
   stats "$@"
 }
 stats(){
-  [[ ! -n $1 ]] && exit 1
+  [[ -z $1 ]] && exit 1
   create_index
   field=$1; shift; tags="$*"
   greppattern="(${tags// /\|})"
@@ -159,15 +159,16 @@ stats(){
   [[ -n $3 ]] && PADDING=$3 || PADDING=20;
   {
     if [[ -n $PADDING ]]; then
-      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='$WIDTH'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%'$PADDING's %5d %s %s",$2,$1,r,"\n";}'
+      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='"$WIDTH"'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%'"$PADDING"'s %5d %s %s",$2,$1,r,"\n";}'
     else
-      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='$WIDTH'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%s %s: %5d\n",r,$2,$1;}' | tr -s " "
+      cat $TMP.index | grep -E "$greppattern" | gawk -vFS='^"|","|"$|",|,"|,' '{h[$'"$field"']++}END{for(i in h){print h[i],i|"sort -rn|head -20"}}' |gawk '!max{max=$1;}{r="";i=s='"$WIDTH"'*$1/max;while(i-->0)r=r"'"${BAR[5]}"'";printf "%s %s: %5d\n",r,$2,$1;}' | tr -s " "
     fi
   } | grep -v 'tag\|status\|history\|-[ ]\+1' | grep -v '^[ ]\+1' # remove header rows
 }
 
 init(){
-  trap "tput cnorm -- normal" 0 1 5    # reset terminal colors to normal
+  trap "tput cnorm" 0 HUP TRAP
+  #trap "tput cnorm -- normal" 0 1 5    # reset terminal colors to normal
 }
 
 l(){
@@ -177,34 +178,34 @@ list(){
   tags="$*"
   greppattern="(${tags// /\|})"
   create_index
-  cat $TMP.index | grep -E "$greppattern" | sort -k2 -t, | HEADER="id,status,tag,description,history,start,touched\n-,-,-,-,-\n" printcsv 6 | cut -c 1-$(tput cols)
+  cat $TMP.index | grep -E "$greppattern" | sort -k2 -t, | HEADER="id,status,tag,description,history,start,touched\n-,-,-,-,-\n" printcsv 6 | cut -c 1-"$(tput cols)"
   rm $TMP.*
 }
 
 do_alert(){
   nlines=$(echo "$1" | wc -l ) ; maximum=$2
-  if [[ ${#maximum} > 0 ]] && [[ $nlines > $maximum ]]; then
+  if [[ ${#maximum} -gt 0 ]] && [[ $nlines > $maximum ]]; then
     echo -e "\n\n!!! alert: number of '$3' items (max $maximum) slows down average productionrate !!!" >> "$4"
   fi
 }
 
 create_index(){
   rm $TMP.index &>/dev/null
-  cat -n $KANBANFILE | sed 's/^[ ]\+//g;s/\t/,/g' >> $TMP.index
+  cat -n "$KANBANFILE" | sed 's/^[ ]\+//g;s/\t/,/g' >> $TMP.index
 }
 
 columnize(){
-  i=1; lines="$(cat -)"; header="$( echo "$lines" | head -n0 )"; output="";
+  i=1; lines="$(cat -)"; header="$( echo "$lines" | head -n0 )";# output="";
   rm $TMP.col.* &>/dev/null
   echo -e "$header";
   for status in "${statuses[@]}"; do
-    [[ -n $SMALLSCREEN ]] && ! [[ "${SMALLSCREEN[@]}" =~ $status ]] && continue
+    [[ -n $SMALLSCREEN ]] && ! [[ ${SMALLSCREEN[*]} =~ $status ]] && continue
     echo -e "|_$status\n|+$(strtoline "$status" "~")~\n" > $TMP.col.$i
-    cat $TMP.index | grep "$status" | sed 's/["]\?'$status'["]\?//g' | printcsv 5 | sed 's/^/| /g'  | unexpand >> $TMP.col.$i
+    cat $TMP.index | grep "$status" | sed 's/["]\?'"$status"'["]\?//g' | printcsv 5 | sed 's/^/| /g'  | unexpand >> $TMP.col.$i
     #echo "$( cat $TMP.col.$i )" > $TMP.col.$i
     i=$((i+1))
   done
-  pr -m -t -w$X -S"      "  $TMP.col.* | lines
+  pr -m -t -w"$X" -S"      "  $TMP.col.* | lines
   rm $TMP.col.* # print and cleanup
 }
 
@@ -218,6 +219,9 @@ align(){
   cat - | awk '{ for(i=3;i<=NF;i++){ $2=$2" "$i } printf "%-5s %s\n", $1,$2 ; }'
 }
 
+s(){
+	show "$@"
+}
 sh(){
 	show "$@"
 }
@@ -225,7 +229,7 @@ show(){
   [[ ! -f "$KANBANFILE" ]] && touch "$KANBANFILE"
   create_index
   if [[ -n $1 ]]; then
-    statuses=(); for status in $*; do statuses+=($status); done
+    statuses=(); for status in "$@"; do statuses+=("$status"); done
   fi
   clear;  {
     echo "$1"
@@ -237,7 +241,7 @@ show(){
 get_current_date(){ date "+%Y-%m-%d@%H:%M"; }
 
 update_item_status(){
-  item="$( cat $KANBANFILE | awk "{ if (NR==$1) print \$0 }" )"
+  item="$(awk "{ if (NR==$1) print \$0 }" "$KANBANFILE")"
   [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1
   if [[ -n "$2" ]]; then  # status change
     status="$(echo "$item" | awk -F',' '{ print $1 }' | sed 's/"//g' )"
@@ -245,51 +249,52 @@ update_item_status(){
     dates="$(echo "$item"  | awk -F',' '{ print $5 }' | sed 's/"//g' )"
     newflags="$flags${2:0:1}"
     newdates="$dates $(get_current_date)"
-    [[ "$2" =~ "DONE" ]] && date="$(get_current_date)"
+    #[[ "$2" =~ "DONE" ]] && date="$(get_current_date)"
     newitem="$item"
     newitem="${newitem/$status/$2}"
     newitem="${newitem/$flags/$newflags}"
     newitem="${newitem/$dates/$newdates}"
-    sed -i "s|$item|$newitem|g" $KANBANFILE
+    sed -i "s|$item|$newitem|g" "$KANBANFILE"
     echo "$status -> $2"
   fi
 }
 
 update_item(){
-  item="$( cat $KANBANFILE | awk "{ if (NR==$1) print \$0 }" )"
+  item="$(awk "{ if (NR==$1) print \$0 }" "$KANBANFILE" )"
   [[ ${#item} == 0 ]] && echo "item $1 not found" && exit 1
   status="$(echo "$item" | awk -F',' '{ print $1 }')"
   echo '#
-# STATUSES ARE: '${statuses[*]}'
+# STATUSES ARE: '"${statuses[*]}"'
 #
 '"$item" > $TMP.update
   ${EDITOR} $TMP.update
-  sed -i "s|$item|$(cat $TMP.update | tail -n1)|g" $KANBANFILE
+  sed -i "s|$item|$(cat $TMP.update | tail -n1)|g" "$KANBANFILE"
   echo "updated item $1"
 }
 
 printcsv(){
-  csv="$HEADER$(cat -)"
-  [[ ! -n $1 ]] && max=999999 || max=$1
-  [[ ! -n $2 ]] && min=1 || min=$1
+  csv="$header$(cat -)"
+  [[ -z $1 ]] && max=999999 || max=$1
+  [[ -z $2 ]] && min=1 || min=$1
   echo -e "$csv" | sed 's/,"",/," ",/g' | gawk -vFS='^"|","|"$|",|,"|,'            \
-    '{out=""; for(i='$min';i<NF+1&&i<max;i++) out=out"\t"$i; print out }'      \
-    max=$max | sed 's/""/"/g' | column -t -s $'\t'
+    '{out=""; for(i='"$min"';i<NF+1&&i<max;i++) out=out"\t"$i; print out }'      \
+    max="$max" | sed 's/""/"/g' | column -t -s $'\t'
 }
 
 # source config
 [[ ! -f $KANBANCONF ]] && mkdir -p ~/.kanban && { createconfig; }
-source $KANBANCONF
+# shellcheck disable=SC1090
+. "$KANBANCONF"
 
 # execute main
 init
 
 if [[ -n "$1" ]]; then
 
-  [[ "${statuses[*]}" =~ "$1" ]] && { list "$@" ; exit 0; }
+  [[ "${statuses[*]}" =~ $1 ]] && { list "$@" ; exit 0; }
   case "$1" in
 
-    [0-9]*)  [[ -n $2 ]] && [[ "${statuses[*]}" =~ "$2" ]] && update_item_status "$@" && exit 0
+    [0-9]*)  [[ -n $2 ]] && [[ "${statuses[*]}" =~ $2 ]] && update_item_status "$@" && exit 0
              update_item "$@"
              ;;
 

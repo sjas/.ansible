@@ -2,7 +2,7 @@
 
 - name: kanban include
   import_tasks: 0x01_kanban.yml
-  tags: util
+  tags: util,kanban
 
 - name: diff-so-fancy include
   import_tasks: 0x02_diff-so-fancy.yml
