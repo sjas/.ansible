@@ -56,5 +56,5 @@
   user:
     name: sjas
     append: true
-    groups: group
+    groups: docker
   notify: user_group_added
