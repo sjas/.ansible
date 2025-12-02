@@ -35,6 +35,8 @@
     - wrk/py
     - wrk/rust
     - wrk/golang
+    - wrk/forks
+    - wrk/clones
 
 - name: directories
   file:
