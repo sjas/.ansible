@@ -1,0 +1,6 @@
+---
+
+- name: kubectl package
+  apt:
+    name: kubectl
+    cache_valid_time: 7200

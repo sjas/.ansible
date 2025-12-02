@@ -24,6 +24,10 @@
   import_tasks: 0x06_clab.yml
   tags: networking,docker,containerlab,clab
 
+- name: k8s include
+  import_tasks: 0x07_k8s.yml
+  tags: networking,k8s,kubernetes
+
 # - name: vpn clients include
 #   import_tasks: 0x03_vpn_clients.yml
 #   tags: networking,vpn,forti
