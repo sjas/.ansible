@@ -1,5 +1,7 @@
 ---
 
+# yamllint disable rule:line-length
+
 # - name: install precompiled wireshark
 #   apt:
 #     deb: /home/sjas/etc/.ansible/roles/networking/files/wireshark_2.9.0rc0-HEAD-b6598d5ec3-1_amd64.deb
@@ -21,7 +23,21 @@
   lineinfile:
     path: /home/sjas/.config/wireshark/preferences
     regexp: "^#*gui.layout_type.*"
-    line: "gui.layout_type: 4"
+    line: "gui.layout_type: 5"
+  when: wireshark_config.stat.exists
+
+- name: fix window 2 to show bytes
+  lineinfile:
+    path: /home/sjas/.config/wireshark/preferences
+    regexp: "^#*gui.layout_content_2.*"
+    line: "gui.layout_content_2: PBYTES"
+  when: wireshark_config.stat.exists
+
+- name: fix window 3 to show details
+  lineinfile:
+    path: /home/sjas/.config/wireshark/preferences
+    regexp: "^#*gui.layout_content_3.*"
+    line: "gui.layout_content_3: PDETAILS"
   when: wireshark_config.stat.exists
 
 - name: create wireshark group
@@ -50,3 +66,34 @@
   capabilities:
     path: /usr/bin/dumpcap
     cap: CAP_NET_ADMIN+eip
+
+# https://edgeshark.siemens.io/#/getting-started?id=optional-capture-plugin
+- name: get edgeshark OCP (optional capture plugin) version
+  github_release:
+    user: siemens
+    repo: cshargextcap
+    action: latest_release
+  register: ocp_release_version
+  changed_when: false
+
+- name: get installed ocp version
+  shell: printf "v%s" "$(/usr/bin/dpkg -l|/usr/bin/grep cshargextcap|/usr/bin/awk '{print $3}')"
+  register: ocp_installed_version
+  changed_when: false
+
+- name: download ocp release
+  get_url:
+    url: "https://github.com/siemens/cshargextcap/releases/download/{{ ocp_release_version.tag }}/cshargextcap_{{ ocp_release_version.tag | regex_replace('v','') }}_linux_amd64.deb"
+    dest: "/tmp"
+  when: not ocp_installed_version.stdout == ocp_release_version.tag
+
+- name: install ocp release
+  apt:
+    deb: "/tmp/cshargextcap_{{ ocp_release_version.tag | regex_replace('v','') }}_linux_amd64.deb"
+  when: not ocp_installed_version.stdout == ocp_release_version.tag
+
+- name: cleanup ocp release download file
+  file:
+    path: "/tmp/cshargextcap_{{ ocp_release_version.tag | regex_replace('v','') }}_linux_amd64.deb"
+    state: absent
+  when: not ocp_installed_version.stdout == ocp_release_version.tag
