@@ -188,7 +188,7 @@ stats(){
 }
 
 init(){
-  trap "tput cnorm" 0 HUP TRAP
+  trap "tput cnorm -- sgr0" 0 HUP TRAP
   #trap "tput cnorm -- normal" 0 1 5    # reset terminal colors to normal
 }
 
