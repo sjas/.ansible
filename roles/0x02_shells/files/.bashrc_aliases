@@ -104,6 +104,12 @@ rea() {
 		ansible-playbook neon.yml "$@"
 	)
 }
+rea-only-show-changes() {
+	(
+		cd "${DOTFILES}"||return
+		ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook neon.yml "$@"
+	)
+}
 
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x03_terminals/files/config ~/.config/terminator/config) | colordiff"
