@@ -2,6 +2,8 @@
 #
 # shellcheck shell=bash
 
+
+## RANDOM STUFF
 ## 'EDIT BASH' CONFIG MANAGMENT
 ## 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 ## LS(1)
@@ -12,12 +14,20 @@
 ## SHOW COMMANDS
 ## NETWORKING
 ## CODE
+## DOCKER CONTAINERLAB KUBERNETES
 ## SCRAPYARD
 
 
 
+
+
+
+## RANDOM STUFF #############################################################################################
 # oui lookup fixme
 # cat `locate nmap-mac-prefixes` | grep -i ^YOUR_OID_START
+
+
+
 
 
 ## 'EDIT BASH' CONFIG MANAGMENT #############################################################################
@@ -116,6 +126,9 @@ alias   wrk="__cdd /home/sjas/wrk"
 alias    py="__cdd /home/sjas/wrk/py"
 alias  rust="__cdd /home/sjas/wrk/rust"
 alias golang="__cdd /home/sjas/wrk/golang"
+alias  clabs="__cdd /home/sjas/wrk/clabs"
+alias  forks="__cdd /home/sjas/wrk/forks"
+alias clones="__cdd /home/sjas/wrk/clones"
 
 
 # 'show aliases' (shows currently defined aliases)
@@ -1486,6 +1499,28 @@ rundotpreview(){
 		okular "$IMGFILE"
 	done
 }
+
+
+
+
+
+## DOCKER CONTAINERLAB KUBERNETES ###########################################################################
+alias clab="clab --runtime=podman"
+alias containerlab="containerlab --runtime=podman"
+alias docker="sudo docker"
+#alias clab-destroy="clab destroy $*;sudo ip l d podman1"  ## https://github.com/srl-labs/containerlab/issues/2578
+clab-destroy() {
+	if [[ $? -lt 1 ]]
+	then
+		clab destroy
+	else
+		clab destroy -t "$@"
+	fi
+	sudo ip l d podman1
+}
+
+alias kc="kubectl"
+
 
 
 

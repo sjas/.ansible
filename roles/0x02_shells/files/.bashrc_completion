@@ -5,10 +5,25 @@
 # shellcheck shell=bash
 
 
+
+## docker containerlab kubernetes
 ## go
 ## virsh
 ## firewall-cmd
 ## keytool
+
+
+
+
+
+## docker containerlab kubernetes  ##########################################################################
+# shellcheck disable=SC1090
+. <(podman completion bash|sed 's/__start_podman podman/& docker/')
+# shellcheck disable=SC1090
+. <(clab completion bash|sed 's/containerlab$/& clab/')
+# shellcheck disable=SC1090
+. <(kubectl completion bash|sed 's/-F __start_kubectl kubectl/& kc/')
+
 
 
 
@@ -41,7 +56,7 @@ _go() {
 ## virsh ####################################################################################################
 _contain_cmd() {
     local e f
-    local array1=($1) array2=($2)
+    local array1=("$1") array2=("$2")
 
     for e
 	in "${array1[@]}"
@@ -51,7 +66,7 @@ _contain_cmd() {
         do
             if [[ "$e" == "$f" ]]
 			then
-                echo $e
+                echo "$e"
                 return
             fi
         done
