@@ -18,11 +18,11 @@
 
 - name: podman include
   import_tasks: 0x05_podman.yml
-  tags: networking,docker
+  tags: networking,docker,podman
 
 - name: containerlab include
   import_tasks: 0x06_clab.yml
-  tags: networking,docker,containerlab,clab
+  tags: networking,docker,podman,containerlab,clab
 
 - name: k8s include
   import_tasks: 0x07_k8s.yml

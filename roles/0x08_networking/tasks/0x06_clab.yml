@@ -6,7 +6,7 @@
     name:
       - podman
       - podman-docker
-      - docker-compose
+      - docker-compose-plugin
 
 - name: enable podman socket so docker-compose works
   systemd:

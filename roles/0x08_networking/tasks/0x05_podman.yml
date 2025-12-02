@@ -6,9 +6,38 @@
     name:
       - podman
       - podman-docker
-      - docker-compose
 
-- name: enable podman user socket so docker-compose works
+# - name: docker apt signing key
+#   apt_key:
+#     url: "https://download.docker.com/linux/ubuntu/gpg"
+#     state: present
+#     keyring: "/etc/apt/keyrings/docker.asc"
+
+- name: docker apt signing key
+  get_url:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    dest: "/etc/apt/keyrings/docker.asc"
+    mode: '0644'
+    force: true
+
+- name: docker repo
+  apt_repository:
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable
+    state: present
+    filename: docker
+
+- name: update apt cache
+  apt:
+    cache_valid_time: 7200
+    update_cache: true
+
+- name: docker-compose packages
+  apt:
+    cache_valid_time: 7200
+    name:
+      - docker-compose-plugin
+
+- name: disable podman user socket so docker-compose works
   become: true
   become_user: sjas
   systemd:
@@ -23,5 +52,9 @@
     enabled: true
     state: started
 
-# - name: containerlab bash completion
-# # fixme
+- name: sjas into docker group
+  user:
+    name: sjas
+    append: true
+    groups: group
+  notify: user_group_added

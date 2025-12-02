@@ -49,7 +49,7 @@
     name: sjas
     append: true
     groups: wireshark
-  notify: user_group_wireshark_added
+  notify: user_group_added
 
 - name: dumpcap group and DAC
   file:

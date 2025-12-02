@@ -2,4 +2,4 @@
 
 - name: message after user group were adjusted
   debug: msg='LOGOUT / LOGIN else the changed user groups will not become active.'
-  listen: user_group_wireshark_added
+  listen: user_group_added
