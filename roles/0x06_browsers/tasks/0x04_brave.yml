@@ -17,6 +17,7 @@
 - name: update apt cache
   apt:
     update_cache: true
+    cache_valid_time: 7200
 
 - name: brave package
   apt:

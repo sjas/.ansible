@@ -61,11 +61,13 @@
   capabilities:
     path: /usr/bin/dumpcap
     cap: CAP_NET_RAW+eip
+  changed_when: false
 
 - name: CAP_NET_ADMIN for dumpcap
   capabilities:
     path: /usr/bin/dumpcap
     cap: CAP_NET_ADMIN+eip
+  changed_when: false
 
 # https://edgeshark.siemens.io/#/getting-started?id=optional-capture-plugin
 - name: get edgeshark OCP (optional capture plugin) version
