@@ -70,6 +70,7 @@
   changed_when: false
 
 # https://edgeshark.siemens.io/#/getting-started?id=optional-capture-plugin
+# https://shaunc.com/blog/article/ansible-dynamically-download-the-latest-release-of-a-github-project~-AVrASM2znGI
 - name: get edgeshark OCP (optional capture plugin) version
   github_release:
     user: siemens
