@@ -262,7 +262,7 @@ nnoremap <leader>h 0i#### <esc>o<esc>D
 "MARKDOWN:
 "headline from current line after five newlines
 "nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d$O<cr><cr><cr><cr><cr><esc>jj
-nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jj
+nnoremap <leader>jj 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jo
 "headline from current line after five newlines plus codeblock
 nnoremap <leader>jjk 0i## <esc>$a  <esc>109i#<esc>0109l<esc>d${{}d)O<cr><cr><cr><cr><esc>jji```<cr><cr>```<esc>k
 "code block
