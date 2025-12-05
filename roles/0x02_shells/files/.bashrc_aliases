@@ -1511,8 +1511,8 @@ rundotpreview(){
 
 
 ## DOCKER CONTAINERLAB KUBERNETES ###########################################################################
-alias clab="clab --runtime=podman"
-alias containerlab="containerlab --runtime=podman"
+#alias clab="clab --runtime=podman"
+#alias containerlab="containerlab --runtime=podman"
 #alias docker="sudo docker"
 #alias clab-destroy="clab destroy $*;sudo ip l d podman1"  ## https://github.com/srl-labs/containerlab/issues/2578
 #clab-destroy() {
