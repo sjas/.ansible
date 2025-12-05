@@ -117,12 +117,16 @@ alias rp="repostatus"
 alias rph="repostatus ~"
 
 #log
-alias	 gl="git log --reverse --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24"	## git log
-alias	gls="git log --reverse --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n24 --stat"	## git log+changes
-alias   glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"	## git log full
-alias  glfs="git log --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' --stat"	## git log full+changes
-alias  glog="git log --oneline --graph --decorate=short -n 22"  ## graph
-alias glogf="git log --oneline --graph --decorate=short"  ## full graph
+_gitloglines=50
+# shellcheck disable=SC2139
+alias	 gl="git log --reverse --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n$_gitloglines"			## git log
+alias   glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset'"										## git log full
+# shellcheck disable=SC2139
+alias	gls="git log --reverse --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n$_gitloglines --stat"	## git log+changes
+alias  glfs="git log --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' --stat"							## git log full+changes
+# shellcheck disable=SC2139
+alias	gll="git log --oneline --graph --decorate=short -n$_gitloglines"  ## graph
+alias  gllf="git log --oneline --graph --decorate=short"  ## full graph
 alias   glp="git log -p --"  ## use with a filename to get full history of said file
 
 #show commits
@@ -151,6 +155,7 @@ alias gds="git diff --stat"								## show amount of changes in files
 alias gdc="git diff --cached"							## diff staged files on index
 alias gdh="git diff HEAD  --word-diff --word-diff-regex='\w+'"  ## diff everything against last commit
 gitdiffsofancy() {
+	# shellcheck disable=SC2317
 		git diff "$*" | diff-so-fancy
 }
 alias gdff=gitdiffsofancy								## diff-so-fancy FILE
