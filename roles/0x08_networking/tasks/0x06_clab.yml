@@ -1,24 +1,5 @@
 ---
 
-- name: podman packages
-  apt:
-    cache_valid_time: 7200
-    name:
-      - podman
-      - podman-docker
-      - docker-compose-plugin
-
-- name: enable podman socket so docker-compose works
-  systemd:
-    name: podman.socket
-    enabled: true
-    state: started
-
-- name: suppress docker cli emulation message
-  copy:
-    content: ""
-    dest: /etc/containers/nodocker
-
 - name: containerlab repository
   apt_repository:
     repo: deb [trusted=yes] https://netdevops.fury.site/apt/ /
@@ -34,6 +15,7 @@
     name: containerlab
 
 - name: pull docker srlinux image
-  community.docker.docker_image:
+  become: true
+  become_user: sjas
+  containers.podman.podman_image:
     name: ghcr.io/nokia/srlinux
-    source: pull

@@ -1,11 +1,11 @@
 ---
 
-- name: podman packages
+- name: podman packages from official repos
   apt:
     cache_valid_time: 7200
     name:
       - podman
-      - podman-docker
+#       - podman-docker
 
 # - name: docker apt signing key
 #   apt_key:
@@ -31,30 +31,52 @@
     cache_valid_time: 7200
     update_cache: true
 
-- name: docker-compose packages
+- name: docker-compose-plugin package from docker repo
   apt:
     cache_valid_time: 7200
     name:
       - docker-compose-plugin
 
-- name: podman user socket
+- name: no rootful podman
+  systemd_service:
+    name: "{{ item }}"
+    # enabled: true
+    # state: started
+    enabled: false
+    state: stopped
+  loop:
+    - podman
+    - podman.socket
+
+- name: rootless podman
   become: true
   become_user: sjas
-  systemd:
-    name: podman.socket
+  systemd_service:
+    name: "{{ item }}"
     scope: user
     enabled: true
     state: started
+    # enabled: false
+    # state: stopped
+  loop:
+    - podman
+    - podman.socket
 
-- name: no podman root socket
-  systemd:
-    name: podman.socket
-    enabled: false
-    state: stopped
+- name: enable lingering for user service
+  become: true
+  become_user: sjas
+  command: "/usr/bin/loginctl enable-linger"
+  args:
+    creates: /var/lib/systemd/linger/sjas
 
-- name: sjas into docker group
-  user:
-    name: sjas
-    append: true
-    groups: docker
-  notify: user_group_added
+# - name: sjas into docker group
+#   user:
+#     name: sjas
+#     append: true
+#     groups: docker
+#   notify: user_group_added
+
+- name: suppress docker cli emulation message
+  copy:
+    content: ""
+    dest: /etc/containers/nodocker
