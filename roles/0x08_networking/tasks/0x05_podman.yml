@@ -46,6 +46,16 @@
     state: stopped
   loop:
     - podman
+  changed_when: false
+
+- name: no rootful podman socket
+  systemd_service:
+    name: "{{ item }}"
+    # enabled: true
+    # state: started
+    enabled: false
+    state: stopped
+  loop:
     - podman.socket
 
 - name: rootless podman
@@ -60,6 +70,19 @@
     # state: stopped
   loop:
     - podman
+  changed_when: false
+
+- name: rootless podman socket
+  become: true
+  become_user: sjas
+  systemd_service:
+    name: "{{ item }}"
+    scope: user
+    enabled: true
+    state: started
+    # enabled: false
+    # state: stopped
+  loop:
     - podman.socket
 
 - name: enable lingering for user service
