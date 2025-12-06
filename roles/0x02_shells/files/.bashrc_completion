@@ -18,7 +18,8 @@
 
 ## docker containerlab kubernetes  ##########################################################################
 # shellcheck disable=SC1090
-. <(podman completion bash|sed 's/__start_podman podman/& docker/')
+alias pm=podman
+. <(podman completion bash|sed 's/__start_podman podman/& pm/')
 # shellcheck disable=SC1090
 . <(clab completion bash|sed 's/containerlab$/& clab/')
 # shellcheck disable=SC1090

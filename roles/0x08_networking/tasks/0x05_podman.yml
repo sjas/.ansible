@@ -6,6 +6,19 @@
     name:
       - podman
 #       - podman-docker
+      - libgpgme-dev
+      - btrfs-progs
+      - golang-go
+      - go-md2man
+      - libbtrfs-dev
+      - libdevmapper-dev
+      - libglib2.0-dev
+      - libprotobuf-dev
+      - libprotobuf-c-dev
+      - libseccomp-dev
+      - libselinux1-dev
+      - libsystemd-dev
+      - runc
 
 # - name: docker apt signing key
 #   apt_key:
@@ -37,24 +50,24 @@
     name:
       - docker-compose-plugin
 
-- name: no rootful podman
+- name: rootful podman
   systemd_service:
     name: "{{ item }}"
-    # enabled: true
-    # state: started
-    enabled: false
-    state: stopped
+    enabled: true
+    state: started
+    # enabled: false
+    # state: stopped
   loop:
     - podman
   changed_when: false
 
-- name: no rootful podman socket
+- name: rootful podman socket
   systemd_service:
     name: "{{ item }}"
-    # enabled: true
-    # state: started
-    enabled: false
-    state: stopped
+    enabled: true
+    state: started
+    # enabled: false
+    # state: stopped
   loop:
     - podman.socket
 
