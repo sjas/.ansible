@@ -183,6 +183,7 @@ alias nnn="\nnn -c0"
 
 
 ## SUDO(1) ##################################################################################################
+alias sudo='sudo '  ## so aliases work too
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 
