@@ -5,7 +5,9 @@
     cache_valid_time: 7200
     name:
       - podman
-#       - podman-docker
+      # - podman-docker  ## dont mask if something uses `docker whatever` internally
+      # - containers-storage  ## dont install, it will fuck up your image storage
+      # get all the build deps, may be needed with the go bindings
       - libgpgme-dev
       - btrfs-progs
       - golang-go
