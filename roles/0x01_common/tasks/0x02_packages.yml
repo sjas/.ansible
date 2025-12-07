@@ -202,6 +202,7 @@
       - sysstat
       - tack
       - tcpdump
+      - texinfo
       - thc-ipv6
       - thunderbird
       - thunderbird-locale-de
