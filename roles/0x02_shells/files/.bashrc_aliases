@@ -673,10 +673,13 @@ dx() {
 
 
 
-## ED(1);CAT(1);VIM(1) ######################################################################################
+## ED(1);MC(1);VIM(1);CAT(1) ################################################################################
 #ED
 ed() { command ed -v -s "$@";}  ## dont use the prompt, is ugly for automation
 e() { command ed -v -p\* "$@";}
+
+#MC
+alias mc="mc --nosubshell"  ## fix startup time hangs
 
 #VI
 # hosts		= /etc/hosts
