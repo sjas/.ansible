@@ -409,6 +409,17 @@ the_missing_grep_but_recursive_to_less() {
 	grep -Hri "$@"|less
 }
 alias grl="the_missing_grep_but_recursive_to_less"
+alias coloringgrep="grep --color -e$ -e"
+alias cg=coloringgrep
+ffind() { sudo find "$1" -type f;}
+alias showfilecontents="xargs sudo tail -n +1|grep --color -e$ -e'^==> .*'"
+alias sfc=showfilecontents
+alias cleanleadingcomments="grep -ve '^#'|awk 'NF>0'"
+alias clc=cleanleadingcomments
+alias colortailheaders="grep --color -e$ -e'^==> .*'"
+alias cth=colortailheaders
+alias showfilecontentsnoleadingcomments="sfc|clc|cth"
+alias sfcnlc=showfilecontentsnoleadingcomments
 alias rf="sudo rm -rf"
 alias o="popd"
 alias p="pushd"
@@ -483,6 +494,10 @@ datefromepoch() {
 	fi
 	date -d@"$1"
 }
+
+alias xmlpp=xmlprettyprintpygmentize
+alias xmlprettyprintpygmentize="xmllint --format -|pygmentize"  ## xmlprettyprint
+alias xmlprettyprintbat="xmllint --format -|bat -pp"  ## xmlprettyprint
 
 datetoepoch() {
     if [[ $# -lt 1 ]]
