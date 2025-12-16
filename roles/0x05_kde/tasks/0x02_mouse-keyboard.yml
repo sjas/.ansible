@@ -55,9 +55,9 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
-    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "0" }
-    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "true" }
-    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "true" }
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "0.2" }
+    - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
+    - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
   notify: kcminit
 
 # to persists, you have to add first line to autostart
