@@ -372,6 +372,7 @@ pph() {
         printf "\e[m\n"
 }
 pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T%N)";}
+ppnocolor() { pph '*' 109 '' "$* * $(TZ=UTC date +%FT%T%N)";}
 ppp() { pph '*' 109 '41;1' "$*";}
 ppnodate() { pph '*' 109 '41;1' "$*";}
 pps() { pph '+' 80 '42' "$*";}
@@ -411,7 +412,15 @@ the_missing_grep_but_recursive_to_less() {
 alias grl="the_missing_grep_but_recursive_to_less"
 alias coloringgrep="grep --color -e$ -e"
 alias cg=coloringgrep
-ffind() { sudo find "$1" -type f;}
+filefind() {
+	if [[ $# -eq 0 ]]
+	then
+		sudo find . -type f
+	else
+		sudo find "$1" "$*" -type f
+	fi
+}
+alias ffind=filefind
 alias showfilecontents="xargs sudo tail -n +1|grep --color -e$ -e'^==> .*'"
 alias sfc=showfilecontents
 alias cleanleadingcomments="grep -ve '^#'|awk 'NF>0'"
