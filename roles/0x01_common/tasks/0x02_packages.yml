@@ -45,6 +45,7 @@
       - cifs-utils
       - cmake
       - colordiff
+      - colorized-logs
       - conntrack
       - cpanminus
       - curl
