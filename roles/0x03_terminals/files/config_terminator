@@ -25,7 +25,7 @@
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
   full_screen = <Primary>F11
-  group_all = <Primary><Shift>F8
+  group_all = <Primary><Shift>F7
   broadcast_off = <Primary><Shift>F9
   broadcast_group = <Primary><Shift>F10
   broadcast_all = <Primary><Shift>F8
@@ -34,7 +34,7 @@
   edit_terminal_title = <Shift><Alt>a
   preferences = <Primary>comma
   preferences_keybindings = <Primary>period
-  layout_launcher = None
+  layout_launcher = <Primary><Shift>F12
   help = None
 [profiles]
   [[default]]
