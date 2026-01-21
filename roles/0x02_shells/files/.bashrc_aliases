@@ -1063,6 +1063,9 @@ showcache() {
 flushcache() {
 	sudo pkill -hup dnsmasq
 }
+watchcache() {
+	watch -n1 -d "sudo pkill -usr1 dnsmasq;PAGER="cat" journalctl --since=\"1s ago\" -u dnsmasq|sed -n 's/^.\+]: //;/^server/,\$p'"
+}
 getip() {
 	\dig "$1" +short | xclip && xclip -o
 }
