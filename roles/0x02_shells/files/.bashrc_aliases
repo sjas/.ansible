@@ -198,6 +198,7 @@ alias iotop="sudo iotop"
 alias powertop="sudo powertop"
 
 alias apt="sudo apt"
+alias snap="sudo snap"
 alias aptc="sudo apt clean; sudo apt autoremove"
 alias aptg="sudo dpkg -l | grep"
 alias apts="sudo apt search"
