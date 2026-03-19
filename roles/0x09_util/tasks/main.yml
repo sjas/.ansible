@@ -60,4 +60,6 @@
 #   import_tasks: 0x0f_nagstamon.yml
 #   tags: util,nagstamon
 
-# - name: citrix client include
+- name: bottom include
+  import_tasks: 0x10_bottom.yml
+  tags: util
