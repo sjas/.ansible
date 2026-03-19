@@ -14,7 +14,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     sudo apt install openssh-server -y
     ssh-keygen -trsa -b4096 -N '' -f ~/.ssh/id_rsa
     ssh-copy-id localhost  ## enter password here when promted
-    mkdir -p ~/.ssh/controlmasters
+    mkdir -p ~/.ssh/cm
 
 ### setup ansible itself
     sudo apt update
@@ -40,7 +40,7 @@ workstation bootstrapping, rebase this onto a blank kde neon install
     roles_path=/etc/ansible/roles:./
     interpreter_python=auto_silent
     [ssh_connection]
-    ssh_args=-o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/controlmasters/%r@%h:%p
+    ssh_args=-o controlmaster=auto -o controlpersist=60s -o controlpath=~/.ssh/cm/%r@%h:%p
     pipelining=yes
     [diff]
     always=yes
