@@ -51,6 +51,7 @@ alias   ebi="vim /home/sjas/etc/.dotfiles/.bashrc_includes;     . /home/sjas/.ba
 # t  = terminator
 # tm = tmux
 # m  = mc
+# o
 # p  = apt packages
 # c  = vscode
 # ce = vscode extensions
@@ -449,12 +450,12 @@ alias powershell="pwsh"
 
 getpass() {
 	# shellcheck disable=SC2010
-	[[ $# -lt 1 ]]&&ls /home/sjas/.secrets -A|grep pass&&return
+	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep pass&&return
 	cat /home/sjas/.secrets/"$1"
 }
 getuser() {
 	# shellcheck disable=SC2010
-	[[ $# -lt 1 ]]&&ls /home/sjas/.secrets -A|grep user&&return
+	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep user&&return
 	cat /home/sjas/.secrets/"$1"
 }
 
