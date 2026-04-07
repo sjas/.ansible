@@ -889,8 +889,8 @@ showgw()  {
 		printf "\033[41;1m\ndefgw: '"$_gw4"' && '"$_gw6"'\n\033[m";\
 		\ping -4 -c1 -W1 '"$_gw4"'|grep -E "from|,";\
 		\ping -6 -c1 -W1 '"$_gw6"'|grep -E "from|,";\
-		printf "\033[41;1m\nremote-ip: 9.9.9.9 && 2606:4700:4700::1111\n\033[m";\
-		\ping -4 -c1 -W1 9.9.9.9|grep -E "from|,";\
+		printf "\033[41;1m\nremote-ip: 1.1 && 2606:4700:4700::1111\n\033[m";\
+		\ping -4 -c1 -W1 1.1|grep -E "from|,";\
 		\ping -6 -c1 -W1 2606:4700:4700::1111|grep -E "from|,";\
 		printf "\033[41;1m\nremote-dns: ix.de && ix.de\n\033[m";\
 		\ping -4 -c1 -W1 ix.de|grep -E "from|,";\
