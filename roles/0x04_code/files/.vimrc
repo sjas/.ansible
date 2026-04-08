@@ -218,7 +218,7 @@ nnoremap <leader>l zAzt
 "nnoremap <leader>r :!chmod +x %; clear; ./%<cr>
 nnoremap <leader>e :w %<cr>:!chmod +x %; echo; ./%<cr>
 "fmt
-nnoremap <leader>fg :w %<cr>:!go fmt %<cr>:<backspace>
+nnoremap <leader>fg :w %<cr>:!go mod tidy<cr>:<backspace>
 nnoremap <leader>fgg :w %<cr>:!go fmt %<cr>
 nnoremap <leader>fr :w %<cr>:!rust fmt %<cr>
 nnoremap <leader>fp :w %<cr>:%!yapf3<cr>

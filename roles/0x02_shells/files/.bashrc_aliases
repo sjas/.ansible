@@ -14,6 +14,7 @@
 ## SHOW COMMANDS
 ## NETWORKING
 ## CODE
+## CODE TEMPLATES
 ## DOCKER CONTAINERLAB KUBERNETES
 ## SCRAPYARD
 
@@ -1530,7 +1531,7 @@ runonchange() {
 #}
 
 rundotpreview(){
-	[[ $# == 0 ]] && \
+	[[ $# -eq 0 ]] && \
 		echo && \
 		echo "USAGE:" && \
 		echo "    ${FUNCNAME[0]} FILE.dot" && \
@@ -1548,6 +1549,54 @@ rundotpreview(){
 
 
 
+
+## CODE TEMPLATES ###########################################################################################
+#golang
+golangtemplate() {
+    [[ $# -eq 0 ]]&&\
+        echo&&\
+        echo "USAGE:"&&\
+        echo "    ${FUNCNAME[0]} FILENAME_WITHOUT_.go_EXTENSION"&&\
+        return
+    [[ $# -ne 1 ]]&&\
+        echo&&\
+        echo "only one argument allowed"&&\
+        return
+
+	local _folder _containing_folder _filename
+	_folder="$1"
+	cd /home/sjas/wrk/golang||:
+	mkdir "$_folder"
+	cd "$_folder"||:
+	_containing_folder="$(pwd)"
+	_filename="${_containing_folder##*/}".go
+	# shellcheck disable=SC2028
+	echo 'package main
+
+import (
+	"fmt"
+	"github.com/gookit/color"
+	l "github.com/sirupsen/logrus"
+	"time"
+)
+
+func main() {
+	pp:=color.New(color.OpBold,color.FgLightWhite, color.BgLightRed)
+	starttime:=time.Now()
+	l.SetReportCaller(true)
+	l.SetLevel(l.InfoLevel)
+	l.SetLevel(l.WarnLevel)
+
+	pp.Println(`helloworld`)
+
+	endtime:=time.Now()
+	fmt.Println("\nruntime",endtime.Sub(starttime))
+}' > "$_filename"
+	chmod +x "$_filename"
+	go mod init main
+	go mod tidy
+	vim "$_filename"
+}
 
 ## DOCKER CONTAINERLAB KUBERNETES ###########################################################################
 #alias clab="clab --runtime=podman"
