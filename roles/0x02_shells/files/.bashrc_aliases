@@ -1461,14 +1461,12 @@ asn() {
 ## CODE #####################################################################################################
 #fixme add something for shellcheck here too
 #https://www.shellcheck.net/wiki/SC1090
-god() {
-	[[ $# != 1 ]] && echo 'can only take a single argument'
-	firefox --new-tab https://pkg.go.dev/"$1"
-
-}
-godc() {
+gop() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
 	firefox --new-tab https://pkg.go.dev/search?q="$1"
+}
+gosp() {
+	firefox --new-tab https://go.dev/ref/spec
 }
 gopackageslist() {
 	go version -m "${GOPATH}"/* | grep -e 'mod\s' -e '^\S'
