@@ -1568,7 +1568,7 @@ golangtemplate() {
 	cd "$_folder"||:
 	_containing_folder="$(pwd)"
 	_filename="${_containing_folder##*/}".go
-	# shellcheck disable=SC2028
+	# shellcheck disable=SC2028,SC2016
 	echo 'package main
 
 import (
@@ -1579,13 +1579,14 @@ import (
 )
 
 func main() {
-	pp:=color.New(color.OpBold,color.FgLightWhite, color.BgLightRed)
 	starttime:=time.Now()
+	pp:=color.New(color.OpBold,color.FgLightWhite,color.BgLightRed)
+	pp.Println(``)
 	l.SetReportCaller(true)
 	l.SetLevel(l.InfoLevel)
 	l.SetLevel(l.WarnLevel)
 
-	pp.Println(`helloworld`)
+
 
 	endtime:=time.Now()
 	fmt.Println("\nruntime",endtime.Sub(starttime))
