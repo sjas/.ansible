@@ -1569,7 +1569,8 @@ golangtemplate() {
 	_containing_folder="$(pwd)"
 	_filename="${_containing_folder##*/}".go
 	# shellcheck disable=SC2028,SC2016
-	echo 'package main
+	cat <<EOF > "$_filename"
+package main
 
 import (
 	"fmt"
@@ -1577,9 +1578,7 @@ import (
 	l "github.com/sirupsen/logrus"
 	"time"
 )
-
-func main() {
-	starttime:=time.Now()
+func main() { starttime:=time.Now()
 	pp:=color.New(color.OpBold,color.FgLightWhite,color.BgLightRed)
 	pp.Println(``)
 	l.SetReportCaller(true)
@@ -1590,7 +1589,8 @@ func main() {
 
 	endtime:=time.Now()
 	fmt.Println("\nruntime",endtime.Sub(starttime))
-}' > "$_filename"
+}
+EOF
 	chmod +x "$_filename"
 	go mod init main
 	go mod tidy
