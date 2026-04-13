@@ -237,6 +237,13 @@ noremap  <leader>c  :s/^/# /<cr>:noh<cr>
 vnoremap <leader>cc :s/^/# /<cr>gv:s/\s\+$//<cr>:noh<cr>
 vnoremap <leader>c	:s/^/# /<cr>:noh<cr>
 nnoremap <leader>nt :%s/\s\+$//<cr>
+"change the comment combo for golang and vim
+autocmd FileType go noremap  <leader>c  :s/^/\/\/ /<cr>:noh<cr>
+autocmd FileType go vnoremap <leader>cc :s/^/\/\//<cr>gv:s/\s\+$//<cr>:noh<cr>
+autocmd FileType go vnoremap <leader>c	:s/^/\/\//<cr>:noh<cr>
+autocmd FileType vim noremap  <leader>c  :s/^/"/<cr>:noh<cr>
+autocmd FileType vim vnoremap <leader>cc :s/^/"/<cr>gv:s/\s\+$//<cr>:noh<cr>
+autocmd FileType vim vnoremap <leader>c	:s/^/"/<cr>:noh<cr>
 
 "vnoremap < <gv
 "vnoremap > <gv
