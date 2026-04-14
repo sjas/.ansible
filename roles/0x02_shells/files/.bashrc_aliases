@@ -1581,12 +1581,15 @@ import (
 
 )
 
+const ()
 
+var (
+	pp:=color.New(color.OpBold,color.FgLightWhite,color.BgLightRed)
+)
 
-
+type ()
 
 func main() { starttime:=time.Now()
-	pp:=color.New(color.OpBold,color.FgLightWhite,color.BgLightRed)
 	pp.Println(``)
 	l.SetReportCaller(true)
 	l.SetLevel(l.InfoLevel)
