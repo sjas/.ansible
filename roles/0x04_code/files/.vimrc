@@ -113,24 +113,25 @@ se bg=dark
 "se bg=light
 "highlight CursorLineNR ctermbg=red
 "transparent background
-hi Normal guibg=NONE ctermbg=NONE
-highlight StatusLine    cterm=bold ctermfg=208 ctermbg=235
-highlight StatusLineNC  cterm=bold ctermfg=15 ctermbg=238
+highlight Normal								ctermbg=NONE	guibg=NONE
+highlight StatusLine    cterm=bold ctermfg=208	ctermbg=235
+highlight StatusLineNC  cterm=bold ctermfg=15	ctermbg=238
 
 "# statusline and ALE #######################################################################################
 highlight ALEWarning ctermbg=DarkMagenta
-let g:ale_fix_on_save = 1
-let g:ale_open_list = 1
-let g:ale_fixers = {
+let g:ale_list_window_size=4
+let g:ale_fix_on_save=1
+let g:ale_open_list=1
+let g:ale_fixers={
     \    '*': ['remove_trailing_lines', 'trim_whitespace'],
     \    'python': ['ruff']
     \}
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"let g:ale_sign_error = '>>'
-"let g:ale_sign_warning = '--'
-let g:ale_completion_enabled = 1
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
+let g:ale_echo_msg_format='[%linter%] %s [%severity%]'
+let g:ale_sign_error='>>'
+let g:ale_sign_warning='--'
+let g:ale_completion_enabled=1
 
 ""let g:syntastic_sh_shellcheck_args="-x"
 function! LinterStatus() abort
