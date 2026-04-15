@@ -508,7 +508,9 @@ datefromepoch() {
 }
 
 alias xmlpp=xmlprettyprintpygmentize
+alias xmlp=xmlprint
 alias xmlprettyprintpygmentize="xmllint --format -|pygmentize"  ## xmlprettyprint
+alias xmlpretty="xmllint --format -"
 alias xmlprettyprintbat="xmllint --format -|bat -pp"  ## xmlprettyprint
 
 datetoepoch() {
