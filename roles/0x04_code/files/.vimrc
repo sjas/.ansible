@@ -100,6 +100,10 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkey
 "se backupdir=$TEMP
 "se directory=$TEMP
 
+"autosave
+autocmd BufLeave,FocusLost * wall
+"autocmd BufLeave,FocusLost * silent! wall
+
 
 
 
