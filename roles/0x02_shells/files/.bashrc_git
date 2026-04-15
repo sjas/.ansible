@@ -254,7 +254,8 @@ alias gfa=gitfetchall
 gitpull() {
 	if [[ $# == 0 ]]
 	then
-		git pull origin master
+		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
+		git pull origin "$remotebranch"
 	elif [[ $# == 2 ]]
 	then
 		git pull "$@"
