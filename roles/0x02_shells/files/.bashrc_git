@@ -268,20 +268,7 @@ gitpush() {
 	if [[ $# == 0 ]]
 	then
 		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
-		git push origin "$remotebranch" --follow-tags
-	elif [[ $# == 2 ]]
-	then
-		git push "$@" --follow-tags
-	else
-		echo "only specify remote and branch"
-	fi
-}
-alias gpp=gitpush
-gitpushbranch() {
-	if [[ $# == 0 ]]
-	then
-		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
-		git push origin "${remotebranch}" --follow-tags
+		git push -u origin "$remotebranch" --follow-tags
 	elif [[ $# == 2 ]]
 	then
 		git push -u "$@" --follow-tags
@@ -289,7 +276,7 @@ gitpushbranch() {
 		echo "only specify remote and branch"
 	fi
 }
-alias gpb=gitpushbranch
+alias gpp=gitpush
 gitpushandpull() {
 	if [[ $# == 0 ]]
 	then
@@ -309,9 +296,9 @@ gitpushandpull() {
 alias gpup=gitpushandpull
 
 # shellcheck disable=SC2139
-alias gppb="git push origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
+alias gppb="git push -u origin $(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## push current branch to origin
 # shellcheck disable=SC2139
-alias gppbd="git push origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## delete current branch at origin
+alias gppbd="git push -u origin :$(__git_ps1 | sed 's/ //g;s/(//;s/)//')"	## delete current branch at origin
 
 gitfastpush() {
 	( cd "$(git rev-parse --show-toplevel)"||return; git add -A .; git -v commit -m fastcommit; git pull origin master; git push origin master )
