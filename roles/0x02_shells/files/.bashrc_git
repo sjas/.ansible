@@ -266,7 +266,8 @@ alias gp=gitpull
 gitpush() {
 	if [[ $# == 0 ]]
 	then
-		git push origin master --follow-tags
+		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
+		git push origin "$remotebranch" --follow-tags
 	elif [[ $# == 2 ]]
 	then
 		git push "$@" --follow-tags
@@ -278,7 +279,8 @@ alias gpp=gitpush
 gitpushbranch() {
 	if [[ $# == 0 ]]
 	then
-		git push origin master --follow-tags
+		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
+		git push origin "${remotebranch}" --follow-tags
 	elif [[ $# == 2 ]]
 	then
 		git push -u "$@" --follow-tags
@@ -290,9 +292,10 @@ alias gpb=gitpushbranch
 gitpushandpull() {
 	if [[ $# == 0 ]]
 	then
-		git pull origin master
+		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
+		git pull origin "$remotebranch"
 		echo
-		git push origin master --follow-tags
+		git push origin "$remotebranch" --follow-tags
 	elif [[ $# == 2 ]]
 	then
 		git pull "$@"
