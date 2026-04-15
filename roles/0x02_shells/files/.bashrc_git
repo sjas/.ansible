@@ -271,10 +271,22 @@ gitpush() {
 	then
 		git push "$@" --follow-tags
 	else
-		echo "only specify tracked repo and branch"
+		echo "only specify remote and branch"
 	fi
 }
 alias gpp=gitpush
+gitpushbranch() {
+	if [[ $# == 0 ]]
+	then
+		git push origin master --follow-tags
+	elif [[ $# == 2 ]]
+	then
+		git push -u "$@" --follow-tags
+	else
+		echo "only specify remote and branch"
+	fi
+}
+alias gpb=gitpushbranch
 gitpushandpull() {
 	if [[ $# == 0 ]]
 	then
