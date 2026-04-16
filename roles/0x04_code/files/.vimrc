@@ -164,7 +164,7 @@ nnoremap <leader>n :w<cr>:ll<cr>
 
 
 "# shortcuts&&keybindings general ###########################################################################
-nnoremap <f5> :UndotreeToggle<cr>
+nnoremap <f5> :UndotreeToggle<cr><c-w>h
 nnoremap Y y$
 
 nnoremap <leader>fd :.!date +\%F_\%T<cr>
