@@ -459,6 +459,11 @@ getuser() {
 	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep user&&return
 	cat /home/sjas/.secrets/"$1"
 }
+gettoken() {
+	# shellcheck disable=SC2010
+	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep token&&return
+	cat /home/sjas/.secrets/"$1"
+}
 
 krestart() {
 	for i in "$@"
