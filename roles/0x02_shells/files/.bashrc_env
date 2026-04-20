@@ -9,6 +9,7 @@
 ## HISTORY
 ## $EDITOR,$PAGER,LESS(1)
 ## $PATH,NODEJS,GOLANG,JAVA,RUSTLANG,$PATH
+## XDG ENV VARS MISSING FROM UBUNTU
 ## SCRAPYARD
 
 
@@ -236,6 +237,19 @@ export PATH
 ## DOCKER ###################################################################################################
 export DOCKER_HOST="unix:///run/user/$UID/podman/podman.sock"
 export SRLINUX_IMAGE="ghcr.io/nokia/srlinux:24.10.1"
+
+
+
+
+
+## XDG ENV VARS MISSING FROM UBUNTU #########################################################################
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_STATE_HOME="${HOME}/.local/state"
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
+export XDG_CONFIG_DIRS="/etc/xdg"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
 
 
 
