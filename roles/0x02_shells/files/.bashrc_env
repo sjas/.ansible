@@ -236,6 +236,7 @@ export PATH
 
 ## DOCKER ###################################################################################################
 export DOCKER_HOST="unix:///run/user/$UID/podman/podman.sock"
+[[ $UID -eq 0 ]]&&unset DOCKER_HOST=&&export DOCKER_HOST="unix:///run/podman/podman.sock"
 export SRLINUX_IMAGE="ghcr.io/nokia/srlinux:24.10.1"
 
 
