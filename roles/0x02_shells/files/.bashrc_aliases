@@ -1581,18 +1581,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/gookit/color"
 	l "github.com/sirupsen/logrus"
 	"time"
+	"github.com/sjas/sjasgo/bash"
+	"github.com/sjas/sjasgo/pp"
 
 
 )
 
 const ()
 
-var (
-	pp:=color.New(color.OpBold,color.FgLightWhite,color.BgLightRed)
-)
+var ()
 
 type ()
 

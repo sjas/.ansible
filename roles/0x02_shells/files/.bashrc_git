@@ -124,6 +124,7 @@ alias   glf="git log --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%
 # shellcheck disable=SC2139
 alias	gls="git log --reverse --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' -n$_gitloglines --stat"	## git log+changes
 alias  glfs="git log --format='%n%n%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' --stat"							## git log full+changes
+alias	glt="git log --reverse --format='%Cgreen%h%Cblue%d%Creset %s %Cred%an%Cblue %Cred%ar %Cblue%Creset' --simplify-by-decoration"	## only show tags
 # shellcheck disable=SC2139
 alias	gll="git log --oneline --graph --decorate=short -n$_gitloglines"  ## graph
 alias  gllf="git log --oneline --graph --decorate=short"  ## full graph
@@ -268,10 +269,10 @@ gitpush() {
 	if [[ $# == 0 ]]
 	then
 		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
-		git push -u origin "$remotebranch" --follow-tags
+		git push -u origin "$remotebranch" --follow-tags --tags
 	elif [[ $# == 2 ]]
 	then
-		git push -u "$@" --follow-tags
+		git push -u "$@" --follow-tags --tags
 	else
 		echo "only specify remote and branch"
 	fi
@@ -283,12 +284,12 @@ gitpushandpull() {
 		remotebranch="$(git branch -a|grep remotes/origin/ma|cut -d/ -f3)"
 		git pull origin "$remotebranch"
 		echo
-		git push origin "$remotebranch" --follow-tags
+		git push origin "$remotebranch" --follow-tags --tags
 	elif [[ $# == 2 ]]
 	then
 		git pull "$@"
 		echo
-		git push "$@"
+		git push "$@" --tags
 	else
 		echo "only specify tracked repo and branch"
 	fi
