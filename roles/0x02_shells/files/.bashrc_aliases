@@ -1589,11 +1589,21 @@ import (
 
 )
 
-const ()
 
-var ()
 
-type ()
+const (
+
+)
+
+var (
+
+)
+
+type (
+
+)
+
+
 
 func main() { starttime:=time.Now()
 	pp.Long(``)
