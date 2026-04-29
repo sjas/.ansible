@@ -1608,8 +1608,9 @@ type (
 func main() { starttime:=time.Now()
 	pp.Long(``)
 	l.SetReportCaller(true)
-	l.SetLevel(l.InfoLevel)
 	l.SetLevel(l.WarnLevel)
+	l.SetLevel(l.DebugLevel)
+	l.SetLevel(l.InfoLevel)
 
 
 
