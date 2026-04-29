@@ -80,6 +80,7 @@
     -e EFanZh.graphviz-preview \
     -e foxundermoon.shell-format \
     -e gizak.shortcuts \
+    -e golang.go \
     -e grapecity.gc-excelviewer \
     -e jamiewoodio.junos \
     -e jebbs.plantuml \
@@ -137,6 +138,7 @@
     - efanzh.graphviz-preview
     - foxundermoon.shell-format
     - gizak.shortcuts
+    - golang.go
     - grapecity.gc-excelviewer
     - jamiewoodio.junos
     - jebbs.plantuml
