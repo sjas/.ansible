@@ -82,6 +82,7 @@
         "no-missing-space-atx": false,
         "fenced-code-language": false,
         "links": false,
-        "single-trailing-newline": false,
-    }
+        "single-trailing-newline": false
+    },
+	"pythonEnvy.venvName": "env"
 }
