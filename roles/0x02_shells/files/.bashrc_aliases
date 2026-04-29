@@ -1583,7 +1583,7 @@ import (
 	"fmt"
 	l "github.com/sirupsen/logrus"
 	"time"
-	"github.com/sjas/sjasgo/bash"
+	//"github.com/sjas/sjasgo/bash"
 	"github.com/sjas/sjasgo/pp"
 
 
@@ -1596,7 +1596,7 @@ var ()
 type ()
 
 func main() { starttime:=time.Now()
-	pp.Println(``)
+	pp.Long(``)
 	l.SetReportCaller(true)
 	l.SetLevel(l.InfoLevel)
 	l.SetLevel(l.WarnLevel)
