@@ -1584,7 +1584,7 @@ import (
 	l "github.com/sirupsen/logrus"
 	"time"
 	//"github.com/sjas/sjasgo/bash"
-	"github.com/sjas/sjasgo/pp"
+	sjaspp "github.com/sjas/sjasgo/pp"
 
 
 )
@@ -1596,6 +1596,8 @@ const (
 )
 
 var (
+	p=fmt.Println
+	pp=sjaspp.Long
 
 )
 
