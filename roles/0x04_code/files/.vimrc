@@ -158,6 +158,8 @@ set statusline+=%=%-10.{LinterStatus()}
 set statusline+=%=%-14.(%l,%c%V\ %=\ %P%)
 
 nnoremap <leader>n :w<cr>:ll<cr>
+nnoremap <silent> <c-j> :ALENext<cr>
+nnoremap <silent> <c-k> :ALEPrevious<cr>
 
 
 
