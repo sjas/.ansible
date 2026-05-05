@@ -1649,6 +1649,7 @@ EOF
 #}
 
 alias kc="kubectl"
+alias oc="omnictl"
 
 
 
