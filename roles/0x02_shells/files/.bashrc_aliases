@@ -860,7 +860,7 @@ __dautocompletion() {
 # sym
 # diff
 showapt() {
-	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep | cut -c 68-'
+	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep -e '/usr/sbin/dnsmasq' | cut -c 68-'
 }
 shownet() {
 	watch -n 1 -d 'printf "\033[41;1mIP LINK\033[m\n";ip -s -d l;printf "\n\033[41;1mIP ROUTE\033[m\n";ip -d r;printf "\n\033[41;1mIP ADDR\033[m\n";ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
