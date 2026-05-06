@@ -1613,7 +1613,7 @@ type (
 
 
 func main() { starttime:=time.Now()
-	pp.Long(``)
+	pp(``)
 	l.SetReportCaller(true)
 	l.SetLevel(l.WarnLevel)
 	l.SetLevel(l.ErrorLevel)
