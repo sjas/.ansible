@@ -343,6 +343,7 @@ alias gstc="git stash clear"						## delete all stashes
 ## TAGGING AND NOTES ########################################################################################
 alias gt="git tag"									## tagging
 alias gtl="git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' | grep --color -e 'HEAD -> [_.0-9A-Za-z-]\+' -e 'tag: [_.0-9A-Za-z-]\+'"  ## show HEAD and all tags plus count (1 = first commit, n = HEAD)
+alias gtlr="git ls-remote --tags origin"
 alias gtlw="watch -n1 -d \"git log --oneline --decorate=short | tac | nl | tac | grep -e '(HEAD' -e '(tag:' \""  ## list tags in watch, helps when changing them
 alias gtd="git tag -d"								## param: tagname, delete tag
 
