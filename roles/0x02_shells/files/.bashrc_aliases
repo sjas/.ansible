@@ -1471,7 +1471,7 @@ gopackagepushandupdateglobalindex() {
 	if [[ $# -eq 1 ]]
 	then
 		library=$1;shift
-		git ls-remote --tags origin
+		git ls-remote --tags|cut -d/ -f3|sed 's/v//'|sort -n
 		echo
 		read -r -p "version number without 'v'> " version
 
