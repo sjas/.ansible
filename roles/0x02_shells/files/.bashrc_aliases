@@ -1491,7 +1491,7 @@ gopackageshowupstreamversion() {
 	[[ $# -eq 0 ]]&&printf "\nusage\n\t%s LIBRARY\n" "${FUNCNAME[0]}"&&return
 	! [[ $# -eq 1 ]]&&echo exactly one argument needed&&return
 	REPO=$1;shift
-	watch -n1 -d "curl -s https://pkg.go.dev/$REPO|fgrep versions|fgrep tab|fgrep aria-label|fgrep Version:|cut -d'\"' -f 4"
+	watch -n1 -d "echo $REPO;curl -s https://pkg.go.dev/$REPO|fgrep versions|fgrep tab|fgrep aria-label|fgrep Version:|cut -d'\"' -f 4"
 
 }
 gop() {
