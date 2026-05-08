@@ -2,22 +2,20 @@
 #
 # shellcheck shell=bash
 
-
 ## RANDOM STUFF
 ## 'EDIT BASH' CONFIG MANAGMENT
 ## 'RELOAD', 'DIFF', 'CD', 'SHOW ALIASES'
 ## LS(1)
 ## SUDO(1)
 ## UTIL
-## ED(1);CAT(1);VIM(1)
+## ED(1);MC(1);VIM(1);CAT(1)
 ## NOTES;PRV;WRK
 ## SHOW COMMANDS
 ## NETWORKING
 ## CODE
-## CODE TEMPLATES
+## CODING TEMPLATES
 ## DOCKER CONTAINERLAB KUBERNETES
 ## SCRAPYARD
-
 
 
 
@@ -1468,6 +1466,34 @@ asn() {
 ## CODE #####################################################################################################
 #fixme add something for shellcheck here too
 #https://www.shellcheck.net/wiki/SC1090
+gopackagepushandupdateglobalindex() {
+    [[ $# -eq 0 ]]&&printf "\nusage:\n\t%s LIBRARY VERSION\n\t%s LIBRARY\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"&&return
+	if [[ $# -eq 1 ]]
+	then
+		library=$1;shift
+		git ls-remote --tags origin
+		echo
+		read -r -p "version number without 'v'> " version
+
+	fi
+	if [[ $# -eq 2 ]]
+	then
+		local library version
+		library=$1;shift
+		version=$1;shift
+	fi
+	git tag v"$version"
+	gitpushandpull
+	curl -s https://sum.golang.org/lookup/"$library"@v"$version"
+	curl https://proxy.golang.org/"$library"/@v/v"$version".info
+}
+gopackageshowupstreamversion() {
+	[[ $# -eq 0 ]]&&printf "\nusage\n\t%s LIBRARY\n" "${FUNCNAME[0]}"&&return
+	! [[ $# -eq 1 ]]&&echo exactly one argument needed&&return
+	REPO=$1;shift
+	watch -n1 -d "curl -s https://pkg.go.dev/$REPO|fgrep versions|fgrep tab|fgrep aria-label|fgrep Version:|cut -d'\"' -f 4"
+
+}
 gop() {
 	[[ $# != 1 ]] && echo 'can only take a single argument'
 	firefox --new-tab https://pkg.go.dev/search?q="$1"
@@ -1555,7 +1581,7 @@ rundotpreview(){
 
 
 
-## CODE TEMPLATES ###########################################################################################
+## CODING TEMPLATES #########################################################################################
 #golang
 golangtemplate() {
     [[ $# -eq 0 ]]&&\
