@@ -373,9 +373,11 @@ pph() {
         printf "\e[m\n"
 }
 pp() { pph '*' 109 '41;1' "$* * $(TZ=UTC date +%FT%T%N)";}
+# shellcheck disable=SC2120
+ppg() { pph '*' 109 '42;1' "$* * $(TZ=UTC date +%FT%T%N)";}
 ppnocolor() { pph '*' 109 '' "$* * $(TZ=UTC date +%FT%T%N)";}
-ppp() { pph '*' 109 '41;1' "$*";}
 ppnodate() { pph '*' 109 '41;1' "$*";}
+ppp() { pph '*' 109 '' "$*";}
 pps() { pph '+' 80 '42' "$*";}
 ppss() { pph '+' 50 '33' "$*";}
 
@@ -1522,6 +1524,7 @@ runonchange() {
 		while inotifywait -e modify "$1" >/dev/null 2>&1||true
         do
             eval "$1"
+			# shellcheck disable=SC2120
 			ppg
         done
 	elif [[ $# -eq 2 ]]
@@ -1530,6 +1533,7 @@ runonchange() {
 		while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
 		do
 			eval "$*"
+			# shellcheck disable=SC2120
 			ppg
 		done
 	fi
