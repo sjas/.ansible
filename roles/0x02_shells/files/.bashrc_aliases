@@ -1626,6 +1626,9 @@ var (
 	p=fmt.Println
 	pp=sjaspp.Long
 	ppn=sjaspp.LongNoDate
+	ppr=sjaspp.Red
+	ppy=sjaspp.Yellow
+	ppg=sjaspp.Green
 	ppsr=sjaspp.ShortRed
 	ppsy=sjaspp.ShortYellow
 	ppsg=sjaspp.ShortGreen
