@@ -1522,7 +1522,7 @@ runonchange() {
 		while inotifywait -e modify "$1" >/dev/null 2>&1||true
         do
             eval "$1"
-            printf "\n===============\n\n"
+			ppg
         done
 	elif [[ $# -eq 2 ]]
 	then
@@ -1530,7 +1530,7 @@ runonchange() {
 		while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
 		do
 			eval "$*"
-			printf "\n===============\n\n"
+			ppg
 		done
 	fi
 }
