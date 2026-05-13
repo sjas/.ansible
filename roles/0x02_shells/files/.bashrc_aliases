@@ -98,18 +98,8 @@ alias watch="watch "
 # 'reload'
 alias sb=". ~/.bashrc&&printf '\n.bashrc sourced.\n'"
 alias reb=". ~/.bashrc&&printf '.bashrc sourced.'"
-rea() {
-	(
-		cd "${DOTFILES}"||return
-		ansible-playbook neon.yml "$@"
-	)
-}
-rea-only-show-changes() {
-	(
-		cd "${DOTFILES}"||return
-		ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook neon.yml "$@"
-	)
-}
+rea() { (cd "${DOTFILES}"||return;ansible-playbook neon.yml "$@");}
+rea-only-show-changes() { (cd "${DOTFILES}"||return;ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ANSIBLE_DISPLAY_OK_HOSTS=false ansible-playbook neon.yml "$@");}
 
 #'diff bash' aliases (easily find out what changed after changes in the applications took place)
 alias   dbt="wdiff -sdn <(diff -u4 /home/sjas/etc/.ansible/roles/0x03_terminals/files/config ~/.config/terminator/config) | colordiff"
@@ -141,9 +131,9 @@ alias clones="__cdd /home/sjas/wrk/clones"
 # ba  = bash aliases
 # ga  = git aliases
 # shellcheck disable=SC2139
-alias    sba="grep -e alias -e'()' ${DOTFILES}/roles/0x02_shells/files/.bashrc_aliases | grep -v ^# | sed 's/ {//g; s/alias\s\+//g' | sort | grep -e  ^.\*\(\) -e ^.\*= --color"
+alias    sba="grep -e alias -e'()' ${DOTFILES}/roles/0x02_shells/files/.bashrc_aliases|grep -v ^#|sed 's/ {//g; s/alias\s\+//g'|sort|grep -e  ^.\*\(\) -e ^.\*= --color"
 # shellcheck disable=SC2139
-alias   sga="grep ^alias ${DOTFILES}/roles/0x02_shells/files/.bashrc_git | sed 's/alias //' | sort | grep -e ^.\*= --color"
+alias   sga="grep ^alias ${DOTFILES}/roles/0x02_shells/files/.bashrc_git|sed 's/alias //'|sort|grep -e ^.\*= --color"
 
 
 
@@ -172,10 +162,9 @@ alias     d="$LS $LS_OPT1 -l --color=never -p  | grep ^d"
 # shellcheck disable=SC2139
 alias    dl="$LS $LS_OPT1 -l --color=never -aF | grep ^d"
 
-#alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -is -At"
 # shellcheck disable=SC2139
 alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -iS -a --sort modified"
-
+#alias   wlk="watch -n1 -d -c $LS -h --color=always --time-style=long-iso -l -is -At"
 alias nnn="\nnn -c0"
 
 
@@ -219,10 +208,8 @@ fwstatus ()
     [[ "not running" == "${_fwstate}" ]]&&return
     _panicstate=$(sudo firewall-cmd --query-panic)
     if [[ "on" == "${_panicstate}" ]]
-    then
-        printf "\e[41;1m"
-    else
-        printf "\e[32;1m"
+    then printf "\e[41;1m"
+    else printf "\e[32;1m"
     fi
     printf "PANIC MODE=%s\e[m\n" "${_panicstate}"
     printf "LOCKDOWN=%s\n" "$(sudo firewall-cmd --query-lockdown)"
@@ -231,39 +218,34 @@ fwstatus ()
     sudo firewall-cmd --list-all-zones | sed -n '/^'"$_defaultzone"'\|active/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
 	pp policies
 	sudo firewall-cmd --list-all-policies | sed -n '/(active)$/,/^$/p' | grep --color=auto -v -e ':\s*$' | awk 'NF>0' | grep --color -e$ -e^\\w.\\+
-
 }
 
 
 # colorize_iptables_output.sh: script deployed externally so inclusion works with watch(1)
 # fw46_helper: abstraction for fw4/fw6
 # fw46_watch_helper: abstraction for fw4w/fw6w
-
 # fw4/fw6: shows a single chain given with parameters: "-L CHAIN_NAME [-t TABLE]" - or all chains from FILTER
 # fw4d/fw6d: shows all default tables from iptables/ip6tables for FILTER table
 # fw4w/fw6w: watch(1) a single chain given with parameters: "-L CHAIN_NAME [-t TABLE]" - or all chains from FILTER
-
 # fws: 	shows only NAT and FILTER tables from both v4/v6
 # fwsa: shows all tables, from both v4/v6, hopefully i have chosen a sane order from the documentation, see below
 
 fw46_helper() {
 	local IPTABLES="${1}";shift
 	local HEADER_COLOR="31"
-
-	echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-	[[ "${IPTABLES}" == "iptables" ]] && echo -n "# v4" || echo -n "# v6"; echo " ${*:-INPUT}"
-	echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-
+	echo -n $'\e['"${HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+	[[ "${IPTABLES}" == "iptables" ]]&&cho -n "# v4"||echo -n "# v6";echo " ${*:-INPUT}"
+	echo -n $'\e['"${HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
 	sudo "${IPTABLES}" -vnx "${@:--L}" | colorize_iptables_output.sh
 }
 fw46_watch_helper() {
 	local IPTABLES="${1}";shift
-	watch -n1 -d -c "sudo ${IPTABLES} -vnx ${*:--L} | colorize_iptables_output.sh"
+	watch -n1 -d -c "sudo ${IPTABLES} -vnx ${*:--L}|colorize_iptables_output.sh"
 }
-fw4() { fw46_helper iptables "${@}"; }
-fw6() { fw46_helper ip6tables "${@}"; }
-fw4w() { fw46_watch_helper iptables "${@}"; }
-fw6w() { fw46_watch_helper ip6tables "${@}"; }
+fw4() { fw46_helper iptables "${@}";}
+fw6() { fw46_helper ip6tables "${@}";}
+fw4w() { fw46_watch_helper iptables "${@}";}
+fw6w() { fw46_watch_helper ip6tables "${@}";}
 fws() {
 	local HEADER_COLOR="33;1"
 	local SUB_HEADER_COLOR="31"
@@ -319,7 +301,7 @@ fwsa() {
 		echo -n $'\e['"${HEADER_COLOR}"'m'; echo "# ${IPTABLES}"
 		echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
 		echo -n $'\e[0m'
-		cat << EOF | while read -r
+		cat << EOF|while read -r
 -traw
 -tmangle
 -tnat
@@ -334,7 +316,7 @@ EOF
 			sudo "${IPTABLES}" -L "${REPLY}" -vnx --line-numbers | colorize_iptables_output.sh
 			echo -e '\n\n\n\n\n'
 			done
-		done | less -R
+		done|less -R
 }
 
 
@@ -349,26 +331,21 @@ EOF
 # pph=="prettyprinthelper" (params: char,charcount,color,text)
 pph() {
         [[ $# == 0 ]]&&echo "usage: pph _char _maxcharpos _asciicolor YOUR_RANDOM_STRING_STUFF"&&return
-        local _char="$1";shift
-        local _maxcharpos=$1;shift
-        local _asciicolor="$1";shift
-		local _inputstring="${*}"
+		local char,maxcharpos,asciicolor,inputstring,inputstringsize,terminalwidth,fillstringwidth
+        char="$1";shift
+        maxcharpos=$1;shift
+        asciicolor="$1";shift
+		inputstring="${*}"
         #c="$(IFS=';' read -sdR -p $'\e[6n' ROW COL;echo "${ROW#*[}")"  ## cursorpos, unneeded
-        local _inputstringsize=${#_inputstring}  ## we need stringlength instead
-        local _terminalwidth=
-        _terminalwidth="$(tput cols)"
-        local _fillstringwidth=$(( _maxcharpos - 1 - _inputstringsize ))
+        inputstringsize=${#inputstring}  ## we need stringlength instead
+        terminalwidth="$(tput cols)"
+        fillstringwidth=$(( maxcharpos - 1 - inputstringsize ))
 
-        printf "\n\e[%sm%s" "${_asciicolor}" "${_inputstring}"
-        if [[ ${_maxcharpos} -le ${_terminalwidth} ]]&&[[ ${_maxcharpos} -gt $(( _inputstringsize + 1 )) ]]
-        then
-                printf " "
-                printf "${_char}%.0s" $( seq 1 ${_fillstringwidth} )
-        elif [[ ${_maxcharpos} -gt ${_terminalwidth} ]]&&[[ ${_maxcharpos} -gt $(( _inputstringsize + 1 )) ]]
-                then
-                _fillstringwidth=$(( _terminalwidth - 1 - _inputstringsize ))
-                printf " "
-                printf "${_char}%.0s" $( seq 1 ${_fillstringwidth} )
+        printf "\n\e[%sm%s" "${asciicolor}" "${inputstring}"
+        if [[ ${maxcharpos} -le ${terminalwidth} ]]&&[[ ${maxcharpos} -gt $(( inputstringsize + 1 )) ]]
+        then printf " ${char}%.0s" $( seq 1 ${fillstringwidth} )
+        elif [[ ${maxcharpos} -gt ${terminalwidth} ]]&&[[ ${maxcharpos} -gt $(( inputstringsize + 1 )) ]]
+		then _fillstringwidth=$(( terminalwidth - 1 - inputstringsize ));printf " ${char}%.0s" $( seq 1 ${fillstringwidth} )
         fi
         printf "\e[m\n"
 }
@@ -388,39 +365,25 @@ alias q="exit"
 alias ..="cd ..; $LS $LS_OPT1 -l $LS_OPT2"
 makedirectory(){
         if [[ $# == 0 ]]
-        then
-                pushd "$(mktemp -d)"||return
-        else
-                mkdir "$1"
-                pushd "$1"||return
+        then pushd "$(mktemp -d)"||return
+        else mkdir "$1";pushd "$1"||return
         fi
-
 }
 alias mkcd=makedirectory
-the_missing_grep() {
-	grep -i "$@"
-}
+the_missing_grep() { grep -i "$@";}
 alias g=the_missing_grep
-the_missing_grep_v() {
-	grep -i -v "$@"
-}
+the_missing_grep_v() { grep -i -v "$@";}
 alias gv=the_missing_grep_v
-the_missing_grep_but_recursive() {
-	grep -Hri "$@"
-}
+the_missing_grep_but_recursive() { grep -Hri "$@";}
 alias gr=the_missing_grep_but_recursive
-the_missing_grep_but_recursive_to_less() {
-	grep -Hri "$@"|less
-}
+the_missing_grep_but_recursive_to_less() { grep -Hri "$@"|less;}
 alias grl="the_missing_grep_but_recursive_to_less"
 alias coloringgrep="grep --color -e$ -e"
 alias cg=coloringgrep
 filefind() {
 	if [[ $# -eq 0 ]]
-	then
-		sudo find . -type f
-	else
-		sudo find "$1" "$*" -type f
+	then sudo find . -type f
+	else sudo find "$1" "$*" -type f
 	fi
 }
 alias ffind=filefind
@@ -438,15 +401,10 @@ alias p="pushd"
 alias v="vim"
 alias watch='watch -n1 -d --color '
 # shellcheck disable=SC2145
-watchitallproper() {
-	watch -n1 -d --color "$@"'|grep -v grep'
-}
+watchitallproper() { watch -n1 -d --color "$@"'|grep -v grep';}
 alias w="watchitallproper"
 alias cf='tail -n +1 $(find . -maxdepth 1 -type f) | grep --color -e $ -e ^==.\*'
-h() {
-	[[ $# -lt 1 ]]&&history&& return
-	history|grep -i "$*"
-}
+h() { [[ $# -lt 1 ]]&&history&&return;history|grep -i "$*";}
 alias powershell="pwsh"
 
 getpass() {
@@ -470,38 +428,27 @@ krestart() {
 	do
 		pkill "$i"
 		if [[ $i == "kwin" ]]
-		then
-			kstart --replace kwin
-		else
-			kstart "$i"
+		then kstart --replace kwin
+		else kstart "$i"
 		fi
 	done
 }
 
 alias fix_scrollback_in_terminal="tput rmcup"
 
-backup() {
-	sudo cp -v "$1" "$1".bu
-}
+backup() { sudo cp -v "$1" "$1".bu;}
 alias bu=backup
-unbackup() {
-	sudo cp -v "$1" "${1%%\.bu}"
-}
+unbackup() { sudo cp -v "$1" "${1%%\.bu}";}
 alias unbu=unbackup
-aptfilesearchupdate() {
-	sudo apt-file update
-}
+aptfilesearchupdate() { sudo apt-file update;}
 alias afsu=aptfilesearchupdate
-aptfilesearch() {
-	apt-file search "$1"|grep /"$1"$
-}
+aptfilesearch() { apt-file search "$1"|grep /"$1"$;}
 alias afs=aptfilesearch
 
 datefromepoch() {
     if [[ $# -lt 1 ]]
 	then
-		echo specify epoch timestamp... ctrl+c to abort
-		echo
+		printf "specify epoch timestamp... ctrl+c to abort\n\n"
 		while :
 		do
 			read -rp"epoch> "
@@ -521,46 +468,38 @@ alias xmlprettyprintbat="xmllint --format -|bat -pp"  ## xmlprettyprint
 datetoepoch() {
     if [[ $# -lt 1 ]]
 	then
-		echo specify YYYYmmdd or YYYYmmdd HHMM... ctrl+c to abort
-		echo
+		printf "specify YYYYmmdd or YYYYmmdd HHMM... ctrl+c to abort\n\n"
 		while :
 		do
 			read -rp"date> "
-			local _date=
-			local _time=
-			_date="$(echo "${REPLY}"|awk '{print $1}')"
-			_time="$(echo "${REPLY}"|awk '{print $2}')"
-			[[ -z $_time ]]&&_time="0000"
-			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}"
-			busybox date -D "%Y%m%d %H%M" -d "${_date} ${_time}" +%s
+			local date,time
+			date="$(echo "${REPLY}"|awk '{print $1}')"
+			time="$(echo "${REPLY}"|awk '{print $2}')"
+			[[ -z $time ]]&&_time="0000"
+			busybox date -D "%Y%m%d %H%M" -d "${date} ${time}"
+			busybox date -D "%Y%m%d %H%M" -d "${date} ${time}" +%s
 			echo
 		done
 	fi
-	local _inputdate="$*"
-	[[ $# -lt 2 ]]&&_inputdate="${_inputdate}0000"
-	busybox date -D "%Y%m%d %H%M" -d "${_inputdate}"
-    busybox date -D "%Y%m%d %H%M" -d "${_inputdate}" +%s
+	local inputdate="$*"
+	[[ $# -lt 2 ]]&&inputdate="${inputdate}0000"
+	busybox date -D "%Y%m%d %H%M" -d "${inputdate}"
+    busybox date -D "%Y%m%d %H%M" -d "${inputdate}" +%s
 }
 
 alias cpr="rsync -avhH --progress"
 alias cpz="rsync -avzhH --progress"
 alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
 
-convert-url-hexvalues() {
-	printf "%b\n" "${*//%/\\x}"
-}
+convert-url-hexvalues() { printf "%b\n" "${*//%/\\x}";}
 
 ta() {
     if [[ $# -lt 1 ]]
 	then
 		# shellcheck disable=SC2016
-		echo 'specify command to `type -a` for... ctrl+c to abort'
-		echo
+		printf 'specify command to `type -a` for... ctrl+c to abort\n\n'
 		while :
-		do
-			read -rp"type -a> "
-			type -a "${REPLY}"
-			echo
+		do read -rp"type -a> ";type -a "${REPLY}";echo
 		done
 	fi
 	type -a "$1"
@@ -570,9 +509,7 @@ ta() {
 alias findallunicodechars='find|xargs grep --color=auto -P -n "[^\x00-\x7F]" 2>/dev/null'
 
 alias rec='script -aq ~/term.log-$(date "+%Y%m%d-%H-%M")'
-rammed() {
-    watch -n1 -d "ps aux | awk '{print \$6/1024\"M \" \$11}\' | sed 's/\.[[:digit:]]\+M/M/' | sort -rhk1,1 | head -25 | column -t"
-}
+rammed() { watch -n1 -d "ps aux | awk '{print \$6/1024\"M \" \$11}\' | sed 's/\.[[:digit:]]\+M/M/' | sort -rhk1,1 | head -25 | column -t";}
 alias ram=rammed
 
 # shellcheck disable=SC2139
@@ -586,8 +523,8 @@ alias apt-list-changelog="apt-get changelog -t $(lsb_release -sc)-backports"
 #v6test code
 #for i in :: $(ip -6 r | grep default | awk '{print $3}' | head -1) 2606:4700:4700::1001 one.one.one.one; do if ping -6 -c1 -W1 $i &>/dev/null; then echo -n $'\e[32;1m'; else echo -n $'\e[31;1m'; fi; echo $i$'\e[0m'; done
 
-kk() { [[ $# -lt 1 ]]&&echo no input given&&return;info -k "$1"|grep --color "$1";echo;man -k "$1"|grep --color "$1"; }
-vm() { man "$1" | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -; }
+kk() { [[ $# -lt 1 ]]&&echo no input given&&return;info -k "$1"|grep --color "$1";echo;man -k "$1"|grep --color "$1";}
+vm() { man "$1" | col -b | vim -MR --not-a-term -c "set ft=man nomod nolist hls is" -;}
 m() {
 	PAGER="cat" man "$1" | grep ^\\w | sed '1d;$d'
 	echo
@@ -595,12 +532,12 @@ m() {
 	LESS="+/^${REPLY}" man "$1"
 }
 ms() {
-        dpkg -s dialog &>/dev/null || { echo "Needs 'dialog' package which is not installed on this system!" && return; }
+        dpkg -s dialog &>/dev/null||{ echo "Needs 'dialog' package which is not installed on this system!"&&return;}
         [[ $# -lt 1 ]] && echo 'Man page name consisting of a single word expected but not given.' && return
         MANPAGE=$1
-        [[ -n $2 ]] && DEFAULTCHOICE=$2 || DEFAULTCHOICE='0'
-        man "${MANPAGE}" > /dev/null 2>&1 || { echo "${MANPAGE}" man page not present on this system!; return; }
-        mapfile -t OUTLINE < <(PAGER="cat" man "${MANPAGE}" | grep ^\\w | grep -v -e AUTHORS -e COPYRIGHT | sed '1d;$d')
+        [[ -n $2 ]]&&DEFAULTCHOICE=$2||DEFAULTCHOICE='0'
+        man "${MANPAGE}" >/dev/null 2>&1||{ echo "${MANPAGE}" man page not present on this system!;return;}
+        mapfile -t OUTLINE < <(PAGER="cat" man "${MANPAGE}"|grep ^\\w|grep -v -e AUTHORS -e COPYRIGHT|sed '1d;$d')
         RESULTSIZE="${#OUTLINE[*]}"
 		# shellcheck disable=SC2046
         CHOICE=$(
@@ -615,11 +552,11 @@ ms() {
                                 echo -n " $( echo "${OUTLINE[i]}" | sed 's/ /\_/g' ) "
                                 (( COUNT++ ))
                         done
-                ) 2>&1 >/dev/tty || echo CANCEL
+                ) 2>&1 >/dev/tty||echo CANCEL
         )
-        [[ "$CHOICE" =~ "CANCEL" ]] && return
+        [[ "$CHOICE" =~ "CANCEL" ]]&&return
 		# shellcheck disable=SC2001
-        MANPAGER="less +/^$( echo "${OUTLINE[$CHOICE]}" | sed 's/ /\\ /g' )" man "${MANPAGE}"
+        MANPAGER="less +/^$( echo "${OUTLINE[$CHOICE]}"|sed 's/ /\\ /g' )" man "${MANPAGE}"
         ms "${MANPAGE}" "${CHOICE}"
 }
 
@@ -637,23 +574,19 @@ tw () { tweep -u sjashc -s "$1" | grep -i -e "^\d+" -e "$1"; }
 alias gg=global
 syscalls_h() {
     if [[ $# != 0 ]]
-    then
-        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+' | grep "$1" --color
-    else
-        sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+'
+    then sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+' | grep "$1" --color
+    else sudo bpftrace -l tracepoint:syscalls | grep sys_enter | sed 's/.*sys_enter_//g' | sort | xargs 2>/dev/null whatis | grep --color -e $ -e '^[^[:space:]]\+'
     fi
 }
 alias syz=syscalls_h
-bpf_h() {
-    for i in $(sudo bpftrace -l | awk -F: '{print $1}' | sort | uniq); do printf "\e[41;1m%s\e[m\n" "$i"; sudo bpftrace -l "${i}": | awk -F: '{print $2}' | sort | uniq -c | awk 'NF>1{print $0}'; done | less -R +/^tracepoint
-}
+bpf_h() { for i in $(sudo bpftrace -l | awk -F: '{print $1}' | sort | uniq); do printf "\e[41;1m%s\e[m\n" "$i"; sudo bpftrace -l "${i}": | awk -F: '{print $2}' | sort | uniq -c | awk 'NF>1{print $0}'; done | less -R +/^tracepoint;}
 alias bpf=bpf_h
 
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias pipestatus='echo ${PIPESTATUS[@]}'
 
 rotng() {
-    [[ $# -ne 0 ]] && echo "$@" | tr 'A-Za-z0-9' 'N-ZA-Mn-za-m5-90-4' && return
+    [[ $# -ne 0 ]]&&echo "$@"|tr 'A-Za-z0-9' 'N-ZA-Mn-za-m5-90-4'&&return
     tr 'A-Za-z0-9' 'N-ZA-Mn-za-m5-90-4'
 }
 alias r=rotng
@@ -670,12 +603,7 @@ alias topcommands="history | awk '{CMD[\$3]++;count++;} END { for (i in CMD)prin
 alias kdeversion="dpkg -l | awk -F'[:-]' '/plasma-desktop\s/{print \$3}'"
 alias ansibletags="( cd /home/sjas/etc/.ansible; rg -e '^\s+tags:' --no-filename --no-line-number | sort | uniq | awk 'NR>1' )"
 
-fdiff() {
-	wdiff -n "$1" "$2" | colordiff
-}
-x2d() {
-	printf "%d\n" "$1"
-}
+fdiff() { wdiff -n "$1" "$2"|colordiff;}
 
 #OPENSSL
 alias oxk='openssl rsa -noout -text -in'
@@ -687,21 +615,10 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 # hex2dec and dec2hex
+x2d() { printf "%d\n" "$1";}
 # shellcheck disable=SC2059
-xd() {
-    printf "hex> "
-    while read -r i
-    do
-        printf "dec  $(( 0x${i} ))\n\nhex> "
-    done
-}
-dx() {
-    printf "dec> "
-    while read -r i
-    do
-        printf 'hex  %x\n\ndec> ' "$i"
-    done
-}
+xd() { printf "hex> ";while read -r i;do printf "dec  %s\n\nhex> " "$(( 0x${i} ))";done;}
+dx() { printf "dec> ";while read -r i;do printf "hex  %x\n\ndec> " "$i";done;}
 
 
 
@@ -743,9 +660,7 @@ catpub() {
 	for i in id_rsa id_ecdsa id_ecdsa_sk id_ed25519 id_ed25519_sk id_dsa
 	do
 		if [[ -f /home/sjas/.ssh/$i ]]
-		then
-			pp "$i"
-			cat /home/sjas/.ssh/"$i".pub 2>/dev/null||echo PUBKEY MISSING
+		then pp "$i";cat /home/sjas/.ssh/"$i".pub 2>/dev/null||echo PUBKEY MISSING
 		fi
 	done
 }
@@ -811,7 +726,6 @@ __pull_from_git() {
         cd -||return
     fi
 }
-
 __push_to_git() {
     local _folder="$1";shift
     if \ping -c1 -W1 "${_upstream}" >/dev/null 2>&1
@@ -828,14 +742,11 @@ __push_to_git() {
 __dautocompletion() {
     local _word="${COMP_WORDS[$COMP_CWORD - 1]}"
     local _cur="${COMP_WORDS[COMP_CWORD]}"
-
-
     __autocompletehelper() {
         local _folder=$1;shift
         local _files="";_files="$(\ls -1 "${_folder}")"
         mapfile -t COMPREPLY < <(compgen -W "${_files}" -- "${_cur}")
      }
-
     case "${_word}" in
         n|cn)   __autocompletehelper "${_folder_notes}" ;;
         dp|cdp) __autocompletehelper "${_folder_docs_prv}" ;;
@@ -859,18 +770,10 @@ __dautocompletion() {
 # proc
 # sym
 # diff
-showapt() {
-	watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep -e '/usr/sbin/dnsmasq' | cut -c 68-'
-}
-shownet() {
-	watch -n 1 -d 'printf "\033[41;1mIP LINK\033[m\n";ip -s -d l;printf "\n\033[41;1mIP ROUTE\033[m\n";ip -d r;printf "\n\033[41;1mIP ADDR\033[m\n";ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
-}
-shownet4() {
-	watch -n 1 -d 'ip -d -4 r; echo; ip -s -d -4 a | grep -v lft; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
-}
-shownet6() {
-	watch -n 1 -d 'echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep'
-}
+showapt() { watch -n 1 -d 'ps auxww | grep -e apt -e dpkg | grep -v -e '--adaptive' -e grep -e '/usr/sbin/dnsmasq' | cut -c 68-';}
+shownet() { watch -n 1 -d 'printf "\033[41;1mIP LINK\033[m\n";ip -s -d l;printf "\n\033[41;1mIP ROUTE\033[m\n";ip -d r;printf "\n\033[41;1mIP ADDR\033[m\n";ip -d a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep';}
+shownet4() { watch -n 1 -d 'ip -d -4 r; echo; ip -s -d -4 a | grep -v lft; echo; ps aux | grep openvpn | grep -v -e sudo -e grep';}
+shownet6() { watch -n 1 -d 'echo; ip -d -6 r; echo; ip -d -6 a; echo; ps aux | grep openvpn | grep -v -e sudo -e grep';}
 showgw()  {
 	#proper code;sadly that wont work inside a watch(1) as it cant handle functions and im not putting this into a single file to make it work
 #	_pinghelper() {
@@ -913,15 +816,15 @@ showru() {
 	echo
 	ip ru
 	echo
-	for i in $(ip ru | awk '{print $NF}' | tr -d ':')
+	for i in $(ip ru|awk '{print $NF}'|tr -d ':')
 	do
 		echo
-		echo $'\e[33;1m'"$i $(ip ru | grep -e "^$i:" | awk '{print $NF}')"
+		echo $'\e[33;1m'"$i $(ip ru|grep -e "^$i:"|awk '{print $NF}')"
 		echo ================$'\e[0m'
 		ip -d r l t "$i"\
-			|sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g' \
-			| column -t \
-			| sort -k1
+			|sed 's/\(default\)\s\+\(via\)\s\+/\1_\2_/g'\
+			|column -t\
+			|sort -k1
 	done|sed 's/default_via_/default via /'
 }
 showr() {
@@ -932,24 +835,20 @@ showr() {
 		while read -r j
 		do
 			if ! echo "$j"|grep -q src
-			then
-				echo "${j/metric/ . . metric}"
-			else
-				echo "$j"
+			then echo "${j/metric/ . . metric}"
+			else echo "$j"
 			fi
 		done < <(
 			while read -r i
 			do
 				if ! echo "$i" | grep -q via
-				then
-					echo "${i/dev/ . . dev}"
-				else
-					echo "$i"
+				then echo "${i/dev/ . . dev}"
+				else echo "$i"
 				fi
-			done  < <(ip -d r)) \
-				|awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}'
-	) \
-		|column -t \
+			done < <(ip -d r)) \
+			|awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}'
+	)\
+		|column -t\
 		|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 
 	echo
@@ -960,24 +859,20 @@ showr() {
 		while read -r j
 		do
 			if ! echo "$j"|grep -q src
-			then
-				echo "${j/metric/ . . metric}"
-			else
-				echo "$j"
+			then echo "${j/metric/ . . metric}"
+			else echo "$j"
 			fi
 		done < <(
 			while read -r i
 			do
 				if ! echo "$i" | grep -q via
-				then
-					echo "${i/dev/ . . dev}"
-				else
-					echo "$i"
+				then echo "${i/dev/ . . dev}"
+				else echo "$i"
 				fi
-			done  < <(ip -d -6 r)) \
+			done  < <(ip -d -6 r))\
 			|awk '{print $2" "$4" "$6" "$8" "$10" "$12" "$14}'
-	) \
-	|column -t \
+	)\
+	|column -t\
 	|sed 's/\(\s\)\.\(\s\)/\1 \2/g'
 }
 showss() {
@@ -987,35 +882,47 @@ showss() {
 		_uid=$(echo "$i"|grep -oe "uid:[[:digit:]]\+"|cut -d: -f2)
 		#echo "$i"|sed 's/uid:\S\+/user:'"$(id -nu "$_uid")"'/'
 		if (echo "$i"|grep -q uid:)
-		then
-			echo "${i//uid:+([[:digit:]])/user:"$(id -nu "$_uid")"}"
-		else
-			echo "${i}"
+		then echo "${i//uid:+([[:digit:]])/user:"$(id -nu "$_uid")"}"
+		else echo "${i}"
 		fi
 	done < <(
 				i=$(ss -tulpenO\
 				|sed '1s/\(Local\|Peer\) /\1_/g;s/PortProcess/Port Process/'\
 				|sed 's/\(v6only\|ino\|sk\|users\):\S\+\s\+//g')
+
 				echo "$i"|head -1
 				echo "$i"|grep -e '^tcp'
 				echo "$i"|grep -e '^udp'
 			)
 }
-showdu() {
-	du -sh ../* | sort -hk1
-}
-showdf() {
-	watch -n 1 -d 'df -h'
-}
+showdu() { du -sh ../* | sort -hk1;}
+showdf() { watch -n 1 -d 'df -h';}
 showproc() {
-	for i in $(find /proc -maxdepth 1 -type f | grep -v -e kallsyms -e sched_debug -e kcore -e kmsg -e kpagecgroup -e kpagecount -e kpageflags -e sysrq-trigger -e vmallocinfo); do echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo -en '\e[0m'; sudo cat "$i"; echo -e '\n\n\n\n\n'; done | less -RNS
+	for i in $(find /proc -maxdepth 1 -type f|grep -v -e kallsyms -e sched_debug -e kcore -e kmsg -e kpagecgroup -e kpagecount -e kpageflags -e sysrq-trigger -e vmallocinfo)
+	do
+		echo -n $'\e[1;33m'
+		printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+		echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'
+		printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+		echo -en '\e[0m'
+		sudo cat "$i"
+		echo -e '\n\n\n\n\n'
+	done|less -RNS
 }
 showsym() {
-	for i in $(find /proc -maxdepth 1 -type f | grep -e kallsyms -e sched_debug -e vmallocinfo); do echo -n $'\e[1;33m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo $'\e[1;33m'"# $i"; echo -n $'\e[1;33m'; printf "%*s\n" "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'; echo -en '\e[0m'; sudo cat "$i"; echo -e '\n\n\n\n\n'; done | less -RNS
+	for i in $(find /proc -maxdepth 1 -type f|grep -e kallsyms -e sched_debug -e vmallocinfo)
+	do
+		echo -n $'\e[1;33m'
+		printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+		echo $'\e[1;33m'"# $i"
+		echo -n $'\e[1;33m'
+		printf "%*s\n" "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+		echo -en '\e[0m'
+		sudo cat "$i"
+		echo -e '\n\n\n\n\n'
+	done|less -RNS
 }
-showdiff() {
-	wdiff -sdn <(diff -u4 "$1" "$2") | colordiff
-}
+showdiff() { wdiff -sdn <(diff -u4 "$1" "$2")|colordiff;}
 
 
 
@@ -1027,17 +934,15 @@ showdiff() {
 # make the existing ones take parameters
 # build in a security prompt for the route aliases asking wether the queried ASN is the right one
 td(){
-    ssh "$1" "sudo echo; sudo ip a|grep -v valid_lft"
+    ssh "$1" "sudo echo;sudo ip a|grep -v valid_lft"
 	echo
     read -p"interface> "
     # shellcheck disable=SC2029
 	ssh "$1" "sudo tcpdump -U -s0 -i ${REPLY} \"not (host \$(echo \$SSH_CLIENT|awk '{print \$1}') and port \$(echo \$SSH_CLIENT|awk '{print \$3}'))\" -w-"|wireshark -ki-
 }
 
-alias ping=pingt
-pingt() {
-	([[ -t 1 ]]&&\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[\033[32m%F %T\033[m]", $1); print; fflush()}')||\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[%F %T]", $1); print; fflush()}'
-}
+alias ping=pings
+pings() { ([[ -t 1 ]]&&\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[\033[32m%F %T\033[m]", $1); print; fflush()}')||\ping -D "$@" | awk '{ if(gsub(/\[|\]/, "", $1)) $1=strftime("[%F %T]", $1); print; fflush()}';}
 ipcalced() {
     [[ $# -eq 1 ]] && \ipcalc "$1" && return
 	echo enter ip net
@@ -1054,46 +959,30 @@ ipcalced() {
 	done
 }
 alias ipcalc=ipcalced
-digged() {
-	\dig +nocmd +nocomments +noquestion +nostats "${@}"|column -t
-}
+digged() { \dig +nocmd +nocomments +noquestion +nostats "${@}"|column -t;}
 alias dig=digged
-drilled() {
-    \drill -T "${@}" | column -t | sed 's/IN/=&/' | column -t -s "="
-}
+drilled() { \drill -T "${@}"|column -t|sed 's/IN/=&/'|column -t -s "=";}
 alias drill=drilled
 # shellcheck disable=SC2118
-drillet() {
-    \drill "${@}" |& grep "Query time"
-}
+drillet() { \drill "${@}"|&grep "Query time";}
 alias drillt=drillet
-showcache() {
-	sudo pkill -usr1 dnsmasq;PAGER="cat" journalctl --since="1s ago" -u dnsmasq
-}
-flushcache() {
-	sudo pkill -hup dnsmasq
-}
-watchcache() {
-	watch -n1 -d "sudo pkill -usr1 dnsmasq;PAGER=cat journalctl --since=\"1s ago\" -u dnsmasq|sed -n 's/^.\+]: //;/^server/,\$p'"
-}
-getip() {
-	\dig "$1" +short | xclip && xclip -o
-}
+showcache() { sudo pkill -usr1 dnsmasq;PAGER="cat" journalctl --since="1s ago" -u dnsmasq;}
+flushcache() { sudo pkill -hup dnsmasq;}
+watchcache() { watch -n1 -d "sudo pkill -usr1 dnsmasq;PAGER=cat journalctl --since=\"1s ago\" -u dnsmasq|sed -n 's/^.\+]: //;/^server/,\$p'";}
+getip() { \dig "$1" +short|xclip&&xclip -o;}
 dns() {
 #	[[ 0 -eq $# ]]&&printf "\nusage:\n\t%s FILE COMMAND_TO_RUN\n\t%s FILE\n" "${FUNCNAME[0]}" "${FUNCNAME[0]}"&&return
 	__dnshelper() {
 		printf "dns > %s\n" "$(\dig "$1" +short)"
 		printf "rdns> %s\n" "$(\dig -x "$(\dig "$1" +short)" +short)"
 	}
-    [[ $# -eq 1 ]]&&printf "host> %s\n" "$1"&& __dnshelper "$1" && return
+    [[ $# -eq 1 ]]&&printf "host> %s\n" "$1"&& __dnshelper "$1"&&return
 	echo -n 'host> '
-	while
-	read -r i
+	while read -r i
 	do
 		__dnshelper "$i"
 		echo
 		echo -n 'host> '
-
 	done
 }
 rdns() {
@@ -1101,19 +990,17 @@ rdns() {
 		printf "rdns> %s\n" "$(\dig -x "$1" +short)"
 		printf "dns > %s\n" "$(\dig "$(\dig -x "$1" +short)" +short)"
 	}
-    [[ $# -eq 1 ]]&&printf "ip  > %s\n" "$1"&&__rdnshelper "$1" && return
+    [[ $# -eq 1 ]]&&printf "ip  > %s\n" "$1"&&__rdnshelper "$1"&&return
 	echo -n 'ip  > '
-	while
-	read -r i
+	while read -r i
 	do
 		__rdnshelper "$i"
 		echo
 		echo -n 'ip  > '
-
 	done
 }
 bgpmon() {
-    [[ $# -eq 1 ]] && whois -h whois.bgpmon.net "$1" && return
+    [[ $# -eq 1 ]]&&whois -h whois.bgpmon.net "$1"&&return
 	echo enter ip/domain for whois.bgpmon.net query
 	echo
 	echo -n 'bgpmon> '
@@ -1121,19 +1008,18 @@ bgpmon() {
 	while
 	read -r i
 	do
-		whois -h whois.bgpmon.net "$i" | grep -v ^%
+		whois -h whois.bgpmon.net "$i"|grep -v ^%
 		echo
 		echo -n 'bgpmon> '
 	done
 }
 cymru() {
-    [[ $# -eq 1 ]] && whois -h whois.cymru.com "$1" && return
+    [[ $# -eq 1 ]]&&whois -h whois.cymru.com "$1"&&return
 	echo enter ip/ASN for whois.cymru.com query
 	echo
 	echo -n 'cymru> '
 
-	while
-	read -r i
+	while read -r i
 	do
 		whois -h whois.cymru.com "$i" | tail -1 | awk '{$2=$3=$4=""; print $0}'
 		echo
@@ -1141,7 +1027,7 @@ cymru() {
 	done
 }
 radb() {
-    [[ $# -eq 1 ]] && whois -h whois.radb.net "$1" && return
+    [[ $# -eq 1 ]]&&whois -h whois.radb.net "$1"&&return
 	echo enter ip/ASN for whois.radb.net query
 	echo
 	echo -n 'radb> '
@@ -1156,20 +1042,18 @@ radb() {
 	done
 }
 radb-routes() {
-    [[ $# != 1 ]] && echo 'enter domain nameto get all routes for its corresponding ASN' && exit 0
-    _net=$(whois -h whois.radb.net -- "-i origin $(whois -h whois.cymru.com "$(host "$1" | grep address | awk '{print $NF}' | head -1)" | tail -1 | awk '{$2=$3=$4=""; print $0}' | cut -d' ' -f1)" | grep ^route)
-    echo "${_net}" | grep "route:" | awk '{print $2}' | sed 's/\([[:alnum:]]\+\)[:.]/\1 @/' | sed 's/.\+/\L&/g' | sort -nk1,1 | sed 's/ @/./'
+    [[ $# != 1 ]]&&echo 'enter domain nameto get all routes for its corresponding ASN'&&exit 0
+    _net=$(whois -h whois.radb.net -- "-i origin $(whois -h whois.cymru.com "$(host "$1"|grep address|awk '{print $NF}'|head -1)"|tail -1|awk '{$2=$3=$4="";print $0}'|cut -d' ' -f1)"|grep ^route)
+    echo "${_net}"|grep "route:"|awk '{print $2}'|sed 's/\([[:alnum:]]\+\)[:.]/\1 @/'|sed 's/.\+/\L&/g'|sort -nk1,1|sed 's/ @/./'
     echo
-    echo "${_net}" | grep "route6:" | awk '{print $2}' | sed 's/\([[:alnum:]]\+\)[:.]/\1 @/' | sed 's/.\+/\L&/g' | sort -k1,1 | sed 's/ @/:/'
+    echo "${_net}"|grep "route6:"|awk '{print $2}'|sed 's/\([[:alnum:]]\+\)[:.]/\1 @/'|sed 's/.\+/\L&/g'|sort -k1,1|sed 's/ @/:/'
 }
 geoip() {
 	# needs package 'geoip-bin'
 	echo enter ip to geoiplookup query
 	echo
 	echo -n 'geoip> '
-
-	while
-	read -r i
+	while read -r i
 	do
 		geoiplookup "$i" | sed -e 's/GeoIP Country Edition: //'
 		echo
@@ -1432,8 +1316,7 @@ utrace() {
 			["ORG"]="Non-Profit Organization"
 			["ARPA"]="Arpanet"
 			["NATO"]="Nato field")
-	else
-		echo '[-] need a bash v4 shell to run'
+	else echo '[-] need a bash v4 shell to run'
 	fi
 
 	echo "enter ip for whois country lookup"
@@ -1445,21 +1328,17 @@ utrace() {
 	read -r i
 	do
         l
-		stringlist="$( whois "$i" | \grep -i country | cut -d':' -f2 | sed -e 's/ //g')"
-
+		stringlist="$(whois "$i"|\grep -i country|cut -d':' -f2|sed -e 's/ //g')"
 		for j
 		in ${stringlist}
-		do
-			echo -e "\e[33;1m$j \e[0m${countrycodes[$j]}"
+		do echo -e "\e[33;1m$j \e[0m${countrycodes[$j]}"
 		done
 		echo
 		echo -en "utrace> "
 	done
 }
 
-asn() {
-        nc whois.cymru.com 43 < <(dig +short "$*")
-}
+asn() { nc whois.cymru.com 43 < <(dig +short "$*");}
 
 
 
@@ -1491,29 +1370,29 @@ gopackagepushandupdateglobalindex() {
 }
 gopackageshowupstreamversion() {
 	[[ $# -eq 0 ]]&&printf "\nusage\n\t%s LIBRARY\n" "${FUNCNAME[0]}"&&return
-	! [[ $# -eq 1 ]]&&echo exactly one argument needed&&return
+	[[ $# -ne 1 ]]&&echo exactly one argument needed&&return
 	REPO=$1;shift
 	watch -n1 -d "echo $REPO;curl -s https://pkg.go.dev/$REPO|fgrep versions|fgrep tab|fgrep aria-label|fgrep Version:|cut -d'\"' -f 4"
 
 }
 gop() {
-	[[ $# != 1 ]] && echo 'can only take a single argument'
+	[[ $# -ne 1 ]]&&echo 'can only take a single argument'&&return
 	firefox --new-tab https://pkg.go.dev/search?q="$1"
 }
 gosp() {
 	firefox --new-tab https://go.dev/ref/spec
 }
 gopackageslist() {
-	go version -m "${GOPATH}"/* | grep -e 'mod\s' -e '^\S'
+	go version -m "${GOPATH}"/*|grep -e 'mod\s' -e '^\S'
 }
 gopackagesupgrade() {
-	for i in $(go version -m "${GOPATH}"/* | grep -e 'mod\s' | awk '{print $2}');do go install "${i}"@latest;done
+	for i in $(go version -m "${GOPATH}"/*|grep -e 'mod\s'|awk '{print $2}');do go install "${i}"@latest;done
 	gopackageslist
 }
 #fixme does this work?
 runonfolderchange() {
-	[[ $# == 0 ]] && printf "\n\nUSAGE: enter command to run when anything it the current folder was written"
-	inotifywait -r -m . -e close_write | while read -r; do echo $'\e[38;5;220;1m'"RUNNING...:"$'\e[0m'; "${@}"; echo $'\e[38;5;220;1m'"... DONE."$'\e[0m\n'; done
+	[[ $# == 0 ]]&&printf "\n\nUSAGE: enter command to run when anything it the current folder was written"
+	inotifywait -r -m . -e close_write|while read -r;do echo $'\e[38;5;220;1m'"RUNNING...:"$'\e[0m';"${@}";echo $'\e[38;5;220;1m'"... DONE."$'\e[0m\n';done
 
 }
 
@@ -1522,19 +1401,13 @@ runonchange() {
 	if [[ $# -eq 1 ]]
 	then
 		while inotifywait -e modify "$1" >/dev/null 2>&1||true
-        do
-            eval "$1"
-			# shellcheck disable=SC2120
-			ppg
+        do eval "$1";ppg
         done
 	elif [[ $# -eq 2 ]]
 	then
 		FILENAME="$1";shift
 		while inotifywait -e modify "${FILENAME}" >/dev/null 2>&1||true
-		do
-			eval "$*"
-			# shellcheck disable=SC2120
-			ppg
+		do eval "$*";ppg
 		done
 	fi
 }
@@ -1566,18 +1439,13 @@ runonchange() {
 #}
 
 rundotpreview(){
-	[[ $# -eq 0 ]] && \
-		echo && \
-		echo "USAGE:" && \
-		echo "    ${FUNCNAME[0]} FILE.dot" && \
-		return
-	FORMAT=png
-	DOTFILE=$1
-	IMGFILE=${DOTFILE%.dot}.$FORMAT
+	[[ $# -eq 0 ]]&&printf "\nUSAGE:\n\t%s FILE.dot\n" "${FUNCNAME[0]}"&&return
+	local format,dotfile,imgfile
+	format=png
+	dotfile=$1
+	imgfile=${dotfile%.dot}.$format
 	while :
-	do
-		dot -T"$FORMAT" -o "$IMGFILE" "$DOTFILE"
-		okular "$IMGFILE"
+	do dot -T"$format" -o "$imgfile" "$dotfile";okular "$imgfile"
 	done
 }
 
@@ -1588,25 +1456,17 @@ rundotpreview(){
 ## CODING TEMPLATES #########################################################################################
 #golang
 golangtemplate() {
-    [[ $# -eq 0 ]]&&\
-        echo&&\
-        echo "USAGE:"&&\
-        echo "    ${FUNCNAME[0]} FILENAME_WITHOUT_.go_EXTENSION"&&\
-        return
-    [[ $# -ne 1 ]]&&\
-        echo&&\
-        echo "only one argument allowed"&&\
-        return
-
+    [[ $# -eq 0 ]]&&printf "USAGE:\n\t%s FILENAME_WITHOUT_.go_EXTENSION\n" "${FUNCNAME[0]}"&&return
+    [[ $# -ne 1 ]]&&printf "only one argument allowed\n"&&return
 	local _folder _containing_folder _filename
-	_folder="$1"
+	folder="$1"
 	cd /home/sjas/wrk/golang||:
-	mkdir "$_folder"
-	cd "$_folder"||:
-	_containing_folder="$(pwd)"
-	_filename="${_containing_folder##*/}".go
+	mkdir "$folder"
+	cd "$folder"||:
+	containing_folder="$(pwd)"
+	filename="${containing_folder##*/}".go
 	# shellcheck disable=SC2028,SC2016
-	cat <<EOF > "$_filename"
+	cat <<EOF > "$filename"
 package main
 
 import (
@@ -1661,10 +1521,10 @@ func main() { starttime:=time.Now()
 	fmt.Println("\nruntime",endtime.Sub(starttime))
 }
 EOF
-	chmod +x "$_filename"
+	chmod +x "$filename"
 	go mod init main
 	go mod tidy
-	vim "$_filename"
+	vim "$filename"
 }
 
 ## DOCKER CONTAINERLAB KUBERNETES ###########################################################################
@@ -1681,7 +1541,6 @@ EOF
 #	fi
 #	sudo ip l d podman1
 #}
-
 alias kc="kubectl"
 alias oc="omnictl"
 
@@ -1692,42 +1551,34 @@ alias oc="omnictl"
 
 ## SCRAPYARD ################################################################################################
 #TMUX
-tmw() {
-	tmux split-window -dh "$*"
-}
-tmwh() {
-	tmux split-window -dv "$*"
-}
+tmw() { tmux split-window -dh "$*";}
+tmwh() { tmux split-window -dv "$*";}
 
-getdiff() {
-	sdiff -ds <(sudo cat "$1") <(sudo cat "$2") | colordiff
-}
+getdiff() { sdiff -ds <(sudo cat "$1") <(sudo cat "$2")|colordiff;}
 cmddiff() {
-	[ ! $# -gt 1 ] && echo USAGE: cmddiff CMD PARAM \[ALT_PARAM\] && return
+	! [[ $# -gt 1 ]]&&echo USAGE: cmddiff CMD PARAM \[ALT_PARAM\]&&return
 	CMD=$1
 	PARAM=$2
 	ALT_PARAM=${3:- }
-	sdiff <(sudo "$CMD $PARAM") <(sudo "$CMD $ALT_PARAM") | colordiff
+	sdiff <(sudo "$CMD $PARAM") <(sudo "$CMD $ALT_PARAM")|colordiff
 }
 sshsdiff() {
-	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
+	! [[ $# -eq 3 ]]&&echo USAGE: sshdiff HOST1 HOST2 'CMD'&&return
 	HOST1=$1
 	HOST2=$2
 	CMD=$3
-	sdiff -ds <(ssh "$HOST1 $CMD") <(ssh "$HOST2 $CMD") | colordiff
+	sdiff -ds <(ssh "$HOST1 $CMD") <(ssh "$HOST2 $CMD")|colordiff
 }
 # shellcheck disable=SC2029
 sshwdiff() {
-	[ ! $# -eq 3 ] && echo USAGE: sshdiff HOST1 HOST2 'CMD' && return
+	! [[ $# -eq 3 ]]&&echo USAGE: sshdiff HOST1 HOST2 'CMD'&&return
 	HOST1="$1"
 	HOST2="$2"
 	CMD="$3"
 	wdiff -n <(ssh "${HOST1}" "${CMD}") <(ssh "${HOST2}" "${CMD}") | colordiff
 }
 
-rpmextract() {
-	rpm2cpio "$1" | cpio -idmv
-}
+rpmextract() { rpm2cpio "$1"|cpio -idmv;}
 # FIXME: most of these need to be thrown out
 alias    et="vim ~/.todo2"
 alias   ett="vim ~/.todo"
@@ -1740,9 +1591,7 @@ kw() { export KANBANFILE=/home/sjas/.kanban/wrk.csv;}
 kp() { export KANBANFILE=/home/sjas/.kanban/prv.csv;}
 alias k=kanban
 
-stripcolors() {
-	sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g"
-}
+stripcolors() { sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g";}
 
 # the commented out lines where for syncing these with upstream, syncthing will make these obsolete eventually
 #k() {
