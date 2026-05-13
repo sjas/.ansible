@@ -262,11 +262,11 @@ fws() {
 -tfilter
 EOF
 		do
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; echo "# $([[ ${IPTABLES} == iptables ]] && echo v4 || echo v6) $(echo "${REPLY}" | awk '{print $2}')"
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';echo "# $([[ ${IPTABLES} == iptables ]]&&echo v4||echo v6) $(echo "${REPLY}"|awk '{print $2}')"
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
 			echo -n $'\e[0m'
-			sudo "${IPTABLES}" -L "${REPLY}" -vnx --line-numbers | colorize_iptables_output.sh
+			sudo "${IPTABLES}" -L "${REPLY}" -vnx --line-numbers|colorize_iptables_output.sh
 			echo -e '\n\n\n\n\n'
 			done
 		done
@@ -297,9 +297,9 @@ fwsa() {
 	for IPTABLES in iptables ip6tables
 	do
 		echo -e '\n\n\n\n\n'
-		echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-		echo -n $'\e['"${HEADER_COLOR}"'m'; echo "# ${IPTABLES}"
-		echo -n $'\e['"${HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+		echo -n $'\e['"${HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+		echo -n $'\e['"${HEADER_COLOR}"'m';echo "# ${IPTABLES}"
+		echo -n $'\e['"${HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
 		echo -n $'\e[0m'
 		cat << EOF|while read -r
 -traw
@@ -309,9 +309,9 @@ fwsa() {
 -tsecurity
 EOF
 		do
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; echo "# $([[ ${IPTABLES} == iptables ]] && echo v4 || echo v6) $(echo "${REPLY}" | awk '{print $2}')"
-			echo -n $'\e['"${SUB_HEADER_COLOR}"'m'; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' '#'
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';echo "# $([[ ${IPTABLES} == iptables ]]&&echo v4||echo v6) $(echo "${REPLY}"|awk '{print $2}')"
+			echo -n $'\e['"${SUB_HEADER_COLOR}"'m';printf '%*s\n' "${COLUMNS:-$(tput cols)}" ''|tr ' ' '#'
 			echo -n $'\e[0m'
 			sudo "${IPTABLES}" -L "${REPLY}" -vnx --line-numbers | colorize_iptables_output.sh
 			echo -e '\n\n\n\n\n'
@@ -343,9 +343,9 @@ pph() {
 
         printf "\n\e[%sm%s" "${asciicolor}" "${inputstring}"
         if [[ ${maxcharpos} -le ${terminalwidth} ]]&&[[ ${maxcharpos} -gt $(( inputstringsize + 1 )) ]]
-        then printf " ${char}%.0s" $( seq 1 ${fillstringwidth} )
+        then printf " ";printf "${char}%.0s" $( seq 1 ${fillstringwidth} )
         elif [[ ${maxcharpos} -gt ${terminalwidth} ]]&&[[ ${maxcharpos} -gt $(( inputstringsize + 1 )) ]]
-		then _fillstringwidth=$(( terminalwidth - 1 - inputstringsize ));printf " ${char}%.0s" $( seq 1 ${fillstringwidth} )
+		then _fillstringwidth=$(( terminalwidth - 1 - inputstringsize ));printf " ";printf "${char}%.0s" $( seq 1 ${fillstringwidth} )
         fi
         printf "\e[m\n"
 }
@@ -358,8 +358,8 @@ ppp() { pph '*' 109 '' "$*";}
 pps() { pph '+' 80 '42' "$*";}
 ppss() { pph '+' 50 '33' "$*";}
 
-tail1() { find . -maxdepth 1 -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
-tail1r() { find . -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*; }
+tail1() { find . -maxdepth 1 -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*;}
+tail1r() { find . -type f -print0|xargs -0 tail -n +1|grep --color -e$ -e^==.\*;}
 alias q="exit"
 # shellcheck disable=SC2139
 alias ..="cd ..; $LS $LS_OPT1 -l $LS_OPT2"
