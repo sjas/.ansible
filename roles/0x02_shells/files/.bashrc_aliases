@@ -331,7 +331,7 @@ EOF
 # pph=="prettyprinthelper" (params: char,charcount,color,text)
 pph() {
         [[ $# == 0 ]]&&echo "usage: pph _char _maxcharpos _asciicolor YOUR_RANDOM_STRING_STUFF"&&return
-		local char,maxcharpos,asciicolor,inputstring,inputstringsize,terminalwidth,fillstringwidth
+		local char maxcharpos asciicolor inputstring inputstringsize terminalwidth fillstringwidth
         char="$1";shift
         maxcharpos=$1;shift
         asciicolor="$1";shift
