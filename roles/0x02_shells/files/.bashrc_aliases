@@ -1476,7 +1476,7 @@ import (
 	//"github.com/sjas/sjasgo/bash"
 	//"github.com/sjas/sjasgo/nokia"
 	//"github.com/sjas/sjasgo/textfsm"
-	//sjaspp "github.com/sjas/sjasgo/pp"
+	sjaspp "github.com/sjas/sjasgo/pp"
 
 
 )
