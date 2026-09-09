@@ -22,6 +22,7 @@
     update_cache: true
     name:
       - alien
+      - apache2-utils
       - apt-file
       - apt-rdepends
       - apt-transport-https
