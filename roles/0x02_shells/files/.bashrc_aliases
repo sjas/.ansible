@@ -427,9 +427,9 @@ krestart() {
 	for i in "$@"
 	do
 		pkill "$i"
-		if [[ $i == "kwin" ]]
-		then kstart --replace kwin
-		else kstart "$i"
+		if [[ $i == "kwin" ]]||[[ $i == "kwin_x11" ]];then kstart kwin_x11
+		elif [[ $i == "ps" ]]||[[ $i == "plasmashell" ]];then kstart plasmashell
+		else echo "unknown binary referenced.."
 		fi
 	done
 }
