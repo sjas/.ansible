@@ -5,7 +5,7 @@
     cache_valid_time: 7200
     name:
       - podman
-      # - podman-docker  ## dont mask if something uses `docker whatever` internally
+      # - podman-docker  ## dont mask if something uses `docker whatever` internally i want to know
       # - containers-storage  ## dont install, it will fuck up your image storage
       # get all the build deps, may be needed with the go bindings
       - libgpgme-dev
@@ -57,8 +57,6 @@
     name: "{{ item }}"
     enabled: true
     state: started
-    # enabled: false
-    # state: stopped
   loop:
     - podman
   changed_when: false
@@ -68,8 +66,6 @@
     name: "{{ item }}"
     enabled: true
     state: started
-    # enabled: false
-    # state: stopped
   loop:
     - podman.socket
 
@@ -81,8 +77,6 @@
     scope: user
     enabled: true
     state: started
-    # enabled: false
-    # state: stopped
   loop:
     - podman
   changed_when: false
@@ -95,8 +89,6 @@
     scope: user
     enabled: true
     state: started
-    # enabled: false
-    # state: stopped
   loop:
     - podman.socket
 
