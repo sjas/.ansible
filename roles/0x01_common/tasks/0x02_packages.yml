@@ -29,6 +29,7 @@
       - arp-scan
       - at
       - atop
+      - ausweisapp
       - autofs
       - autossh
       - barrier
