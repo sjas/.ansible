@@ -32,7 +32,6 @@
       - ausweisapp
       - autofs
       - autossh
-      - barrier
       - bash-completion
       # - bashdb  ## https://sourceforge.net/projects/bashdb/files/bashdb/4.4-0.93/ ## not available in 18.04 yet
       - bfs
@@ -53,6 +52,7 @@
       - curl
       # - d-feet  ## missing in 26.04
       - d-spy
+      - deskflow
       - desktop-file-utils
       - dhcpdump
       - dhcping
@@ -78,6 +78,7 @@
       - firewall-applet
       - firewall-config
       - firewalld
+      - flatpak
       - flex
       - flex-doc
       - fortunes
