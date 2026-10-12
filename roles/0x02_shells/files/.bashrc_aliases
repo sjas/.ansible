@@ -763,6 +763,7 @@ __dautocompletion() {
 # net
 # net4
 # net6
+# gw
 # ru
 # r
 # du
@@ -1542,7 +1543,7 @@ EOF
 #	sudo ip l d podman1
 #}
 alias kc="kubectl"
-alias oc="omnictl"
+#alias oc="omnictl"
 
 
 
