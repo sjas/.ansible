@@ -51,7 +51,7 @@
       - conntrack
       - cpanminus
       - curl
-      - d-feet
+      # - d-feet  ## missing in 26.04
       - d-spy
       - desktop-file-utils
       - dhcpdump
@@ -81,7 +81,7 @@
       - flex
       - flex-doc
       - fortunes
-      # - fortunes-off  ## dont exist in 24.04.01
+      # - fortunes-off  ## dont exist in 24.04
       - fortunes-bofh-excuses
       # - freerdp-x11
       - geoip-bin
@@ -134,7 +134,7 @@
       # - mytop  ## unmaintained, https://askubuntu.com/questions/1511029/how-can-i-install-mytop-on-newer-versions-of-ubuntu
       - ncdt
       - ncdu
-      - neofetch
+      # - neofetch  ## missing in 26.04
       - net-tools
       # - network-manager-fortisslvpn-gnome
       - network-manager-openvpn
@@ -152,13 +152,13 @@
       - onedrive
       - openvpn
       - p7zip-full
-      - p7zip-rar
+      # - p7zip-rar  ## missing in 26.04
       - parallel
       - parted
       - patchutils
       - pbzip2
       - pcmanfm
-      - percol
+      # - percol  ## missing in 26.04
       - percona-toolkit
       - pgpdump
       - plocate
@@ -210,7 +210,7 @@
       - thunderbird
       - thunderbird-locale-de
       - tig
-      - tldr
+      # - tldr  ## missing in 26.04
       - tmux
       - traceroute
       - tree
