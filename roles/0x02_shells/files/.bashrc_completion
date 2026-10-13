@@ -25,7 +25,7 @@ alias pm=podman
 # shellcheck disable=SC1090
 . <(kubectl completion bash|sed 's/-F __start_kubectl kubectl/& kc/')
 # shellcheck disable=SC1090
-#. <(omnictl completion bash|sed 's/-F __start_omnictl omnictl/& oc/')
+. <(omnictl completion bash|sed 's/-F __start_omnictl omnictl/& oc/')
 
 
 

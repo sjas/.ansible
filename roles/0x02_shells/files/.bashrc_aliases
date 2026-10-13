@@ -1543,7 +1543,7 @@ EOF
 #	sudo ip l d podman1
 #}
 alias kc="kubectl"
-#alias oc="omnictl"
+alias oc="omnictl"
 
 
 
