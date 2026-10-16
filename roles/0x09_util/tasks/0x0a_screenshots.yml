@@ -1,50 +1,73 @@
 ---
 
 # spectacle is already preinstalled so skipped here
-- name: install screenshot packages
+# shutter borked on wayland, unisic is the replacement
+- name: unisic key
+  get_url:
+    url: https://download.opensuse.org/repositories/home:/unisic/xUbuntu_26.04/Release.key
+    dest: /etc/apt/keyrings/unisic.asc
+    mode: '0644'
+  become: true
+
+- name: unisic repo
+  apt_repository:
+    repo: deb [signed-by=/etc/apt/keyrings/unisic.asc] https://download.opensuse.org/repositories/home:/unisic/xUbuntu_26.04/ ./
+    state: present
+    filename: unisic
+
+- name: unisic install
   apt:
     cache_valid_time: 7200
-    name:
-      - shutter
+    autoclean: true
+    autoremove: true
+    update_cache: true
+    name: unisic
 
-## shutter config ###########################################################################################
-# this is yucky because its not in ~/.config and using xml instead of ini files ..
-# no its not if you can speak xpath
-# manually this could look like this:
+# # shutter is not used anymore as its broken on wayland, left here for lookup reasons
+# - name: install screenshot packages
+#   apt:
+#     cache_valid_time: 7200
+#     name:
+#       - shutter
 #
-# xmlstarlet edit --inplace --update "/opt/general[@filename]/@filename" --value "asdf" ~/.shutter/settings.xml
-# xpath -e '/opt/general/@filename' ~/.shutter/settings.xml
+# ## shutter config ###########################################################################################
+# # this is yucky because its not in ~/.config and using xml instead of ini files ..
+# # no its not if you can speak xpath
+# # manually this could look like this:
+# #
+# # xmlstarlet edit --inplace --update "/opt/general[@filename]/@filename" --value "asdf" ~/.shutter/settings.xml
+# # xpath -e '/opt/general/@filename' ~/.shutter/settings.xml
+# #
+# # Found 1 nodes in /home/sjas/.shutter/settings.xml:
+# # -- NODE --
+# #  filename="asdf"
+# #
+# # also:
+# # https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
+# #
+# - name: check if shutter config exists
+#   stat:
+#     path: /home/sjas/.shutter/settings.xml
+#   register: shutter_config
+#   changed_when: false
 #
-# Found 1 nodes in /home/sjas/.shutter/settings.xml:
-# -- NODE --
-#  filename="asdf"
+# - name: deploy shutter config if not exists so next task will not fail in initial run
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: settings.xml
+#     dest: /home/sjas/.shutter/settings.xml
+#     mode: 0664
+#   when: not shutter_config.stat.exists
 #
-# also:
-# https://peteris.rocks/blog/modifying-xml-json-ini-configuration-files-without-sed/
-#
-- name: check if shutter config exists
-  stat:
-    path: /home/sjas/.shutter/settings.xml
-  register: shutter_config
-  changed_when: false
-
-- name: deploy shutter config if not exists so next task will not fail in initial run
-  become: true
-  become_user: sjas
-  copy:
-    src: settings.xml
-    dest: /home/sjas/.shutter/settings.xml
-    mode: 0664
-  when: not shutter_config.stat.exists
-
-- name: shutter
-  become: true
-  become_user: sjas
-  xml:
-    path: /home/sjas/.shutter/settings.xml
-    xpath: /opt/general[@filename]
-    attribute: filename
-    value: shutter_$name_%NNN_%Y%m%d_%T
+# - name: shutter
+#   become: true
+#   become_user: sjas
+#   xml:
+#     path: /home/sjas/.shutter/settings.xml
+#     xpath: /opt/general[@filename]
+#     attribute: filename
+#     value: shutter_$name_%NNN_%Y%m%d_%T
 
 ## spectacle config #########################################################################################
 - name: spectacle spectaclerc
