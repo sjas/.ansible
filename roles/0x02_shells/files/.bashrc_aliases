@@ -24,6 +24,9 @@
 ## RANDOM STUFF #############################################################################################
 # oui lookup fixme
 # cat `locate nmap-mac-prefixes` | grep -i ^YOUR_OID_START
+# shellcheck disable=SC2010
+radeontophelper() { radeontop -b "$(ls -l /dev/dri/by-path/|grep "$(lspci -nn|grep -E 'VGA|Display|3D'| grep 7900|awk '{print $1}')"|grep card|awk '{$NF="";print}'|awk '{$NF="";print}'|awk '{print $NF}'|sed 's/^[^:]\+//'|cut -c2-|sed 's/:.*//'|sed 's/^0\+//')";}
+alias radeontop=radeontophelper
 
 
 
