@@ -264,13 +264,49 @@ previous activity=Meta+Shift+A,none,Walk through activities (Reverse)
 repeat_action=Meta+Ctrl+R,,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
-show-on-mouse-pos=none,Meta+V,Show Clipboard Items at Mouse Position
+show-on-mouse-pos=Ctrl+Alt+B,Meta+V,Show Clipboard Items at Mouse Position
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
 [services][com.mitchellh.ghostty.desktop]
 _launch=
+
+[services][net.local.brave-browser-stable.desktop]
+_launch=Meta+B
+
+[services][net.local.code.desktop]
+_launch=Meta+X
+
+[services][net.local.dolphin.desktop]
+_launch=Meta+E
+
+[services][net.local.evolution.desktop]
+_launch=Meta+F
+
+[services][net.local.firefox.desktop]
+_launch=Meta+V
+
+[services][net.local.kdotool.desktop]
+_launch=Meta+K
+
+[services][net.local.microsoft-edge-stable.desktop]
+_launch=Meta+M
+
+[services][net.local.signal-desktop.desktop]
+_launch=Meta+S
+
+[services][net.local.telegram-desktop.desktop]
+_launch=Meta+Y
+
+[services][net.local.terminator.desktop]
+_launch=Meta+R
+
+[services][net.local.uxterm.desktop]
+_launch=Meta+U
+
+[services][net.local.whatsie.desktop]
+_launch=Meta+H
 
 [services][org.kde.dolphin.desktop]
 _launch=none
@@ -279,9 +315,6 @@ _launch=none
 RecordRegion=Meta+Shift+R\t
 RecordWindow=
 _launch=none
-
-[services][systemsettings.desktop]
-_launch=Tools\t
 
 [unisic]
 _k_friendly_name=Unisic

@@ -20,7 +20,8 @@
 #   i
 #   systemsettings
 # keepassxc  ## https://askubuntu.com/questions/703628/how-to-close-minimize-and-maximize-a-specified-window-from-terminal
-#   xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc
+#   xdotool windowactivate $(xdotool search --pid $(ps aux|grep keepass|grep -v grep|awk '{print $2}'))||keepassxc  ## X11
+#   kdotool search --class keepassxc windowactivate || keepassxc  ## wayland
 #   k
 #   keepassxc
 # shutter
@@ -98,3 +99,10 @@
 #     src: kglobalshortcutsrc
 #     dest: /home/sjas/.config
 #     mode: 0664
+
+- name: install kdotool from cargo
+  become: true
+  become_user: sjas
+  community.general.cargo:
+    executable: /home/sjas/.cargo/bin/cargo
+    name: kdotool
