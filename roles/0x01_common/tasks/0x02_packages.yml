@@ -52,7 +52,7 @@
       - curl
       # - d-feet  ## missing in 26.04
       - d-spy
-      - deskflow
+      - deskflow  ## https://github.com/sjas/.ansible/issues/96
       - desktop-file-utils
       - dhcpdump
       - dhcping
@@ -120,6 +120,7 @@
       - libpcap-dev
       - libreoffice
       - libsource-highlight-common
+      - libwayland-dev
       - libxml2-utils
       - linux-tools-generic
       - lnav
@@ -128,6 +129,7 @@
       - mbuffer
       - mc
       - meld
+      - meson
       - moreutils
       - most
       - multitail
@@ -142,6 +144,7 @@
       - ngrep
       - nicstat
       - nikto
+      - ninja-build
       - nload
       - nmap
       - nmon
@@ -162,6 +165,7 @@
       # - percol  ## missing in 26.04
       - percona-toolkit
       - pgpdump
+      - pkg-config
       - plocate
       - powertop
       - puppet-lint
@@ -224,6 +228,7 @@
       - vim
       - vim-gtk3
       - w3m
+      - wayland-protocols
       - wdiff
       - wget
       - whois
