@@ -19,30 +19,6 @@
 # cursorTheme=breeze_cursors
 
 ## mouse ####################################################################################################
-- name: imwheel package
-  apt:
-    cache_valid_time: 7200
-    name: imwheel
-
-# - name: mouse kcminputrc
-#   become: true
-#   become_user: sjas
-#   ini_file:
-#     path: /home/sjas/.config/kcminputrc
-#     create: true
-#     mode: 0664
-#     no_extra_spaces: true
-#     section: "{{ item.section }}"
-#     option: "{{ item.option }}"
-#     value: "{{ item.value }}"
-#   with_items:
-#     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.525" }
-#     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.225" }
-#     - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-3.525" }
-#     - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
-#     - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
-#   notify: kcminit
-
 - name: mouse kcminputrc
   become: true
   become_user: sjas
@@ -55,6 +31,9 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items:
+    # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.525" }
+    # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.225" }
+    # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-3.525" }
     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.35" }
     - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.45" }
     - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
@@ -84,42 +63,81 @@
 # * * * * * sjas xinput set-prop 11 "libinput Accel Custom Motion Points" 0.008 0.016 0.064 0.128 0.256 0.512 0.768 1.024 1.2 1.4 1.54
 
 
-- name: fix up imwheel as a user service
-  copy:
-    src: imwheel.service
-    dest: /home/sjas/.config/systemd/user/
-    owner: sjas
-    group: sjas
-    mode: 0664
-  notify: imwheel_restart
+# # imwheel doesnt work on wayland
+# - name: imwheel package
+#   apt:
+#     cache_valid_time: 7200
+#     name: imwheel
+#
+# - name: fix up imwheel as a user service
+#   copy:
+#     src: imwheel.service
+#     dest: /home/sjas/.config/systemd/user/
+#     owner: sjas
+#     group: sjas
+#     mode: 0664
+#   notify: imwheel_restart
+#
+# - name: systemd daemon reload
+#   become: true
+#   become_user: sjas
+#   systemd:
+#     daemon_reload: true
+#     scope: user
+#   notify: imwheel_restart
+#
+# - name: start imwheel user service
+#   become: true
+#   become_user: sjas
+#   systemd:
+#     name: imwheel.service
+#     scope: user
+#     state: restarted
+#     enabled: true
+#     masked: false
+#   changed_when: false
+#
+# - name: mouse - fix buttons and scroll speed
+#   become: true
+#   become_user: sjas
+#   copy:
+#     src: .imwheelrc
+#     dest: /home/sjas/.imwheelrc
+#     mode: 0664
+#   notify: imwheel_restart
 
-- name: systemd daemon reload
-  become: true
-  become_user: sjas
-  systemd:
-    daemon_reload: true
-    scope: user
-  notify: imwheel_restart
-
-- name: start imwheel user service
-  become: true
-  become_user: sjas
-  systemd:
-    name: imwheel.service
-    scope: user
-    state: restarted
-    enabled: true
-    masked: false
+- name: check if keymapper is already installed
+  stat:
+    path: /usr/bin/keymapper
+  register: keymapper
   changed_when: false
 
-- name: mouse - fix buttons and scroll speed
+- name: keymapper install
+  apt:
+    deb: /home/sjas/etc/.ansible/roles/0x05_kde/files/keymapper-5.7.3-Linux-x86_64.deb
+  when: not keymapper.stat.exists
+
+- name: keymapper config folder
+  become: true
+  become_user: sjas
+  file:
+    dest: /home/sjas/.config/keymapper
+    state: directory
+    mode: 0775
+
+- name: keymapper config
   become: true
   become_user: sjas
   copy:
-    src: .imwheelrc
-    dest: /home/sjas/.imwheelrc
+    src: keymapper.conf
+    dest: /home/sjas/.config/keymapper/keymapper.conf
     mode: 0664
-  notify: imwheel_restart
+
+- name: keymapperd enable systemd service
+  systemd_service:
+    name: keymapperd
+    enabled: true
+    state: started
 
 - name: mouse kwinrc
   become: true
