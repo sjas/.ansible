@@ -496,6 +496,8 @@ alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
 
 convert-url-hexvalues() { printf "%b\n" "${*//%/\\x}";}
 
+awk-show-fields() { awk '{for(i=1;i<=NF;i++) printf "%d=[%s]\n",i,$i}';}
+
 ta() {
     if [[ $# -lt 1 ]]
 	then
@@ -795,15 +797,17 @@ showgw()  {
 #	_pinghelper defgw "${_gw4}" "${_gw6}"
 #	_pinghelper remote-ip 1.1 2606:4700:4700::1111
 #	_pinghelper remote-dns ix.de ix.de
-	_gw4=$(ip -4 r|grep default|awk '{print $3}')
-	_gw6=$(ip -6 r|grep default|awk '{print $3}')
+	_gw4=$(ip -4 r g 1.1.1.1|awk '{print $3}')
+#  	_gw6=$(printf "%s%%%s" "$(ip -6 r g 2606:4700:4700::1111|awk '{print $5}')" "$(ip -6 r g 2606:4700:4700::1111|awk '{print $7}')")
+ 	_gw6="$(ip -6 r g 2606:4700:4700::1111|awk '{print $5}')"
+	_gw6_if="$(ip -6 r g 2606:4700:4700::1111|awk '{print $7}')"
 	\watch -n1 -c '\
 		printf "\033[41;1m\nlocalhost: 0 && ::1\n\033[m";\
 		\ping -4 -c1 -W1 0|grep -E "from|,";\
 		\ping -6 -c1 -W1 ::1|grep -E "from|,";\
 		printf "\033[41;1m\ndefgw: '"$_gw4"' && '"$_gw6"'\n\033[m";\
 		\ping -4 -c1 -W1 '"$_gw4"'|grep -E "from|,";\
-		\ping -6 -c1 -W1 '"$_gw6"'|grep -E "from|,";\
+		\ping -6 -c1 -W1 '"$_gw6"%"$_gw6_if"'|grep -E "from|,";\
 		printf "\033[41;1m\nremote-ip: 1.1 && 2606:4700:4700::1111\n\033[m";\
 		\ping -4 -c1 -W1 1.1|grep -E "from|,";\
 		\ping -6 -c1 -W1 2606:4700:4700::1111|grep -E "from|,";\
