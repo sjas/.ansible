@@ -425,6 +425,16 @@ gettoken() {
 	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep token&&return
 	cat /home/sjas/.secrets/"$1"
 }
+getusersuser() {
+	# shellcheck disable=SC2010
+	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets/users&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep token&&return
+	\ls /home/sjas/.secrets/users/"$1"
+}
+getuserspass() {
+	# shellcheck disable=SC2010
+	[[ $# -lt 1 ]]&&(cd /home/sjas/.secrets/users&&find . -maxdepth 1 -type f)|sed 's/^..//'|grep token&&return
+	cat /home/sjas/.secrets/users/"$1"
+}
 
 krestart() {
 	for i in "$@"
