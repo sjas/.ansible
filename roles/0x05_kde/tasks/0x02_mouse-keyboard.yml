@@ -19,7 +19,55 @@
 # cursorTheme=breeze_cursors
 
 ## mouse ####################################################################################################
-- name: mouse kcminputrc
+- name: register mousespeed
+  command: "/bin/echo -0.365"
+  # command: "/bin/echo 1"
+  register: mousespeed
+  changed_when: false
+
+- name: read mouse configuration file to get the device names later on
+  slurp:
+    src: /home/sjas/.config/kcminputrc
+  register: kcminputrc_file
+
+- name: Extract Logitech section names dynamically
+  set_fact:
+    # logitech_sections: "{{ (kcminputrc_file.content | b64decode) | regex_findall('(?m)^[(.*Logitech PRO X 2c.*)]$') }}"
+    logitech_sections: >-
+      {{ (kcminputrc_file.content | b64decode)
+      | regex_findall('(?m)^\[(Libinput\]\[[^]]+\]\[[^]]+\]\[Logitech PRO X 2c[^]]*)\]$') }}
+
+- name: Update Logitech sections
+  community.general.ini_file:
+    path: "{{ kcminputrc_file.source }}"
+    section: "{{ item.0 }}"
+    option: "{{ item.1.option }}"
+    value: "{{ item.1.value }}"
+    no_extra_spaces: true
+  loop: "{{ logitech_sections | product(logitech_options) | list }}"
+  vars:
+    logitech_options:
+      - option: Enabled
+        value: "true"
+
+- name: Update Logitech sections
+  community.general.ini_file:
+    path: "{{ kcminputrc_file.source }}"
+    section: "{{ item.0 }}"
+    option: "{{ item.1.option }}"
+    value: "{{ item.1.value }}"
+    no_extra_spaces: true
+  loop: "{{ logitech_sections | product(logitech_options) | list }}"
+  vars:
+    logitech_options:
+      - option: Enabled
+        value: "true"
+      - option: PointerAcceleration
+        value: "{{ mousespeed.stdout }}"
+      - option: PointerAccelerationProfile
+        value: "2"
+
+- name: mouse section kcminputrc
   become: true
   become_user: sjas
   ini_file:
@@ -35,7 +83,7 @@
     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.225" }
     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-3.525" }
     # - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.35" }
-    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "-0.45" }
+    - { section: "Mouse", option: "XLbInptPointerAcceleration", value: "{{ mousespeed.stdout }}" }
     - { section: "Mouse", option: "XLbInptAccelProfileFlat", value: "false" }
     - { section: "Mouse", option: "X11LibInputXAccelProfileFlat", value: "false" }
   notify: kcminit
