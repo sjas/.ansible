@@ -71,6 +71,7 @@
       - expect
       - ext4magic
       - fail2ban
+      - fastfetch
       - fd-find
       - filezilla
       - finger
