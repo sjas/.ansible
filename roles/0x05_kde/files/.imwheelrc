@@ -9,17 +9,20 @@ Shift_L,	Down,			Shift_L|Button5			#shift-scrolldown still works
 none,		Thumb1,			Alt_L|Left				#front_thumb does alt-left
 none,		Thumb2,			Alt_L|Right				#rear_thumb does alt-right
 
-kaps_Lock,	Thumb2,			Return					#caps/ctrl-front_thumb is enter
+Caps_Lock,	Thumb2,			Return					#caps/ctrl-front_thumb is enter
 Control_L,	Thumb2,			Return					#caps/ctrl-front_thumb is enter
 
 Alt_L,		Thumb2,			Control_L|Alt_L|l		#alt-front_thumb is alt-f4
 
-Control_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
+#Control_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
+Super_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
+
 Caps_Lock,	Thumb1,			Super_L|r				#caps-rear_thumb opens terminator
 
 Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
 
-Super_L,	Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
+#Super_L,	Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
+
 
 
 
