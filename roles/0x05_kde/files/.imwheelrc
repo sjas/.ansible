@@ -10,22 +10,19 @@ none,		Thumb1,			Alt_L|Left				#front_thumb does alt-left
 none,		Thumb2,			Alt_L|Right				#rear_thumb does alt-right
 
 Caps_Lock,	Thumb2,			Return					#caps/ctrl-front_thumb is enter
+Caps_Lock,	Thumb1,			Super_L|r				#caps-rear_thumb opens terminator
+
 Control_L,	Thumb2,			Return					#caps/ctrl-front_thumb is enter
 
 Alt_L,		Thumb2,			Control_L|Alt_L|l		#alt-front_thumb is alt-f4
 
-#Control_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
 Super_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
 
-Caps_Lock,	Thumb1,			Super_L|r				#caps-rear_thumb opens terminator
-
-Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
-
-#Super_L,	Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
 
 
-
-
+# Control_L,	Thumb1,			Control_L|Alt_L|b		#ctrl-rear_thumb opens clipboard
+# Alt_L,		Thumb1,			Super_L|k				#alt-rear_thumb opens keepass
+# Super_L,		Thumb1,			Super_L|i				#win-rear_thumb opens controlpanel
 #https://www.mankier.com/1/imwheel
 #mouse1,2,3 are not possible to redefine in here?
 #
