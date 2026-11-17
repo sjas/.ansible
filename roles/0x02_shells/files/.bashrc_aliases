@@ -942,6 +942,8 @@ showsym() {
 }
 showdiff() { wdiff -sdn <(diff -u4 "$1" "$2")|colordiff;}
 
+showps() { watch -n1 -d 'ps aux | grep -i '"$*"' | grep -v grep';}
+
 
 
 
