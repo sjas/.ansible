@@ -507,6 +507,7 @@ alias bc='BC_ENV_ARGS=<(echo "scale=2") \bc'
 convert-url-hexvalues() { printf "%b\n" "${*//%/\\x}";}
 
 awk-show-fields() { awk '{for(i=1;i<=NF;i++) printf "%d=[%s]\n",i,$i}';}
+onelined-json() { tr -d '\n'|sed 's/\s\+/ /g'|sed "s/^/'/;s/$/'/";}
 
 ta() {
     if [[ $# -lt 1 ]]
